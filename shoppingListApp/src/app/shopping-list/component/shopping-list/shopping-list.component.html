@@ -1,4 +1,9 @@
-<p>shopping-list works!</p>
+<h2>Shopping List</h2>
 
-<h3>{{shoppingList.productList[0].name}}</h3>
-<div><span>id: </span>{{shoppingList.productList[0].id}}</div>
+<ul class="products">
+  <li *ngFor="let prod of shoppingList.productList" 
+        [class.selected]="prod.isBought === true"
+        (click)="onClick(prod)">
+    <span class="badge">{{prod.id}}</span> {{prod.name}}
+  </li>
+</ul>
