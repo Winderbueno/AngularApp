@@ -7,6 +7,6 @@ export interface Product {
   name: string;
 
   // Buying Info
-  quantity: BigInteger;
+  quantity: number;
   isBought: boolean;
 }
