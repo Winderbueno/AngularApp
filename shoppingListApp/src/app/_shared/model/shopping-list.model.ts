@@ -3,10 +3,10 @@ import { Product } from "./product.model";
 export interface ShoppingList {
 
     // Identification Info
-    id: string;
+    id: number;
     
-    // BasedTemplate
-    idModelShoppingList: string;
+    // Model used by the ShoppingList
+    idModelShoppingList: number;
 
     // ShoppingList Product List 
     productList: Product[];

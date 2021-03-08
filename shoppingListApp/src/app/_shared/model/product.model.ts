@@ -1,7 +1,7 @@
 export interface Product {
     
   // Identification Info
-  id: string;
+  id: number;
   category: string;
   subCategory: string;
   name: string;

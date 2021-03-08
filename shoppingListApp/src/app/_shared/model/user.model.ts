@@ -1,7 +1,7 @@
 export interface User {
 
     // Identification Info
-    id: string;
+    id: number;
     name: string;
     firstName: string;
 }
