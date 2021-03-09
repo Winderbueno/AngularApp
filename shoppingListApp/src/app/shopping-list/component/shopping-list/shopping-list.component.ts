@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-// Data Model
+// DataModel
 import { ShoppingList } from 'src/app/_shared/model/shopping-list.model';
+import { Product } from 'src/app/_shared/model/product.model';
 
 // Mock
 import { PRODUCTS } from 'src/app/_shared/mock/product.mock';
-import { Product } from 'src/app/_shared/model/product.model';
 
 @Component({
   selector: 'app-shopping-list',
