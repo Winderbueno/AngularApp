@@ -4,8 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { ShoppingList } from 'src/app/_shared/model/shopping-list.model';
 import { Product } from 'src/app/_shared/model/product.model';
 
-// Mock
-import { PRODUCTS } from 'src/app/_shared/mock/product.mock';
+// Service, Mock
+import { ProductService } from 'src/app/_shared/service/product.service';
+import { PRODUCTS } from 'src/app/_shared/service/mock/product.mock';
 
 @Component({
   selector: 'app-shopping-list',
@@ -14,15 +15,20 @@ import { PRODUCTS } from 'src/app/_shared/mock/product.mock';
 })
 export class ShoppingListComponent implements OnInit {
   
-  shoppingList: ShoppingList = {
+  private shoppingList: ShoppingList = {
     id: 1,
     idModelShoppingList: 1,
-    productList:PRODUCTS
+    productList:[]
   };
 
-  constructor() { }
+  constructor(
+    private prodServ: ProductService
+  ) { }
 
   ngOnInit(): void {
+
+    // Get Products
+    this.shoppingList.productList = this.prodServ.getMock();
   }
 
   // Swap value of isBought info for product
