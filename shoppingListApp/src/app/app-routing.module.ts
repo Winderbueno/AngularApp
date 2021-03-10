@@ -5,7 +5,8 @@ import { ShoppingListComponent } from './shopping-list/component/shopping-list/s
 import { AngAppHomeTemplateComponent } from './_shared/component/ang-app-home-template/ang-app-home-template.component';
 
 const routes: Routes = [
-  { path: '', component: AngAppHomeTemplateComponent },
+  { path: '', redirectTo: '/my-shopping-list', pathMatch: 'full' },
+  { path: 'ang-app-home-tmplt', component: AngAppHomeTemplateComponent },
   { path: 'my-shopping-list', component: ShoppingListComponent }
 ];
 
