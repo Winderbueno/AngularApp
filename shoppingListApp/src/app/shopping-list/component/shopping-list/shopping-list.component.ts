@@ -4,9 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { ShoppingList } from 'src/app/_shared/model/shopping-list.model';
 import { Product } from 'src/app/_shared/model/product.model';
 
-// Service, Mock
+// Service
 import { ProductService } from 'src/app/_shared/service/product.service';
-import { PRODUCTS } from 'src/app/_shared/service/mock/product.mock';
+
 
 @Component({
   selector: 'app-shopping-list',
@@ -15,7 +15,7 @@ import { PRODUCTS } from 'src/app/_shared/service/mock/product.mock';
 })
 export class ShoppingListComponent implements OnInit {
   
-  private shoppingList: ShoppingList = {
+  shoppingList: ShoppingList = {
     id: 1,
     idModelShoppingList: 1,
     productList:[]
@@ -26,12 +26,12 @@ export class ShoppingListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
-    // Get Products
-    this.shoppingList.productList = this.prodServ.getMock();
+    // Asynchronously Get Products
+    this.prodServ.getAllAsAsyncMock()
+        .subscribe(prods => this.shoppingList.productList = prods);
   }
 
-  // Swap value of isBought info for product
+  // If user click on 1 prod, Swap value of isBought for product
   onClick(prod: Product): void {
     let isBought = this.shoppingList.productList[prod.id].isBought;
     isBought ? isBought=false : isBought=true; 
