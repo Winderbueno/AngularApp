@@ -30,8 +30,8 @@ export class ShoppingListComponent implements OnInit {
   // If user click on 1 prod, Swap value of isBought for product
   onProductClick(prod: Product): void {
     if(this.myShoppingList){
-      let isBought = this.myShoppingList.productList[prod.id].isBought;
-      isBought ? isBought=false : isBought=true;
+      let prodToUpdt = this.myShoppingList.productList.find(elt => elt.id == prod.id);
+      if(prodToUpdt) prodToUpdt.isBought ? prodToUpdt.isBought=false : prodToUpdt.isBought = true;
     }
   }
 
