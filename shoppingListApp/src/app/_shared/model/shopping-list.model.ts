@@ -1,13 +1,11 @@
-import { Product } from "./product.model";
+import { UsableProduct } from "./usable-product.model";
 
 export interface ShoppingList {
 
-    // Identification Info
     id: number;
-    
-    // Model used by the ShoppingList
-    idModelShoppingList: number;
+    idUser: number; // User Id
+    idShoppingListModel: number; // ShoppingList based model Id
 
     // ShoppingList Product List 
-    productList: Product[];
+    productList: UsableProduct[];
 }

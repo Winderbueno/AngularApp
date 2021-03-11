@@ -1,9 +1,11 @@
 <h2>Shopping List</h2>
 
-<ul class="products">
-  <li *ngFor="let prod of shoppingList.productList" 
-        [class.selected]="prod.isBought === true"
-        (click)="onClick(prod)">
-    <span class="badge">{{prod.id}}</span> {{prod.name}}
-  </li>
-</ul>
+<div *ngIf="myShoppingList && myShoppingList.productList">
+  <ul class="products">
+    <li *ngFor="let prod of myShoppingList.productList" 
+          [class.selected]="prod.isBought === true"
+          (click)="onProductClick(prod)">
+      <span class="badge">{{prod.id}}</span> {{prod.name}}
+    </li>
+  </ul>
+</div>
