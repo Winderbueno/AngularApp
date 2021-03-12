@@ -23,7 +23,7 @@ export class ShoppingListComponent implements OnInit {
 
   ngOnInit(): void {
     // Asynchronously Get User's shopping list
-    this.shoppingListServ.getShoppingListAsAsyncMock()
+    this.shoppingListServ.getShoppingList()
         .subscribe(shoppingList => this.myShoppingList = shoppingList);
   }
 
