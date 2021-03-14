@@ -17,6 +17,7 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 // App Component and Service
 import { InMemoryDataService } from './_shared/service/mock/in-memory-data.mock.service';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { AppComponent } from './app.component';
     // App Module
     AppRoutingModule,
     SharedModule,
-    ShoppingListModule
+    ShoppingListModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   declarations: [AppComponent],
