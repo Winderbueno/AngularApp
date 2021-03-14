@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //#endregion
 
 //#region 3rd Party Module
@@ -14,16 +15,16 @@ import { SharedModule } from './_shared/shared.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 //#endregion
 
-// App Component and Service
+// App Component And Service
 import { InMemoryDataService } from './_shared/service/mock/in-memory-data.mock.service';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     // Angular Module
     BrowserModule,
     HttpClientModule,
+    BrowserAnimationsModule,
 
     // 3rd Party Module
     // Intercepts HTTP requests and returns simulated server responses.
@@ -35,8 +36,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     // App Module
     AppRoutingModule,
     SharedModule,
-    ShoppingListModule,
-    BrowserAnimationsModule
+    ShoppingListModule
   ],
   providers: [],
   declarations: [AppComponent],
