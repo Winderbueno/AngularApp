@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-// DataModel
+// Model
 import { ShoppingList } from 'src/app/_shared/model/shopping-list.model';
 import { Product } from 'src/app/_shared/model/product.model';
 

@@ -15,7 +15,7 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 //#endregion
 
 // App Component and Service
-import { InMemoryDataService } from './_shared/service/in-memory-data.service';
+import { InMemoryDataService } from './_shared/service/mock/in-memory-data.mock.service';
 import { AppComponent } from './app.component';
 
 @NgModule({

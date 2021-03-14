@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 // Model and Mock
 import { Product } from '../model/product.model';
-import { PRODUCTS } from './mock/product.mock';
 
 
 @Injectable({
@@ -11,10 +11,19 @@ import { PRODUCTS } from './mock/product.mock';
 })
 export class ProductService {
 
-  constructor() { }
+  private productURL = 'api/products';
 
-  getAllAsAsyncMock():Observable<Product[]> {
-    const prods = of(PRODUCTS);
-    return prods;
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  /**
+   * Get All product from server
+   * 
+   * @returns 
+   */
+  getAll():Observable<Product[]> {
+    return this.http.get<Product[]>(this.productURL);
   }
+
 }

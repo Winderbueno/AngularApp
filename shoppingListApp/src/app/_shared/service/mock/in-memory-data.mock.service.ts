@@ -2,16 +2,27 @@ import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 // Model
-import { UsableProduct } from '../model/usable-product.model';
-import { ShoppingList } from '../model/shopping-list.model';
+import { Product } from '../../model/product.model';
+import { UsableProduct } from '../../model/usable-product.model';
+import { ShoppingList } from '../../model/shopping-list.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InMemoryDataService implements InMemoryDbService {
+
+  /**
+   * Create a DB that mock Product service and ShoppingList Service 
+   * @returns
+   */
   createDb() {
 
-    const USABLE_PRODUCT_SET_1: UsableProduct[] = [
+    const products: Product[] = [
+      { id: 0, category: 'Repas', subCategory: 'Matin', name: 'Nutella'},
+      { id: 1, category: "Apero", subCategory: "Boisson", name: 'Biere'},
+    ];
+
+    const usableProductSet: UsableProduct[] = [
     
       { id: 0, category: 'Repas', subCategory: 'Matin', name: 'Nutella', isBought: false, quantity: 1 },
       { id: 1, category: "Apero", subCategory: "Boisson", name: 'Biere', isBought: false, quantity: 1 },
@@ -19,21 +30,14 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 12, category: "Hygiene", subCategory: "Corps", name: 'Creme', isBought: true, quantity: 1 },
     ];
   
-    const MY_SHOPPING_LIST: ShoppingList = {
+    const shoppingList: ShoppingList = {
       id: 0, 
       idUser: 0,
       idShoppingListModel: 0, 
-      productList: USABLE_PRODUCT_SET_1,
+      productList: usableProductSet,
     };
     
-    return { MY_SHOPPING_LIST };
+    return { shoppingList, products };
   }
 
-  // Overrides the genId method to ensure that a hero always has an id.
-  // If the heroes array is 
-  //    Empty, the method below returns the initial number (11).
-  //    Not empty, the method below returns the 'highest hero id + 1'
-  //genId(products: Product[]): number {
-  //  return products.length > 0 ? Math.max(...products.map(product => product.id)) + 1 : 11;
-  //}
 }

@@ -12,10 +12,11 @@ import { ShoppingList } from '../model/shopping-list.model';
 })
 export class ShoppingListService {
 
-  private shoppingListURL = 'api/MY_SHOPPING_LIST';
+  private shoppingListURL = 'api/shoppingList';
 
   constructor(
-    private http: HttpClient) { }
+    private http: HttpClient
+  ) { }
   
   /**
    * Get shoppingList from server
