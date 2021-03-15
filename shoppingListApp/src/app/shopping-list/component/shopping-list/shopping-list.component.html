@@ -2,20 +2,22 @@
 
 <div *ngIf="myShoppingList && myShoppingList.productList">
 
-  <mat-expansion-panel *ngFor="let catProd of myShoppingList.productList">
+  <mat-expansion-panel *ngFor="let catProd of myShoppingList.productList" hideToggle>
 
     <!-- Expansion Panel Header containing the product category -->
     <mat-expansion-panel-header>
       <mat-panel-title>{{catProd.category}}</mat-panel-title>
+      <button class="test" mat-button color="primary" (click)="ResetBoughtStatus(catProd)">Reset</button>
     </mat-expansion-panel-header>
 
+    <!-- Expanded Panel containing the product sub category and their products -->
     <li *ngFor="let subCatProd of catProd.subCatProducts">
       <span> {{subCatProd.subCategory}} : </span>
-      <span class="test"
+      <span
         *ngFor="let prod of subCatProd.usableProducts"
         [class.selected]="prod.isBought === true"
-        (click)="onProductClick(catProd.category, subCatProd.subCategory, prod)"> {{prod.name}}, </span> 
+        (click)="onProductClick(prod)"> {{prod.name}}, </span> 
     </li>
   </mat-expansion-panel>
-  
+
 </div>

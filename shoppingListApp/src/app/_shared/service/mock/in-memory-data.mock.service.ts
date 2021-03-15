@@ -23,17 +23,33 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     const catUsableProductSet: CategorisedUsableProduct[] = [ 
-      { // Category "Repas"
+      {
         category: 'Repas',
         subCatProducts : [ 
           {
             subCategory:'Matin',
+            usableProducts: [
+              { id: 0, name: 'Nutella', isBought: false, quantity: 1},
+              { id: 1, name: 'Confiture', isBought: false, quantity: 1},
+              { id: 2, name: 'Café', isBought: false, quantity: 1},
+              { id: 3, name: 'Miel', isBought: false, quantity: 1},
+              { id: 4, name: 'Thé', isBought: false, quantity: 1},
+              { id: 5, name: 'Biscuit', isBought: false, quantity: 1},
+              { id: 6, name: 'Lait', isBought: false, quantity: 1}]
+          },
+          {
+            subCategory:'Sandwich',
             usableProducts: [ 
-              { id: 0, name: 'Nutella', isBought: false, quantity: 1} ]
+              { id: 7, name: 'Pain2Mie', isBought: false, quantity: 1},
+              { id: 8, name: 'Carotte', isBought: false, quantity: 1},
+              { id: 9, name: 'Charcut\'', isBought: false, quantity: 1},
+              { id: 10, name: 'Fromage', isBought: false, quantity: 1},
+              { id: 11, name: 'Oeufs', isBought: false, quantity: 1},
+              { id: 12, name: 'Tomate', isBought: false, quantity: 1},]
           }]
       }, 
       {
-        category: 'Apero',
+        category: 'Apéro/Invitation',
         subCatProducts : [ 
           {
             subCategory:'Boisson',
