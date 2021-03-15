@@ -7,7 +7,7 @@
     <!-- Expansion Panel Header containing the product category -->
     <mat-expansion-panel-header>
       <mat-panel-title>{{catProd.category}}</mat-panel-title>
-      <button mat-button color="primary" (click)="ResetBuyStatusOfProductCategory(catProd)">Reset</button>
+      <button mat-button color="primary" (click)="ResetBuyStatusOfProductCategory($event, catProd)">Reset</button>
     </mat-expansion-panel-header>
 
     <!-- Expanded Panel containing the product sub category and their products -->

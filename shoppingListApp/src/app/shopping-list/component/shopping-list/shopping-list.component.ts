@@ -39,7 +39,8 @@ export class ShoppingListComponent implements OnInit {
    * Reset Bought Status for all product in one category
    * @param catProds 
    */
-  ResetBuyStatusOfProductCategory(catProds:CategorisedUsableProduct): void {
+  ResetBuyStatusOfProductCategory(event: Event, catProds:CategorisedUsableProduct): void {
+    event.stopPropagation(); // To deactivate the collapse/uncollapse when clicking 'Reset'
     catProds.subCatProducts.forEach(
       subCatProd => subCatProd.usableProducts.forEach(
         prod => prod.isBought = false
