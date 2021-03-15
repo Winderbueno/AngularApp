@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 // Model
 import { ShoppingList } from 'src/app/_shared/model/shopping-list.model';
-import { Product } from 'src/app/_shared/model/product.model';
+import { UsableProduct } from 'src/app/_shared/model/categorised-usable-product.model';
 
 // Service
 import { ShoppingListService } from 'src/app/_shared/service/shopping-list.service';
@@ -28,10 +28,17 @@ export class ShoppingListComponent implements OnInit {
   }
 
   // If user click on 1 prod, Swap value of isBought for product
-  onProductClick(prod: Product): void {
+  onProductClick(cat: string, subCat: string, prod: UsableProduct): void {
+    
     if(this.myShoppingList){
-      let prodToUpdt = this.myShoppingList.productList.find(elt => elt.id == prod.id);
-      if(prodToUpdt) prodToUpdt.isBought ? prodToUpdt.isBought=false : prodToUpdt.isBought = true;
+      let catProdToUpdt = this.myShoppingList.productList.find(elt => elt.category == cat);
+      if (catProdToUpdt) { 
+        let subCatProdToUpdt = catProdToUpdt.subCatProducts.find(elt => elt.subCategory == subCat);
+        if (subCatProdToUpdt) { 
+          let prodToUpdt = subCatProdToUpdt.usableProducts.find(elt => elt.id == prod.id);
+          if(prodToUpdt) prodToUpdt.isBought ? prodToUpdt.isBought=false : prodToUpdt.isBought = true;
+        }
+      } 
     }
   }
 

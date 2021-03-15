@@ -3,7 +3,7 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 // Model
 import { Product } from '../../model/product.model';
-import { UsableProduct } from '../../model/usable-product.model';
+import { CategorisedUsableProduct } from '../../model/categorised-usable-product.model';
 import { ShoppingList } from '../../model/shopping-list.model';
 
 @Injectable({
@@ -22,19 +22,46 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 1, category: "Apero", subCategory: "Boisson", name: 'Biere'},
     ];
 
-    const usableProductSet: UsableProduct[] = [
-    
-      { id: 0, category: 'Repas', subCategory: 'Matin', name: 'Nutella', isBought: false, quantity: 1 },
-      { id: 1, category: "Apero", subCategory: "Boisson", name: 'Biere', isBought: false, quantity: 1 },
-      { id: 3, category: "Apero", subCategory: "Sales", name: 'Chips', isBought: false, quantity: 2 },
-      { id: 12, category: "Hygiene", subCategory: "Corps", name: 'Creme', isBought: true, quantity: 1 },
-    ];
+    const catUsableProductSet: CategorisedUsableProduct[] = [ 
+      { // Category "Repas"
+        category: 'Repas',
+        subCatProducts : [ 
+          {
+            subCategory:'Matin',
+            usableProducts: [ 
+              { id: 0, name: 'Nutella', isBought: false, quantity: 1} ]
+          }]
+      }, 
+      {
+        category: 'Apero',
+        subCatProducts : [ 
+          {
+            subCategory:'Boisson',
+            usableProducts: [ 
+              { id: 1, name: 'Biere', isBought: false, quantity: 1}]
+          }, 
+          {
+            subCategory:'Sales',
+            usableProducts: [ 
+              { id: 3, name: 'Chips', isBought: false, quantity: 2},
+              { id: 10, name: 'Cacahuete', isBought: true, quantity: 1}]
+          }]
+      }, 
+      {
+        category: 'Hygiene',
+        subCatProducts : [
+          {
+            subCategory:'Corps',
+            usableProducts: [ 
+              { id: 12, name: 'Creme', isBought: true, quantity: 1}]
+          }]
+      }]
   
     const shoppingList: ShoppingList = {
       id: 0, 
       idUser: 0,
       idShoppingListModel: 0, 
-      productList: usableProductSet,
+      productList: catUsableProductSet,
     };
     
     return { shoppingList, products };

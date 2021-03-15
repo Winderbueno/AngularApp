@@ -1,11 +1,21 @@
 <h2>Shopping List</h2>
 
 <div *ngIf="myShoppingList && myShoppingList.productList">
-  <ul class="products">
-    <li *ngFor="let prod of myShoppingList.productList" 
-          [class.selected]="prod.isBought === true"
-          (click)="onProductClick(prod)">
-      <span class="badge">{{prod.id}}</span> {{prod.name}}
+
+  <mat-expansion-panel *ngFor="let catProd of myShoppingList.productList">
+
+    <!-- Expansion Panel Header containing the product category -->
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{catProd.category}}</mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <li *ngFor="let subCatProd of catProd.subCatProducts">
+      <span> {{subCatProd.subCategory}} : </span>
+      <span class="test"
+        *ngFor="let prod of subCatProd.usableProducts"
+        [class.selected]="prod.isBought === true"
+        (click)="onProductClick(catProd.category, subCatProd.subCategory, prod)"> {{prod.name}}, </span> 
     </li>
-  </ul>
+  </mat-expansion-panel>
+  
 </div>
