@@ -7,7 +7,7 @@
     <!-- Expansion Panel Header containing the product category -->
     <mat-expansion-panel-header>
       <mat-panel-title>{{catProd.category}}</mat-panel-title>
-      <button class="test" mat-button color="primary" (click)="ResetBoughtStatus(catProd)">Reset</button>
+      <button mat-button color="primary" (click)="ResetBuyStatusOfProductCategory(catProd)">Reset</button>
     </mat-expansion-panel-header>
 
     <!-- Expanded Panel containing the product sub category and their products -->
@@ -16,7 +16,7 @@
       <span
         *ngFor="let prod of subCatProd.usableProducts"
         [class.selected]="prod.isBought === true"
-        (click)="onProductClick(prod)"> {{prod.name}}, </span> 
+        (click)="SwapBuyStatusOfProduct(prod)"> {{prod.name}}, </span> 
     </li>
   </mat-expansion-panel>
 

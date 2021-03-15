@@ -31,7 +31,7 @@ export class ShoppingListComponent implements OnInit {
    * If user click on 1 prod, Swap value of isBought for product
    * @param prod 
    */
-  onProductClick(prod: UsableProduct): void {
+   SwapBuyStatusOfProduct(prod: UsableProduct): void {
     if(prod) prod.isBought ? prod.isBought=false : prod.isBought = true;    
   }
 
@@ -39,7 +39,7 @@ export class ShoppingListComponent implements OnInit {
    * Reset Bought Status for all product in one category
    * @param catProds 
    */
-  ResetBoughtStatus(catProds:CategorisedUsableProduct): void {
+  ResetBuyStatusOfProductCategory(catProds:CategorisedUsableProduct): void {
     catProds.subCatProducts.forEach(
       subCatProd => subCatProd.usableProducts.forEach(
         prod => prod.isBought = false
