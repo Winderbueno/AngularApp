@@ -5,14 +5,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 //#region Main Content View
 import { ShoppingListComponent } from './shopping-list/component/shopping-list/shopping-list.component';
-import { AngAppHomeTemplateComponent } from './_shared/component/ang-app-home-template/ang-app-home-template.component';
+import { AppNgHomeComponent } from './_shared/component/app-ng-home/app-ng-home.component';
 import { LoginComponent } from './_shared/component/login/login.component';
 //#endregion
 
 const routes: Routes = [
   { path: '', redirectTo: '/my-shopping-list', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'ang-app-home-tmplt', component: AngAppHomeTemplateComponent },
+  { path: 'ang-app-home-tmplt', component: AppNgHomeComponent },
   { path: 'my-shopping-list', component: ShoppingListComponent }
 ];
 

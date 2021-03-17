@@ -7,7 +7,7 @@ import {MatInputModule} from '@angular/material/input';
 import { AppRoutingModule } from './../app-routing.module';
 
 import { ToolbarComponent } from './component/toolbar/toolbar.component';
-import { AngAppHomeTemplateComponent } from './component/ang-app-home-template/ang-app-home-template.component';
+import { AppNgHomeComponent } from './component/app-ng-home/app-ng-home.component';
 import { LoginComponent } from './component/login/login.component';
 
 @NgModule({
@@ -18,12 +18,12 @@ import { LoginComponent } from './component/login/login.component';
   ],
   declarations: [
     ToolbarComponent,
-    AngAppHomeTemplateComponent,
+    AppNgHomeComponent,
     LoginComponent
   ],
   exports: [ 
     ToolbarComponent,
-    AngAppHomeTemplateComponent,
+    AppNgHomeComponent,
     LoginComponent
   ]
 })
