@@ -13,8 +13,8 @@ import { LoginComponent } from './component/login/login.component';
 @NgModule({
   imports: [
     CommonModule,
-    AppRoutingModule,
-    MatInputModule
+    MatInputModule,
+    AppRoutingModule
   ],
   declarations: [
     ToolbarComponent,
