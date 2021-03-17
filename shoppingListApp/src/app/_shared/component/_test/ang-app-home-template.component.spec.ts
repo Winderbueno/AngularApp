@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AngAppHomeTemplateComponent } from './ang-app-home-template.component';
+import { AngAppHomeTemplateComponent } from '../ang-app-home-template/ang-app-home-template.component';
 
 describe('AngAppHomeTemplateComponent', () => {
   let component: AngAppHomeTemplateComponent;
