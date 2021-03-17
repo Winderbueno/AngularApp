@@ -12,7 +12,7 @@ import { LoginComponent } from './_shared/component/login/login.component';
 const routes: Routes = [
   { path: '', redirectTo: '/my-shopping-list', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'ang-app-home-tmplt', component: NgHomeComponent },
+  { path: 'ng-home', component: NgHomeComponent },
   { path: 'my-shopping-list', component: ShoppingListComponent }
 ];
 
