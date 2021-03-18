@@ -1,20 +1,23 @@
 //#region Angular Module
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatInputModule} from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 //#endregion
 
 import { AppRoutingModule } from './../app-routing.module';
 
-import { ToolbarComponent } from './component/toolbar/toolbar.component';
-import { NgHomeComponent } from './component/ng-home/ng-home.component';
 import { LoginComponent } from './component/login/login.component';
+import { NgHomeComponent } from './component/ng-home/ng-home.component';
+import { ToolbarComponent } from './component/toolbar/toolbar.component';
+
 
 @NgModule({
   imports: [
     CommonModule,
-    MatInputModule,
-    AppRoutingModule
+    AppRoutingModule, // For ToolBar
+    ReactiveFormsModule, // For Login Compo
+    MatInputModule // For Login Compo
   ],
   declarations: [
     ToolbarComponent,
