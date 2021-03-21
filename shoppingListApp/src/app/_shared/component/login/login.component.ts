@@ -1,10 +1,15 @@
+//#region Angular Module
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+//#endregion
 
 // Model, Service
 import { User } from '../../model/user.model';
+import { AuthenticationService } from '../../_security/authentication.service';
 import { UserService } from '../../service/user.service';
+
 
 @Component({
   selector: 'app-login',
@@ -13,68 +18,77 @@ import { UserService } from '../../service/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm = this.formBuilder.group({
-    login: '',
-    pwd: ''
-  });
-
+  loginForm!: FormGroup;
   userConnect: User | undefined;
   users:User[]=[];
-  from!: string | null; // 
+  
+  // Form Status
+  from!: string | null;
+  loading = false;
+  submitted = false;
+  error = '';
 
   constructor(
+    private router: Router,
     private activRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private userService: UserService,
+    private authentService: AuthenticationService,
+    private userService: UserService
   ) { }
 
+  // Convenience getter to access form fields
+  get formValue() { return this.loginForm.value; }
+
   ngOnInit(): void {
-    //if(this.activRoute) { this.from = this.activRoute.snapshot.paramMap.get('from');}
-    //console.warn('valeur recup de la route :', this.from);
 
-    // The component suscribe to route change
-    this.activRoute.params.subscribe(routeParams => {
-      this.from=routeParams.from;
+    this.loginForm = this.formBuilder.group({
+      login: ['', Validators.required],
+      pwd: ['', Validators.required]
     });
-  }
-
-  print():void {
-    console.log('UserSS gotten from DB is :', this.users);
-    console.log('Current User :', this.userConnect);
   }
 
   onSubmit(): void {
 
-    this.userService.getAll()
-        .subscribe(user => this.users = user);
+    this.submitted = true;
 
-    console.log('UserSS gotten from DB is :', this.users);
+    // Stop here if form is invalid
+    if (this.loginForm.invalid) { return; }
 
-
-    // Get User's input
-    let formValue=this.loginForm.value;
-    console.warn('A user is attempting to connect', formValue);
-
-    // TODO - Check User's Input
-    // mail is a mail, pwd is safe
-
-    // Create a User to register
-    this.userConnect = {
-      id: 0,
-      mail: formValue.login,
-      name: "Raymond",
-      firstName: "Barjo",
-      pwd: formValue.pwd
-    }
+    // TODO
+    this.userService.getAll().subscribe(user => this.users = user);
+    
+    // TODO - Check User's Input, mail is a mail, pwd is safe
 
     // 'Join' if it's first app use, 'SignIn' if it's a user
-    if(this.from == 'join'){   
-      this.userService.join(this.userConnect)
+    if(this.from == 'join'){
+
+      // Create a User to register
+      this.userConnect = { id: 0, 
+        login: this.formValue.login, pwd: this.formValue.pwd,
+        firstName: "Barjo", lastName: "Raymond", mail: 'Plop'
+      }
+
+      this.authentService.join(this.userConnect)
         .subscribe(user => this.userConnect = user);
 
-    } else if(this.from == 'signin'){ // 
-      this.userService.signIn(this.userConnect)
-        .subscribe(user => this.userConnect = user);
+    } else if(this.from == 'signin'){
+      
+      this.authentService.login(this.formValue.login, this.formValue.pwd)
+        .pipe(first())
+        .subscribe({
+          next: () => {
+            // Get return url from route parameters or default to '/'
+            console.log(this.activRoute.snapshot.queryParams['returnUrl']);
+            const returnUrl = this.activRoute.snapshot.queryParams['returnUrl'] || '';
+            console.log(returnUrl);
+            stop();
+            this.router.navigate([returnUrl]);
+          },
+          error: error => {
+            this.error = error;
+            this.loading = false;
+          }
+        });
     }
     
     // Reset the Form

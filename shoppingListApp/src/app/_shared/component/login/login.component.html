@@ -10,11 +10,7 @@
     <input matInput formControlName="pwd" placeholder="Ex. 123456" >
   </mat-form-field>
 
-  <button class="button" type="submit">
-    <div *ngIf="from=='join'; else elseBlock"> Join </div>
-    <ng-template #elseBlock> Sign In </ng-template>
-  </button>
-
-  <button (click)="print()">Print</button>
+  <button class="button" (click)="from='join'" type="submit"> Join </button>
+  <button class="button" (click)="from='signin'" type="submit"> Sign In </button>
 
 </form>

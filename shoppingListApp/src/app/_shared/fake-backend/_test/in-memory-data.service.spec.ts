@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { InMemoryDataService } from '../mock/in-memory-data.mock.service';
+import { InMemoryDataService } from '../in-memory-data.mock.service';
 
 describe('InMemoryDataService', () => {
   let service: InMemoryDataService;

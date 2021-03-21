@@ -1,10 +1,14 @@
 export interface User {
-
+    
     id: number;
 
-    name: string;
-    firstName: string;
+    // Authentication Info
+    login?: string;
+    pwd?: string;
+    token?: User;
 
-    mail: string;
-    pwd: string;
+    // Personnal Info
+    firstName?: string;
+    lastName?: string;
+    mail?: string;
 }

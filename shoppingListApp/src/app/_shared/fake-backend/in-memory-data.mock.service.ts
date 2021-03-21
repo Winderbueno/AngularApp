@@ -2,15 +2,12 @@ import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 // Model
-import { User } from '../../model/user.model';
-import { Product } from '../../model/product.model';
-import { CategorisedUsableProduct } from '../../model/categorised-usable-product.model';
-import { ShoppingList } from '../../model/shopping-list.model';
+import { Product } from '../model/product.model';
+import { CategorisedUsableProduct } from '../model/categorised-usable-product.model';
+import { ShoppingList } from '../model/shopping-list.model';
 
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class InMemoryDataService implements InMemoryDbService {
 
   /**
@@ -18,11 +15,6 @@ export class InMemoryDataService implements InMemoryDbService {
    * @returns
    */
   createDb() {
-
-    const users: User[] = [
-      { id: 1, name: 'Gellenoncourt', firstName: 'Kevin', mail: 'kevin.gellenoncourt@gmail.com', pwd: 'banane'},
-      { id: 2, name: 'Navarro', firstName: 'Maurine', mail: 'kevin.gellenoncourt@gmail.com', pwd: 'patate'},
-    ];
 
     const products: Product[] = [
       { id: 0, category: 'Repas', subCategory: 'Matin', name: 'Nutella'},
@@ -87,7 +79,7 @@ export class InMemoryDataService implements InMemoryDbService {
       productList: catUsableProductSet,
     };
     
-    return { users, products, shoppingList };
+    return { products, shoppingList };
   }
 
 }

@@ -5,12 +5,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 //#endregion
 
+//#region App Shared Module
 import { AppRoutingModule } from './../app-routing.module';
+//#endregion
 
+//#region Module Declared Component
 import { LoginComponent } from './component/login/login.component';
 import { NgHomeComponent } from './component/ng-home/ng-home.component';
 import { ToolbarComponent } from './component/toolbar/toolbar.component';
-
+//#endregion
 
 @NgModule({
   imports: [

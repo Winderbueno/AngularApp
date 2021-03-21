@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+// Model and Service
+import { User } from '../../model/user.model';
+import { AuthenticationService } from '../../_security/authentication.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -7,9 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor() { }
+  currentUser!: User;
 
-  ngOnInit(): void {
+  constructor(
+    private router: Router,
+    private authentService: AuthenticationService,
+  ) { 
+    // Subscribe to the connected user
+    this.authentService.currentUser.subscribe(x => this.currentUser = x);
+  }
+
+  ngOnInit(): void {}
+
+  logout() {
+    this.authentService.logout();
+    this.router.navigate(['/']);
   }
 
 }

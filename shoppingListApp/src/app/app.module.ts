@@ -1,7 +1,7 @@
 //#region Angular Module
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //#endregion
 
@@ -15,8 +15,13 @@ import { SharedModule } from './_shared/shared.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 //#endregion
 
-// App Component And Service
-import { InMemoryDataService } from './_shared/service/mock/in-memory-data.mock.service';
+//#region Service
+import { fakeBackendProvider } from './_shared/fake-backend/fake-backend-authentification';
+import { InMemoryDataService } from './_shared/fake-backend/in-memory-data.mock.service';
+import { JwtInterceptor } from './_shared/_security/jwt.interceptor';
+import { ErrorInterceptor } from './_shared/_security/error.interceptor';
+//#endregion
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -38,7 +43,13 @@ import { AppComponent } from './app.component';
     SharedModule,
     ShoppingListModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider
+  ],
   declarations: [AppComponent],
   bootstrap: [AppComponent]
 })

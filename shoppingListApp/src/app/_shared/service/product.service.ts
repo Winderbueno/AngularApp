@@ -6,9 +6,7 @@ import { Observable, of } from 'rxjs';
 import { Product } from '../model/product.model';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ProductService {
 
   private productURL = 'api/products';
