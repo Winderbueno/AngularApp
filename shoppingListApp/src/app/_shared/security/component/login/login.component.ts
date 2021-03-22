@@ -70,13 +70,11 @@ export class LoginComponent implements OnInit {
     } else if(this.action == 'signin'){
       
       // TODO - Check User's Input Validity (Login, Pwd)
-
       this.authentService.login(this.formValue.login, this.formValue.pwd)
         .pipe(first())
         .subscribe({
           next: () => {
             // Get return url from route parameters or default to '/'
-            console.log(this.activRoute.snapshot.queryParams['returnUrl']);
             const returnUrl = this.activRoute.snapshot.queryParams['returnUrl'] || '';
             console.log(returnUrl);
             stop();
