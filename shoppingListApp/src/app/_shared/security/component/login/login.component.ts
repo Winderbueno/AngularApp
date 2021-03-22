@@ -6,9 +6,9 @@ import { first } from 'rxjs/operators';
 //#endregion
 
 // Model, Service
-import { User } from '../../model/user.model';
-import { AuthenticationService } from '../../../security/authentication.service';
-import { UserService } from '../../service/user.service';
+import { User } from '../../../business/model/user.model';
+import { AuthenticationService } from '../../service/authentication.service';
+import { UserService } from '../../../business/service/user.service';
 
 
 @Component({

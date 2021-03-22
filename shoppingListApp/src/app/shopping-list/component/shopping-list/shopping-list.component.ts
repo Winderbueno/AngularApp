@@ -5,7 +5,7 @@ import { ShoppingList } from 'src/app/_shared/business/model/shopping-list.model
 import { CategorisedUsableProduct, UsableProduct } from 'src/app/_shared/business/model/categorised-usable-product.model';
 
 // Service
-import { ShoppingListService } from 'src/app/_shared/business/service/shopping-list.service';
+import { ShoppingListService } from '@app/shopping-list/service/shopping-list.service';
 
 
 @Component({

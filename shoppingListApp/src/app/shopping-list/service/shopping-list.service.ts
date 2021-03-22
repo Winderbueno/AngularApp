@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 // Model
-import { ShoppingList } from '../model/shopping-list.model';
+import { ShoppingList } from '../../_shared/business/model/shopping-list.model';
 
 
 @Injectable({ providedIn: 'root' })

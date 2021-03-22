@@ -4,7 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 // Service
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Injectable({ providedIn: 'root' })
 export class ErrorInterceptor implements HttpInterceptor {

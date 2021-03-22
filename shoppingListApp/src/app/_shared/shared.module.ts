@@ -10,7 +10,7 @@ import { AppRoutingModule } from './../app-routing.module';
 //#endregion
 
 //#region Module Declared Component
-import { LoginComponent } from './business/component/login/login.component';
+import { LoginComponent } from './security/component/login/login.component';
 import { NgHomeComponent } from './business/component/ng-home/ng-home.component';
 import { ToolbarComponent } from './business/component/toolbar/toolbar.component';
 //#endregion
