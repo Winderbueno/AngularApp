@@ -30,7 +30,7 @@ export class AuthenticationService {
     }
 
     login(login: any, pwd: any) {
-        return this.http.post<any>(`${environment.apiUrl}.apiUrl}/users/authenticate`, { username: login, password: pwd })
+        return this.http.post<any>(`${environment.apiUrl}.apiUrl}/users/authenticate`, { login: login, password: pwd })
             .pipe(map(user => {
                 // Store user details and jwt token in local storage
                 localStorage.setItem('currentUser', JSON.stringify(user));

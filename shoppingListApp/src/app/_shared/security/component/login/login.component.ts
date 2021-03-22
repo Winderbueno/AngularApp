@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   users:User[]=[];
   
   // Form Status
-  from!: string | null;
+  action: string = 'signin'; // Can be a signin or an account creation
   loading = false;
   submitted = false;
   error = '';
@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
 
     this.loginForm = this.formBuilder.group({
+      mail: ['', Validators.required],
       login: ['', Validators.required],
       pwd: ['', Validators.required]
     });
@@ -51,28 +52,25 @@ export class LoginComponent implements OnInit {
 
     this.submitted = true;
 
-    // Stop here if form is invalid
-    if (this.loginForm.invalid) { return; }
-
-    // TODO
-    this.userService.getAll().subscribe(user => this.users = user);
-    
-    // TODO - Check User's Input, mail is a mail, pwd is safe
-
     // 'Join' if it's first app use, 'SignIn' if it's a user
-    if(this.from == 'join'){
+    if(this.action == 'join'){
+      
+      // TODO - Check User's Input Validity (Mail, Login, Pwd)
+      if (this.loginForm.invalid) { return; }
 
       // Create a User to register
       this.userConnect = { id: 0, 
         login: this.formValue.login, pwd: this.formValue.pwd,
-        firstName: "Barjo", lastName: "Raymond", mail: 'Plop'
+        mail: this.formValue.mail
       }
 
       this.authentService.join(this.userConnect)
         .subscribe(user => this.userConnect = user);
 
-    } else if(this.from == 'signin'){
+    } else if(this.action == 'signin'){
       
+      // TODO - Check User's Input Validity (Login, Pwd)
+
       this.authentService.login(this.formValue.login, this.formValue.pwd)
         .pipe(first())
         .subscribe({

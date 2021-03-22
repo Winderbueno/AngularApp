@@ -8,7 +8,5 @@ export interface User {
     token?: User;
 
     // Personnal Info
-    firstName?: string;
-    lastName?: string;
     mail?: string;
 }

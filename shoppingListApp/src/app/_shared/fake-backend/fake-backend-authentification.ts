@@ -4,9 +4,9 @@ import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 
 const users = [
-    { id: 1, login: 'test', pwd: 'test', firstName: 'Test', lastName: 'User', mail: 'test.user@gmail.com' },
-    { id: 2, login: 'Kevin', pwd: 'banane', firstName: 'Kevin', lastName: 'Gellenoncourt', mail: 'kevin.gellenoncourt@gmail.com' },
-    { id: 3, login: 'Maurine', pwd: 'patate', firstName: 'Maurine', lastName: 'Navarro', mail: 'maurine.nav@gmail.com' }];
+    { id: 1, login: 'test', pwd: 'test', mail: 'test.user@gmail.com' },
+    { id: 2, login: 'Kevin', pwd: 'banane', mail: 'kevin.gellenoncourt@gmail.com' },
+    { id: 3, login: 'Maurine', pwd: 'patate', mail: 'maurine.nav@gmail.com' }];
 
 @Injectable({ providedIn: 'root' })
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -37,14 +37,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         // route functions
 
         function authenticate() {
-            const { username, password } = body;
-            const user = users.find(x => x.login === username && x.pwd === password);
-            if (!user) return error('Username or password is incorrect');
+            const { login, password } = body;
+            const user = users.find(x => x.login === login && x.pwd === password);
+            if (!user) return error('Login or password is incorrect');
             return ok({
                 id: user.id,
-                username: user.login,
-                firstName: user.firstName,
-                lastName: user.lastName,
+                login: user.login,
                 token: 'fake-jwt-token'
             })
         }

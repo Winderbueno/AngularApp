@@ -15,7 +15,7 @@
     <div class="spacer"></div>
 
     <div *ngIf="currentUser.id!=-1; else elseBlock">
-      <span style="color: red;">{{currentUser.firstName}}&nbsp;&nbsp;&nbsp;</span>
+      <span style="color: red;">{{currentUser.login}}&nbsp;&nbsp;&nbsp;</span>
       <span (click)="logout()">Log Out&nbsp;&nbsp;&nbsp;</span>
     </div>
     <ng-template #elseBlock>
