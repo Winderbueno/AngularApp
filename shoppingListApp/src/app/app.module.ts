@@ -18,8 +18,8 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 //#region Service
 import { fakeBackendProvider } from './_shared/fake-backend/fake-backend-authentification';
 import { InMemoryDataService } from './_shared/fake-backend/in-memory-data.mock.service';
-import { JwtInterceptor } from './_shared/_security/jwt.interceptor';
-import { ErrorInterceptor } from './_shared/_security/error.interceptor';
+import { JwtInterceptor } from './_shared/security/jwt.interceptor';
+import { ErrorInterceptor } from './_shared/security/error.interceptor';
 //#endregion
 
 import { AppComponent } from './app.component';

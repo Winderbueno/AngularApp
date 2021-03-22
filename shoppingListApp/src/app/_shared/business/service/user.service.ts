@@ -12,7 +12,6 @@ import { User } from '../model/user.model';
 export class UserService {
 
   private userURL = '${environment.apiUrl}/users';
-  private httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 
   constructor(private http: HttpClient) { }
 

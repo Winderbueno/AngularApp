@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 // Model
-import { Product } from '../model/product.model';
-import { CategorisedUsableProduct } from '../model/categorised-usable-product.model';
-import { ShoppingList } from '../model/shopping-list.model';
+import { Product } from '../business/model/product.model';
+import { CategorisedUsableProduct } from '../business/model/categorised-usable-product.model';
+import { ShoppingList } from '../business/model/shopping-list.model';
 
 
 @Injectable({ providedIn: 'root' })

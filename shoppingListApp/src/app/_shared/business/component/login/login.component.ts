@@ -7,7 +7,7 @@ import { first } from 'rxjs/operators';
 
 // Model, Service
 import { User } from '../../model/user.model';
-import { AuthenticationService } from '../../_security/authentication.service';
+import { AuthenticationService } from '../../../security/authentication.service';
 import { UserService } from '../../service/user.service';
 
 
