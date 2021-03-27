@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 //#region Routed Component
 import { NgHomeComponent } from './_shared/component/ng-home/ng-home.component';
-import { ShoppingListComponent } from './shopping-list/component/shopping-list/shopping-list.component';
+import { ShoppingListComponent } from './shopping-list/shopping-list/shopping-list.component';
 //#endregion
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);

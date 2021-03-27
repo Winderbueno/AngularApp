@@ -9,7 +9,7 @@ import { SharedModule } from '../_shared/shared.module';
 //#endregion
 
 //#region Declared Component
-import { ShoppingListComponent } from './component/shopping-list/shopping-list.component';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 //#endregion
 
 @NgModule({
