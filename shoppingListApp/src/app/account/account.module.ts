@@ -11,6 +11,7 @@ import { SharedModule } from '@app/_shared/shared.module';
 //#endregion
 
 //#region Declared Component
+import { LayoutComponent } from './layout.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
@@ -28,6 +29,7 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
     MatInputModule
   ],
   declarations: [
+    LayoutComponent,
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,

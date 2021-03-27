@@ -12,6 +12,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 //#region App Module
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './_shared/shared.module';
+import { AccountModule } from './account/account.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 //#endregion
 
@@ -43,6 +44,7 @@ import { AppComponent } from './app.component';
     // App Module
     AppRoutingModule,
     SharedModule,
+    AccountModule,
     ShoppingListModule
   ],
   providers: [
