@@ -1,12 +1,15 @@
+//#region Angular and RxJS Module
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
+//#endregion
 
 const users = [
     { id: 1, login: 'test', pwd: 'test', mail: 'test.user@gmail.com' },
     { id: 2, login: 'Kevin', pwd: 'banane', mail: 'kevin.gellenoncourt@gmail.com' },
     { id: 3, login: 'Maurine', pwd: 'patate', mail: 'maurine.nav@gmail.com' }];
+
 
 @Injectable({ providedIn: 'root' })
 export class FakeBackendInterceptor implements HttpInterceptor {

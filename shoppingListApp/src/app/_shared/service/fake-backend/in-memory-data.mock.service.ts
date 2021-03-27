@@ -1,11 +1,13 @@
+//#region Angular and RxJS Module
 import { Injectable } from '@angular/core';
+//#endregion
+
+//#region Model and Service
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-
-// Model
-import { Product } from '../model/product.model';
-import { CategorisedUsableProduct } from '../model/categorised-usable-product.model';
-import { ShoppingList } from '../model/shopping-list.model';
-
+import { Product } from '../../model/product.model';
+import { CategorisedUsableProduct } from '../../model/categorised-usable-product.model';
+import { ShoppingList } from '../../model/shopping-list.model';
+//#endregion
 
 @Injectable({ providedIn: 'root' })
 export class InMemoryDataService implements InMemoryDbService {
