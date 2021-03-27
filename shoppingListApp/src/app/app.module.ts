@@ -1,5 +1,5 @@
 //#region Angular Module
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,14 +15,17 @@ import { SharedModule } from './_shared/shared.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 //#endregion
 
-//#region Service
-import { fakeBackendProvider } from './_shared/_fake-backend/fake-backend-authentification';
-import { InMemoryDataService } from './_shared/_fake-backend/in-memory-data.mock.service';
+//#region Service (Interceptor, DataProvider, Guard...)
+import { appInitializer } from './_shared/app.initializer';
+import { AuthenticationService } from './_shared/service/authentication.service';
+import { InMemoryDataService } from './_shared/service/fake-backend/in-memory-data.mock.service';
+import { fakeBackendProvider } from './_shared/service/fake-backend/fake-backend-authentification';
 import { JwtInterceptor } from './_shared/service/interceptor/jwt.interceptor';
 import { ErrorInterceptor } from './_shared/service/interceptor/error.interceptor';
 //#endregion
 
 import { AppComponent } from './app.component';
+
 
 @NgModule({
   imports: [
@@ -44,6 +47,7 @@ import { AppComponent } from './app.component';
     ShoppingListModule
   ],
   providers: [
+    { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AuthenticationService] },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
