@@ -1,9 +1,12 @@
+//#region Angular and RxJS Module
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+//#endregion
 
-// Model
+//#region Model and Service
 import { ShoppingList } from '../../model/shopping-list.model';
+//#endregion
 
 
 @Injectable({ providedIn: 'root' })

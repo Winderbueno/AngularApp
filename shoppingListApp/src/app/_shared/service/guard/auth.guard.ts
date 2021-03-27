@@ -1,7 +1,12 @@
+//#region Angular and RxJS Module
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+//#endregion
 
+//#region Model and Service
 import { AuthenticationService } from '../authentication.service';
+//#endregion
+
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
