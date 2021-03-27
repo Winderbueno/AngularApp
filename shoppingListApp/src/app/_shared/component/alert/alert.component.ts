@@ -1,9 +1,13 @@
-﻿import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+﻿//#region Angular and RxJS Module
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs';
+//#endregion
 
+//#region Model and Service
 import { Alert, AlertType } from '../../model/alert.model';
 import { AlertService } from '../../service/alert.service';
+//#endregion
 
 @Component({
     selector: 'app-alert',

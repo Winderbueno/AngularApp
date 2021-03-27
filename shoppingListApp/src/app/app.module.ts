@@ -24,8 +24,9 @@ import { JwtInterceptor } from './_shared/service/interceptor/jwt.interceptor';
 import { ErrorInterceptor } from './_shared/service/interceptor/error.interceptor';
 //#endregion
 
+//#region Declared Component
 import { AppComponent } from './app.component';
-
+//#endregion
 
 @NgModule({
   imports: [
@@ -34,9 +35,7 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     BrowserAnimationsModule,
 
-    // 3rd Party Module
-    // Intercepts HTTP requests and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
+    // Fake Backend with 3rd Party Module (Intercepts HTTP requests)
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),

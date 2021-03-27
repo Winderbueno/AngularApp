@@ -6,8 +6,8 @@ import { first } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { Account } from '../../model/account.model';
-import { AuthenticationService } from '../../service/authentication.service';
+import { Account } from '@app/_shared/model/account.model';
+import { AuthenticationService } from '@app/_shared/service/authentication.service';
 //#endregion
 
 @Component({

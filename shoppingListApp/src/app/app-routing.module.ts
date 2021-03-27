@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 //#endregion
 
-//#region Main Content View
+//#region Routed Component
 import { NgHomeComponent } from './_shared/component/ng-home/ng-home.component';
-import { LoginComponent } from './_shared/component/login/login.component';
+import { LoginComponent } from './account/login/login.component';
 import { ShoppingListComponent } from './shopping-list/component/shopping-list/shopping-list.component';
 //#endregion
 

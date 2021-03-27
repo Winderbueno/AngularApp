@@ -1,9 +1,12 @@
+//#region Angular and RxJS Module
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+//#endregion
 
-// Model and Service
+//#region Model and Service
 import { Account } from '../../model/account.model';
 import { AuthenticationService } from '../../service/authentication.service';
+//#endregion
 
 @Component({
   selector: 'app-toolbar',
