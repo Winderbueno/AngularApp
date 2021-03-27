@@ -26,11 +26,11 @@ export class RegisterComponent implements OnInit {
         private alertService: AlertService
     ) { }
 
+    get formValue() { return this.form.value; }
+
     ngOnInit() {
         this.form = this.formBuilder.group({
-            title: ['', Validators.required],
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
+            userName: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(6)]],
             confirmPassword: ['', Validators.required],
@@ -50,8 +50,12 @@ export class RegisterComponent implements OnInit {
         this.alertService.clear();
 
         // stop here if form is invalid
-        if (this.form.invalid) {
-            return;
+        if (this.form.invalid) { return; }
+
+        // Create a User to register
+        let inCreationAccount = { id: "0", 
+            login: this.formValue.login, pwd: this.formValue.pwd,
+            mail: this.formValue.mail
         }
 
         this.loading = true;
@@ -67,5 +71,6 @@ export class RegisterComponent implements OnInit {
                     this.loading = false;
                 }
             });
+    
     }
 }

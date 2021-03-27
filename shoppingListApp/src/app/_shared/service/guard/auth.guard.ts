@@ -19,11 +19,11 @@ export class AuthGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const account = this.authentService.accountValue;
         
-        // An account is connected so return true
+        // An account is logged in -> return true
         if (account.id != "null") return true;
 
-        // Not logged in so redirect to login page with the return url
-        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+        // No account logged in -> redirect to login page with the return url
+        this.router.navigate(['/account/login'], { queryParams: { returnUrl: state.url } });
         return false;
     }
 }

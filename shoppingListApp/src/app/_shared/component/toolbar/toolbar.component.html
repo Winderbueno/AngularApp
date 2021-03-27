@@ -15,11 +15,11 @@
     <div class="spacer"></div>
 
     <div *ngIf="loggedInAccount.id!='null'; else elseBlock">
-      <span style="color: red;">{{loggedInAccount.login}}&nbsp;&nbsp;&nbsp;</span>
+      <span style="color: red;">{{loggedInAccount.username}}&nbsp;&nbsp;&nbsp;</span>
       <span (click)="logout()">Log Out&nbsp;&nbsp;&nbsp;</span>
     </div>
     <ng-template #elseBlock>
-      <span routerLink="/login">Connexion&nbsp;&nbsp;&nbsp;</span>
+      <span routerLink="/account/login">Connexion&nbsp;&nbsp;&nbsp;</span>
     </ng-template>
 
   </div>

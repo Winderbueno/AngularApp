@@ -22,7 +22,6 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
   imports: [
     CommonModule,
     AccountRoutingModule,
-    SharedModule,
 
     // For Forms
     ReactiveFormsModule,

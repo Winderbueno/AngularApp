@@ -3,12 +3,12 @@ export class Account {
     id!: string;
 
     // Authentication Info
-    login?: string;
+    email?: string;
     pwd?: string;
     jwtToken?: string;
 
     // Personnal Info
-    mail?: string;
+    username?: string;
     role?: Role;
 }
 

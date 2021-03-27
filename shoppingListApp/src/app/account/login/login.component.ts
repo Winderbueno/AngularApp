@@ -20,8 +20,7 @@ export class LoginComponent implements OnInit {
   loggedInAccount: Account | undefined;
   
   // LoginForm
-  loginForm!: FormGroup;
-  action: string = 'signin'; // Can be 'signin' or 'sign up'
+  form!: FormGroup;
   loading = false;
   submitted = false;
   error = '';
@@ -33,64 +32,42 @@ export class LoginComponent implements OnInit {
     private authentService: AuthenticationService,
   ) { }
 
-  get formValue() { return this.loginForm.value; }
+  get formValue() { return this.form.value; }
 
   ngOnInit(): void {
 
     // Define Form
-    this.loginForm = this.formBuilder.group({
-      mail: ['', Validators.required],
-      login: ['', Validators.required],
-      pwd: ['', Validators.required]
+    this.form = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
   onSubmit(): void {
 
     this.submitted = true;
-
-    // 'Join' if it's first app use, 'SignIn' if it's a user
-    if(this.action == 'join'){
       
-      // TODO - Check User's Input Validity (Mail, Login, Pwd)
-      if (this.loginForm.invalid) { return; }
-
-      // Create a User to register
-      let inCreationAccount = { id: "0", 
-        login: this.formValue.login, pwd: this.formValue.pwd,
-        mail: this.formValue.mail
-      }
-
-      this.authentService.register(inCreationAccount).subscribe({
-          error: error => {
-            this.error = error;
-            this.loading = false;
-          }
-        });
-
-    } else if(this.action == 'signin'){
+    // TODO - Check User's Input Validity (Mail, Login, Pwd)
+    if (this.form.invalid) { return; }
       
-      // TODO - Check User's Input Validity (Login, Pwd)
-      
-      this.authentService.login(this.formValue.login, this.formValue.pwd)
-        .pipe(first())
-        .subscribe({
-          next: () => {
-            // Get return url from route parameters or default to '/'
-            const returnUrl = this.activRoute.snapshot.queryParams['returnUrl'] || '';
-            console.log(returnUrl);
-            stop();
-            this.router.navigate([returnUrl]);
-          },
-          error: error => {
-            this.error = error;
-            this.loading = false;
-          }
-        });
-    }
+    this.authentService.login(this.formValue.login, this.formValue.pwd)
+      .pipe(first())
+      .subscribe({
+        next: () => {
+          // Get return url from route parameters or default to '/'
+          const returnUrl = this.activRoute.snapshot.queryParams['returnUrl'] || '';
+          console.log(returnUrl);
+          stop();
+          this.router.navigate([returnUrl]);
+        },
+        error: error => {
+          this.error = error;
+          this.loading = false;
+        }
+      });
     
     // Reset the Form
-    this.loginForm.reset();
+    this.form.reset();
   }
 
 }

@@ -44,7 +44,6 @@ import { AppComponent } from './app.component';
     // App Module
     AppRoutingModule,
     SharedModule,
-    AccountModule,
     ShoppingListModule
   ],
   providers: [

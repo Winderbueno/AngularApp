@@ -1,32 +1,16 @@
-<form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-
-  <div *ngIf="action=='join'">
-
-    <mat-form-field class="example-full-width">
-      <mat-label>Email</mat-label>
-      <input matInput formControlName="mail" placeholder="Ex. firstname.name@mailbox.com">
-    </mat-form-field>
-    
-  </div>
+<form class="example-form" [formGroup]="form" (ngSubmit)="onSubmit()">
 
   <mat-form-field class="example-full-width">
-    <mat-label>Nickname</mat-label>
-    <input matInput formControlName="login" placeholder="Patate">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" placeholder="Ex. firstname.name@mailbox.com">
   </mat-form-field>
   
   <mat-form-field class="example-full-width">
     <mat-label>Password</mat-label>
-    <input matInput formControlName="pwd" placeholder="Ex. 123456" >
+    <input matInput formControlName="password" placeholder="Ex. 123456" >
   </mat-form-field>
 
-  <div *ngIf="action=='signin'; else elseBlock">
-    <button class="button" type="submit"> Sign In </button> <br>
-    <button class="button" (click)="action='join'"> You wanna create an account ? :) </button>
-  </div>
-  <ng-template #elseBlock>
-    <button class="button" type="submit"> Join </button> <br>
-    <button class="button" (click)="action='signin'"> You already have an account ? :) </button>
-  </ng-template>
-  
+  <button class="button" type="submit"> Sign In </button> <br>
+  <button class="button" routerLink="../register"> You wanna create an account ? :) </button>
 
 </form>
