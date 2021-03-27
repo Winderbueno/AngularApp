@@ -1,62 +1,120 @@
+//#region Angular and RxJS Module
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+//#endregion
 
-// Model
-import { User } from '../../business/model/user.model';
+
+import { Account } from '../../business/model/account.model';
+//#endregion
+
+// Api Info
 import { environment } from '@env/environment';
+const baseUrl = `${environment.apiUrl}/accounts`;
+
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
   
-    private currentUserSubject!: BehaviorSubject<User>;
-    public currentUser!: Observable<User>;
+    private accountSubject!: BehaviorSubject<Account>;
+    public account!: Observable<Account>;
 
-    constructor(private http: HttpClient) {
+    constructor(
+        private router: Router,
+        private http: HttpClient) {
         
-        let curUserInLocStorage = localStorage.getItem('currentUser');
+        let accountInLocStorage = localStorage.getItem('currentUser');
 
-        if(curUserInLocStorage){
-            this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(curUserInLocStorage));
-        } else { // NoUser Connected is a user with a '-1' id 
-            this.currentUserSubject = new BehaviorSubject<User>({ id:-1 });
+        if(accountInLocStorage){
+            this.accountSubject = new BehaviorSubject<Account>(JSON.parse(accountInLocStorage));
+        } else { // No Account logged in is a user with a '-1' id 
+            this.accountSubject = new BehaviorSubject<Account>({ id:"null", jwtToken:"null" });
         }
-        this.currentUser = this.currentUserSubject.asObservable();
+        this.account = this.accountSubject.asObservable();
     }
 
-    public get currentUserValue(): User {
-        return this.currentUserSubject.value;
-    }
+    public get accountValue(): Account { return this.accountSubject.value; }
 
-    login(login: any, pwd: any) {
-        return this.http.post<any>(`${environment.apiUrl}.apiUrl}/users/authenticate`, { login: login, password: pwd })
-            .pipe(map(user => {
+    login(email: string, password: string) {
+        return this.http.post<any>(`${baseUrl}/authenticate`, { email, password }, { withCredentials: true })
+            .pipe(map(account => {
                 // Store user details and jwt token in local storage
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);
-                return user;
+                // TODO - Necessary : ? localStorage.setItem('currentUser', JSON.stringify(user));
+                this.accountSubject.next(account);
+                this.startRefreshTokenTimer();
+                return account;
             }));
     }
 
     logout() {
+        this.http.post<any>(`${baseUrl}/revoke-token`, {}, { withCredentials: true }).subscribe();
+        this.stopRefreshTokenTimer();
+
         // Replace user in local storage by a fake one
-        localStorage.removeItem('currentUser');
-        this.currentUserSubject.next({ id:-1 });
+        // TODO - Necessary ? localStorage.removeItem('currentUser');
+
+        this.accountSubject.next({ id:"null", jwtToken:"null" });
+        this.router.navigate(['/account/login']);
     }
 
-    /**
-     * TODO - A User Join the website
-     * @returns 
-     */
-    join(user: User) {
+    register(account: Account) {
+        return this.http.post(`${baseUrl}/register`, account);
+    }
 
-        return this.http.post<any>(`${environment.apiUrl}.apiUrl}/users/join`, { username: user.login, password: user.pwd })
-        .pipe(map(user => {
-            // Store user details and jwt token in local storage
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            this.currentUserSubject.next(user);
-            return user;
-        }));
-  }
+    verifyEmail(token: string) {
+        return this.http.post(`${baseUrl}/verify-email`, { token });
+    }
+    
+    forgotPassword(email: string) {
+        return this.http.post(`${baseUrl}/forgot-password`, { email });
+    }
+
+    resetPassword(token: string, password: string, confirmPassword: string) {
+        return this.http.post(`${baseUrl}/reset-password`, { token, password, confirmPassword });
+    }
+
+    refreshToken() {
+        return this.http.post<any>(`${baseUrl}/refresh-token`, {}, { withCredentials: true })
+            .pipe(map((account) => {
+                this.accountSubject.next(account);
+                this.startRefreshTokenTimer();
+                return account;
+            }));
+    }
+    
+    validateResetToken(token: string) {
+        return this.http.post(`${baseUrl}/validate-reset-token`, { token });
+    }
+
+    updateAccount(account:Account){
+        // Publish updated account to subscribers after an update
+        account = { ...this.accountValue, ...account };
+        this.accountSubject.next(account);
+    }
+
+    /************************************************
+     * Security Helpers
+     ************************************************/
+
+    private refreshTokenTimeout!: NodeJS.Timeout;
+
+    private startRefreshTokenTimer() {
+        
+        if(this.accountValue.jwtToken){
+            // Parse json object from base64 encoded jwt token
+            const jwtToken = JSON.parse(atob(this.accountValue.jwtToken.split('.')[1]));
+        
+            // Set a timeout to refresh the token a minute before it expires
+            const expires = new Date(jwtToken.exp * 1000);
+            const timeout = expires.getTime() - Date.now() - (60 * 1000);
+            this.refreshTokenTimeout = setTimeout(() => this.refreshToken().subscribe(), timeout);
+        }
+    }
+    
+    private stopRefreshTokenTimer() {
+        clearTimeout(this.refreshTokenTimeout);
+    }
+  
 }

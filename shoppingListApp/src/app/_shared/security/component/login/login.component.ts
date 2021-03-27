@@ -1,15 +1,14 @@
-//#region Angular Module
+//#region Angular and RxJS Module
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 //#endregion
 
-// Model, Service
-import { User } from '../../../business/model/user.model';
+//#region Model and Service
+import { Account } from '../../../business/model/account.model';
 import { AuthenticationService } from '../../service/authentication.service';
-import { UserService } from '../../../business/service/user.service';
-
+//#endregion
 
 @Component({
   selector: 'app-login',
@@ -18,12 +17,11 @@ import { UserService } from '../../../business/service/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm!: FormGroup;
-  userConnect: User | undefined;
-  users:User[]=[];
+  loggedInAccount: Account | undefined;
   
-  // Form Status
-  action: string = 'signin'; // Can be a signin or an account creation
+  // LoginForm
+  loginForm!: FormGroup;
+  action: string = 'signin'; // Can be 'signin' or 'sign up'
   loading = false;
   submitted = false;
   error = '';
@@ -33,14 +31,13 @@ export class LoginComponent implements OnInit {
     private activRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private authentService: AuthenticationService,
-    private userService: UserService
   ) { }
 
-  // Convenience getter to access form fields
   get formValue() { return this.loginForm.value; }
 
   ngOnInit(): void {
 
+    // Define Form
     this.loginForm = this.formBuilder.group({
       mail: ['', Validators.required],
       login: ['', Validators.required],
@@ -59,17 +56,22 @@ export class LoginComponent implements OnInit {
       if (this.loginForm.invalid) { return; }
 
       // Create a User to register
-      this.userConnect = { id: 0, 
+      let inCreationAccount = { id: "0", 
         login: this.formValue.login, pwd: this.formValue.pwd,
         mail: this.formValue.mail
       }
 
-      this.authentService.join(this.userConnect)
-        .subscribe(user => this.userConnect = user);
+      this.authentService.register(inCreationAccount).subscribe({
+          error: error => {
+            this.error = error;
+            this.loading = false;
+          }
+        });
 
     } else if(this.action == 'signin'){
       
       // TODO - Check User's Input Validity (Login, Pwd)
+      
       this.authentService.login(this.formValue.login, this.formValue.pwd)
         .pipe(first())
         .subscribe({

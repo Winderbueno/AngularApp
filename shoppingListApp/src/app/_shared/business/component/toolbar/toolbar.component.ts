@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 // Model and Service
-import { User } from '../../model/user.model';
+import { Account } from '../../model/account.model';
 import { AuthenticationService } from '../../../security/service/authentication.service';
 
 @Component({
@@ -12,14 +12,14 @@ import { AuthenticationService } from '../../../security/service/authentication.
 })
 export class ToolbarComponent implements OnInit {
 
-  currentUser!: User;
+  loggedInAccount!: Account;
 
   constructor(
     private router: Router,
     private authentService: AuthenticationService,
   ) { 
     // Subscribe to the connected user
-    this.authentService.currentUser.subscribe(x => this.currentUser = x);
+    this.authentService.account.subscribe(x => this.loggedInAccount = x);
   }
 
   ngOnInit(): void {}
