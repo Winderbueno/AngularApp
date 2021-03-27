@@ -4,13 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 //#endregion
 
 //#region Main Content View
-import { NgHomeComponent } from './_shared/business/component/ng-home/ng-home.component';
-import { LoginComponent } from './_shared/security/component/login/login.component';
+import { NgHomeComponent } from './_shared/component/ng-home/ng-home.component';
+import { LoginComponent } from './_shared/component/login/login.component';
 import { ShoppingListComponent } from './shopping-list/component/shopping-list/shopping-list.component';
 //#endregion
 
 // Service
-import { AuthGuard } from './_shared/security/auth.guard';
+import { AuthGuard } from './_shared/service/guard/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/ng-home', pathMatch: 'full' },

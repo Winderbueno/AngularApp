@@ -16,10 +16,10 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 //#endregion
 
 //#region Service
-import { fakeBackendProvider } from './_shared/fake-backend/fake-backend-authentification';
-import { InMemoryDataService } from './_shared/fake-backend/in-memory-data.mock.service';
-import { JwtInterceptor } from './_shared/security/interceptor/jwt.interceptor';
-import { ErrorInterceptor } from './_shared/security/interceptor/error.interceptor';
+import { fakeBackendProvider } from './_shared/_fake-backend/fake-backend-authentification';
+import { InMemoryDataService } from './_shared/_fake-backend/in-memory-data.mock.service';
+import { JwtInterceptor } from './_shared/service/interceptor/jwt.interceptor';
+import { ErrorInterceptor } from './_shared/service/interceptor/error.interceptor';
 //#endregion
 
 import { AppComponent } from './app.component';

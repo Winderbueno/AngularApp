@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 // Model and Service 
-import { ShoppingList } from 'src/app/_shared/business/model/shopping-list.model';
-import { CategorisedUsableProduct, UsableProduct } from 'src/app/_shared/business/model/categorised-usable-product.model';
-import { ShoppingListService } from '@app/shopping-list/service/shopping-list.service';
+import { ShoppingList } from '@app/_shared/model/shopping-list.model';
+import { CategorisedUsableProduct, UsableProduct } from '@app/_shared/model/categorised-usable-product.model';
+import { ShoppingListService } from '@app/_shared/service/business/shopping-list.service';
 
 
 @Component({
