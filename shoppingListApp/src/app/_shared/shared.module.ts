@@ -11,6 +11,7 @@ import { AppRoutingModule } from './../app-routing.module';
 import { NgHomeComponent } from './component/ng-home/ng-home.component';
 import { ToolbarComponent } from './component/toolbar/toolbar.component';
 import { AlertComponent } from './component/alert/alert.component';
+import { FooterComponent } from './component/footer/footer.component';
 //#endregion
 
 @NgModule({
@@ -20,11 +21,14 @@ import { AlertComponent } from './component/alert/alert.component';
   ],
   declarations: [
     ToolbarComponent,
+    FooterComponent,
     NgHomeComponent,
     AlertComponent
+    
   ],
   exports: [ 
     ToolbarComponent,
+    FooterComponent,
     NgHomeComponent,
     AlertComponent
   ]

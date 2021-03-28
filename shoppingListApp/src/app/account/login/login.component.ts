@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   loggedInAccount: Account | undefined;
   
   // LoginForm
-  form!: FormGroup;
+  formGroup!: FormGroup;
   loading = false;
   submitted = false;
   error = '';
@@ -32,15 +32,19 @@ export class LoginComponent implements OnInit {
     private authentService: AuthenticationService,
   ) { }
 
-  get formValue() { return this.form.value; }
+  get formGroupValue() { return this.formGroup.value; }
 
   ngOnInit(): void {
 
     // Define Form
-    this.form = this.formBuilder.group({
-      email: ['', Validators.required],
+    this.formGroup = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
+  }
+
+  public checkError = (controlName: string, errorName: string) => {
+    return this.formGroup.controls[controlName].hasError(errorName);
   }
 
   onSubmit(): void {
@@ -48,9 +52,9 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
       
     // TODO - Check User's Input Validity (Mail, Login, Pwd)
-    if (this.form.invalid) { return; }
+    if (this.formGroup.invalid) { return; }
       
-    this.authentService.login(this.formValue.login, this.formValue.pwd)
+    this.authentService.login(this.formGroupValue.email, this.formGroupValue.password)
       .pipe(first())
       .subscribe({
         next: () => {
@@ -67,7 +71,19 @@ export class LoginComponent implements OnInit {
       });
     
     // Reset the Form
-    this.form.reset();
+    this.formGroup.reset();
   }
+
+  getEmailError() {
+    let emailCtrl = this.formGroup.controls['email'];
+    return emailCtrl.hasError('required') ? 'Veuillez entrer votre adresse email' :
+    emailCtrl.hasError('email') ? 'Not a valid email' : ''; 
+  }
+
+  getPasswordError() {
+    let emailCtrl = this.formGroup.controls['password'];
+    return emailCtrl.hasError('required') ? 'Veuillez saisir un mot de passe' : ''; 
+  }
+  
 
 }

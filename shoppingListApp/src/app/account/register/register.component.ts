@@ -12,9 +12,12 @@ import { MustMatch } from '@app/_shared/must-match.validator';
 //#endregion
 
 
-@Component({ templateUrl: 'register.component.html' })
+@Component({ 
+    templateUrl: 'register.component.html',
+    styleUrls: ['./register.component.scss']
+})  
 export class RegisterComponent implements OnInit {
-    form!: FormGroup;
+    formGroup!: FormGroup;
     loading = false;
     submitted = false;
 
@@ -26,11 +29,11 @@ export class RegisterComponent implements OnInit {
         private alertService: AlertService
     ) { }
 
-    get formValue() { return this.form.value; }
+    get formValue() { return this.formGroup.value; }
 
     ngOnInit() {
-        this.form = this.formBuilder.group({
-            userName: ['', Validators.required],
+        this.formGroup = this.formBuilder.group({
+            username: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(6)]],
             confirmPassword: ['', Validators.required],
@@ -41,7 +44,7 @@ export class RegisterComponent implements OnInit {
     }
 
     // convenience getter for easy access to form fields
-    get f() { return this.form.controls; }
+    get f() { return this.formGroup.controls; }
 
     onSubmit() {
         this.submitted = true;
@@ -50,7 +53,7 @@ export class RegisterComponent implements OnInit {
         this.alertService.clear();
 
         // stop here if form is invalid
-        if (this.form.invalid) { return; }
+        if (this.formGroup.invalid) { return; }
 
         // Create a User to register
         let inCreationAccount = { id: "0", 
@@ -59,7 +62,7 @@ export class RegisterComponent implements OnInit {
         }
 
         this.loading = true;
-        this.authentService.register(this.form.value)
+        this.authentService.register(this.formGroup.value)
             .pipe(first())
             .subscribe({
                 next: () => {
@@ -72,5 +75,22 @@ export class RegisterComponent implements OnInit {
                 }
             });
     
+    }
+
+    getUsernameError() {
+        let formCtrl = this.formGroup.controls['username'];
+        return formCtrl.hasError('required') ? 'Veuillez entrer votre adresse email' :
+        formCtrl.hasError('email') ? 'Not a valid email' : ''; 
+    }
+
+    getEmailError() {
+        let formCtrl = this.formGroup.controls['email'];
+        return formCtrl.hasError('required') ? 'Veuillez entrer votre adresse email' :
+        formCtrl.hasError('email') ? 'Not a valid email' : ''; 
+    }
+    
+    getPasswordError() {
+        let formCtrl = this.formGroup.controls['password'];
+        return formCtrl.hasError('required') ? 'Veuillez saisir un mot de passe' : '';
     }
 }
