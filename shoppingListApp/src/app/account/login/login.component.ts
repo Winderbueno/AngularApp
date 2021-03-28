@@ -10,11 +10,7 @@ import { Account } from '@app/_shared/model/account.model';
 import { AuthenticationService } from '@app/_shared/service/authentication.service';
 //#endregion
 
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
-})
+@Component({ templateUrl: './login.component.html' })
 export class LoginComponent implements OnInit {
 
   loggedInAccount: Account | undefined;

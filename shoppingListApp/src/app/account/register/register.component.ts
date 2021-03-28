@@ -12,10 +12,7 @@ import { MustMatch } from '@app/_shared/must-match.validator';
 //#endregion
 
 
-@Component({ 
-    templateUrl: 'register.component.html',
-    styleUrls: ['./register.component.scss']
-})  
+@Component({ templateUrl: 'register.component.html'})  
 export class RegisterComponent implements OnInit {
     formGroup!: FormGroup;
     loading = false;
