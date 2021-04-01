@@ -31,7 +31,7 @@
         <mat-error *ngIf="formGroup.controls['confirmPassword'].invalid">{{ getConfirmPasswordError() }}</mat-error>
     </mat-form-field>
 
-    <!-- TODO : Clean this field -->
+    <!-- TODO : Clean this field tech implementation -->
     <div class="form-group form-check">
         <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
         <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
@@ -41,6 +41,6 @@
     <button [disabled]="loading" class="button" type="submit">
         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> Register
     </button><br>
-    <button class="button" routerLink="../login"> You already have an account ? :) </button>
+    <a routerLink="../login"> You already have an account ? :) </a>
         
 </form>

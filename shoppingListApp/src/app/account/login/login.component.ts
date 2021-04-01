@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
   getEmailError() {
     let emailCtrl = this.formGroup.controls['email'];
     return emailCtrl.hasError('required') ? 'Veuillez entrer votre adresse email' :
-    emailCtrl.hasError('email') ? 'Not a valid email' : ''; 
+    emailCtrl.hasError('email') ? 'L\'email saisi n\'est pas au bon format' : ''; 
   }
 
   getPasswordError() {
