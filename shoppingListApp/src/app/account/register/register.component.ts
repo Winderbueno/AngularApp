@@ -76,8 +76,7 @@ export class RegisterComponent implements OnInit {
 
     getUsernameError() {
         let formCtrl = this.formGroup.controls['username'];
-        return formCtrl.hasError('required') ? 'Veuillez entrer votre adresse email' :
-        formCtrl.hasError('email') ? 'Not a valid email' : ''; 
+        return formCtrl.hasError('required') ? 'Veuillez entrer votre nom d\'utilisateur' : '';
     }
 
     getEmailError() {
@@ -89,5 +88,11 @@ export class RegisterComponent implements OnInit {
     getPasswordError() {
         let formCtrl = this.formGroup.controls['password'];
         return formCtrl.hasError('required') ? 'Veuillez saisir un mot de passe' : '';
+    }
+
+    getConfirmPasswordError() { 
+        let formCtrl = this.formGroup.controls['confirmPassword'];
+        return formCtrl.hasError('required') ? 'Veuillez confirmer votre mot de passe' :
+        formCtrl.hasError('mustMatch') ? 'Les mots de passe doivent être les mêmes' : '';
     }
 }

@@ -18,15 +18,15 @@
         <!-- For Pwd "Password is required & Password must be at least 6 characters -->
         <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput formControlName="password">
+            <input matInput type="password" formControlName="password">
             <mat-error *ngIf="formGroup.controls['password'].invalid">{{ getPasswordError() }}</mat-error>
         </mat-form-field>
 
-        <!-- Confirm Password -> Confirm Password is required & Passwords must match -->
+        <!-- Confirm Password -->
         <mat-form-field appearance="outline">
             <mat-label>Confirm Password</mat-label>
-            <input matInput formControlName="confirm_password">
-            <mat-error *ngIf="formGroup.controls['confirm_password'].invalid">{{ getPasswordError() }}</mat-error>
+            <input matInput type="password" formControlName="confirmPassword">
+            <mat-error *ngIf="formGroup.controls['confirmPassword'].invalid">{{ getConfirmPasswordError() }}</mat-error>
         </mat-form-field>
 
         <div class="form-group form-check">
@@ -38,7 +38,7 @@
         <button [disabled]="loading" class="button" type="submit">
                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> Register
         </button><br>
-        <a routerLink="../login"> You already have an account ? :) </a>
+        <button class="button" routerLink="../login"> You already have an account ? :) </button>
         
       </form>
 </div>
