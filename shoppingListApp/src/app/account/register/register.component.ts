@@ -14,22 +14,26 @@ import { MustMatch } from '@app/_shared/must-match.validator';
 
 @Component({ templateUrl: 'register.component.html' })
 export class RegisterComponent implements OnInit {
-  formGroup!: FormGroup;
-  loading = false;
+  
+  // Form
+  form!: FormGroup;
   submitted = false;
+  loading = false;
+
+  // Form controls getter
+  get f() { return this.form.controls; }
 
   constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
     private router: Router,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
     private authentService: AuthenticationService,
     private alertService: AlertService
   ) { }
 
-  get formValue() { return this.formGroup.value; }
-
   ngOnInit() {
-    this.formGroup = this.formBuilder.group({
+    // Form definition
+    this.form = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -40,27 +44,24 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  // convenience getter for easy access to form fields
-  get f() { return this.formGroup.controls; }
-
   onSubmit() {
     this.submitted = true;
 
-    // reset alerts on submit
+    // Reset alerts on submit
     this.alertService.clear();
 
     // Stop here if form is invalid
-    if (this.formGroup.invalid) { return; }
+    if (this.form.invalid) { return; }
 
     // Create a User to register
     let inCreationAccount = {
       id: "0",
-      login: this.formValue.login, pwd: this.formValue.pwd,
-      mail: this.formValue.mail
+      email: this.f.email.value, pwd: this.f.password.value,
+      username: this.f.username.value,
     }
 
     this.loading = true;
-    this.authentService.register(this.formGroup.value)
+    this.authentService.register(this.form.value)
       .pipe(first())
       .subscribe({
         next: () => {
@@ -76,23 +77,23 @@ export class RegisterComponent implements OnInit {
   }
 
   getUsernameError() {
-    let formCtrl = this.formGroup.controls['username'];
+    let formCtrl = this.form.controls['username'];
     return formCtrl.hasError('required') ? 'Veuillez entrer votre nom d\'utilisateur' : '';
   }
 
   getEmailError() {
-    let formCtrl = this.formGroup.controls['email'];
+    let formCtrl = this.form.controls['email'];
     return formCtrl.hasError('required') ? 'Veuillez entrer votre adresse email' :
       formCtrl.hasError('email') ? 'Not a valid email' : '';
   }
 
   getPasswordError() {
-    let formCtrl = this.formGroup.controls['password'];
+    let formCtrl = this.form.controls['password'];
     return formCtrl.hasError('required') ? 'Veuillez saisir un mot de passe' : '';
   }
 
   getConfirmPasswordError() {
-    let formCtrl = this.formGroup.controls['confirmPassword'];
+    let formCtrl = this.form.controls['confirmPassword'];
     return formCtrl.hasError('required') ? 'Veuillez confirmer votre mot de passe' :
       formCtrl.hasError('mustMatch') ? 'Les mots de passe doivent être les mêmes' : '';
   }

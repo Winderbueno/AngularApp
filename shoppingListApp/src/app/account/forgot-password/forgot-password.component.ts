@@ -11,9 +11,14 @@ import { AuthenticationService } from '@app/_shared/service/authentication.servi
 
 @Component({ templateUrl: 'forgot-password.component.html' })
 export class ForgotPasswordComponent implements OnInit {
-  formGroup!: FormGroup;
+  
+  // Form
+  form!: FormGroup;
   loading = false;
   submitted = false;
+
+  // Form controls getter
+  get f() { return this.form.controls; }
 
   constructor(
     private formBuilder: FormBuilder,
@@ -22,22 +27,20 @@ export class ForgotPasswordComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.formGroup = this.formBuilder.group({
+    // Form definition
+    this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]]
     });
   }
-
-  // convenience getter for easy access to form fields
-  get f() { return this.formGroup.controls; }
-
+  
   onSubmit() {
     this.submitted = true;
 
-    // reset alerts on submit
+    // Reset alerts on submit
     this.alertService.clear();
 
     // Stop here if form is invalid
-    if (this.formGroup.invalid) { return; }
+    if (this.form.invalid) { return; }
 
     this.loading = true;
     this.alertService.clear();
@@ -51,7 +54,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   getEmailError() {
-    let emailCtrl = this.formGroup.controls['email'];
+    let emailCtrl = this.form.controls['email'];
     return emailCtrl.hasError('required') ? 'Veuillez entrer votre adresse email' :
       emailCtrl.hasError('email') ? 'L\'email saisi n\'est pas au bon format' : '';
   }

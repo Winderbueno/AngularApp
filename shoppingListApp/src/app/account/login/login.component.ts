@@ -8,6 +8,7 @@ import { first } from 'rxjs/operators';
 //#region Model and Service
 import { Account } from '@app/_shared/model/account.model';
 import { AuthenticationService } from '@app/_shared/service/authentication.service';
+import { AlertService } from '@app/_shared/service/alert.service';
 //#endregion
 
 @Component({ templateUrl: './login.component.html' })
@@ -16,24 +17,24 @@ export class LoginComponent implements OnInit {
   loggedInAccount: Account | undefined;
 
   // Form
-  formGroup!: FormGroup;
-  loading = false;
+  form!: FormGroup;
   submitted = false;
-  error = '';
+  loading = false;
+
+  // Form controls getter
+  get f() { return this.form.controls; }
 
   constructor(
     private router: Router,
-    private activRoute: ActivatedRoute,
+    private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private authentService: AuthenticationService,
+    private alertService: AlertService
   ) { }
 
-  get formGroupValue() { return this.formGroup.value; }
-
   ngOnInit(): void {
-
-    // Define Form
-    this.formGroup = this.formBuilder.group({
+    // Form definition
+    this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
@@ -43,38 +44,36 @@ export class LoginComponent implements OnInit {
 
     this.submitted = true;
 
-    // Stop here if form is invalid
-    if (this.formGroup.invalid) { return; }
-    
+    // Reset alerts on submit
+    this.alertService.clear();
 
-    this.authentService.login(this.formGroupValue.email, this.formGroupValue.password)
+    // Stop here if form is invalid
+    if (this.form.invalid) { return; }
+    
+    this.loading = true;
+    this.authentService.login(this.f.email.value, this.f.password.value)
       .pipe(first())
       .subscribe({
         next: () => {
           // Get return url from route parameters or default to '/'
-          const returnUrl = this.activRoute.snapshot.queryParams['returnUrl'] || '';
-          stop();
+          const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
           this.router.navigate([returnUrl]);
         },
         error: error => {
-          this.error = error;
+          this.alertService.error(error);
           this.loading = false;
         }
       });
-
-    // Reset the Form
-    this.formGroup.reset();
   }
 
   getEmailError() {
-    let emailCtrl = this.formGroup.controls['email'];
+    let emailCtrl = this.f.email;
     return emailCtrl.hasError('required') ? 'Veuillez entrer votre adresse email' :
       emailCtrl.hasError('email') ? 'L\'email saisi n\'est pas au bon format' : '';
   }
 
   getPasswordError() {
-    let emailCtrl = this.formGroup.controls['password'];
+    let emailCtrl = this.f.password;
     return emailCtrl.hasError('required') ? 'Veuillez saisir un mot de passe' : '';
   }
-  
 }
