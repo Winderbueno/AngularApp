@@ -6,79 +6,78 @@ import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 //#endregion
 
 const users = [
-    { id: 1, login: 'test', pwd: 'test', mail: 'test.user@gmail.com' },
-    { id: 2, login: 'Kevin', pwd: 'banane', mail: 'kevin.gellenoncourt@gmail.com' },
-    { id: 3, login: 'Maurine', pwd: 'patate', mail: 'maurine.nav@gmail.com' }];
+  { id: 1, login: 'test', pwd: 'test', mail: 'test.user@gmail.com' },
+  { id: 2, login: 'Kevin', pwd: 'banane', mail: 'kevin.gellenoncourt@gmail.com' },
+  { id: 3, login: 'Maurine', pwd: 'patate', mail: 'maurine.nav@gmail.com' }];
 
 
 @Injectable({ providedIn: 'root' })
 export class FakeBackendInterceptor implements HttpInterceptor {
 
-    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const { url, method, headers, body } = request;
 
-        const { url, method, headers, body } = request;
+    // Wrap in delayed observable to simulate server api call
+    return of(null)
+      .pipe(mergeMap(handleRoute))
+      .pipe(materialize()) // call materialize and dematerialize to ensure delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)
+      .pipe(delay(500))
+      .pipe(dematerialize());
 
-        // Wrap in delayed observable to simulate server api call
-        return of(null)
-            .pipe(mergeMap(handleRoute))
-            .pipe(materialize()) // call materialize and dematerialize to ensure delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)
-            .pipe(delay(500))
-            .pipe(dematerialize());
-
-        function handleRoute() {
-            switch (true) {
-                case url.endsWith('/users/authenticate') && method === 'POST':
-                    return authenticate();
-                case url.endsWith('/users') && method === 'GET':
-                    return getUsers();
-                default:
-                    // pass through any requests not handled above
-                    return next.handle(request);
-            }    
-        }
-
-        // route functions
-
-        function authenticate() {
-            const { login, password } = body;
-            const user = users.find(x => x.login === login && x.pwd === password);
-            
-            if (!user) { return error('Login or password is incorrect'); } 
-            return ok({
-                id: user.id,
-                login: user.login,
-                token: 'fake-jwt-token'
-            })
-        }
-
-        function getUsers() {
-            if (!isLoggedIn()) return unauthorized();
-            return ok(users);
-        }
-
-        // helper functions
-
-        function ok(body?: any) {
-            return of(new HttpResponse({ status: 200, body }))
-        }
-
-        function error(message: any) {
-            return throwError({ error: { message } });
-        }
-
-        function unauthorized() {
-            return throwError({ status: 401, error: { message: 'Unauthorised' } });
-        }
-
-        function isLoggedIn() {
-            return headers.get('Authorization') === 'Bearer fake-jwt-token';
-        }
+    function handleRoute() {
+      switch (true) {
+        case url.endsWith('/users/authenticate') && method === 'POST':
+          return authenticate();
+        case url.endsWith('/users') && method === 'GET':
+          return getUsers();
+        default:
+          // pass through any requests not handled above
+          return next.handle(request);
+      }
     }
+
+    // route functions
+
+    function authenticate() {
+      const { login, password } = body;
+      const user = users.find(x => x.login === login && x.pwd === password);
+
+      if (!user) { return error('Login or password is incorrect'); }
+      return ok({
+        id: user.id,
+        login: user.login,
+        token: 'fake-jwt-token'
+      })
+    }
+
+    function getUsers() {
+      if (!isLoggedIn()) return unauthorized();
+      return ok(users);
+    }
+
+    // helper functions
+
+    function ok(body?: any) {
+      return of(new HttpResponse({ status: 200, body }))
+    }
+
+    function error(message: any) {
+      return throwError({ error: { message } });
+    }
+
+    function unauthorized() {
+      return throwError({ status: 401, error: { message: 'Unauthorised' } });
+    }
+
+    function isLoggedIn() {
+      return headers.get('Authorization') === 'Bearer fake-jwt-token';
+    }
+  }
 }
 
 export let fakeBackendProvider = {
-    // use fake backend in place of Http service for backend-less development
-    provide: HTTP_INTERCEPTORS,
-    useClass: FakeBackendInterceptor,
-    multi: true
+  // use fake backend in place of Http service for backend-less development
+  provide: HTTP_INTERCEPTORS,
+  useClass: FakeBackendInterceptor,
+  multi: true
 };

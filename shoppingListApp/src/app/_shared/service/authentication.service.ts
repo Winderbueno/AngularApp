@@ -38,6 +38,7 @@ export class AuthenticationService {
     public get accountValue(): Account { return this.accountSubject.value; }
 
     login(email: string, password: string) {
+        console.log('In \'authentServ\' : ' + email);
         return this.http.post<any>(`${baseUrl}/authenticate`, { email, password }, { withCredentials: true })
             .pipe(map(account => {
                 // Store user details and jwt token in local storage

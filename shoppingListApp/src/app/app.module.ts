@@ -37,9 +37,9 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
 
     // Fake Backend with 3rd Party Module (Intercepts HTTP requests)
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
+    //HttpClientInMemoryWebApiModule.forRoot(
+    //  InMemoryDataService, { dataEncapsulation: false }
+    //),
 
     // App Module
     AppRoutingModule,
@@ -52,7 +52,7 @@ import { AppComponent } from './app.component';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
     // provider used to create fake backend
-    fakeBackendProvider
+    // fakeBackendProvider
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent]

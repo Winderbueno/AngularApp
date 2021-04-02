@@ -8,6 +8,9 @@ import { Observable } from 'rxjs';
 import { Product } from '../../model/product.model';
 //#endregion
 
+// Api Info
+import { environment } from '@env/environment';
+const baseUrl = `${environment.apiUrl}/products`;
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {

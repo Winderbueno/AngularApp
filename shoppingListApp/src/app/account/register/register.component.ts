@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
     // reset alerts on submit
     this.alertService.clear();
 
-    // stop here if form is invalid
+    // Stop here if form is invalid
     if (this.formGroup.invalid) { return; }
 
     // Create a User to register

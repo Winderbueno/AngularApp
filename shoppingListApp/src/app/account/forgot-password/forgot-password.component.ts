@@ -36,10 +36,8 @@ export class ForgotPasswordComponent implements OnInit {
     // reset alerts on submit
     this.alertService.clear();
 
-    // stop here if form is invalid
-    if (this.formGroup.invalid) {
-      return;
-    }
+    // Stop here if form is invalid
+    if (this.formGroup.invalid) { return; }
 
     this.loading = true;
     this.alertService.clear();

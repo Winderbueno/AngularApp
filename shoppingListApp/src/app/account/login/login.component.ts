@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   loggedInAccount: Account | undefined;
 
-  // LoginForm
+  // Form
   formGroup!: FormGroup;
   loading = false;
   submitted = false;
@@ -39,16 +39,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  public checkError = (controlName: string, errorName: string) => {
-    return this.formGroup.controls[controlName].hasError(errorName);
-  }
-
   onSubmit(): void {
 
     this.submitted = true;
 
-    // TODO - Check User's Input Validity (Mail, Login, Pwd)
+    // Stop here if form is invalid
     if (this.formGroup.invalid) { return; }
+    
 
     this.authentService.login(this.formGroupValue.email, this.formGroupValue.password)
       .pipe(first())
@@ -56,7 +53,6 @@ export class LoginComponent implements OnInit {
         next: () => {
           // Get return url from route parameters or default to '/'
           const returnUrl = this.activRoute.snapshot.queryParams['returnUrl'] || '';
-          console.log(returnUrl);
           stop();
           this.router.navigate([returnUrl]);
         },
