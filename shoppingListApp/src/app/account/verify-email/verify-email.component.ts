@@ -10,39 +10,39 @@ import { AuthenticationService } from '@app/_shared/service/authentication.servi
 //#endregion
 
 enum EmailStatus {
-    Verifying,
-    Failed
+  Verifying,
+  Failed
 }
 
 
 @Component({ templateUrl: 'verify-email.component.html' })
 export class VerifyEmailComponent implements OnInit {
-    EmailStatus = EmailStatus;
-    emailStatus = EmailStatus.Verifying;
+  EmailStatus = EmailStatus;
+  emailStatus = EmailStatus.Verifying;
 
-    constructor(
-        private route: ActivatedRoute,
-        private router: Router,
-        private authentService: AuthenticationService,
-        private alertService: AlertService
-    ) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private authentService: AuthenticationService,
+    private alertService: AlertService
+  ) { }
 
-    ngOnInit() {
-        const token = this.route.snapshot.queryParams['token'];
+  ngOnInit() {
+    const token = this.route.snapshot.queryParams['token'];
 
-        // Remove token from url to prevent http referer leakage
-        this.router.navigate([], { relativeTo: this.route, replaceUrl: true });
+    // Remove token from url to prevent http referer leakage
+    this.router.navigate([], { relativeTo: this.route, replaceUrl: true });
 
-        this.authentService.verifyEmail(token)
-            .pipe(first())
-            .subscribe({
-                next: () => {
-                    this.alertService.success('Verification successful, you can now login', { keepAfterRouteChange: true });
-                    this.router.navigate(['../login'], { relativeTo: this.route });
-                },
-                error: () => {
-                    this.emailStatus = EmailStatus.Failed;
-                }
-            });
-    }
+    this.authentService.verifyEmail(token)
+      .pipe(first())
+      .subscribe({
+        next: () => {
+          this.alertService.success('Verification successful, you can now login', { keepAfterRouteChange: true });
+          this.router.navigate(['../login'], { relativeTo: this.route });
+        },
+        error: () => {
+          this.emailStatus = EmailStatus.Failed;
+        }
+      });
+  }
 }

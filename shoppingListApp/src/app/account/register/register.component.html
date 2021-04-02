@@ -38,9 +38,7 @@
         <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
     </div>
 
-    <button [disabled]="loading" class="button" type="submit">
-        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> Register
-    </button><br>
+    <button class="button" type="submit"> Register </button><br>
     <a routerLink="../login"> You already have an account ? :) </a>
         
 </form>

@@ -14,7 +14,7 @@ import { AuthenticationService } from '@app/_shared/service/authentication.servi
 export class LoginComponent implements OnInit {
 
   loggedInAccount: Account | undefined;
-  
+
   // LoginForm
   formGroup!: FormGroup;
   loading = false;
@@ -46,10 +46,10 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
 
     this.submitted = true;
-      
+
     // TODO - Check User's Input Validity (Mail, Login, Pwd)
     if (this.formGroup.invalid) { return; }
-      
+
     this.authentService.login(this.formGroupValue.email, this.formGroupValue.password)
       .pipe(first())
       .subscribe({
@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
           this.loading = false;
         }
       });
-    
+
     // Reset the Form
     this.formGroup.reset();
   }
@@ -73,13 +73,12 @@ export class LoginComponent implements OnInit {
   getEmailError() {
     let emailCtrl = this.formGroup.controls['email'];
     return emailCtrl.hasError('required') ? 'Veuillez entrer votre adresse email' :
-    emailCtrl.hasError('email') ? 'L\'email saisi n\'est pas au bon format' : ''; 
+      emailCtrl.hasError('email') ? 'L\'email saisi n\'est pas au bon format' : '';
   }
 
   getPasswordError() {
     let emailCtrl = this.formGroup.controls['password'];
-    return emailCtrl.hasError('required') ? 'Veuillez saisir un mot de passe' : ''; 
+    return emailCtrl.hasError('required') ? 'Veuillez saisir un mot de passe' : '';
   }
   
-
 }
