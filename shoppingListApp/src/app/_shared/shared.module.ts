@@ -24,7 +24,6 @@ import { FooterComponent } from './component/footer/footer.component';
     FooterComponent,
     NgHomeComponent,
     AlertComponent
-    
   ],
   exports: [ 
     ToolbarComponent,

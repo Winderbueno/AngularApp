@@ -17,9 +17,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/ng-home', pathMatch: 'full' },
   { path: 'ng-home', component: NgHomeComponent },
   { path: 'my-shopping-list', component: ShoppingListComponent, canActivate: [AuthGuard] },
-  { path: 'account', loadChildren: accountModule },
-
-  
+  { path: 'account', loadChildren: accountModule },  
 ];
 
 @NgModule({
