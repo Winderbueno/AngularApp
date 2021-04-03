@@ -11,7 +11,7 @@ import { AuthenticationService } from '@app/_shared/service/authentication.servi
 
 // Api Info
 import { environment } from '@env/environment';
-const baseUrl = `${environment.apiUrl}/accounts`;
+const baseUrl = `${environment.apiUrl}/account`;
 
 
 @Injectable({ providedIn: 'root' })

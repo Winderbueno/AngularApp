@@ -17,7 +17,7 @@ import { FooterComponent } from './component/footer/footer.component';
 @NgModule({
   imports: [
     CommonModule,
-    AppRoutingModule, // For ToolBar
+    AppRoutingModule, // Used By : ToolBar
   ],
   declarations: [
     ToolbarComponent,
