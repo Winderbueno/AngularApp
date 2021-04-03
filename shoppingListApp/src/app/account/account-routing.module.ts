@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 //#endregion
 
 const routes: Routes = [
@@ -19,9 +20,10 @@ const routes: Routes = [
             { path: 'register', component: RegisterComponent },
             { path: 'verify-email', component: VerifyEmailComponent },
             { path: 'forgot-password', component: ForgotPasswordComponent },
+            { path: 'reset-password', component: ResetPasswordComponent }
         ]
     },
-    // otherwise redirect to home
+    // Otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];
 

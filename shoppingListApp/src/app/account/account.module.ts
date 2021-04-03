@@ -7,7 +7,6 @@ import { MatInputModule } from '@angular/material/input';
 
 //#region App Shared Module
 import { AccountRoutingModule } from './account-routing.module';
-import { SharedModule } from '@app/_shared/shared.module';
 //#endregion
 
 //#region Declared Component
@@ -16,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 //#endregion
 
 @NgModule({
@@ -23,8 +23,7 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
     CommonModule,
     AccountRoutingModule,
 
-    // For Forms
-    ReactiveFormsModule,
+    ReactiveFormsModule, // For Forms
     MatInputModule
   ],
   declarations: [
@@ -32,7 +31,8 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    ResetPasswordComponent
   ]
 })
 export class AccountModule { }
