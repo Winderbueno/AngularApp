@@ -7,7 +7,7 @@ import { first } from 'rxjs/operators';
 
 //#region Model and Service
 import { Account } from '@app/_shared/model/account.model';
-import { AuthenticationService } from '@app/_shared/service/authentication.service';
+import { AccountService } from '@app/_shared/service/business/account.service';
 import { AlertService } from '@app/_shared/service/alert.service';
 //#endregion
 
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private authentService: AuthenticationService,
+    private accountService: AccountService,
     private alertService: AlertService
   ) { }
 
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
     if (this.form.invalid) { return; }
     
     this.loading = true;
-    this.authentService.login(this.f.email.value, this.f.password.value)
+    this.accountService.login(this.f.email.value, this.f.password.value)
       .pipe(first())
       .subscribe({
         next: () => {

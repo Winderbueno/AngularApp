@@ -2,17 +2,17 @@
 import { Router } from '@angular/router';
 
 //#region Model and Service
-import { AuthenticationService } from '@app/_shared/service/authentication.service'
+import { AccountService } from '@app/_shared/service/business/account.service'
 
 @Component({ templateUrl: 'layout.component.html' })
 export class LayoutComponent {
     constructor(
         private router: Router,
-        private authentService: AuthenticationService
+        private accountService: AccountService
     ) {
         
         // Redirect to home if already logged in
-        if (this.authentService.accountValue.id != "null") {
+        if (this.accountService.accountValue.id != "null") {
             this.router.navigate(['/']);
         }
     }

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 //#region Model and Service
 import { Account } from '../../model/account.model';
-import { AuthenticationService } from '../../service/authentication.service';
+import { AccountService } from '../../service/business/account.service';
 //#endregion
 
 @Component({
@@ -19,16 +19,16 @@ export class ToolbarComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authentService: AuthenticationService,
+    private accountService: AccountService,
   ) { 
     // Subscribe to the connected user
-    this.authentService.account.subscribe(x => this.loggedInAccount = x);
+    this.accountService.account.subscribe(x => this.loggedInAccount = x);
   }
 
   ngOnInit(): void {}
 
   logout() {
-    this.authentService.logout();
+    this.accountService.logout();
     this.router.navigate(['/']);
   }
 

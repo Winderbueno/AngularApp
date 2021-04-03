@@ -7,7 +7,7 @@ import { first } from 'rxjs/operators';
 
 //#region Model and Service
 import { AlertService } from '@app/_shared/service/alert.service';
-import { AuthenticationService } from '@app/_shared/service/authentication.service'
+import { AccountService } from '@app/_shared/service/business/account.service'
 import { MustMatch } from '@app/_shared/must-match.validator';
 //#endregion
 
@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private authentService: AuthenticationService,
+    private accountService: AccountService,
     private alertService: AlertService
   ) { }
 
@@ -61,7 +61,7 @@ export class RegisterComponent implements OnInit {
     }
 
     this.loading = true;
-    this.authentService.register(this.form.value)
+    this.accountService.register(this.form.value)
       .pipe(first())
       .subscribe({
         next: () => {

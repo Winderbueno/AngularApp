@@ -17,9 +17,8 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 
 //#region Service (Interceptor, DataProvider, Guard...)
 import { appInitializer } from './_shared/app.initializer';
-import { AuthenticationService } from './_shared/service/authentication.service';
+import { AccountService } from './_shared/service/business/account.service';
 import { InMemoryDataService } from './_shared/service/fake-backend/in-memory-data.mock.service';
-import { fakeBackendProvider } from './_shared/service/fake-backend/fake-backend-authentification';
 import { JwtInterceptor } from './_shared/service/interceptor/jwt.interceptor';
 import { ErrorInterceptor } from './_shared/service/interceptor/error.interceptor';
 //#endregion
@@ -46,12 +45,9 @@ import { AppComponent } from './app.component';
     ShoppingListModule
   ],
   providers: [
-    { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AuthenticationService] },
+    { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AccountService] },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-    // provider used to create fake backend
-    // fakeBackendProvider
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent]

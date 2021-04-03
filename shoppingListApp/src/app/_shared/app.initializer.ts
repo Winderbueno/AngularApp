@@ -1,10 +1,10 @@
-import { AuthenticationService } from './service/authentication.service';
+import { AccountService } from './service/business/account.service';
 
-export function appInitializer(authentService: AuthenticationService) {
+export function appInitializer(accountService: AccountService) {
     return () => new Promise(resolve => {
         
-        // attempt to refresh token on app start up to auto authenticate
-        authentService.refreshToken()
+        // Attempt to refresh token on app start up to auto authenticate
+        accountService.refreshToken()
             .subscribe()
             .add(resolve);
     });

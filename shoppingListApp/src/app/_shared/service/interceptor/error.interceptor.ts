@@ -6,21 +6,21 @@ import { catchError } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { AuthenticationService } from '../authentication.service';
+import { AccountService } from '../business/account.service';
 //#endregion
 
 
 @Injectable({ providedIn: 'root' })
 export class ErrorInterceptor implements HttpInterceptor {
 
-    constructor(private authenticationService: AuthenticationService) { }
+    constructor(private accountService: AccountService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
         return next.handle(request).pipe(catchError(err => {
             if (err.status === 401) {
                 // Auto logout if 401 response returned from api
-                this.authenticationService.logout();
+                this.accountService.logout();
                 location.reload(true);
             }
 

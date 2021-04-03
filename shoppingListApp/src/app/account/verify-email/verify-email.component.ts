@@ -6,7 +6,7 @@ import { first } from 'rxjs/operators';
 
 //#region Model and Service
 import { AlertService } from '@app/_shared/service/alert.service';
-import { AuthenticationService } from '@app/_shared/service/authentication.service'
+import { AccountService } from '@app/_shared/service/business/account.service'
 //#endregion
 
 enum EmailStatus {
@@ -23,7 +23,7 @@ export class VerifyEmailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authentService: AuthenticationService,
+    private accountService: AccountService,
     private alertService: AlertService
   ) { }
 
@@ -33,7 +33,7 @@ export class VerifyEmailComponent implements OnInit {
     // Remove token from url to prevent http referer leakage
     this.router.navigate([], { relativeTo: this.route, replaceUrl: true });
 
-    this.authentService.verifyEmail(token)
+    this.accountService.verifyEmail(token)
       .pipe(first())
       .subscribe({
         next: () => {

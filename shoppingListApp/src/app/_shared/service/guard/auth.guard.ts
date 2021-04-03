@@ -4,7 +4,7 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 //#endregion
 
 //#region Model and Service
-import { AuthenticationService } from '../authentication.service';
+import { AccountService } from '../business/account.service';
 //#endregion
 
 
@@ -13,11 +13,11 @@ export class AuthGuard implements CanActivate {
 
     constructor(
         private router: Router,
-        private authentService: AuthenticationService
+        private accountService: AccountService
     ) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        const account = this.authentService.accountValue;
+        const account = this.accountService.accountValue;
         
         // An account is logged in -> return true
         if (account.id != "null") return true;

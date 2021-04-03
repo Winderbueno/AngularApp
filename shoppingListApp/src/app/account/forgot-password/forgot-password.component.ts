@@ -6,7 +6,7 @@ import { first, finalize } from 'rxjs/operators';
 
 //#region Model and Service
 import { AlertService } from '@app/_shared/service/alert.service';
-import { AuthenticationService } from '@app/_shared/service/authentication.service'
+import { AccountService } from '@app/_shared/service/business/account.service'
 //#endregion
 
 @Component({ templateUrl: 'forgot-password.component.html' })
@@ -22,7 +22,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authentService: AuthenticationService,
+    private accountService: AccountService,
     private alertService: AlertService
   ) { }
 
@@ -44,7 +44,7 @@ export class ForgotPasswordComponent implements OnInit {
 
     this.loading = true;
     this.alertService.clear();
-    this.authentService.forgotPassword(this.f.email.value)
+    this.accountService.forgotPassword(this.f.email.value)
       .pipe(first())
       .pipe(finalize(() => this.loading = false))
       .subscribe({
