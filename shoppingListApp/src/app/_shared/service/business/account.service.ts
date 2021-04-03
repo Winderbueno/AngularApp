@@ -38,11 +38,9 @@ export class AccountService {
     public get accountValue(): Account { return this.accountSubject.value; }
 
     login(email: string, password: string) {
-        console.log('In \'authentServ\' : ' + email);
         return this.http.post<any>(`${baseUrl}/authenticate`, { email, password }, { withCredentials: true })
             .pipe(map(account => {
-                // Store user details and jwt token in local storage
-                // TODO - Necessary : ? localStorage.setItem('currentUser', JSON.stringify(user));
+                // Store account info and jwt token in account Subject
                 this.accountSubject.next(account);
                 this.startRefreshTokenTimer();
                 return account;
@@ -54,8 +52,6 @@ export class AccountService {
         this.stopRefreshTokenTimer();
 
         // Replace user in local storage by a fake one
-        // TODO - Necessary ? localStorage.removeItem('currentUser');
-
         this.accountSubject.next({ id:"null", jwtToken:"null" });
         this.router.navigate(['/account/login']);
     }

@@ -8,7 +8,7 @@ export class Account {
     jwtToken?: string;
 
     // Personnal Info
-    username?: string;
+    userName?: string;
     role?: Role;
 }
 

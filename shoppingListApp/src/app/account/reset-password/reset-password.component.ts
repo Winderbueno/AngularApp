@@ -71,10 +71,10 @@ export class ResetPasswordComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    // reset alerts on submit
+    // Reset alerts on submit
     this.alertService.clear();
 
-    // stop here if form is invalid
+    // Stop here if form is invalid
     if (this.form.invalid) {
       return;
     }
