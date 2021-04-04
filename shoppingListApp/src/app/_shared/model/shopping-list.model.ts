@@ -1,4 +1,4 @@
-import { CatUsableProduct } from "./categorised-usable-product.model";
+import { CatUsableProduct } from "./usable-product.model";
 
 export interface ShoppingList {
 

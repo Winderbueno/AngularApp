@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 
 //#region Model and Service
 import { ShoppingList } from '@app/_shared/model/shopping-list.model';
-import { CatUsableProduct, UsableProduct } from '@app/_shared/model/categorised-usable-product.model';
+import { CatUsableProduct, UsableProduct } from '@app/_shared/model/usable-product.model';
 import { ShoppingListService } from '@app/_shared/service/business/shopping-list.service';
 //#endregion
 
