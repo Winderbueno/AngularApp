@@ -20,7 +20,7 @@ import { appInitializer } from './_shared/app.initializer';
 import { AccountService } from './_shared/service/business/account.service';
 import { InMemoryDataService } from './_shared/service/fake-backend/in-memory-data.mock.service';
 import { JwtInterceptor } from './_shared/service/interceptor/jwt.interceptor';
-import { ErrorInterceptor } from './_shared/service/interceptor/error.interceptor';
+import { ErrorInterceptor } from './_shared/service/error-management/error.interceptor';
 //#endregion
 
 //#region Declared Component

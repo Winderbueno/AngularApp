@@ -6,9 +6,10 @@ import { first } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { AlertService } from '@app/_shared/service/alert.service';
-import { AccountService } from '@app/_shared/service/business/account.service'
-import { MustMatch } from '@app/_shared/must-match.validator';
+import { FormErrorService } from '@app/_shared/service/error-management/form-error.service';
+import { AccountService } from '@app/_shared/service/business/account.service';
+import { AlertService } from '@app/_shared/service/error-management/alert.service';
+import { MustMatch } from '@app/_shared/service/error-management/must-match.validator';
 //#endregion
 
 
@@ -20,13 +21,15 @@ export class RegisterComponent implements OnInit {
   submitted = false;
   loading = false;
 
-  // Form controls getter
-  get f() { return this.form.controls; }
+  // Easy access getters
+  get f() { return this.form.controls; } // Form Control
+  get err() { return this.formErrorService; } // Error Service
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
+    private formErrorService: FormErrorService,
     private accountService: AccountService,
     private alertService: AlertService
   ) { }
@@ -74,27 +77,5 @@ export class RegisterComponent implements OnInit {
         }
       });
 
-  }
-
-  getUsernameError() {
-    let formCtrl = this.form.controls['username'];
-    return formCtrl.hasError('required') ? 'Veuillez entrer votre nom d\'utilisateur' : '';
-  }
-
-  getEmailError() {
-    let formCtrl = this.form.controls['email'];
-    return formCtrl.hasError('required') ? 'Veuillez entrer votre adresse email' :
-      formCtrl.hasError('email') ? 'Not a valid email' : '';
-  }
-
-  getPasswordError() {
-    let formCtrl = this.form.controls['password'];
-    return formCtrl.hasError('required') ? 'Veuillez saisir un mot de passe' : '';
-  }
-
-  getConfirmPasswordError() {
-    let formCtrl = this.form.controls['confirmPassword'];
-    return formCtrl.hasError('required') ? 'Veuillez confirmer votre mot de passe' :
-      formCtrl.hasError('mustMatch') ? 'Les mots de passe doivent être les mêmes' : '';
   }
 }

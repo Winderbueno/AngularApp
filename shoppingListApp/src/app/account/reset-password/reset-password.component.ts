@@ -6,9 +6,10 @@ import { first } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { AlertService } from '@app/_shared/service/alert.service';
-import { AccountService } from '@app/_shared/service/business/account.service'
-import { MustMatch } from '@app/_shared/must-match.validator';
+import { FormErrorService } from '@app/_shared/service/error-management/form-error.service';
+import { AccountService } from '@app/_shared/service/business/account.service';
+import { AlertService } from '@app/_shared/service/error-management/alert.service';
+import { MustMatch } from '@app/_shared/service/error-management/must-match.validator';
 //#endregion
 
 enum TokenStatus {
@@ -30,13 +31,15 @@ export class ResetPasswordComponent implements OnInit {
   loading = false;
   submitted = false;
 
-  // Form controls getter
-  get f() { return this.form.controls; }
+  // Easy access getters
+  get f() { return this.form.controls; } // Form Control
+  get err() { return this.formErrorService; } // Error Service
 
   constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
     private router: Router,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private formErrorService: FormErrorService,
     private accountService: AccountService,
     private alertService: AlertService
   ) { }
@@ -52,7 +55,7 @@ export class ResetPasswordComponent implements OnInit {
 
     const token = this.route.snapshot.queryParams['token'];
 
-    // remove token from url to prevent http referer leakage
+    // Remove token from url to prevent http referer leakage
     this.router.navigate([], { relativeTo: this.route, replaceUrl: true });
 
     this.accountService.validateResetToken(token)
@@ -84,7 +87,7 @@ export class ResetPasswordComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: () => {
-          this.alertService.success('Password reset successful, you can now login', { keepAfterRouteChange: true });
+          this.alertService.success('Mot de passe reitnitialisé avec succès, vous pouvez maintenant vous connecter', { keepAfterRouteChange: true });
           this.router.navigate(['../login'], { relativeTo: this.route });
         },
         error: error => {
@@ -92,16 +95,5 @@ export class ResetPasswordComponent implements OnInit {
           this.loading = false;
         }
       });
-  }
-
-  getPasswordError() {
-    let formCtrl = this.form.controls['password'];
-    return formCtrl.hasError('required') ? 'Veuillez saisir un mot de passe' : '';
-  }
-
-  getConfirmPasswordError() {
-    let formCtrl = this.form.controls['confirmPassword'];
-    return formCtrl.hasError('required') ? 'Veuillez confirmer votre mot de passe' :
-      formCtrl.hasError('mustMatch') ? 'Les mots de passe doivent être les mêmes' : '';
   }
 }

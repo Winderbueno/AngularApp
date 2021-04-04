@@ -5,8 +5,9 @@ import { first, finalize } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { AlertService } from '@app/_shared/service/alert.service';
-import { AccountService } from '@app/_shared/service/business/account.service'
+import { AlertService } from '@app/_shared/service/error-management/alert.service';
+import { FormErrorService } from '@app/_shared/service/error-management/form-error.service';
+import { AccountService } from '@app/_shared/service/business/account.service';
 //#endregion
 
 @Component({ templateUrl: 'forgot-password.component.html' })
@@ -17,11 +18,13 @@ export class ForgotPasswordComponent implements OnInit {
   loading = false;
   submitted = false;
 
-  // Form controls getter
-  get f() { return this.form.controls; }
+  // Easy access getters
+  get f() { return this.form.controls; } // Form Control
+  get err() { return this.formErrorService; } // Error Service
 
   constructor(
     private formBuilder: FormBuilder,
+    private formErrorService: FormErrorService,
     private accountService: AccountService,
     private alertService: AlertService
   ) { }
@@ -51,11 +54,5 @@ export class ForgotPasswordComponent implements OnInit {
         next: () => this.alertService.success('Please check your email for password reset instructions'),
         error: error => this.alertService.error(error)
       });
-  }
-
-  getEmailError() {
-    let emailCtrl = this.form.controls['email'];
-    return emailCtrl.hasError('required') ? 'Veuillez entrer votre adresse email' :
-      emailCtrl.hasError('email') ? 'L\'email saisi n\'est pas au bon format' : '';
   }
 }

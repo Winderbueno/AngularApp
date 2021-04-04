@@ -5,7 +5,7 @@ import { filter } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { Alert, AlertType } from '../model/alert.model';
+import { Alert, AlertType } from '../../model/alert.model';
 //#endregion
 
 

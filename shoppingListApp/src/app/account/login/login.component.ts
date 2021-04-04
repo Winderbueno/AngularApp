@@ -8,7 +8,8 @@ import { first } from 'rxjs/operators';
 //#region Model and Service
 import { Account } from '@app/_shared/model/account.model';
 import { AccountService } from '@app/_shared/service/business/account.service';
-import { AlertService } from '@app/_shared/service/alert.service';
+import { FormErrorService } from '@app/_shared/service/error-management/form-error.service';
+import { AlertService } from '@app/_shared/service/error-management/alert.service';
 //#endregion
 
 @Component({ templateUrl: './login.component.html' })
@@ -21,13 +22,15 @@ export class LoginComponent implements OnInit {
   submitted = false;
   loading = false;
 
-  // Form controls getter
-  get f() { return this.form.controls; }
+  // Easy access getters
+  get f() { return this.form.controls; } // Form Control
+  get err() { return this.formErrorService; } // Error Service
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
+    private formErrorService: FormErrorService,
     private accountService: AccountService,
     private alertService: AlertService
   ) { }
@@ -64,16 +67,5 @@ export class LoginComponent implements OnInit {
           this.loading = false;
         }
       });
-  }
-
-  getEmailError() {
-    let emailCtrl = this.f.email;
-    return emailCtrl.hasError('required') ? 'Veuillez entrer votre adresse email' :
-      emailCtrl.hasError('email') ? 'L\'email saisi n\'est pas au bon format' : '';
-  }
-
-  getPasswordError() {
-    let emailCtrl = this.f.password;
-    return emailCtrl.hasError('required') ? 'Veuillez saisir un mot de passe' : '';
   }
 }

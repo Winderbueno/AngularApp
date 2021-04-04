@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 
 //#region Model and Service
 import { Alert, AlertType } from '../../model/alert.model';
-import { AlertService } from '../../service/alert.service';
+import { AlertService } from '../../service/error-management/alert.service';
 //#endregion
 
 @Component({
@@ -26,29 +26,29 @@ export class AlertComponent implements OnInit, OnDestroy {
         private alertService: AlertService) { }
 
     ngOnInit() {
-        // subscribe to new alert notifications
+        // Subscribe to new alert notifications
         this.alertSubscription = this.alertService.onAlert(this.id)
             .subscribe(alert => {
-                // clear alerts when an empty alert is received
+                // Clear alerts when an empty alert is received
                 if (!alert.message) {
-                    // filter out alerts without 'keepAfterRouteChange' flag
+                    // Filter out alerts without 'keepAfterRouteChange' flag
                     this.alerts = this.alerts.filter(x => x.keepAfterRouteChange);
 
-                    // remove 'keepAfterRouteChange' flag on the rest
+                    // Remove 'keepAfterRouteChange' flag on the rest
                     this.alerts.forEach(x => delete x.keepAfterRouteChange);
                     return;
                 }
 
-                // add alert to array
+                // Add alert to array
                 this.alerts.push(alert);
 
-                // auto close alert if required
+                // Auto close alert if required
                 if (alert.autoClose) {
                     setTimeout(() => this.removeAlert(alert), 3000);
                 }
            });
 
-        // clear alerts on location change
+        // Clear alerts on location change
         this.routeSubscription = this.router.events.subscribe(event => {
             if (event instanceof NavigationStart) {
                 this.alertService.clear(this.id);
