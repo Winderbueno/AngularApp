@@ -5,7 +5,8 @@ import { Subscription } from 'rxjs';
 //#endregion
 
 //#region Model and Service
-import { Alert, AlertType } from '@app/_shared/model/alert.model';
+import { Alert } from '@app/_shared/model/alert.model';
+import { AlertTypeEnum } from '@app/_shared/model/enum/alert-type.enum';
 import { AlertService } from '@app/_shared/service/error-management/alert.service';
 //#endregion
 
@@ -85,14 +86,14 @@ export class AlertComponent implements OnInit, OnDestroy {
 
         const classes = ['alert', 'alert-dismissable'];
                 
-        const alertTypeClass = {
-            [AlertType.Success]: 'alert alert-success',
-            [AlertType.Error]: 'alert alert-danger',
-            [AlertType.Info]: 'alert alert-info',
-            [AlertType.Warning]: 'alert alert-warning'
+        const AlertTypeEnumClass = {
+            [AlertTypeEnum.Success]: 'alert alert-success',
+            [AlertTypeEnum.Error]: 'alert alert-danger',
+            [AlertTypeEnum.Info]: 'alert alert-info',
+            [AlertTypeEnum.Warning]: 'alert alert-warning'
         }
 
-        classes.push(alertTypeClass[alert.type]);
+        classes.push(AlertTypeEnumClass[alert.type]);
 
         if (alert.fade) {
             classes.push('fade');

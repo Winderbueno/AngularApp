@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 
 //#region Model and Service
 import { ShoppingList } from '@app/_shared/model/shopping-list.model';
-import { CategorisedUsableProduct, UsableProduct } from '@app/_shared/model/categorised-usable-product.model';
+import { CatUsableProduct, UsableProduct } from '@app/_shared/model/categorised-usable-product.model';
 import { ShoppingListService } from '@app/_shared/service/business/shopping-list.service';
 //#endregion
 
@@ -39,7 +39,7 @@ export class ShoppingListComponent implements OnInit {
    * Reset Bought Status for all product in one category
    * @param catProds 
    */
-  ResetBuyStatusOfProductCategory(event: Event, catProds:CategorisedUsableProduct): void {
+  ResetBuyStatusOfProductCategory(event: Event, catProds:CatUsableProduct): void {
     event.stopPropagation(); // To deactivate the collapse/uncollapse when clicking 'Reset'
     catProds.subCatProducts.forEach(
       subCatProd => subCatProd.usableProducts.forEach(

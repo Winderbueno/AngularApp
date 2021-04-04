@@ -13,7 +13,7 @@ export class FormErrorService {
   // Enable subscribing to alerts observable
   getErrorMsg(formCtrl: AbstractControl, ctrlName: string): string {
 
-    let errMsg = '?';
+    let errMsg = '';
 
     if (formCtrl.hasError('required')) {
       errMsg += 'Veuillez saisir votre ';

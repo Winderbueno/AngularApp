@@ -1,6 +1,8 @@
+import { AlertTypeEnum } from "./enum/alert-type.enum";
+
 export class Alert {
     id!: string;
-    type!: AlertType;
+    type!: AlertTypeEnum;
     message!: string;
     autoClose!: boolean;
     keepAfterRouteChange?: boolean;
@@ -9,11 +11,4 @@ export class Alert {
     constructor(init?:Partial<Alert>) {
         Object.assign(this, init);
     }
-}
-
-export enum AlertType {
-    Success,
-    Error,
-    Info,
-    Warning
 }

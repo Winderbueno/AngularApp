@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 //#region Model and Service
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Product } from '@app/_shared/model/product.model';
-import { CategorisedUsableProduct } from '@app/_shared/model/categorised-usable-product.model';
+import { CatUsableProduct } from '@app/_shared/model/categorised-usable-product.model';
 import { ShoppingList } from '@app/_shared/model/shopping-list.model';
 //#endregion
 
@@ -23,7 +23,7 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 1, category: "Apero", subCategory: "Boisson", name: 'Biere'},
     ];
 
-    const catUsableProductSet: CategorisedUsableProduct[] = [ 
+    const catUsableProductSet: CatUsableProduct[] = [ 
       {
         category: 'Repas',
         subCatProducts : [ 

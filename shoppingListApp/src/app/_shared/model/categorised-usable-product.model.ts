@@ -1,10 +1,10 @@
-export interface CategorisedUsableProduct {
+export interface CatUsableProduct {
     // Basic Product Info
     category: string;
-    subCatProducts: SubCategorisedUsableProduct[];
+    subCatProducts: SubCatUsableProduct[];
 }
 
-export interface SubCategorisedUsableProduct {
+export interface SubCatUsableProduct {
     subCategory: string;
     usableProducts: UsableProduct[];
 }

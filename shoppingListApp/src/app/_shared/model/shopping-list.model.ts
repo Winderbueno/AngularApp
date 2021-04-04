@@ -1,4 +1,4 @@
-import { CategorisedUsableProduct } from "./categorised-usable-product.model";
+import { CatUsableProduct } from "./categorised-usable-product.model";
 
 export interface ShoppingList {
 
@@ -7,5 +7,5 @@ export interface ShoppingList {
     idShoppingListModel: number; // ShoppingList based model Id
 
     // ShoppingList Product List 
-    productList: CategorisedUsableProduct[];
+    productList: CatUsableProduct[];
 }

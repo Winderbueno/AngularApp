@@ -1,3 +1,5 @@
+import { RoleEnum } from "./enum/role.enum";
+
 export class Account {
     
     id!: string;
@@ -9,10 +11,6 @@ export class Account {
 
     // Personnal Info
     userName?: string;
-    role?: Role;
+    role?: RoleEnum;
 }
 
-export enum Role {
-    User = 'User',
-    Admin = 'Admin'
-}
