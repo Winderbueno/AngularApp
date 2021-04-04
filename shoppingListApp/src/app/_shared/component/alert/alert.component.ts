@@ -5,8 +5,8 @@ import { Subscription } from 'rxjs';
 //#endregion
 
 //#region Model and Service
-import { Alert, AlertType } from '../../model/alert.model';
-import { AlertService } from '../../service/error-management/alert.service';
+import { Alert, AlertType } from '@app/_shared/model/alert.model';
+import { AlertService } from '@app/_shared/service/error-management/alert.service';
 //#endregion
 
 @Component({

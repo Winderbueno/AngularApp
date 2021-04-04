@@ -5,7 +5,7 @@ import { map, finalize } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { Account } from '../../model/account.model';
+import { Account } from '@app/_shared/model/account.model';
 import { AccountService } from '@app/_shared/service/business/account.service';
 //#endregion
 

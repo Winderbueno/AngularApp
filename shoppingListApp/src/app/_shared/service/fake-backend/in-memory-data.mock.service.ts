@@ -4,9 +4,9 @@ import { Injectable } from '@angular/core';
 
 //#region Model and Service
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Product } from '../../model/product.model';
-import { CategorisedUsableProduct } from '../../model/categorised-usable-product.model';
-import { ShoppingList } from '../../model/shopping-list.model';
+import { Product } from '@app/_shared/model/product.model';
+import { CategorisedUsableProduct } from '@app/_shared/model/categorised-usable-product.model';
+import { ShoppingList } from '@app/_shared/model/shopping-list.model';
 //#endregion
 
 @Injectable({ providedIn: 'root' })

@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 //#endregion
 
 //#region Model and Service
-import { Account } from '../../model/account.model';
-import { AccountService } from '../../service/business/account.service';
+import { Account } from '@app/_shared/model/account.model';
+import { AccountService } from '@app/_shared/service/business/account.service';
 //#endregion
 
 @Component({
