@@ -6,7 +6,9 @@ This App was orinally generated with [Angular CLI](https://github.com/angular/an
 
 This app manages :
 - A user account
-- A active digital shopping list
+- For a user account, 
+  - An active digital shopping list that can be modified
+  - FUTUR : A view to manage Shopping List Models
 
 ## Technical Solution
 
