@@ -5,7 +5,7 @@ This App was orinally generated with [Angular CLI](https://github.com/angular/an
 ## Business Features
 
 This app manages :
-- An user account
+- A user account
 - A active digital shopping list
 
 ## Technical Solution
