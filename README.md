@@ -14,7 +14,7 @@ This app manage :
 
 - CodeMngt&Doc : VSCode, Git, GitHub, Excel, LucidChart
 - App Framework : [Angular](https://angular.io/docs) (Modules : Router, HTTP)
-- Component Library : [Angular Material] (https://material.angular.io/components/categories) with 'Component Dev Kit', 'Angular Animation'
+- Component Library : [Angular Material](https://material.angular.io/components/categories) with 'Component Dev Kit', 'Angular Animation'
 - Back End Emulator : Angular-in-memory-api
 - Client-Server Lib : RxJS
 - CSS Preprocessor : sass en '.scss'
