@@ -6,7 +6,7 @@ It is then inspired by Jason Watmore's [Boilerplate Angular App](https://jasonwa
 
 ## Business Features
 
-This app manage :
+This app manages :
 - An user account
 - A active digital shopping list
 
