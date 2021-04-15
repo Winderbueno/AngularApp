@@ -17,8 +17,6 @@ export class FormErrorService {
 
     if (formCtrl.hasError('required')) {
       errMsg += 'Veuillez saisir votre ';
-
-      console.log(formCtrl);
       switch (ctrlName) {
         case 'username': {
           errMsg += 'nom d\'utilisateur';
