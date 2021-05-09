@@ -15,18 +15,14 @@ const baseUrl = `${environment.apiUrl}/products`;
 @Injectable({ providedIn: 'root' })
 export class ProductService {
 
-  private productURL = 'api/products';
-
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) { }
 
   /**
    * Get All product from server
    * @returns 
    */
   getAll():Observable<Product[]> {
-    return this.http.get<Product[]>(this.productURL);
+    return this.http.get<Product[]>(`${baseUrl}`);
   }
 
 }

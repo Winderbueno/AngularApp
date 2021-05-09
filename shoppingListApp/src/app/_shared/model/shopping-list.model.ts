@@ -1,11 +1,15 @@
-import { CatUsableProduct } from "./usable-product.model";
+import { CatUsedProduct } from "./used-product.model";
 
 export interface ShoppingList {
 
-    id: string;
+    shoppingListId: string;
+    active: boolean;
+    name: string;
+    description: string;
+
     idAccount: string; // User Id
     idShoppingListModel: string; // ShoppingList based model Id
 
     // ShoppingList Product List 
-    productList: CatUsableProduct[];
+    catProducts: CatUsedProduct[];
 }

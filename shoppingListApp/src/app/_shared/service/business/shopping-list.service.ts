@@ -10,12 +10,10 @@ import { ShoppingList } from '@app/_shared/model/shopping-list.model';
 
 // Api Info
 import { environment } from '@env/environment';
-const baseUrl = `${environment.apiUrl}/shoppingList`;
+const baseUrl = `${environment.apiUrl}/shoppinglist`;
 
 @Injectable({ providedIn: 'root' })
 export class ShoppingListService {
-
-  private shoppingListURL = 'api/shoppingList';
 
   constructor(private http: HttpClient) { }
   
@@ -24,6 +22,6 @@ export class ShoppingListService {
    * @returns 
    */
   getShoppingList():Observable<ShoppingList> {
-    return this.http.get<ShoppingList>(this.shoppingListURL);
+    return this.http.get<ShoppingList>(`${baseUrl}/active`);
   }
 }

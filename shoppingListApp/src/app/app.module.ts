@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //#endregion
 
 //#region 3rd Party Module
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+// None for now
 //#endregion
 
 //#region App Module
@@ -18,7 +18,6 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 //#region Service (Interceptor, DataProvider, Guard...)
 import { appInitializer } from './_shared/app.initializer';
 import { AccountService } from './_shared/service/business/account.service';
-import { InMemoryDataService } from './_shared/service/fake-backend/in-memory-data.mock.service';
 import { JwtInterceptor } from './_shared/service/interceptor/jwt.interceptor';
 import { ErrorInterceptor } from './_shared/service/error-management/error.interceptor';
 //#endregion
@@ -33,11 +32,6 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
-    // Fake Backend with 3rd Party Module (Intercepts HTTP requests)
-    // HttpClientInMemoryWebApiModule.forRoot(
-    //  InMemoryDataService, { dataEncapsulation: false }
-    //),
 
     // App Module
     AppRoutingModule,
