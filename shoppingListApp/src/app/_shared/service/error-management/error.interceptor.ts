@@ -30,10 +30,10 @@ export class ErrorInterceptor implements HttpInterceptor {
 
       const error = (err && err.error && err.error.message) || err.statusText;
 
-      // TODO: better job of transforming error for user consumption
+      // TODO - Better job of transforming error for user consumption
       //this.log(`${operation} failed: ${error.message}`);
 
-      // TODO: send the error to remote logging infrastructure
+      // TODO - Send the error to remote logging infrastructure
       console.error(err);
       return throwError(error);
     }))
