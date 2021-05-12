@@ -6,10 +6,10 @@ import { first } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { FormErrorService } from '@app/_shared/service/error-management/form-error.service';
-import { AlertService } from '@app/_shared/service/error-management/alert.service';
-import { MustMatch } from '@app/_shared/service/error-management/must-match.validator';
-import { AccountService } from '@app/_shared/service/business/account.service';
+import { FormErrorService } from '@app_service/error-management/form-error.service';
+import { AlertService } from '@app_service/error-management/alert.service';
+import { MustMatch } from '@app_service/error-management/must-match.validator';
+import { AccountService } from '@app_service/business/account.service';
 //#endregion
 
 

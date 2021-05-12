@@ -5,9 +5,9 @@ import { Subscription } from 'rxjs';
 //#endregion
 
 //#region Model and Service
-import { Alert } from '@app/_shared/model/alert.model';
-import { AlertTypeEnum } from '@app/_shared/model/enum/alert-type.enum';
-import { AlertService } from '@app/_shared/service/error-management/alert.service';
+import { Alert } from '@app_model/alert.model';
+import { AlertTypeEnum } from '@app_model/enum/alert-type.enum';
+import { AlertService } from '@app_service/error-management/alert.service';
 //#endregion
 
 @Component({
@@ -58,25 +58,25 @@ export class AlertComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        // unsubscribe to avoid memory leaks
+        // Unsubscribe to avoid memory leaks
         this.alertSubscription.unsubscribe();
         this.routeSubscription.unsubscribe();
     }
 
     removeAlert(alert: Alert) {
-        // check if already removed to prevent error on auto close
+        // Check if already removed to prevent error on auto close
         if (!this.alerts.includes(alert)) return;
 
         if (this.fade) {
-            // fade out alert
+            // Fade out alert
             alert.fade = true;
 
-            // remove alert after faded out
+            // Remove alert after faded out
             setTimeout(() => {
                 this.alerts = this.alerts.filter(x => x !== alert);
             }, 250);
         } else {
-            // remove alert
+            // Remove alert
             this.alerts = this.alerts.filter(x => x !== alert);
         }
     }

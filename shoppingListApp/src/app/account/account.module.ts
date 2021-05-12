@@ -2,10 +2,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+//#endregion
+
+//#region Material Module
 import { MatInputModule } from '@angular/material/input';
 //#endregion
 
-//#region App Shared Module
+//#region App Module
 import { AccountRoutingModule } from './account-routing.module';
 //#endregion
 
@@ -20,11 +23,15 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 
 @NgModule({
   imports: [
+    // Angular Module
     CommonModule,
-    AccountRoutingModule,
-
     ReactiveFormsModule, // For Forms
-    MatInputModule
+    
+    // Material Module
+    MatInputModule,
+
+    // App Module
+    AccountRoutingModule
   ],
   declarations: [
     LayoutComponent,

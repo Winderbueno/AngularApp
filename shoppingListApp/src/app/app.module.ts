@@ -1,8 +1,8 @@
 //#region Angular Module
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 //#endregion
 
 //#region 3rd Party Module
@@ -11,15 +11,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //#region App Module
 import { AppRoutingModule } from './app-routing.module';
-import { SharedModule } from './_shared/shared.module';
+import { SharedModule } from '@app_shared/shared.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 //#endregion
 
 //#region Service (Interceptor, DataProvider, Guard...)
-import { appInitializer } from './_shared/app.initializer';
-import { AccountService } from './_shared/service/business/account.service';
-import { JwtInterceptor } from './_shared/service/interceptor/jwt.interceptor';
-import { ErrorInterceptor } from './_shared/service/error-management/error.interceptor';
+import { appInitializer } from '@app_shared/app.initializer';
+import { AccountService } from '@app_service/business/account.service';
+import { JwtInterceptor } from '@app_service/interceptor/jwt.interceptor';
+import { ErrorInterceptor } from '@app_service/error-management/error.interceptor';
 //#endregion
 
 //#region Declared Component
@@ -30,8 +30,8 @@ import { AppComponent } from './app.component';
   imports: [
     // Angular Module
     BrowserModule,
-    HttpClientModule,
     BrowserAnimationsModule,
+    HttpClientModule,
 
     // App Module
     AppRoutingModule,

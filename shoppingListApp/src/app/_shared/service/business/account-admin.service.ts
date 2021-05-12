@@ -5,8 +5,8 @@ import { map, finalize } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { Account } from '@app/_shared/model/account.model';
-import { AccountService } from '@app/_shared/service/business/account.service';
+import { Account } from '@app_model/account.model';
+import { AccountService } from '@app_service/business/account.service';
 //#endregion
 
 // Api Info

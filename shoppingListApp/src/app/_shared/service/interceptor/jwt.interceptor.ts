@@ -4,11 +4,11 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable } from 'rxjs';
 
 //#region Model and Service
-import { AccountService } from '../business/account.service';
+import { AccountService } from '@app_service/business/account.service';
 //#endregion
 
 // Api Info
-import { environment } from 'src/environments/environment';
+import { environment } from '@env/environment';
 
 
 @Injectable({ providedIn: 'root' })

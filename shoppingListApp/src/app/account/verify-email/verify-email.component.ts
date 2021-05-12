@@ -5,8 +5,8 @@ import { first } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { AlertService } from '@app/_shared/service/error-management/alert.service';
-import { AccountService } from '@app/_shared/service/business/account.service'
+import { AlertService } from '@app_service/error-management/alert.service';
+import { AccountService } from '@app_service/business/account.service'
 //#endregion
 
 enum EmailStatus {

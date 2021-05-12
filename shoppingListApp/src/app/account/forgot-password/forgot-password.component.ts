@@ -5,9 +5,9 @@ import { first, finalize } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { AlertService } from '@app/_shared/service/error-management/alert.service';
-import { FormErrorService } from '@app/_shared/service/error-management/form-error.service';
-import { AccountService } from '@app/_shared/service/business/account.service';
+import { AlertService } from '@app_service/error-management/alert.service';
+import { FormErrorService } from '@app_service/error-management/form-error.service';
+import { AccountService } from '@app_service/business/account.service';
 //#endregion
 
 @Component({ templateUrl: 'forgot-password.component.html' })

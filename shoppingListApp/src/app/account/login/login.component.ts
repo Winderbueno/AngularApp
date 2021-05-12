@@ -6,10 +6,10 @@ import { first } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { Account } from '@app/_shared/model/account.model';
-import { AccountService } from '@app/_shared/service/business/account.service';
-import { FormErrorService } from '@app/_shared/service/error-management/form-error.service';
-import { AlertService } from '@app/_shared/service/error-management/alert.service';
+import { Account } from '@app_model/account.model';
+import { AccountService } from '@app_service/business/account.service';
+import { FormErrorService } from '@app_service/error-management/form-error.service';
+import { AlertService } from '@app_service/error-management/alert.service';
 //#endregion
 
 @Component({ templateUrl: './login.component.html' })

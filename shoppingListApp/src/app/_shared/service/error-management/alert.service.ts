@@ -5,8 +5,8 @@ import { filter } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { Alert } from '@app/_shared/model/alert.model';
-import { AlertTypeEnum } from '@app/_shared/model/enum/alert-type.enum';
+import { Alert } from '@app_model/alert.model';
+import { AlertTypeEnum } from '@app_model/enum/alert-type.enum';
 //#endregion
 
 
@@ -20,7 +20,7 @@ export class AlertService {
         return this.subject.asObservable().pipe(filter(x => x && x.id === id));
     }
 
-    // convenience methods
+    // Convenience methods
     success(message: string, options?: any) {
         this.alert(new Alert({ ...options, type: AlertTypeEnum.Success, message }));
     }

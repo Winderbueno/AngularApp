@@ -1,13 +1,12 @@
 //#region Angular and RxJS Module
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { map, finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 //#endregion
 
 //#region Model and Service
-import { ShoppingList } from '@app/_shared/model/shopping-list.model';
-import { UsedProduct } from '@app/_shared/model/used-product.model';
+import { ShoppingList } from '@app_model/shopping-list.model';
+import { UsedProduct } from '@app_model/used-product.model';
 //#endregion
 
 // Api Info
