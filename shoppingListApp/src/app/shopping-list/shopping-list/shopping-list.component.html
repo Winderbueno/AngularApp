@@ -1,5 +1,7 @@
 <h2>Shopping List</h2>
 
+<button mat-raised-button (click)="openDialog()">Ajouter un Produit</button>
+
 <div *ngIf="myShoppingList && myShoppingList.catProducts">
 
   <mat-expansion-panel *ngFor="let catProd of myShoppingList.catProducts" hideToggle>
@@ -13,10 +15,11 @@
     <!-- Expanded Panel containing the product sub category and their products -->
     <li *ngFor="let subCatProd of catProd.subCatProducts">
       <span> {{subCatProd.subCategory}} : </span>
-      <span
-        *ngFor="let prod of subCatProd.products"
-        [class.selected]="prod.bought === true"
-        (click)="SwapBuyStatusOfProduct(prod)"> {{prod.name}}, </span> 
+      <span *ngFor="let prod of subCatProd.products">
+
+        <span [class.selected]="prod.bought === true" (click)="SwapBuyStatusOfProduct(prod)">{{prod.name}}</span>
+        <span> , </span>
+      </span>
     </li>
   </mat-expansion-panel>
 
