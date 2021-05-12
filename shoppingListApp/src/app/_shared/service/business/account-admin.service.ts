@@ -33,12 +33,12 @@ export class AccountAdminService {
       return this.http.get<Account>(`${baseUrl}/${id}`);
   }
 
-  create(params: any) {
-    return this.http.post(baseUrl, params);
+  create(body: any) {
+    return this.http.post(baseUrl, body);
   }
 
-  update(id: string, params: any) {
-      return this.http.put(`${baseUrl}/${id}`, params)
+  update(id: string, body: any) {
+      return this.http.put(`${baseUrl}/${id}`, body)
           .pipe(map((account: any) => {
               // Update logged in account if it was updated
               if (account.id === this.accountService.accountValue.id) {

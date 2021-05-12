@@ -10,7 +10,7 @@ import { AbstractControl } from '@angular/forms';
 @Injectable({ providedIn: 'root' })
 export class FormErrorService {
 
-  // Enable subscribing to alerts observable
+  // Generate form error message
   getErrorMsg(formCtrl: AbstractControl, ctrlName: string): string {
 
     let errMsg = '';

@@ -17,9 +17,7 @@ export class ShoppingListComponent implements OnInit {
   
   myShoppingList: ShoppingList | undefined;
 
-  constructor(
-    private shoppingListServ: ShoppingListService
-  ) { }
+  constructor(private shoppingListServ: ShoppingListService) { }
 
   ngOnInit(): void {
     // Get User's shopping list from server
@@ -32,13 +30,10 @@ export class ShoppingListComponent implements OnInit {
    * @param prod 
    */
   SwapBuyStatusOfProduct(prod: UsedProduct): void {
-    if(prod) prod.bought ? prod.bought=false : prod.bought = true;    
-  }
-
-  printConsole(event: Event):void {
-    console.log(this.myShoppingList);
-    console.log(this.myShoppingList?.shoppingListId);
-    console.log(this.myShoppingList?.catProducts);
+    if(prod) prod.bought ? prod.bought=false : prod.bought = true;
+    // TODO - what if the server does not answer ?
+    this.shoppingListServ.updtShoppingListProduct(this.myShoppingList?.shoppingListId, prod)
+      .subscribe();
   }
 
   /**
@@ -46,7 +41,10 @@ export class ShoppingListComponent implements OnInit {
    * @param catProds 
    */
   ResetBuyStatusOfProductCategory(event: Event, catProds:CatUsedProduct): void {
-    event.stopPropagation(); // To deactivate the collapse/uncollapse when clicking 'Reset'
+    
+    // To deactivate 'collapse/uncollapse" when clicking 'Reset'
+    event.stopPropagation();
+
     catProds.subCatProducts.forEach(
       subCatProd => subCatProd.products.forEach(
         prod => prod.bought = false

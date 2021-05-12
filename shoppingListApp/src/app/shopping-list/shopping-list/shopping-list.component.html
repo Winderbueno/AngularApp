@@ -1,7 +1,5 @@
 <h2>Shopping List</h2>
 
-<button mat-button color="primary" (click)="printConsole($event)">Print</button>
-
 <div *ngIf="myShoppingList && myShoppingList.catProducts">
 
   <mat-expansion-panel *ngFor="let catProd of myShoppingList.catProducts" hideToggle>
