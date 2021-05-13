@@ -18,19 +18,18 @@ export class ShoppingListService {
 
   constructor(private http: HttpClient) { }
   
-  /**
-   * Get shoppingList from server
-   * @returns 
-   */
-  getShoppingList():Observable<ShoppingList> {
+  /** Get active shoppingList  */
+  getActive():Observable<ShoppingList> {
     return this.http.get<ShoppingList>(`${baseUrl}/active`);
   }
 
-  /**
-   * Update shoppingList product from server
-   * @returns 
-   */
-   updtShoppingListProduct(idSL: string|undefined, body: UsedProduct) : Observable<{}> {
+  /** For all shoppingList product, reset bought status */
+  resetBoughtStatus(idSL: string|undefined) : Observable<ShoppingList> {
+    return this.http.put<ShoppingList>(`${baseUrl}/reset-bought/${idSL}`, []);
+  }
+
+  /** Update one shoppingList product */
+  updtProduct(idSL: string|undefined, body: UsedProduct) : Observable<{}> {
     return this.http.put(`${baseUrl}/update-product/${idSL}`, body);
   }
 }

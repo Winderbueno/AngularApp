@@ -5,7 +5,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 
 //#region Model and Service
 import { ShoppingList } from '@app_model/shopping-list.model';
-import { CatUsedProduct, UsedProduct } from '@app_model/used-product.model';
+import { UsedProduct } from '@app_model/used-product.model';
 import { ShoppingListService } from '@app_service/business/shopping-list.service';
 import { DialogAddProductComponent } from '@app/shopping-list/dialog-add-product/dialog-add-product.component';
 //#endregion
@@ -26,8 +26,15 @@ export class ShoppingListComponent implements OnInit {
 
   ngOnInit(): void {
     // Get User's shopping list from server
-    this.shoppingListServ.getShoppingList()
-        .subscribe(shoppingList => this.myShoppingList = shoppingList);
+    this.shoppingListServ.getActive()
+      .subscribe(result => this.myShoppingList = result);
+  }
+
+  /** For all shoppingList product, reset 'bought' status */
+  resetBoughtStatus(): void {
+    this.shoppingListServ
+      .resetBoughtStatus(this.myShoppingList?.shoppingListId)
+      .subscribe(result => this.myShoppingList = result);
   }
 
   openDialog(): void {
@@ -35,31 +42,16 @@ export class ShoppingListComponent implements OnInit {
       DialogAddProductComponent, 
       { width: '250px' });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+    dialogRef.afterClosed()
+      .subscribe(result => { console.log('The dialog was closed');});
   }
 
-  /** If user click on 1 prod, swap value of 'bought' status for product */
-  SwapBuyStatusOfProduct(prod: UsedProduct): void {
+  /** For clicked product, swap 'bought' status value */
+  swapProductBoughtStatus(prod: UsedProduct): void {
     if(prod) prod.bought ? prod.bought=false : prod.bought = true;
     // TODO - What if the server does not answer ?
-    this.shoppingListServ.updtShoppingListProduct(this.myShoppingList?.shoppingListId, prod)
+    this.shoppingListServ
+      .updtProduct(this.myShoppingList?.shoppingListId, prod)
       .subscribe();
   }
-
-  /** Reset 'bought' status for all product in one category */
-  ResetBuyStatusOfProductCategory(event: Event, catProds:CatUsedProduct): void {
-    
-    // To deactivate 'collapse/uncollapse" when clicking 'Reset'
-    event.stopPropagation();
-
-    // TODO - Call the back to make it OK
-    catProds.subCatProducts.forEach(
-      subCatProd => subCatProd.products.forEach(
-        prod => prod.bought = false
-      )
-    )
-  }
-
 }

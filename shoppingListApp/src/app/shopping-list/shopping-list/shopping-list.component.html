@@ -1,6 +1,7 @@
 <h2>Shopping List</h2>
 
 <button mat-raised-button (click)="openDialog()">Ajouter un Produit</button>
+<button mat-button color="primary" (click)="resetBoughtStatus()">Réinitialiser les statuts</button>
 
 <div *ngIf="myShoppingList && myShoppingList.catProducts">
 
@@ -9,7 +10,6 @@
     <!-- Expansion Panel Header containing the product category -->
     <mat-expansion-panel-header>
       <mat-panel-title>{{catProd.category}}</mat-panel-title>
-      <button mat-button color="primary" (click)="ResetBuyStatusOfProductCategory($event, catProd)">Reset</button>
     </mat-expansion-panel-header>
 
     <!-- Expanded Panel containing the product sub category and their products -->
@@ -17,7 +17,7 @@
       <span> {{subCatProd.subCategory}} : </span>
       <span *ngFor="let prod of subCatProd.products">
 
-        <span [class.selected]="prod.bought === true" (click)="SwapBuyStatusOfProduct(prod)">{{prod.name}}</span>
+        <span [class.selected]="prod.bought === true" (click)="swapProductBoughtStatus(prod)">{{prod.name}}</span>
         <span> , </span>
       </span>
     </li>
