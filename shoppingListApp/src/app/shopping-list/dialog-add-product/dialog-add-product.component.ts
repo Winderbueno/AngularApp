@@ -1,5 +1,8 @@
 //#region Angular and RxJS Module
 import { Component, OnInit } from '@angular/core';
+//#endregion
+
+//#region Material Module
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 //#endregion
 
