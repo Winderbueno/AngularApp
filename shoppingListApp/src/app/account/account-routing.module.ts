@@ -4,12 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 //#endregion
 
 //#region Routed Component
-import { LayoutComponent } from './layout.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { VerifyEmailComponent } from './verify-email/verify-email.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { LayoutComponent } from './component/layout.component';
+import { LoginComponent } from './component/login/login.component';
+import { RegisterComponent } from './component/register/register.component';
+import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './component/verify-email/verify-email.component';
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 //#endregion
 
 const routes: Routes = [

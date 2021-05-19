@@ -13,9 +13,9 @@ import { AppRoutingModule } from '@app/app-routing.module';
 
 //#region Declared Component
 import { AlertComponent } from '@app_error_mngt/component/alert/alert.component';
-import { FooterComponent } from './component/footer/footer.component';
-import { NgHomeComponent } from './component/ng-home/ng-home.component';
-import { ToolbarComponent } from './component/toolbar/toolbar.component';
+import { FooterComponent } from './page-layout/footer/footer.component';
+import { NgHomeComponent } from './page-layout/ng-home/ng-home.component';
+import { ToolbarComponent } from './page-layout/toolbar/toolbar.component';
 //#endregion
 
 @NgModule({

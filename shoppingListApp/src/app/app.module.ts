@@ -18,7 +18,7 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 //#region Service (Interceptor, DataProvider, Guard...)
 import { appInitializer } from '@app_shared/app.initializer';
 import { AccountService } from '@app_auth/service/account.service';
-import { JwtInterceptor } from '@app_auth/service/jwt.interceptor';
+import { JwtInterceptor } from '@app_auth/helper/jwt.interceptor';
 import { ErrorInterceptor } from '@app_error_mngt/service/error.interceptor';
 //#endregion
 
