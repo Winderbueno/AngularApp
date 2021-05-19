@@ -6,10 +6,10 @@ import { first } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { FormErrorService } from '@app_service/error-management/form-error.service';
-import { AccountService } from '@app_service/business/account.service';
-import { AlertService } from '@app_service/error-management/alert.service';
-import { MustMatch } from '@app_service/error-management/must-match.validator';
+import { FormErrorService } from '@app_error_mngt/service/form-error.service';
+import { AlertService } from '@app_error_mngt/service/alert.service';
+import { MustMatch } from '@app_error_mngt/must-match.validator';
+import { AccountService } from '@app_auth/service/account.service';
 //#endregion
 
 enum TokenStatus {

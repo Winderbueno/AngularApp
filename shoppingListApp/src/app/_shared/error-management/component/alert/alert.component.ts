@@ -5,10 +5,16 @@ import { Subscription } from 'rxjs';
 //#endregion
 
 //#region Model and Service
-import { Alert } from '@app_model/alert.model';
-import { AlertTypeEnum } from '@app_model/enum/alert-type.enum';
-import { AlertService } from '@app_service/error-management/alert.service';
+import { Alert } from '@app_error_mngt/model/alert.model';
+import { AlertTypeEnum } from '@app_error_mngt/model/enum/alert-type.enum';
+import { AlertService } from '@app_error_mngt/service/alert.service';
 //#endregion
+
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-alert',
@@ -24,30 +30,33 @@ export class AlertComponent implements OnInit, OnDestroy {
 
     constructor(
         private router: Router,
-        private alertService: AlertService) { }
+        private alertService: AlertService,
+        private _snackBar: MatSnackBar) { }
 
     ngOnInit() {
-        // Subscribe to new alert notifications
-        this.alertSubscription = this.alertService.onAlert(this.id)
-            .subscribe(alert => {
-                // Clear alerts when an empty alert is received
-                if (!alert.message) {
-                    // Filter out alerts without 'keepAfterRouteChange' flag
-                    this.alerts = this.alerts.filter(x => x.keepAfterRouteChange);
+      // Subscribe to new alert notifications
+      this.alertSubscription = this.alertService.onAlert(this.id)
+        .subscribe(alert => {
+          // Clear alerts when an empty alert is received
+          if (!alert.message) {
+            // Filter out alerts without 'keepAfterRouteChange' flag
+            this.alerts = this.alerts.filter(x => x.keepAfterRouteChange);
 
-                    // Remove 'keepAfterRouteChange' flag on the rest
-                    this.alerts.forEach(x => delete x.keepAfterRouteChange);
-                    return;
-                }
+            // Remove 'keepAfterRouteChange' flag on the rest
+            this.alerts.forEach(x => delete x.keepAfterRouteChange);
+            return;
+          }
 
-                // Add alert to array
-                this.alerts.push(alert);
+          // Add alert to array
+          this.alerts.push(alert);
 
-                // Auto close alert if required
-                if (alert.autoClose) {
-                    setTimeout(() => this.removeAlert(alert), 3000);
-                }
-           });
+          // Auto close alert if required
+          if (alert.autoClose) {
+            setTimeout(() => this.removeAlert(alert), 3000);
+          }
+
+          this.openSnackBar();
+        });
 
         // Clear alerts on location change
         this.routeSubscription = this.router.events.subscribe(event => {
@@ -100,5 +109,9 @@ export class AlertComponent implements OnInit, OnDestroy {
         }
 
         return classes.join(' ');
+    }
+
+    openSnackBar() {
+      this._snackBar.open('Cannonball!!', 'Splash');
     }
 }

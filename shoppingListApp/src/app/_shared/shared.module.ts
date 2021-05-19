@@ -3,12 +3,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 //#endregion
 
+//#region Material Module
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+//#endregion
+
 //#region App Module
 import { AppRoutingModule } from '@app/app-routing.module';
 //#endregion
 
 //#region Declared Component
-import { AlertComponent } from './component/alert/alert.component';
+import { AlertComponent } from '@app_error_mngt/component/alert/alert.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { NgHomeComponent } from './component/ng-home/ng-home.component';
 import { ToolbarComponent } from './component/toolbar/toolbar.component';
@@ -18,6 +22,9 @@ import { ToolbarComponent } from './component/toolbar/toolbar.component';
   imports: [
     // Angular Module
     CommonModule,
+
+    // Material Module
+    MatSnackBarModule,
 
     // App Module
     AppRoutingModule, // Used By : ToolBar

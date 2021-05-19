@@ -6,7 +6,7 @@ import { catchError } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { AccountService } from '@app_service/business/account.service';
+import { AccountService } from '@app_auth/service/account.service';
 //#endregion
 
 

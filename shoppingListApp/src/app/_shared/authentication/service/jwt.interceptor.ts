@@ -4,7 +4,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable } from 'rxjs';
 
 //#region Model and Service
-import { AccountService } from '@app_service/business/account.service';
+import { AccountService } from '@app_auth/service/account.service';
 //#endregion
 
 // Api Info

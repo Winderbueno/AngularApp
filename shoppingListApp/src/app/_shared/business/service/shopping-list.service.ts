@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 //#endregion
 
 //#region Model and Service
-import { ShoppingList } from '@app_model/shopping-list.model';
-import { UsedProduct } from '@app_model/used-product.model';
+import { ShoppingList } from '@app_business/model/shopping-list.model';
+import { UsedProduct } from '@app_business/model/used-product.model';
 //#endregion
 
 // Api Info

@@ -11,7 +11,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list/shopping-li
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 
 // Service
-import { AuthGuard } from '@app_service/guard/auth.guard';
+import { AuthGuard } from '@app_auth/service/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/ng-home', pathMatch: 'full' },
