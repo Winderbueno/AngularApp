@@ -10,6 +10,8 @@ import { AlertTypeEnum } from '@app_error_mngt/model/enum/alert-type.enum';
 import { AlertService } from '@app_error_mngt/service/alert.service';
 //#endregion
 
+import {SnackbarComponent} from '../snackbar/snackbar.component';
+
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -55,7 +57,7 @@ export class AlertComponent implements OnInit, OnDestroy {
             setTimeout(() => this.removeAlert(alert), 3000);
           }
 
-          this.openSnackBar();
+          this.openSnackBar(this.alerts[0].message, 'Splash');
         });
 
         // Clear alerts on location change
@@ -111,7 +113,11 @@ export class AlertComponent implements OnInit, OnDestroy {
         return classes.join(' ');
     }
 
-    openSnackBar() {
-      this._snackBar.open('Cannonball!!', 'Splash');
+    openSnackBar(msg: string, panelClass: string) {
+      this._snackBar.openFromComponent(SnackbarComponent, {
+        data: msg,
+        panelClass: panelClass,
+        duration: 10000
+      });
     }
 }
