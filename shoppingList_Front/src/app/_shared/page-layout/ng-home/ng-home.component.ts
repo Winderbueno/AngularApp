@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NgHomeComponent implements OnInit {
 
-  title = 'shoppingListApp';
+  title = 'shoppingList_Front';
 
   constructor() { }
 
