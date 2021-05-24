@@ -5,10 +5,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@app_shared/module/material.module';
 //#endregion
 
-//#region Material Module
-
-//#endregion
-
 //#region App Module
 import { AccountRoutingModule } from './account-routing.module';
 //#endregion
