@@ -15,11 +15,11 @@
 
   .content {
     display: flex;
+    flex-direction: column;
+    flex-grow:1;
     margin: 82px auto 32px;
     padding: 0 16px;
     max-width: 960px;
-    flex-direction: column;
-    flex-grow:1;
     align-items: center;
   }
 
