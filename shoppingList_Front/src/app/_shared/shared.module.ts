@@ -1,11 +1,7 @@
-//#region Angular Module
+//#region Angular & Material Module
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-//#endregion
-
-//#region Material Module
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatIconModule } from '@angular/material/icon';
+import { MaterialModule } from '@app_shared/module/material.module';
 //#endregion
 
 //#region App Module
@@ -22,12 +18,9 @@ import { SnackbarComponent } from './error-mngt/component/snackbar/snackbar.comp
 
 @NgModule({
   imports: [
-    // Angular Module
+    // Angular & Material Module
     CommonModule,
-
-    // Material Module
-    MatSnackBarModule,
-    MatIconModule,
+    MaterialModule,
 
     // App Module
     AppRoutingModule, // Used By : ToolBar

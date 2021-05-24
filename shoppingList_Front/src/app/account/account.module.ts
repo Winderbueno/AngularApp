@@ -1,11 +1,12 @@
-//#region Angular Module
+//#region Angular & Material Module
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '@app_shared/module/material.module';
 //#endregion
 
 //#region Material Module
-import { MatInputModule } from '@angular/material/input';
+
 //#endregion
 
 //#region App Module
@@ -23,12 +24,10 @@ import { LayoutComponent,
 
 @NgModule({
   imports: [
-    // Angular Module
+    // Angular & Material Module
     CommonModule,
     ReactiveFormsModule, // For Forms
-    
-    // Material Module
-    MatInputModule,
+    MaterialModule,
 
     // App Module
     AccountRoutingModule

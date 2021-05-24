@@ -1,15 +1,9 @@
-//#region Angular Module
+//#region Angular & Material Module
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-//#endregion
-
-//#region Material Module
-import { MatInputModule } from '@angular/material/input';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatSelectModule } from '@angular/material/select';
+import { MaterialModule } from '@app_shared/module/material.module';
 //#endregion
 
 //#region App Module
@@ -23,16 +17,11 @@ import { DialogAddProductComponent } from './dialog-add-product/dialog-add-produ
 
 @NgModule({
   imports: [
-    // Angular Module
+    // Angular & Material Module
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-
-    // Material Module
-    MatInputModule,
-    MatDialogModule,
-    MatExpansionModule,
-    MatSelectModule,
+    MaterialModule,
     
     // App Module
     SharedModule
