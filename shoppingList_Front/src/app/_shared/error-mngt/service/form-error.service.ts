@@ -16,22 +16,22 @@ export class FormErrorService {
     let errMsg = '';
 
     if (formCtrl.hasError('required')) {
-      errMsg += 'Veuillez saisir votre ';
+      errMsg += 'Please fill in your ';
       switch (ctrlName) {
         case 'username': {
-          errMsg += 'nom d\'utilisateur';
+          errMsg += 'username';
           break;
         }
         case 'email': {
-          errMsg += 'adresse email';
+          errMsg += 'email adress';
           break;
         }
         case 'password': {
-          errMsg += 'mot de passe';
+          errMsg += 'password';
           break;
         }
         case 'confirmPassword': {
-          errMsg += 'mot de passe';
+          errMsg += 'password';
           break;
         }
         default: {
@@ -39,9 +39,9 @@ export class FormErrorService {
         }
       }
     } else if (formCtrl.hasError('email')) {
-      errMsg = 'L\'email saisi n\'est pas au bon format';
+      errMsg = 'Filled email has not the good format';
     } else if (formCtrl.hasError('mustMatch')) {
-      errMsg = 'Les mots de passe doivent être les mêmes';
+      errMsg = 'Passwords should be the same';
     }
 
     return errMsg;
