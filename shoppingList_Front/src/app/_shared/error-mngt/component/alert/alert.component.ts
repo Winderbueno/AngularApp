@@ -1,71 +1,73 @@
 ﻿//#region Angular and RxJS Module
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs';
 //#endregion
 
 //#region Model and Service
 import { Alert } from '@app_error_mngt/model/alert.model';
-import { AlertTypeEnum } from '@app_error_mngt/model/enum/alert-type.enum';
 import { AlertService } from '@app_error_mngt/service/alert.service';
+import { AlertTypeEnum } from '@app_error_mngt/model/enum/alert-type.enum';
 //#endregion
 
 import {SnackbarComponent} from '../snackbar/snackbar.component';
-
-import {
-  MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
-} from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-alert',
     templateUrl: './alert.component.html'
   })
 export class AlertComponent implements OnInit, OnDestroy {
-    @Input() id = 'default-alert';
-    @Input() fade = true;
-
-    alerts: Alert[] = [];
+    
+    snackBarRef!: MatSnackBarRef<SnackbarComponent>;
+    alert: Alert = new Alert();
     alertSubscription!: Subscription;
     routeSubscription!: Subscription;
 
     constructor(
         private router: Router,
         private alertService: AlertService,
-        private _snackBar: MatSnackBar) { }
+        private snackBar: MatSnackBar) { 
+    }
 
     ngOnInit() {
-      // Subscribe to new alert notifications
-      this.alertSubscription = this.alertService.onAlert(this.id)
-        .subscribe(alert => {
-          // Clear alerts when an empty alert is received
-          if (!alert.message) {
-            // Filter out alerts without 'keepAfterRouteChange' flag
-            this.alerts = this.alerts.filter(x => x.keepAfterRouteChange);
 
-            // Remove 'keepAfterRouteChange' flag on the rest
-            this.alerts.forEach(x => delete x.keepAfterRouteChange);
+      // Subscribe to new alert notifications
+      this.alertSubscription = this.alertService.onAlert()
+        .subscribe(alert => {
+
+          if(alert.keepAfterRouteChange) {
+            this.alert = alert;
+          }
+
+          // If empty message - Clear Alert
+          if (!alert.message) {
+            if (this.alert.id != '-1') {
+              this.alert.id = '-1';
+            } 
+            else if (this.snackBarRef != undefined) { 
+              this.snackBarRef.dismiss(); 
+            }
             return;
           }
 
-          // Add alert to array
-          this.alerts.push(alert);
-
-          // Auto close alert if required
-          if (alert.autoClose) {
-            setTimeout(() => this.removeAlert(alert), 3000);
+          const AlertTypeEnumClass = {
+            [AlertTypeEnum.Success]: 'alert-success',
+            [AlertTypeEnum.Error]: 'alert-danger',
+            [AlertTypeEnum.Info]: 'alert-info',
+            [AlertTypeEnum.Warning]: 'alert-warning'
           }
 
-          this.openSnackBar(this.alerts[0].message, 'Splash');
+          this.openSnackBar(alert.message, AlertTypeEnumClass[alert.type]);
         });
 
-        // Clear alerts on location change
-        this.routeSubscription = this.router.events.subscribe(event => {
-            if (event instanceof NavigationStart) {
-                this.alertService.clear(this.id);
-            }
-        });
+      // Clear alerts on location change
+      this.routeSubscription = this.router.events
+        .subscribe(event => {
+        if (event instanceof NavigationStart) {
+            this.alertService.clear();
+        } 
+      });
     }
 
     ngOnDestroy() {
@@ -74,47 +76,8 @@ export class AlertComponent implements OnInit, OnDestroy {
         this.routeSubscription.unsubscribe();
     }
 
-    removeAlert(alert: Alert) {
-        // Check if already removed to prevent error on auto close
-        if (!this.alerts.includes(alert)) return;
-
-        if (this.fade) {
-            // Fade out alert
-            alert.fade = true;
-
-            // Remove alert after faded out
-            setTimeout(() => {
-                this.alerts = this.alerts.filter(x => x !== alert);
-            }, 250);
-        } else {
-            // Remove alert
-            this.alerts = this.alerts.filter(x => x !== alert);
-        }
-    }
-
-    cssClasses(alert: Alert) {
-        if (!alert) return;
-
-        const classes = ['alert', 'alert-dismissable'];
-                
-        const AlertTypeEnumClass = {
-            [AlertTypeEnum.Success]: 'alert alert-success',
-            [AlertTypeEnum.Error]: 'alert alert-danger',
-            [AlertTypeEnum.Info]: 'alert alert-info',
-            [AlertTypeEnum.Warning]: 'alert alert-warning'
-        }
-
-        classes.push(AlertTypeEnumClass[alert.type]);
-
-        if (alert.fade) {
-            classes.push('fade');
-        }
-
-        return classes.join(' ');
-    }
-
     openSnackBar(msg: string, panelClass: string) {
-      this._snackBar.openFromComponent(SnackbarComponent, {
+      this.snackBarRef = this.snackBar.openFromComponent(SnackbarComponent, {
         data: msg,
         panelClass: panelClass,
         duration: 10000
