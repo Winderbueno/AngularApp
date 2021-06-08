@@ -1,4 +1,4 @@
-<h2> Log In </h2>
+<h2>Log In</h2>
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
 
@@ -16,10 +16,10 @@
     <mat-error *ngIf="f.password.invalid">{{ err.getErrorMsg(f.password, 'password') }}</mat-error>
   </mat-form-field>
 
-  <button mat-raised-button color="primary" class="form-element" type="submit"> Sign In </button>
+  <button mat-raised-button color="primary" class="form-element" type="submit">Sign In</button>
   <div>
-    <a mat-button routerLink="../register"> New account ? :) </a>
+    <a mat-button routerLink="../register">New account ? :)</a>
     <span></span>
-    <a mat-button routerLink="../forgot-password"> Forgot password ? </a>
+    <a mat-button routerLink="../forgot-password">Forgot password ?</a>
   </div>
 </form>

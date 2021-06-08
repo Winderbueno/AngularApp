@@ -74,20 +74,17 @@ export class ResetPasswordComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    // Reset alerts on submit
-    this.alertService.clear();
-
     // Stop here if form is invalid
-    if (this.form.invalid) {
-      return;
-    }
+    if (this.form.invalid) { return; }
 
     this.loading = true;
     this.accountService.resetPassword(this.token, this.f.password.value, this.f.confirmPassword.value)
       .pipe(first())
       .subscribe({
         next: () => {
-          this.alertService.success('Mot de passe reitnitialisé avec succès, vous pouvez maintenant vous connecter', { keepAfterRouteChange: true });
+          this.alertService.success(
+            'Password successfully reinitialised, you can now log in :)',
+            { keepAfterRouteChange: true });
           this.router.navigate(['../login'], { relativeTo: this.route });
         },
         error: error => {
