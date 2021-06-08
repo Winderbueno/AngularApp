@@ -1,4 +1,4 @@
-﻿//#region Angular and RxJS Module
+﻿//#region Angular, Material, RxJS
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -36,16 +36,17 @@ export class AlertComponent implements OnInit, OnDestroy {
       this.alertSubscription = this.alertService.onAlert()
         .subscribe(alert => {
 
+          // Save the alert for route change
           if(alert.keepAfterRouteChange) {
             this.alert = alert;
           }
 
-          // If empty message - Clear Alert
+          // If empty message, clear Alert
           if (!alert.message) {
-            if (this.alert.id != '-1') {
+            if (this.alert.id != '-1') { // If there is a save alert for route change, delete it
               this.alert.id = '-1';
             } 
-            else if (this.snackBarRef != undefined) { 
+            else if (this.snackBarRef != undefined) { // Otherwise, close the alert
               this.snackBarRef.dismiss(); 
             }
             return;

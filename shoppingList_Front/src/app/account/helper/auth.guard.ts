@@ -1,4 +1,4 @@
-//#region Angular and RxJS Module
+//#region Angular, Material, RxJS
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 //#endregion

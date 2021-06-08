@@ -1,6 +1,6 @@
 //#region Angular Module
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //#endregion
 
 //#region Material Module

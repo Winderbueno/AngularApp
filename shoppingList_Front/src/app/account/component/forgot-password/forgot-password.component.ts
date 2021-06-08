@@ -1,4 +1,4 @@
-﻿//#region Angular and RxJS Module
+﻿//#region Angular, Material, RxJS
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first, finalize } from 'rxjs/operators';

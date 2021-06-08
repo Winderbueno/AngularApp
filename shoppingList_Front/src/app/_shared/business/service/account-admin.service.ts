@@ -1,4 +1,4 @@
-//#region Angular and RxJS Module
+//#region Angular, Material, RxJS
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, finalize } from 'rxjs/operators';

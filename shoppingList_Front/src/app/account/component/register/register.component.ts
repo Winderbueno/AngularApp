@@ -1,4 +1,4 @@
-﻿//#region Angular and RxJS Module
+﻿//#region Angular, Material, RxJS
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    
+
     // Stop here if form is invalid
     if (this.form.invalid) { return; }
 

@@ -1,4 +1,4 @@
-//#region Angular and RxJS Module
+//#region Angular, Material, RxJS
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';

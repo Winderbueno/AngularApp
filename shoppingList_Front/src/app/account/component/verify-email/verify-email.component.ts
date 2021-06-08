@@ -1,4 +1,4 @@
-﻿//#region Angular and RxJS Module
+﻿//#region Angular, Material, RxJS
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
