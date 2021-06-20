@@ -8,7 +8,7 @@ import { AccountService } from '@app_auth/service/account.service';
 //#endregion
 
 // Api Info
-import { environment } from '@env/environment';
+import { envBusinessAPI } from '@env/environment';
 
 
 @Injectable({ providedIn: 'root' })
@@ -20,7 +20,7 @@ export class JwtInterceptor implements HttpInterceptor {
         // Add auth header with jwt if user is logged in and request is to the api url
         const account = this.accountService.accountValue;
         const isLoggedIn = account && account.jwtToken;
-        const isApiUrl = request.url.startsWith(environment.apiUrl);
+        const isApiUrl = request.url.startsWith(envBusinessAPI.apiUrl);
         if (isLoggedIn && isApiUrl) {
             request = request.clone({
                 setHeaders: {

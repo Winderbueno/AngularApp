@@ -22,20 +22,23 @@ export class ErrorInterceptor implements HttpInterceptor {
   */
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    return next.handle(request).pipe(catchError(err => {
-      if ([401, 403].includes(err.status) && this.accountService.accountValue) {
-        // Auto logout if 401 or 403 response returned from api
-        this.accountService.logout();
-      }
+    return next.handle(request)
+      .pipe(
+        catchError(err => {
+          if ([401, 403].includes(err.status) && this.accountService.accountValue) {
+            // Auto logout if 401 or 403 response returned from api
+            this.accountService.logout();
+          }
 
-      const error = (err && err.error && err.error.message) || err.statusText;
+          const error = (err && err.error && err.error.message) || err.statusText;
 
-      // TODO - Better job of transforming error for user consumption
-      //this.log(`${operation} failed: ${error.message}`);
+          // TODO - Better job of transforming error for user consumption
+          //this.log(`${operation} failed: ${error.message}`);
 
-      // TODO - Send the error to remote logging infrastructure
-      console.error(err);
-      return throwError(error);
+          // TODO - Send the error to remote logging infrastructure
+          console.error(err);
+          
+          return throwError(error);
     }))
   }
 }

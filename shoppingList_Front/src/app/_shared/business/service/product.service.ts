@@ -9,8 +9,8 @@ import { Product } from '@app_business/model/product.model';
 //#endregion
 
 // Api Info
-import { environment } from '@env/environment';
-const baseUrl = `${environment.apiUrl}/products`;
+import { envBusinessAPI } from '@env/environment';
+const baseUrl = `${envBusinessAPI.apiUrl}/products`;
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {

@@ -10,8 +10,8 @@ import { UsedProduct } from '@app_business/model/used-product.model';
 //#endregion
 
 // Api Info
-import { environment } from '@env/environment';
-const baseUrl = `${environment.apiUrl}/shoppinglist`;
+import { envBusinessAPI } from '@env/environment';
+const baseUrl = `${envBusinessAPI.apiUrl}/shoppinglist`;
 
 @Injectable({ providedIn: 'root' })
 export class ShoppingListService {
