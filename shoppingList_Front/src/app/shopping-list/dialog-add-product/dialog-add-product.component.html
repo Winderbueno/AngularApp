@@ -3,14 +3,24 @@
 <div mat-dialog-content>
 
   <mat-form-field>
-    <input matInput [(ngModel)]="product" placeholder="Un nom de produit ;)">
+    <input matInput [(ngModel)]="productName" placeholder="Un nom de produit ;)">
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Categorie</mat-label>
-    <mat-select>
-      <mat-option value="one">First option</mat-option>
-      <mat-option value="two">Second option</mat-option>
+    <mat-label>Category</mat-label>
+    <mat-select [(ngModel)]="selectedCat" name="category">
+      <span *ngIf="productCatEnum">
+        <mat-option value="{{prodCat}}" *ngFor="let prodCat of productCatEnum.values">{{prodCat}}</mat-option>
+      </span>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Sub Category</mat-label>
+    <mat-select [(ngModel)]="selectedSubCat" name="subCategory">
+      <span *ngIf="productSubCatEnum">
+        <mat-option value="{{prodSubCat}}" *ngFor="let prodSubCat of productSubCatEnum.values">{{prodSubCat}}</mat-option>
+      </span>
     </mat-select>
   </mat-form-field>
 
@@ -21,5 +31,5 @@
 
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button (click)="setValue()" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="submit()" cdkFocusInitial>Ok</button>
 </div>
