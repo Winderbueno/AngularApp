@@ -1,6 +1,6 @@
 //#region Angular, Material, RxJS
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 //#endregion
 
 //#region Model and Service
@@ -16,7 +16,7 @@ import { DialogAddProductComponent } from '@app/shopping-list/dialog-add-product
   styleUrls: ['./shopping-list.component.scss']
 })
 export class ShoppingListComponent implements OnInit {
-  
+
   myShoppingList: ShoppingList | undefined;
 
   constructor(
@@ -38,12 +38,12 @@ export class ShoppingListComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(
-      DialogAddProductComponent, 
-      { width: '250px' });
+    const dialogRef = this.dialog.open(DialogAddProductComponent, { width: '300px' });
 
     dialogRef.afterClosed()
-      .subscribe(result => { console.log('The dialog was closed');});
+      .subscribe(result => {
+        this.shoppingListServ.getActive()
+          .subscribe(result => this.myShoppingList = result);});
   }
 
   /** For clicked product, swap 'bought' status value */

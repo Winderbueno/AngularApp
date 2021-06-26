@@ -1,9 +1,6 @@
 //#region Angular, Material, RxJS
 import { Component, OnInit } from '@angular/core';
-//#endregion
-
-//#region Material Module
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 //#endregion
 
 //#region Model and Service
@@ -20,13 +17,12 @@ import { CreateProductReq } from '@app/_shared/business/model/create-product-req
 })
 export class DialogAddProductComponent implements OnInit {
 
-  productName: string = '';
-
   // Proposition values
   productCatEnum!: Enum;
   productSubCatEnum!: Enum;
 
-  // Selection Values
+  // Selected values
+  productName: string = '';
   selectedCat!: string;
   selectedSubCat!: string;
 
@@ -37,7 +33,6 @@ export class DialogAddProductComponent implements OnInit {
     private alertService: AlertService,
     private enumService: EnumService,
     private shoppingListService: ShoppingListService,
-
   ) { }
 
   ngOnInit(): void {
@@ -54,7 +49,7 @@ export class DialogAddProductComponent implements OnInit {
     });
   }
 
-  submit() {
+  onSubmit() {
 
     // Get Active List Id
     var idSl: string = this.shoppingListService.active.shoppingListId;
@@ -71,7 +66,11 @@ export class DialogAddProductComponent implements OnInit {
     // Call the server
     this.shoppingListService.createProduct(idSl, this.prodToCreate)
       .subscribe({
-        next: res => { console.log("jycroispas"); },
+        next: res => {
+          this.dialogRef.close();
+          this.shoppingListService.getActive().subscribe();
+          // TODO - Update SL ?
+        },
         error: error => this.alertService.error(error)
     });
   }

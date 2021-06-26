@@ -15,7 +15,7 @@ import { AccountService } from '@app_auth/service/account.service';
 
 @Component({ templateUrl: 'register.component.html' })
 export class RegisterComponent implements OnInit {
-  
+
   // Form
   form!: FormGroup;
   submitted = false;
@@ -53,20 +53,13 @@ export class RegisterComponent implements OnInit {
     // Stop here if form is invalid
     if (this.form.invalid) { return; }
 
-    // Create a User to register
-    let inCreationAccount = {
-      id: "0",
-      email: this.f.email.value, pwd: this.f.password.value,
-      username: this.f.username.value,
-    }
-
     this.loading = true;
     this.accountService.register(this.form.value)
       .pipe(first())
       .subscribe({
         next: () => {
           this.alertService.success(
-            'Registration successful, please check your email for verification instructions', 
+            'Registration successful, please check your email for verification instructions',
             { keepAfterRouteChange: true }
           );
           this.router.navigate(['../login'], { relativeTo: this.route });

@@ -26,7 +26,6 @@ export class ShoppingListService {
     // No Account logged in is a user with a '-1' id } */
     this.sLSubject = new BehaviorSubject<ShoppingList>({ shoppingListId: "-1" });
     this.sL = this.sLSubject.asObservable();
-
   }
 
   public get active(): ShoppingList { return this.sLSubject.value; }
