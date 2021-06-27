@@ -1,19 +1,22 @@
 //#region Angular, Material, RxJS
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, finalize } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
 import { AccountService } from '@app_account/service/account.service';
+import { LoaderService } from '../loader/loader.service';
 //#endregion
 
 
 @Injectable({ providedIn: 'root' })
 export class ErrorInterceptor implements HttpInterceptor {
 
-  constructor(private accountService: AccountService) { }
+  constructor(
+    private accountService: AccountService,
+    private loaderService: LoaderService) { }
 
   /**
    * TODO - Handle Http operation that failed then Let the app continue.
@@ -23,8 +26,8 @@ export class ErrorInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     return next.handle(request)
-      .pipe(
-        catchError(err => {
+      .pipe(finalize(() => this.loaderService.stopLoading()))
+      .pipe(catchError(err => {
           if ([401, 403].includes(err.status) && this.accountService.accountValue) {
             // Auto logout if 401 or 403 response returned from api
             this.accountService.logout();

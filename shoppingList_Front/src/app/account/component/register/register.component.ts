@@ -19,7 +19,6 @@ export class RegisterComponent implements OnInit {
   // Form
   form!: FormGroup;
   submitted = false;
-  loading = false;
 
   // Easy access getters
   get f() { return this.form.controls; } // Form Control
@@ -53,7 +52,6 @@ export class RegisterComponent implements OnInit {
     // Stop here if form is invalid
     if (this.form.invalid) { return; }
 
-    this.loading = true;
     this.accountService.register(this.form.value)
       .pipe(first())
       .subscribe({
@@ -64,10 +62,7 @@ export class RegisterComponent implements OnInit {
           );
           this.router.navigate(['../login'], { relativeTo: this.route });
         },
-        error: error => {
-          this.alertService.error(error);
-          this.loading = false;
-        }
+        error: error => { this.alertService.error(error); }
       });
 
   }

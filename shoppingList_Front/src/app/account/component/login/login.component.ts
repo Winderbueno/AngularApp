@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   // Form
   form!: FormGroup;
   submitted = false;
-  loading = false;
 
   // Easy access getters
   get f() { return this.form.controls; } // Form Control
@@ -49,7 +48,6 @@ export class LoginComponent implements OnInit {
     // Stop here if form is invalid
     if (this.form.invalid) { return; }
 
-    this.loading = true;
     this.accountService.login(this.f.email.value, this.f.password.value)
       .pipe(first())
       .subscribe({
@@ -58,10 +56,7 @@ export class LoginComponent implements OnInit {
           const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
           this.router.navigate([returnUrl]);
         },
-        error: error => {
-          this.alertService.error(error);
-          this.loading = false;
-        }
+        error: error => { this.alertService.error(error); }
       });
   }
 }

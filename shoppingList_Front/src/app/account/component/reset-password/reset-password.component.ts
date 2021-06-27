@@ -28,7 +28,6 @@ export class ResetPasswordComponent implements OnInit {
 
   // Form
   form!: FormGroup;
-  loading = false;
   submitted = false;
 
   // Easy access getters
@@ -77,7 +76,6 @@ export class ResetPasswordComponent implements OnInit {
     // Stop here if form is invalid
     if (this.form.invalid) { return; }
 
-    this.loading = true;
     this.accountService.resetPassword(this.token, this.f.password.value, this.f.confirmPassword.value)
       .pipe(first())
       .subscribe({
@@ -87,10 +85,7 @@ export class ResetPasswordComponent implements OnInit {
             { keepAfterRouteChange: true });
           this.router.navigate(['../login'], { relativeTo: this.route });
         },
-        error: error => {
-          this.alertService.error(error);
-          this.loading = false;
-        }
+        error: error => { this.alertService.error(error); }
       });
   }
 }

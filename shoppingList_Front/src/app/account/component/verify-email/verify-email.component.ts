@@ -42,9 +42,7 @@ export class VerifyEmailComponent implements OnInit {
             { keepAfterRouteChange: true });
           this.router.navigate(['../login'], { relativeTo: this.route });
         },
-        error: () => {
-          this.emailStatus = EmailStatus.Failed;
-        }
+        error: () => { this.emailStatus = EmailStatus.Failed; }
       });
   }
 }
