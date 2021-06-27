@@ -7,7 +7,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { AlertService } from '@app_error_mngt/service/alert.service';
 import { EnumService } from '@app_shared/enum/enum.service';
 import { Enum } from '@app_shared/enum/enum.model';
-import { ShoppingListService } from '@app_business/service/shopping-list.service';
+import { ShoppingListService } from '@app/shopping-list/service/shopping-list.service';
 import { CreateProductReq } from '@app/_shared/business/model/create-product-req.model';
 //#endregion
 
@@ -62,6 +62,7 @@ export class DialogAddProductComponent implements OnInit {
       quantity: 1,
       note: "test"
     }
+    // TODO - Handle case when the user dont give a product name
 
     // Call the server
     this.shoppingListService.createProduct(idSl, this.prodToCreate)

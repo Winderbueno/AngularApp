@@ -5,19 +5,19 @@ import { RouterModule, Routes } from '@angular/router';
 
 //#region Routed Component
 import { NgHomeComponent } from '@app_shared/page-layout/ng-home/ng-home.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list/shopping-list.component';
+import { ShoppingListComponent } from './shopping-list/component/shopping-list/shopping-list.component';
 //#endregion
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 
 // Service
-import { AuthGuard } from '@app_auth/helper/auth.guard';
+import { AuthGuard } from '@app/_shared/guard/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/ng-home', pathMatch: 'full' },
   { path: 'ng-home', component: NgHomeComponent },
   { path: 'my-shopping-list', component: ShoppingListComponent, canActivate: [AuthGuard] },
-  { path: 'account', loadChildren: accountModule },  
+  { path: 'account', loadChildren: accountModule },
 ];
 
 @NgModule({

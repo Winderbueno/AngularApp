@@ -11,8 +11,8 @@ import { SharedModule } from '@app_shared/shared.module';
 //#endregion
 
 //#region Declared Component
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { DialogAddProductComponent } from './dialog-add-product/dialog-add-product.component';
+import { ShoppingListComponent } from './component/shopping-list/shopping-list.component';
+import { DialogAddProductComponent } from './component/dialog-add-product/dialog-add-product.component';
 //#endregion
 
 @NgModule({
@@ -22,7 +22,7 @@ import { DialogAddProductComponent } from './dialog-add-product/dialog-add-produ
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    
+
     // App Module
     SharedModule
   ],

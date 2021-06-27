@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 //#region Model and Service
 import { ShoppingList } from '@app_business/model/shopping-list.model';
 import { UsedProduct } from '@app_business/model/used-product.model';
-import { CreateProductReq } from '../model/create-product-req.model';
+import { CreateProductReq } from '../../_shared/business/model/create-product-req.model';
 //#endregion
 
 // Api Info

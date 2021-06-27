@@ -6,8 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 //#region Model and Service
 import { ShoppingList } from '@app_business/model/shopping-list.model';
 import { UsedProduct } from '@app_business/model/used-product.model';
-import { ShoppingListService } from '@app_business/service/shopping-list.service';
-import { DialogAddProductComponent } from '@app/shopping-list/dialog-add-product/dialog-add-product.component';
+import { ShoppingListService } from '@app/shopping-list/service/shopping-list.service';
+import { DialogAddProductComponent } from '@app/shopping-list/component/dialog-add-product/dialog-add-product.component';
 //#endregion
 
 @Component({
