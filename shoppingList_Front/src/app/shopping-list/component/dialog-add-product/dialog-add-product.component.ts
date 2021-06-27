@@ -8,7 +8,7 @@ import { AlertService } from '@app_error_mngt/service/alert.service';
 import { EnumService } from '@app_shared/enum/enum.service';
 import { Enum } from '@app_shared/enum/enum.model';
 import { ShoppingListService } from '@app/shopping-list/service/shopping-list.service';
-import { CreateProductReq } from '@app/_shared/business/model/create-product-req.model';
+import { CreateProductReq } from '@app/shopping-list/model/create-product-req.model';
 //#endregion
 
 @Component({
