@@ -70,7 +70,6 @@ export class DialogAddProductComponent implements OnInit {
         next: res => {
           this.dialogRef.close();
           this.shoppingListService.getActive().subscribe();
-          // TODO - Update SL ?
         },
         error: error => this.alertService.error(error)
     });

@@ -42,9 +42,11 @@ import { AppComponent } from './app.component';
   ],
   providers: [
     { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AccountService] },
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }, // TODO - Handle Loader
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+
+    /* Manage HTTP request */
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }, // Add JWT token if account is connected
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }, // Start the loader
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true } // Handle errors received from server
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent]
