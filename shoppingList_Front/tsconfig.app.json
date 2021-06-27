@@ -8,6 +8,7 @@
     ],
     "paths": {
       "@app/*": ["src/app/*"],
+      "@app_layout/*": ["src/app/_layout/*"],
       "@app_shared/*": ["src/app/_shared/*"],
       "@app_error/*": ["src/app/_shared/error/*"],
       "@app_account/*": ["src/app/account/*"],

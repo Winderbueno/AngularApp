@@ -8,26 +8,34 @@ import { MaterialModule } from '@app_shared/module/material.module';
 import { AppRoutingModule } from '@app/app-routing.module';
 //#endregion
 
-//#region Declared Component
-import { AlertComponent } from '@app_error/component/alert/alert.component';
-import { SnackbarComponent } from '@app_error/component/snackbar/snackbar.component';
+//#region Service
+import { AccountService } from '@app_account/service/account.service';
 //#endregion
+
+//#region Declared Component
+import { FooterComponent } from '@app_layout/component/footer/footer.component';
+import { NgHomeComponent } from '@app_layout/component/ng-home/ng-home.component';
+import { ToolbarComponent } from '@app_layout/component/toolbar/toolbar.component';
+//#endregion
+
 
 @NgModule({
   imports: [
     // Angular & Material Module
     CommonModule,
-    MaterialModule,
 
     // App Module
     AppRoutingModule,
   ],
   declarations: [
-    AlertComponent,
-    SnackbarComponent
+    ToolbarComponent,
+    FooterComponent,
+    NgHomeComponent,
   ],
   exports: [
-    AlertComponent
+    ToolbarComponent,
+    FooterComponent,
+    NgHomeComponent,
   ]
 })
-export class SharedModule { }
+export class LayoutModule { }

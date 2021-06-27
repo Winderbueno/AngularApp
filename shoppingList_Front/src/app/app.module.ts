@@ -10,8 +10,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 //#endregion
 
 //#region App Module
-import { AppRoutingModule } from './app-routing.module';
+import { LayoutModule } from '@app_layout/layout.module';
 import { SharedModule } from '@app_shared/shared.module';
+import { AppRoutingModule } from './app-routing.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 //#endregion
 
@@ -39,6 +40,7 @@ import { AppComponent } from './app.component';
 
     // App Module
     AppRoutingModule,
+    LayoutModule,
     SharedModule,
     ShoppingListModule
   ],
