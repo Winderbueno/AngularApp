@@ -6,10 +6,10 @@ import { first } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { Account } from '@app_auth/model/account.model';
-import { AccountService } from '@app_auth/service/account.service';
-import { FormErrorService } from '@app_error_mngt/service/form-error.service';
-import { AlertService } from '@app_error_mngt/service/alert.service';
+import { Account } from '@app_account/model/account.model';
+import { AccountService } from '@app_account/service/account.service';
+import { FormErrorService } from '@app_error/service/form-error.service';
+import { AlertService } from '@app_error/service/alert.service';
 //#endregion
 
 @Component({ templateUrl: './login.component.html' })
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
 
     // Stop here if form is invalid
     if (this.form.invalid) { return; }
-    
+
     this.loading = true;
     this.accountService.login(this.f.email.value, this.f.password.value)
       .pipe(first())

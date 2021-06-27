@@ -17,7 +17,7 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 
 //#region Service
 import { appInitializer } from '@app_shared/app.initializer';
-import { AccountService } from '@app_auth/service/account.service';
+import { AccountService } from '@app_account/service/account.service';
 //#endregion
 
 //#region Http Interceptor

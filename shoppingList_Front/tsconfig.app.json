@@ -9,9 +9,8 @@
     "paths": {
       "@app/*": ["src/app/*"],
       "@app_shared/*": ["src/app/_shared/*"],
-      "@app_error_mngt/*": ["src/app/_shared/error-mngt/*"],
-      "@app_auth/*": ["src/app/account/*"],
-      "@app_business/*": ["src/app/_shared/business/*"],
+      "@app_error/*": ["src/app/_shared/error/*"],
+      "@app_account/*": ["src/app/account/*"],
       "@env/*": ["src/environments/*"]
     },
   },

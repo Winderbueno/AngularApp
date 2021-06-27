@@ -5,13 +5,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 //#region Routed Component
 import { NgHomeComponent } from '@app_shared/page-layout/ng-home/ng-home.component';
-import { ShoppingListComponent } from './shopping-list/component/shopping-list/shopping-list.component';
+import { ShoppingListComponent } from '@app/shopping-list/component/shopping-list/shopping-list.component';
 //#endregion
 
-const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
+const accountModule = () => import('@app_account/account.module').then(x => x.AccountModule);
 
 // Service
-import { AuthGuard } from '@app/_shared/guard/auth.guard';
+import { AuthGuard } from '@app_shared/guard/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/ng-home', pathMatch: 'full' },

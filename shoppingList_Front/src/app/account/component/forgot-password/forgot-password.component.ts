@@ -5,14 +5,14 @@ import { first, finalize } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { AlertService } from '@app_error_mngt/service/alert.service';
-import { FormErrorService } from '@app_error_mngt/service/form-error.service';
-import { AccountService } from '@app_auth/service/account.service';
+import { AlertService } from '@app_error/service/alert.service';
+import { FormErrorService } from '@app_error/service/form-error.service';
+import { AccountService } from '@app_account/service/account.service';
 //#endregion
 
 @Component({ templateUrl: 'forgot-password.component.html' })
 export class ForgotPasswordComponent implements OnInit {
-  
+
   // Form
   form!: FormGroup;
   loading = false;
@@ -35,7 +35,7 @@ export class ForgotPasswordComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]]
     });
   }
-  
+
   onSubmit() {
     this.submitted = true;
 

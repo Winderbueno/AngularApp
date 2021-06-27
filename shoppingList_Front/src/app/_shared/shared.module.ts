@@ -9,8 +9,8 @@ import { AppRoutingModule } from '@app/app-routing.module';
 //#endregion
 
 //#region Declared Component
-import { AlertComponent } from '@app_error_mngt/component/alert/alert.component';
-import { SnackbarComponent } from '@app_error_mngt/component/snackbar/snackbar.component';
+import { AlertComponent } from '@app_error/component/alert/alert.component';
+import { SnackbarComponent } from '@app_error/component/snackbar/snackbar.component';
 import { FooterComponent } from './page-layout/footer/footer.component';
 import { NgHomeComponent } from './page-layout/ng-home/ng-home.component';
 import { ToolbarComponent } from './page-layout/toolbar/toolbar.component';
@@ -32,7 +32,7 @@ import { ToolbarComponent } from './page-layout/toolbar/toolbar.component';
     AlertComponent,
     SnackbarComponent
   ],
-  exports: [ 
+  exports: [
     ToolbarComponent,
     FooterComponent,
     NgHomeComponent,

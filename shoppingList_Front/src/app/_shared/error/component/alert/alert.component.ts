@@ -5,9 +5,9 @@ import { Subscription } from 'rxjs';
 //#endregion
 
 //#region Model and Service
-import { Alert } from '@app_error_mngt/model/alert.model';
-import { AlertService } from '@app_error_mngt/service/alert.service';
-import { AlertTypeEnum } from '@app_error_mngt/model/enum/alert-type.enum';
+import { Alert } from '@app_error/model/alert.model';
+import { AlertService } from '@app_error/service/alert.service';
+import { AlertTypeEnum } from '@app_error/model/enum/alert-type.enum';
 //#endregion
 
 import {SnackbarComponent} from '../snackbar/snackbar.component';
@@ -18,7 +18,7 @@ import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
     templateUrl: './alert.component.html'
   })
 export class AlertComponent implements OnInit, OnDestroy {
-    
+
     snackBarRef!: MatSnackBarRef<SnackbarComponent>;
     alert: Alert = new Alert();
     alertSubscription!: Subscription;
@@ -27,7 +27,7 @@ export class AlertComponent implements OnInit, OnDestroy {
     constructor(
         private router: Router,
         private alertService: AlertService,
-        private snackBar: MatSnackBar) { 
+        private snackBar: MatSnackBar) {
     }
 
     ngOnInit() {
@@ -45,9 +45,9 @@ export class AlertComponent implements OnInit, OnDestroy {
           if (!alert.message) {
             if (this.alert.id != '-1') { // If there is a save alert for route change, delete it
               this.alert.id = '-1';
-            } 
+            }
             else if (this.snackBarRef != undefined) { // Otherwise, close the alert
-              this.snackBarRef.dismiss(); 
+              this.snackBarRef.dismiss();
             }
             return;
           }
@@ -67,7 +67,7 @@ export class AlertComponent implements OnInit, OnDestroy {
         .subscribe(event => {
         if (event instanceof NavigationStart) {
             this.alertService.clear();
-        } 
+        }
       });
     }
 

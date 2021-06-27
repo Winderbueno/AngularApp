@@ -4,7 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 //#endregion
 
 //#region Model and Service
-import { AlertService } from '@app_error_mngt/service/alert.service';
+import { AlertService } from '@app_error/service/alert.service';
 import { EnumService } from '@app_shared/enum/enum.service';
 import { Enum } from '@app_shared/enum/enum.model';
 import { ShoppingListService } from '@app/shopping-list/service/shopping-list.service';

@@ -4,7 +4,7 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 //#endregion
 
 //#region Model and Service
-import { AccountService } from '@app_auth/service/account.service';
+import { AccountService } from '@app_account/service/account.service';
 //#endregion
 
 
@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const account = this.accountService.accountValue;
-        
+
         // An account is logged in -> return true
         if (account.id != "null") return true;
 

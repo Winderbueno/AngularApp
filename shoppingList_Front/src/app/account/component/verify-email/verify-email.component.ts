@@ -5,8 +5,8 @@ import { first } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { AlertService } from '@app_error_mngt/service/alert.service';
-import { AccountService } from '@app_auth/service/account.service'
+import { AlertService } from '@app_error/service/alert.service';
+import { AccountService } from '@app_account/service/account.service'
 //#endregion
 
 enum EmailStatus {
@@ -38,7 +38,7 @@ export class VerifyEmailComponent implements OnInit {
       .subscribe({
         next: () => {
           this.alertService.success(
-            'Verification successful, you can now login', 
+            'Verification successful, you can now login',
             { keepAfterRouteChange: true });
           this.router.navigate(['../login'], { relativeTo: this.route });
         },
