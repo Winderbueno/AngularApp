@@ -18,9 +18,9 @@ import { AccountService } from '@app_account/service/account.service';
 //#endregion
 
 //#region Interceptor
-import { LoaderInterceptor } from './_shared/http-interceptor/loader.interceptor';
-import { JwtInterceptor } from '@app_shared/http-interceptor/jwt.interceptor';
-import { ErrorInterceptor } from '@app_shared/http-interceptor/error.interceptor';
+import { LoaderInterceptor } from './_shared/interceptor/loader.interceptor';
+import { JwtInterceptor } from '@app_shared/interceptor/jwt.interceptor';
+import { ErrorInterceptor } from '@app_shared/interceptor/error.interceptor';
 //#endregion
 
 //#region Declared Component
