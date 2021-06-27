@@ -1,4 +1,4 @@
-//#region Angular & Material Module
+//#region Angular, Material, RxJS
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -11,7 +11,7 @@ import { AccountRoutingModule } from './account-routing.module';
 
 //#region Declared Component
 import { LayoutComponent,
-  LoginComponent, 
+  LoginComponent,
   RegisterComponent,
   ForgotPasswordComponent,
   ResetPasswordComponent,
@@ -20,9 +20,9 @@ import { LayoutComponent,
 
 @NgModule({
   imports: [
-    // Angular & Material Module
+    // Angular, Material Module
     CommonModule,
-    ReactiveFormsModule, // For Forms
+    ReactiveFormsModule,
     MaterialModule,
 
     // App Module

@@ -1,12 +1,8 @@
-//#region Angular Module
+//#region Angular, Material, RxJS
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-//#endregion
-
-//#region 3rd Party Module
-// None for now
 //#endregion
 
 //#region App Module
@@ -21,7 +17,7 @@ import { appInitializer } from '@app_shared/app.initializer';
 import { AccountService } from '@app_account/service/account.service';
 //#endregion
 
-//#region Http Interceptor
+//#region Interceptor
 import { LoaderInterceptor } from './_shared/http-interceptor/loader.interceptor';
 import { JwtInterceptor } from '@app_shared/http-interceptor/jwt.interceptor';
 import { ErrorInterceptor } from '@app_shared/http-interceptor/error.interceptor';
@@ -33,7 +29,7 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   imports: [
-    // Angular Module
+    // Angular, Material Module
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,

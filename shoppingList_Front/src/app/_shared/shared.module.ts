@@ -15,7 +15,7 @@ import { SnackbarComponent } from '@app_error/component/snackbar/snackbar.compon
 
 @NgModule({
   imports: [
-    // Angular & Material Module
+    // Angular, Material Module
     CommonModule,
     MaterialModule,
 

@@ -1,7 +1,6 @@
 //#region Angular, Material, RxJS
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@app_shared/module/material.module';
 //#endregion
 
 //#region App Module
@@ -9,7 +8,6 @@ import { AppRoutingModule } from '@app/app-routing.module';
 //#endregion
 
 //#region Service
-import { AccountService } from '@app_account/service/account.service';
 //#endregion
 
 //#region Declared Component
@@ -21,7 +19,7 @@ import { ToolbarComponent } from '@app_layout/component/toolbar/toolbar.componen
 
 @NgModule({
   imports: [
-    // Angular & Material Module
+    // Angular, Material Module
     CommonModule,
 
     // App Module
