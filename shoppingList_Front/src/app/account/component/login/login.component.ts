@@ -21,6 +21,9 @@ export class LoginComponent implements OnInit {
   form!: FormGroup;
   submitted = false;
 
+  password_type:string = 'password';
+  pwd_visibility: string = 'visibility_off';
+
   // Easy access getters
   get f() { return this.form.controls; } // Form Control
   get err() { return this.formErrorService; } // Error Service
@@ -58,5 +61,15 @@ export class LoginComponent implements OnInit {
         },
         error: error => { this.alertService.error(error); }
       });
+  }
+
+  swapPwdVisibility(): void {
+    if(this.pwd_visibility === 'visibility_off') {
+      this.pwd_visibility = 'visibility';
+      this.password_type = 'text';
+    } else {
+      this.pwd_visibility = 'visibility_off';
+      this.password_type = 'password';
+    }
   }
 }
