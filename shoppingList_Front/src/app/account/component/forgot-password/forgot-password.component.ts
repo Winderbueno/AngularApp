@@ -1,7 +1,7 @@
 ﻿//#region Angular, Material, RxJS
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first, finalize } from 'rxjs/operators';
+import { first } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
@@ -18,7 +18,7 @@ export class ForgotPasswordComponent implements OnInit {
   form!: FormGroup;
   submitted = false;
 
-  // Access getters
+  // Getters
   get f() { return this.form.controls; }
   get err() { return this.formErrorService; }
   get load() { return this.loaderService;}

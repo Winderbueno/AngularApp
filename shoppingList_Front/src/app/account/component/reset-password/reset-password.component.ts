@@ -30,7 +30,7 @@ export class ResetPasswordComponent implements OnInit {
   form!: FormGroup;
   submitted = false;
 
-  // Access getters
+  // Getters
   get f() { return this.form.controls; } // Form Control
   get err() { return this.formErrorService; } // Error Service
 

@@ -1,6 +1,5 @@
 //#region Angular Module
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //#endregion
 
 //#region Material Module
@@ -17,8 +16,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
-    FormsModule,
-    ReactiveFormsModule
   ],
   exports: [
     MatButtonModule,

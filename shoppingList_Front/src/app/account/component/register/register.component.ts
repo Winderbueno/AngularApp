@@ -1,7 +1,7 @@
 ﻿//#region Angular, Material, RxJS
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 //#endregion
 
@@ -20,9 +20,10 @@ export class RegisterComponent implements OnInit {
   form!: FormGroup;
   submitted = false;
 
-  // Access getters
-  get f() { return this.form.controls; } // Form Control
-  get err() { return this.formErrorService; } // Error Service
+  // Getters
+  get f() { return this.form.controls; }
+  get err() { return this.formErrorService; }
+  get pwdCtrl() { return this.f.password as FormControl; }
 
   constructor(
     private router: Router,

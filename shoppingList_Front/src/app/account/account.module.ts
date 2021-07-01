@@ -7,6 +7,7 @@ import { MaterialModule } from '@app_shared/module/material.module';
 
 //#region App Module
 import { AccountRoutingModule } from './account-routing.module';
+import { SharedModule } from '@app/_shared/shared.module';
 //#endregion
 
 //#region Declared Component
@@ -26,7 +27,8 @@ import { LayoutComponent,
     MaterialModule,
 
     // App Module
-    AccountRoutingModule
+    AccountRoutingModule,
+    SharedModule,
   ],
   declarations: [
     LayoutComponent,
