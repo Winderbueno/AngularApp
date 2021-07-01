@@ -1,7 +1,7 @@
 ﻿<h2>Register</h2>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
-        
+<form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
     <!-- Username -->
     <mat-form-field class="form-element" appearance="outline">
         <mat-label>Username</mat-label>
@@ -32,7 +32,7 @@
             <mat-error *ngIf="f.confirmPassword.invalid">{{ err.getErrorMsg(f.confirmPassword, 'confirmPassword') }}</mat-error>
         </mat-form-field>
     </div>
-    
+
     <!-- TODO - Clean this field tech implementation -->
     <div class="form-group form-check">
         <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
@@ -42,5 +42,5 @@
 
     <button mat-raised-button color="primary" class="form-element" type="submit">Register</button>
     <a mat-button routerLink="../login">You already have an account ? :)</a>
-        
+
 </form>

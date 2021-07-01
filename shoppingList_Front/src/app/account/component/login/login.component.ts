@@ -10,6 +10,7 @@ import { Account } from '@app_account/model/account.model';
 import { AccountService } from '@app_account/service/account.service';
 import { FormErrorService } from '@app_error/service/form-error.service';
 import { AlertService } from '@app_error/service/alert.service';
+import { LoaderService } from '@app/_shared/loader/loader.service';
 //#endregion
 
 @Component({ templateUrl: './login.component.html' })
@@ -21,12 +22,12 @@ export class LoginComponent implements OnInit {
   form!: FormGroup;
   submitted = false;
 
-  password_type:string = 'password';
-  pwd_visibility: string = 'visibility_off';
+  pwd_hide: boolean = true;
 
-  // Easy access getters
+  // Access getters
   get f() { return this.form.controls; } // Form Control
   get err() { return this.formErrorService; } // Error Service
+  get load() { return this.loaderService; }
 
   constructor(
     private router: Router,
@@ -34,7 +35,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private formErrorService: FormErrorService,
     private accountService: AccountService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private loaderService: LoaderService,
   ) { }
 
   ngOnInit(): void {
@@ -61,15 +63,5 @@ export class LoginComponent implements OnInit {
         },
         error: error => { this.alertService.error(error); }
       });
-  }
-
-  swapPwdVisibility(): void {
-    if(this.pwd_visibility === 'visibility_off') {
-      this.pwd_visibility = 'visibility';
-      this.password_type = 'text';
-    } else {
-      this.pwd_visibility = 'visibility_off';
-      this.password_type = 'password';
-    }
   }
 }

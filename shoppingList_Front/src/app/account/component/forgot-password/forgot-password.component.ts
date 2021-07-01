@@ -18,16 +18,17 @@ export class ForgotPasswordComponent implements OnInit {
   form!: FormGroup;
   submitted = false;
 
-  // Easy access getters
-  get f() { return this.form.controls; } // Form Control
-  get err() { return this.formErrorService; } // Error Service
+  // Access getters
+  get f() { return this.form.controls; }
+  get err() { return this.formErrorService; }
+  get load() { return this.loaderService;}
 
   constructor(
     private formBuilder: FormBuilder,
     private formErrorService: FormErrorService,
     private accountService: AccountService,
     private alertService: AlertService,
-    public loaderService: LoaderService,
+    private loaderService: LoaderService,
   ) { }
 
   ngOnInit() {

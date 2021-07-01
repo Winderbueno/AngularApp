@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   form!: FormGroup;
   submitted = false;
 
-  // Easy access getters
+  // Access getters
   get f() { return this.form.controls; } // Form Control
   get err() { return this.formErrorService; } // Error Service
 
