@@ -33,15 +33,19 @@ export class ShoppingListService {
   /** Get active shoppingList */
   getActive():Observable<ShoppingList> {
     return this.http.get<ShoppingList>(`${baseUrl}/active`)
-    .pipe(map(sL => {
-      this.sLSubject.next(sL);
-      return sL;
-    }));
+      .pipe(map(sL => {
+        this.sLSubject.next(sL);
+        return sL;
+      }));
   }
 
   /** For all shoppingList product, reset bought status */
   resetBoughtStatus(idSL: string|undefined) : Observable<ShoppingList> {
-    return this.http.put<ShoppingList>(`${baseUrl}/reset-bought/${idSL}`, []);
+    return this.http.put<ShoppingList>(`${baseUrl}/reset-bought/${idSL}`, [])
+      .pipe(map(sL => {
+        this.sLSubject.next(sL);
+        return sL;
+      }));
   }
 
   /** In a shoppingList, create a product */

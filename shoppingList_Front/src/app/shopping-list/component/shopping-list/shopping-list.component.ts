@@ -17,7 +17,8 @@ import { DialogAddProductComponent } from '@app/shopping-list/component/dialog-a
 })
 export class ShoppingListComponent implements OnInit {
 
-  myShoppingList: ShoppingList | undefined;
+  // Getters
+  get  myShoppingList():ShoppingList { return this.shoppingListServ.active; }
 
   constructor(
     public dialog: MatDialog,
@@ -25,29 +26,35 @@ export class ShoppingListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Get User's shopping list from server
-    this.shoppingListServ.getActive()
-      .subscribe(result => this.myShoppingList = result);
+    // Get user's shoppingList from server
+    this.shoppingListServ
+      .getActive()
+      .subscribe();
   }
 
   /** For all shoppingList product, reset 'bought' status */
   resetBoughtStatus(): void {
     this.shoppingListServ
-      .resetBoughtStatus(this.myShoppingList?.shoppingListId)
-      .subscribe(result => this.myShoppingList = result);
+      .resetBoughtStatus(this.myShoppingList.shoppingListId)
+      .subscribe();
   }
 
+  /** Add Product Button */
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogAddProductComponent, { width: '300px' });
 
-    dialogRef.afterClosed()
+    // Open addProductDialog
+    const addProductDialog = this.dialog.open(DialogAddProductComponent, { width: '300px' });
+
+    // After dialog closing, refresh the active shoppingList
+    addProductDialog.afterClosed()
       .subscribe(result => {
         this.shoppingListServ.getActive()
-          .subscribe(result => this.myShoppingList = result);});
+          .subscribe();});
   }
 
   /** For clicked product, swap 'bought' status value */
   swapProductBoughtStatus(prod: UsedProduct): void {
+
     if(prod) prod.bought ? prod.bought=false : prod.bought = true;
     // TODO - What if the server does not answer ?
     this.shoppingListServ

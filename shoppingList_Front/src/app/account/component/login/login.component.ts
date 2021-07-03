@@ -6,17 +6,14 @@ import { first } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { Account } from '@app_account/model/account.model';
-import { AccountService } from '@app_account/service/account.service';
 import { FormErrorService } from '@app_error/service/form-error.service';
-import { AlertService } from '@app_error/service/alert.service';
 import { LoaderService } from '@app/_shared/loader/loader.service';
+import { AlertService } from '@app_error/service/alert.service';
+import { AccountService } from '@app_account/service/account.service';
 //#endregion
 
 @Component({ templateUrl: './login.component.html' })
 export class LoginComponent implements OnInit {
-
-  loggedInAccount: Account | undefined;
 
   // Form
   form!: FormGroup;
@@ -25,7 +22,7 @@ export class LoginComponent implements OnInit {
   // Getters
   get f() { return this.form.controls; }
   get err() { return this.formErrorService; }
-  get load() { return this.loaderService; }
+  get isLoading() { return this.loaderService.loading;}
   get pwdCtrl() { return this.f.password as FormControl; }
 
   constructor(
@@ -33,9 +30,9 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private formErrorService: FormErrorService,
-    private accountService: AccountService,
-    private alertService: AlertService,
     private loaderService: LoaderService,
+    private alertService: AlertService,
+    private accountService: AccountService,
   ) { }
 
   ngOnInit(): void {

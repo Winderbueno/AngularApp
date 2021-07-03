@@ -15,15 +15,13 @@ import { AccountService } from '@app_account/service/account.service';
 })
 export class ToolbarComponent implements OnInit {
 
-  loggedInAccount!: Account;
+  // Getters
+  get account() { return this.accountService.accountValue; }
 
   constructor(
     private router: Router,
     private accountService: AccountService,
-  ) {
-    // Subscribe to the connected user
-    this.accountService.account.subscribe(x => this.loggedInAccount = x);
-  }
+  ) {}
 
   ngOnInit(): void {}
 

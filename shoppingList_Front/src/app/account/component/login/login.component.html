@@ -13,8 +13,8 @@
   <app-password-field class="form-element" [control]="pwdCtrl"></app-password-field>
 
   <!-- Submit Action -->
-  <button mat-raised-button color="primary" [disabled]="load.loading" class="form-element" type="submit">
-    <mat-icon *ngIf="load.loading"><mat-spinner diameter="25"></mat-spinner></mat-icon>
+  <button mat-raised-button color="primary" [disabled]="isLoading" class="form-element" type="submit">
+    <mat-icon *ngIf="isLoading"><mat-spinner diameter="25"></mat-spinner></mat-icon>
     Sign In
   </button>
 

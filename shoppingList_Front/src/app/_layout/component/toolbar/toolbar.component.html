@@ -14,8 +14,8 @@
 
     <div class="spacer"></div>
 
-    <div *ngIf="loggedInAccount.id!='null'; else elseBlock">
-      <span style="color:rgb(17, 224, 52);">{{loggedInAccount.userName}}&nbsp;&nbsp;&nbsp;</span>
+    <div *ngIf="account.id!='null'; else elseBlock">
+      <span style="color:rgb(17, 224, 52);">{{account.userName}}&nbsp;&nbsp;&nbsp;</span>
       <span (click)="logout()">Log Out&nbsp;&nbsp;&nbsp;</span>
     </div>
     <ng-template #elseBlock>
