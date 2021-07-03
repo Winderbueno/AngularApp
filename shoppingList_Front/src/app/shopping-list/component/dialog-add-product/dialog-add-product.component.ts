@@ -62,6 +62,7 @@ export class DialogAddProductComponent implements OnInit {
       quantity: 1,
       note: "test"
     }
+
     // TODO - Handle case when the user dont give a product name
 
     // Call the server

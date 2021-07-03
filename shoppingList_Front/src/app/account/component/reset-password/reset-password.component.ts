@@ -7,8 +7,9 @@ import { first } from 'rxjs/operators';
 
 //#region Model and Service
 import { FormErrorService } from '@app_error/service/form-error.service';
-import { AlertService } from '@app_error/service/alert.service';
 import { MustMatch } from '@app_error/must-match.validator';
+import { LoaderService } from '@app/_shared/loader/loader.service'; // TODO - Use Loader
+import { AlertService } from '@app_error/service/alert.service';
 import { AccountService } from '@app_account/service/account.service';
 //#endregion
 
@@ -39,8 +40,9 @@ export class ResetPasswordComponent implements OnInit {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private formErrorService: FormErrorService,
+    private loaderService: LoaderService,
+    private alertService: AlertService,
     private accountService: AccountService,
-    private alertService: AlertService
   ) { }
 
   ngOnInit() {

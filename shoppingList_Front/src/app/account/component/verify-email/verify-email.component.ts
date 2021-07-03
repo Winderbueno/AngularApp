@@ -23,8 +23,8 @@ export class VerifyEmailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private alertService: AlertService,
     private accountService: AccountService,
-    private alertService: AlertService
   ) { }
 
   ngOnInit() {

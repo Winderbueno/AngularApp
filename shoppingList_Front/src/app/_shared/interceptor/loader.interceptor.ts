@@ -17,12 +17,10 @@ export class LoaderInterceptor implements HttpInterceptor {
 
   constructor(private loaderService: LoaderService) { }
 
-  /**
-   * TODO - Handle Http operation that failed then Let the app continue.
-  */
+  /** TODO - Handle Http  */
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-      // Start loading
+      // Start loader
       this.loaderService.startLoading(request.url);
       return next.handle(request);
   }

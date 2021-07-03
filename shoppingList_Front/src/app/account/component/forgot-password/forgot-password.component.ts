@@ -6,9 +6,9 @@ import { first } from 'rxjs/operators';
 
 //#region Model and Service
 import { FormErrorService } from '@app_error/service/form-error.service';
-import { AccountService } from '@app_account/service/account.service';
-import { AlertService } from '@app_error/service/alert.service';
 import { LoaderService } from '@app/_shared/loader/loader.service';
+import { AlertService } from '@app_error/service/alert.service';
+import { AccountService } from '@app_account/service/account.service';
 //#endregion
 
 @Component({ templateUrl: 'forgot-password.component.html' })
@@ -21,14 +21,14 @@ export class ForgotPasswordComponent implements OnInit {
   // Getters
   get f() { return this.form.controls; }
   get err() { return this.formErrorService; }
-  get load() { return this.loaderService;}
+  get isLoading() { return this.loaderService.loading;}
 
   constructor(
     private formBuilder: FormBuilder,
     private formErrorService: FormErrorService,
-    private accountService: AccountService,
-    private alertService: AlertService,
     private loaderService: LoaderService,
+    private alertService: AlertService,
+    private accountService: AccountService,
   ) { }
 
   ngOnInit() {

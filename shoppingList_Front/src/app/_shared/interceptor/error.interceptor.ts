@@ -19,15 +19,19 @@ export class ErrorInterceptor implements HttpInterceptor {
     private loaderService: LoaderService) { }
 
   /**
-   * TODO - Handle Http operation that failed then Let the app continue.
+   * Handle Http operation that failed then Let the app continue.
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
   */
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     return next.handle(request)
+      // As the server answered, we stop the loader
       .pipe(finalize(() => this.loaderService.stopLoading()))
+      // Dealing with error response
       .pipe(catchError(err => {
+
+          // Handle HTTP Error - 'unauthorized' and 'forbidden'
           if ([401, 403].includes(err.status) && this.accountService.accountValue) {
             // Auto logout if 401 or 403 response returned from api
             this.accountService.logout();
@@ -35,10 +39,11 @@ export class ErrorInterceptor implements HttpInterceptor {
 
           const error = (err && err.error && err.error.message) || err.statusText;
 
-          // TODO - Better job of transforming error for user consumption
-          //this.log(`${operation} failed: ${error.message}`);
+          // TODO - Process the error go
+          //  > Error msg understandable for the user
+          //  > Make the error go through the logging solution
+          // this.log(`${operation} failed: ${error.message}`);
 
-          // TODO - Send the error to remote logging infrastructure
           console.error(err);
 
           return throwError(error);
