@@ -40,8 +40,10 @@ export class FormErrorService {
       }
     } else if (formCtrl.hasError('email')) {
       errMsg = 'Filled email has not the good format';
+    } else if (formCtrl.hasError('minlength')) {
+      errMsg = `Field Length should be at least : ${formCtrl.errors!.minlength.requiredLength}`;
     } else if (formCtrl.hasError('mustMatch')) {
-      errMsg = 'Passwords should be the same';
+      errMsg = 'Field should be the same';
     }
 
     return errMsg;

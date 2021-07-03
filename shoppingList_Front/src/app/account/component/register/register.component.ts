@@ -7,7 +7,6 @@ import { first } from 'rxjs/operators';
 
 //#region Model and Service
 import { FormErrorService } from '@app_error/service/form-error.service';
-import { MustMatch } from '@app_error/must-match.validator';
 import { LoaderService } from '@app/_shared/loader/loader.service'; // TODO - Use Loader
 import { AlertService } from '@app_error/service/alert.service';
 import { AccountService } from '@app_account/service/account.service';
@@ -24,7 +23,6 @@ export class RegisterComponent implements OnInit {
   // Getters
   get f() { return this.form.controls; }
   get err() { return this.formErrorService; }
-  get pwdCtrl() { return this.f.password as FormControl; }
 
   constructor(
     private router: Router,
@@ -41,11 +39,7 @@ export class RegisterComponent implements OnInit {
     this.form = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
       acceptTerms: [false, Validators.requiredTrue]
-    }, {
-      validator: MustMatch('password', 'confirmPassword')
     });
   }
 

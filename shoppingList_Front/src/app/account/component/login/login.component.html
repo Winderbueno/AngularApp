@@ -10,7 +10,7 @@
   </mat-form-field>
 
   <!-- Password -->
-  <app-password-field class="form-element" [control]="pwdCtrl"></app-password-field>
+  <app-password-field [formToModify]="form"></app-password-field>
 
   <!-- Submit Action -->
   <button mat-raised-button color="primary" [disabled]="isLoading" class="form-element" type="submit">
