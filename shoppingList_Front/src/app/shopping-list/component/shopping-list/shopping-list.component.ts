@@ -18,47 +18,53 @@ import { DialogAddProductComponent } from '@app/shopping-list/component/dialog-a
 export class ShoppingListComponent implements OnInit {
 
   // Getters
-  get  myShoppingList():ShoppingList { return this.shoppingListServ.active; }
+  get myShoppingList():ShoppingList { return this.shoppingListService.active; }
 
   constructor(
     public dialog: MatDialog,
-    private shoppingListServ: ShoppingListService
+    private shoppingListService: ShoppingListService
   ) { }
 
   ngOnInit(): void {
-    // Get user's shoppingList from server
-    this.shoppingListServ
+    // Get user's active shoppingList from server
+    this.shoppingListService
       .getActive()
       .subscribe();
   }
 
   /** For all shoppingList product, reset 'bought' status */
   resetBoughtStatus(): void {
-    this.shoppingListServ
+    this.shoppingListService
       .resetBoughtStatus(this.myShoppingList.shoppingListId)
       .subscribe();
   }
 
   /** Add Product Button */
-  openDialog(): void {
+  openAddProductDialog(): void {
 
     // Open addProductDialog
-    const addProductDialog = this.dialog.open(DialogAddProductComponent, { width: '300px' });
+    const addProductDialog = this.dialog
+      .open(DialogAddProductComponent, { width: '300px' });
 
     // After dialog closing, refresh the active shoppingList
-    addProductDialog.afterClosed()
-      .subscribe(result => {
-        this.shoppingListServ.getActive()
-          .subscribe();});
+    addProductDialog
+      .afterClosed()
+      .subscribe(() => {
+        this.shoppingListService
+          .getActive()
+          .subscribe();
+      });
   }
 
   /** For clicked product, swap 'bought' status value */
   swapProductBoughtStatus(prod: UsedProduct): void {
 
+    // Swap 'bought' status value
     if(prod) prod.bought ? prod.bought=false : prod.bought = true;
-    // TODO - What if the server does not answer ?
-    this.shoppingListServ
-      .updtProduct(this.myShoppingList?.shoppingListId, prod)
+
+    // Send the updated product to server
+    this.shoppingListService
+      .updtProduct(this.myShoppingList.shoppingListId, prod)
       .subscribe();
   }
 }

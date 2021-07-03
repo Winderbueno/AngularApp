@@ -1,26 +1,29 @@
 <h2>Shopping List</h2>
 
-<button mat-raised-button (click)="openDialog()">Ajouter un Produit</button>
-<button mat-raised-button (click)="resetBoughtStatus()">Réinitialiser les statuts</button>
+<!-- TODO - Should be in an action bar component -->
+<button mat-raised-button (click)="openAddProductDialog()">Add Product</button>
+<button mat-raised-button (click)="resetBoughtStatus()">Reinitiate Status</button>
 
 <div *ngIf="myShoppingList && myShoppingList.catProducts">
 
-  <mat-expansion-panel *ngFor="let catProd of myShoppingList.catProducts" hideToggle>
+  <mat-accordion multi>
+    <mat-expansion-panel *ngFor="let catProd of myShoppingList.catProducts" hideToggle>
 
-    <!-- Expansion Panel Header containing the product category -->
-    <mat-expansion-panel-header>
-      <mat-panel-title>{{catProd.category}}</mat-panel-title>
-    </mat-expansion-panel-header>
+      <!-- Header containing the product category -->
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{catProd.category}}</mat-panel-title>
+      </mat-expansion-panel-header>
 
-    <!-- Expanded Panel containing the product sub category and their products -->
-    <li *ngFor="let subCatProd of catProd.subCatProducts">
-      <span> {{subCatProd.subCategory}} : </span>
-      <span *ngFor="let prod of subCatProd.products">
+      <!-- Expanded Panel containing the product sub category and their products -->
+      <li *ngFor="let subCatProd of catProd.subCatProducts">
+        <span> {{subCatProd.subCategory}} : </span>
+        <span *ngFor="let prod of subCatProd.products">
 
-        <span [class.selected]="prod.bought === true" (click)="swapProductBoughtStatus(prod)">{{prod.name}}</span>
-        <span> , </span>
-      </span>
-    </li>
-  </mat-expansion-panel>
+          <span [class.selected]="prod.bought === true" (click)="swapProductBoughtStatus(prod)">{{prod.name}}</span>
+          <span> , </span>
+        </span>
+      </li>
+    </mat-expansion-panel>
+  </mat-accordion>
 
 </div>
