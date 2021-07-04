@@ -1,6 +1,7 @@
 //#region Angular, Material, RxJS
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatAccordion } from '@angular/material/expansion';
 //#endregion
 
 //#region Model and Service
@@ -16,6 +17,10 @@ import { DialogAddProductComponent } from '@app/shopping-list/component/dialog-a
   styleUrls: ['./shopping-list.component.scss']
 })
 export class ShoppingListComponent implements OnInit {
+
+  @ViewChild('accordion',{static:false}) Accordion!: MatAccordion;
+  slideChecked = false;
+
 
   // Getters
   get myShoppingList():ShoppingList { return this.shoppingListService.active; }
@@ -66,5 +71,13 @@ export class ShoppingListComponent implements OnInit {
     this.shoppingListService
       .updtProduct(this.myShoppingList.shoppingListId, prod)
       .subscribe();
+  }
+
+  onSlideChange():void {
+    if(this.slideChecked == true){
+      this.Accordion.openAll();
+    } else {
+      this.Accordion.closeAll();
+    }
   }
 }

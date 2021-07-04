@@ -1,12 +1,15 @@
 <h2>Shopping List</h2>
 
 <!-- TODO - Should be in an action bar component -->
-<button mat-raised-button (click)="openAddProductDialog()">Add Product</button>
-<button mat-raised-button (click)="resetBoughtStatus()">Reinitiate Status</button>
+<div>
+  <button mat-raised-button (click)="openAddProductDialog()">Add Product</button>
+  <button mat-raised-button (click)="resetBoughtStatus()">Reinitiate Status</button>
+  <mat-slide-toggle [(ngModel)]="slideChecked" (change)="onSlideChange()"></mat-slide-toggle>
+</div>
 
 <div *ngIf="myShoppingList && myShoppingList.catProducts">
 
-  <mat-accordion multi>
+  <mat-accordion [multi]=true #accordion="matAccordion">
     <mat-expansion-panel *ngFor="let catProd of myShoppingList.catProducts" hideToggle>
 
       <!-- Header containing the product category -->
