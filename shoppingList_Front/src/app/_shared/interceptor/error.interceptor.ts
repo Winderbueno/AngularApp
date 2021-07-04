@@ -39,11 +39,10 @@ export class ErrorInterceptor implements HttpInterceptor {
 
           const error = (err && err.error && err.error.message) || err.statusText;
 
-          // TODO - Process the error go
+          // TODO - Process the error coming from server
           //  > Error msg understandable for the user
           //  > Make the error go through the logging solution
           // this.log(`${operation} failed: ${error.message}`);
-
           console.error(err);
 
           return throwError(error);

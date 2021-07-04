@@ -24,7 +24,7 @@ export class PasswordFieldComponent implements OnInit {
   @Input() withConfirm: boolean = false;
   @Input() formToModify!: FormGroup;
 
-  // TODO - Add Password format policy (At least 6 characters...) -->
+  // TODO - Modify Password format policy (At least 6 characters...) -->
   pwdCtrl: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
   pwdConfirmCtrl: FormControl = new FormControl('', Validators.required);
 

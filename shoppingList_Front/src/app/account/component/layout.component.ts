@@ -9,14 +9,14 @@ import { AccountService } from '@app_account/service/account.service'
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent {
-    constructor(
-        private router: Router,
-        private accountService: AccountService
-    ) {
 
-        // Redirect to home if already logged in
-        if (this.accountService.accountValue.id != "null") {
-            this.router.navigate(['/']);
-        }
+  constructor(
+    private router: Router,
+    private accountService: AccountService
+  ) {
+    // Redirect to home if already logged in
+    if (this.accountService.accountValue.id != "null") {
+      this.router.navigate(['/']);
     }
+  }
 }
