@@ -8,6 +8,7 @@ import { NgHomeComponent } from '@app_layout/component/ng-home/ng-home.component
 import { ShoppingListComponent } from '@app/shopping-list/component/shopping-list/shopping-list.component';
 //#endregion
 
+// Lazy loaded module
 const accountModule = () => import('@app_account/account.module').then(x => x.AccountModule);
 
 // Service
