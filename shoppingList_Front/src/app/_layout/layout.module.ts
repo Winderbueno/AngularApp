@@ -1,19 +1,17 @@
 //#region Angular, Material, RxJS
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@app_shared/module/material.module';
 //#endregion
 
 //#region App Module
 import { AppRoutingModule } from '@app/app-routing.module';
 //#endregion
 
-//#region Service
-//#endregion
-
 //#region Declared Component
 import { FooterComponent } from '@app_layout/component/footer/footer.component';
-import { NgHomeComponent } from '@app_layout/component/ng-home/ng-home.component';
-import { ToolbarComponent } from '@app_layout/component/toolbar/toolbar.component';
+import { NgHomeComponent } from '@app/_layout/component/ng-home/ng-home.component';
+import { ToolbarComponent } from './component/toolbar/toolbar.component';
 //#endregion
 
 
@@ -21,9 +19,11 @@ import { ToolbarComponent } from '@app_layout/component/toolbar/toolbar.componen
   imports: [
     // Angular, Material Module
     CommonModule,
+    MaterialModule,
 
     // App Module
     AppRoutingModule,
+
   ],
   declarations: [
     ToolbarComponent,
