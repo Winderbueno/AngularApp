@@ -1,6 +1,7 @@
 //#region Angular, Material, RxJS
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 //#endregion
 
 //#region Model and Service
@@ -29,6 +30,8 @@ export class FormComponent implements OnInit {
   get form() { return this._form;}
 
   constructor(
+    protected router: Router,
+    protected route: ActivatedRoute,
     private formBuilder: FormBuilder,
     protected formErrorService: FormErrorService,
     protected loaderService: LoaderService,

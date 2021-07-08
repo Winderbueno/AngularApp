@@ -1,16 +1,10 @@
 ﻿//#region Angular, Material, RxJS
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
 import { first } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
 import { FormComponent } from '@app/_shared/form/component/field-password/form.component';
-import { FormErrorService } from '@app/_shared/form/service/form-error.service';
-import { LoaderService } from '@app/_shared/loader/loader.service'; // TODO - Use Loader
-import { AlertService } from '@app_alert/service/alert.service';
-import { AccountService } from '@app_account/service/account.service';
 //#endregion
 
 enum TokenStatus {
@@ -27,23 +21,12 @@ export class ResetPasswordComponent extends FormComponent {
   tokenStatus = TokenStatus.Validating;
   token = '';
 
-
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    formBuilder: FormBuilder,
-    formErrorService: FormErrorService,
-    loaderService: LoaderService,
-    alertService: AlertService,
-    accountService: AccountService,
-  ) {
-    super(formBuilder, formErrorService, loaderService, alertService, accountService);
-    super.formDef = {};
-  }
-
   ngOnInit() {
+    // Init Form
+    super.formDef = {};
     super.ngOnInit();
 
+    // Get token from route
     const token = this.route.snapshot.queryParams['token'];
 
     // Remove token from url to prevent http referer leakage
