@@ -6,9 +6,10 @@ import { MaterialModule } from '@app_shared/module/material.module';
 //#endregion
 
 //#region Declared Component
-import { AlertComponent } from '@app_error/component/alert/alert.component';
-import { SnackbarComponent } from '@app_error/component/snackbar/snackbar.component';
-import { PasswordFieldComponent } from './component/field-password/password-field.component';
+import { AlertComponent } from '@app_alert/component/alert/alert.component';
+import { SnackbarComponent } from '@app_alert/component/snackbar/snackbar.component';
+import { PasswordFieldComponent } from './form/component/field-password/password-field.component';
+import { FormComponent } from './form/component/field-password/form.component';
 //#endregion
 
 @NgModule({
@@ -23,6 +24,7 @@ import { PasswordFieldComponent } from './component/field-password/password-fiel
     AlertComponent,
     SnackbarComponent,
     PasswordFieldComponent,
+    FormComponent,
   ],
   exports: [
     AlertComponent,

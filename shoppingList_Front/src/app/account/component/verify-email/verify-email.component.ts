@@ -5,7 +5,7 @@ import { first } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { AlertService } from '@app_error/service/alert.service';
+import { AlertService } from '@app_alert/service/alert.service';
 import { AccountService } from '@app_account/service/account.service'
 //#endregion
 

@@ -5,8 +5,8 @@ import { filter } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { Alert } from '@app_error/model/alert.model';
-import { AlertTypeEnum } from '@app_error/model/enum/alert-type.enum';
+import { Alert } from '@app_alert/model/alert.model';
+import { AlertTypeEnum } from '@app_alert/model/enum/alert-type.enum';
 //#endregion
 
 

@@ -1,49 +1,33 @@
 ﻿//#region Angular, Material, RxJS
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { FormErrorService } from '@app_error/service/form-error.service';
+import { FormComponent } from '@app/_shared/form/component/field-password/form.component';
+import { FormErrorService } from '@app/_shared/form/service/form-error.service';
 import { LoaderService } from '@app/_shared/loader/loader.service';
-import { AlertService } from '@app_error/service/alert.service';
+import { AlertService } from '@app_alert/service/alert.service';
 import { AccountService } from '@app_account/service/account.service';
 //#endregion
 
+
 @Component({ templateUrl: 'forgot-password.component.html' })
-export class ForgotPasswordComponent implements OnInit {
-
-  // Form
-  form!: FormGroup;
-  submitted = false;
-
-  // Getters
-  get f() { return this.form.controls; }
-  get err() { return this.formErrorService; }
-  get isLoading() { return this.loaderService.loading;}
+export class ForgotPasswordComponent extends FormComponent {
 
   constructor(
-    private formBuilder: FormBuilder,
-    private formErrorService: FormErrorService,
-    private loaderService: LoaderService,
-    private alertService: AlertService,
-    private accountService: AccountService,
-  ) { }
-
-  ngOnInit() {
-    // Form definition
-    this.form = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]]
-    });
+    formBuilder: FormBuilder,
+    formErrorService: FormErrorService,
+    loaderService: LoaderService,
+    alertService: AlertService,
+    accountService: AccountService,
+  ) {
+    super(formBuilder, formErrorService, loaderService, alertService, accountService);
+    super.formDef = { email: ['', [Validators.required, Validators.email]] }
   }
 
-  onSubmit() {
-    this.submitted = true;
-
-    // Stop here if form is invalid
-    if (this.form.invalid) { return; }
-
+  submitAction() {
     this.accountService.forgotPassword(this.f.email.value)
       .pipe(first())
       .subscribe({

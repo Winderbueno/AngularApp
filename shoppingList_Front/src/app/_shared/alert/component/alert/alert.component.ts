@@ -5,9 +5,9 @@ import { Subscription } from 'rxjs';
 //#endregion
 
 //#region Model and Service
-import { Alert } from '@app_error/model/alert.model';
-import { AlertService } from '@app_error/service/alert.service';
-import { AlertTypeEnum } from '@app_error/model/enum/alert-type.enum';
+import { Alert } from '@app_alert/model/alert.model';
+import { AlertService } from '@app_alert/service/alert.service';
+import { AlertTypeEnum } from '@app_alert/model/enum/alert-type.enum';
 //#endregion
 
 import {SnackbarComponent} from '../snackbar/snackbar.component';

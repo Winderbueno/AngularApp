@@ -10,7 +10,7 @@
       "@app/*": ["src/app/*"],
       "@app_layout/*": ["src/app/_layout/*"],
       "@app_shared/*": ["src/app/_shared/*"],
-      "@app_error/*": ["src/app/_shared/error/*"],
+      "@app_alert/*": ["src/app/_shared/alert/*"],
       "@app_account/*": ["src/app/account/*"],
       "@env/*": ["src/environments/*"]
     },

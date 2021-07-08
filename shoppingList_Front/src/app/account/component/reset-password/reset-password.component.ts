@@ -1,15 +1,15 @@
 ﻿//#region Angular, Material, RxJS
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { first } from 'rxjs/operators';
 //#endregion
 
 //#region Model and Service
-import { FormErrorService } from '@app_error/service/form-error.service';
-import { MustMatch } from '@app_error/must-match.validator';
+import { FormComponent } from '@app/_shared/form/component/field-password/form.component';
+import { FormErrorService } from '@app/_shared/form/service/form-error.service';
 import { LoaderService } from '@app/_shared/loader/loader.service'; // TODO - Use Loader
-import { AlertService } from '@app_error/service/alert.service';
+import { AlertService } from '@app_alert/service/alert.service';
 import { AccountService } from '@app_account/service/account.service';
 //#endregion
 
@@ -21,33 +21,28 @@ enum TokenStatus {
 
 
 @Component({ templateUrl: 'reset-password.component.html' })
-export class ResetPasswordComponent implements OnInit {
+export class ResetPasswordComponent extends FormComponent {
 
   TokenStatus = TokenStatus;
   tokenStatus = TokenStatus.Validating;
   token = '';
 
-  // Form
-  form!: FormGroup;
-  submitted = false;
-
-  // Getters
-  get f() { return this.form.controls; } // Form Control
-  get err() { return this.formErrorService; } // Error Service
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
-    private formErrorService: FormErrorService,
-    private loaderService: LoaderService,
-    private alertService: AlertService,
-    private accountService: AccountService,
-  ) { }
+    formBuilder: FormBuilder,
+    formErrorService: FormErrorService,
+    loaderService: LoaderService,
+    alertService: AlertService,
+    accountService: AccountService,
+  ) {
+    super(formBuilder, formErrorService, loaderService, alertService, accountService);
+    super.formDef = {};
+  }
 
   ngOnInit() {
-    // Form definition
-    this.form = this.formBuilder.group({});
+    super.ngOnInit();
 
     const token = this.route.snapshot.queryParams['token'];
 
@@ -67,12 +62,7 @@ export class ResetPasswordComponent implements OnInit {
       });
   }
 
-  onSubmit() {
-    this.submitted = true;
-
-    // Stop here if form is invalid
-    if (this.form.invalid) { return; }
-
+  submitAction() {
     this.accountService.resetPassword(this.token, this.f.password.value, this.f.confirmPassword.value)
       .pipe(first())
       .subscribe({

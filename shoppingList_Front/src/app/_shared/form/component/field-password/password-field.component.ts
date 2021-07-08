@@ -4,8 +4,8 @@ import { FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors } fro
 //#endregion
 
 //#region Model and Service
-import { FormErrorService } from '@app_error/service/form-error.service';
-import { MustMatch } from '@app/_shared/error/must-match.validator';
+import { FormErrorService } from '@app/_shared/form/service/form-error.service';
+import { MustMatch } from '@app/_shared/form/validator/must-match.validator';
 //#endregion
 
 /**
