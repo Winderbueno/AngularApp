@@ -9,9 +9,9 @@ import { AppRoutingModule } from '@app/app-routing.module';
 //#endregion
 
 //#region Declared Component
-import { FooterComponent } from '@app_layout/component/footer/footer.component';
-import { NgHomeComponent } from '@app/_layout/component/ng-home/ng-home.component';
 import { ToolbarComponent } from './component/toolbar/toolbar.component';
+import { HomeComponent } from '@app/_layout/component/home/home.component';
+import { FooterComponent } from '@app_layout/component/footer/footer.component';
 //#endregion
 
 
@@ -28,12 +28,12 @@ import { ToolbarComponent } from './component/toolbar/toolbar.component';
   declarations: [
     ToolbarComponent,
     FooterComponent,
-    NgHomeComponent,
+    HomeComponent,
   ],
   exports: [
     ToolbarComponent,
     FooterComponent,
-    NgHomeComponent,
+    HomeComponent,
   ]
 })
 export class LayoutModule { }

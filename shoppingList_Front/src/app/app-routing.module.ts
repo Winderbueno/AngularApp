@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 //#endregion
 
 //#region Routed Component
-import { NgHomeComponent } from '@app/_layout/component/ng-home/ng-home.component';
+import { HomeComponent } from '@app/_layout/component/home/home.component';
 import { ShoppingListComponent } from '@app/shopping-list/component/shopping-list/shopping-list.component';
 //#endregion
 
@@ -15,8 +15,8 @@ const accountModule = () => import('@app_account/account.module').then(x => x.Ac
 import { AuthGuard } from '@app_shared/guard/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/ng-home', pathMatch: 'full' },
-  { path: 'ng-home', component: NgHomeComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'my-shopping-list', component: ShoppingListComponent, canActivate: [AuthGuard] },
   { path: 'account', loadChildren: accountModule },
 ];
