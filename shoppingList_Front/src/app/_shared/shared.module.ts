@@ -9,7 +9,7 @@ import { MaterialModule } from '@app_shared/module/material.module';
 import { AlertComponent } from '@app_alert/component/alert/alert.component';
 import { SnackbarComponent } from '@app_alert/component/snackbar/snackbar.component';
 import { PasswordFieldComponent } from './form/component/field-password/password-field.component';
-import { FormComponent } from './form/component/field-password/form.component';
+import { FormComponent } from './form/component/form.component';
 //#endregion
 
 @NgModule({
