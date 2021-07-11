@@ -24,10 +24,10 @@ export class FormComponent implements OnInit {
   submitted = false;
 
   // Getters
+  get form() { return this._form;}
   get f() { return this._form.controls; }
   get err() { return this.formErrorService; }
   get isLoading() { return this.loaderService.loading;}
-  get form() { return this._form;}
 
   constructor(
     protected router: Router,
