@@ -19,15 +19,22 @@
     <!-- Password + Confirm -->
     <app-password-field [formToModify]="form" [withConfirm]="true"></app-password-field>
 
-    <!-- TODO - Clean this field tech implementation -->
+    <!-- Usage Term - TODO - Clean Tech Impl -->
     <div class="form-group form-check">
         <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
         <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
         <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
     </div>
 
-    <!-- TODO - Use Loader -->
-    <button mat-raised-button color="primary" class="form-element" type="submit">Register</button>
+    <!-- Submit Action -->
+    <button mat-raised-button color="primary" [disabled]="isLoading" class="form-element" type="submit">
+      <mat-icon *ngIf="isLoading">
+        <mat-spinner diameter="25"></mat-spinner>
+      </mat-icon>
+      Register
+    </button>
+
+    <!-- Secondary Action -->
     <a mat-button routerLink="../login">You already have an account ? :)</a>
 
 </form>

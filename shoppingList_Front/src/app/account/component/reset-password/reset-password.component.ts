@@ -22,7 +22,7 @@ export class ResetPasswordComponent extends FormComponent {
   token = '';
 
   ngOnInit() {
-    // Init Form
+    // Form Init
     super.formDef = {};
     super.ngOnInit();
 
@@ -32,6 +32,7 @@ export class ResetPasswordComponent extends FormComponent {
     // Remove token from url to prevent http referer leakage
     this.router.navigate([], { relativeTo: this.route, replaceUrl: true });
 
+    // Validate token
     this.accountService.validateResetToken(token)
       .pipe(first())
       .subscribe({
