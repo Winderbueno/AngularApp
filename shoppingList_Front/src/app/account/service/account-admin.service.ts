@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { map, finalize } from 'rxjs/operators';
 //#endregion
 
-//#region Model and Service
+//#region App Component, Model, Service
 import { Account } from '@app_account/model/account.model';
 import { AccountService } from '@app_account/service/account.service';
 //#endregion

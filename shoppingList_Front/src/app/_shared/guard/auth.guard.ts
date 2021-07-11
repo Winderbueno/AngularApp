@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 //#endregion
 
-//#region Model and Service
+//#region App Component, Model, Service
 import { AccountService } from '@app_account/service/account.service';
 //#endregion
 

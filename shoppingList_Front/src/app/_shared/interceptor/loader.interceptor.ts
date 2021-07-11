@@ -4,7 +4,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable } from 'rxjs';
 //#endregion
 
-//#region Model and Service
+//#region App Component, Model, Service
 import { LoaderService } from '@app_shared/loader/loader.service';
 //#endregion
 

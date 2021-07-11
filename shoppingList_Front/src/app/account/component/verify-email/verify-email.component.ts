@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 //#endregion
 
-//#region Model and Service
+//#region App Component, Model, Service
 import { AlertService } from '@app_alert/service/alert.service';
 import { AccountService } from '@app_account/service/account.service'
 //#endregion

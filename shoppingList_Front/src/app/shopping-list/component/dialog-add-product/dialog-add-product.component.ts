@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 //#endregion
 
-//#region Model and Service
+//#region App Component, Model, Service
 import { AlertService } from '@app_alert/service/alert.service';
 import { EnumService } from '@app_shared/enum/enum.service';
 import { Enum } from '@app_shared/enum/enum.model';

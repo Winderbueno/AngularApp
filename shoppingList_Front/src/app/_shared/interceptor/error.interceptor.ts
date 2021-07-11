@@ -5,7 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 //#endregion
 
-//#region Model and Service
+//#region App Component, Model, Service
 import { AccountService } from '@app_account/service/account.service';
 import { LoaderService } from '../loader/loader.service';
 //#endregion

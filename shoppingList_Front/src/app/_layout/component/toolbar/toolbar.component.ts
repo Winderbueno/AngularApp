@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 //#endregion
 
-//#region Model and Service
+//#region App Component, Model, Service
 import { Account } from '@app_account/model/account.model';
 import { AccountService } from '@app_account/service/account.service';
 //#endregion

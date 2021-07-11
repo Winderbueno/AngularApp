@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 //#endregion
 
-//#region Model and Service
+//#region App Component, Model, Service
 //#endregion
 
 // Api Info

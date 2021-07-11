@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors } from '@angular/forms';
 //#endregion
 
-//#region Model and Service
+//#region App Component, Model, Service
 import { FormErrorService } from '@app/_shared/form/service/form-error.service';
 import { MustMatch } from '@app/_shared/form/validator/must-match.validator';
 //#endregion

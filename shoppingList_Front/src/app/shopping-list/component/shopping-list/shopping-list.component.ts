@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatAccordion } from '@angular/material/expansion';
 //#endregion
 
-//#region Model and Service
+//#region App Component, Model, Service
 import { ShoppingList } from '@app/shopping-list/model/shopping-list.model';
 import { UsedProduct } from '@app/shopping-list/model/used-product.model';
 import { ShoppingListService } from '@app/shopping-list/service/shopping-list.service';

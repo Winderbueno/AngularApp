@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 //#endregion
 
-//#region Model and Service
+//#region App Component, Model, Service
 import { Account } from '@app_account/model/account.model';
 //#endregion
 

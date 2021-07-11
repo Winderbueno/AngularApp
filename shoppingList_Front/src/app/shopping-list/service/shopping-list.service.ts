@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 //#endregion
 
-//#region Model and Service
+//#region App Component, Model, Service
 import { ShoppingList } from '@app/shopping-list/model/shopping-list.model';
 import { UsedProduct } from '@app/shopping-list/model/used-product.model';
 import { CreateProductReq } from '../model/create-product-req.model';

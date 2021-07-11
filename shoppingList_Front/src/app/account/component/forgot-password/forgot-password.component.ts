@@ -4,7 +4,7 @@ import { Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 //#endregion
 
-//#region Model and Service
+//#region App Component, Model, Service
 import { FormComponent } from '@app/_shared/form/component/field-password/form.component';
 //#endregion
 

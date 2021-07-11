@@ -1,7 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-//#region Model and Service
+//#region App Component, Model, Service
 import { AccountService } from '@app_account/service/account.service'
 
 @Component({

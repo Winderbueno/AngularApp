@@ -4,7 +4,7 @@ import { Router, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs';
 //#endregion
 
-//#region Model and Service
+//#region App Component, Model, Service
 import { Alert } from '@app_alert/model/alert.model';
 import { AlertService } from '@app_alert/service/alert.service';
 import { AlertTypeEnum } from '@app_alert/model/enum/alert-type.enum';

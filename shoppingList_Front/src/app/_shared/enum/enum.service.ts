@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 //#endregion
 
-//#region Model and Service
+//#region App Component, Model, Service
 import { Enum } from '@app_shared/enum/enum.model';
 //#endregion
 
