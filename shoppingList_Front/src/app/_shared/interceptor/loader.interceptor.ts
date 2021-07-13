@@ -17,7 +17,7 @@ export class LoaderInterceptor implements HttpInterceptor {
 
   constructor(private loaderService: LoaderService) { }
 
-  /** TODO - Handle Http  */
+  /** TODO - Comment  Handle Http  */
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
       // Start loader
