@@ -19,7 +19,6 @@ export class LoginComponent extends FormComponent {
   }
 
   submitAction(): void {
-    console.log(super.formTitle);
     this.accountService.login(this.f.email.value, this.f.password.value)
       .pipe(first())
       .subscribe({

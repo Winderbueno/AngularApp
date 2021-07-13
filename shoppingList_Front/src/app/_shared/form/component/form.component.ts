@@ -19,17 +19,17 @@ import { AccountService } from '@app_account/service/account.service';
 export class FormComponent implements OnInit {
 
   // Form
-  formTitle:string | undefined;
+  protected formTitle:string | undefined;
   protected formDef:any;
   private _form!: FormGroup;
-  submitted = false;
+  submitted = false; // TODO - Used for what ?
 
   // Getters
+  get title() { return this.formTitle;}
   get form() { return this._form;}
   get f() { return this._form.controls; }
   get err() { return this.formErrorService; }
   get isLoading() { return this.loaderService.loading;}
-  get title() { return this.formTitle;}
 
   constructor(
     protected router: Router,
