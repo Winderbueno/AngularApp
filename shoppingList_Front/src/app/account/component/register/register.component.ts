@@ -13,6 +13,7 @@ import { FormComponent } from '@app/_shared/form/component/form.component';
 export class RegisterComponent extends FormComponent {
 
   ngOnInit(){
+    super.formTitle = "Register";
     super.formDef = {
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],

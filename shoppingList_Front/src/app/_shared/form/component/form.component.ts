@@ -19,6 +19,7 @@ import { AccountService } from '@app_account/service/account.service';
 export class FormComponent implements OnInit {
 
   // Form
+  formTitle:string | undefined;
   protected formDef:any;
   private _form!: FormGroup;
   submitted = false;
@@ -28,6 +29,7 @@ export class FormComponent implements OnInit {
   get f() { return this._form.controls; }
   get err() { return this.formErrorService; }
   get isLoading() { return this.loaderService.loading;}
+  get title() { return this.formTitle;}
 
   constructor(
     protected router: Router,

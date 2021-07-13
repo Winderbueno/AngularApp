@@ -13,6 +13,7 @@ import { FormComponent } from '@app/_shared/form/component/form.component';
 export class ForgotPasswordComponent extends FormComponent {
 
   ngOnInit(){
+    super.formTitle = "Forgot Password";
     super.formDef = { email: ['', [Validators.required, Validators.email]] };
     super.ngOnInit();
   }

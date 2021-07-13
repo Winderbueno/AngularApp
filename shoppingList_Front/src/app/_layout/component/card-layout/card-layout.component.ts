@@ -5,10 +5,10 @@ import { Router } from '@angular/router';
 import { AccountService } from '@app_account/service/account.service'
 
 @Component({
-  templateUrl: 'layout.component.html',
-  styleUrls: ['./layout.component.scss']
+  templateUrl: 'card-layout.component.html',
+  styleUrls: ['./card-layout.component.scss']
 })
-export class LayoutComponent {
+export class CardLayoutComponent {
 
   constructor(
     private router: Router,

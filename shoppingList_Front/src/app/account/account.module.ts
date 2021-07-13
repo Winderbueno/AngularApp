@@ -11,7 +11,7 @@ import { SharedModule } from '@app/_shared/shared.module';
 //#endregion
 
 //#region Declared Component
-import { LayoutComponent,
+import {
   LoginComponent,
   RegisterComponent,
   ForgotPasswordComponent,
@@ -31,7 +31,6 @@ import { LayoutComponent,
     SharedModule
   ],
   declarations: [
-    LayoutComponent,
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,

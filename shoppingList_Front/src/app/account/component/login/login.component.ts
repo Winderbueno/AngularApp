@@ -13,11 +13,13 @@ import { FormComponent } from '@app/_shared/form/component/form.component';
 export class LoginComponent extends FormComponent {
 
   ngOnInit(){
+    super.formTitle = "Login";
     super.formDef = { email: ['', [Validators.required, Validators.email]] };
     super.ngOnInit();
   }
 
   submitAction(): void {
+    console.log(super.formTitle);
     this.accountService.login(this.f.email.value, this.f.password.value)
       .pipe(first())
       .subscribe({

@@ -9,9 +9,10 @@ import { AppRoutingModule } from '@app/app-routing.module';
 //#endregion
 
 //#region Declared Component
-import { ToolbarComponent } from './component/toolbar/toolbar.component';
-import { HomeComponent } from '@app/_layout/component/home/home.component';
+import { ToolbarComponent } from '@app_layout/component/toolbar/toolbar.component';
+import { HomeComponent } from '@app_layout/component/home/home.component';
 import { FooterComponent } from '@app_layout/component/footer/footer.component';
+import { CardLayoutComponent } from '@app_layout/component/card-layout/card-layout.component';
 //#endregion
 
 
@@ -26,11 +27,13 @@ import { FooterComponent } from '@app_layout/component/footer/footer.component';
 
   ],
   declarations: [
+    CardLayoutComponent,
     ToolbarComponent,
     FooterComponent,
     HomeComponent,
   ],
   exports: [
+    CardLayoutComponent,
     ToolbarComponent,
     FooterComponent,
     HomeComponent,
