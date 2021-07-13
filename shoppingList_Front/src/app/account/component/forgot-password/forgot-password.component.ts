@@ -14,7 +14,6 @@ export class ForgotPasswordComponent extends FormComponent {
 
   ngOnInit(){
     super.formTitle = "Forgot Password";
-    super.formDef = { email: ['', [Validators.required, Validators.email]] };
     super.ngOnInit();
   }
 

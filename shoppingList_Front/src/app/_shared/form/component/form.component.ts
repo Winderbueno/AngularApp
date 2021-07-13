@@ -20,7 +20,7 @@ export class FormComponent implements OnInit {
 
   // Form
   protected formTitle:string | undefined;
-  protected formDef:any;
+  protected formDef:any = {};
   private _form!: FormGroup;
   submitted = false; // TODO - Used for what ?
 

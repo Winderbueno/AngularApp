@@ -10,14 +10,10 @@
     </mat-form-field>
 
     <!-- Email -->
-    <mat-form-field class="form-element" appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email">
-        <mat-error *ngIf="f.email.invalid">{{ err.getErrorMsg(f.email, 'email') }}</mat-error>
-    </mat-form-field>
+    <app-field-email [formToModify]="form"></app-field-email>
 
     <!-- Password + Confirm -->
-    <app-password-field [formToModify]="form" [withConfirm]="true"></app-password-field>
+    <app-field-password [formToModify]="form" [withConfirm]="true"></app-field-password>
 
     <!-- Usage Term - TODO - Clean Tech Impl -->
     <div class="form-group form-check">

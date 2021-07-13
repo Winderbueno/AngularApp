@@ -19,8 +19,7 @@ export class EmailFieldComponent implements OnInit {
 
   @Input() formToModify!: FormGroup;
 
-  emailCtrl: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
-
+  emailCtrl: FormControl = new FormControl('', [Validators.required, Validators.email]);
 
   // Getters
   get err() { return this.formErrorService; }

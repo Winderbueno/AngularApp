@@ -1,6 +1,6 @@
 ﻿<!-- Email -->
-<mat-form-field class="form-element" appearance="outline">
+<mat-form-field style="flex:1;" appearance="outline">
   <mat-label>Email</mat-label>
-  <input matInput formControlName="email">
+  <input matInput [formControl]="emailCtrl">
   <mat-error *ngIf="emailCtrl.invalid">{{ err.getErrorMsg(emailCtrl, 'email') }}</mat-error>
 </mat-form-field>

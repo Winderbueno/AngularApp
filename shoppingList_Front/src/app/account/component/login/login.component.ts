@@ -1,6 +1,5 @@
 //#region Angular, Material, RxJS
 import { Component } from '@angular/core';
-import { Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 //#endregion
 
@@ -14,7 +13,6 @@ export class LoginComponent extends FormComponent {
 
   ngOnInit(){
     super.formTitle = "Login";
-    super.formDef = { email: ['', [Validators.required, Validators.email]] };
     super.ngOnInit();
   }
 

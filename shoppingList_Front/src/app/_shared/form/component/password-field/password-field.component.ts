@@ -18,7 +18,7 @@ import { MustMatch } from '@app/_shared/form/validator/must-match.validator';
  *
  */
 @Component({
-  selector: 'app-password-field',
+  selector: 'app-field-password',
   templateUrl: 'password-field.component.html' })
 export class PasswordFieldComponent implements OnInit {
 
