@@ -1,6 +1,6 @@
 ﻿//#region Angular, Material, RxJS
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 //#endregion
 
 //#region App Component, Model, Service
@@ -24,7 +24,7 @@ export class PasswordFieldComponent implements OnInit {
   @Input() withConfirm: boolean = false;
   @Input() formToModify!: FormGroup;
 
-  // TODO - Modify Password format policy (At least 6 characters...) -->
+  // TODO - Modify Password format policy (At least 6 characters...)
   pwdCtrl: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
   pwdConfirmCtrl: FormControl = new FormControl('', Validators.required);
 

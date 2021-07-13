@@ -18,13 +18,13 @@ import { FormComponent } from './form/component/form.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule,
+    MaterialModule
   ],
   declarations: [
     AlertComponent,
     SnackbarComponent,
     PasswordFieldComponent,
-    FormComponent,
+    FormComponent
   ],
   exports: [
     AlertComponent,

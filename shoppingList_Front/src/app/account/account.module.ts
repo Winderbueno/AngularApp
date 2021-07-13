@@ -28,7 +28,7 @@ import { LayoutComponent,
 
     // App Module
     AccountRoutingModule,
-    SharedModule,
+    SharedModule
   ],
   declarations: [
     LayoutComponent,
