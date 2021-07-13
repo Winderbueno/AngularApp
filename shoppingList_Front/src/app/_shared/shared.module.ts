@@ -8,7 +8,8 @@ import { MaterialModule } from '@app_shared/module/material.module';
 //#region Declared Component
 import { AlertComponent } from '@app_alert/component/alert/alert.component';
 import { SnackbarComponent } from '@app_alert/component/snackbar/snackbar.component';
-import { PasswordFieldComponent } from './form/component/field-password/password-field.component';
+import { PasswordFieldComponent } from './form/component/password-field/password-field.component';
+import { EmailFieldComponent } from './form/component/email-field/email-field.component';
 import { FormComponent } from './form/component/form.component';
 //#endregion
 
@@ -21,14 +22,19 @@ import { FormComponent } from './form/component/form.component';
     MaterialModule
   ],
   declarations: [
+    // Alert
     AlertComponent,
     SnackbarComponent,
+
+    // Form
+    FormComponent,
     PasswordFieldComponent,
-    FormComponent
+    EmailFieldComponent
   ],
   exports: [
     AlertComponent,
-    PasswordFieldComponent
+    PasswordFieldComponent,
+    EmailFieldComponent
   ]
 })
 export class SharedModule { }
