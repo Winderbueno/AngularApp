@@ -3,13 +3,13 @@
 <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
 
   <!-- Email -->
-  <app-field-email class="form-element" style="display: flex;" [formToModify]="form"></app-field-email>
+  <app-field-email [formToModify]="form"></app-field-email>
 
   <!-- Password -->
   <app-field-password [formToModify]="form"></app-field-password>
 
   <!-- Submit Action -->
-  <button mat-raised-button color="primary" [disabled]="isLoading" class="form-element" type="submit">
+  <button mat-raised-button color="primary" [disabled]="isLoading" type="submit">
     <mat-icon *ngIf="isLoading">
       <mat-spinner diameter="25"></mat-spinner>
     </mat-icon>
