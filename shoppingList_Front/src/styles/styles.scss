@@ -2,10 +2,17 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 /* Homemade style */
-@import './alert.scss'; /* to handle alert */
-@import './form.scss'; /* to handle forms */
+@import './alert.scss'; /* Alert */
+@import './layout.scss'; /* Layout */
+
+// Button
+@import './button/github-star-badge.scss';
+@import './button/circle-link.scss';
+
+// Forms
+@import './form.scss';
 
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }

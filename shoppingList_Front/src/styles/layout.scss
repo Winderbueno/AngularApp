@@ -1,0 +1,13 @@
+.flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.card-container {
+  border: 1px solid black;
+  border-radius: 1.2rem;
+  padding : 1rem;
+}

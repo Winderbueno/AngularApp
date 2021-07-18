@@ -4,10 +4,7 @@ import { Router } from '@angular/router';
 //#region App Component, Model, Service
 import { AccountService } from '@app_account/service/account.service'
 
-@Component({
-  templateUrl: 'card-layout.component.html',
-  styleUrls: ['./card-layout.component.scss']
-})
+@Component({ templateUrl: 'card-layout.component.html' })
 export class CardLayoutComponent {
 
   constructor(
