@@ -8,13 +8,8 @@
   <!-- Password -->
   <app-field-password [formToModify]="form"></app-field-password>
 
-  <!-- Submit Action -->
-  <button mat-raised-button color="primary" [disabled]="isLoading" type="submit">
-    <mat-icon *ngIf="isLoading">
-      <mat-spinner diameter="25"></mat-spinner>
-    </mat-icon>
-    Sign In
-  </button>
+  <!-- Submit -->
+  <app-submit-button [text]="'Sign In'"></app-submit-button>
 
   <!-- Secondary Action -->
   <div>

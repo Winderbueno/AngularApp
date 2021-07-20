@@ -23,14 +23,9 @@
       *ngIf="f.acceptTerms.invalid && f.acceptTerms.touched && submitted">Accept Ts & Cs is required</mat-error>
     </div>
 
-    <!-- Submit Action -->
-    <button mat-raised-button color="primary" [disabled]="isLoading" type="submit">
-      <mat-icon *ngIf="isLoading">
-        <mat-spinner diameter="25"></mat-spinner>
-      </mat-icon>
-      Register
-    </button>
-
+    <!-- Submit -->
+    <app-submit-button [text]="'Register'"></app-submit-button>
+    
     <!-- Secondary Action -->
     <a mat-button routerLink="../login">You already have an account ? :)</a>
 

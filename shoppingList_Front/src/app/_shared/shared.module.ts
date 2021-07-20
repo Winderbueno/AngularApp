@@ -10,6 +10,7 @@ import { AlertComponent } from '@app_alert/component/alert/alert.component';
 import { SnackbarComponent } from '@app_alert/component/snackbar/snackbar.component';
 import { PasswordFieldComponent } from './form/component/password-field/password-field.component';
 import { EmailFieldComponent } from './form/component/email-field/email-field.component';
+import { SubmitButtonComponent } from './form/component/submit-button/submit-button.component';
 import { FormComponent } from './form/component/form.component';
 //#endregion
 
@@ -27,14 +28,16 @@ import { FormComponent } from './form/component/form.component';
     SnackbarComponent,
 
     // Form
-    FormComponent,
     PasswordFieldComponent,
-    EmailFieldComponent
+    EmailFieldComponent,
+    SubmitButtonComponent,
+    FormComponent
   ],
   exports: [
     AlertComponent,
     PasswordFieldComponent,
-    EmailFieldComponent
+    EmailFieldComponent,
+    SubmitButtonComponent
   ]
 })
 export class SharedModule { }

@@ -6,7 +6,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 //#region App Component, Model, Service
 import { FormErrorService } from '@app/_shared/form/service/form-error.service';
-import { LoaderService } from '@app/_shared/loader/loader.service';
 import { AlertService } from '@app_alert/service/alert.service';
 import { AccountService } from '@app_account/service/account.service';
 //#endregion
@@ -29,14 +28,12 @@ export class FormComponent implements OnInit {
   get form() { return this._form;}
   get f() { return this._form.controls; }
   get err() { return this.formErrorService; }
-  get isLoading() { return this.loaderService.loading;}
 
   constructor(
     protected router: Router,
     protected route: ActivatedRoute,
     private formBuilder: FormBuilder,
     protected formErrorService: FormErrorService,
-    protected loaderService: LoaderService,
     protected alertService: AlertService,
     protected accountService: AccountService,
   ) { }
