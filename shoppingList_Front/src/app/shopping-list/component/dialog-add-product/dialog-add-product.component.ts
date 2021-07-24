@@ -1,21 +1,26 @@
 //#region Angular, Material, RxJS
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 //#endregion
 
 //#region App Component, Model, Service
-import { AlertService } from '@app_alert/service/alert.service';
+import { FormComponent } from '@app/_shared/form/component/form.component';
 import { EnumService } from '@app_shared/enum/enum.service';
 import { Enum } from '@app_shared/enum/enum.model';
 import { ShoppingListService } from '@app/shopping-list/service/shopping-list.service';
 import { CreateProductReq } from '@app/shopping-list/model/create-product-req.model';
+import { FormErrorService } from '@app/_shared/form/service/form-error.service';
+import { AlertService } from '@app_alert/service/alert.service';
+import { AccountService } from '@app_account/service/account.service';
 //#endregion
 
 @Component({
   selector: 'app-dialog-add-product',
   templateUrl: './dialog-add-product.component.html'
 })
-export class DialogAddProductComponent implements OnInit {
+export class DialogAddProductComponent extends FormComponent {
 
   // Proposition values
   productCatEnum!: Enum;
@@ -29,13 +34,29 @@ export class DialogAddProductComponent implements OnInit {
   prodToCreate!: CreateProductReq;
 
   constructor(
+    protected router: Router,
+    protected route: ActivatedRoute,
+    formBuilder: FormBuilder,
+    formErrorService: FormErrorService,
+    alertService: AlertService,
+    accountService: AccountService,
     public dialogRef: MatDialogRef<DialogAddProductComponent>,
-    private alertService: AlertService,
     private enumService: EnumService,
     private shoppingListService: ShoppingListService,
-  ) { }
+  ) {
+    super(router, route, formBuilder, formErrorService, alertService, accountService);
+  }
 
   ngOnInit(): void {
+
+    super.formDef = {
+      productName: ['', Validators.required],
+      category: ['', Validators.requiredTrue],
+      subCategory: ['', Validators.requiredTrue],
+    }
+
+    super.ngOnInit();
+
     // TODO - Change Backend Design to only have 1 backend call to retrieve multiple enums values
     this.enumService.getValuesOf("ProductCategory")
       .subscribe({
@@ -49,7 +70,7 @@ export class DialogAddProductComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  submitAction() {
 
     // Get Active List Id
     var idSl: string = this.shoppingListService.active.shoppingListId;

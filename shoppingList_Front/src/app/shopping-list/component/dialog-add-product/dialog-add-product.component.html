@@ -1,35 +1,39 @@
 <h1 mat-dialog-title>Ajoute tes Produits !</h1>
 
-<div mat-dialog-content>
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Product Name</mat-label>
+      <input matInput formControlName="productName">
+      <mat-error *ngIf="f.productName.invalid">{{ err.getErrorMsg(f.productName, 'username') }}</mat-error>
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput [(ngModel)]="productName" placeholder="Un nom de produit ;)">
-  </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Category</mat-label>
-    <mat-select [(ngModel)]="selectedCat" name="category">
-      <span *ngIf="productCatEnum">
-        <mat-option value="{{prodCat}}" *ngFor="let prodCat of productCatEnum.values">{{prodCat}}</mat-option>
-      </span>
-    </mat-select>
-  </mat-form-field>
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select [(ngModel)]="selectedCat" formControlName="category">
+          <span *ngIf="productCatEnum">
+            <mat-option value="{{prodCat}}" *ngFor="let prodCat of productCatEnum.values">{{prodCat}}</mat-option>
+          </span>
+        </mat-select>
+      </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Sub Category</mat-label>
-    <mat-select [(ngModel)]="selectedSubCat" name="subCategory">
-      <span *ngIf="productSubCatEnum">
-        <mat-option value="{{prodSubCat}}" *ngFor="let prodSubCat of productSubCatEnum.values">{{prodSubCat}}</mat-option>
-      </span>
-    </mat-select>
-  </mat-form-field>
+      <mat-form-field>
+        <mat-label>Sub Category</mat-label>
+        <mat-select [(ngModel)]="selectedSubCat" formControlName="subCategory">
+          <span *ngIf="productSubCatEnum">
+            <mat-option value="{{prodSubCat}}" *ngFor="let prodSubCat of productSubCatEnum.values">{{prodSubCat}}</mat-option>
+          </span>
+        </mat-select>
+      </mat-form-field>
 
-  <p>Ceci pourrait correspondre :</p>
 
-  <p>Produit(s) Sélectionnés</p>
-</div>
+    <p>Ceci pourrait correspondre :</p>
+    <p>Produit(s) Sélectionnés</p>
 
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button (click)="onSubmit()" cdkFocusInitial>Ok</button>
-</div>
+    <!-- Submit -->
+    <app-submit-button [text]="'OK'"></app-submit-button>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+
+  </form>
+
+
