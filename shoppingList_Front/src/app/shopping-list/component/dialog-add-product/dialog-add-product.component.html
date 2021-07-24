@@ -1,39 +1,42 @@
-<h1 mat-dialog-title>Ajoute tes Produits !</h1>
+<h1 mat-dialog-title>Add your product</h1>
 
-  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
-    <mat-form-field>
-      <mat-label>Product Name</mat-label>
-      <input matInput formControlName="productName">
-      <mat-error *ngIf="f.productName.invalid">{{ err.getErrorMsg(f.productName, 'username') }}</mat-error>
-    </mat-form-field>
+<form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
 
+  <!-- Product Name (TODO ) -->
+  <mat-form-field>
+    <mat-label>Product Name</mat-label>
+    <input matInput formControlName="productName">
+    <mat-error *ngIf="f.productName.invalid">{{ err.getErrorMsg(f.productName) }}</mat-error>
+  </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Category</mat-label>
-        <mat-select formControlName="category">
-          <span *ngIf="productCatEnum">
-            <mat-option value="{{prodCat}}" *ngFor="let prodCat of productCatEnum.values">{{prodCat}}</mat-option>
-          </span>
-        </mat-select>
-      </mat-form-field>
+  <!-- Product Category (TODO : Create Select Component) -->
+  <mat-form-field>
+    <mat-label>Category</mat-label>
+    <mat-select formControlName="category">
+      <span *ngIf="productCatEnum">
+        <mat-option value="{{prodCat}}" *ngFor="let prodCat of productCatEnum.values">{{prodCat}}</mat-option>
+      </span>
+    </mat-select>
+  </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Sub Category</mat-label>
-        <mat-select formControlName="subCategory">
-          <span *ngIf="productSubCatEnum">
-            <mat-option value="{{prodSubCat}}" *ngFor="let prodSubCat of productSubCatEnum.values">{{prodSubCat}}</mat-option>
-          </span>
-        </mat-select>
-      </mat-form-field>
+  <!-- Product Sub Category -->
+  <mat-form-field>
+    <mat-label>Sub Category</mat-label>
+    <mat-select formControlName="subCategory">
+      <span *ngIf="productSubCatEnum">
+        <mat-option value="{{prodSubCat}}" *ngFor="let prodSubCat of productSubCatEnum.values">{{prodSubCat}}
+        </mat-option>
+      </span>
+    </mat-select>
+  </mat-form-field>
 
-    <!-- TODO - Proposition de produit -->
+  <!-- TODO - Proposition de produit -->
+  <!--
     <p>Ceci pourrait correspondre :</p>
-    <p>Produit(s) Sélectionnés</p>
+    <p>Produit(s) Sélectionnés</p> -->
 
-    <!-- Submit -->
-    <app-submit-button [text]="'OK'"></app-submit-button>
-    <button mat-button (click)="onNoClick()">No Thanks</button>
+  <!-- Submit -->
+  <app-submit-button [text]="'OK'"></app-submit-button>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
 
-  </form>
-
-
+</form>

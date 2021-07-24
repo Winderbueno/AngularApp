@@ -6,7 +6,7 @@
     <mat-form-field>
         <mat-label>Username</mat-label>
         <input matInput formControlName="username">
-        <mat-error *ngIf="f.username.invalid">{{ err.getErrorMsg(f.username, 'username') }}</mat-error>
+        <mat-error *ngIf="f.username.invalid">{{ err.getErrorMsg(f.username) }}</mat-error>
     </mat-form-field>
 
     <!-- Email -->

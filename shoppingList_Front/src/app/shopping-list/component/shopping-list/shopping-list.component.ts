@@ -49,7 +49,7 @@ export class ShoppingListComponent implements OnInit {
 
     // Open addProductDialog
     const addProductDialog = this.dialog
-      .open(DialogAddProductComponent, { width: '300px' });
+      .open(DialogAddProductComponent, { width: '400px' });
 
     // After dialog closing, refresh the active shoppingList
     addProductDialog

@@ -26,17 +26,14 @@ export class DialogAddProductComponent extends FormComponent {
   productCatEnum!: Enum;
   productSubCatEnum!: Enum;
 
-
-  prodToCreate!: CreateProductReq;
-
   constructor(
-    protected router: Router,
-    protected route: ActivatedRoute,
+    router: Router,
+    route: ActivatedRoute,
     formBuilder: FormBuilder,
     formErrorService: FormErrorService,
     alertService: AlertService,
     accountService: AccountService,
-    public dialogRef: MatDialogRef<DialogAddProductComponent>,
+    private dialogRef: MatDialogRef<DialogAddProductComponent>,
     private enumService: EnumService,
     private shoppingListService: ShoppingListService,
   ) {
@@ -72,7 +69,7 @@ export class DialogAddProductComponent extends FormComponent {
     var idSl: string = this.shoppingListService.active.shoppingListId;
 
     // Create product to create
-    this.prodToCreate = {
+    var prodToCreate: CreateProductReq = {
       category: this.f.category.value,
       subCategory: this.f.subCategory.value,
       name: this.f.productName.value,
@@ -80,10 +77,8 @@ export class DialogAddProductComponent extends FormComponent {
       note: "test"
     }
 
-    // TODO - Handle case when the user dont give a product name
-
     // Call the server
-    this.shoppingListService.createProduct(idSl, this.prodToCreate)
+    this.shoppingListService.createProduct(idSl, prodToCreate)
       .subscribe({
         next: res => {
           this.dialogRef.close();
