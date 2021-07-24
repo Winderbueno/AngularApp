@@ -22,10 +22,10 @@ import { MustMatch } from '@app/_shared/form/validator/must-match.validator';
   templateUrl: 'password-field.component.html' })
 export class PasswordFieldComponent implements OnInit {
 
-  @Input() withConfirm: boolean = false;
   @Input() formToModify!: FormGroup;
+  @Input() withConfirm: boolean = false;
 
-  // TODO - Modify Password format policy (At least 6 characters...)
+  // TODO - Modify password format policy
   pwdCtrl: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
   pwdConfirmCtrl: FormControl = new FormControl('', Validators.required);
 

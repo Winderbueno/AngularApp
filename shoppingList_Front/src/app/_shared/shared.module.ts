@@ -6,7 +6,7 @@ import { MaterialModule } from '@app_shared/module/material.module';
 //#endregion
 
 //#region Declared Component
-import { AlertComponent } from '@app_alert/component/alert/alert.component';
+import { AlertComponent } from '@app/_shared/alert/component/alert.component';
 import { SnackbarComponent } from '@app_alert/component/snackbar/snackbar.component';
 import { PasswordFieldComponent } from './form/component/password-field/password-field.component';
 import { EmailFieldComponent } from './form/component/email-field/email-field.component';

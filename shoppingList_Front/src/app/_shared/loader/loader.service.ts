@@ -2,9 +2,6 @@
 import { Injectable } from '@angular/core';
 //#endregion
 
-//#region App Component, Model, Service
-//#endregion
-
 // Api Info
 import { envBusinessAPI } from '@env/environment';
 const baseUrl = `${envBusinessAPI.apiUrl}/enum`;
@@ -13,6 +10,7 @@ const baseUrl = `${envBusinessAPI.apiUrl}/enum`;
 export class LoaderService {
 
   private _loading: boolean = false;
+  // TODO : add more info abour what part is loading ?
   private requestURL!: string;
 
   constructor() {}

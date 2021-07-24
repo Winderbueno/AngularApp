@@ -1,22 +1,22 @@
 ﻿//#region Angular, Material, RxJS
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
+import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 //#endregion
 
 //#region App Component, Model, Service
+import { SnackbarComponent } from './snackbar/snackbar.component';
 import { Alert } from '@app_alert/model/alert.model';
-import { AlertService } from '@app_alert/service/alert.service';
 import { AlertTypeEnum } from '@app_alert/model/enum/alert-type.enum';
+import { AlertService } from '@app_alert/service/alert.service';
 //#endregion
 
-import {SnackbarComponent} from '../snackbar/snackbar.component';
-import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-alert',
-    templateUrl: './alert.component.html'
-  })
+    template: ``
+})
 export class AlertComponent implements OnInit, OnDestroy {
 
     snackBarRef!: MatSnackBarRef<SnackbarComponent>;

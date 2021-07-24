@@ -3,8 +3,6 @@ import { Component, Inject } from '@angular/core';
 import { MatSnackBarRef, MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 //#endregion
 
-//#region App Component, Model, Service
-//#endregion
 
 @Component({
   selector: 'app-snackbar',
