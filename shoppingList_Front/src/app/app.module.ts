@@ -1,9 +1,9 @@
 //#region Angular, Material, RxJS
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { MatFormFieldDefaultOptions, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldDefaultOptions, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 //#endregion
 
 //#region App Module
@@ -19,7 +19,7 @@ import { AccountService } from '@app_account/service/account.service';
 //#endregion
 
 //#region Interceptor
-import { LoaderInterceptor } from './_shared/interceptor/loader.interceptor';
+import { LoaderInterceptor } from '@app_shared/interceptor/loader.interceptor';
 import { JwtInterceptor } from '@app_shared/interceptor/jwt.interceptor';
 import { ErrorInterceptor } from '@app_shared/interceptor/error.interceptor';
 //#endregion
@@ -28,6 +28,7 @@ import { ErrorInterceptor } from '@app_shared/interceptor/error.interceptor';
 import { AppComponent } from './app.component';
 //#endregion
 
+// Material Configuration
 const appearance: MatFormFieldDefaultOptions = { appearance: 'outline' };
 
 @NgModule({
@@ -46,6 +47,7 @@ const appearance: MatFormFieldDefaultOptions = { appearance: 'outline' };
   providers: [
     { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AccountService] },
 
+    /* Material Configuration */
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: appearance },
 
     /* Manage HTTP request */
