@@ -3,7 +3,7 @@
 <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
 
     <!-- Username -->
-    <mat-form-field appearance="outline">
+    <mat-form-field>
         <mat-label>Username</mat-label>
         <input matInput formControlName="username">
         <mat-error *ngIf="f.username.invalid">{{ err.getErrorMsg(f.username, 'username') }}</mat-error>
@@ -25,7 +25,7 @@
 
     <!-- Submit -->
     <app-submit-button [text]="'Register'"></app-submit-button>
-    
+
     <!-- Secondary Action -->
     <a mat-button routerLink="../login">You already have an account ? :)</a>
 

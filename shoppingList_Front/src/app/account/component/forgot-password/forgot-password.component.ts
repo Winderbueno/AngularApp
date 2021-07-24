@@ -1,6 +1,5 @@
 ﻿//#region Angular, Material, RxJS
 import { Component } from '@angular/core';
-import { Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 //#endregion
 
