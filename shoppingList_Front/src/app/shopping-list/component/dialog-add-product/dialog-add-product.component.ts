@@ -26,10 +26,6 @@ export class DialogAddProductComponent extends FormComponent {
   productCatEnum!: Enum;
   productSubCatEnum!: Enum;
 
-  // Selected values
-  productName: string = '';
-  selectedCat!: string;
-  selectedSubCat!: string;
 
   prodToCreate!: CreateProductReq;
 
@@ -51,8 +47,8 @@ export class DialogAddProductComponent extends FormComponent {
 
     super.formDef = {
       productName: ['', Validators.required],
-      category: ['', Validators.requiredTrue],
-      subCategory: ['', Validators.requiredTrue],
+      category: ['', Validators.required],
+      subCategory: ['', Validators.required],
     }
 
     super.ngOnInit();
@@ -77,9 +73,9 @@ export class DialogAddProductComponent extends FormComponent {
 
     // Create product to create
     this.prodToCreate = {
-      category: this.selectedCat,
-      subCategory: this.selectedSubCat,
-      name: this.productName,
+      category: this.f.category.value,
+      subCategory: this.f.subCategory.value,
+      name: this.f.productName.value,
       quantity: 1,
       note: "test"
     }
@@ -98,7 +94,6 @@ export class DialogAddProductComponent extends FormComponent {
   }
 
   onNoClick(): void {
-    this.productName='';
     this.dialogRef.close();
   }
 }

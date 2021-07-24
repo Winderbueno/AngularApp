@@ -10,7 +10,7 @@
 
       <mat-form-field>
         <mat-label>Category</mat-label>
-        <mat-select [(ngModel)]="selectedCat" formControlName="category">
+        <mat-select formControlName="category">
           <span *ngIf="productCatEnum">
             <mat-option value="{{prodCat}}" *ngFor="let prodCat of productCatEnum.values">{{prodCat}}</mat-option>
           </span>
@@ -19,14 +19,14 @@
 
       <mat-form-field>
         <mat-label>Sub Category</mat-label>
-        <mat-select [(ngModel)]="selectedSubCat" formControlName="subCategory">
+        <mat-select formControlName="subCategory">
           <span *ngIf="productSubCatEnum">
             <mat-option value="{{prodSubCat}}" *ngFor="let prodSubCat of productSubCatEnum.values">{{prodSubCat}}</mat-option>
           </span>
         </mat-select>
       </mat-form-field>
 
-
+    <!-- TODO - Proposition de produit -->
     <p>Ceci pourrait correspondre :</p>
     <p>Produit(s) Sélectionnés</p>
 
