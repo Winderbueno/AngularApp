@@ -3,7 +3,7 @@
 <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
 
   <!-- Email -->
-  <app-field-email [formToModify]="form"></app-field-email>
+  <app-input-field [formToModify]="form" [name]="'Email'"></app-input-field>
 
   <!-- Password -->
   <app-field-password [formToModify]="form"></app-field-password>

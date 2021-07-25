@@ -3,14 +3,10 @@
 <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
 
     <!-- Username -->
-    <mat-form-field>
-        <mat-label>Username</mat-label>
-        <input matInput formControlName="username">
-        <mat-error *ngIf="f.username.invalid">{{ err.getErrorMsg(f.username) }}</mat-error>
-    </mat-form-field>
+    <app-input-field [formToModify]="form" [name]="'Username'"></app-input-field>
 
     <!-- Email -->
-    <app-field-email [formToModify]="form"></app-field-email>
+    <app-input-field [formToModify]="form" [name]="'Email'"></app-input-field>
 
     <!-- Password + Confirm -->
     <app-field-password [formToModify]="form" [withConfirm]="true"></app-field-password>

@@ -1,24 +1,31 @@
 ﻿//#region Angular, Material, RxJS
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 //#endregion
 
 //#region App Component, Model, Service
+import { Enum } from '@app_shared/enum/enum.model';
 import { FormErrorService } from '@app_form/service/form-error.service';
 //#endregion
 
+
 /**
- * Email Field Component
+ * Select Field Component
  *  @param formToModify - FormGroup to add the FormControl on
+ *  @param name - Name of the Control (and Field Label)
+ *  @param enum - Values proposed in the select field
  */
 @Component({
-  selector: 'app-field-email',
-  templateUrl: 'email-field.component.html' })
-export class EmailFieldComponent implements OnInit {
+  selector: 'app-select-field',
+  templateUrl: 'select-field.component.html' })
+export class SelectFieldComponent implements OnInit {
 
   @Input() formToModify!: FormGroup;
+  @Input() name!: string;
+  @Input() enum!: Enum;
 
-  emailCtrl: FormControl = new FormControl('', [Validators.required, Validators.email]);
+  ctrl: FormControl = new FormControl('', [Validators.required]);
 
   // Getters
   get err() { return this.formErrorService; }
@@ -26,6 +33,6 @@ export class EmailFieldComponent implements OnInit {
   constructor(private formErrorService: FormErrorService) { }
 
   ngOnInit() {
-    this.formToModify.addControl('email', this.emailCtrl);
+    this.formToModify.addControl(this.name, this.ctrl);
   }
 }

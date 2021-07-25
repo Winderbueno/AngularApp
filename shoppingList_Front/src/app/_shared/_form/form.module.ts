@@ -8,8 +8,8 @@ import { MaterialModule } from '@app_shared/module/material.module';
 //#region Declared Component
 import {
   PasswordFieldComponent,
-  EmailFieldComponent,
-  SelectTypeFieldComponent,
+  InputFieldComponent,
+  SelectFieldComponent,
   SubmitButtonComponent,
   FormComponent } from './component/';
 //#endregion
@@ -25,20 +25,24 @@ import {
   declarations: [
     // Text Field
     PasswordFieldComponent,
-    EmailFieldComponent,
 
     // Field Type
-    SelectTypeFieldComponent,
+    InputFieldComponent,
+    SelectFieldComponent,
 
     SubmitButtonComponent,
     FormComponent
   ],
   exports: [
     PasswordFieldComponent,
-    EmailFieldComponent,
-    SelectTypeFieldComponent,
+
+    // Field Type
+    InputFieldComponent,
+    SelectFieldComponent,
+
     SubmitButtonComponent,
     FormsModule,
+
     ReactiveFormsModule,
   ]
 })

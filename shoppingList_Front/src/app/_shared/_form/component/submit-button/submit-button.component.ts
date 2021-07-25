@@ -6,9 +6,10 @@ import { Component, Input } from '@angular/core';
 import { LoaderService } from '@app/_shared/loader/loader.service';
 //#endregion
 
+
 /**
  * Submit Button Component
- *  @param text -
+ *  @param text - Text present on the submit button (default : "Submit")
  */
 @Component({
   selector: 'app-submit-button',

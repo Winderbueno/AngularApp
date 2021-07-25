@@ -17,7 +17,7 @@ export class LoginComponent extends FormComponent {
   }
 
   submitAction(): void {
-    this.accountService.login(this.f.email.value, this.f.password.value)
+    this.accountService.login(this.f.Email.value, this.f.Password.value)
       .pipe(first())
       .subscribe({
         next: () => {

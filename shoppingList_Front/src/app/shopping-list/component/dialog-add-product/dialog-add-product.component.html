@@ -3,11 +3,7 @@
 <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
 
   <!-- Product Name -->
-  <mat-form-field>
-    <mat-label>Product Name</mat-label>
-    <input matInput formControlName="productName">
-    <mat-error *ngIf="f.productName.invalid">{{ err.getErrorMsg(f.productName) }}</mat-error>
-  </mat-form-field>
+  <app-input-field [formToModify]="form" [name]="'Product Name'"></app-input-field>
 
   <!-- Product Category -->
   <app-select-field [formToModify]="form" [name]="'Category'" [enum]="productCatEnum"></app-select-field>

@@ -1,0 +1,6 @@
+﻿<!-- Input Field -->
+<mat-form-field>
+  <mat-label>{{name}}</mat-label>
+  <input matInput [formControl]="_ctrl">
+  <mat-error *ngIf="_ctrl.invalid">{{ err.getErrorMsg(_ctrl) }}</mat-error>
+</mat-form-field>

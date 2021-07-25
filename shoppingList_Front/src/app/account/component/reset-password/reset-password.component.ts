@@ -47,7 +47,7 @@ export class ResetPasswordComponent extends FormComponent {
   }
 
   submitAction() {
-    this.accountService.resetPassword(this.token, this.f.password.value, this.f.confirmPassword.value)
+    this.accountService.resetPassword(this.token, this.f.Password.value, this.f.ConfirmPassword.value)
       .pipe(first())
       .subscribe({
         next: () => {

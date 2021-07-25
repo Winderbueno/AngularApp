@@ -15,7 +15,6 @@ export class RegisterComponent extends FormComponent {
   ngOnInit(){
     super.formTitle = "Sign Up";
     super.formDef = {
-      username: ['', Validators.required],
       acceptTerms: [false, Validators.requiredTrue]
     }
     super.ngOnInit();

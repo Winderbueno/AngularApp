@@ -42,9 +42,7 @@ export class DialogAddProductComponent extends FormComponent {
 
   ngOnInit(): void {
 
-    super.formDef = {
-      productName: ['', Validators.required]
-    }
+    super.formDef = {}
 
     super.ngOnInit();
 
@@ -70,7 +68,7 @@ export class DialogAddProductComponent extends FormComponent {
     var prodToCreate: CreateProductReq = {
       category: this.f.Category.value,
       subCategory: this.f.SubCategory.value,
-      name: this.f.productName.value,
+      name: this.f.ProductName.value,
       quantity: 1,
       note: "test" // TODO - This field should note be that
     }

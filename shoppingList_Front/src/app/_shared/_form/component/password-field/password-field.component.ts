@@ -39,11 +39,11 @@ export class PasswordFieldComponent implements OnInit {
   constructor(private formErrorService: FormErrorService) { }
 
   ngOnInit() {
-    this.formToModify.addControl('password', this.pwdCtrl);
+    this.formToModify.addControl('Password', this.pwdCtrl);
 
     if(this.withConfirm){
-      this.formToModify.addControl('confirmPassword', this.pwdConfirmCtrl);
-      this.formToModify.validator = MustMatch('password', 'confirmPassword');
+      this.formToModify.addControl('ConfirmPassword', this.pwdConfirmCtrl);
+      this.formToModify.validator = MustMatch('Password', 'ConfirmPassword');
     }
   }
 }
