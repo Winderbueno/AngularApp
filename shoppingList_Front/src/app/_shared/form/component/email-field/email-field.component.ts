@@ -9,8 +9,7 @@ import { FormErrorService } from '@app/_shared/form/service/form-error.service';
 
 /**
  * Email Field Component
- * TODO - Comment
- *  @param formToModify - the formGroup to add the fields on
+ *  @param formToModify - FormGroup to add the FormControl on
  */
 @Component({
   selector: 'app-field-email',

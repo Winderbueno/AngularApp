@@ -8,14 +8,14 @@ import { LoaderService } from '@app/_shared/loader/loader.service';
 
 /**
  * Submit Button Component
- * TODO - Comment
+ *  @param text -
  */
 @Component({
   selector: 'app-submit-button',
   templateUrl: 'submit-button.component.html' })
 export class SubmitButtonComponent {
 
-  @Input() text:string = "Bonjour";
+  @Input() text:string = "Submit";
 
   get isLoading() { return this.loaderService.loading;}
 

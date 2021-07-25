@@ -19,3 +19,7 @@ mat-form-field {
 .mat-form-field-wrapper {
   padding-bottom: 0.8rem;
 }
+
+button[type="submit"]{
+  flex:1;
+}

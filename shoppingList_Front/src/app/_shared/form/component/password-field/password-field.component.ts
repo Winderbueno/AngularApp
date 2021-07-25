@@ -8,14 +8,15 @@ import { FormErrorService } from '@app/_shared/form/service/form-error.service';
 import { MustMatch } from '@app/_shared/form/validator/must-match.validator';
 //#endregion
 
+
 /**
- * TODO - Comment
  * Password Field Component
- *  @param withConfirm -
- *  @param formToModify - the formGroup to add the fields on
+ *  @param formToModify - FormGroup to add the FormControl on
+ *  @param withConfirm - Specify if the password field comes with a "confirm password field"
  *
- * The fields has to respect these rules
- *
+ * For these field to be valid :
+ *  - The "Pwd" has to be : 6 characters minimum
+ *  - The "confirmPwd" has to have the same value as the pwd
  */
 @Component({
   selector: 'app-field-password',
@@ -25,7 +26,7 @@ export class PasswordFieldComponent implements OnInit {
   @Input() formToModify!: FormGroup;
   @Input() withConfirm: boolean = false;
 
-  // TODO - Modify password format policy
+  // TODO - Change Password Format Policy
   pwdCtrl: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
   pwdConfirmCtrl: FormControl = new FormControl('', Validators.required);
 

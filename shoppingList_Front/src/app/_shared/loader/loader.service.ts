@@ -10,7 +10,7 @@ const baseUrl = `${envBusinessAPI.apiUrl}/enum`;
 export class LoaderService {
 
   private _loading: boolean = false;
-  // TODO : add more info abour what part is loading ?
+  // TODO : add more info about what part is loading ?
   private requestURL!: string;
 
   constructor() {}
