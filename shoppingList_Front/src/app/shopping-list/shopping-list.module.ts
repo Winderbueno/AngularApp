@@ -6,12 +6,13 @@ import { MaterialModule } from '@app_shared/module/material.module';
 
 //#region App Module
 import { SharedModule } from '@app_shared/shared.module';
+import { FormModule } from '@app_form/form.module';
 //#endregion
 
 //#region Declared Component
-import { DialogAddProductComponent,
+import {
+  DialogAddProductComponent,
   ShoppingListComponent } from './component/';
-import { FormModule } from '@app_form/form.module';
 //#endregion
 
 @NgModule({

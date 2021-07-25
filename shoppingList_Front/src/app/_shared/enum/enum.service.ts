@@ -17,12 +17,12 @@ export class EnumService {
 
   constructor(private http: HttpClient) { }
 
-  /** Get active shoppingList  */
+  /** Get Enum Names  */
   getNames():Observable<Enum> {
     return this.http.get<Enum>(`${baseUrl}/names`);
   }
 
-  /** Update one shoppingList product */
+  /** For one enum, get values */
   getValuesOf(enumName: string|undefined) : Observable<Enum> {
     return this.http.get<Enum>(`${baseUrl}/values-of/${enumName}`);
   }
