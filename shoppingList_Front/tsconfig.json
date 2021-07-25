@@ -22,8 +22,9 @@
     ],
     "paths": {
       "@app/*": ["src/app/*"],
-      "@app_layout/*": ["src/app/_layout/*"],
       "@app_shared/*": ["src/app/_shared/*"],
+      "@app_form/*": ["src/app/_shared/_form/*"],
+      "@app_layout/*": ["src/app/_shared/_layout/*"],
       "@app_alert/*": ["src/app/_shared/alert/*"],
       "@app_account/*": ["src/app/account/*"],
       "@env/*": ["src/environments/*"]

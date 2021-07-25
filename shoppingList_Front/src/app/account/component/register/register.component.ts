@@ -5,7 +5,7 @@ import { first } from 'rxjs/operators';
 //#endregion
 
 //#region App Component, Model, Service
-import { FormComponent } from '@app/_shared/form/component/form.component';
+import { FormComponent } from '@app_form/component/form.component';
 //#endregion
 
 

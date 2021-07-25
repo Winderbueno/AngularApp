@@ -1,8 +1,6 @@
 //#region Angular, Material, RxJS
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@app_shared/module/material.module';
 //#endregion
 
@@ -13,18 +11,18 @@ import { SharedModule } from '@app_shared/shared.module';
 //#region Declared Component
 import { DialogAddProductComponent,
   ShoppingListComponent } from './component/';
+import { FormModule } from '@app_form/form.module';
 //#endregion
 
 @NgModule({
   imports: [
     // Angular, Material Module
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
     MaterialModule,
 
     // App Module
-    SharedModule
+    SharedModule,
+    FormModule,
   ],
   declarations: [
     ShoppingListComponent,

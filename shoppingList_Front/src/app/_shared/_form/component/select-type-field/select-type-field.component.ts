@@ -6,7 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 //#region App Component, Model, Service
 import { Enum } from '@app_shared/enum/enum.model';
-import { FormErrorService } from '@app_shared/form/service/form-error.service';
+import { FormErrorService } from '@app_form/service/form-error.service';
 //#endregion
 
 /**

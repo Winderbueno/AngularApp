@@ -17,18 +17,19 @@ import {
   ForgotPasswordComponent,
   ResetPasswordComponent,
   VerifyEmailComponent } from './component/';
+import { FormModule } from '@app_form/form.module';
 //#endregion
 
 @NgModule({
   imports: [
     // Angular, Material Module
     CommonModule,
-    ReactiveFormsModule,
     MaterialModule,
 
     // App Module
     AccountRoutingModule,
-    SharedModule
+    SharedModule,
+    FormModule,
   ],
   declarations: [
     LoginComponent,
