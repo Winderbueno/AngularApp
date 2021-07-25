@@ -13,7 +13,7 @@ import { FormComponent } from '@app/_shared/form/component/form.component';
 export class RegisterComponent extends FormComponent {
 
   ngOnInit(){
-    super.formTitle = "REGISTER";
+    super.formTitle = "Sign Up";
     super.formDef = {
       username: ['', Validators.required],
       acceptTerms: [false, Validators.requiredTrue]

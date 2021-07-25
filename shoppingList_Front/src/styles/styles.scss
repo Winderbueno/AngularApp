@@ -19,8 +19,11 @@ body {
 
 h1 {
   text-align: center;
-  border-bottom: 0.1rem solid black;
+  border-bottom: 0.1rem solid;
   padding: 0.5rem 0;
+  font-weight: bold;
+  text-shadow: 0.5px 0;
+  letter-spacing: 2px;
 }
 
 h2, h3, h4, h5, h6 {
