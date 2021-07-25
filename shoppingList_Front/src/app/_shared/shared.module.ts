@@ -10,6 +10,7 @@ import { AlertComponent } from '@app/_shared/alert/component/alert.component';
 import { SnackbarComponent } from '@app_alert/component/snackbar/snackbar.component';
 import { PasswordFieldComponent } from './form/component/password-field/password-field.component';
 import { EmailFieldComponent } from './form/component/email-field/email-field.component';
+import { SelectTypeFieldComponent } from './form/component/select-type-field/select-type-field.component';
 import { SubmitButtonComponent } from './form/component/submit-button/submit-button.component';
 import { FormComponent } from './form/component/form.component';
 //#endregion
@@ -30,6 +31,7 @@ import { FormComponent } from './form/component/form.component';
     // Form
     PasswordFieldComponent,
     EmailFieldComponent,
+    SelectTypeFieldComponent,
     SubmitButtonComponent,
     FormComponent
   ],
@@ -37,6 +39,7 @@ import { FormComponent } from './form/component/form.component';
     AlertComponent,
     PasswordFieldComponent,
     EmailFieldComponent,
+    SelectTypeFieldComponent,
     SubmitButtonComponent
   ]
 })

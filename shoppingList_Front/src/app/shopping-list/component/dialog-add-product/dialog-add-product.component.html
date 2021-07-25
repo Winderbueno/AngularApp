@@ -9,28 +9,11 @@
     <mat-error *ngIf="f.productName.invalid">{{ err.getErrorMsg(f.productName) }}</mat-error>
   </mat-form-field>
 
-  <!-- Product Category (TODO : Create Select Component) -->
-  <mat-form-field>
-    <mat-label>Category</mat-label>
-    <mat-select formControlName="category">
-      <span *ngIf="productCatEnum">
-        <mat-option value="{{prodCat}}" *ngFor="let prodCat of productCatEnum.values">{{prodCat}}</mat-option>
-      </span>
-    </mat-select>
-    <mat-error *ngIf="f.category.invalid">{{ err.getErrorMsg(f.category) }}</mat-error>
-  </mat-form-field>
+  <!-- Product Category -->
+  <app-select-field [formToModify]="form" [name]="'Category'" [enum]="productCatEnum"></app-select-field>
 
   <!-- Product Sub Category -->
-  <mat-form-field>
-    <mat-label>Sub Category</mat-label>
-    <mat-select formControlName="subCategory">
-      <span *ngIf="productSubCatEnum">
-        <mat-option value="{{prodSubCat}}" *ngFor="let prodSubCat of productSubCatEnum.values">{{prodSubCat}}
-        </mat-option>
-      </span>
-    </mat-select>
-    <mat-error *ngIf="f.subCategory.invalid">{{ err.getErrorMsg(f.subCategory) }}</mat-error>
-  </mat-form-field>
+  <app-select-field [formToModify]="form" [name]="'SubCategory'" [enum]="productSubCatEnum"></app-select-field>
 
   <!-- TODO - Proposition de produit -->
   <!--
