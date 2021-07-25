@@ -74,7 +74,7 @@ export class DialogAddProductComponent extends FormComponent {
       subCategory: this.f.subCategory.value,
       name: this.f.productName.value,
       quantity: 1,
-      note: "test"
+      note: "test" // TODO - This field should note be that
     }
 
     // Call the server
