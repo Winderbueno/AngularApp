@@ -30,11 +30,9 @@ export class InputFieldComponent implements OnInit {
   constructor(private formErrorService: FormErrorService) { }
 
   ngOnInit() {
-    console.log(this.name);
     if(this.name === 'Email') { this._validators.push(Validators.email); }
 
-    var nameCtrl:string = this.name.replace(/\s/g, "");
     this._ctrl = new FormControl('', this._validators)
-    this.formToModify.addControl(nameCtrl, this._ctrl);
+    this.formToModify.addControl(this.name.replace(/\s/g, ""), this._ctrl);
   }
 }
