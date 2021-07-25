@@ -34,7 +34,7 @@ const appearance: MatFormFieldDefaultOptions = { appearance: 'outline' };
 @NgModule({
   imports: [
     // Angular, Material Module
-    BrowserModule,
+    BrowserModule, // TODO - Voir a quoi ce module peut servir
     BrowserAnimationsModule,
     HttpClientModule,
 
