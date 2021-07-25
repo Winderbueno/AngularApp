@@ -2,7 +2,7 @@
 
 <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
 
-  <!-- Product Name (TODO ) -->
+  <!-- Product Name -->
   <mat-form-field>
     <mat-label>Product Name</mat-label>
     <input matInput formControlName="productName">
@@ -17,6 +17,7 @@
         <mat-option value="{{prodCat}}" *ngFor="let prodCat of productCatEnum.values">{{prodCat}}</mat-option>
       </span>
     </mat-select>
+    <mat-error *ngIf="f.category.invalid">{{ err.getErrorMsg(f.category) }}</mat-error>
   </mat-form-field>
 
   <!-- Product Sub Category -->
@@ -28,6 +29,7 @@
         </mat-option>
       </span>
     </mat-select>
+    <mat-error *ngIf="f.subCategory.invalid">{{ err.getErrorMsg(f.subCategory) }}</mat-error>
   </mat-form-field>
 
   <!-- TODO - Proposition de produit -->
