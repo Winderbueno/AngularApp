@@ -1,4 +1,7 @@
+//#region App Component, Model, Service
 import { AccountService } from '@app_account/service/account.service';
+//#endregion
+
 
 export function appInitializer(accountService: AccountService) {
     return () => new Promise(resolve => {

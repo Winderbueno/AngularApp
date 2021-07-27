@@ -1,4 +1,7 @@
+//#region Angular, Material, RxJS
 import { Component, OnInit } from '@angular/core';
+//#endregion
+
 
 @Component({
   selector: 'app-home',

@@ -7,9 +7,9 @@ import { MatFormFieldDefaultOptions, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@ang
 //#endregion
 
 //#region App Module
+import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from '@app_layout/layout.module';
 import { SharedModule } from '@app_shared/shared.module';
-import { AppRoutingModule } from './app-routing.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 //#endregion
 
@@ -33,7 +33,7 @@ const appearance: MatFormFieldDefaultOptions = { appearance: 'outline' };
 
 @NgModule({
   imports: [
-    // Angular, Material Module
+    // Angular, Material
     BrowserModule, // TODO - Voir a quoi ce module peut servir
     BrowserAnimationsModule,
     HttpClientModule,

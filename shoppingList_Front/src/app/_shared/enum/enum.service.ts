@@ -17,7 +17,7 @@ export class EnumService {
 
   constructor(private http: HttpClient) { }
 
-  /** Get Enum Names  */
+  /** Get Enum Names */
   getNames():Observable<Enum> {
     return this.http.get<Enum>(`${baseUrl}/names`);
   }

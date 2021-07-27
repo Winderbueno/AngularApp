@@ -8,9 +8,6 @@ import { Observable } from 'rxjs';
 import { LoaderService } from '@app_shared/loader/loader.service';
 //#endregion
 
-// Api Info
-import { envBusinessAPI } from '@env/environment';
-
 
 @Injectable({ providedIn: 'root' })
 export class LoaderInterceptor implements HttpInterceptor {

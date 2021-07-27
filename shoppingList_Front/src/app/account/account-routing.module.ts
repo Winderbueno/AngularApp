@@ -1,4 +1,4 @@
-//#region Angular Module
+//#region Angular, Material, RxJS
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 //#endregion
@@ -27,6 +27,7 @@ const routes: Routes = [
     // Otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];
+
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

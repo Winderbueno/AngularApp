@@ -16,7 +16,7 @@ import {
 
 @NgModule({
   imports: [
-    // Angular, Material Module
+    // Angular, Material
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

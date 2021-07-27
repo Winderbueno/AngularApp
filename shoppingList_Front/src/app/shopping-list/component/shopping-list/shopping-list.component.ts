@@ -11,6 +11,7 @@ import { ShoppingListService } from '@app/shopping-list/service/shopping-list.se
 import { DialogAddProductComponent } from '@app/shopping-list/component/dialog-add-product/dialog-add-product.component';
 //#endregion
 
+
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
@@ -20,7 +21,6 @@ export class ShoppingListComponent implements OnInit {
 
   @ViewChild('accordion',{static:false}) Accordion!: MatAccordion;
   slideChecked = false;
-
 
   // Getters
   get myShoppingList():ShoppingList { return this.shoppingListService.active; }

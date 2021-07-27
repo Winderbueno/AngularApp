@@ -1,9 +1,9 @@
 ﻿<h1>Verify Email</h1>
 
-<div *ngIf="emailStatus == EmailStatus.Verifying">
+<div *ngIf="emailStatus == EmailStatusEnum.Verifying">
   Verifying...
 </div>
 
-<div *ngIf="emailStatus == EmailStatus.Failed">
+<div *ngIf="emailStatus == EmailStatusEnum.Failed">
   Verification failed, you can also verify your account using the <a mat-button routerLink="forgot-password">forgot password</a> page.
 </div>

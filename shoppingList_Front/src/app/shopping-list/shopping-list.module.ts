@@ -15,9 +15,10 @@ import {
   ShoppingListComponent } from './component/';
 //#endregion
 
+
 @NgModule({
   imports: [
-    // Angular, Material Module
+    // Angular, Material
     CommonModule,
     MaterialModule,
 

@@ -5,22 +5,20 @@ import { Observable } from 'rxjs';
 //#endregion
 
 //#region App Component, Model, Service
-import { Product } from '@app_business/model/product.model';
+import { Product } from '@app/product/model/product.model';
 //#endregion
 
 // Api Info
 import { envBusinessAPI } from '@env/environment';
 const baseUrl = `${envBusinessAPI.apiUrl}/products`;
 
+
 @Injectable({ providedIn: 'root' })
 export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  /**
-   * Get All product from server
-   * @returns
-   */
+  /** Get All product from server */
   getAll():Observable<Product[]> {
     return this.http.get<Product[]>(`${baseUrl}`);
   }

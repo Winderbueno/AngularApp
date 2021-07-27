@@ -1,35 +1,31 @@
-/* Global style */
+/* Material Theme */
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
-/* Homemade style */
-@import './alert.scss'; /* Alert */
-@import './container.scss'; /* Layout */
+/* Container */
+@import './container.scss';
 
-// Button
+/* Forms */
+@import './form.scss';
+
+/* Alert */
+@import './alert.scss';
+
+/* Button */
 @import './button/github-star-badge.scss';
 @import './button/circle-link.scss';
 
-// Forms
-@import './form.scss';
+/* Text */
+@import './text.scss';
+
+:host {
+  font-size: 40px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-}
-
-h1 {
-  text-align: center;
-  border-bottom: 0.1rem solid;
-  padding: 0.5rem 0;
-  font-weight: bold;
-  text-shadow: 0.5px 0;
-  letter-spacing: 2px;
-}
-
-h2, h3, h4, h5, h6 {
-  margin: 8px 0;
-}
-
-p {
-  margin: 0;
 }

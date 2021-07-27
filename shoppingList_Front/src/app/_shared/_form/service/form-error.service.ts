@@ -3,9 +3,6 @@ import { Injectable } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 //#endregion
 
-//#region App Component, Model, Service
-//#endregion
-
 
 @Injectable({ providedIn: 'root' })
 export class FormErrorService {

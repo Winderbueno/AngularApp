@@ -2,9 +2,6 @@
 import { Injectable } from '@angular/core';
 //#endregion
 
-// Api Info
-import { envBusinessAPI } from '@env/environment';
-const baseUrl = `${envBusinessAPI.apiUrl}/enum`;
 
 @Injectable({ providedIn: 'root' })
 export class LoaderService {

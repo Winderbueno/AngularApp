@@ -37,13 +37,13 @@ export class AlertService {
         this.alert(new Alert({ ...options, type: AlertTypeEnum.Warning, message }));
     }
 
-    // core alert method
+    // Core alert method
     alert(alert: Alert) {
         alert.id = alert.id || this.defaultId;
         this.subject.next(alert);
     }
 
-    // clear alerts
+    // Clear alerts
     clear(id = this.defaultId) {
         this.subject.next(new Alert({ id }));
     }

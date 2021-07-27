@@ -18,8 +18,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 //#endregion
 
 @NgModule({
-  imports: [
-  ],
+  imports: [],
   exports: [
     MatButtonModule,
     MatCheckboxModule,
@@ -35,5 +34,4 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatToolbarModule
   ],
 })
-
 export class MaterialModule {}

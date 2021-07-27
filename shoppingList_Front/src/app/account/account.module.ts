@@ -7,6 +7,7 @@ import { MaterialModule } from '@app_shared/module/material.module';
 //#region App Module
 import { AccountRoutingModule } from './account-routing.module';
 import { SharedModule } from '@app_shared/shared.module';
+import { FormModule } from '@app_form/form.module';
 //#endregion
 
 //#region Declared Component
@@ -16,12 +17,12 @@ import {
   ForgotPasswordComponent,
   ResetPasswordComponent,
   VerifyEmailComponent } from './component/';
-import { FormModule } from '@app_form/form.module';
 //#endregion
+
 
 @NgModule({
   imports: [
-    // Angular, Material Module
+    // Angular, Material
     CommonModule,
     MaterialModule,
 

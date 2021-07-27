@@ -5,13 +5,13 @@ import { MaterialModule } from '@app_shared/module/material.module';
 //#endregion
 
 //#region Declared Component
-import { AlertComponent } from '@app_shared/alert/component/alert.component';
+import { AlertComponent } from '@app_alert/component/alert.component';
 import { SnackbarComponent } from '@app_alert/component/snackbar/snackbar.component';
 //#endregion
 
 @NgModule({
   imports: [
-    // Angular, Material Module
+    // Angular, Material
     CommonModule,
     MaterialModule,
   ],

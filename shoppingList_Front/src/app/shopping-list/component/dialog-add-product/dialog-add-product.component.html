@@ -12,12 +12,13 @@
   <app-select-field [formToModify]="form" [name]="'SubCategory'" [enum]="productSubCatEnum"></app-select-field>
 
   <!-- TODO - Proposition de produit -->
-  <!--
-    <p>Ceci pourrait correspondre :</p>
+  <!-- <p>Ceci pourrait correspondre :</p>
     <p>Produit(s) Sélectionnés</p> -->
 
   <!-- Submit -->
   <app-submit-button [text]="'OK'"></app-submit-button>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
+
+  <!-- Secondary Action -->
+  <button mat-button (click)="this.dialogRef.close();">No Thanks</button>
 
 </form>

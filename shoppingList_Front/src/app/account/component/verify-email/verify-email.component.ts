@@ -7,18 +7,15 @@ import { first } from 'rxjs/operators';
 //#region App Component, Model, Service
 import { AlertService } from '@app_alert/service/alert.service';
 import { AccountService } from '@app_account/service/account.service'
+import { EmailStatusEnum } from "@app_account/model/enum/email-status.enum";
 //#endregion
-
-enum EmailStatus {
-  Verifying,
-  Failed
-}
 
 
 @Component({ templateUrl: 'verify-email.component.html' })
 export class VerifyEmailComponent implements OnInit {
-  EmailStatus = EmailStatus;
-  emailStatus = EmailStatus.Verifying;
+
+  EmailStatusEnum = EmailStatusEnum;
+  emailStatus = EmailStatusEnum.Verifying;
 
   constructor(
     private route: ActivatedRoute,
@@ -42,7 +39,7 @@ export class VerifyEmailComponent implements OnInit {
             { keepAfterRouteChange: true });
           this.router.navigate(['../login'], { relativeTo: this.route });
         },
-        error: () => { this.emailStatus = EmailStatus.Failed; }
+        error: () => { this.emailStatus = EmailStatusEnum.Failed; }
       });
   }
 }

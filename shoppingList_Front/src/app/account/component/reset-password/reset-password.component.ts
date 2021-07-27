@@ -5,20 +5,15 @@ import { first } from 'rxjs/operators';
 
 //#region App Component, Model, Service
 import { FormComponent } from '@app_form/component/form.component';
+import { TokenStatusEnum } from "@app_account/model/enum/token-status.enum";
 //#endregion
-
-enum TokenStatus {
-  Validating,
-  Valid,
-  Invalid
-}
 
 
 @Component({ templateUrl: 'reset-password.component.html' })
 export class ResetPasswordComponent extends FormComponent {
 
-  TokenStatus = TokenStatus;
-  tokenStatus = TokenStatus.Validating;
+  TokenStatusEnum = TokenStatusEnum;
+  tokenStatus = TokenStatusEnum.Validating;
   token = '';
 
   ngOnInit() {
@@ -38,10 +33,10 @@ export class ResetPasswordComponent extends FormComponent {
       .subscribe({
         next: () => {
           this.token = token;
-          this.tokenStatus = TokenStatus.Valid;
+          this.tokenStatus = TokenStatusEnum.Valid;
         },
         error: () => {
-          this.tokenStatus = TokenStatus.Invalid;
+          this.tokenStatus = TokenStatusEnum.Invalid;
         }
       });
   }

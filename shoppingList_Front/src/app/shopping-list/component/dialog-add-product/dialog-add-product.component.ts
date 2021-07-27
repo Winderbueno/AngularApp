@@ -26,6 +26,7 @@ export class DialogAddProductComponent extends FormComponent {
   productCatEnum!: Enum;
   productSubCatEnum!: Enum;
 
+  // TODO - Optimize constructor ?
   constructor(
     router: Router,
     route: ActivatedRoute,
@@ -33,7 +34,7 @@ export class DialogAddProductComponent extends FormComponent {
     formErrorService: FormErrorService,
     alertService: AlertService,
     accountService: AccountService,
-    private dialogRef: MatDialogRef<DialogAddProductComponent>,
+    public dialogRef: MatDialogRef<DialogAddProductComponent>,
     private enumService: EnumService,
     private shoppingListService: ShoppingListService,
   ) {
@@ -41,8 +42,6 @@ export class DialogAddProductComponent extends FormComponent {
   }
 
   ngOnInit(): void {
-
-    super.formDef = {}
 
     super.ngOnInit();
 
@@ -82,9 +81,5 @@ export class DialogAddProductComponent extends FormComponent {
         },
         error: error => this.alertService.error(error)
     });
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
   }
 }

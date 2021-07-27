@@ -19,25 +19,24 @@ import {
 
 @NgModule({
   imports: [
-    // Angular, Material Module
+    // Angular, Material
     CommonModule,
     MaterialModule,
 
     // App Module
-    AppRoutingModule,
-
+    AppRoutingModule
   ],
   declarations: [
     CardLayoutComponent,
     ToolbarComponent,
     FooterComponent,
-    HomeComponent,
+    HomeComponent
   ],
   exports: [
     CardLayoutComponent,
     ToolbarComponent,
     FooterComponent,
-    HomeComponent,
+    HomeComponent
   ]
 })
 export class LayoutModule { }

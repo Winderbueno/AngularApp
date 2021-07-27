@@ -13,8 +13,8 @@ import { CreateProductReq } from '../model/create-product-req.model';
 
 // Api Info
 import { envBusinessAPI } from '@env/environment';
-
 const baseUrl = `${envBusinessAPI.apiUrl}/shoppinglist`;
+
 
 @Injectable({ providedIn: 'root' })
 export class ShoppingListService {
