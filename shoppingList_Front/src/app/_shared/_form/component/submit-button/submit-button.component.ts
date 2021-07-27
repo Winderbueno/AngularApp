@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 //#endregion
 
 //#region App Component, Model, Service
-import { LoaderService } from '@app_shared/loader/loader.service';
+import { LoaderService } from '@app_loader/loader.service';
 //#endregion
 
 
