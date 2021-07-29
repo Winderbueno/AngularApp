@@ -1,10 +1,23 @@
 <h1>Shopping List</h1>
 
 <!-- TODO - Should be in an action bar component -->
-<div>
+<div class="flex-container">
   <button mat-raised-button (click)="openAddProductDialog()">Add Product</button>
   <button mat-raised-button (click)="resetBoughtStatus()">Reinitiate Status</button>
-  <mat-slide-toggle [(ngModel)]="slideChecked" (change)="onSlideChange()"></mat-slide-toggle>
+  <span class="spacer"></span>
+
+  <mat-chip-list multiple>
+    <mat-chip [selectable]="false">
+      <mat-slide-toggle
+        (change)="onSlideChange()">{{accordion_expanded ? "Close" : "Open"}}
+      </mat-slide-toggle>
+    </mat-chip>
+
+    <mat-chip [selectable]="false">
+      <mat-slide-toggle (change)="edit_mode = !edit_mode">{{edit_mode ? "Use" : "Edit"}}</mat-slide-toggle>
+    </mat-chip>
+
+  </mat-chip-list>
 </div>
 
 <div *ngIf="myShoppingList && myShoppingList.catProducts">
@@ -20,11 +33,14 @@
       <!-- Expanded Panel containing the product sub category and their products -->
       <li *ngFor="let subCatProd of catProd.subCatProducts">
         <span> {{subCatProd.subCategory}} : </span>
-        <span *ngFor="let prod of subCatProd.products">
-
-          <span [class.selected]="prod.bought === true" (click)="swapProductBoughtStatus(prod)">{{prod.name}}</span>
-          <span> , </span>
-        </span>
+        <mat-chip-list multiple>
+          <mat-chip *ngFor="let prod of subCatProd.products"
+            (click)="swapProductBoughtStatus(prod)"
+            [selected]="prod.bought">
+            {{prod.name}}
+            <mat-icon matChipRemove *ngIf="edit_mode">cancel</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
       </li>
     </mat-expansion-panel>
   </mat-accordion>

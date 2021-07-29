@@ -14,13 +14,15 @@ import { DialogAddProductComponent } from '@app/shopping-list/component/dialog-a
 
 @Component({
   selector: 'app-shopping-list',
-  templateUrl: './shopping-list.component.html',
-  styleUrls: ['./shopping-list.component.scss']
+  templateUrl: './shopping-list.component.html'
 })
 export class ShoppingListComponent implements OnInit {
 
   @ViewChild('accordion',{static:false}) Accordion!: MatAccordion;
-  slideChecked = false;
+
+  // View Status
+  edit_mode = false;
+  accordion_expanded = false;
 
   // Getters
   get myShoppingList():ShoppingList { return this.shoppingListService.active; }
@@ -74,10 +76,11 @@ export class ShoppingListComponent implements OnInit {
   }
 
   onSlideChange():void {
-    if(this.slideChecked == true){
+    if(this.accordion_expanded == false){
       this.Accordion.openAll();
     } else {
       this.Accordion.closeAll();
     }
+    this.accordion_expanded = !this.accordion_expanded;
   }
 }
