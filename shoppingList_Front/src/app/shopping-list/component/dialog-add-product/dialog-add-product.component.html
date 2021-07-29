@@ -1,15 +1,15 @@
 <h1 mat-dialog-title>Add Your Product</h1>
 
-<form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+<form class="form" (ngSubmit)="onSubmit()">
 
   <!-- Product Name -->
-  <app-input-field [formToModify]="form" [name]="'Product Name'"></app-input-field>
+  <app-input-field [formMod]="form" [ctrlName]="'ProductName'" [label]="'Product Name'"></app-input-field>
 
   <!-- Product Category -->
-  <app-select-field [formToModify]="form" [name]="'Category'" [enum]="productCatEnum"></app-select-field>
+  <app-select-field [formMod]="form" [ctrlName]="'Category'" [enum]="productCatEnum"></app-select-field>
 
   <!-- Product Sub Category -->
-  <app-select-field [formToModify]="form" [name]="'SubCategory'" [enum]="productSubCatEnum"></app-select-field>
+  <app-select-field [formMod]="form" [ctrlName]="'SubCategory'" [enum]="productSubCatEnum"></app-select-field>
 
   <!-- TODO - Proposition de produit -->
   <!-- <p>Ceci pourrait correspondre :</p>

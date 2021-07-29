@@ -18,8 +18,9 @@ import { FormErrorService } from '@app_form/service/form-error.service';
   templateUrl: 'input-field.component.html' })
 export class InputFieldComponent implements OnInit {
 
-  @Input() formToModify!: FormGroup;
-  @Input() name!: string;
+  @Input() formMod!: FormGroup;
+  @Input() ctrlName!: string;
+  @Input() label!: string;
 
   _validators: ValidatorFn[] = [Validators.required];
   _ctrl!: FormControl;
@@ -30,9 +31,9 @@ export class InputFieldComponent implements OnInit {
   constructor(private formErrorService: FormErrorService) { }
 
   ngOnInit() {
-    if(this.name === 'Email') { this._validators.push(Validators.email); }
+    if(this.ctrlName === 'Email') { this._validators.push(Validators.email); }
 
     this._ctrl = new FormControl('', this._validators)
-    this.formToModify.addControl(this.name.replace(/\s/g, ""), this._ctrl);
+    this.formMod.addControl(this.ctrlName, this._ctrl);
   }
 }

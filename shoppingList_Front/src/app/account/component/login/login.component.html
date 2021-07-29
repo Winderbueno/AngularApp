@@ -1,12 +1,12 @@
 <h1>{{title}}</h1>
 
-<form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+<form class="form" (ngSubmit)="onSubmit()">
 
   <!-- Email -->
-  <app-input-field [formToModify]="form" [name]="'Email'"></app-input-field>
+  <app-input-field [formMod]="form" [ctrlName]="'Email'"></app-input-field>
 
   <!-- Password -->
-  <app-field-password [formToModify]="form"></app-field-password>
+  <app-field-password [formMod]="form"></app-field-password>
 
   <!-- Submit -->
   <app-submit-button [text]="title"></app-submit-button>

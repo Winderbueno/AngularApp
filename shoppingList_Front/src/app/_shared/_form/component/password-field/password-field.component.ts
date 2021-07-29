@@ -23,7 +23,7 @@ import { MustMatch } from '@app_form/validator/must-match.validator';
   templateUrl: 'password-field.component.html' })
 export class PasswordFieldComponent implements OnInit {
 
-  @Input() formToModify!: FormGroup;
+  @Input() formMod!: FormGroup;
   @Input() withConfirm: boolean = false;
 
   // TODO - Change Password Format Policy
@@ -39,11 +39,11 @@ export class PasswordFieldComponent implements OnInit {
   constructor(private formErrorService: FormErrorService) { }
 
   ngOnInit() {
-    this.formToModify.addControl('Password', this.pwdCtrl);
+    this.formMod.addControl('Password', this.pwdCtrl);
 
     if(this.withConfirm){
-      this.formToModify.addControl('ConfirmPassword', this.pwdConfirmCtrl);
-      this.formToModify.validator = MustMatch('Password', 'ConfirmPassword');
+      this.formMod.addControl('ConfirmPassword', this.pwdConfirmCtrl);
+      this.formMod.validator = MustMatch('Password', 'ConfirmPassword');
     }
   }
 }

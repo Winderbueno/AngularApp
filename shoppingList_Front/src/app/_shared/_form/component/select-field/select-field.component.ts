@@ -20,8 +20,9 @@ import { FormErrorService } from '@app_form/service/form-error.service';
   templateUrl: 'select-field.component.html' })
 export class SelectFieldComponent implements OnInit {
 
-  @Input() formToModify!: FormGroup;
-  @Input() name!: string;
+  @Input() formMod!: FormGroup;
+  @Input() ctrlName!: string;
+  @Input() label!: string;
   @Input() enum!: Enum;
 
   ctrl: FormControl = new FormControl('', [Validators.required]);
@@ -32,6 +33,6 @@ export class SelectFieldComponent implements OnInit {
   constructor(private formErrorService: FormErrorService) { }
 
   ngOnInit() {
-    this.formToModify.addControl(this.name, this.ctrl);
+    this.formMod.addControl(this.ctrlName, this.ctrl);
   }
 }
