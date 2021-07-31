@@ -1,6 +1,6 @@
-﻿//#region Angular, Material, RxJS
+//#region Angular, Material, RxJS
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
+import { FormGroup, FormControl, ValidatorFn, Validators } from '@angular/forms';
 //#endregion
 
 //#region App Component, Model, Service
@@ -8,16 +8,13 @@ import { FormErrorService } from '@app_form/service/form-error.service';
 //#endregion
 
 
-/**
- * Input Field Component
- *  @param formToModify - FormGroup to add the FormControl on
- *  @param name - Name of the Control (and Field Label)
- */
 @Component({
-  selector: 'app-input-field',
-  templateUrl: 'input-field.component.html' })
-export class InputFieldComponent implements OnInit {
+  selector: 'app-field',
+  template: ``,
+})
+export class FieldComponent implements OnInit {
 
+  // Input
   @Input() formMod!: FormGroup;
   @Input() ctrlName!: string;
   @Input() label!: string;
@@ -25,14 +22,12 @@ export class InputFieldComponent implements OnInit {
   _validators: ValidatorFn[] = [Validators.required];
   _ctrl!: FormControl;
 
-  // Getters
+  // Getter
   get err() { return this.formErrorService; }
 
   constructor(private formErrorService: FormErrorService) { }
 
   ngOnInit() {
-    if(this.ctrlName === 'Email') { this._validators.push(Validators.email); }
-
     this._ctrl = new FormControl('', this._validators)
     this.formMod.addControl(this.ctrlName, this._ctrl);
   }

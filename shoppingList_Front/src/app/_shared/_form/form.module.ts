@@ -8,6 +8,7 @@ import { MaterialModule } from '@app_shared/module/material.module';
 //#region Declared Component
 import {
   PasswordFieldComponent,
+  CheckBoxFieldComponent,
   InputFieldComponent,
   SelectFieldComponent,
   SubmitButtonComponent,
@@ -27,6 +28,7 @@ import {
     PasswordFieldComponent,
 
     // Field Type
+    CheckBoxFieldComponent,
     InputFieldComponent,
     SelectFieldComponent,
 
@@ -37,6 +39,7 @@ import {
     PasswordFieldComponent,
 
     // Field Type
+    CheckBoxFieldComponent,
     InputFieldComponent,
     SelectFieldComponent,
 

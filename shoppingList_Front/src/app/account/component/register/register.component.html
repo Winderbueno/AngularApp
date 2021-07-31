@@ -12,12 +12,8 @@
     <app-field-password [formMod]="form" [withConfirm]="true"></app-field-password>
 
     <!-- Usage Term -->
-    <!-- TODO - Optimize Impl (use submitted ? style dans CSS ? style et position de l'error ? -->
-    <div class="mat-form-field-wrapper">
-      <mat-checkbox formControlName="acceptTerms">Accept Terms & Conditions</mat-checkbox>
-      <mat-error class="mat-form-field-subscript-wrapper" style="margin-top: 0; padding-left: 0.5rem;"
-      *ngIf="f.acceptTerms.invalid && f.acceptTerms.touched && submitted">Accept Ts & Cs is required</mat-error>
-    </div>
+    <app-checkbox-field [formMod]="form" [ctrlName]="'acceptTerms'"
+      [label]="'Accept Terms & Conditions'" ></app-checkbox-field>
 
     <!-- Submit -->
     <app-submit-button [text]="title"></app-submit-button>
