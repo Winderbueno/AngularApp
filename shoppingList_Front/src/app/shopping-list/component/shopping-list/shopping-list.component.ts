@@ -75,6 +75,19 @@ export class ShoppingListComponent implements OnInit {
       .subscribe();
   }
 
+  /** For clicked product, swap 'bought' status value */
+  deleteProduct(prod: UsedProduct): void {
+    console.log('buehhhhhhhh');
+    // Send the updated product to server
+    this.shoppingListService
+      .deleteProduct(this.myShoppingList.shoppingListId, prod.usedProductId.toString())
+      .subscribe(() => {
+        this.shoppingListService
+          .getActive()
+          .subscribe();
+      });
+  }
+
   onSlideChange():void {
     if(this.accordion_expanded == false){
       this.Accordion.openAll();

@@ -40,7 +40,7 @@ export class ShoppingListService {
   }
 
   /** For all shoppingList product, reset bought status */
-  resetBoughtStatus(idSL: string|undefined) : Observable<ShoppingList> {
+  resetBoughtStatus(idSL: string) : Observable<ShoppingList> {
     return this.http.put<ShoppingList>(`${baseUrl}/reset-bought/${idSL}`, [])
       .pipe(map(sL => {
         this.sLSubject.next(sL);
@@ -49,12 +49,17 @@ export class ShoppingListService {
   }
 
   /** In a shoppingList, create a product */
-  createProduct(idSL: string|undefined, body: CreateProductReq) : Observable<{}> {
+  createProduct(idSL: string, body: CreateProductReq) : Observable<{}> {
     return this.http.post(`${baseUrl}/create-product/${idSL}`, body);
   }
 
   /** In a shoppingList, update a product  */
-  updtProduct(idSL: string|undefined, body: UsedProduct) : Observable<{}> {
+  updtProduct(idSL: string, body: UsedProduct) : Observable<{}> {
     return this.http.put(`${baseUrl}/update-product/${idSL}`, body);
+  }
+
+  /** In a shoppingList, delete a product  */
+  deleteProduct(idSL: string, idProd: string) : Observable<{}> {
+    return this.http.delete(`${baseUrl}/delete-product/${idSL}&${idProd}`);
   }
 }

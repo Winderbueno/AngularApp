@@ -34,12 +34,17 @@
       <li *ngFor="let subCatProd of catProd.subCatProducts">
         <span> {{subCatProd.subCategory}} : </span>
         <mat-chip-list multiple>
-          <mat-chip *ngFor="let prod of subCatProd.products"
-            (click)="swapProductBoughtStatus(prod)"
-            [selected]="prod.bought">
-            {{prod.name}}
-            <mat-icon matChipRemove *ngIf="edit_mode">cancel</mat-icon>
-          </mat-chip>
+          <div *ngFor="let prod of subCatProd.products">
+            <mat-chip
+              (click)="swapProductBoughtStatus(prod)"
+              [selected]="prod.bought">
+              {{prod.name}}
+
+                <mat-icon matChipRemove *ngIf="edit_mode" (click)="deleteProduct(prod)">cancel</mat-icon>
+
+            </mat-chip>
+
+          </div>
         </mat-chip-list>
       </li>
     </mat-expansion-panel>
