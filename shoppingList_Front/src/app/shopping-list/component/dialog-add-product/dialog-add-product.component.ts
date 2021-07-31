@@ -30,7 +30,6 @@ export class DialogAddProductComponent extends FormComponent {
   constructor(
     router: Router,
     route: ActivatedRoute,
-    formBuilder: FormBuilder,
     formErrorService: FormErrorService,
     alertService: AlertService,
     accountService: AccountService,
@@ -38,7 +37,7 @@ export class DialogAddProductComponent extends FormComponent {
     private enumService: EnumService,
     private shoppingListService: ShoppingListService,
   ) {
-    super(router, route, formBuilder, formErrorService, alertService, accountService);
+    super(router, route, formErrorService, alertService, accountService);
   }
 
   ngOnInit(): void {

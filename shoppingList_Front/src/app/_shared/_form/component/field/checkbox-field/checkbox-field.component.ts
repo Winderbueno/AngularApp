@@ -1,5 +1,5 @@
 ﻿//#region Angular, Material, RxJS
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Validators } from '@angular/forms';
 //#endregion
 
@@ -16,8 +16,10 @@ import { FieldComponent } from '../field.component';
   templateUrl: 'checkbox-field.component.html' })
 export class CheckBoxFieldComponent extends FieldComponent {
 
+  @Input() isFormSubmitted!: boolean;
+
   ngOnInit() {
-    super._validators = [Validators.requiredTrue];
+    this._validators.push(Validators.requiredTrue);
     super.ngOnInit();
   }
 }

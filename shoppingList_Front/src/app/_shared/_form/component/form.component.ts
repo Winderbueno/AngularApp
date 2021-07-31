@@ -19,7 +19,6 @@ export class FormComponent implements OnInit {
 
   // Form
   protected formTitle!:string;
-  protected formDef:any = {};
   private _form!: FormGroup;
   submitted = false; // TODO - Used for what ?
 
@@ -32,7 +31,6 @@ export class FormComponent implements OnInit {
   constructor(
     protected router: Router,
     protected route: ActivatedRoute,
-    private formBuilder: FormBuilder,
     protected formErrorService: FormErrorService,
     protected alertService: AlertService,
     protected accountService: AccountService,
@@ -40,7 +38,7 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     // Form definition
-    this._form = this.formBuilder.group(this.formDef);
+    this._form = new FormGroup({});
   }
 
   onSubmit(): void {

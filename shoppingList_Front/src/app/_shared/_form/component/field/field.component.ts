@@ -18,6 +18,7 @@ export class FieldComponent implements OnInit {
   @Input() formMod!: FormGroup;
   @Input() ctrlName!: string;
   @Input() label!: string;
+  @Input() required: boolean = true;
 
   _validators: ValidatorFn[] = [Validators.required];
   _ctrl!: FormControl;
