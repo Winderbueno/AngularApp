@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>Add Your Product</h1>
 
-<form class="form" (ngSubmit)="onSubmit()">
+<form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
 
   <!-- Product Name -->
   <app-input-field [formMod]="form" [ctrlName]="'ProductName'" [label]="'Product Name'"></app-input-field>

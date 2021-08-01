@@ -1,52 +1,52 @@
 //#region Angular, Material, RxJS
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@app_shared/module/material.module';
 //#endregion
 
 //#region Declared Component
 import {
-  PasswordFieldComponent,
   CheckBoxFieldComponent,
   InputFieldComponent,
   SelectFieldComponent,
-  SubmitButtonComponent,
-  FormComponent } from './component/';
+  PasswordFieldComponent,
+  SubmitButtonComponent } from './component/';
 //#endregion
 
 @NgModule({
   imports: [
     // Angular, Material
     CommonModule,
-    FormsModule,
     ReactiveFormsModule,
     MaterialModule
   ],
   declarations: [
-    // Text Field
-    PasswordFieldComponent,
 
-    // Field Type
+    // Generic Field
     CheckBoxFieldComponent,
     InputFieldComponent,
     SelectFieldComponent,
 
+    // Particular Field
+    PasswordFieldComponent,
+
     SubmitButtonComponent,
-    FormComponent
   ],
   exports: [
-    PasswordFieldComponent,
 
-    // Field Type
+    // Form Tools
+    ReactiveFormsModule,
+
+    // Generic Field
     CheckBoxFieldComponent,
     InputFieldComponent,
     SelectFieldComponent,
 
-    SubmitButtonComponent,
-    FormsModule,
+    // Particular Field
+    PasswordFieldComponent,
 
-    ReactiveFormsModule,
+    SubmitButtonComponent
   ]
 })
 export class FormModule { }
