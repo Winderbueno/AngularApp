@@ -7,7 +7,10 @@ import { FormGroup, FormControl, ValidatorFn, Validators } from '@angular/forms'
 import { FormErrorService } from '@app_form/service/form-error.service';
 //#endregion
 
-
+/**
+ * Field Component
+ *  @param formMod - FormGroup to add the field control on
+ */
 @Component({
   selector: 'app-field',
   template: ``,
@@ -20,7 +23,7 @@ export class FieldComponent implements OnInit {
   @Input() label!: string;
   @Input() required: boolean = true;
 
-  _validators: ValidatorFn[] = [Validators.required];
+  _validators: ValidatorFn[] = new Array();
   _ctrl!: FormControl;
 
   // Getter
@@ -29,6 +32,9 @@ export class FieldComponent implements OnInit {
   constructor(private formErrorService: FormErrorService) { }
 
   ngOnInit() {
+
+    if(this.required === true) { this._validators.push(Validators.required); }
+
     this._ctrl = new FormControl('', this._validators)
     this.formMod.addControl(this.ctrlName, this._ctrl);
   }
