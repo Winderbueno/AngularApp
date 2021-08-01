@@ -26,7 +26,7 @@ export class DialogAddProductComponent extends FormComponent {
   productCatEnum!: Enum;
   productSubCatEnum!: Enum;
 
-  // TODO - Optimize constructor ?
+  // TODO - Optimize constructor because we herit from FormCompo ?
   constructor(
     router: Router,
     route: ActivatedRoute,
