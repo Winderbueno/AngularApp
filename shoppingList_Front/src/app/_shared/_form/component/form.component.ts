@@ -21,7 +21,7 @@ export class FormComponent implements OnInit {
   private _submitted: boolean = false; // TODO -Encapsulate this info in a Form Object with FormGroup ?
   private _title: string = "Form Title";
 
-  // Getter
+  // Accessor
   get form() { return this._form;}
   get submitted() { return this._submitted; }
   get title() { return this._title;}

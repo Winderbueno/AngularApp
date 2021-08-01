@@ -26,7 +26,7 @@ export class FieldComponent implements OnInit {
   _validators: ValidatorFn[] = new Array();
   _ctrl!: FormControl;
 
-  // Getter
+  // Accessor
   get err() { return this.formErrorService; }
 
   constructor(private formErrorService: FormErrorService) { }

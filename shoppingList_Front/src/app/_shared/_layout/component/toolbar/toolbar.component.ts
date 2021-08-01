@@ -14,7 +14,7 @@ import { AccountService } from '@app_account/service/account.service';
 })
 export class ToolbarComponent implements OnInit {
 
-  // Getter
+  // Accessor
   get account() { return this.accountService.accountValue; }
 
   constructor(
