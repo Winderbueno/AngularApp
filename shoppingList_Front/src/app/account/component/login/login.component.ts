@@ -12,7 +12,7 @@ import { FormComponent } from '@app_form/component/form.component';
 export class LoginComponent extends FormComponent {
 
   ngOnInit(){
-    super._title = "Sign In";
+    super.title = "Sign In";
     super.ngOnInit();
   }
 
