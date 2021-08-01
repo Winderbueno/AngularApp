@@ -19,22 +19,22 @@ const baseUrl = `${envBusinessAPI.apiUrl}/shoppinglist`;
 @Injectable({ providedIn: 'root' })
 export class ShoppingListService {
 
-  private sLSubject!: BehaviorSubject<ShoppingList>;
+  private _sLSubject!: BehaviorSubject<ShoppingList>;
   public sL!: Observable<ShoppingList>;
 
   constructor(private http: HttpClient) {
     // No Account logged in is a user with a '-1' id } */
-    this.sLSubject = new BehaviorSubject<ShoppingList>({ shoppingListId: "-1" });
-    this.sL = this.sLSubject.asObservable();
+    this._sLSubject = new BehaviorSubject<ShoppingList>({ shoppingListId: "-1" });
+    this.sL = this._sLSubject.asObservable();
   }
 
-  public get active(): ShoppingList { return this.sLSubject.value; }
+  public get active(): ShoppingList { return this._sLSubject.value; }
 
   /** Get active shoppingList */
   getActive():Observable<ShoppingList> {
     return this.http.get<ShoppingList>(`${baseUrl}/active`)
       .pipe(map(sL => {
-        this.sLSubject.next(sL);
+        this._sLSubject.next(sL);
         return sL;
       }));
   }
@@ -43,7 +43,7 @@ export class ShoppingListService {
   resetBoughtStatus(idSL: string) : Observable<ShoppingList> {
     return this.http.put<ShoppingList>(`${baseUrl}/reset-bought/${idSL}`, [])
       .pipe(map(sL => {
-        this.sLSubject.next(sL);
+        this._sLSubject.next(sL);
         return sL;
       }));
   }

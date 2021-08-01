@@ -18,7 +18,7 @@ const baseUrl = `${envBusinessAPI.apiUrl}/account`;
 @Injectable({ providedIn: 'root' })
 export class AccountService {
 
-  private accountSubject!: BehaviorSubject<Account>;
+  private _accountSubject!: BehaviorSubject<Account>;
   public account!: Observable<Account>;
 
   constructor(
@@ -26,17 +26,17 @@ export class AccountService {
     private http: HttpClient) {
 
     // No Account logged in is a user with a '-1' id } */
-    this.accountSubject = new BehaviorSubject<Account>({ id: "null", jwtToken: "null" });
-    this.account = this.accountSubject.asObservable();
+    this._accountSubject = new BehaviorSubject<Account>({ id: "null", jwtToken: "null" });
+    this.account = this._accountSubject.asObservable();
   }
 
-  public get accountValue(): Account { return this.accountSubject.value; }
+  public get accountValue(): Account { return this._accountSubject.value; }
 
   login(email: string, password: string) {
     return this.http.post<any>(`${baseUrl}/authenticate`, { email, password }, { withCredentials: true })
       .pipe(map(account => {
         // Store account info and jwt token in account Subject
-        this.accountSubject.next(account);
+        this._accountSubject.next(account);
         this.startRefreshTokenTimer();
         return account;
       }));
@@ -47,7 +47,7 @@ export class AccountService {
     this.stopRefreshTokenTimer();
 
     // Replace account by a fake one
-    this.accountSubject.next({ id: "null", jwtToken: "null" });
+    this._accountSubject.next({ id: "null", jwtToken: "null" });
     this.router.navigate(['/account/login']);
   }
 
@@ -70,7 +70,7 @@ export class AccountService {
   refreshToken() {
     return this.http.post<any>(`${baseUrl}/refresh-token`, {}, { withCredentials: true })
       .pipe(map((account) => {
-        this.accountSubject.next(account);
+        this._accountSubject.next(account);
         this.startRefreshTokenTimer();
         return account;
       }));
@@ -83,7 +83,7 @@ export class AccountService {
   updateAccount(account: Account) {
     // Publish updated account to subscribers after an update
     account = { ...this.accountValue, ...account };
-    this.accountSubject.next(account);
+    this._accountSubject.next(account);
   }
 
   /************************************************

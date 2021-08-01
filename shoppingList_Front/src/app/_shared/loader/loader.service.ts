@@ -8,7 +8,7 @@ export class LoaderService {
 
   private _loading: boolean = false;
   // TODO : add more info about what part is loading ?
-  private requestURL!: string;
+  private _requestURL!: string;
 
   constructor() {}
 
@@ -17,12 +17,12 @@ export class LoaderService {
   /** Start loading */
   startLoading(requestURL: string) {
     this._loading = true;
-    this.requestURL = requestURL;
+    this._requestURL = requestURL;
   }
 
   /** Stop loading */
   stopLoading() {
     this._loading = false;
-    this.requestURL = '';
+    this._requestURL = '';
   }
 }
