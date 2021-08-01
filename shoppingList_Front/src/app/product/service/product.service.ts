@@ -12,7 +12,7 @@ import { Product } from '@app/product/model/product.model';
 import { envBusinessAPI } from '@env/environment';
 const baseUrl = `${envBusinessAPI.apiUrl}/products`;
 
-
+// TODO - Le dossier "product" est actuellement non utilise dans l'App, A suppr ?
 @Injectable({ providedIn: 'root' })
 export class ProductService {
 
