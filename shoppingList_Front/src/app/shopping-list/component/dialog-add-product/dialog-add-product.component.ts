@@ -1,7 +1,6 @@
 //#region Angular, Material, RxJS
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 //#endregion
 
@@ -11,7 +10,6 @@ import { EnumService } from '@app_enum/enum.service';
 import { Enum } from '@app_enum/enum.model';
 import { ShoppingListService } from '@app/shopping-list/service/shopping-list.service';
 import { CreateProductReq } from '@app/shopping-list/model/create-product-req.model';
-import { FormErrorService } from '@app_form/service/form-error.service';
 import { AlertService } from '@app_alert/service/alert.service';
 import { AccountService } from '@app_account/service/account.service';
 //#endregion
@@ -30,14 +28,13 @@ export class DialogAddProductComponent extends FormComponent {
   constructor(
     router: Router,
     route: ActivatedRoute,
-    formErrorService: FormErrorService,
     alertService: AlertService,
     accountService: AccountService,
     public dialogRef: MatDialogRef<DialogAddProductComponent>,
     private enumService: EnumService,
     private shoppingListService: ShoppingListService,
   ) {
-    super(router, route, formErrorService, alertService, accountService);
+    super(router, route, alertService, accountService);
   }
 
   ngOnInit(): void {
@@ -64,9 +61,9 @@ export class DialogAddProductComponent extends FormComponent {
 
     // Create product to create
     var prodToCreate: CreateProductReq = {
-      category: this.f.Category.value,
-      subCategory: this.f.SubCategory.value,
-      name: this.f.ProductName.value,
+      category: this.ctrls.Category.value,
+      subCategory: this.ctrls.SubCategory.value,
+      name: this.ctrls.ProductName.value,
       quantity: 1,
       note: "test" // TODO - This field should note be that
     }

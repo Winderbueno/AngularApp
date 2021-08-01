@@ -17,7 +17,7 @@ export class ForgotPasswordComponent extends FormComponent {
   }
 
   submitAction() {
-    this.accountService.forgotPassword(this.f.Email.value)
+    this.accountService.forgotPassword(this.ctrls.Email.value)
       .pipe(first())
       .subscribe({
         next: () => this.alertService.success('Please check your email for password reset instructions'),
