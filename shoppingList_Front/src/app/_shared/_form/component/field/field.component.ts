@@ -23,11 +23,13 @@ export class FieldComponent implements OnInit {
   @Input() label!: string;
   @Input() required: boolean = true;
 
-  _validators: ValidatorFn[] = new Array();
-  _ctrl!: FormControl;
+  private _validators: ValidatorFn[] = new Array();
+  private _ctrl!: FormControl;
 
   // Accessor
+  get ctrl() { return this._ctrl;}
   get err() { return this.formErrorService; }
+  protected get validators() { return this._validators }
 
   constructor(private formErrorService: FormErrorService) { }
 

@@ -17,7 +17,7 @@ import { FieldComponent } from '../field.component';
 export class InputFieldComponent extends FieldComponent {
 
   ngOnInit() {
-    if(this.ctrlName === 'Email') { this._validators.push(Validators.email); }
+    if(this.ctrlName === 'Email') { super.validators.push(Validators.email); }
     super.ngOnInit();
   }
 }
