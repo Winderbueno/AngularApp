@@ -2,22 +2,21 @@
 
 <!-- TODO - Should be in an action bar component -->
 <div class="flex-container">
+
   <button mat-raised-button (click)="openAddProductDialog()">Add Product</button>
   <button mat-raised-button (click)="resetBoughtStatus()">Reinitiate Status</button>
+
   <span class="spacer"></span>
 
   <mat-chip-list multiple>
-    <mat-chip [selectable]="false">
-      <mat-slide-toggle
-        (change)="onSlideChange()">{{accordion_expanded ? "Close" : "Open"}}
-      </mat-slide-toggle>
+    <mat-chip disableRipple [selectable]="false">
+      <mat-slide-toggle (change)="onSlideChange()">{{accordion_expanded ? "Close" : "Open"}}</mat-slide-toggle>
     </mat-chip>
-
-    <mat-chip [selectable]="false">
+    <mat-chip disableRipple [selectable]="false">
       <mat-slide-toggle (change)="edit_mode = !edit_mode">{{edit_mode ? "Use" : "Edit"}}</mat-slide-toggle>
     </mat-chip>
-
   </mat-chip-list>
+
 </div>
 
 <div *ngIf="myShoppingList && myShoppingList.catProducts">
