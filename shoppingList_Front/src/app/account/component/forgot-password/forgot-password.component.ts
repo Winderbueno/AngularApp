@@ -12,7 +12,7 @@ import { FormComponent } from '@app_form/component/form.component';
 export class ForgotPasswordComponent extends FormComponent {
 
   ngOnInit(){
-    super.formTitle = "Forgot Password";
+    super._title = "Forgot Password";
     super.ngOnInit();
   }
 

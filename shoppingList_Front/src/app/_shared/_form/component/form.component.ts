@@ -19,12 +19,12 @@ export class FormComponent implements OnInit {
   // Form
   private _form!: FormGroup;
   private _submitted = false; // TODO -Encapsulate this info in a Form Object with FormGroup ?
-  protected formTitle!:string;
+  protected _title!:string;
 
-  // Getters
+  // Getter
   get form() { return this._form;}
   get submitted() { return this._submitted; }
-  get title() { return this.formTitle;}
+  get title() { return this._title;}
   get ctrls() { return this._form.controls; }
 
   constructor(

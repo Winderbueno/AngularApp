@@ -33,7 +33,7 @@ export class PasswordFieldComponent implements OnInit {
   pwdHide: boolean = true;
   pwdConfirmHide: boolean = true;
 
-  // Getters
+  // Getter
   get err() { return this.formErrorService; }
 
   constructor(private formErrorService: FormErrorService) { }

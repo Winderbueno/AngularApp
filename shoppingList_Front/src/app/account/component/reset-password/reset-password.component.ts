@@ -18,7 +18,7 @@ export class ResetPasswordComponent extends FormComponent {
 
   ngOnInit() {
     // Form Init
-    super.formTitle = "Reset Password";
+    super._title = "Reset Password";
     super.ngOnInit();
 
     // Get token from route

@@ -24,7 +24,7 @@ export class ShoppingListComponent implements OnInit {
   edit_mode = false;
   accordion_expanded = false;
 
-  // Getters
+  // Getter
   get myShoppingList():ShoppingList { return this.shoppingListService.active; }
 
   constructor(
