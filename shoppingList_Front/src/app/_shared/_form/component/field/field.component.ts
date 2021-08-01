@@ -20,11 +20,12 @@ export class FieldComponent implements OnInit {
   // Input
   @Input() formMod!: FormGroup;
   @Input() ctrlName!: string;
-  @Input() label!: string;
+  @Input() label: string = "Label";
   @Input() required: boolean = true;
 
-  private _validators: ValidatorFn[] = new Array();
+  // Control
   private _ctrl!: FormControl;
+  private _validators: ValidatorFn[] = new Array();
 
   // Accessor
   get ctrl() { return this._ctrl;}
