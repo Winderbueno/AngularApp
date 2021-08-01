@@ -1,7 +1,7 @@
 //#region Angular, Material, RxJS
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@app_shared/module/material.module';
+import { MaterialModule } from '@app_shared/material/material.module';
 //#endregion
 
 //#region Declared Component
