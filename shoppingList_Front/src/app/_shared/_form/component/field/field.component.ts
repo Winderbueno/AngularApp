@@ -17,18 +17,23 @@ import { FormErrorService } from '@app_form/service/form-error.service';
 })
 export class FieldComponent implements OnInit {
 
-  // Input
-  @Input() formMod!: FormGroup;
-  @Input() ctrlName!: string;
-  @Input() label: string = "Label";
-  @Input() required: boolean = true;
-
   // Control
   private _ctrl!: FormControl;
+  private _ctrlName!: string;
   private _validators: ValidatorFn[] = new Array();
+
+  // Input
+  @Input() formMod!: FormGroup;
+  @Input() set ctrlName(value: string) {
+    this._ctrlName = value;
+    if (this.label == null) this.label = value;
+  }
+  @Input() label!: string;
+  @Input() required: boolean = true;
 
   // Accessor
   get ctrl() { return this._ctrl;}
+  get ctrlName() { return this._ctrlName; }
   get err() { return this.formErrorService; }
   protected get validators() { return this._validators }
 

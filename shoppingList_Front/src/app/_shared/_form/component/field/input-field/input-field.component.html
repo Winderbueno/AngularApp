@@ -1,6 +1,6 @@
 ﻿<!-- Input Field -->
 <mat-form-field>
-  <mat-label>{{ label != null ? label : ctrlName }}</mat-label>
+  <mat-label>{{ label }}</mat-label>
   <input matInput [formControl]="ctrl">
   <mat-error *ngIf="ctrl.invalid">{{ err.getErrorMsg(ctrl) }}</mat-error>
 </mat-form-field>
