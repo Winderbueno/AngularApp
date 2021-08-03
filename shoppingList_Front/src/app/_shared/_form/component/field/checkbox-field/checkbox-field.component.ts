@@ -19,7 +19,7 @@ export class CheckBoxFieldComponent extends FieldComponent {
   @Input() isFormSubmitted!: boolean;
 
   ngOnInit() {
-    if(super.required === true) { super.validators.push(Validators.requiredTrue); }
+    if(this.required === true) { super.validators.push(Validators.requiredTrue); }
     super.ngOnInit();
   }
 }
