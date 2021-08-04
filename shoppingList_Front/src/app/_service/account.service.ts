@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 //#endregion
 
 //#region App Component, Model, Service
-import { Account } from '@app_account/model/account.model';
+import { Account } from '@app_model/account.model';
 //#endregion
 
 // Api Info

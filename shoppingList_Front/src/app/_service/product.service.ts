@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 //#endregion
 
 //#region App Component, Model, Service
-import { Product } from '@app/product/model/product.model';
+import { Product } from '@app_model/product.model';
 //#endregion
 
 // Api Info
