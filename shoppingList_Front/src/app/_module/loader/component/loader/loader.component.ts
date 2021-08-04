@@ -1,8 +1,8 @@
-﻿//#region Angular, Material, RxJS
+﻿//#region Angular
 import { Component } from '@angular/core';
 //#endregion
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { LoaderService } from '@app_loader/service/loader.service';
 //#endregion
 

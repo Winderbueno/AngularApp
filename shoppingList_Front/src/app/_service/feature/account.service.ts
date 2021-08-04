@@ -1,4 +1,4 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 //#endregion
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { Account } from '@app_model/account.model';
 //#endregion
 

@@ -4,7 +4,7 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import * as AccoungPageActions from '@app_action/account-page.action';
 //#endregion
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { Account } from '@app/account/model/account.model';
 //#endregion
 

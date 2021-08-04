@@ -1,4 +1,4 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -8,7 +8,7 @@ import { MaterialModule } from '@app_material/material.module';
 import { LoaderModule } from '@app_loader/loader.module';
 //#endregion
 
-//#region Declared Component
+//#region Component
 import {
   CheckBoxFieldComponent,
   InputFieldComponent,

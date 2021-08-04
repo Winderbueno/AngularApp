@@ -1,4 +1,4 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { map, exhaustMap, catchError } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import * as AccountPageActions from '@app_action/account-page.action';
 import * as AccountAPIActions from '@app_action/account-api.action';
 //#endregion
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { AccountService } from '@app_service_feat/account.service';
 //#endregion
 

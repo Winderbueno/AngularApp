@@ -1,8 +1,8 @@
-﻿//#region Angular, Material, RxJS
+﻿//#region Angular
 import { Component, Input } from '@angular/core';
 //#endregion
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { FieldComponent } from '../field.component';
 import { Enum } from '@app_model/enum.model'; // TODO - we use an external tech base
 //#endregion

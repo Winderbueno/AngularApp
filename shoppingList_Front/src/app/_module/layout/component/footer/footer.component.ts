@@ -1,4 +1,4 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { Component, OnInit } from '@angular/core';
 //#endregion
 

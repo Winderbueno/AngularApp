@@ -1,10 +1,10 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 //#endregion
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { AlertService } from '@app_alert/service/alert.service';
 import { AccountService } from '@app_service_feat/account.service'; // TODO - we use an external business base
 //#endregion

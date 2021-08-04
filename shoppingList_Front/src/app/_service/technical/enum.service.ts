@@ -1,10 +1,10 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 //#endregion
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { Enum } from '@app_model/enum.model';
 //#endregion
 

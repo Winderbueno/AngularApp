@@ -1,10 +1,10 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 //#endregion
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { FormComponent } from '@app_form/component/form.component';
 import { EnumService } from '@app_service_tech/enum.service';
 import { Enum } from '@app_model/enum.model';

@@ -1,11 +1,11 @@
-﻿//#region Angular, Material, RxJS
+﻿//#region Angular
 import { Component } from '@angular/core';
 import { first } from 'rxjs/operators';
 //#endregion
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { FormComponent } from '@app_form/component/form.component';
-import { TokenStatusEnum } from "@app_account/model/enum/token-status.enum";
+import { TokenStatusEnum } from "@app_enum/token-status.enum";
 //#endregion
 
 
@@ -28,7 +28,8 @@ export class ResetPasswordComponent extends FormComponent {
     this.router.navigate([], { relativeTo: this.route, replaceUrl: true });
 
     // Validate token
-    this.accountService.validateResetToken(token)
+    // TODO - NgRx
+    /*this.accountService.validateResetToken(token)
       .pipe(first())
       .subscribe({
         next: () => {
@@ -38,11 +39,12 @@ export class ResetPasswordComponent extends FormComponent {
         error: () => {
           this.tokenStatus = TokenStatusEnum.Invalid;
         }
-      });
+      });*/
   }
 
   submitAction() {
-    this.accountService.resetPassword(this.token, this.ctrls.Password.value, this.ctrls.ConfirmPassword.value)
+    // TODO - NgRx
+    /*this.accountService.resetPassword(this.token, this.ctrls.Password.value, this.ctrls.ConfirmPassword.value)
       .pipe(first())
       .subscribe({
         next: () => {
@@ -52,6 +54,6 @@ export class ResetPasswordComponent extends FormComponent {
           this.router.navigate(['../login'], { relativeTo: this.route });
         },
         error: error => { this.alertService.error(error); }
-      });
+      });*/
   }
 }

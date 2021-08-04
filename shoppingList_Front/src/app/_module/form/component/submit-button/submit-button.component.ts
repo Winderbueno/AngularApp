@@ -1,4 +1,4 @@
-﻿//#region Angular, Material, RxJS
+﻿//#region Angular
 import { Component, Input } from '@angular/core';
 //#endregion
 

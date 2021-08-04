@@ -1,4 +1,4 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 //#endregion
@@ -10,7 +10,7 @@ import {
   RegisterComponent,
   ForgotPasswordComponent,
   ResetPasswordComponent,
-  VerifyEmailComponent } from './component/';
+  VerifyEmailComponent } from './';
 //#endregion
 
 const routes: Routes = [

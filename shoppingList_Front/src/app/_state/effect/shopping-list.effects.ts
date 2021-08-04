@@ -1,4 +1,4 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import * as ShopListPageActions from '@app_action/shopping-list-page.action';
 import * as ShopListAPIActions from '@app_action/shopping-list-api.action';
 //#endregion
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { ShoppingListService } from '@app_service_feat/shopping-list.service';
 //#endregion
 

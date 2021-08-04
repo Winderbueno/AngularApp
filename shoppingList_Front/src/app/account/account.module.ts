@@ -1,34 +1,32 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@app_shared/material/material.module';
 //#endregion
 
 //#region App Module
 import { AccountRoutingModule } from './account-routing.module';
-import { SharedModule } from '@app_shared/shared.module';
+import { MaterialModule } from '@app_material/material.module';
 import { FormModule } from '@app_form/form.module';
 //#endregion
 
-//#region Declared Component
+//#region Component
 import {
   LoginComponent,
   RegisterComponent,
   ForgotPasswordComponent,
   ResetPasswordComponent,
-  VerifyEmailComponent } from './component/';
+  VerifyEmailComponent } from './';
 //#endregion
 
 
 @NgModule({
   imports: [
-    // Angular, Material
+    // Angular
     CommonModule,
-    MaterialModule,
 
     // App Module
     AccountRoutingModule,
-    SharedModule,
+    MaterialModule,
     FormModule,
   ],
   declarations: [

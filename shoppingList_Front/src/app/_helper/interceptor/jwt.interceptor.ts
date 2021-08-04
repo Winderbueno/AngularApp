@@ -1,10 +1,10 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs';
 //#endregion
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { AccountService } from '@app_service_feat/account.service';
 //#endregion
 

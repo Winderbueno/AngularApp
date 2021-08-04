@@ -1,9 +1,9 @@
-﻿//#region Angular, Material, RxJS
+﻿//#region Angular
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 //#endregion
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { FormErrorService } from '@app_form/service/form-error.service';
 import { MustMatch } from '@app_form/validator/must-match.validator';
 //#endregion

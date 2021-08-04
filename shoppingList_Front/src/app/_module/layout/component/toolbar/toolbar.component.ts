@@ -1,10 +1,10 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 //#endregion
 
-//#region App Component, Model, Service
-import { AccountService } from '@app_account/service/account.service';
+//#region App Component, Model
+import { AccountService } from '@app_service_tech/account.service';
 //#endregion
 
 @Component({

@@ -1,10 +1,10 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
 //#endregion
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { Alert } from '@app_alert/model/alert.model';
 import { AlertTypeEnum } from '@app_alert/model/enum/alert-type.enum';
 //#endregion

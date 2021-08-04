@@ -1,4 +1,4 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatAccordion } from '@angular/material/expansion';
@@ -10,7 +10,7 @@ import { Store } from '@ngrx/store';
 import * as ShopListPageActions from '@app_action/shopping-list-page.action';
 //#endregion
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { ShoppingList } from '@app_model/shopping-list.model';
 import { UsedProduct } from '@app_model/used-product.model';
 import { DialogAddProductComponent } from '@app_shoppingList/dialog-add-product/dialog-add-product.component';
@@ -31,6 +31,7 @@ export class ShoppingListComponent implements OnInit {
 
   // Accessor
   shoppingList$: Observable<ShoppingList> = this.store.select(state => state.shoppingList);
+  myShoppingList!: ShoppingList;
 
   constructor(
     public dialog: MatDialog,

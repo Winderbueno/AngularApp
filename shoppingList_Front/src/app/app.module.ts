@@ -1,4 +1,4 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -29,7 +29,7 @@ import { JwtInterceptor } from '@app_helper/interceptor/jwt.interceptor';
 import { ErrorInterceptor } from '@app_helper/interceptor/error.interceptor';
 //#endregion
 
-//#region Declared Component
+//#region Component
 import { AppComponent } from './app.component';
 //#endregion
 

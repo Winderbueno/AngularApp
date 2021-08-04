@@ -1,14 +1,14 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@app_shared/material/material.module';
 //#endregion
 
 //#region App Module
 import { AppRoutingModule } from '@app/app-routing.module';
+import { MaterialModule } from '@app_material/material.module';
 //#endregion
 
-//#region Declared Component
+//#region Component
 import {
   CardLayoutComponent,
   FooterComponent,

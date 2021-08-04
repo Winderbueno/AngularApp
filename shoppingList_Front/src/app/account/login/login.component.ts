@@ -1,9 +1,9 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { Component } from '@angular/core';
 import { first } from 'rxjs/operators';
 //#endregion
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { FormComponent } from '@app_form/component/form.component';
 //#endregion
 

@@ -1,4 +1,4 @@
-//#region App Component, Model, Service
+//#region App Component, Model
 import { AccountService } from '@app_service_feat/account.service';
 //#endregion
 

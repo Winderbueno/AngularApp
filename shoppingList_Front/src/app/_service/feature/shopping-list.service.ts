@@ -1,11 +1,11 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 //#endregion
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { ShoppingList } from '@app_model/shopping-list.model';
 import { UsedProduct } from '@app_model/used-product.model';
 import { CreateProductReq } from '@app_model/create-product-req.model';

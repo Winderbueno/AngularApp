@@ -1,9 +1,9 @@
-﻿//#region Angular, Material, RxJS
+﻿//#region Angular
 import { Component } from '@angular/core';
 import { Validators } from '@angular/forms';
 //#endregion
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { FieldComponent } from '../field.component';
 //#endregion
 

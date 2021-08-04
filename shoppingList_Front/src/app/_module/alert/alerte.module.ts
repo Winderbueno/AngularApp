@@ -1,10 +1,10 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@app_material/material.module';
 //#endregion
 
-//#region Declared Component
+//#region Component
 import { AlertComponent } from '@app_alert/component/alert.component';
 import { SnackbarComponent } from '@app_alert/component/snackbar/snackbar.component';
 //#endregion

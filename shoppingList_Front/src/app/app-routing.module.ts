@@ -1,4 +1,4 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 //#endregion
@@ -7,7 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from '@app_layout/component/home/home.component';
 import { ShoppingListComponent } from '@app_shoppingList/shopping-list/shopping-list.component';
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { AuthGuard } from '@app/_helper/guard/auth.guard';
 //#endregion
 

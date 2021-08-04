@@ -1,9 +1,9 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 //#endregion
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { AccountService } from '@app_service_feat/account.service';
 //#endregion
 

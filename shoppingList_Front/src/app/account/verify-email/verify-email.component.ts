@@ -1,13 +1,10 @@
-﻿//#region Angular, Material, RxJS
+﻿//#region Angular
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { first } from 'rxjs/operators';
 //#endregion
 
-//#region App Component, Model, Service
-import { AlertService } from '@app_alert/service/alert.service';
-import { AccountService } from '@app_account/service/account.service'
-import { EmailStatusEnum } from "@app_account/model/enum/email-status.enum";
+//#region App Component, Model
+import { EmailStatusEnum } from "@app_enum/email-status.enum";
 //#endregion
 
 
@@ -20,8 +17,6 @@ export class VerifyEmailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private alertService: AlertService,
-    private accountService: AccountService,
   ) { }
 
   ngOnInit() {
@@ -30,7 +25,8 @@ export class VerifyEmailComponent implements OnInit {
     // Remove token from url to prevent http referer leakage
     this.router.navigate([], { relativeTo: this.route, replaceUrl: true });
 
-    this.accountService.verifyEmail(token)
+    // TODO - NgRx
+    /*this.accountService.verifyEmail(token)
       .pipe(first())
       .subscribe({
         next: () => {
@@ -40,6 +36,6 @@ export class VerifyEmailComponent implements OnInit {
           this.router.navigate(['../login'], { relativeTo: this.route });
         },
         error: () => { this.emailStatus = EmailStatusEnum.Failed; }
-      });
+      });*/
   }
 }

@@ -1,4 +1,4 @@
-//#region Angular, Material, RxJS
+//#region Angular
 import { FormGroup } from '@angular/forms';
 //#endregion
 

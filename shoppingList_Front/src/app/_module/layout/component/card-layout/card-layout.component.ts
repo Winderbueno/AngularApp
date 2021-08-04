@@ -1,9 +1,9 @@
-﻿//#region Angular, Material, RxJS
+﻿//#region Angular
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 //#endregion
 
-//#region App Component, Model, Service
+//#region App Component, Model
 import { AccountService } from '@app_account/service/account.service'
 //#endregion
 
