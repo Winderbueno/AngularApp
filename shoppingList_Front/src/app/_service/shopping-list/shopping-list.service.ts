@@ -6,8 +6,8 @@ import { map } from 'rxjs/operators';
 //#endregion
 
 //#region App Component, Model, Service
-import { ShoppingList } from '@app/shopping-list/model/shopping-list.model';
-import { UsedProduct } from '@app/shopping-list/model/used-product.model';
+import { ShoppingList } from '@app_shoppingList/model/shopping-list.model';
+import { UsedProduct } from '@app_shoppingList/model/used-product.model';
 import { CreateProductReq } from '../model/create-product-req.model';
 //#endregion
 
@@ -20,12 +20,12 @@ const baseUrl = `${envBusinessAPI.apiUrl}/shoppinglist`;
 export class ShoppingListService {
 
   private _sLSubject!: BehaviorSubject<ShoppingList>;
-  public sL!: Observable<ShoppingList>;
+  public sL$!: Observable<ShoppingList>;
 
   constructor(private http: HttpClient) {
     // No Account logged in is a user with a '-1' id } */
     this._sLSubject = new BehaviorSubject<ShoppingList>({ shoppingListId: "-1" });
-    this.sL = this._sLSubject.asObservable();
+    this.sL$ = this._sLSubject.asObservable();
   }
 
   public get active(): ShoppingList { return this._sLSubject.value; }

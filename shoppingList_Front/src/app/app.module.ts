@@ -1,10 +1,15 @@
-//#region Angular, Material, RxJS, NgRx
+//#region Angular, Material, RxJS
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldDefaultOptions, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+//#endregion
+
+//#region NgRx
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { ShoppingListEffects } from '@app_effect/shopping-list.effects';
 //#endregion
 
 //#region App Module
@@ -38,13 +43,16 @@ const appearance: MatFormFieldDefaultOptions = { appearance: 'outline' };
     BrowserModule, // TODO - Voir a quoi ce module peut servir
     BrowserAnimationsModule,
     HttpClientModule,
-    StoreModule.forRoot({}, {}),
+
+    // NgRx
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([ShoppingListEffects]),
 
     // App Module
     AppRoutingModule,
     LayoutModule,
     SharedModule,
-    ShoppingListModule,
+    ShoppingListModule
   ],
   providers: [
     { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AccountService] },

@@ -8,8 +8,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormComponent } from '@app_form/component/form.component';
 import { EnumService } from '@app_enum/enum.service';
 import { Enum } from '@app_enum/enum.model';
-import { ShoppingListService } from '@app/shopping-list/service/shopping-list.service';
-import { CreateProductReq } from '@app/shopping-list/model/create-product-req.model';
+import { ShoppingListService } from '@app_shoppingList/service/shopping-list.service';
+import { CreateProductReq } from '@app_shoppingList/model/create-product-req.model';
 import { AlertService } from '@app_alert/service/alert.service';
 import { AccountService } from '@app_account/service/account.service';
 //#endregion

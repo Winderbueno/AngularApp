@@ -19,7 +19,7 @@ const baseUrl = `${envBusinessAPI.apiUrl}/account`;
 export class AccountService {
 
   private _accountSubject!: BehaviorSubject<Account>;
-  public account!: Observable<Account>;
+  public account$!: Observable<Account>;
 
   constructor(
     private router: Router,
@@ -27,7 +27,7 @@ export class AccountService {
 
     // No Account logged in is a user with a '-1' id } */
     this._accountSubject = new BehaviorSubject<Account>({ id: "null", jwtToken: "null" });
-    this.account = this._accountSubject.asObservable();
+    this.account$ = this._accountSubject.asObservable();
   }
 
   public get accountValue(): Account { return this._accountSubject.value; }

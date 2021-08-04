@@ -23,12 +23,25 @@
     "paths": {
       "@app/*": ["src/app/*"],
       "@app_shared/*": ["src/app/_shared/*"],
+
+      // Tech Base
       "@app_form/*": ["src/app/_shared/_form/*"],
       "@app_layout/*": ["src/app/_shared/_layout/*"],
       "@app_alert/*": ["src/app/_shared/alert/*"],
       "@app_loader/*": ["src/app/_shared/loader/*"],
       "@app_enum/*": ["src/app/_shared/enum/*"],
+
+      // State
+      "@app_store/*": ["src/app/_shared/store/*"],
+      "@app_action/*": ["src/app/_shared/store/action/*"],
+      "@app_effect/*": ["src/app/_shared/store/effect/*"],
+      "@app_reducer/*": ["src/app/_shared/store/reducer/*"],
+
+      // Business Module
       "@app_account/*": ["src/app/account/*"],
+      "@app_shoppingList/*": ["src/app/shopping-list/*"],
+
+      // Conf
       "@env/*": ["src/environments/*"]
     },
   },

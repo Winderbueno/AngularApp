@@ -23,6 +23,8 @@
     "@angular/platform-browser-dynamic": "~12.1.1",
     "@angular/router": "~12.1.1",
     "@ngrx/component-store": "^12.2.0",
+    "@ngrx/effects": "^12.3.0",
+    "@ngrx/entity": "^12.3.0",
     "@ngrx/store": "^12.3.0",
     "angular-in-memory-web-api": "^0.11.0",
     "rxjs": "~6.6.0",
