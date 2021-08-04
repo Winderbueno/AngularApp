@@ -6,8 +6,8 @@ import { catchError, finalize } from 'rxjs/operators';
 //#endregion
 
 //#region App Component, Model, Service
-import { AccountService } from '@app_account/service/account.service';
-import { LoaderService } from '../loader/loader.service';
+import { AccountService } from '@app_service_feat/account.service';
+import { LoaderService } from '@app_loader/service/loader.service';
 //#endregion
 
 

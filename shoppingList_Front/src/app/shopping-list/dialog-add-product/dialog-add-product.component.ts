@@ -6,12 +6,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 //#region App Component, Model, Service
 import { FormComponent } from '@app_form/component/form.component';
-import { EnumService } from '@app_enum/enum.service';
-import { Enum } from '@app_enum/enum.model';
-import { ShoppingListService } from '@app_shoppingList/service/shopping-list.service';
-import { CreateProductReq } from '@app_shoppingList/model/create-product-req.model';
+import { EnumService } from '@app_service_tech/enum.service';
+import { Enum } from '@app_model/enum.model';
+import { ShoppingListService } from '@app_service_feat/shopping-list.service';
+import { CreateProductReq } from '@app_model/create-product-req.model';
 import { AlertService } from '@app_alert/service/alert.service';
-import { AccountService } from '@app_account/service/account.service';
+import { AccountService } from '@app_service_feat/account.service';
 //#endregion
 
 @Component({
@@ -42,7 +42,8 @@ export class DialogAddProductComponent extends FormComponent {
     super.ngOnInit();
 
     // TODO - Change Backend Design to only have 1 backend call to retrieve multiple enums values
-    this.enumService.getValuesOf("ProductCategory")
+    // TODO NgrX
+    /*this.enumService.getValuesOf("ProductCategory")
       .subscribe({
         next: res => { this.productCatEnum = res; },
         error: error => this.alertService.error(error)
@@ -51,7 +52,7 @@ export class DialogAddProductComponent extends FormComponent {
       .subscribe({
         next: res => { this.productSubCatEnum = res; },
         error: error => this.alertService.error(error)
-    });
+    });*/
   }
 
   submitAction() {
@@ -69,13 +70,14 @@ export class DialogAddProductComponent extends FormComponent {
     }
 
     // Call the server
-    this.shoppingListService.createProduct(idSl, prodToCreate)
+    // TODO - NgRx
+    /*this.shoppingListService.createProduct(idSl, prodToCreate)
       .subscribe({
         next: res => {
           this.dialogRef.close();
           this.shoppingListService.getActive().subscribe();
         },
         error: error => this.alertService.error(error)
-    });
+    });*/
   }
 }

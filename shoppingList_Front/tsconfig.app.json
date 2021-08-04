@@ -7,15 +7,16 @@
       "node"
     ],
     "paths": {
-      // Conf
+      // Env
       "@env/*": ["src/environments/*"],
 
       // App
       "@app/*": ["src/app/*"],
+      "@app_helper/*": ["src/app/_helper/*"],
 
-      "@app_model/*": ["src/app/_model/*"],
-      "@app_enum/*": ["src/app/_model/enum/*"],
-      "@app_service/*": ["src/app/_service/*"],
+      // Feature
+      "@app_account/*": ["src/app/account/*"],
+      "@app_shoppingList/*": ["src/app/shopping-list/*"],
 
       // State
       "@app_state/*": ["src/app/_state/*"],
@@ -23,16 +24,22 @@
       "@app_effect/*": ["src/app/_state/effect/*"],
       "@app_reducer/*": ["src/app/_state/reducer/*"],
 
-      // Tech
-      "@app_shared/*": ["src/app/_shared/*"],
+      // Model
+      "@app_model/*": ["src/app/_model/*"],
+      "@app_enum/*": ["src/app/_model/enum/*"],
+
+      // Service
+      "@app_service/*": ["src/app/_service/*"],
+      "@app_service_tech/*": ["src/app/_service/technical/*"],
+      "@app_service_feat/*": ["src/app/_service/feature/*"],
+
+      // Module
+      "@app_module/*": ["src/app/_module/*"],
+      "@app_alert/*": ["src/app/_module/alert/*"],
       "@app_form/*": ["src/app/_module/form/*"],
       "@app_layout/*": ["src/app/_module/layout/*"],
-      "@app_alert/*": ["src/app/_module/_alert/*"],
-      "@app_loader/*": ["src/app/_shared/loader/*"],
-
-      // Feature
-      "@app_account/*": ["src/app/account/*"],
-      "@app_shoppingList/*": ["src/app/shopping-list/*"],
+      "@app_loader/*": ["src/app/_module/loader/*"],
+      "@app_material/*": ["src/app/_module/material/*"],
     },
   },
   "files": [

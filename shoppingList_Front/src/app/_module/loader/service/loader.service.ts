@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class LoaderService {
 
   private _loading: boolean = false;
-  // TODO : add more info about what part is loading ?
+  // TODO : Create a loader model ?
   private _requestURL!: string;
 
   constructor() {}

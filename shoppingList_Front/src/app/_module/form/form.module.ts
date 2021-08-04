@@ -2,7 +2,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '@app_shared/material/material.module';
+
+//#region App Module
+import { MaterialModule } from '@app_material/material.module';
+import { LoaderModule } from '@app_loader/loader.module';
 //#endregion
 
 //#region Declared Component
@@ -19,7 +22,10 @@ import {
     // Angular, Material
     CommonModule,
     ReactiveFormsModule,
-    MaterialModule
+
+    // App Module
+    MaterialModule,
+    LoaderModule
   ],
   declarations: [
 

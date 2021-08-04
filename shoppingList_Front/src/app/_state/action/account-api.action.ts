@@ -1,5 +1,8 @@
+//#region NgRx
 import { createAction, props } from '@ngrx/store';
-import { Account } from '@app_account/model/account.model';
+
+
+import { Account } from '@app_model/account.model';
 
 var actionType: string = "[Account API] ";
 

@@ -5,23 +5,20 @@ import { MaterialModule } from '@app_material/material.module';
 //#endregion
 
 //#region Declared Component
-import { AlertComponent } from '@app_alert/component/alert.component';
-import { SnackbarComponent } from '@app_alert/component/snackbar/snackbar.component';
+import {
+  LoaderComponent } from './component/';
 //#endregion
 
 @NgModule({
   imports: [
-    // Angular, Material
     CommonModule,
     MaterialModule,
   ],
   declarations: [
-    // Alert
-    AlertComponent,
-    SnackbarComponent,
+    LoaderComponent,
   ],
   exports: [
-    AlertComponent,
+    LoaderComponent,
   ]
 })
-export class AlertModule { }
+export class LoaderModule { }

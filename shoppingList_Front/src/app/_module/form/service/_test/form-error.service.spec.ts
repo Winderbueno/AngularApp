@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FormErrorService } from './form-error.service';
+import { FormErrorService } from '../form-error.service';
 
 describe('FormErrorService', () => {
   let service: FormErrorService;

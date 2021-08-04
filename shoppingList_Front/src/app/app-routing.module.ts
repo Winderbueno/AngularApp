@@ -5,10 +5,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 //#region Routed Component
 import { HomeComponent } from '@app_layout/component/home/home.component';
-import { ShoppingListComponent } from '@app_shoppingList/component/shopping-list/shopping-list.component';
+import { ShoppingListComponent } from '@app_shoppingList/shopping-list/shopping-list.component';
 
 //#region App Component, Model, Service
-import { AuthGuard } from '@app_shared/guard/auth.guard';
+import { AuthGuard } from '@app/_helper/guard/auth.guard';
 //#endregion
 
 // Lazy loaded module

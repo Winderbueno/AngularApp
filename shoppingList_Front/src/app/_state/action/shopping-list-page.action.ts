@@ -1,5 +1,8 @@
+//#region NgRx
 import { createAction, props } from '@ngrx/store';
-import { UsedProduct } from '@app_shoppingList/model/used-product.model';
+
+
+import { UsedProduct } from '@app_model/used-product.model';
 
 
 var actionType: string = "[Shopping List Page] ";

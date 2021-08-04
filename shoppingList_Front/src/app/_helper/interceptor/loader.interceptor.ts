@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 //#endregion
 
 //#region App Component, Model, Service
-import { LoaderService } from '@app_loader/loader.service';
+import { LoaderService } from '@app_loader/service/loader.service';
 //#endregion
 
 

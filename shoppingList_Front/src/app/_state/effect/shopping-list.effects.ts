@@ -11,7 +11,7 @@ import * as ShopListAPIActions from '@app_action/shopping-list-api.action';
 //#endregion
 
 //#region App Component, Model, Service
-import { ShoppingListService } from '@app_shoppingList/service/shopping-list.service';
+import { ShoppingListService } from '@app_service_feat/shopping-list.service';
 //#endregion
 
 

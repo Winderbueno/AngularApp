@@ -1,3 +1,4 @@
+//#region NgRx
 import { createAction, props } from '@ngrx/store';
 
 var actionType: string = "[Account Page] ";

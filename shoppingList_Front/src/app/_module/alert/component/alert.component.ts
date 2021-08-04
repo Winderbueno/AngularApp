@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 //#endregion
 
 //#region App Component, Model, Service
-import { SnackbarComponent } from './snackbar/snackbar.component';
+import { SnackbarComponent } from '@app_alert/component/snackbar/snackbar.component';
 import { Alert } from '@app_alert/model/alert.model';
 import { AlertTypeEnum } from '@app_alert/model/enum/alert-type.enum';
 import { AlertService } from '@app_alert/service/alert.service';
@@ -52,6 +52,7 @@ export class AlertComponent implements OnInit, OnDestroy {
             return;
           }
 
+          // TODO - Put this in folder Enum ?
           const AlertTypeEnumClass = {
             [AlertTypeEnum.Success]: 'alert-success',
             [AlertTypeEnum.Error]: 'alert-danger',

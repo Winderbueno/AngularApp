@@ -15,19 +15,18 @@ import { ShoppingListEffects } from '@app_effect/shopping-list.effects';
 //#region App Module
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from '@app_layout/layout.module';
-import { SharedModule } from '@app_shared/shared.module';
-import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { ShoppingListModule } from '@app_shoppingList/shopping-list.module';
 //#endregion
 
 //#region Service
-import { appInitializer } from '@app_shared/app.initializer';
-import { AccountService } from '@app_account/service/account.service';
+import { appInitializer } from '@app_helper/app.initializer';
+import { AccountService } from '@app_service_feat/account.service';
 //#endregion
 
 //#region Interceptor
-import { LoaderInterceptor } from '@app_shared/interceptor/loader.interceptor';
-import { JwtInterceptor } from '@app_shared/interceptor/jwt.interceptor';
-import { ErrorInterceptor } from '@app_shared/interceptor/error.interceptor';
+import { LoaderInterceptor } from '@app_helper/interceptor/loader.interceptor';
+import { JwtInterceptor } from '@app_helper/interceptor/jwt.interceptor';
+import { ErrorInterceptor } from '@app_helper/interceptor/error.interceptor';
 //#endregion
 
 //#region Declared Component
@@ -51,7 +50,6 @@ const appearance: MatFormFieldDefaultOptions = { appearance: 'outline' };
     // App Module
     AppRoutingModule,
     LayoutModule,
-    SharedModule,
     ShoppingListModule
   ],
   providers: [

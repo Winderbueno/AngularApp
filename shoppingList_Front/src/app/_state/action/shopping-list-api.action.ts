@@ -1,5 +1,8 @@
+//#region NgRx
 import { createAction, props } from '@ngrx/store';
-import { ShoppingList } from '@app_shoppingList/model/shopping-list.model';
+
+
+import { ShoppingList } from '@app_model/shopping-list.model';
 
 
 var actionType: string = "[Shopping List API] ";

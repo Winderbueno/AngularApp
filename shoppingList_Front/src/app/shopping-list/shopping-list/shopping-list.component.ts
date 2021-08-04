@@ -11,9 +11,9 @@ import * as ShopListPageActions from '@app_action/shopping-list-page.action';
 //#endregion
 
 //#region App Component, Model, Service
-import { ShoppingList } from '@app_shoppingList/model/shopping-list.model';
-import { UsedProduct } from '@app_shoppingList/model/used-product.model';
-import { DialogAddProductComponent } from '@app_shoppingList/component/dialog-add-product/dialog-add-product.component';
+import { ShoppingList } from '@app_model/shopping-list.model';
+import { UsedProduct } from '@app_model/used-product.model';
+import { DialogAddProductComponent } from '@app_shoppingList/dialog-add-product/dialog-add-product.component';
 //#endregion
 
 
@@ -48,11 +48,12 @@ export class ShoppingListComponent implements OnInit {
   resetBoughtStatus(): void {
 
     // Dispatch a ResetBoughtStatus action
-    this.store.dispatch(
+    // TODO - NgRx
+    /*this.store.dispatch(
       ShopListPageActions.resetBoughtStatus(
         { ShoppingListId: this.shoppingList$.subscribe() }
       )
-    );
+    );*/
   }
 
   /** Add Product Button */
@@ -63,13 +64,14 @@ export class ShoppingListComponent implements OnInit {
       .open(DialogAddProductComponent, { width: '400px' });
 
     // After dialog closing, refresh the active shoppingList
-    addProductDialog
+    // TODO - NgRx
+    /*addProductDialog
       .afterClosed()
       .subscribe(() => {
         this.shoppingListService
           .getActive()
           .subscribe();
-      });
+      });*/
   }
 
   /** For clicked product, swap 'bought' status value */
@@ -79,23 +81,25 @@ export class ShoppingListComponent implements OnInit {
     if(prod) prod.bought ? prod.bought=false : prod.bought = true;
 
     // Dispatch an Update Product action
-    this.store.dispatch(
+    // TODO - NgRx
+    /*this.store.dispatch(
       ShopListPageActions.updtProduct({
         ShoppingListId: this.myShoppingList.shoppingListId,
         Product: prod
       })
-    );
+    );*/
   }
 
   /** For clicked product, swap 'bought' status value */
   deleteProduct(prod: UsedProduct): void {
 
     // Dispatch a Delete Product action
-    this.store.dispatch(
+    // TODO - NgRx
+    /*this.store.dispatch(
       ShopListPageActions.deleteProduct({
         ShoppingListId: this.myShoppingList.shoppingListId,
         ProductId : prod.usedProductId.toString()
-      }));
+      }));*/
   }
 
   onSlideChange():void {
