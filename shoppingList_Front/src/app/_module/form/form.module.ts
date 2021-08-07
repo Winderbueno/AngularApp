@@ -1,4 +1,4 @@
-//#region Angular
+//#region Angular & Material
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -19,11 +19,11 @@ import {
 
 @NgModule({
   imports: [
-    // Angular, Material
+    /* Angular */
     CommonModule,
     ReactiveFormsModule,
 
-    // App Module
+    /* App Module */
     MaterialModule,
     LoaderModule
   ],

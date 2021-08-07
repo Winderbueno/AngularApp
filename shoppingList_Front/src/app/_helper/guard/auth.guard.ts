@@ -1,4 +1,4 @@
-//#region Angular
+//#region Angular & Material
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 //#endregion

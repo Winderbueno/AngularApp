@@ -1,4 +1,4 @@
-﻿//#region Angular
+﻿//#region Angular & Material
 import { Component } from '@angular/core';
 import { first } from 'rxjs/operators';
 //#endregion

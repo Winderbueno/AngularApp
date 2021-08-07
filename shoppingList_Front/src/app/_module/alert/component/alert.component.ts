@@ -1,4 +1,4 @@
-﻿//#region Angular
+﻿//#region Angular & Material
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';

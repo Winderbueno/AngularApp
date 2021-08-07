@@ -1,4 +1,4 @@
-//#region Angular
+//#region Angular & Material
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 //#endregion
@@ -19,12 +19,12 @@ import {
 
 @NgModule({
   imports: [
-    // Angular, Material
+    /* Angular */
     CommonModule,
-    MaterialModule,
 
-    // App Module
-    AppRoutingModule
+    /* App Module */
+    AppRoutingModule,
+    MaterialModule,
   ],
   declarations: [
     CardLayoutComponent,

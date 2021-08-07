@@ -1,4 +1,4 @@
-//#region Angular
+//#region Angular & Material
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';

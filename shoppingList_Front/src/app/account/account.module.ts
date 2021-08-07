@@ -1,4 +1,4 @@
-//#region Angular
+//#region Angular & Material
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 //#endregion
@@ -21,10 +21,10 @@ import {
 
 @NgModule({
   imports: [
-    // Angular
+    /* Angular */
     CommonModule,
 
-    // App Module
+    /* App Module */
     AccountRoutingModule,
     MaterialModule,
     FormModule,

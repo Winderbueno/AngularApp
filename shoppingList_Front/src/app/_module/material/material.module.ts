@@ -1,8 +1,8 @@
-//#region Angular Module
+//#region Angular
 import { NgModule } from '@angular/core';
 //#endregion
 
-//#region Material Module
+//#region Material
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
