@@ -15,7 +15,7 @@ import {
   RegisterComponent,
   ForgotPasswordComponent,
   ResetPasswordComponent,
-  VerifyEmailComponent } from './';
+  VerifyEmailComponent } from '@app_account/.';
 //#endregion
 
 
