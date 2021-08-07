@@ -7,10 +7,6 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@app_material/material.module';
 //#endregion
 
-//#region NgRx
-import { StoreModule } from '@ngrx/store';
-//#endregion
-
 //#region Component
 import {
   LoaderComponent } from './component/';
@@ -20,9 +16,6 @@ import {
   imports: [
     /* Angular */
     CommonModule,
-
-    /* NgRx */
-    StoreModule.forRoot({}),
 
     /* App Module */
     MaterialModule,

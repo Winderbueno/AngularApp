@@ -1,4 +1,4 @@
-//#region Angular
+//#region Angular & Material
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,6 +14,7 @@ import { ShoppingListEffects } from '@app_effect/shopping-list.effects';
 
 //#region App Module
 import { AppRoutingModule } from './app-routing.module';
+import { AlertModule } from './_module/alert/alert.module';
 import { LayoutModule } from '@app_layout/layout.module';
 import { ShoppingListModule } from '@app_shoppingList/shopping-list.module';
 //#endregion
@@ -38,17 +39,18 @@ const appearance: MatFormFieldDefaultOptions = { appearance: 'outline' };
 
 @NgModule({
   imports: [
-    // Angular, Material
+    /* Angular */
     BrowserModule, // TODO - Voir a quoi ce module peut servir
     BrowserAnimationsModule,
     HttpClientModule,
 
-    // NgRx
+    /* NgRx */
     StoreModule.forRoot({}),
     EffectsModule.forRoot([ShoppingListEffects]),
 
-    // App Module
+    /* App Module */
     AppRoutingModule,
+    AlertModule,
     LayoutModule,
     ShoppingListModule
   ],

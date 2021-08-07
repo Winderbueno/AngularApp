@@ -1,10 +1,10 @@
-//#region Angular
+//#region Angular & Material
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 //#endregion
 
 //#region App Component, Model
-import { AccountService } from '@app_service_tech/account.service';
+import { AccountService } from '@app_service_feat/account.service';
 //#endregion
 
 @Component({
@@ -14,7 +14,7 @@ import { AccountService } from '@app_service_tech/account.service';
 })
 export class ToolbarComponent implements OnInit {
 
-  // Accessor
+  // Accessor // TODO - Use NgRxStore
   get account() { return this.accountService.accountValue; }
 
   constructor(

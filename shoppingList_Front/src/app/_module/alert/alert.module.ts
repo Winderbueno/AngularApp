@@ -1,6 +1,9 @@
-//#region Angular
+//#region Angular & Material
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+//#endregion
+
+//#region App Module
 import { MaterialModule } from '@app_material/material.module';
 //#endregion
 
@@ -11,12 +14,13 @@ import { SnackbarComponent } from '@app_alert/component/snackbar/snackbar.compon
 
 @NgModule({
   imports: [
-    // Angular, Material
+    /* Angular */
     CommonModule,
+
+    /* App Module */
     MaterialModule,
   ],
   declarations: [
-    // Alert
     AlertComponent,
     SnackbarComponent,
   ],
