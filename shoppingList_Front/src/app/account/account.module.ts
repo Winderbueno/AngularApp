@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 //#endregion
 
 //#region App Module
-import { AccountRoutingModule } from './account-routing.module';
+import { AccountRouterModule } from '@app_router/account-router.module';
 import { MaterialModule } from '@app_material/material.module';
 import { FormModule } from '@app_form/form.module';
 //#endregion
@@ -25,7 +25,7 @@ import {
     CommonModule,
 
     /* App Module */
-    AccountRoutingModule,
+    AccountRouterModule,
     MaterialModule,
     FormModule,
   ],

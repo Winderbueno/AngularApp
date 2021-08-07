@@ -13,10 +13,9 @@ import { ShoppingListEffects } from '@app_effect/shopping-list.effects';
 //#endregion
 
 //#region App Module
-import { AppRoutingModule } from './app-routing.module';
-import { AlertModule } from './_module/alert/alert.module';
+import { AppRouterModule } from '@app_router/app-router.module';
+import { AlertModule } from '@app_alert/alert.module';
 import { LayoutModule } from '@app_layout/layout.module';
-import { ShoppingListModule } from '@app_shoppingList/shopping-list.module';
 //#endregion
 
 //#region Service
@@ -49,10 +48,9 @@ const appearance: MatFormFieldDefaultOptions = { appearance: 'outline' };
     EffectsModule.forRoot([ShoppingListEffects]),
 
     /* App Module */
-    AppRoutingModule,
+    AppRouterModule,
     AlertModule,
-    LayoutModule,
-    ShoppingListModule
+    LayoutModule
   ],
   providers: [
     { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AccountService] },

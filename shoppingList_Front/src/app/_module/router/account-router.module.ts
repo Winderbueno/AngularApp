@@ -10,7 +10,7 @@ import {
   RegisterComponent,
   ForgotPasswordComponent,
   ResetPasswordComponent,
-  VerifyEmailComponent } from './';
+  VerifyEmailComponent } from '@app_account/.';
 //#endregion
 
 const routes: Routes = [
@@ -30,7 +30,10 @@ const routes: Routes = [
 
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+    imports: [
+      RouterModule.forChild(routes)],
+    exports: [
+      RouterModule
+    ]
 })
-export class AccountRoutingModule { }
+export class AccountRouterModule { }

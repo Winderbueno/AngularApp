@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 //#endregion
 
 //#region App Module
-import { AppRoutingModule } from '@app/app-routing.module';
+import { AppRouterModule } from '@app_router/app-router.module';
 import { MaterialModule } from '@app_material/material.module';
 //#endregion
 
@@ -23,7 +23,7 @@ import {
     CommonModule,
 
     /* App Module */
-    AppRoutingModule,
+    AppRouterModule,
     MaterialModule,
   ],
   declarations: [

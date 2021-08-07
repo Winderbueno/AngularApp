@@ -54,6 +54,7 @@
       "@app_layout/*": ["src/app/_module/layout/*"],
       "@app_loader/*": ["src/app/_module/loader/*"],
       "@app_material/*": ["src/app/_module/material/*"],
+      "@app_router/*": ["src/app/_module/router/*"],
     },
   },
   "angularCompilerOptions": {
