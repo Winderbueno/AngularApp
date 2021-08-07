@@ -26,7 +26,7 @@ export class AccountService {
     private http: HttpClient) {
 
     // No Account logged in is a user with a '-1' id } */
-    this._accountSubject = new BehaviorSubject<Account>({ id: "null", jwtToken: "null" });
+    this._accountSubject = new BehaviorSubject<Account>({ accountId: "null", jwtToken: "null" });
     this.account$ = this._accountSubject.asObservable();
   }
 
@@ -47,7 +47,7 @@ export class AccountService {
     this.stopRefreshTokenTimer();
 
     // Replace account by a fake one
-    this._accountSubject.next({ id: "null", jwtToken: "null" });
+    this._accountSubject.next({ accountId: "null", jwtToken: "null" });
     this.router.navigate(['/account/login']);
   }
 

@@ -17,7 +17,7 @@ export class CardLayoutComponent {
   ) {
     // TODO - This is specific to account, not to the layout
     // Redirect to home if already logged in
-    if (this.accountService.accountValue.id != "null") {
+    if (this.accountService.accountValue.accountId != "null") {
       this.router.navigate(['/']);
     }
   }

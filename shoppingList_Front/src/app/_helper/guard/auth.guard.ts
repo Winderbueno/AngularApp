@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
         const account = this.accountService.accountValue;
 
         // An account is logged in -> return true
-        if (account.id != "null") return true;
+        if (account.accountId != "null") return true;
 
         // No account logged in -> redirect to login page with the return url
         this.router.navigate(['/account/login'], { queryParams: { returnUrl: state.url } });
