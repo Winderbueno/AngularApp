@@ -5,13 +5,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 //#region NgRx
 import { Store } from '@ngrx/store';
-import { AccountPagesActions }  from '@app_action/page/account-page.action';
+import { AccountPagesActions }  from '@app_action/page/account.page.action';
 //#endregion
 
 //#region App Component, Model
 import { FormComponent } from '@app_form/component/form.component';
 import { AlertService } from '@app_alert/service/alert.service';
-import { AccountService } from '@app/_service/feature/account.service';
+import { AccountService } from '@app_service/feature/account.service';
 import { Account } from '@app_model/account.model';
 //#endregion
 

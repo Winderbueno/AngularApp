@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 
 //#region NgRx
 import { Store } from '@ngrx/store';
-import * as ShopListPageActions from '@app/_state/action/page/shopping-list-page.action';
+import * as ShopListPageActions from '@app_action/page/shopping-list.page.action';
 //#endregion
 
 //#region App Component, Model

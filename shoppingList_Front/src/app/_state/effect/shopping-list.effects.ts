@@ -6,12 +6,12 @@ import { map, mergeMap, catchError } from 'rxjs/operators';
 
 //#region NgRx
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import * as ShopListPageActions from '@app/_state/action/page/shopping-list-page.action';
-import * as ShopListAPIActions from '@app_action/api/shopping-list.api.action';
+import { ShoppingListPagesActions } from '@app_action/page/shopping-list.page.action';
+import { ShoppingListAPIActions }  from '@app_action/api/shopping-list.api.action';
 //#endregion
 
-//#region App Component, Model
-import { ShoppingListService } from '@app_service_feat/shopping-list.service';
+//#region App Service
+import { ShoppingListService } from '@app_service/shopping-list.service';
 //#endregion
 
 

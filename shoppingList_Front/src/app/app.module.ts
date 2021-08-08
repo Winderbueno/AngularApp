@@ -20,7 +20,7 @@ import { LayoutModule } from '@app_layout/layout.module';
 
 //#region Service
 import { appInitializer } from '@app_helper/app.initializer';
-import { AccountService } from '@app_service_feat/account.service';
+import { AccountService } from '@app_service/account.service';
 //#endregion
 
 //#region Interceptor

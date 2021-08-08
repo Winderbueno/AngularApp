@@ -6,7 +6,7 @@ import { map, finalize } from 'rxjs/operators';
 
 //#region App Component, Model
 import { Account } from '@app_model/account.model';
-import { AccountService } from '@app_service_feat/account.service';
+import { AccountService } from '@app_service/account.service';
 //#endregion
 
 // Api Info
@@ -41,7 +41,7 @@ export class AccountAdminService {
       return this.http.put(`${baseUrl}/${id}`, body)
           .pipe(map((account: any) => {
               // Update logged in account if it was updated
-              if (account.id === this.accountService.accountValue.id) {
+              if (account.id === this.accountService.accountValue.accountId) {
                   this.accountService.updateAccount(account);
               }
               return account;
@@ -52,7 +52,7 @@ export class AccountAdminService {
       return this.http.delete(`${baseUrl}/${id}`)
           .pipe(finalize(() => {
               // Logout logged in account if it was deleted
-              if (id === this.accountService.accountValue.id)
+              if (id === this.accountService.accountValue.accountId)
               this.accountService.logout();
           }));
   }

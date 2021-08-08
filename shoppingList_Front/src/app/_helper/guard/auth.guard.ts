@@ -4,7 +4,7 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 //#endregion
 
 //#region App Component, Model
-import { AccountService } from '@app_service_feat/account.service';
+import { AccountService } from '@app_service/account.service';
 //#endregion
 
 

@@ -1,5 +1,7 @@
 //#region NgRx
 import { Action, createReducer, on } from '@ngrx/store';
+import { ShoppingListPagesActionTypes } from '@app_action/page/shopping-list.page.action';
+import { AccountPagesActions }  from '@app_action/page/shopping-list.page.action';
 import * as ShoppingListPageActions from '../action/shopping-list-page.action';
 //#endregion
 

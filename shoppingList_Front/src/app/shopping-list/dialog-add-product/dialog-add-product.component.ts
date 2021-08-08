@@ -6,12 +6,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 //#region App Component, Model
 import { FormComponent } from '@app_form/component/form.component';
-import { EnumService } from '@app_service_tech/enum.service';
 import { Enum } from '@app_model/enum.model';
-import { ShoppingListService } from '@app_service_feat/shopping-list.service';
 import { CreateProductReq } from '@app_model/create-product-req.model';
+import { AccountService } from '@app_service/account.service';
+import { EnumService } from '@app_service/enum.service';
+import { ShoppingListService } from '@app_service/shopping-list.service';
 import { AlertService } from '@app_alert/service/alert.service';
-import { AccountService } from '@app_service_feat/account.service';
 //#endregion
 
 @Component({

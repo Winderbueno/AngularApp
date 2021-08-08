@@ -7,6 +7,11 @@ import { Update } from '@ngrx/entity';
 import { Account } from '@app_model/account.model';
 //#endregion
 
+
+/* Action */
+export type AccountPagesActions = Login | Register | ForgotPassword | ResetPassword | VerifyEmail;
+
+/* Action Type */
 export enum AccountPagesActionTypes {
   LOGIN = '[Account Pages] Login',
   REGISTER = '[Account Pages] Register',
@@ -15,8 +20,7 @@ export enum AccountPagesActionTypes {
   VERIFY_EMAIL = '[Account Pages] Verify Email',
 }
 
-export type AccountPagesActions = Login | Register | ForgotPassword | ResetPassword | VerifyEmail;
-
+/* Action Definition */
 export class Login implements Action {
   readonly type = AccountPagesActionTypes.LOGIN;
 

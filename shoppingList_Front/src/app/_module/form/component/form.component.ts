@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 //#region App Component, Model
 import { AlertService } from '@app_alert/service/alert.service';
-import { AccountService } from '@app_service_feat/account.service'; // TODO - we use an external business base
+import { AccountService } from '@app_service/account.service'; // TODO - we use an external business base
 //#endregion
 
 

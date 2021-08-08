@@ -44,8 +44,6 @@
 
       // Service
       "@app_service/*": ["src/app/_service/*"],
-      "@app_service_tech/*": ["src/app/_service/technical/*"],
-      "@app_service_feat/*": ["src/app/_service/feature/*"],
 
       // Module
       "@app_module/*": ["src/app/_module/*"],

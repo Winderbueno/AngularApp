@@ -7,18 +7,24 @@ import { Update } from '@ngrx/entity';
 import { Account } from '@app_model/account.model';
 //#endregion
 
+
+/* Action */
+export type AccountAPIActions = LoginSuccess | LoginFailure;
+
+/* Action Type */
 export enum AccountAPIActionTypes {
   LOGIN_SUCCESS = '[Account API] Login Success',
   LOGIN_FAILURE = '[Account API] Login Failure',
 }
 
+/* Action Definition */
 export class LoginSuccess implements Action {
   readonly type = AccountAPIActionTypes.LOGIN_SUCCESS;
 
   constructor(public payload: { account: Update<Account> }) {}
 }
 
-export class Register implements Action {
+export class LoginFailure implements Action {
   readonly type = AccountAPIActionTypes.LOGIN_FAILURE;
 
   constructor(public payload: { AccountId:string }) {}

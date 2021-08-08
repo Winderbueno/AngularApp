@@ -1,7 +1,7 @@
 //#region NgRx
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { AccountPagesActionTypes } from '@app/_state/action/page/account-page.action';
-import { AccountPagesActions }  from '@app/_state/action/page/account-page.action';
+import { AccountPagesActionTypes } from '@app/_state/action/page/account.page.action';
+import { AccountPagesActions }  from '@app/_state/action/page/account.page.action';
 //#endregion
 
 //#region Model

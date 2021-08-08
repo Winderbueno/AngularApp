@@ -6,13 +6,12 @@ import { map, exhaustMap, catchError } from 'rxjs/operators';
 
 //#region NgRx
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { AccountPagesActionTypes } from '@app/_state/action/page/account-page.action';
-import { AccountPagesActions }  from '@app/_state/action/page/account-page.action';
-import * as AccountAPIActions from '@app/_state/action/api/account.api.action';
+import { AccountPagesActionTypes } from '@app_action/page/account.page.action';
+import { AccountAPIActions }  from '@app_action/api/account.api.action';
 //#endregion
 
-//#region App Component, Model
-import { AccountService } from '@app_service_feat/account.service';
+//#region App Service
+import { AccountService } from '@app_service/account.service';
 //#endregion
 
 
@@ -26,7 +25,7 @@ export class AccountEffects {
       exhaustMap(action =>
 
         // Call the service
-        this.accountService.login(action.payload, action.pwd).pipe(
+        this.accountService.login("mail", "pwd").pipe(
             map(account => AccountAPIActions.loginSuccess({ Account: account })),
             catchError((error) => of(AccountAPIActions.loginFailed(error)))
           )
@@ -35,7 +34,7 @@ export class AccountEffects {
   );
 
   constructor(
-    private actions$: AccountPagesActions,
+    private actions$: Actions,
     private accountService: AccountService
   ) {}
 }
