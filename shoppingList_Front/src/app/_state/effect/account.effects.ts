@@ -27,7 +27,7 @@ export class AccountEffects {
         // Call the service
         this.accountService.login("mail", "pwd").pipe(
             map(account => new LoginSuccess({ account: account })),
-            catchError((error => of(LoginFailure({ error: error })))
+            //catchError((error => of(LoginFailure({ error: error })))
           )
       )
     )

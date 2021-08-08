@@ -36,7 +36,7 @@ export class LoginComponent extends FormComponent {
   }
 
   submitAction(): void {
-    // Dispatch a Load Active Shopping List action
-    this.store.dispatch(new Login({ mail:"test", pwd: "pwd" }));
+    // TODO - Dispatch a Load Active Shopping List action
+    // this.store.dispatch(new Login({ mail:"test", pwd: "pwd" }));
   }
 }
