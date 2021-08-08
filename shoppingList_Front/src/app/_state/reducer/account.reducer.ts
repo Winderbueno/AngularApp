@@ -1,6 +1,6 @@
 //#region NgRx
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import * as AccountAPIActions from '@app_action/api/account.api.action';
 //#endregion
 
@@ -18,23 +18,23 @@ export interface AccountState extends EntityState<Account> {
 
 
 /* Adapter */
-export const accountAdapter : EntityAdapter<Account> =
+export const adapter : EntityAdapter<Account> =
    createEntityAdapter<Account>();
 
 
 /* Initial State */
-export const initialAccountState: AccountState =
-  accountAdapter.getInitialState({
+export const initialState: AccountState =
+  adapter.getInitialState({
     isLogged: false
   });
 
 /* Reducer */
 const accountReducer = createReducer(
-  initialAccountState,
+  initialState,
 
   on(AccountAPIActions.loginSuccess,
     (state, { account }) => {
-      return accountAdapter.addOne(account, state)
+      return adapter.addOne(account, state)
     }
   ),
 
@@ -50,21 +50,11 @@ const accountReducer = createReducer(
   // TODO - error: error => { this.alertService.error(error); }
   on(AccountAPIActions.loginFailure,
     state => state),
-
-
-
 );
 
 export function reducer(state: AccountState | undefined, action: Action) {
   return accountReducer(state, action);
 }
-
-
-
-
-
-
-
 
 
 /* Selector */
@@ -74,4 +64,4 @@ export const {
   selectIds,
   selectTotal
 
-} = accountAdapter.getSelectors();
+} = adapter.getSelectors();

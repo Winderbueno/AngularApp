@@ -1,7 +1,7 @@
 //#region NgRx
+import { Action, createReducer, on } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { ShoppingListAPIActionTypes } from '@app_action/api/shopping-list.api.action';
-import { ShoppingListAPIActions }  from '@app_action/api/shopping-list.api.action';
+import * as ShoppingListAPIActions from '@app_action/api/shopping-list.api.action';
 //#endregion
 
 //#region Model
@@ -20,12 +20,12 @@ export interface ShoppingListState extends EntityState<ShoppingList> {
 }
 
 /* Adapter */
-export const shoppingListAdapter : EntityAdapter<ShoppingList> =
+export const adapter : EntityAdapter<ShoppingList> =
    createEntityAdapter<ShoppingList>();
 
 /* Initial State */
-export const initialShoppingListState: ShoppingListState =
-  shoppingListAdapter.getInitialState({
+export const initialState: ShoppingListState =
+  adapter.getInitialState({
     isActiveLoaded: false,
 
     // View Status
@@ -34,22 +34,24 @@ export const initialShoppingListState: ShoppingListState =
   });
 
 /* Reducer */
-export function shoppingListReducer(
-  state = initialShoppingListState,
-  action: ShoppingListAPIActions): ShoppingListState {
+const shoppingListReducer = createReducer(
+  initialState,
 
-  switch (action.type) {
+  on(ShoppingListAPIActions.loadActiveSuccess,
+    (state, { shoppingList }) => {
+      return adapter.addOne(shoppingList, state)
+    }
+  ),
 
-      case ShoppingListAPIActionTypes.LOAD_ACTIVE_SUCCESS:
-        return shoppingListAdapter.addOne(action.payload.shoppingList, state);
+  // TODO - error: error => { this.alertService.error(error); }
+  on(ShoppingListAPIActions.loadActiveFailure,
+    state => state),
+);
 
-      case ShoppingListAPIActionTypes.LOAD_ACTIVE_FAILURE:
-        return state;
-
-      default:
-          return state;
-  }
+export function reducer(state: ShoppingListState | undefined, action: Action) {
+  return shoppingListReducer(state, action);
 }
+
 
 /* Selector */
 export const {
@@ -58,4 +60,4 @@ export const {
   selectIds,
   selectTotal
 
-} = shoppingListAdapter.getSelectors();
+} = adapter.getSelectors();

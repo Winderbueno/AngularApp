@@ -1,13 +1,13 @@
-/* //#region Angular & Material
+//#region Angular & Material
 import { Injectable } from '@angular/core';
-import { map, exhaustMap, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { map, switchMap, catchError, exhaustMap } from 'rxjs/operators';
 //#endregion
 
 //#region NgRx
-import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { AccountComponentsActionTypes } from '@app_action/component/account.component.action';
-import { loginSuccessAction, loginFailureAction }  from '@app_action/api/account.api.action';
+import * as AccountAPIActions from '@app_action/api/account.api.action';
+import * as AccountComponentActions from '@app_action/component/account.component.action';
 //#endregion
 
 //#region App Service
@@ -19,34 +19,22 @@ import { Account } from '@app_model/account.model';
 @Injectable()
 export class AccountEffects {
 
-  login$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(AccountComponentsActionTypes.LOGIN_SUBMIT),
+  // Load user's active shoppingList from server
+  login$ = createEffect(() => this.actions$.pipe(
+    ofType(AccountComponentActions.loginSubmit),
 
-      exhaustMap(action =>
-
-        // Call the service
-        this.accountService.login("kevin.gellenoncourt@gmail.com", "patate")
-          .pipe(
-            map(
-              account => this.store.dispatch(
-                loginSuccessAction({ account: account })
-              )
-            )
-          )
-      )
+    exhaustMap((action) =>
+      this.accountService.login(action.email, action.password)
+        .pipe(
+          map((account: Account) => AccountAPIActions.loginSuccess({ account: account })),
+          catchError((error) => of(AccountAPIActions.loginFailure({ error: error })))
+        )
     )
-            /*catchError(error =>
-              this.store.dispatch(
-                loginFailureAction({ error: error })
-              )
-            ),*/
-/*  );
+  )
+  );
 
   constructor(
     private actions$: Actions,
-    private accountService: AccountService,
-    private store: Store<{ account: Account }>
-  ) {}
+    private accountService: AccountService
+  ) { }
 }
- */

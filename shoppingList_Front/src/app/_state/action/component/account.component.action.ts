@@ -20,7 +20,9 @@ export enum AccountComponentsActionTypes {
 
 export const loginSubmit = createAction(
   AccountComponentsActionTypes.LOGIN_SUBMIT,
-  props<{ account: Update<Account> }>()); // TODO - email:string, pwd:string
+  props<{
+    email: string,
+    password: string }>());
 
 
 export const registerSubmit = createAction(
