@@ -6,8 +6,8 @@ import { map, mergeMap, catchError } from 'rxjs/operators';
 
 //#region NgRx
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import * as ShopListPageActions from '@app_action/shopping-list-page.action';
-import * as ShopListAPIActions from '@app_action/shopping-list-api.action';
+import * as ShopListPageActions from '@app/_state/action/page/shopping-list-page.action';
+import * as ShopListAPIActions from '@app_action/api/shopping-list.api.action';
 //#endregion
 
 //#region App Component, Model
