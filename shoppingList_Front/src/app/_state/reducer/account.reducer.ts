@@ -25,7 +25,7 @@ export const initialAccountState: AccountState =
     isLogged: false
   });
 
-/* Adapter */
+/* Reducer */
 export function accountReducer(
   state = initialAccountState,
   action: AccountPagesActions): AccountState {
@@ -64,6 +64,4 @@ export function accountReducer(
       default:
           return state;
   }
-
-
 }

@@ -1,54 +1,52 @@
 //#region NgRx
-import { Action, createReducer, on } from '@ngrx/store';
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { ShoppingListPagesActionTypes } from '@app_action/page/shopping-list.page.action';
-import { AccountPagesActions }  from '@app_action/page/shopping-list.page.action';
-import * as ShoppingListPageActions from '../action/shopping-list-page.action';
+import { ShoppingListPagesActions }  from '@app_action/page/shopping-list.page.action';
 //#endregion
 
 //#region Model
 import { ShoppingList } from '@app_model/shopping-list.model';
 //#endregion
 
-export interface State {
-  test:string;
-  shoppingList: ShoppingList;
+
+/* State */
+export interface ShoppingListState extends EntityState<ShoppingList> {
+  // Additional entity state properties
+  isActiveLoaded:boolean;
 }
 
-export const initialState: State = {
-  test: "bonjour",
-  shoppingList: {
-    shoppingListId: "0",
-    active: true,
-    name: "Default ShoppingList",
-    description: "Default ShoppingList",
+/* Adapter */
+export const shoppingListAdapter : EntityAdapter<ShoppingList> =
+   createEntityAdapter<ShoppingList>();
 
-    idAccount: "-1", // User Id
-  },
-};
+/* Initial State */
+export const initialShoppingListState: ShoppingListState =
+  shoppingListAdapter.getInitialState({
+    isActiveLoaded: false
+  });
 
+/* Reducer */
+export function shoppingListReducer(
+  state = initialShoppingListState,
+  action: ShoppingListPagesActions): ShoppingListState {
 
-const _shoppingListReducer = createReducer(
-  initialState,
+  switch (action.type) {
 
-  on(ShoppingListPageActions.loadActive,
-    state =>
-      ({ ...state,
-        test : "-1",
-        shoppingList : {
-          shoppingListId: "0",
-          idAccount: "-1",
-        }
-      })
-  ),
+      case ShoppingListPagesActionTypes.LOAD_ACTIVE:
+        return shoppingListAdapter.addOne(null, state);
 
-  on(ShoppingListPageActions.resetBoughtStatus,
-    state =>
-    ({ ...state,
-      test : "-1",
-    })
-  ),
-);
+      case ShoppingListPagesActionTypes.RESET_BOUGHT_STATUS:
+        return state;
 
-export function shoppingListReducer(state:State, action:Action) {
-  return _shoppingListReducer(state, action);
+      default:
+          return state;
+  }
 }
+
+export const {
+  selectAll,
+  selectEntities,
+  selectIds,
+  selectTotal
+
+} = shoppingListAdapter.getSelectors();

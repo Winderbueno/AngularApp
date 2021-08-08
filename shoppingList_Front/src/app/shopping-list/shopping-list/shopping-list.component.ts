@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 
 //#region NgRx
 import { Store } from '@ngrx/store';
-import * as ShopListPageActions from '@app_action/page/shopping-list.page.action';
+import { LoadActive, ResetBoughtStatus }  from '@app_action/page/shopping-list.page.action';
 //#endregion
 
 //#region App Component, Model
@@ -42,19 +42,18 @@ export class ShoppingListComponent implements OnInit {
 
   ngOnInit(): void {
     // Get user's active shoppingList from server
-    this.store.dispatch(ShopListPageActions.loadActive());
+    this.store.dispatch(new LoadActive());
   }
 
   /** For all shoppingList product, reset 'bought' status */
   resetBoughtStatus(): void {
 
     // Dispatch a ResetBoughtStatus action
-    // TODO - NgRx
-    /*this.store.dispatch(
-      ShopListPageActions.resetBoughtStatus(
-        { ShoppingListId: this.shoppingList$.subscribe() }
-      )
-    );*/
+    this.store.dispatch(
+      new ResetBoughtStatus(
+        { ShoppingListId: "1" }
+      ));
+
   }
 
   /** Add Product Button */

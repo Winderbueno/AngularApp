@@ -24,14 +24,13 @@ export enum ShoppingListPagesActionTypes {
 export class LoadActive implements Action {
   readonly type = ShoppingListPagesActionTypes.LOAD_ACTIVE;
 
-  // TODO - email:string, pwd:string
   constructor() {}
 }
 
 export class ResetBoughtStatus implements Action {
   readonly type = ShoppingListPagesActionTypes.RESET_BOUGHT_STATUS;
 
-  constructor(public payload: { ProductId:string }) {}
+  constructor(public payload: { ShoppingListId:string }) {}
 }
 
 //Payload
