@@ -1,7 +1,7 @@
 //#region NgRx
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { AccountAPIActionTypes } from '@app_action/api/account.api.action';
-import { AccountAPIActions } from '@app_action/api/account.api.action';
+import { Action, createReducer, on } from '@ngrx/store';
+import * as AccountAPIActions from '@app_action/api/account.api.action';
 //#endregion
 
 //#region Model
@@ -16,9 +16,11 @@ export interface AccountState extends EntityState<Account> {
   isLogged:boolean;
 }
 
+
 /* Adapter */
 export const accountAdapter : EntityAdapter<Account> =
    createEntityAdapter<Account>();
+
 
 /* Initial State */
 export const initialAccountState: AccountState =
@@ -27,35 +29,43 @@ export const initialAccountState: AccountState =
   });
 
 /* Reducer */
-export function accountReducer(
-  state = initialAccountState,
-  action: AccountAPIActions): AccountState {
+const accountReducer = createReducer(
+  initialAccountState,
 
-  switch (action.type) {
+  on(AccountAPIActions.loginSuccess,
+    (state, { account }) => {
+      return accountAdapter.addOne(account, state)
+    }
+  ),
 
-      case AccountAPIActionTypes.LOGIN_SUCCESS:
-
-// TODO - Clean this
-        /* this.accountService.login(this.ctrls.Email.value, this.ctrls.Password.value)
-          .pipe(first())
-          .subscribe({
-            next: () => {
-              // Get return url from route parameters or default to '/'
-              const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
-              this.router.navigate([returnUrl]);
-            },
-            error: error => { this.alertService.error(error); }
-        }); */
-
-        return accountAdapter.addOne(action.payload.account, state);
-        // { ...state, isLogged:true }
+  // TODO - Do this when Login Success
+  /*
+    // Get return url from route parameters or default to '/'
+    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
+    this.router.navigate([returnUrl]);
+    // { ...state, isLogged:true }
+  },*/
 
 
+  // TODO - error: error => { this.alertService.error(error); }
+  on(AccountAPIActions.loginFailure,
+    state => state),
 
-      default:
-          return state;
-  }
+
+
+);
+
+export function reducer(state: AccountState | undefined, action: Action) {
+  return accountReducer(state, action);
 }
+
+
+
+
+
+
+
+
 
 /* Selector */
 export const {

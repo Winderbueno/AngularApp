@@ -1,17 +1,18 @@
-//#region Angular & Material
+/* //#region Angular & Material
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
 import { map, exhaustMap, catchError } from 'rxjs/operators';
 //#endregion
 
 //#region NgRx
+import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AccountComponentsActionTypes } from '@app_action/component/account.component.action';
-import { LoginSuccess, LoginFailure }  from '@app_action/api/account.api.action';
+import { loginSuccessAction, loginFailureAction }  from '@app_action/api/account.api.action';
 //#endregion
 
 //#region App Service
 import { AccountService } from '@app_service/account.service';
+import { Account } from '@app_model/account.model';
 //#endregion
 
 
@@ -25,16 +26,27 @@ export class AccountEffects {
       exhaustMap(action =>
 
         // Call the service
-        this.accountService.login("mail", "pwd").pipe(
-            map(account => new LoginSuccess({ account: account })),
-            //catchError((error => of(LoginFailure({ error: error })))
+        this.accountService.login("kevin.gellenoncourt@gmail.com", "patate")
+          .pipe(
+            map(
+              account => this.store.dispatch(
+                loginSuccessAction({ account: account })
+              )
+            )
           )
       )
     )
-  );
+            /*catchError(error =>
+              this.store.dispatch(
+                loginFailureAction({ error: error })
+              )
+            ),*/
+/*  );
 
   constructor(
     private actions$: Actions,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private store: Store<{ account: Account }>
   ) {}
 }
+ */

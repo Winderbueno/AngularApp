@@ -1,20 +1,11 @@
 //#region NgRx
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
 //#endregion
 
 //#region App Component, Model
 import { UsedProduct } from '@app_model/used-product.model';
 //#endregion
-
-
-/* Action */
-export type ShoppingListComponentsActions =
-  LoadActive
-  | ResetBoughtStatus
-  | AddProduct
-  | UpdateProduct
-  | DeleteProduct;
 
 
 /* Action Type */
@@ -27,43 +18,36 @@ export enum ShoppingListComponentsActionTypes {
 }
 
 /* Action Definition */
-export class LoadActive implements Action {
-  readonly type = ShoppingListComponentsActionTypes.LOAD_ACTIVE;
+export const loadActive = createAction(
+  ShoppingListComponentsActionTypes.LOAD_ACTIVE
+);
 
-  constructor(public payload: {}) {}
-}
 
-export class ResetBoughtStatus implements Action {
-  readonly type = ShoppingListComponentsActionTypes.RESET_BOUGHT_STATUS;
+export const resetBoughtStatus = createAction(
+  ShoppingListComponentsActionTypes.RESET_BOUGHT_STATUS,
+  props<{ ShoppingListId: string }>()
+);
 
-  constructor(public payload: {
-    ShoppingListId: string
-  }) {}
-}
 
-export class AddProduct implements Action {
-  readonly type = ShoppingListComponentsActionTypes.ADD_PRODUCT;
+export const addProduct = createAction(
+  ShoppingListComponentsActionTypes.ADD_PRODUCT,
+  props<{ product: UsedProduct }>()
+);
 
-  constructor(public payload: {
-    product: UsedProduct
-  }) {}
-}
 
-export class UpdateProduct implements Action {
-  readonly type = ShoppingListComponentsActionTypes.UPDATE_PRODUCT;
-
-  constructor(public payload: {
+export const updateProduct = createAction(
+  ShoppingListComponentsActionTypes.UPDATE_PRODUCT,
+  props<{
     ShoppingListId: string,
     product: Update<UsedProduct>
-  }) {}
-}
+  }>()
+);
 
-export class DeleteProduct implements Action {
-  readonly type = ShoppingListComponentsActionTypes.DELETE_PRODUCT;
 
-  constructor(public payload: {
+export const deleteProduct = createAction(
+  ShoppingListComponentsActionTypes.DELETE_PRODUCT,
+  props<{
     ShoppingListId: string,
     ProductId: string
-  }) {}
-
-}
+  }>()
+);

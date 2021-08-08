@@ -1,5 +1,5 @@
 //#region NgRx
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
 //#endregion
 
@@ -8,24 +8,18 @@ import { Account } from '@app_model/account.model';
 //#endregion
 
 
-/* Action */
-export type AccountAPIActions = LoginSuccess | LoginFailure;
-
 /* Action Type */
 export enum AccountAPIActionTypes {
   LOGIN_SUCCESS = '[Account API] Login Success',
   LOGIN_FAILURE = '[Account API] Login Failure',
 }
 
-/* Action Definition */
-export class LoginSuccess implements Action {
-  readonly type = AccountAPIActionTypes.LOGIN_SUCCESS;
 
-  constructor(public payload: { account: Account }) {}
-}
+export const loginSuccess = createAction(
+  AccountAPIActionTypes.LOGIN_SUCCESS,
+  props<{ account: Account }>());
 
-export class LoginFailure implements Action {
-  readonly type = AccountAPIActionTypes.LOGIN_FAILURE;
 
-  constructor(public payload: { error: string }) {}
-}
+export const loginFailure = createAction(
+  AccountAPIActionTypes.LOGIN_FAILURE,
+  props<{ error: string }>());

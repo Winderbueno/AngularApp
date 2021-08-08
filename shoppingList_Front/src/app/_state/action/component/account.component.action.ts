@@ -1,5 +1,5 @@
 //#region NgRx
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
 //#endregion
 
@@ -7,14 +7,6 @@ import { Update } from '@ngrx/entity';
 import { Account } from '@app_model/account.model';
 //#endregion
 
-
-/* Action */
-export type AccountComponentsActions =
-  Login
-  | Register
-  | ForgotPassword
-  | ResetPassword
-  | VerifyEmail;
 
 /* Action Type */
 export enum AccountComponentsActionTypes {
@@ -25,46 +17,30 @@ export enum AccountComponentsActionTypes {
   VERIFY_EMAIL_SUBMIT = '[Verify Email Component] Submit',
 }
 
-/* Action Definition */
-export class Login implements Action {
-  readonly type = AccountComponentsActionTypes.LOGIN_SUBMIT;
 
-  // TODO - email:string, pwd:string
-  constructor(public payload: {
-    account: Update<Account>
-  }) {}
-}
+export const loginSubmit = createAction(
+  AccountComponentsActionTypes.LOGIN_SUBMIT,
+  props<{ account: Update<Account> }>()); // TODO - email:string, pwd:string
 
-export class Register implements Action {
-  readonly type = AccountComponentsActionTypes.REGISTER_SUBMIT;
 
-  constructor(public payload: {
-    account: Account
-  }) {}
-}
+export const registerSubmit = createAction(
+  AccountComponentsActionTypes.REGISTER_SUBMIT,
+  props<{ account: Account }>());
 
-export class ForgotPassword implements Action {
-  readonly type = AccountComponentsActionTypes.FORGOT_PASSWORD_SUBMIT;
 
-  constructor(public payload: {
-    email: string
-  }) {}
-}
+export const forgotPasswordSubmit = createAction(
+  AccountComponentsActionTypes.FORGOT_PASSWORD_SUBMIT,
+  props<{ email: string }>());
 
-export class ResetPassword implements Action {
-  readonly type = AccountComponentsActionTypes.RESET_PASSWORD_SUBMIT;
 
-  constructor(public payload: {
+export const resetPasswordSubmit = createAction(
+  AccountComponentsActionTypes.RESET_PASSWORD_SUBMIT,
+  props<{
     token: string,
     password: string,
-    confirmPassword: string
-  }) {}
-}
+    confirmPassword: string }>());
 
-export class VerifyEmail implements Action {
-  readonly type = AccountComponentsActionTypes.VERIFY_EMAIL_SUBMIT;
 
-  constructor(public payload: {
-    AccountId:string
-  }) {}
-}
+export const verifyEmailSubmit = createAction(
+  AccountComponentsActionTypes.VERIFY_EMAIL_SUBMIT,
+  props<{ AccountId:string }>());

@@ -6,8 +6,7 @@ import { map, mergeMap, catchError } from 'rxjs/operators';
 
 //#region NgRx
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { ShoppingListComponentsActionTypes } from '@app_action/component/shopping-list.component.action';
-import { LoadActiveSuccess, LoadActiveFailure }  from '@app_action/api/shopping-list.api.action';
+import * as ShoppingListAPIActions from '@app_action/api/shopping-list.api.action';
 //#endregion
 
 //#region App Service
@@ -21,11 +20,11 @@ export class ShoppingListEffects {
   //Load user's active shoppingList from server
   getActive$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(ShoppingListComponentsActionTypes.LOAD_ACTIVE),
+      ofType(ShoppingListAPIActions.loadActiveSuccess),
 
       mergeMap(() =>
         this.shoppingListService.getActive().pipe(
-          map((shoppingList) => new LoadActiveSuccess({ shoppingList: shoppingList })),
+          map((shoppingList) => new ShoppingListAPIActions.loadActiveSuccess({ shoppingList: shoppingList })),
           //catchError((error) => of(ShoppingListAPIActions.loadActiveFailed(error)))
         )
       )
