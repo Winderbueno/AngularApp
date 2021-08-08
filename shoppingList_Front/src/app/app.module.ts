@@ -8,6 +8,7 @@ import { MatFormFieldDefaultOptions, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@ang
 
 //#region NgRx
 import { StoreModule } from '@ngrx/store';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { EffectsModule } from '@ngrx/effects';
 import { ShoppingListEffects } from '@app_effect/shopping-list.effects';
 //#endregion
@@ -45,12 +46,13 @@ const appearance: MatFormFieldDefaultOptions = { appearance: 'outline' };
 
     /* NgRx */
     StoreModule.forRoot({}),
+    StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([ShoppingListEffects]),
 
     /* App Module */
     AppRouterModule,
     AlertModule,
-    LayoutModule
+    LayoutModule,
   ],
   providers: [
     { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AccountService] },
