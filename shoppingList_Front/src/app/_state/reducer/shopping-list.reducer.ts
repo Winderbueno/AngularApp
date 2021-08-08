@@ -1,6 +1,11 @@
-import { ShoppingList } from '@app_shoppingList/model/shopping-list.model';
+//#region NgRx
 import { Action, createReducer, on } from '@ngrx/store';
 import * as ShoppingListPageActions from '../action/shopping-list-page.action';
+//#endregion
+
+//#region Model
+import { ShoppingList } from '@app_model/shopping-list.model';
+//#endregion
 
 export interface State {
   test:string;

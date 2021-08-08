@@ -1,37 +1,69 @@
 //#region NgRx
-import { Action, createReducer, on } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import * as AccoungPageActions from '@app_action/account-page.action';
+import { AccountPagesActionTypes } from '@app/_state/action/page/account-page.action';
+import { AccountPagesActions }  from '@app/_state/action/page/account-page.action';
 //#endregion
 
-//#region App Component, Model
-import { Account } from '@app/account/model/account.model';
+//#region Model
+import { Account } from '@app_model/account.model';
 //#endregion
 
-/* State Definition */
-export interface State extends EntityState<Account> {}
+/* State */
+export interface AccountState extends EntityState<Account> {
+  // Additional entity state properties
+  // connectedAccountId: string | null;
+  isLogged:boolean;
+}
 
-/* Initial State Definition */
-export const initialState: State = {};
+/* Adapter */
+export const accountAdapter : EntityAdapter<Account> =
+   createEntityAdapter<Account>();
+
+/* Initial State */
+export const initialAccountState: AccountState =
+  accountAdapter.getInitialState({
+    isLogged: false
+  });
+
+/* Adapter */
+export function accountReducer(
+  state = initialAccountState,
+  action: AccountPagesActions): AccountState {
+
+  switch (action.type) {
+
+      case AccountPagesActionTypes.LOGIN:
+
+        // TODO - Clean this
+        /* this.accountService.login(this.ctrls.Email.value, this.ctrls.Password.value)
+          .pipe(first())
+          .subscribe({
+            next: () => {
+              // Get return url from route parameters or default to '/'
+              const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
+              this.router.navigate([returnUrl]);
+            },
+            error: error => { this.alertService.error(error); }
+        }); */
+
+        return accountAdapter.updateOne(action.payload.account, state);
+        // { ...state, isLogged:true }
+
+      case AccountPagesActionTypes.REGISTER:
+        return state;
+
+      case AccountPagesActionTypes.FORGOT_PASSWORD:
+        return state;
+
+      case AccountPagesActionTypes.RESET_PASSWORD:
+        return state;
+
+      case AccountPagesActionTypes.VERIFY_EMAIL:
+        return state;
+
+      default:
+          return state;
+  }
 
 
-const _accountReducer = createReducer(
-
-  initialState,
-
-  on(AccoungPageActions.login,
-    state =>
-      ({ ...state,
-        account : {
-          email: state.account.,
-          idAccount: "-1",
-        }
-      })
-  ),
-
-
-);
-
-export function accountReducer(state:State, action:Action) {
-  return _accountReducer(state, action);
 }

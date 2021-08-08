@@ -5,9 +5,9 @@ import { MatAccordion } from '@angular/material/expansion';
 import { Observable } from 'rxjs';
 //#endregion
 
-//#region RxJS, NgRx
+//#region NgRx
 import { Store } from '@ngrx/store';
-import * as ShopListPageActions from '@app_action/shopping-list-page.action';
+import * as ShopListPageActions from '@app/_state/action/page/shopping-list-page.action';
 //#endregion
 
 //#region App Component, Model
