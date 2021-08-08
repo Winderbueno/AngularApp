@@ -9,7 +9,7 @@ import { UsedProduct } from '@app_model/used-product.model';
 
 
 /* Action */
-export type ShoppingListPagesActions =
+export type ShoppingListComponentsActions =
   LoadActive
   | ResetBoughtStatus
   | AddProduct
@@ -18,23 +18,23 @@ export type ShoppingListPagesActions =
 
 
 /* Action Type */
-export enum ShoppingListPagesActionTypes {
-  LOAD_ACTIVE = '[Shopping List Page] LoadActive',
-  RESET_BOUGHT_STATUS = '[Shopping List Page] Reset Bought Status',
-  ADD_PRODUCT = '[Shopping List Page] AddProduct',
-  UPDATE_PRODUCT = '[Shopping List Page] UpdtProduct',
-  DELETE_PRODUCT = '[Shopping List Page] DeleteProduct',
+export enum ShoppingListComponentsActionTypes {
+  LOAD_ACTIVE = '[Shopping List Component] LoadActive',
+  RESET_BOUGHT_STATUS = '[Shopping List Component] Reset Bought Status',
+  ADD_PRODUCT = '[Shopping List Component] AddProduct',
+  UPDATE_PRODUCT = '[Shopping List Component] UpdtProduct',
+  DELETE_PRODUCT = '[Shopping List Component] DeleteProduct',
 }
 
 /* Action Definition */
 export class LoadActive implements Action {
-  readonly type = ShoppingListPagesActionTypes.LOAD_ACTIVE;
+  readonly type = ShoppingListComponentsActionTypes.LOAD_ACTIVE;
 
   constructor(public payload: {}) {}
 }
 
 export class ResetBoughtStatus implements Action {
-  readonly type = ShoppingListPagesActionTypes.RESET_BOUGHT_STATUS;
+  readonly type = ShoppingListComponentsActionTypes.RESET_BOUGHT_STATUS;
 
   constructor(public payload: {
     ShoppingListId: string
@@ -42,7 +42,7 @@ export class ResetBoughtStatus implements Action {
 }
 
 export class AddProduct implements Action {
-  readonly type = ShoppingListPagesActionTypes.ADD_PRODUCT;
+  readonly type = ShoppingListComponentsActionTypes.ADD_PRODUCT;
 
   constructor(public payload: {
     product: UsedProduct
@@ -50,7 +50,7 @@ export class AddProduct implements Action {
 }
 
 export class UpdateProduct implements Action {
-  readonly type = ShoppingListPagesActionTypes.UPDATE_PRODUCT;
+  readonly type = ShoppingListComponentsActionTypes.UPDATE_PRODUCT;
 
   constructor(public payload: {
     ShoppingListId: string,
@@ -59,7 +59,7 @@ export class UpdateProduct implements Action {
 }
 
 export class DeleteProduct implements Action {
-  readonly type = ShoppingListPagesActionTypes.DELETE_PRODUCT;
+  readonly type = ShoppingListComponentsActionTypes.DELETE_PRODUCT;
 
   constructor(public payload: {
     ShoppingListId: string,

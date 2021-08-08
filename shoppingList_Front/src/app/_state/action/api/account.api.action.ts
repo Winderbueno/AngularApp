@@ -21,11 +21,11 @@ export enum AccountAPIActionTypes {
 export class LoginSuccess implements Action {
   readonly type = AccountAPIActionTypes.LOGIN_SUCCESS;
 
-  constructor(public payload: { account: Update<Account> }) {}
+  constructor(public payload: { account: Account }) {}
 }
 
 export class LoginFailure implements Action {
   readonly type = AccountAPIActionTypes.LOGIN_FAILURE;
 
-  constructor(public payload: { AccountId:string }) {}
+  constructor(public payload: { error: string }) {}
 }

@@ -9,7 +9,7 @@ import { Account } from '@app_model/account.model';
 
 
 /* Action */
-export type AccountPagesActions =
+export type AccountComponentsActions =
   Login
   | Register
   | ForgotPassword
@@ -17,17 +17,17 @@ export type AccountPagesActions =
   | VerifyEmail;
 
 /* Action Type */
-export enum AccountPagesActionTypes {
-  LOGIN = '[Account Pages] Login',
-  REGISTER = '[Account Pages] Register',
-  FORGOT_PASSWORD = '[Account Pages] Forgot Password',
-  RESET_PASSWORD = '[Account Pages] Reset Password',
-  VERIFY_EMAIL = '[Account Pages] Verify Email',
+export enum AccountComponentsActionTypes {
+  LOGIN_SUBMIT = '[Login Component] Submit',
+  REGISTER_SUBMIT = '[Register Component] Submit',
+  FORGOT_PASSWORD_SUBMIT = '[Forgot Password Component] Submit',
+  RESET_PASSWORD_SUBMIT = '[Reset Password Component] Submit',
+  VERIFY_EMAIL_SUBMIT = '[Verify Email Component] Submit',
 }
 
 /* Action Definition */
 export class Login implements Action {
-  readonly type = AccountPagesActionTypes.LOGIN;
+  readonly type = AccountComponentsActionTypes.LOGIN_SUBMIT;
 
   // TODO - email:string, pwd:string
   constructor(public payload: {
@@ -36,7 +36,7 @@ export class Login implements Action {
 }
 
 export class Register implements Action {
-  readonly type = AccountPagesActionTypes.REGISTER;
+  readonly type = AccountComponentsActionTypes.REGISTER_SUBMIT;
 
   constructor(public payload: {
     account: Account
@@ -44,7 +44,7 @@ export class Register implements Action {
 }
 
 export class ForgotPassword implements Action {
-  readonly type = AccountPagesActionTypes.FORGOT_PASSWORD;
+  readonly type = AccountComponentsActionTypes.FORGOT_PASSWORD_SUBMIT;
 
   constructor(public payload: {
     email: string
@@ -52,7 +52,7 @@ export class ForgotPassword implements Action {
 }
 
 export class ResetPassword implements Action {
-  readonly type = AccountPagesActionTypes.RESET_PASSWORD;
+  readonly type = AccountComponentsActionTypes.RESET_PASSWORD_SUBMIT;
 
   constructor(public payload: {
     token: string,
@@ -62,7 +62,7 @@ export class ResetPassword implements Action {
 }
 
 export class VerifyEmail implements Action {
-  readonly type = AccountPagesActionTypes.VERIFY_EMAIL;
+  readonly type = AccountComponentsActionTypes.VERIFY_EMAIL_SUBMIT;
 
   constructor(public payload: {
     AccountId:string

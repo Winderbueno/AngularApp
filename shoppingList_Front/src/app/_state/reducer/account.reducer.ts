@@ -1,12 +1,13 @@
 //#region NgRx
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { AccountPagesActionTypes } from '@app/_state/action/page/account.page.action';
-import { AccountPagesActions }  from '@app/_state/action/page/account.page.action';
+import { AccountAPIActionTypes } from '@app_action/api/account.api.action';
+import { AccountAPIActions } from '@app_action/api/account.api.action';
 //#endregion
 
 //#region Model
 import { Account } from '@app_model/account.model';
 //#endregion
+
 
 /* State */
 export interface AccountState extends EntityState<Account> {
@@ -28,13 +29,13 @@ export const initialAccountState: AccountState =
 /* Reducer */
 export function accountReducer(
   state = initialAccountState,
-  action: AccountPagesActions): AccountState {
+  action: AccountAPIActions): AccountState {
 
   switch (action.type) {
 
-      case AccountPagesActionTypes.LOGIN:
+      case AccountAPIActionTypes.LOGIN_SUCCESS:
 
-        // TODO - Clean this
+// TODO - Clean this
         /* this.accountService.login(this.ctrls.Email.value, this.ctrls.Password.value)
           .pipe(first())
           .subscribe({
@@ -46,22 +47,21 @@ export function accountReducer(
             error: error => { this.alertService.error(error); }
         }); */
 
-        return accountAdapter.updateOne(action.payload.account, state);
+        return accountAdapter.addOne(action.payload.account, state);
         // { ...state, isLogged:true }
 
-      case AccountPagesActionTypes.REGISTER:
-        return state;
 
-      case AccountPagesActionTypes.FORGOT_PASSWORD:
-        return state;
-
-      case AccountPagesActionTypes.RESET_PASSWORD:
-        return state;
-
-      case AccountPagesActionTypes.VERIFY_EMAIL:
-        return state;
 
       default:
           return state;
   }
 }
+
+/* Selector */
+export const {
+  selectAll,
+  selectEntities,
+  selectIds,
+  selectTotal
+
+} = accountAdapter.getSelectors();

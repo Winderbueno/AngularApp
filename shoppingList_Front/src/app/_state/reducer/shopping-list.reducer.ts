@@ -12,7 +12,11 @@ import { ShoppingList } from '@app_model/shopping-list.model';
 /* State */
 export interface ShoppingListState extends EntityState<ShoppingList> {
   // Additional entity state properties
-  isActiveLoaded:boolean;
+  isActiveLoaded: boolean;
+
+  // View Status
+  edit_mode: boolean;
+  accordion_expanded: boolean;
 }
 
 /* Adapter */
@@ -22,7 +26,11 @@ export const shoppingListAdapter : EntityAdapter<ShoppingList> =
 /* Initial State */
 export const initialShoppingListState: ShoppingListState =
   shoppingListAdapter.getInitialState({
-    isActiveLoaded: false
+    isActiveLoaded: false,
+
+    // View Status
+    edit_mode: false,
+    accordion_expanded: false
   });
 
 /* Reducer */
@@ -43,6 +51,7 @@ export function shoppingListReducer(
   }
 }
 
+/* Selector */
 export const {
   selectAll,
   selectEntities,

@@ -7,7 +7,12 @@ import { Observable } from 'rxjs';
 
 //#region NgRx
 import { Store } from '@ngrx/store';
-import { LoadActive, ResetBoughtStatus }  from '@app_action/page/shopping-list.page.action';
+import {
+  LoadActive,
+  ResetBoughtStatus,
+  AddProduct,
+  UpdateProduct,
+  DeleteProduct }  from '@app_action/component/shopping-list.component.action';
 //#endregion
 
 //#region App Component, Model
@@ -41,7 +46,7 @@ export class ShoppingListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Get user's active shoppingList from server
+    // Dispatch a Load Active Shopping List action
     this.store.dispatch(new LoadActive({}));
   }
 

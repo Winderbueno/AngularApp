@@ -6,8 +6,8 @@ import { map, exhaustMap, catchError } from 'rxjs/operators';
 
 //#region NgRx
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { AccountPagesActionTypes } from '@app_action/page/account.page.action';
-import { AccountAPIActions }  from '@app_action/api/account.api.action';
+import { AccountComponentsActionTypes } from '@app_action/component/account.component.action';
+import { LoginSuccess, LoginFailure }  from '@app_action/api/account.api.action';
 //#endregion
 
 //#region App Service
@@ -20,14 +20,14 @@ export class AccountEffects {
 
   login$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(AccountPagesActionTypes.LOGIN),
+      ofType(AccountComponentsActionTypes.LOGIN_SUBMIT),
 
       exhaustMap(action =>
 
         // Call the service
         this.accountService.login("mail", "pwd").pipe(
-            map(account => AccountAPIActions.loginSuccess({ Account: account })),
-            catchError((error) => of(AccountAPIActions.loginFailed(error)))
+            map(account => new LoginSuccess({ account: account })),
+            catchError((error => of(LoginFailure({ error: error })))
           )
       )
     )
