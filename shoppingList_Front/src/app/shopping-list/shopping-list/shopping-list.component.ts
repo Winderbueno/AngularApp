@@ -42,7 +42,7 @@ export class ShoppingListComponent implements OnInit {
 
   ngOnInit(): void {
     // Get user's active shoppingList from server
-    this.store.dispatch(new LoadActive());
+    this.store.dispatch(new LoadActive({}));
   }
 
   /** For all shoppingList product, reset 'bought' status */

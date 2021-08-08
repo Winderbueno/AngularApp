@@ -9,7 +9,12 @@ import { Account } from '@app_model/account.model';
 
 
 /* Action */
-export type AccountPagesActions = Login | Register | ForgotPassword | ResetPassword | VerifyEmail;
+export type AccountPagesActions =
+  Login
+  | Register
+  | ForgotPassword
+  | ResetPassword
+  | VerifyEmail;
 
 /* Action Type */
 export enum AccountPagesActionTypes {
@@ -25,29 +30,41 @@ export class Login implements Action {
   readonly type = AccountPagesActionTypes.LOGIN;
 
   // TODO - email:string, pwd:string
-  constructor(public payload: { account: Update<Account> }) {}
+  constructor(public payload: {
+    account: Update<Account>
+  }) {}
 }
 
 export class Register implements Action {
   readonly type = AccountPagesActionTypes.REGISTER;
 
-  constructor(public payload: { AccountId:string }) {}
+  constructor(public payload: {
+    account: Account
+  }) {}
 }
 
 export class ForgotPassword implements Action {
   readonly type = AccountPagesActionTypes.FORGOT_PASSWORD;
 
-  constructor(public payload: { AccountId:string }) {}
+  constructor(public payload: {
+    email: string
+  }) {}
 }
 
 export class ResetPassword implements Action {
   readonly type = AccountPagesActionTypes.RESET_PASSWORD;
 
-  constructor(public payload: { AccountId:string }) {}
+  constructor(public payload: {
+    token: string,
+    password: string,
+    confirmPassword: string
+  }) {}
 }
 
 export class VerifyEmail implements Action {
   readonly type = AccountPagesActionTypes.VERIFY_EMAIL;
 
-  constructor(public payload: { AccountId:string }) {}
+  constructor(public payload: {
+    AccountId:string
+  }) {}
 }

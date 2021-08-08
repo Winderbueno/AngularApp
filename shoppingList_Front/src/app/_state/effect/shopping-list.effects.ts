@@ -6,7 +6,7 @@ import { map, mergeMap, catchError } from 'rxjs/operators';
 
 //#region NgRx
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { ShoppingListPagesActions } from '@app_action/page/shopping-list.page.action';
+import { ShoppingListPagesActionTypes } from '@app_action/page/shopping-list.page.action';
 import { ShoppingListAPIActions }  from '@app_action/api/shopping-list.api.action';
 //#endregion
 
@@ -20,7 +20,7 @@ export class ShoppingListEffects {
 
   getActive$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(ShopListPageActions.loadActive),
+      ofType(ShoppingListPagesActionTypes.LOAD_ACTIVE),
 
       mergeMap(() =>
         this.shoppingListService.getActive().pipe(

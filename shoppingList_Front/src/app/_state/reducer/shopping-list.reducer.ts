@@ -1,7 +1,7 @@
 //#region NgRx
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { ShoppingListPagesActionTypes } from '@app_action/page/shopping-list.page.action';
-import { ShoppingListPagesActions }  from '@app_action/page/shopping-list.page.action';
+import { ShoppingListAPIActionTypes } from '@app_action/api/shopping-list.api.action';
+import { ShoppingListAPIActions }  from '@app_action/api/shopping-list.api.action';
 //#endregion
 
 //#region Model
@@ -28,14 +28,14 @@ export const initialShoppingListState: ShoppingListState =
 /* Reducer */
 export function shoppingListReducer(
   state = initialShoppingListState,
-  action: ShoppingListPagesActions): ShoppingListState {
+  action: ShoppingListAPIActions): ShoppingListState {
 
   switch (action.type) {
 
-      case ShoppingListPagesActionTypes.LOAD_ACTIVE:
-        return shoppingListAdapter.addOne(null, state);
+      case ShoppingListAPIActionTypes.LOAD_ACTIVE_SUCCESS:
+        return shoppingListAdapter.addOne(action.payload.shoppingList, state);
 
-      case ShoppingListPagesActionTypes.RESET_BOUGHT_STATUS:
+      case ShoppingListAPIActionTypes.LOAD_ACTIVE_FAILURE:
         return state;
 
       default:
