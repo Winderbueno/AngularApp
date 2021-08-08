@@ -8,9 +8,12 @@ import { MatFormFieldDefaultOptions, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@ang
 
 //#region NgRx
 import { StoreModule } from '@ngrx/store';
-import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 import { ShoppingListEffects } from '@app_effect/shopping-list.effects';
+import { AccountEffects } from '@app_effect/account.effects';
+import * as fromAccount from '@app_reducer/account.reducer';
+import * as fromShoppingList from '@app_reducer/shopping-list.reducer';
 //#endregion
 
 //#region App Module
@@ -47,9 +50,16 @@ const appearance: MatFormFieldDefaultOptions = { appearance: 'outline' };
     /* NgRx */
     StoreModule.forRoot({
       router: routerReducer,
+      account: fromAccount.reducer,
+      shoppingList: fromShoppingList.reducer
     }),
+
     StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([ShoppingListEffects]),
+
+    /* NgRx Effect */
+    EffectsModule.forRoot([
+      AccountEffects,
+      ShoppingListEffects]),
 
     /* App Module */
     AppRouterModule,

@@ -7,12 +7,7 @@ import { Observable } from 'rxjs';
 
 //#region NgRx
 import { Store } from '@ngrx/store';
-import {
-  LoadActive,
-  ResetBoughtStatus,
-  AddProduct,
-  UpdateProduct,
-  DeleteProduct }  from '@app_action/component/shopping-list.component.action';
+import * as ShoppingListComponentActions from '@app_action/component/shopping-list.component.action';
 //#endregion
 
 //#region App Component, Model
@@ -47,7 +42,9 @@ export class ShoppingListComponent implements OnInit {
 
   ngOnInit(): void {
     // Dispatch a Load Active Shopping List action
-    this.store.dispatch(new LoadActive({}));
+    this.store.dispatch(
+      ShoppingListComponentActions.loadActive()
+    );
   }
 
   /** For all shoppingList product, reset 'bought' status */
@@ -55,7 +52,7 @@ export class ShoppingListComponent implements OnInit {
 
     // Dispatch a ResetBoughtStatus action
     this.store.dispatch(
-      new ResetBoughtStatus(
+      ShoppingListComponentActions.resetBoughtStatus(
         { ShoppingListId: "1" }
       ));
 

@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 //#region NgRx
 import { Store } from '@ngrx/store';
-import { Login }  from '@app_action/component/account.component.action';
+import * as AccountComponentActions from '@app_action/component/account.component.action';
 //#endregion
 
 //#region App Component, Model
@@ -37,6 +37,10 @@ export class LoginComponent extends FormComponent {
 
   submitAction(): void {
     // TODO - Dispatch a Load Active Shopping List action
-    // this.store.dispatch(new Login({ mail:"test", pwd: "pwd" }));
+    this.store.dispatch(
+      AccountComponentActions.loginSubmit({
+        email:"kevin.gellenoncourt@gmail.com",
+        password: "patate"
+      }));
   }
 }
