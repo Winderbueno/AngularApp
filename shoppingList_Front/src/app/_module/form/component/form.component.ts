@@ -4,9 +4,12 @@ import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 //#endregion
 
+//#region NgRx
+import { Store } from '@ngrx/store';
+//#endregion
+
 //#region App Component, Model
-import { AlertService } from '@app_alert/service/alert.service';
-import { AccountService } from '@app_service/account.service'; // TODO - we use an external business base
+import { AlertService } from '@app_alert/service/alert.service'; // TODO - Shoud not use a service
 //#endregion
 
 
@@ -32,7 +35,7 @@ export class FormComponent implements OnInit {
     protected router: Router,
     protected route: ActivatedRoute,
     protected alertService: AlertService,
-    protected accountService: AccountService,
+    protected store: Store<{}> // TODO
   ) { }
 
   ngOnInit() {

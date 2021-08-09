@@ -4,6 +4,10 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 //#endregion
 
+//#region NgRx
+import { Store } from '@ngrx/store';
+//#endregion
+
 //#region App Component, Model
 import { FormComponent } from '@app_form/component/form.component';
 import { Enum } from '@app_model/enum.model';
@@ -30,11 +34,12 @@ export class DialogAddProductComponent extends FormComponent {
     route: ActivatedRoute,
     alertService: AlertService,
     accountService: AccountService,
+    store: Store<{}>, // TODO
     public dialogRef: MatDialogRef<DialogAddProductComponent>,
     private enumService: EnumService,
     private shoppingListService: ShoppingListService,
   ) {
-    super(router, route, alertService, accountService);
+    super(router, route, alertService, store);
   }
 
   ngOnInit(): void {

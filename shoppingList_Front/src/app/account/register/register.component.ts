@@ -1,6 +1,9 @@
 ﻿//#region Angular & Material
 import { Component } from '@angular/core';
-import { first } from 'rxjs/operators';
+//#endregion
+
+//#region NgRx
+import * as AccountComponentActions from '@app_action/component/account.component.action';
 //#endregion
 
 //#region App Component, Model
@@ -17,17 +20,11 @@ export class RegisterComponent extends FormComponent {
   }
 
   submitAction() {
-    this.accountService.register(this.form.value)
-      .pipe(first())
-      .subscribe({
-        next: () => {
-          this.alertService.success(
-            'Registration successful, please check your email for verification instructions',
-            { keepAfterRouteChange: true }
-          );
-          this.router.navigate(['../login'], { relativeTo: this.route });
-        },
-        error: error => { this.alertService.error(error); }
-      });
+    // Dispatch Register action
+    this.store.dispatch(
+      AccountComponentActions.registerSubmit({
+        account: this.form.value,
+      })
+    );
   }
 }

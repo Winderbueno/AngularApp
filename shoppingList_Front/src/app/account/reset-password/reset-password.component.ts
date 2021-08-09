@@ -1,6 +1,9 @@
 ﻿//#region Angular & Material
 import { Component } from '@angular/core';
-import { first } from 'rxjs/operators';
+//#endregion
+
+//#region NgRx
+import * as AccountComponentActions from '@app_action/component/account.component.action';
 //#endregion
 
 //#region App Component, Model
@@ -43,17 +46,14 @@ export class ResetPasswordComponent extends FormComponent {
   }
 
   submitAction() {
-    // TODO - NgRx
-    /*this.accountService.resetPassword(this.token, this.ctrls.Password.value, this.ctrls.ConfirmPassword.value)
-      .pipe(first())
-      .subscribe({
-        next: () => {
-          this.alertService.success(
-            'Password successfully reinitialised, you can now log in :)',
-            { keepAfterRouteChange: true });
-          this.router.navigate(['../login'], { relativeTo: this.route });
-        },
-        error: error => { this.alertService.error(error); }
-      });*/
+
+    // Dispatch Reset Password action
+    this.store.dispatch(
+      AccountComponentActions.resetPasswordSubmit({
+        token: this.token,
+        password: this.ctrls.Password.value,
+        confirmPassword: this.ctrls.ConfirmPassword.value
+      })
+    );
   }
 }

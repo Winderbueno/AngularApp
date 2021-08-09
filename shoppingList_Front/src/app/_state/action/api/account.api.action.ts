@@ -12,6 +12,7 @@ import { Account } from '@app_model/account.model';
 export enum AccountAPIActionTypes {
   LOGIN_SUCCESS = '[Account API] Login Success',
   LOGIN_FAILURE = '[Account API] Login Failure',
+  GENERIC_SUCCESS = '[Account API] Generic Success',
 }
 
 
@@ -23,3 +24,7 @@ export const loginSuccess = createAction(
 export const loginFailure = createAction(
   AccountAPIActionTypes.LOGIN_FAILURE,
   props<{ error: string }>());
+
+// TODO
+export const genericSuccess = createAction(
+  AccountAPIActionTypes.GENERIC_SUCCESS);

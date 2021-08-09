@@ -1,6 +1,9 @@
 ﻿//#region Angular & Material
 import { Component } from '@angular/core';
-import { first } from 'rxjs/operators';
+//#endregion
+
+//#region NgRx
+import * as AccountComponentActions from '@app_action/component/account.component.action';
 //#endregion
 
 //#region App Component, Model
@@ -17,11 +20,12 @@ export class ForgotPasswordComponent extends FormComponent {
   }
 
   submitAction() {
-    this.accountService.forgotPassword(this.ctrls.Email.value)
-      .pipe(first())
-      .subscribe({
-        next: () => this.alertService.success('Please check your email for password reset instructions'),
-        error: error => this.alertService.error(error)
-      });
+
+    // Dispatch Forgot Password action
+    this.store.dispatch(
+      AccountComponentActions.forgotPasswordSubmit({
+        email: this.ctrls.Email.value,
+      })
+    );
   }
 }

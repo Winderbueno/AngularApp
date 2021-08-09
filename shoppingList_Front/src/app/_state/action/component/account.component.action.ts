@@ -1,6 +1,5 @@
 //#region NgRx
 import { createAction, props } from '@ngrx/store';
-import { Update } from '@ngrx/entity';
 //#endregion
 
 //#region App Component, Model
@@ -27,12 +26,14 @@ export const loginSubmit = createAction(
 
 export const registerSubmit = createAction(
   AccountComponentsActionTypes.REGISTER_SUBMIT,
-  props<{ account: Account }>());
+  props<{
+    account: Account }>());
 
 
 export const forgotPasswordSubmit = createAction(
   AccountComponentsActionTypes.FORGOT_PASSWORD_SUBMIT,
-  props<{ email: string }>());
+  props<{
+    email: string }>());
 
 
 export const resetPasswordSubmit = createAction(
@@ -45,4 +46,5 @@ export const resetPasswordSubmit = createAction(
 
 export const verifyEmailSubmit = createAction(
   AccountComponentsActionTypes.VERIFY_EMAIL_SUBMIT,
-  props<{ AccountId:string }>());
+  props<{
+    token: string }>());
