@@ -18,11 +18,13 @@
       "@app_account/*": ["src/app/account/*"],
       "@app_shoppingList/*": ["src/app/shopping-list/*"],
 
-      // State
-      "@app_state/*": ["src/app/_state/*"],
-      "@app_action/*": ["src/app/_state/action/*"],
-      "@app_effect/*": ["src/app/_state/effect/*"],
-      "@app_reducer/*": ["src/app/_state/reducer/*"],
+      // Store
+      "@app_store/*": ["src/app/_store/*"],
+      "@app_action/*": ["src/app/_store/action/*"],
+      "@app_effect/*": ["src/app/_store/effect/*"],
+      "@app_reducer/*": ["src/app/_store/reducer/*"],
+      "@app_selector/*": ["src/app/_store/selector/*"],
+      "@app_state/*": ["src/app/_store/state/*"],
 
       // Model
       "@app_model/*": ["src/app/_model/*"],

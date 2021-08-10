@@ -17,7 +17,7 @@ export enum ShoppingListComponentsActionTypes {
   DELETE_PRODUCT = '[Shopping List Component] DeleteProduct',
 }
 
-/* Action Definition */
+
 export const loadActive = createAction(
   ShoppingListComponentsActionTypes.LOAD_ACTIVE
 );

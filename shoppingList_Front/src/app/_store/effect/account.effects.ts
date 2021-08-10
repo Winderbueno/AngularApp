@@ -1,7 +1,7 @@
 //#region Angular & Material
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
-import { map, switchMap, catchError, exhaustMap } from 'rxjs/operators';
+import { map, catchError, exhaustMap } from 'rxjs/operators';
 //#endregion
 
 //#region NgRx

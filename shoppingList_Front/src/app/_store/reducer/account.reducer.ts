@@ -1,32 +1,9 @@
 //#region NgRx
 import { Action, createReducer, on } from '@ngrx/store';
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { AccountState, initialState, adapter } from '@app_state/account.state';
 import * as AccountAPIActions from '@app_action/api/account.api.action';
 //#endregion
 
-//#region Model
-import { Account } from '@app_model/account.model';
-//#endregion
-
-
-/* State */
-export interface AccountState extends EntityState<Account> {
-  // Additional entity state properties
-  // connectedAccountId: string | null;
-  isLogged:boolean;
-}
-
-
-/* Adapter */
-export const adapter : EntityAdapter<Account> =
-   createEntityAdapter<Account>();
-
-
-/* Initial State */
-export const initialState: AccountState =
-  adapter.getInitialState({
-    isLogged: false
-  });
 
 /* Reducer */
 const accountReducer = createReducer(
@@ -55,13 +32,3 @@ const accountReducer = createReducer(
 export function reducer(state: AccountState | undefined, action: Action) {
   return accountReducer(state, action);
 }
-
-
-/* Selector */
-export const {
-  selectAll,
-  selectEntities,
-  selectIds,
-  selectTotal
-
-} = adapter.getSelectors();
