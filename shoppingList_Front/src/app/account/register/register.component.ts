@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 //#endregion
 
 //#region NgRx
-import * as AccountComponentActions from '@app_action/component/account.component.action';
+import * as AccountComponentActions from '@app/_store/action/component/account.component.actions';
 //#endregion
 
 //#region App Component, Model

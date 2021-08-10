@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 //#region NgRx
 import { Store } from '@ngrx/store';
-import * as AccountComponentActions from '@app_action/component/account.component.action';
+import * as AccountComponentActions from '@app/_store/action/component/account.component.actions';
 //#endregion
 
 //#region App Component, Model

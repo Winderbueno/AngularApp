@@ -6,8 +6,8 @@ import { map, catchError, exhaustMap } from 'rxjs/operators';
 
 //#region NgRx
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import * as AccountAPIActions from '@app_action/api/account.api.action';
-import * as AccountComponentActions from '@app_action/component/account.component.action';
+import * as AccountAPIActions from '@app_action/api/account.api.actions';
+import * as AccountComponentActions from '@app_action/component/account.component.actions';
 //#endregion
 
 //#region App Service
