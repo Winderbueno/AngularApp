@@ -4,8 +4,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 //#endregion
 
 //#region NgRx
-import { Store } from '@ngrx/store';
-import * as AccountComponentActions from '@app/_store/action/component/account.component.actions';
+import { Store, select } from '@ngrx/store';
+import * as RouterSelector from '@app_selector/router.selectors';
+import * as AccountComponentActions from '@app_action/component/account.component.actions';
 //#endregion
 
 //#region App Component, Model
@@ -22,10 +23,11 @@ export class VerifyEmailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private store: Store<{}> // TODO
+    private store: Store
   ) { }
 
   ngOnInit() {
+    //const token = this.store.pipe(select(RouterSelector.selectQueryParam('token')));
     const token = this.route.snapshot.queryParams['token']; // TODO
 
     // Remove token from url to prevent http referer leakage
