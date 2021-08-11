@@ -43,12 +43,8 @@ export class AccountService {
   }
 
   logout() {
-    this.http.post<any>(`${baseUrl}/revoke-token`, {}, { withCredentials: true }).subscribe();
-    this.stopRefreshTokenTimer();
-
-    // Replace account by a fake one
-    this._accountSubject.next({ accountId: "null", jwtToken: "null" });
-    this.router.navigate(['/account/login']);
+    this.stopRefreshTokenTimer(); // TODO put somewhere else
+    return this.http.post<any>(`${baseUrl}/revoke-token`, {}, { withCredentials: true });
   }
 
   register(account: Account) {

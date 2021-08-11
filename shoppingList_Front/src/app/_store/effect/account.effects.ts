@@ -20,7 +20,7 @@ import { Account } from '@app_model/account.model';
 export class AccountEffects {
 
 
-  /* Call login route */
+  /* Call login */
   login$ = createEffect(() => this.actions$.pipe(
     ofType(AccountComponentActions.loginSubmit),
 
@@ -34,7 +34,25 @@ export class AccountEffects {
   ));
 
 
-  /* Call register route */
+  /* Call logout */
+  logout$ = createEffect(() => this.actions$.pipe(
+    ofType(AccountComponentActions.toolbarLogOut),
+
+    exhaustMap((action) =>
+      this.accountService.logout()
+        .pipe(
+          /* TODO_NGRX
+            next: this.router.navigate(['/account/login']);
+            error:  }
+          */
+          map(() => AccountAPIActions.genericSuccess()),
+          catchError((error) => of(AccountAPIActions.loginFailure({ error: error })))
+        )
+    )
+  ));
+
+
+  /* Call register */
   register$ = createEffect(() => this.actions$.pipe(
     ofType(AccountComponentActions.registerSubmit),
 
@@ -55,7 +73,7 @@ export class AccountEffects {
     )
   ));
 
-  /* Call register route */
+  /* Call forgotPassword */
   forgotPassword$ = createEffect(() => this.actions$.pipe(
     ofType(AccountComponentActions.forgotPasswordSubmit),
 
@@ -73,7 +91,7 @@ export class AccountEffects {
   ));
 
 
-  /* Call resetPassword route */
+  /* Call resetPassword */
   resetPassword$ = createEffect(() => this.actions$.pipe(
     ofType(AccountComponentActions.resetPasswordSubmit),
 
@@ -95,7 +113,7 @@ export class AccountEffects {
   ));
 
 
-  // Call login service
+  // Call verify Email
   verifyEmail$ = createEffect(() => this.actions$.pipe(
     ofType(AccountComponentActions.verifyEmailSubmit),
 

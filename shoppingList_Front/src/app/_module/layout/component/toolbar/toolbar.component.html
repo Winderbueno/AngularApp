@@ -14,8 +14,8 @@
   <span class="spacer"></span>
 
   <!-- Account -->
-  <div *ngIf="account.accountId!='null'; else elseBlock">
-    <span style="color:rgb(17, 224, 52);">{{account.userName}}&nbsp;&nbsp;&nbsp;</span>
+  <div *ngIf="account[0] && (account[0].accountId != 'null'); else elseBlock">
+    <span style="color:rgb(17, 224, 52);">{{account[0].userName}}&nbsp;&nbsp;&nbsp;</span>
     <a mat-button (click)="logout()">Log Out</a>
   </div>
   <ng-template #elseBlock>

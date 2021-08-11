@@ -35,7 +35,7 @@ export class FormComponent implements OnInit {
     protected router: Router,
     protected route: ActivatedRoute,
     protected alertService: AlertService,
-    protected store: Store<{}> // TODO
+    protected store: Store
   ) { }
 
   ngOnInit() {

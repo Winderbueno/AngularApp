@@ -3,8 +3,16 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 //#endregion
 
+//#region NgRx
+import { Store } from '@ngrx/store';
+import * as AccountSelector from '@app_selector/account.selectors';
+import * as AccountComponentActions from '@app_action/component/account.component.actions';
+//#endregion
+
 //#region App Component, Model
 import { AccountService } from '@app_service/account.service';
+import { Account } from '@app_model/account.model';
+
 //#endregion
 
 @Component({
@@ -15,17 +23,24 @@ import { AccountService } from '@app_service/account.service';
 export class ToolbarComponent implements OnInit {
 
   // Accessor // TODO - Use NgRxStore
-  get account() { return this.accountService.accountValue; }
+  //get account() { return this.account$.pipe(take(1)); }
+  account!: Account[];
 
   constructor(
     private router: Router,
     private accountService: AccountService,
-  ) {}
+    protected store: Store
+  ) {
+    this.store.select(AccountSelector.getAccounts).subscribe(value => this.account=value);
+  }
 
   ngOnInit(): void {}
 
   logout() {
-    this.accountService.logout();
+
+    // Dispatch LogOut action
+    this.store.dispatch(AccountComponentActions.toolbarLogOut());
+
     this.router.navigate(['/']);
   }
 

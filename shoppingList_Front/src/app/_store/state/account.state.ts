@@ -17,7 +17,9 @@ export interface AccountState extends EntityState<Account> {
 
 /* Adapter */
 export const adapter : EntityAdapter<Account> =
-   createEntityAdapter<Account>();
+  createEntityAdapter<Account>({
+    selectId: (account: Account) => account.accountId,
+  });
 
 
 /* Initial State */

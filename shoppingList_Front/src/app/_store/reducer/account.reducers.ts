@@ -11,7 +11,10 @@ const accountReducer = createReducer(
 
   on(AccountAPIActions.loginSuccess,
     (state, { account }) => {
-      return adapter.addOne(account, state)
+      return adapter.addOne(account, {
+        ...state,
+        isLogged: true,
+      })
     }
   ),
 

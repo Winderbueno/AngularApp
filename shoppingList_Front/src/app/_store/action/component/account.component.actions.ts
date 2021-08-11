@@ -14,6 +14,7 @@ export enum AccountComponentsActionTypes {
   FORGOT_PASSWORD_SUBMIT = '[Forgot Password Component] Submit',
   RESET_PASSWORD_SUBMIT = '[Reset Password Component] Submit',
   VERIFY_EMAIL_SUBMIT = '[Verify Email Component] Submit',
+  TOOLBAR_LOGOUT = '[Toolbar Component] LogOut',
 }
 
 
@@ -48,3 +49,7 @@ export const verifyEmailSubmit = createAction(
   AccountComponentsActionTypes.VERIFY_EMAIL_SUBMIT,
   props<{
     token: string }>());
+
+
+export const toolbarLogOut = createAction(
+  AccountComponentsActionTypes.TOOLBAR_LOGOUT);
