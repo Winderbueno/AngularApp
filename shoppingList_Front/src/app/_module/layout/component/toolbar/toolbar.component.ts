@@ -10,9 +10,7 @@ import * as AccountComponentActions from '@app_action/component/account.componen
 //#endregion
 
 //#region App Component, Model
-import { AccountService } from '@app_service/account.service';
 import { Account } from '@app_model/account.model';
-
 //#endregion
 
 @Component({
@@ -28,7 +26,6 @@ export class ToolbarComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private accountService: AccountService,
     protected store: Store
   ) {
     this.store.select(AccountSelector.getAccounts).subscribe(value => this.account=value);
