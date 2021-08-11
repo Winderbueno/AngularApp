@@ -7,6 +7,7 @@ import { MatFormFieldDefaultOptions, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@ang
 //#endregion
 
 //#region NgRx
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
@@ -33,12 +34,17 @@ import { JwtInterceptor } from '@app_helper/interceptor/jwt.interceptor';
 import { ErrorInterceptor } from '@app_helper/interceptor/error.interceptor';
 //#endregion
 
+//#region App Conf
+import { environment } from '../environments/environment';
+//#endregion
+
 //#region Component
 import { AppComponent } from './app.component';
 //#endregion
 
 // Material Configuration
 const appearance: MatFormFieldDefaultOptions = { appearance: 'outline' };
+
 
 @NgModule({
   imports: [
@@ -65,6 +71,7 @@ const appearance: MatFormFieldDefaultOptions = { appearance: 'outline' };
     AppRouterModule,
     AlertModule,
     LayoutModule,
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [
     { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AccountService] },
