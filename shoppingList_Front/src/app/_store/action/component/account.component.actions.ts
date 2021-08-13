@@ -1,5 +1,5 @@
 //#region NgRx
-import { createAction, props } from '@ngrx/store';
+import { props } from '@ngrx/store';
 import { createComponentAction } from '@app_action/action-creator';
 //#endregion
 
@@ -14,6 +14,7 @@ export const loginSubmit = createComponentAction (
     email: string,
     password: string }>()
 );
+
 
 export const registerSubmit = createComponentAction (
   'Register', 'Submit',

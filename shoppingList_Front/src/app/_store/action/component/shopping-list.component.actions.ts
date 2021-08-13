@@ -1,5 +1,6 @@
 //#region NgRx
-import { createAction, props } from '@ngrx/store';
+import { props } from '@ngrx/store';
+import { createComponentAction } from '@app_action/action-creator';
 import { Update } from '@ngrx/entity';
 //#endregion
 
@@ -8,46 +9,36 @@ import { UsedProduct } from '@app_model/used-product.model';
 //#endregion
 
 
-/* Action Type */
-export enum ShoppingListComponentsActionTypes {
-  LOAD_ACTIVE = '[Shopping List Component] LoadActive',
-  RESET_BOUGHT_STATUS = '[Shopping List Component] Reset Bought Status',
-  ADD_PRODUCT = '[Shopping List Component] AddProduct',
-  UPDATE_PRODUCT = '[Shopping List Component] UpdtProduct',
-  DELETE_PRODUCT = '[Shopping List Component] DeleteProduct',
-}
-
-
-export const loadActive = createAction(
-  ShoppingListComponentsActionTypes.LOAD_ACTIVE
+export const loadActive = createComponentAction (
+  'Shopping List', 'LoadActive'
 );
 
 
-export const resetBoughtStatus = createAction(
-  ShoppingListComponentsActionTypes.RESET_BOUGHT_STATUS,
-  props<{ ShoppingListId: string }>()
+export const resetBoughtStatus = createComponentAction (
+  'Shopping List', 'Reset Bought Status',
+  props<{
+    ShoppingListId: string }>()
 );
 
 
-export const addProduct = createAction(
-  ShoppingListComponentsActionTypes.ADD_PRODUCT,
-  props<{ product: UsedProduct }>()
+export const addProduct = createComponentAction (
+  'Shopping List', 'AddProduct',
+  props<{
+    product: UsedProduct }>()
 );
 
 
-export const updateProduct = createAction(
-  ShoppingListComponentsActionTypes.UPDATE_PRODUCT,
+export const updateProduct = createComponentAction (
+  'Shopping List', 'UpdtProduct',
   props<{
     ShoppingListId: string,
-    product: Update<UsedProduct>
-  }>()
+    product: Update<UsedProduct> }>()
 );
 
 
-export const deleteProduct = createAction(
-  ShoppingListComponentsActionTypes.DELETE_PRODUCT,
+export const deleteProduct = createComponentAction (
+  'Shopping List', 'DeleteProduct',
   props<{
     ShoppingListId: string,
-    ProductId: string
-  }>()
+    ProductId: string }>()
 );
