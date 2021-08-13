@@ -1,5 +1,6 @@
 //#region NgRx
 import { createAction, props } from '@ngrx/store';
+import { createComponentAction } from '@app_action/action-creator';
 //#endregion
 
 //#region App Component, Model
@@ -7,49 +8,42 @@ import { Account } from '@app_model/account.model';
 //#endregion
 
 
-/* Action Type */
-export enum AccountComponentsActionTypes {
-  LOGIN_SUBMIT = '[Login Component] Submit',
-  REGISTER_SUBMIT = '[Register Component] Submit',
-  FORGOT_PASSWORD_SUBMIT = '[Forgot Password Component] Submit',
-  RESET_PASSWORD_SUBMIT = '[Reset Password Component] Submit',
-  VERIFY_EMAIL_SUBMIT = '[Verify Email Component] Submit',
-  TOOLBAR_LOGOUT = '[Toolbar Component] LogOut',
-}
-
-
-export const loginSubmit = createAction(
-  AccountComponentsActionTypes.LOGIN_SUBMIT,
+export const loginSubmit = createComponentAction (
+  'Login', 'Submit',
   props<{
     email: string,
-    password: string }>());
+    password: string }>()
+);
 
-
-export const registerSubmit = createAction(
-  AccountComponentsActionTypes.REGISTER_SUBMIT,
+export const registerSubmit = createComponentAction (
+  'Register', 'Submit',
   props<{
-    account: Account }>());
+    account: Account }>()
+);
 
 
-export const forgotPasswordSubmit = createAction(
-  AccountComponentsActionTypes.FORGOT_PASSWORD_SUBMIT,
+export const forgotPasswordSubmit = createComponentAction (
+  'Forgot Password', 'Submit',
   props<{
-    email: string }>());
+    email: string }>()
+);
 
 
-export const resetPasswordSubmit = createAction(
-  AccountComponentsActionTypes.RESET_PASSWORD_SUBMIT,
+export const resetPasswordSubmit = createComponentAction (
+  'Reset Password', 'Submit',
   props<{
     token: string,
     password: string,
-    confirmPassword: string }>());
+    confirmPassword: string }>()
+);
 
 
-export const verifyEmailSubmit = createAction(
-  AccountComponentsActionTypes.VERIFY_EMAIL_SUBMIT,
+export const verifyEmailSubmit = createComponentAction (
+  'Verify Email', 'Submit',
   props<{
-    token: string }>());
+    token: string }>()
+);
 
 
-export const toolbarLogOut = createAction(
-  AccountComponentsActionTypes.TOOLBAR_LOGOUT);
+export const toolbarLogOut = createComponentAction (
+  'ToolBar', 'Logout');
