@@ -1,6 +1,6 @@
 //#region NgRx
 import { props } from '@ngrx/store';
-import { createComponentAction } from '@app_action/action-creator';
+import { createComponentAction, createComponentSubmitAction } from '@app_action/action-creator';
 //#endregion
 
 //#region App Component, Model
@@ -8,30 +8,30 @@ import { Account } from '@app_model/account.model';
 //#endregion
 
 
-export const loginSubmit = createComponentAction (
-  'Login', 'Submit',
+export const loginSubmit = createComponentSubmitAction (
+  'Login',
   props<{
     email: string,
     password: string }>()
 );
 
 
-export const registerSubmit = createComponentAction (
-  'Register', 'Submit',
+export const registerSubmit = createComponentSubmitAction (
+  'Register',
   props<{
     account: Account }>()
 );
 
 
-export const forgotPasswordSubmit = createComponentAction (
-  'Forgot Password', 'Submit',
+export const forgotPasswordSubmit = createComponentSubmitAction (
+  'Forgot Password',
   props<{
     email: string }>()
 );
 
 
-export const resetPasswordSubmit = createComponentAction (
-  'Reset Password', 'Submit',
+export const resetPasswordSubmit = createComponentSubmitAction (
+  'Reset Password',
   props<{
     token: string,
     password: string,
@@ -39,8 +39,8 @@ export const resetPasswordSubmit = createComponentAction (
 );
 
 
-export const verifyEmailSubmit = createComponentAction (
-  'Verify Email', 'Submit',
+export const verifyEmailSubmit = createComponentSubmitAction (
+  'Verify Email',
   props<{
     token: string }>()
 );
