@@ -38,7 +38,7 @@ export class AccountEffects {
   logout$ = createEffect(() => this.actions$.pipe(
     ofType(AccountComponentActions.toolbarLogOut),
 
-    exhaustMap((action) =>
+    exhaustMap(() =>
       this.accountService.logout()
         .pipe(
           /* TODO_NGRX
