@@ -23,11 +23,13 @@ export class ToolbarComponent implements OnInit {
   // Accessor // TODO - Use NgRxStore
   //get account() { return this.account$.pipe(take(1)); }
   account!: Account[];
+  isLogged: boolean = false;
 
   constructor(
     private router: Router,
-    protected store: Store
-  ) {
+    private store: Store
+  ) { // TODO - Change selector to "GetConnected"
+    this.store.select(AccountSelector.isLogged).subscribe(value => this.isLogged=value);
     this.store.select(AccountSelector.getAccounts).subscribe(value => this.account=value);
   }
 

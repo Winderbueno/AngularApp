@@ -3,8 +3,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 //#endregion
 
-//#region App Component, Model
-import { AccountService } from '@app_service/account.service'
+//#region NgRx
+import { Store } from '@ngrx/store';
+import * as AccountSelector from '@app_selector/account.selectors';
 //#endregion
 
 
@@ -12,12 +13,13 @@ import { AccountService } from '@app_service/account.service'
 export class CardLayoutComponent {
 
   constructor(
+    private store: Store,
     private router: Router,
-    private accountService: AccountService // TODO - Use NgRxStore
   ) {
+
     // TODO - This is specific to account, not to the layout
     // Redirect to home if already logged in
-    if (this.accountService.accountValue.accountId != "null") {
+    if (this.store.select(AccountSelector.isLogged)) {
       this.router.navigate(['/']);
     }
   }
