@@ -3,26 +3,35 @@ import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 //#endregion
 
-//#region App Component, Model
-import { AccountService } from '@app_service/account.service';
+//#region NgRx
+import { Store } from '@ngrx/store';
+import * as AccountSelector from '@app_selector/account.selectors';
+//#endregion
+
+//#region App Model
+import { Account } from '@app_model/account.model';
 //#endregion
 
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
 
+  isLogged: boolean = false;
+
     constructor(
         private router: Router,
-        private accountService: AccountService
-    ) { }
+        private store: Store
+    ) {
+      this.store.select(AccountSelector.isLogged).subscribe(value => this.isLogged=value);
+    }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        const account = this.accountService.accountValue;
 
-        // An account is logged in -> return true
-        if (account.accountId != "null") return true;
+        // If account is logged in -> return true
+        if (this.isLogged) return true;
 
-        // No account logged in -> redirect to login page with the return url
+        // If account not logged in -> redirect to login page with the return url
+        // TODO - Change access to the router state
         this.router.navigate(['/account/login'], { queryParams: { returnUrl: state.url } });
         return false;
     }

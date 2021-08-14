@@ -7,7 +7,7 @@ import { map, switchMap, catchError } from 'rxjs/operators';
 //#region NgRx
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as ShoppingListAPIActions from '@app_action/api/shopping-list.api.actions';
-import * as ShoppingListComponentActions from '@app/shopping-list/shopping-list/shopping-list.actions';
+import * as ShoppingListComponentActions from '@app_shoppingList/shopping-list/shopping-list.actions';
 //#endregion
 
 //#region App Service

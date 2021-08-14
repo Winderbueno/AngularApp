@@ -1,6 +1,5 @@
 //#region Angular & Material
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 //#endregion
 
 //#region NgRx Module
@@ -18,9 +17,7 @@ import {
 
 @NgModule({
   imports: [
-    /* Angular */
-    //CommonModule,
-
+    /* Account Feature */
     EffectsModule.forFeature([
       LoginEffects,
       ForgotPasswordEffects,
