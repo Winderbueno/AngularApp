@@ -16,7 +16,7 @@ import { AccountService } from '@app_service/account.service';
 
 
 @Injectable()
-export class AccountEffects {
+export class ResetPasswordEffects {
 
   /* Call resetPassword */
   resetPassword$ = createEffect(() => this.actions$.pipe(

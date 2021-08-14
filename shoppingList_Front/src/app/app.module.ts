@@ -14,13 +14,13 @@ import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 //#endregion
 
 //#region NgRx Effect & Reducer
-import { ShoppingListEffects } from '@app_effect/shopping-list.effects';
-import { AccountEffects } from '@app_effect/account/logout.effects';
+import { ShoppingListEffects } from '@app/_store/effect/shopping-list/shopping-list.effects';
 import * as fromAccount from '@app_reducer/account.reducers';
 import * as fromShoppingList from '@app_reducer/shopping-list.reducers';
 //#endregion
 
 //#region App Module
+import { AppEffectsModule } from '@app/_store/effect/app-effect.module';
 import { AppRouterModule } from '@app_router/app-router.module';
 import { AlertModule } from '@app_alert/alert.module';
 import { LayoutModule } from '@app_layout/layout.module';
@@ -67,10 +67,10 @@ const appearance: MatFormFieldDefaultOptions = { appearance: 'outline' };
 
     /* NgRx Effect */
     EffectsModule.forRoot([
-      AccountEffects,
       ShoppingListEffects]),
 
     /* App Module */
+    AppEffectsModule,
     AppRouterModule,
     AlertModule,
     LayoutModule,

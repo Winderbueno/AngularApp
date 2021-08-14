@@ -17,7 +17,7 @@ import { Account } from '@app_model/account.model';
 
 
 @Injectable()
-export class AccountEffects {
+export class LoginEffects {
 
   /* Call login */
   login$ = createEffect(() => this.actions$.pipe(

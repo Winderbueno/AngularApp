@@ -16,7 +16,7 @@ import { AccountService } from '@app_service/account.service';
 
 
 @Injectable()
-export class AccountEffects {
+export class RegisterEffects {
 
   /* Call register */
   register$ = createEffect(() => this.actions$.pipe(

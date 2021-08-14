@@ -16,7 +16,7 @@ import { AccountService } from '@app_service/account.service';
 
 
 @Injectable()
-export class AccountEffects {
+export class ForgotPasswordEffects {
 
   /* Call forgotPassword */
   forgotPassword$ = createEffect(() => this.actions$.pipe(
