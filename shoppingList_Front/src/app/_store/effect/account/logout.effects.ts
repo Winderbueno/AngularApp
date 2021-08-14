@@ -26,12 +26,10 @@ export class LogoutEffects {
     exhaustMap(() =>
       this.accountService.logout()
         .pipe(
-          /* TODO_NGRX
-            next: this.router.navigate(['/account/login']);
-            + stopRefreshTokenTimer(); // Put in reducer
-            error:  }
-          */
-          map(() => AccountAPIActions.genericSuccess()),
+
+          map(() => AccountAPIActions.logoutSuccess()),
+
+          // / TODO - error: error => { this.alertService.error(error); }
           catchError((error) => of(AccountAPIActions.loginFailure({ error: error })))
         )
     )

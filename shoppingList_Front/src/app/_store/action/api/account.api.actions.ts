@@ -19,6 +19,13 @@ export const loginSuccess = createAction(
   props<{ account: Account }>());
 
 
+export const logoutSuccess = createAction(
+  ActionSource.API,
+  'Account',
+  'Logout Success',
+);
+
+
 export const loginFailure = createAction(
   ActionSource.API,
   'Account',

@@ -37,9 +37,18 @@ const accountReducer = createReducer(
   ),
 
 
-  on(AccountAPIActions.loginFailure,
-    // TODO - error: error => { this.alertService.error(error); }
-    state => state),
+  on(AccountAPIActions.logoutSuccess,
+    (state) => {
+
+      /*next: this.router.navigate(['/account/login']);*/
+      return adapter.removeAll({
+        ...state,
+        isLogged: false,
+        //refreshTokenTimeout: clearTimeout(state.refreshTokenTimeout) // TODO - Check if work
+      })
+    }
+  ),
+
 );
 
 export function reducer(state: AccountState | undefined, action: Action) {

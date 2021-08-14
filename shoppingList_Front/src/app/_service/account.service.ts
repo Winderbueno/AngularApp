@@ -48,26 +48,4 @@ export class AccountService {
   validateResetToken(token: string | undefined) {
     return this.http.post(`${baseUrl}/validate-reset-token`, { token });
   }
-
-  updateAccount(account: Account) {
-    // Publish updated account to subscribers after an update
-    account = { ...this.accountValue, ...account };
-    this._accountSubject.next(account);
-  }
-
-  /************************************************
-   * Security Helpers
-   ************************************************/
-
-
-
-  private startRefreshTokenTimer() {
-
-
-  }
-
-  private stopRefreshTokenTimer() {
-    clearTimeout(this.refreshTokenTimeout);
-  }
-
 }

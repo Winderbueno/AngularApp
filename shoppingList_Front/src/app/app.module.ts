@@ -15,7 +15,7 @@ import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 
 //#region NgRx Effect & Reducer
 import { ShoppingListEffects } from '@app/_store/effect/shopping-list/shopping-list.effects';
-import * as fromAccount from '@app_reducer/account.reducers';
+import * as fromAccount from '@app/_store/reducer/account.reducers';
 import * as fromShoppingList from '@app_reducer/shopping-list.reducers';
 //#endregion
 

@@ -29,5 +29,6 @@ export const adapter : EntityAdapter<Account> =
 export const initialState: AccountState =
   adapter.getInitialState({
     isLogged: false,
-    tokenStatus: TokenStatusEnum.Validating
+    tokenStatus: TokenStatusEnum.Validating, // TODO init the timout
+    refreshTokenTimeout: setTimeout(() => {return;},5/*this.refreshToken().subscribe()*/)
   });
