@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 //#region NgRx
 import { Store } from '@ngrx/store';
 import * as ComponentActions from './shopping-list.actions';
+import * as ShoppingListSelector from '@app_selector/shopping-list.selectors';
 //#endregion
 
 //#region App Component, Model
@@ -29,15 +30,14 @@ export class ShoppingListComponent implements OnInit {
   edit_mode = false;
   accordion_expanded = false;
 
-  // Accessor
-  shoppingList$: Observable<ShoppingList> = this.store.select(state => state.shoppingList);
-  myShoppingList!: ShoppingList;
+  // Shopping List
+  myShoppingList!: ShoppingList[];
 
   constructor(
     public dialog: MatDialog,
-    private store: Store<{ shoppingList: ShoppingList }>
+    private store: Store
   ) {
-    this.shoppingList$ = store.select('shoppingList');
+    this.store.select(ShoppingListSelector.getActive).subscribe(value => this.myShoppingList=value);
   }
 
   ngOnInit(): void {

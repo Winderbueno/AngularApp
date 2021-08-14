@@ -33,8 +33,8 @@ export class RegisterEffects {
               this.router.navigate(['../login'], { relativeTo: this.route });},
             error: error => { this.alertService.error(error); }
           */
-          map(() => AccountAPIActions.genericSuccess()),
-          catchError((error) => of(AccountAPIActions.loginFailure({ error: error })))
+          map(() => AccountAPIActions.registerSuccess()),
+          catchError((error) => of(AccountAPIActions.registerFailure({ error: error })))
         )
     )
   ));

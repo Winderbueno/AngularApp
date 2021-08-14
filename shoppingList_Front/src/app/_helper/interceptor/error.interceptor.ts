@@ -5,17 +5,25 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 //#endregion
 
+//#region NgRx
+import { Store } from '@ngrx/store';
+//#endregion
+
 //#region App Component, Model
-import { AccountService } from '@app_service/account.service';
+import { Account } from '@app/_model/account.model';
+import * as AccountSelector from '@app_selector/account.selectors';
 import { LoaderService } from '@app_loader/service/loader.service';
 //#endregion
+
 
 
 @Injectable({ providedIn: 'root' })
 export class ErrorInterceptor implements HttpInterceptor {
 
+  isLogged: boolean = false;
+
   constructor(
-    private accountService: AccountService,
+    private store: Store,
     private loaderService: LoaderService) { }
 
   /**
@@ -23,18 +31,23 @@ export class ErrorInterceptor implements HttpInterceptor {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
   */
+ // TODO - Handle as a reducer ?
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     return next.handle(request)
+      .pipe()
       // As the server answered, we stop the loader
       .pipe(finalize(() => this.loaderService.stopLoading()))
       // Dealing with error response
       .pipe(catchError(err => {
 
+          this.store.select(AccountSelector.isLogged).subscribe(value => this.isLogged=value)
+
           // Handle HTTP Error - 'unauthorized' and 'forbidden'
-          if ([401, 403].includes(err.status) && this.accountService.accountValue) {
+          if ([401, 403].includes(err.status) && this.isLogged) {
             // Auto logout if 401 or 403 response returned from api
-            this.accountService.logout();
+            // TODO -
+            //this.accountService.logout();
           }
 
           const error = (err && err.error && err.error.message) || err.statusText;

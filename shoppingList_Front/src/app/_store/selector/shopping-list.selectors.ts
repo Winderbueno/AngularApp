@@ -1,7 +1,10 @@
 //#region NgRx
-import { adapter } from '@app_state/shopping-list.state';
+import { ShoppingListState, adapter } from '@app_state/shopping-list.state';
+import { createSelector, createFeatureSelector } from '@ngrx/store';
 //#endregion
 
+
+export const selectShoppingList = createFeatureSelector<ShoppingListState>('shoppingList');
 
 /* Selector */
 export const {
@@ -11,3 +14,5 @@ export const {
   selectTotal
 
 } = adapter.getSelectors();
+
+export const getActive = createSelector(selectShoppingList, selectAll)

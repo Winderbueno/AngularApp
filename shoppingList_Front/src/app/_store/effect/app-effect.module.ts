@@ -7,11 +7,13 @@ import { EffectsModule } from '@ngrx/effects';
 
 //#region Effects
 import {
-  LoginEffects,
   ForgotPasswordEffects,
+  LoginEffects,
   LogoutEffects,
+  RefreshTokenEffects,
   RegisterEffects,
   ResetPasswordEffects,
+  ValidateResetTokenEffects,
   VerifyEmailEffects} from '@app_effect/account/.';
 //#endregion
 
@@ -20,11 +22,13 @@ import {
   imports: [
     /* Account Feature */
     EffectsModule.forFeature([
-      LoginEffects,
       ForgotPasswordEffects,
+      LoginEffects,
       LogoutEffects,
+      RefreshTokenEffects,
       RegisterEffects,
       ResetPasswordEffects,
+      ValidateResetTokenEffects,
       VerifyEmailEffects
     ])
   ],

@@ -32,8 +32,8 @@ export class RefreshTokenEffects {
               Then : startRefreshTokenTimer();
             error:  }
           */
-          map(() => AccountAPIActions.genericSuccess()),
-          catchError((error) => of(AccountAPIActions.loginFailure({ error: error })))
+          map(() => AccountAPIActions.refreshTokenSuccess()),
+          catchError((error) => of(AccountAPIActions.refreshTokenFailure({ error: error })))
         )
     )
   ));

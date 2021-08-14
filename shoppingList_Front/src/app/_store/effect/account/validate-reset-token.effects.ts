@@ -31,8 +31,8 @@ export class ValidateResetTokenEffects {
               this.tokenStatus = TokenStatusEnum.Valid;
             error: () => { this.tokenStatus = TokenStatusEnum.Invalid;
           */
-          map(() => AccountAPIActions.genericSuccess()),
-          catchError((error) => of(AccountAPIActions.loginFailure({ error: error })))
+          map(() => AccountAPIActions.validateResetTokenSuccess()),
+          catchError((error) => of(AccountAPIActions.validateResetTokenFailure({ error: error })))
         )
     )
   ));

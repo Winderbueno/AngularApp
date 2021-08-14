@@ -32,7 +32,7 @@ export function createAction <P extends object>(
   : ActionCreator<string, () => TypedAction<string>>
     | ActionCreator<string, (props: P & NotAllowedCheck<P>) => P & TypedAction<string>> {
 
-    let actionString:string = '[' + sourceName + sourceType + '] - '+ method;
+    let actionString:string = '[' + sourceName + ' ' + sourceType + '] - '+ method;
 
     if( typeof config != 'undefined') {
       return ngrx.createAction(actionString, config);

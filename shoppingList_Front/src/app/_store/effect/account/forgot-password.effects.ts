@@ -29,8 +29,8 @@ export class ForgotPasswordEffects {
             next: () => this.alertService.success('Please check your email for password reset instructions'),
             error: error => this.alertService.error(error)
           */
-          map(() => AccountAPIActions.genericSuccess()),
-          catchError((error) => of(AccountAPIActions.loginFailure({ error: error })))
+          map(() => AccountAPIActions.forgotPasswordSuccess()),
+          catchError((error) => of(AccountAPIActions.forgotPasswordFailure({ error: error })))
         )
     )
   ));

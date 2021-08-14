@@ -31,8 +31,8 @@ export class VerifyEmailEffects {
               this.router.navigate(['../login'], { relativeTo: this.route });
             error: () => { this.emailStatus = EmailStatusEnum.Failed; }
           */
-          map(() => AccountAPIActions.genericSuccess()),
-          catchError((error) => of(AccountAPIActions.loginFailure({ error: error })))
+          map(() => AccountAPIActions.verifyEmailSuccess()),
+          catchError((error) => of(AccountAPIActions.verifyEmailFailure({ error: error })))
         )
     )
   ));

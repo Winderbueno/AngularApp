@@ -19,10 +19,10 @@
 
 </div>
 
-<div *ngIf="myShoppingList && myShoppingList.catProducts">
+<div *ngIf="myShoppingList && myShoppingList[0].catProducts">
 
   <mat-accordion [multi]=true #accordion="matAccordion">
-    <mat-expansion-panel *ngFor="let catProd of myShoppingList.catProducts" hideToggle>
+    <mat-expansion-panel *ngFor="let catProd of myShoppingList[0].catProducts" hideToggle>
 
       <!-- Header containing the product category -->
       <mat-expansion-panel-header>

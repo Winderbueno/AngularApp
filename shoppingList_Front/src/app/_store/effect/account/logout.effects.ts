@@ -30,7 +30,7 @@ export class LogoutEffects {
           map(() => AccountAPIActions.logoutSuccess()),
 
           // / TODO - error: error => { this.alertService.error(error); }
-          catchError((error) => of(AccountAPIActions.loginFailure({ error: error })))
+          catchError((error) => of(AccountAPIActions.logoutFailure({ error: error })))
         )
     )
   ));
