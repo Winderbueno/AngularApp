@@ -1,6 +1,7 @@
 //#region NgRx
 import { props } from '@ngrx/store';
-import { createComponentAction, createComponentSubmitAction } from '@app_action/action-creator';
+import { createComponentAction } from '@app_action/creator/source-creator/component-action-creator';
+import { createComponentSubmitAction } from '@app_action/creator/component-submit-action-creator';
 //#endregion
 
 //#region App Component, Model
