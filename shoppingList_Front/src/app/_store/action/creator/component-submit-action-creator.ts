@@ -4,30 +4,34 @@ import { TypedAction } from '@ngrx/store/src/models';
 //#endregion
 
 //#region App Component, Model
-import { createComponentAction } from '@app_action/creator/by-source/component-action-creator';
+import { createAction } from '@app_action/creator/action-creator';
+import { ActionSource } from '@app_action/enum/action-source';
 //#endregion
 
 
-export function createComponentSubmitAction(
-  componentName:string)
+export function createSubmitAction(
+  sourceType:ActionSource,
+  sourceName:string,)
   : ActionCreator<string, () => TypedAction<string>>;
 
-export function createComponentSubmitAction<P extends object>(
-  componentName:string,
+export function createSubmitAction<P extends object>(
+  sourceType:ActionSource,
+  sourceName:string,
   config: ActionCreatorProps<P> & NotAllowedCheck<P>)
   : ActionCreator<string, (props: P & NotAllowedCheck<P>) => P & TypedAction<string>>;
 
 
-export function createComponentSubmitAction<P extends object>(
-  componentName:string,
+export function createSubmitAction<P extends object>(
+  sourceType:ActionSource,
+  sourceName:string,
   config?: ActionCreatorProps<P> & NotAllowedCheck<P>)
   : ActionCreator<string, () => TypedAction<string>>
     | ActionCreator<string, (props: P & NotAllowedCheck<P>) => P & TypedAction<string>> {
 
 
         if( typeof config != 'undefined') {
-          return createComponentAction(componentName, 'Submit', config);
+          return createAction(sourceType, sourceName, 'Submit', config);
         } else {
-          return createComponentAction(componentName, 'Submit');
+          return createAction(sourceType, sourceName, 'Submit');
         }
 }

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 
 //#region NgRx
 import { Store } from '@ngrx/store';
-import * as ShoppingListComponentActions from '@app_action/component/shopping-list.component.actions';
+import * as ComponentActions from './shopping-list.component.actions';
 //#endregion
 
 //#region App Component, Model
@@ -43,7 +43,7 @@ export class ShoppingListComponent implements OnInit {
   ngOnInit(): void {
     // Dispatch a Load Active Shopping List action
     this.store.dispatch(
-      ShoppingListComponentActions.loadActive()
+      ComponentActions.loadActive()
     );
   }
 
@@ -52,7 +52,7 @@ export class ShoppingListComponent implements OnInit {
 
     // Dispatch a ResetBoughtStatus action
     this.store.dispatch(
-      ShoppingListComponentActions.resetBoughtStatus(
+      ComponentActions.resetBoughtStatus(
         { ShoppingListId: "1" }
       ));
 

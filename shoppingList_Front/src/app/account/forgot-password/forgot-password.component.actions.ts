@@ -1,10 +1,15 @@
 //#region NgRx
 import { props } from '@ngrx/store';
-import { createComponentSubmitAction } from '@app_action/creator/component-submit-action-creator';
+//#endregion
+
+//#region App Action
+import { createSubmitAction } from '@app_action/creator/component-submit-action-creator';
+import { ActionSource } from '@app_action/enum/action-source';
 //#endregion
 
 
-export const forgotPasswordSubmit = createComponentSubmitAction (
+export const forgotPasswordSubmit = createSubmitAction (
+  ActionSource.COMPONENT,
   'Forgot Password',
   props<{
     email: string }>()

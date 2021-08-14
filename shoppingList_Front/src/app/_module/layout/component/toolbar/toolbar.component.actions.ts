@@ -1,6 +1,9 @@
-//#region NgRx
-import { createComponentAction } from '@app_action/creator/by-source/component-action-creator';
+//#region App Action
+import { createAction } from '@app_action/creator/action-creator';
+import { ActionSource } from '@app_action/enum/action-source';
 //#endregion
 
-export const toolbarLogOut = createComponentAction (
-  'ToolBar', 'Logout');
+export const toolbarLogOut = createAction (
+  ActionSource.COMPONENT,
+  'ToolBar',
+  'Logout');
