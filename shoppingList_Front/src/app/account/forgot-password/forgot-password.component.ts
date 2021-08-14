@@ -2,12 +2,10 @@
 import { Component } from '@angular/core';
 //#endregion
 
-//#region NgRx
-import * as AccountComponentActions from '@app_action/component/account.component.actions';
-//#endregion
 
 //#region App Component, Model
 import { FormComponent } from '@app_form/component/form.component';
+import * as ComponentActions from './forgot-password.component.actions';
 //#endregion
 
 
@@ -23,7 +21,7 @@ export class ForgotPasswordComponent extends FormComponent {
 
     // Dispatch Forgot Password action
     this.store.dispatch(
-      AccountComponentActions.forgotPasswordSubmit({
+      ComponentActions.forgotPasswordSubmit({
         email: this.ctrls.Email.value,
       })
     );

@@ -4,7 +4,7 @@ import { TypedAction } from '@ngrx/store/src/models';
 //#endregion
 
 //#region App Component, Model
-import { createComponentAction } from '@app_action/creator/source-creator/component-action-creator';
+import { createComponentAction } from '@app_action/creator/by-source/component-action-creator';
 //#endregion
 
 

@@ -2,12 +2,9 @@
 import { Component } from '@angular/core';
 //#endregion
 
-//#region NgRx
-import * as AccountComponentActions from '@app_action/component/account.component.actions';
-//#endregion
-
 //#region App Component, Model
 import { FormComponent } from '@app_form/component/form.component';
+import * as ComponentActions from './register.component.actions';
 //#endregion
 
 
@@ -22,7 +19,7 @@ export class RegisterComponent extends FormComponent {
   submitAction() {
     // Dispatch Register action
     this.store.dispatch(
-      AccountComponentActions.registerSubmit({
+      ComponentActions.registerSubmit({
         account: this.form.value,
       })
     );

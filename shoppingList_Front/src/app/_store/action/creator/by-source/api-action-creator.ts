@@ -4,24 +4,24 @@ import { TypedAction } from '@ngrx/store/src/models';
 //#endregion
 
 //#region App Component, Model
-import { ActionSources } from '@app_action/creator/enum/action-source';
+import { ActionSources } from '@app_action/enum/action-source';
 //#endregion
 
 
-export function createComponentAction (
+export function createAPIAction (
   componentName:string,
   method: string)
   : ActionCreator<string, () => TypedAction<string>>;
 
 
-export function createComponentAction <P extends object>(
+export function createAPIAction <P extends object>(
   componentName:string,
   method: string,
   config: ActionCreatorProps<P> & NotAllowedCheck<P>)
   : ActionCreator<string, (props: P & NotAllowedCheck<P>) => P & TypedAction<string>>;
 
 // Implementation
-export function createComponentAction <P extends object>(
+export function createAPIAction <P extends object>(
   componentName:string,
   method: string,
   config?: ActionCreatorProps<P> & NotAllowedCheck<P>)
@@ -29,8 +29,8 @@ export function createComponentAction <P extends object>(
     | ActionCreator<string, (props: P & NotAllowedCheck<P>) => P & TypedAction<string>> {
 
     if( typeof config != 'undefined') {
-      return createAction('[' + componentName + ActionSources.COMPONENT + '] - ' + method, config);
+      return createAction('[' + componentName + ActionSources.API + '] - ' + method, config);
     } else {
-      return createAction('[' + componentName + ActionSources.COMPONENT + '] - ' + method);
+      return createAction('[' + componentName + ActionSources.API + '] - ' + method);
     }
 }

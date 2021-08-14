@@ -5,11 +5,11 @@ import { Router } from '@angular/router';
 
 //#region NgRx
 import { Store } from '@ngrx/store';
-import * as AccountSelector from '@app_selector/account.selectors';
-import * as AccountComponentActions from '@app_action/component/account.component.actions';
 //#endregion
 
 //#region App Component, Model
+import * as ComponentActions from './toolbar.component.actions';
+import * as AccountSelector from '@app_selector/account.selectors';
 import { Account } from '@app_model/account.model';
 //#endregion
 
@@ -38,7 +38,7 @@ export class ToolbarComponent implements OnInit {
   logout() {
 
     // Dispatch LogOut action
-    this.store.dispatch(AccountComponentActions.toolbarLogOut());
+    this.store.dispatch(ComponentActions.toolbarLogOut());
 
     this.router.navigate(['/']);
   }

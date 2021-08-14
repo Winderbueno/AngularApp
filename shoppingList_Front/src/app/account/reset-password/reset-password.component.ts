@@ -2,12 +2,9 @@
 import { Component } from '@angular/core';
 //#endregion
 
-//#region NgRx
-import * as AccountComponentActions from '@app_action/component/account.component.actions';
-//#endregion
-
 //#region App Component, Model
 import { FormComponent } from '@app_form/component/form.component';
+import * as ComponentActions from './reset-password.component.actions';
 import { TokenStatusEnum } from "@app_enum/token-status.enum";
 //#endregion
 
@@ -49,7 +46,7 @@ export class ResetPasswordComponent extends FormComponent {
 
     // Dispatch Reset Password action
     this.store.dispatch(
-      AccountComponentActions.resetPasswordSubmit({
+      ComponentActions.resetPasswordSubmit({
         token: this.token,
         password: this.ctrls.Password.value,
         confirmPassword: this.ctrls.ConfirmPassword.value

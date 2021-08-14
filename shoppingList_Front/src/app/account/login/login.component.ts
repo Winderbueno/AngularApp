@@ -2,12 +2,9 @@
 import { Component } from '@angular/core';
 //#endregion
 
-//#region NgRx
-import * as AccountComponentActions from '@app_action/component/account.component.actions';
-//#endregion
-
 //#region App Component, Model
 import { FormComponent } from '@app_form/component/form.component';
+import * as ComponentActions from './login.component.actions';
 //#endregion
 
 
@@ -22,7 +19,7 @@ export class LoginComponent extends FormComponent {
   submitAction(): void {
     // Dispatch Login action
     this.store.dispatch(
-      AccountComponentActions.loginSubmit({
+      ComponentActions.loginSubmit({
         email: this.ctrls.Email.value,
         password: this.ctrls.Password.value // TODO - Put CtrlName as an input for password-field
       })
