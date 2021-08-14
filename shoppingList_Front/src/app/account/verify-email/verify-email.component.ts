@@ -9,7 +9,7 @@ import * as RouterSelector from '@app_selector/router.selectors';
 //#endregion
 
 //#region App Component, Model
-import * as ComponentActions from './verify-email.component.actions';
+import * as ComponentActions from './verify-email.actions';
 import { EmailStatusEnum } from "@app_enum/email-status.enum";
 //#endregion
 
