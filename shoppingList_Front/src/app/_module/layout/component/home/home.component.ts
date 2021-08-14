@@ -12,9 +12,8 @@ export class HomeComponent implements OnInit {
 
   title = 'shoppingList_Front';
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }
