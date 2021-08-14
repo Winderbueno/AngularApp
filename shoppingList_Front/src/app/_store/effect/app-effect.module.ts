@@ -11,7 +11,8 @@ import {
   ForgotPasswordEffects,
   LogoutEffects,
   RegisterEffects,
-  ResetPasswordEffects } from '@app_effect/account/.';
+  ResetPasswordEffects,
+  VerifyEmailEffects} from '@app_effect/account/.';
 //#endregion
 
 
@@ -23,7 +24,8 @@ import {
       ForgotPasswordEffects,
       LogoutEffects,
       RegisterEffects,
-      ResetPasswordEffects
+      ResetPasswordEffects,
+      VerifyEmailEffects
     ])
   ],
   declarations: []

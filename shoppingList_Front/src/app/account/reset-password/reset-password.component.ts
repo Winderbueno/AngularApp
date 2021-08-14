@@ -5,6 +5,8 @@ import { Component } from '@angular/core';
 //#region App Component, Model
 import { FormComponent } from '@app_form/component/form.component';
 import * as ComponentActions from './reset-password.actions';
+import * as AccountSelector from '@app_selector/account.selectors';
+import * as RouterSelector from '@app_selector/router.selectors';
 import { TokenStatusEnum } from "@app_enum/token-status.enum";
 //#endregion
 
@@ -13,38 +15,32 @@ import { TokenStatusEnum } from "@app_enum/token-status.enum";
 export class ResetPasswordComponent extends FormComponent {
 
   TokenStatusEnum = TokenStatusEnum;
-  tokenStatus = TokenStatusEnum.Validating;
-  token = '';
+  tokenStatus!: TokenStatusEnum;
+  token: string | undefined = '';
 
   ngOnInit() {
     // Form Init
     super.title = "Reset Password";
     super.ngOnInit();
 
-    // Get token from route
-    const token = this.route.snapshot.queryParams['token'];
+    // TO_TEST - Get info from Store
+    this.store.select(RouterSelector.selectQueryParam('token')).subscribe(value => this.token = value);
+    this.store.select(AccountSelector.tokenStatus).subscribe(value => this.tokenStatus=value);
 
     // Remove token from url to prevent http referer leakage
     this.router.navigate([], { relativeTo: this.route, replaceUrl: true });
 
-    // Validate token
-    // TODO - NgRx
-    /*this.accountService.validateResetToken(token)
-      .pipe(first())
-      .subscribe({
-        next: () => {
-          this.token = token;
-          this.tokenStatus = TokenStatusEnum.Valid;
-        },
-        error: () => {
-          this.tokenStatus = TokenStatusEnum.Invalid;
-        }
-      });*/
+    // Dispatch ValidateResetToken action
+    this.store.dispatch(
+      ComponentActions.validateResetToken({
+        token: this.token,
+      })
+    );
   }
 
   submitAction() {
 
-    // Dispatch Reset Password action
+    // Dispatch ResetPassword action
     this.store.dispatch(
       ComponentActions.resetPasswordSubmit({
         token: this.token,

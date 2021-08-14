@@ -4,6 +4,7 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 //#region Model
 import { Account } from '@app_model/account.model';
+import { TokenStatusEnum } from '@app_model/enum/token-status.enum';
 //#endregion
 
 
@@ -12,6 +13,8 @@ export interface AccountState extends EntityState<Account> {
   // Additional entity state properties
   // connectedAccountId: string | null;
   isLogged:boolean;
+  tokenStatus:TokenStatusEnum;
+  refreshTokenTimeout: NodeJS.Timeout;
 }
 
 
@@ -25,5 +28,6 @@ export const adapter : EntityAdapter<Account> =
 /* Initial State */
 export const initialState: AccountState =
   adapter.getInitialState({
-    isLogged: false
+    isLogged: false,
+    tokenStatus: TokenStatusEnum.Validating
   });

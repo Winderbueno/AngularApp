@@ -2,5 +2,6 @@
 export { LogoutEffects } from './logout.effects';
 export { RegisterEffects } from './register.effects';
 export { ForgotPasswordEffects } from './forgot-password.effects';
-// TODO export { VerifyEmailEffects } from './';
+export { VerifyEmailEffects } from './verify-email.effects';
 export { ResetPasswordEffects } from './reset-password.effects';
+export { RefreshTokenEffects } from './refresh-token.effects';

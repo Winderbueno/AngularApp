@@ -7,7 +7,7 @@ import { map, catchError, exhaustMap } from 'rxjs/operators';
 //#region NgRx
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as AccountAPIActions from '@app_action/api/account.api.actions';
-import { toolbarLogOut } from '@app_layout/component/toolbar/toolbar.component.actions';
+import { verifyEmailSubmit } from '@app_account/verify-email/verify-email.actions';
 //#endregion
 
 //#region App Service
@@ -16,20 +16,20 @@ import { AccountService } from '@app_service/account.service';
 
 
 @Injectable()
-export class LogoutEffects {
+export class VerifyEmailEffects {
 
+  /* Call resetPassword */
+  verifyEmail$ = createEffect(() => this.actions$.pipe(
+    ofType(verifyEmailSubmit),
 
-  /* Call logout */
-  logout$ = createEffect(() => this.actions$.pipe(
-    ofType(toolbarLogOut),
-
-    exhaustMap(() =>
-      this.accountService.logout()
+    exhaustMap((action) =>
+      this.accountService.verifyEmail(action.token)
         .pipe(
-          /* TODO_NGRX
-            next: this.router.navigate(['/account/login']);
-            + stopRefreshTokenTimer(); // Put in reducer
-            error:  }
+          /* TODO - NgRx
+            next:
+              this.alertService.success('Verification successful, you can now login',{ keepAfterRouteChange: true });
+              this.router.navigate(['../login'], { relativeTo: this.route });
+            error: () => { this.emailStatus = EmailStatusEnum.Failed; }
           */
           map(() => AccountAPIActions.genericSuccess()),
           catchError((error) => of(AccountAPIActions.loginFailure({ error: error })))

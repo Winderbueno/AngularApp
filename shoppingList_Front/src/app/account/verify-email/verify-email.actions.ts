@@ -12,5 +12,5 @@ export const verifyEmailSubmit = createSubmitAction (
   ActionSource.COMPONENT,
   'Verify Email',
   props<{
-    token: string }>()
+    token: string | undefined }>()
 );

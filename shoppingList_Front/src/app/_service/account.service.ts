@@ -1,9 +1,6 @@
 //#region Angular & Material
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 //#endregion
 
 //#region App Component, Model
@@ -18,32 +15,13 @@ const baseUrl = `${envBusinessAPI.apiUrl}/account`;
 @Injectable({ providedIn: 'root' })
 export class AccountService {
 
-  private _accountSubject!: BehaviorSubject<Account>;
-  public account$!: Observable<Account>;
-
-  constructor(
-    private router: Router,
-    private http: HttpClient) {
-
-    // No Account logged in is a user with a '-1' id } */
-    this._accountSubject = new BehaviorSubject<Account>({ accountId: "null", jwtToken: "null" });
-    this.account$ = this._accountSubject.asObservable();
-  }
-
-  public get accountValue(): Account { return this._accountSubject.value; }
+  constructor(private http: HttpClient) {}
 
   login(email: string, password: string) {
-    return this.http.post<any>(`${baseUrl}/authenticate`, { email, password }, { withCredentials: true })
-      .pipe(map(account => {
-        // Store account info and jwt token in account Subject
-        this._accountSubject.next(account);
-        this.startRefreshTokenTimer();
-        return account;
-      }));
+    return this.http.post<any>(`${baseUrl}/authenticate`, { email, password }, { withCredentials: true });
   }
 
   logout() {
-    this.stopRefreshTokenTimer(); // TODO put somewhere else
     return this.http.post<any>(`${baseUrl}/revoke-token`, {}, { withCredentials: true });
   }
 
@@ -51,7 +29,7 @@ export class AccountService {
     return this.http.post(`${baseUrl}/register`, account);
   }
 
-  verifyEmail(token: string) {
+  verifyEmail(token: string | undefined) {
     return this.http.post(`${baseUrl}/verify-email`, { token });
   }
 
@@ -59,20 +37,15 @@ export class AccountService {
     return this.http.post(`${baseUrl}/forgot-password`, { email });
   }
 
-  resetPassword(token: string, password: string, confirmPassword: string) {
+  resetPassword(token: string | undefined, password: string, confirmPassword: string) {
     return this.http.post(`${baseUrl}/reset-password`, { token, password, confirmPassword });
   }
 
   refreshToken() {
-    return this.http.post<any>(`${baseUrl}/refresh-token`, {}, { withCredentials: true })
-      .pipe(map((account) => {
-        this._accountSubject.next(account);
-        this.startRefreshTokenTimer();
-        return account;
-      }));
+    return this.http.post<any>(`${baseUrl}/refresh-token`, {}, { withCredentials: true });
   }
 
-  validateResetToken(token: string) {
+  validateResetToken(token: string | undefined) {
     return this.http.post(`${baseUrl}/validate-reset-token`, { token });
   }
 
@@ -86,19 +59,11 @@ export class AccountService {
    * Security Helpers
    ************************************************/
 
-  private refreshTokenTimeout!: NodeJS.Timeout;
+
 
   private startRefreshTokenTimer() {
 
-    if (this.accountValue.jwtToken) {
-      // Parse json object from base64 encoded jwt token
-      const jwtToken = JSON.parse(atob(this.accountValue.jwtToken.split('.')[1]));
 
-      // Set a timeout to refresh the token a minute before it expires
-      const expires = new Date(jwtToken.exp * 1000);
-      const timeout = expires.getTime() - Date.now() - (60 * 1000);
-      this.refreshTokenTimeout = setTimeout(() => this.refreshToken().subscribe(), timeout);
-    }
   }
 
   private stopRefreshTokenTimer() {

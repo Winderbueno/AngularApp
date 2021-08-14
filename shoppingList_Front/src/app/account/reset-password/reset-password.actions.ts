@@ -14,7 +14,7 @@ export const validateResetToken = createAction (
   'Reset Password',
   'validateResetToken',
   props<{
-    token: string }>()
+    token: string | undefined }>()
 );
 
 
@@ -23,7 +23,7 @@ export const resetPasswordSubmit = createSubmitAction (
   ActionSource.COMPONENT,
   'Reset Password',
   props<{
-    token: string,
+    token: string | undefined,
     password: string,
     confirmPassword: string }>()
 );

@@ -19,6 +19,7 @@ export class VerifyEmailComponent implements OnInit {
 
   EmailStatusEnum = EmailStatusEnum;
   emailStatus = EmailStatusEnum.Verifying;
+  token: string | undefined = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -27,18 +28,18 @@ export class VerifyEmailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    //const token = this.store.pipe(select(RouterSelector.selectQueryParam('token')));
-    const token = this.route.snapshot.queryParams['token']; // TODO - get from store
+    // Get info from Store
+    this.store.select(RouterSelector.selectQueryParam('token')).subscribe(value => this.token = value);
 
     // Remove token from url to prevent http referer leakage
+    // TODO - Get Route from store
     this.router.navigate([], { relativeTo: this.route, replaceUrl: true });
 
     // Dispatch Verify Email action
     this.store.dispatch(
       ComponentActions.verifyEmailSubmit({
-        token: token
+        token: this.token
       })
     );
-
   }
 }

@@ -7,7 +7,7 @@ import { map, catchError, exhaustMap } from 'rxjs/operators';
 //#region NgRx
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as AccountAPIActions from '@app_action/api/account.api.actions';
-import { toolbarLogOut } from '@app_layout/component/toolbar/toolbar.component.actions';
+import { validateResetToken } from '@app_account/reset-password/reset-password.actions';
 //#endregion
 
 //#region App Service
@@ -16,20 +16,20 @@ import { AccountService } from '@app_service/account.service';
 
 
 @Injectable()
-export class LogoutEffects {
+export class ValidateResetTokenEffects {
 
+  /* Call resetPassword */
+  validateResetToken$ = createEffect(() => this.actions$.pipe(
+    ofType(validateResetToken),
 
-  /* Call logout */
-  logout$ = createEffect(() => this.actions$.pipe(
-    ofType(toolbarLogOut),
-
-    exhaustMap(() =>
-      this.accountService.logout()
+    exhaustMap((action) =>
+      this.accountService.validateResetToken(action.token)
         .pipe(
-          /* TODO_NGRX
-            next: this.router.navigate(['/account/login']);
-            + stopRefreshTokenTimer(); // Put in reducer
-            error:  }
+          /* TODO - NgRx
+            next:
+              this.token = token;
+              this.tokenStatus = TokenStatusEnum.Valid;
+            error: () => { this.tokenStatus = TokenStatusEnum.Invalid;
           */
           map(() => AccountAPIActions.genericSuccess()),
           catchError((error) => of(AccountAPIActions.loginFailure({ error: error })))

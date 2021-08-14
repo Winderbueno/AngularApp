@@ -16,19 +16,20 @@ import { AccountService } from '@app_service/account.service';
 
 
 @Injectable()
-export class LogoutEffects {
+export class RefreshTokenEffects {
 
 
   /* Call logout */
-  logout$ = createEffect(() => this.actions$.pipe(
-    ofType(toolbarLogOut),
+  refreshToken$ = createEffect(() => this.actions$.pipe(
+    ofType(toolbarLogOut /* TODO wich aciton ? */),
 
     exhaustMap(() =>
-      this.accountService.logout()
+      this.accountService.refreshToken()
         .pipe(
           /* TODO_NGRX
-            next: this.router.navigate(['/account/login']);
-            + stopRefreshTokenTimer(); // Put in reducer
+            next:
+              set Account info in store
+              Then : startRefreshTokenTimer();
             error:  }
           */
           map(() => AccountAPIActions.genericSuccess()),
