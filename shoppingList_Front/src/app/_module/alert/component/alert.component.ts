@@ -5,10 +5,16 @@ import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 //#endregion
 
+//#region NgRx
+import { Store } from '@ngrx/store';
+import * as AlertActions from '@app_alert/_store/alert.actions';
+import * as AlertSelector from '@app_alert/_store/alert.selectors';
+//#endregion
+
 //#region App Component, Model
 import { SnackbarComponent } from '@app_alert/component/snackbar/snackbar.component';
 import { Alert } from '@app_alert/model/alert.model';
-import { AlertTypeEnum } from '@app_alert/model/enum/alert-type.enum';
+import { AlertTypeEnum, AlertTypeEnumClass } from '@app_alert/model/enum/alert-type.enum';
 import { AlertService } from '@app_alert/service/alert.service';
 //#endregion
 
@@ -19,6 +25,7 @@ import { AlertService } from '@app_alert/service/alert.service';
 })
 export class AlertComponent implements OnInit, OnDestroy {
 
+
     snackBarRef!: MatSnackBarRef<SnackbarComponent>;
     alert: Alert = new Alert();
     alertSubscription!: Subscription;
@@ -26,42 +33,35 @@ export class AlertComponent implements OnInit, OnDestroy {
 
     constructor(
         private router: Router,
+        protected store: Store,
         private alertService: AlertService,
         private snackBar: MatSnackBar) {
     }
 
     ngOnInit() {
 
-      // Subscribe to new alert notifications
-      this.alertSubscription = this.alertService.onAlert()
-        .subscribe(alert => {
+      this.store.select(AlertSelector.getAlert).subscribe(alert => {
 
-          // Save the alert for route change
-          if(alert.keepAfterRouteChange) {
-            this.alert = alert;
+        // Save the alert for route change
+        if(alert.keepAfterRouteChange) {
+          this.alert = alert;
+        }
+
+        // If empty message, clear Alert
+        if (!alert.message) {
+          if (this.alert.id != '-1') { // If there is a save alert for route change, delete it
+            this.alert.id = '-1';
           }
-
-          // If empty message, clear Alert
-          if (!alert.message) {
-            if (this.alert.id != '-1') { // If there is a save alert for route change, delete it
-              this.alert.id = '-1';
-            }
-            else if (this.snackBarRef != undefined) { // Otherwise, close the alert
-              this.snackBarRef.dismiss();
-            }
-            return;
+          else if (this.snackBarRef != undefined) { // Otherwise, close the alert
+            this.snackBarRef.dismiss();
           }
+          return;
+        }
 
-          // TODO - Put this in folder Enum ?
-          const AlertTypeEnumClass = {
-            [AlertTypeEnum.Success]: 'alert-success',
-            [AlertTypeEnum.Error]: 'alert-danger',
-            [AlertTypeEnum.Info]: 'alert-info',
-            [AlertTypeEnum.Warning]: 'alert-warning'
-          }
+        this.openSnackBar(alert.message, AlertTypeEnumClass[alert.type]);
 
-          this.openSnackBar(alert.message, AlertTypeEnumClass[alert.type]);
-        });
+      });
+
 
       // Clear alerts on location change
       this.routeSubscription = this.router.events

@@ -6,31 +6,28 @@ import * as AlertActions from './alert.actions';
 
 
 /* Reducer */
-const loaderReducer = createReducer(
+const alertReducer = createReducer(
   initialState,
 
   on(AlertActions.triggerAlert,
-    (state, { gravity }) => {
+    (state, { gravity, message, keepAfterRouteChange }) => {
       return {
         ...state,
-        isLoading: true,
-        loaderTrigger: loaderTrigger
+        gravity: gravity,
+        message: message,
+        keepAfterRouteChange: keepAfterRouteChange
       };
     }
   ),
 
-  on(AlertActions.stopLoader,
+  on(AlertActions.dismissAlert,
     (state) => {
-      return {
-        ...state,
-        isLoading: false,
-        loaderTrigger: "nothing"
-      };
+      return {...state };
     }
   ),
 
 );
 
 export function reducer(state: AlertState | undefined, action: Action) {
-  return loaderReducer(state, action);
+  return alertReducer(state, action);
 }

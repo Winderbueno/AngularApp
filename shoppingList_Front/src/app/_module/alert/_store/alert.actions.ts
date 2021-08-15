@@ -1,7 +1,11 @@
-//#region App Action
+//#region NgRx
+import { props } from '@ngrx/store';
+//#endregion
+
+//#region App Model, Action
 import { ActionSource } from '@app_action/enum/action-source';
 import { createAction } from '@app_action/creator/action-creator';
-import { props } from '@ngrx/store';
+import { AlertTypeEnum } from '../model/enum/alert-type.enum';
 //#endregion
 
 
@@ -10,8 +14,9 @@ export const triggerAlert = createAction(
   'Alert',
   'Trigger',
   props<{
-    gravity: string,
-    message: string }>()
+    gravity: AlertTypeEnum,
+    message: string,
+    keepAfterRouteChange?: boolean }>()
 );
 
 

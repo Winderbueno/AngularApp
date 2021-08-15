@@ -3,8 +3,8 @@ import { AlertState } from './alert.state';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 //#endregion
 
-export const selectLoader = createFeatureSelector<AlertState>('alert');
+export const selectAlert = createFeatureSelector<AlertState>('alert');
 
-export const isLoading = createSelector(
-  selectLoader,
-  (state: AlertState) => state.isLoading);
+export const getAlert = createSelector(
+  selectAlert,
+  (state: AlertState) => state.alert);

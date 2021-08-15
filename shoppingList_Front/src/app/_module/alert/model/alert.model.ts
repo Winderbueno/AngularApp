@@ -2,7 +2,7 @@ import { AlertTypeEnum } from "./enum/alert-type.enum";
 
 export class Alert {
     id!: string;
-    type?: AlertTypeEnum;
+    type!: AlertTypeEnum;
     message?: string;
     keepAfterRouteChange?: boolean;
 

@@ -1,13 +1,14 @@
 //#region App Model
-import { Alert } from "../model/alert.model";
+import { Alert } from "@app_alert/model/alert.model";
+import { AlertTypeEnum } from '@app_alert/model/enum/alert-type.enum';
 //#endregion
 
 /* State */
 export interface AlertState {
-  alert: Alert | undefined;
+  alert: Alert;
 }
 
 /* Initial State */
 export const initialState: AlertState = {
-  alert: undefined,
+  alert: { id:"-1", type:AlertTypeEnum.Info },
 };
