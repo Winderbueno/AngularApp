@@ -4,21 +4,27 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable } from 'rxjs';
 //#endregion
 
-//#region App Component, Model
-import { LoaderService } from '@app_loader/service/loader.service';
+//#region NgRx
+import { Store } from '@ngrx/store';
+import * as LoaderActions from '@app_loader/_store/loader.actions';
 //#endregion
 
 
 @Injectable({ providedIn: 'root' })
 export class LoaderInterceptor implements HttpInterceptor {
 
-  constructor(private loaderService: LoaderService) { }
+  constructor(private store: Store) { }
 
   /** TODO - Comment  Handle Http  */
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
       // Start loader
-      this.loaderService.startLoading(request.url);
+      this.store.dispatch(
+        LoaderActions.startLoader({
+          loaderTrigger: request.url.toString()
+        })
+      );
+
       return next.handle(request);
   }
 }

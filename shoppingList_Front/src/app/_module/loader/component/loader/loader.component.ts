@@ -2,8 +2,9 @@
 import { Component } from '@angular/core';
 //#endregion
 
-//#region App Component, Model
-import { LoaderService } from '@app_loader/service/loader.service';
+//#region NgRx
+import { Store } from '@ngrx/store';
+import * as LoaderSelector from '../../_store/loader.selectors';
 //#endregion
 
 
@@ -15,7 +16,10 @@ import { LoaderService } from '@app_loader/service/loader.service';
   templateUrl: 'loader.component.html' })
 export class LoaderComponent {
 
-  get isLoading() { return this.loaderService.loading;}
+  isLoading: boolean | undefined;
 
-  constructor(private loaderService: LoaderService) { }
+  constructor(private store: Store) {
+    this.store.select(LoaderSelector.isLoading)
+      .subscribe(value => this.isLoading=value);
+  }
 }

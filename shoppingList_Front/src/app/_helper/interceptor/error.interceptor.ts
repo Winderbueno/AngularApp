@@ -12,7 +12,7 @@ import { Store } from '@ngrx/store';
 //#region App Component, Model
 import { Account } from '@app/_model/account.model';
 import * as AccountSelector from '@app_selector/account.selectors';
-import { LoaderService } from '@app_loader/service/loader.service';
+import * as LoaderActions from '@app_loader/_store/loader.actions';
 //#endregion
 
 
@@ -22,9 +22,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   isLogged: boolean = false;
 
-  constructor(
-    private store: Store,
-    private loaderService: LoaderService) { }
+  constructor(private store: Store) { }
 
   /**
    * Handle Http operation that failed then Let the app continue.
@@ -37,7 +35,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request)
       .pipe()
       // As the server answered, we stop the loader
-      .pipe(finalize(() => this.loaderService.stopLoading()))
+      .pipe(finalize(() => this.store.dispatch(LoaderActions.stopLoader())))
       // Dealing with error response
       .pipe(catchError(err => {
 
