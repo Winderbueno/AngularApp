@@ -7,15 +7,13 @@ import { Subscription } from 'rxjs';
 
 //#region NgRx
 import { Store } from '@ngrx/store';
-import * as AlertActions from '@app_alert/_store/alert.actions';
 import * as AlertSelector from '@app_alert/_store/alert.selectors';
 //#endregion
 
 //#region App Component, Model
 import { SnackbarComponent } from '@app_alert/component/snackbar/snackbar.component';
 import { Alert } from '@app_alert/model/alert.model';
-import { AlertTypeEnum, AlertTypeEnumClass } from '@app_alert/model/enum/alert-type.enum';
-import { AlertService } from '@app_alert/service/alert.service';
+import { AlertTypeEnumClass } from '@app_alert/model/enum/alert-type.enum';
 //#endregion
 
 
@@ -25,7 +23,6 @@ import { AlertService } from '@app_alert/service/alert.service';
 })
 export class AlertComponent implements OnInit, OnDestroy {
 
-
     snackBarRef!: MatSnackBarRef<SnackbarComponent>;
     alert: Alert = new Alert();
     alertSubscription!: Subscription;
@@ -33,8 +30,7 @@ export class AlertComponent implements OnInit, OnDestroy {
 
     constructor(
         private router: Router,
-        protected store: Store,
-        private alertService: AlertService,
+        private store: Store,
         private snackBar: MatSnackBar) {
     }
 
@@ -62,14 +58,14 @@ export class AlertComponent implements OnInit, OnDestroy {
 
       });
 
-
+      // TODO
       // Clear alerts on location change
-      this.routeSubscription = this.router.events
+      /*this.routeSubscription = this.router.events
         .subscribe(event => {
         if (event instanceof NavigationStart) {
             this.alertService.clear();
         }
-      });
+      });*/
     }
 
     ngOnDestroy() {

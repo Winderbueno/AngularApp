@@ -15,7 +15,6 @@ import { CreateProductReq } from '@app_model/create-product-req.model';
 import { AccountService } from '@app_service/account.service';
 import { EnumService } from '@app_service/enum.service';
 import { ShoppingListService } from '@app_service/shopping-list.service';
-import { AlertService } from '@app_alert/service/alert.service';
 //#endregion
 
 @Component({
@@ -32,14 +31,13 @@ export class DialogAddProductComponent extends FormComponent {
   constructor(
     router: Router,
     route: ActivatedRoute,
-    alertService: AlertService,
     accountService: AccountService,
     store: Store<{}>, // TODO
     public dialogRef: MatDialogRef<DialogAddProductComponent>,
     private enumService: EnumService,
     private shoppingListService: ShoppingListService,
   ) {
-    super(router, route, alertService, store);
+    super(router, route, store);
   }
 
   ngOnInit(): void {

@@ -15,6 +15,7 @@ import {
   ResetPasswordEffects,
   ValidateResetTokenEffects,
   VerifyEmailEffects} from '@app_effect/account/.';
+import { AlertEffects } from '@app_effect/alert.effects';
 //#endregion
 
 
@@ -30,7 +31,10 @@ import {
       ResetPasswordEffects,
       ValidateResetTokenEffects,
       VerifyEmailEffects
-    ])
+    ]),
+
+    EffectsModule.forFeature([
+      AlertEffects]),
   ],
   declarations: []
 })

@@ -14,13 +14,13 @@ import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 //#endregion
 
 //#region NgRx Effect & Reducer
-import { ShoppingListEffects } from '@app/_store/effect/shopping-list/shopping-list.effects';
-import * as fromAccount from '@app/_store/reducer/account.reducers';
+import { ShoppingListEffects } from '@app_effect/shopping-list/shopping-list.effects';
+import * as fromAccount from '@app_reducer/account.reducers';
 import * as fromShoppingList from '@app_reducer/shopping-list.reducers';
 //#endregion
 
 //#region App Module
-import { AppEffectsModule } from '@app/_store/effect/app-effect.module';
+import { AppEffectsModule } from '@app_effect/app-effect.module';
 import { AppRouterModule } from '@app_router/app-router.module';
 import { AlertModule } from '@app_alert/alert.module';
 import { LayoutModule } from '@app_layout/layout.module';

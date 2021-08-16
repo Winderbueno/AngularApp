@@ -2,6 +2,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { AlertState, initialState } from './alert.state';
 import * as AlertActions from './alert.actions';
+import { Alert } from '../model/alert.model';
 //#endregion
 
 
@@ -13,9 +14,11 @@ const alertReducer = createReducer(
     (state, { gravity, message, keepAfterRouteChange }) => {
       return {
         ...state,
-        gravity: gravity,
-        message: message,
-        keepAfterRouteChange: keepAfterRouteChange
+        alert: new Alert({
+          type: gravity,
+          message: message,
+          keepAfterRouteChange: keepAfterRouteChange
+        })
       };
     }
   ),

@@ -8,10 +8,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 //#endregion
 
-//#region App Component, Model
-import { AlertService } from '@app_alert/service/alert.service'; // TODO - Shoud not use a service
-//#endregion
-
 
 @Component({
   selector: 'app-form',
@@ -34,7 +30,6 @@ export class FormComponent implements OnInit {
   constructor(
     protected router: Router,
     protected route: ActivatedRoute,
-    protected alertService: AlertService,
     protected store: Store
   ) { }
 
