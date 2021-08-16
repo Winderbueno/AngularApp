@@ -1,6 +1,5 @@
 ﻿<!-- Submit Button -->
-<!-- TODO - Deactivate when Is Loading -> Ngrx ([disabled]=isLoading) -->
-<button mat-raised-button color="primary"  type="submit">
+<button mat-raised-button color="primary" [disabled]=isLoading type="submit">
   <app-loader></app-loader>
   {{text}}
 </button>

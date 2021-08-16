@@ -2,6 +2,11 @@
 import { Component, Input } from '@angular/core';
 //#endregion
 
+//#region NgRx
+import { Store } from '@ngrx/store';
+import * as LoaderSelector from '@app_loader/_store/loader.selectors';
+//#endregion
+
 /**
  * Submit Button Component
  *  @param text - Text present on the submit button (default : "Submit")
@@ -12,5 +17,13 @@ import { Component, Input } from '@angular/core';
 export class SubmitButtonComponent {
 
   @Input() text:string = "Submit";
+
+  isLoading:boolean=false;
+
+  constructor(
+    private store: Store
+  ) {
+    this.store.select(LoaderSelector.isLoading).subscribe(value => this.isLoading=value);
+  }
 
 }
