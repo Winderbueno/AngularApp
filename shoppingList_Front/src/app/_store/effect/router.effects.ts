@@ -27,7 +27,7 @@ export class RouterEffects {
       ofType(
         AccountAPIActions.loginSuccess),
         // TODO -> Lancer une action qui declenche le router
-      map(() => AccountAPIActions.loginSuccess({account: { accountId:"1"}}))
+      map(() => AccountAPIActions.loginSuccess({account: { accountId:"1"}})) // WARNNNN -> Loop
     )
   );
 
