@@ -14,10 +14,6 @@ const accountReducer = createReducer(
 
       /* TODO - Do this when Login Success
 
-        // Get return url from route parameters or default to '/'
-        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
-        this.router.navigate([returnUrl]);
-
         // Execute this :
         startRefreshTokenTimer() {
           if (this.accountValue.jwtToken) {

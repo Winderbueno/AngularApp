@@ -31,7 +31,6 @@ export class ResetPasswordEffects {
                 'Password successfully reinitialised, you can now log in :)',
                 { keepAfterRouteChange: true });
               this.router.navigate(['../login'], { relativeTo: this.route });},
-            error: error => { this.alertService.error(error); }
           */
           map(() => AccountAPIActions.resetPasswordSuccess()),
           catchError((error) => of(AccountAPIActions.resetPasswordFailure({ error: error })))

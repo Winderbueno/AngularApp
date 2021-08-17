@@ -29,7 +29,8 @@ export class AlertEffects {
         AccountAPIActions.registerFailure,
         AccountAPIActions.forgotPasswordFailure,
         AccountAPIActions.registerFailure,
-        AccountAPIActions.verifyEmailFailure),
+        AccountAPIActions.verifyEmailFailure,
+        AccountAPIActions.resetPasswordFailure),
       map((error) => AlertActions.triggerAlert({
         alertType: AlertTypeEnum.Error,
         message: error.error,

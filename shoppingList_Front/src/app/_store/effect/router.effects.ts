@@ -1,6 +1,6 @@
 //#region Angular & Material
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 //#endregion
 
 //#region NgRx
@@ -21,14 +21,20 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class RouterEffects {
 
   /* Call login */
-  changeRoute$ = createEffect(() =>
+  changeRoute$ = createEffect(
 
-    this.actions$.pipe(
-      ofType(
-        AccountAPIActions.loginSuccess),
-        // TODO -> Lancer une action qui declenche le router
-      map(() => AccountAPIActions.loginSuccess({account: { accountId:"1"}})) // WARNNNN -> Loop
-    )
+    () => this.actions$.pipe(
+      ofType(AccountAPIActions.loginSuccess),
+      tap(() => {
+
+        // TODO - Get router param from store with selector
+        // Get return url from route parameters or default to '/'
+        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
+        this.router.navigate([returnUrl]);
+
+      })
+    ),
+    { dispatch: false }
   );
 
   constructor(

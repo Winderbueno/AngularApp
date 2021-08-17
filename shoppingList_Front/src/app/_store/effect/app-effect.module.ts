@@ -35,7 +35,7 @@ import { RouterEffects } from './router.effects';
     ]),
 
     EffectsModule.forFeature([
-      AlertEffects, /* TODO - RouterEffects*/]),
+      AlertEffects, RouterEffects]),
   ],
   declarations: []
 })

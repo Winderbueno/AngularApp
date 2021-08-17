@@ -31,7 +31,6 @@ export class RegisterEffects {
                 'Registration successful, please check your email for verification instructions',
                 { keepAfterRouteChange: true });
               this.router.navigate(['../login'], { relativeTo: this.route });},
-            error: error => { this.alertService.error(error); }
           */
           map(() => AccountAPIActions.registerSuccess()),
           catchError((error) => of(AccountAPIActions.registerFailure({ error: error })))
