@@ -26,10 +26,13 @@ export class AlertEffects {
       ofType(
         AccountAPIActions.loginFailure,
         AccountAPIActions.logoutFailure,
-        AccountAPIActions.registerFailure),
+        AccountAPIActions.registerFailure,
+        AccountAPIActions.forgotPasswordFailure,
+        AccountAPIActions.registerFailure,
+        AccountAPIActions.verifyEmailFailure),
       map((error) => AlertActions.triggerAlert({
-        gravity: AlertTypeEnum.Info,
-        message:error.error,
+        alertType: AlertTypeEnum.Error,
+        message: error.error,
         keepAfterRouteChange: false
       }))
     )

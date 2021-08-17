@@ -14,7 +14,7 @@ export const triggerAlert = createAction(
   'Alert',
   'Trigger',
   props<{
-    gravity: AlertTypeEnum,
+    alertType: AlertTypeEnum,
     message: string,
     keepAfterRouteChange?: boolean }>()
 );

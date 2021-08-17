@@ -11,11 +11,11 @@ const alertReducer = createReducer(
   initialState,
 
   on(AlertActions.triggerAlert,
-    (state, { gravity, message, keepAfterRouteChange }) => {
+    (state, { alertType, message, keepAfterRouteChange }) => {
       return {
         ...state,
         alert: new Alert({
-          type: gravity,
+          type: alertType,
           message: message,
           keepAfterRouteChange: keepAfterRouteChange
         })
@@ -25,7 +25,10 @@ const alertReducer = createReducer(
 
   on(AlertActions.dismissAlert,
     (state) => {
-      return {...state };
+      return {
+        ...state,
+        alert: new Alert()
+      };
     }
   ),
 
