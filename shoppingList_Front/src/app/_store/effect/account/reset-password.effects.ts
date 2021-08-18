@@ -18,24 +18,16 @@ import { AccountService } from '@app_service/account.service';
 @Injectable()
 export class ResetPasswordEffects {
 
-  /* Call resetPassword */
-  resetPassword$ = createEffect(() => this.actions$.pipe(
-    ofType(ComponentActions.resetPasswordSubmit),
-
-    exhaustMap((action) =>
-      this.accountService.resetPassword(action.token, action.password, action.confirmPassword)
-        .pipe(
-          /* TODO_NGRX
-            next: () => {
-              this.alertService.success(
-                'Password successfully reinitialised, you can now log in :)',
-                { keepAfterRouteChange: true });
-              this.router.navigate(['../login'], { relativeTo: this.route });},
-          */
-          map(() => AccountAPIActions.resetPasswordSuccess()),
+  resetPassword$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ComponentActions.resetPasswordSubmit),
+      exhaustMap((action) =>
+        this.accountService.resetPassword(action.token, action.password, action.confirmPassword).pipe(
+          map(() => AccountAPIActions.resetPasswordSuccess({
+            message: 'Password successfully reinitialised, you can now log in :)'
+          })),
           catchError((error) => of(AccountAPIActions.resetPasswordFailure({ error: error })))
-        )
-    )
+    ))
   ));
 
   constructor(

@@ -19,17 +19,14 @@ import { Account } from '@app_model/account.model';
 @Injectable()
 export class LoginEffects {
 
-  /* Call login */
-  login$ = createEffect(() => this.actions$.pipe(
-    ofType(loginSubmit),
-
-    exhaustMap((action) =>
-      this.accountService.login(action.email, action.password)
-        .pipe(
+  login$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(loginSubmit),
+      exhaustMap((action) =>
+        this.accountService.login(action.email, action.password).pipe(
           map((account: Account) => AccountAPIActions.loginSuccess({ account: account })),
           catchError((error) => of(AccountAPIActions.loginFailure({ error: error })))
-        )
-    )
+    ))
   ));
 
   constructor(

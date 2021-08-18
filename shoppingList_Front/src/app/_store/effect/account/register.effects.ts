@@ -18,24 +18,16 @@ import { AccountService } from '@app_service/account.service';
 @Injectable()
 export class RegisterEffects {
 
-  /* Call register */
-  register$ = createEffect(() => this.actions$.pipe(
-    ofType(registerSubmit),
-
-    exhaustMap((action) =>
-      this.accountService.register(action.account)
-        .pipe(
-          /* TODO_NGRX
-            next: () => {
-              this.alertService.success(
-                'Registration successful, please check your email for verification instructions',
-                { keepAfterRouteChange: true });
-              this.router.navigate(['../login'], { relativeTo: this.route });},
-          */
-          map(() => AccountAPIActions.registerSuccess()),
+  register$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(registerSubmit),
+      exhaustMap((action) =>
+        this.accountService.register(action.account).pipe(
+          map(() => AccountAPIActions.registerSuccess({
+            message: 'Registration successful, please check your email for verification instructions'
+          })),
           catchError((error) => of(AccountAPIActions.registerFailure({ error: error })))
-        )
-    )
+    ))
   ));
 
   constructor(

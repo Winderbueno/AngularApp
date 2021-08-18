@@ -18,17 +18,14 @@ import { AccountService } from '@app_service/account.service';
 @Injectable()
 export class ForgotPasswordEffects {
 
-  /* Call forgotPassword */
   forgotPassword$ = createEffect(() => this.actions$.pipe(
     ofType(forgotPasswordSubmit),
-
     exhaustMap((action) =>
       this.accountService.forgotPassword(action.email)
         .pipe(
-          /* TODO_NGRX
-            next: () => this.alertService.success('Please check your email for password reset instructions'),
-          */
-          map(() => AccountAPIActions.forgotPasswordSuccess()),
+          map(() => AccountAPIActions.forgotPasswordSuccess({
+            message: 'Please check your email for password reset instructions'
+          })),
           catchError((error) => of(AccountAPIActions.forgotPasswordFailure({ error: error })))
         )
     )

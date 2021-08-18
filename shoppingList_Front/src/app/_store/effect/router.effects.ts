@@ -26,12 +26,26 @@ export class RouterEffects {
     () => this.actions$.pipe(
       ofType(AccountAPIActions.loginSuccess),
       tap(() => {
-
         // TODO - Get router param from store with selector
         // Get return url from route parameters or default to '/'
         const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
         this.router.navigate([returnUrl]);
 
+      })
+    ),
+    { dispatch: false }
+  );
+
+  routeToLogin$ = createEffect(() =>
+
+    this.actions$.pipe(
+      ofType(
+        AccountAPIActions.resetPasswordSuccess,
+        AccountAPIActions.registerSuccess,
+        AccountAPIActions.verifyEmailSuccess),
+      tap(() => {
+        // TODO - Get route param from store with selector
+        this.router.navigate(['../login'], { relativeTo: this.route });
       })
     ),
     { dispatch: false }

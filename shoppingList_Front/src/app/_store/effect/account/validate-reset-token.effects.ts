@@ -18,23 +18,18 @@ import { AccountService } from '@app_service/account.service';
 @Injectable()
 export class ValidateResetTokenEffects {
 
-  /* Call resetPassword */
-  validateResetToken$ = createEffect(() => this.actions$.pipe(
-    ofType(validateResetToken),
-
-    exhaustMap((action) =>
-      this.accountService.validateResetToken(action.token)
-        .pipe(
+  validateResetToken$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(validateResetToken),
+      exhaustMap((action) =>
+        this.accountService.validateResetToken(action.token).pipe(
           /* TODO - NgRx
-            next:
-              this.token = token;
-              this.tokenStatus = TokenStatusEnum.Valid;
+            next: this.token = token; this.tokenStatus = TokenStatusEnum.Valid;
             error: () => { this.tokenStatus = TokenStatusEnum.Invalid;
           */
           map(() => AccountAPIActions.validateResetTokenSuccess()),
           catchError((error) => of(AccountAPIActions.validateResetTokenFailure({ error: error })))
-        )
-    )
+    ))
   ));
 
   constructor(

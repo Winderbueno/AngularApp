@@ -44,6 +44,7 @@ export const registerSuccess = createAction(
   ActionSource.API,
   'Account',
   'Register Success',
+  props<{ message: string }>()
 );
 
 
@@ -58,6 +59,7 @@ export const verifyEmailSuccess = createAction(
   ActionSource.API,
   'Account',
   'VerifyEmail Success',
+  props<{ message: string }>()
 );
 
 
@@ -72,6 +74,7 @@ export const forgotPasswordSuccess = createAction(
   ActionSource.API,
   'Account',
   'ForgotPassword Success',
+  props<{ message: string }>()
 );
 
 
@@ -86,6 +89,7 @@ export const resetPasswordSuccess = createAction(
   ActionSource.API,
   'Account',
   'ResetPassword Success',
+  props<{ message: string }>()
 );
 
 

@@ -18,14 +18,11 @@ import { AccountService } from '@app_service/account.service';
 @Injectable()
 export class RefreshTokenEffects {
 
-
-  /* Call logout */
-  refreshToken$ = createEffect(() => this.actions$.pipe(
-    ofType(toolbarLogOut /* TODO wich aciton ? */),
-
-    exhaustMap(() =>
-      this.accountService.refreshToken()
-        .pipe(
+  refreshToken$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(toolbarLogOut /* TODO wich action ? */),
+      exhaustMap(() =>
+        this.accountService.refreshToken().pipe(
           /* TODO_NGRX
             next:
               set Account info in store
@@ -34,8 +31,7 @@ export class RefreshTokenEffects {
           */
           map(() => AccountAPIActions.refreshTokenSuccess()),
           catchError((error) => of(AccountAPIActions.refreshTokenFailure({ error: error })))
-        )
-    )
+    ))
   ));
 
   constructor(

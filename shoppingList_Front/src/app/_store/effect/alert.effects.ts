@@ -19,8 +19,7 @@ import { AlertTypeEnum } from '../../_module/alert/model/enum/alert-type.enum';
 @Injectable()
 export class AlertEffects {
 
-  /* Call login */
-  triggerAlert$ = createEffect(() =>
+  triggerErrorAlert$ = createEffect(() =>
 
     this.actions$.pipe(
       ofType(
@@ -35,6 +34,23 @@ export class AlertEffects {
         alertType: AlertTypeEnum.Error,
         message: error.error,
         keepAfterRouteChange: false
+      }))
+    )
+  );
+
+
+  triggerSuccessAlert$ = createEffect(() =>
+
+    this.actions$.pipe(
+      ofType(
+        AccountAPIActions.resetPasswordSuccess,
+        AccountAPIActions.registerSuccess,
+        AccountAPIActions.verifyEmailSuccess,
+        AccountAPIActions.forgotPasswordSuccess),
+      map((action) => AlertActions.triggerAlert({
+        alertType: AlertTypeEnum.Success,
+        message: action.message,
+        keepAfterRouteChange: true
       }))
     )
   );

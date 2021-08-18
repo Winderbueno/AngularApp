@@ -18,16 +18,14 @@ import { AccountService } from '@app_service/account.service';
 @Injectable()
 export class LogoutEffects {
 
-  /* Call logout */
-  logout$ = createEffect(() => this.actions$.pipe(
-    ofType(toolbarLogOut),
-    exhaustMap(() =>
-      this.accountService.logout()
-        .pipe(
+  logout$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(toolbarLogOut),
+      exhaustMap(() =>
+        this.accountService.logout().pipe(
           map(() => AccountAPIActions.logoutSuccess()),
           catchError((error) => of(AccountAPIActions.logoutFailure({ error: error })))
-        )
-    )
+    ))
   ));
 
   constructor(

@@ -18,23 +18,19 @@ import { AccountService } from '@app_service/account.service';
 @Injectable()
 export class VerifyEmailEffects {
 
-  /* Call resetPassword */
-  verifyEmail$ = createEffect(() => this.actions$.pipe(
-    ofType(verifyEmailSubmit),
-
-    exhaustMap((action) =>
-      this.accountService.verifyEmail(action.token)
-        .pipe(
+  verifyEmail$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(verifyEmailSubmit),
+      exhaustMap((action) =>
+        this.accountService.verifyEmail(action.token).pipe(
           /* TODO - NgRx
-            next:
-              this.alertService.success('Verification successful, you can now login',{ keepAfterRouteChange: true });
-              this.router.navigate(['../login'], { relativeTo: this.route });
             error: () => { this.emailStatus = EmailStatusEnum.Failed; }
           */
-          map(() => AccountAPIActions.verifyEmailSuccess()),
+          map(() => AccountAPIActions.verifyEmailSuccess({
+            message: 'Verification successful, you can now login'
+          })),
           catchError((error) => of(AccountAPIActions.verifyEmailFailure({ error: error })))
-        )
-    )
+    ))
   ));
 
   constructor(
