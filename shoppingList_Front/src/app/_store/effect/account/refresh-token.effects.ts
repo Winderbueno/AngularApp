@@ -7,7 +7,7 @@ import { map, catchError, exhaustMap } from 'rxjs/operators';
 //#region NgRx
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as AccountAPIActions from '@app_action/api/account.api.actions';
-import { toolbarLogOut } from '@app_layout/component/toolbar/toolbar.component.actions';
+import { toolbarLogOut } from '@app_layout/toolbar/toolbar.component.actions';
 //#endregion
 
 //#region App Service
