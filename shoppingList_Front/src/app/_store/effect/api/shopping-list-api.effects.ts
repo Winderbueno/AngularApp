@@ -17,7 +17,7 @@ import { ShoppingList } from '@app_model/shopping-list.model';
 
 
 @Injectable()
-export class ShoppingListEffects {
+export class ShoppingListAPIEffects {
 
   // Load user's active shoppingList from server
   getActive$ = createEffect(() => this.actions$.pipe(

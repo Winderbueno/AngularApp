@@ -8,7 +8,7 @@ import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as AccountAPIActions from '@app_action/api/account.api.actions';
 import * as AlertActions from '@app_alert/_store/alert.actions';
-import { AlertTypeEnum } from '../../_module/alert/model/enum/alert-type.enum';
+import { AlertTypeEnum } from '../../../_module/alert/model/enum/alert-type.enum';
 
 //#endregion
 
@@ -50,7 +50,7 @@ export class AlertEffects {
       map((action) => AlertActions.triggerAlert({
         alertType: AlertTypeEnum.Success,
         message: action.message,
-        keepAfterRouteChange: true
+        keepAfterRouteChange: true // TODO -> Has currently no impact
       }))
     )
   );

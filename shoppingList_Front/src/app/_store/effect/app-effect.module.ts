@@ -1,26 +1,33 @@
-//#region Angular & Material
+//#region Angular & Material & NgRx
 import { NgModule } from '@angular/core';
+import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
-//#region NgRx Module
-import { EffectsModule } from '@ngrx/effects';
+//#region API Effect
+import { AccountAPIEffects } from '@app_effect/api/account-api.effects';
+import { ShoppingListAPIEffects } from '@app_effect/api/shopping-list-api.effects';
+//#endregion
 
-//#region Effects
-import { AccountAPIEffects } from '@app_effect/api/account.effects';
-import { AlertEffects } from '@app_effect/alert.effects';
-import { RouterEffects } from './router.effects';
+//#region Technical Effect
+import { AlertEffects } from '@app_effect/technical/alert.effects';
+import { RouterEffects } from '@app_effect/technical/router.effects';
 //#endregion
 
 
 @NgModule({
   imports: [
-    /* Account Feature */
+
+    /* API Effect */
     EffectsModule.forFeature([
       AccountAPIEffects,
+      ShoppingListAPIEffects
     ]),
 
+    /* Technical Effect */
     EffectsModule.forFeature([
-      AlertEffects, RouterEffects]),
+      AlertEffects,
+      RouterEffects
+    ]),
   ],
   declarations: []
 })

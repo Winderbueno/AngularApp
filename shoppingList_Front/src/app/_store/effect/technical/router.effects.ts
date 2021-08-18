@@ -8,7 +8,7 @@ import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as AccountAPIActions from '@app_action/api/account.api.actions';
 import * as RouterStore from '@ngrx/router-store';
-import { AlertTypeEnum } from '../../_module/alert/model/enum/alert-type.enum';
+import { AlertTypeEnum } from '../../../_module/alert/model/enum/alert-type.enum';
 import { Router, ActivatedRoute } from '@angular/router';
 
 //#endregion

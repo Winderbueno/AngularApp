@@ -14,7 +14,6 @@ import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 //#endregion
 
 //#region NgRx Effect & Reducer
-import { ShoppingListEffects } from '@app_effect/api/shopping-list.effects';
 import * as fromAccount from '@app_reducer/account.reducers';
 import * as fromShoppingList from '@app_reducer/shopping-list.reducers';
 //#endregion
@@ -66,8 +65,7 @@ const appearance: MatFormFieldDefaultOptions = { appearance: 'outline' };
     StoreRouterConnectingModule.forRoot(),
 
     /* NgRx Effect */
-    EffectsModule.forRoot([
-      ShoppingListEffects]),
+    EffectsModule.forRoot([]),
 
     /* App Module */
     AppEffectsModule,
