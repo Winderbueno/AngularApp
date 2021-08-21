@@ -11,25 +11,25 @@ const alertReducer = createReducer(
   initialState,
 
   on(AlertActions.triggerAlert,
-    (state, { alertType, message, keepAfterRouteChange }) => {
+    (state, action) => {
       return {
         ...state,
+        keepAfterRouteChange: action.keepAfterRouteChange,
         alert: new Alert({
-          type: alertType,
-          message: message,
-          keepAfterRouteChange: keepAfterRouteChange
-        })
+          type: action.alertType,
+          message: action.message,
+        }),
+
       };
     }
   ),
 
   on(AlertActions.dismissAlert,
-    (state) => {
-      return {
-        ...state,
-        alert: new Alert()
-      };
-    }
+    (state) => { return { ...state, alert: undefined }; }
+  ),
+
+  on(AlertActions.hasBeenKeptAfterRouteChange,
+    (state) => { return { ...state, keepAfterRouteChange: false }; }
   ),
 
 );

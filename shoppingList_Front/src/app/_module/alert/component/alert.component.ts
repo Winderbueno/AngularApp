@@ -38,24 +38,14 @@ export class AlertComponent implements OnInit, OnDestroy {
 
       this.store.select(AlertSelector.getAlert).subscribe(alert => {
 
-        // Save the alert for route change
-        if(alert.keepAfterRouteChange) {
-          this.alert = alert;
-        }
-
-        // If empty message, clear Alert
-        if (!alert.message) {
-          if (this.alert.id != '-1') { // If there is a save alert for route change, delete it
-            this.alert.id = '-1';
+        // alert is defined, trigger snack Bar
+        if (alert != undefined) {
+          if (alert.message) {
+            this.openSnackBar(alert.message, AlertTypeEnumClass[alert.type]);
           }
-          else if (this.snackBarRef != undefined) { // Otherwise, close the alert
-            this.snackBarRef.dismiss();
-          }
-          return;
+        } else if (this.snackBarRef != null) {
+          this.snackBarRef.dismiss();
         }
-
-        this.openSnackBar(alert.message, AlertTypeEnumClass[alert.type]);
-
       });
 
       // TODO

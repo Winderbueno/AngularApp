@@ -25,3 +25,10 @@ export const dismissAlert = createAction(
   'Alert',
   'Dismiss',
 );
+
+
+export const hasBeenKeptAfterRouteChange = createAction(
+  ActionSource.MODULE,
+  'Alert',
+  'Keep After Router Change',
+);

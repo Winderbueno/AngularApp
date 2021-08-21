@@ -1,6 +1,6 @@
 //#region Angular & Material
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { map, withLatestFrom } from 'rxjs/operators';
 //#endregion
 
 //#region NgRx
@@ -8,8 +8,10 @@ import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as AccountAPIActions from '@app_action/api/account.api.actions';
 import * as AlertActions from '@app_alert/_store/alert.actions';
+import * as AlertSelectors from '@app_alert/_store/alert.selectors';
+import * as RouterActions from '@ngrx/router-store';
+import { AlertState } from '@app_alert/_store/alert.state';
 import { AlertTypeEnum } from '../../../_module/alert/model/enum/alert-type.enum';
-
 //#endregion
 
 //#region App Service
@@ -50,13 +52,30 @@ export class AlertEffects {
       map((action) => AlertActions.triggerAlert({
         alertType: AlertTypeEnum.Success,
         message: action.message,
-        keepAfterRouteChange: true // TODO -> Has currently no impact
+        keepAfterRouteChange: false // TODO -> Has currently no impact
       }))
+    )
+  );
+
+
+  changeRoute$ = createEffect(() =>
+
+    this.actions$.pipe(
+      ofType(RouterActions.routerRequestAction),
+      withLatestFrom(this.store),
+      map((actionAndStore) => {
+
+        if(actionAndStore[1].alert?.keepAfterRouteChange===true){
+          return AlertActions.hasBeenKeptAfterRouteChange();
+        } else {
+          return AlertActions.dismissAlert();
+        }
+      })
     )
   );
 
   constructor(
     private actions$: Actions,
-    private store: Store,
+    private store: Store<AlertState>,
   ) { }
 }
