@@ -52,19 +52,19 @@ export class AlertEffects {
       map((action) => AlertActions.triggerAlert({
         alertType: AlertTypeEnum.Success,
         message: action.message,
-        keepAfterRouteChange: false // TODO -> Has currently no impact
+        keepAfterRouteChange: true
       }))
     )
   );
 
 
-  changeRoute$ = createEffect(() =>
+  dismissAlert$ = createEffect(() =>
 
     this.actions$.pipe(
       ofType(RouterActions.routerRequestAction),
-      withLatestFrom(this.store),
+      withLatestFrom(this.store), // TODO - only get alert state instead of all app state ?
       map((actionAndStore) => {
-
+        // TODO - Don't dismiss Alert if no alert in the state
         if(actionAndStore[1].alert?.keepAfterRouteChange===true){
           return AlertActions.hasBeenKeptAfterRouteChange();
         } else {
@@ -76,6 +76,6 @@ export class AlertEffects {
 
   constructor(
     private actions$: Actions,
-    private store: Store<AlertState>,
+    private store: Store<AlertState>, // TODO - Comprendre pourquoi besoin specif le state
   ) { }
 }

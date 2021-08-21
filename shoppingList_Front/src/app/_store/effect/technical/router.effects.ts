@@ -1,27 +1,39 @@
 //#region Angular & Material
 import { Injectable } from '@angular/core';
-import { map, tap } from 'rxjs/operators';
+import { Router, ActivatedRoute } from '@angular/router';
+import { tap } from 'rxjs/operators';
 //#endregion
 
 //#region NgRx
-import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import * as AccountAPIActions from '@app_action/api/account.api.actions';
-import * as RouterStore from '@ngrx/router-store';
-import { AlertTypeEnum } from '../../../_module/alert/model/enum/alert-type.enum';
-import { Router, ActivatedRoute } from '@angular/router';
-
 //#endregion
 
-//#region App Service
+//#region App Action
+import * as AccountAPIActions from '@app_action/api/account.api.actions';
 //#endregion
 
 
 @Injectable()
 export class RouterEffects {
 
-  /* Call login */
-  changeRoute$ = createEffect(
+  routeToLogin$ = createEffect(() =>
+
+    this.actions$.pipe(
+      ofType(
+        AccountAPIActions.forgotPasswordSuccess,
+        AccountAPIActions.resetPasswordSuccess,
+        AccountAPIActions.registerSuccess,
+        AccountAPIActions.verifyEmailSuccess),
+      tap(() => {
+        this.router.navigate(['account/login']);
+      })
+    ),
+    { dispatch: false }
+  );
+
+  /* If Login Succeed, this effect route to the page
+   * the user attempted to access before login */
+  routeToRequestedPage$ = createEffect(
 
     () => this.actions$.pipe(
       ofType(AccountAPIActions.loginSuccess),
@@ -36,24 +48,9 @@ export class RouterEffects {
     { dispatch: false }
   );
 
-  routeToLogin$ = createEffect(() =>
-
-    this.actions$.pipe(
-      ofType(
-        AccountAPIActions.resetPasswordSuccess,
-        AccountAPIActions.registerSuccess,
-        AccountAPIActions.verifyEmailSuccess),
-      tap(() => {
-        // TODO - Get route param from store with selector
-        this.router.navigate(['../login'], { relativeTo: this.route });
-      })
-    ),
-    { dispatch: false }
-  );
 
   constructor(
     private actions$: Actions,
-    private store: Store,
     protected router: Router,
     protected route: ActivatedRoute,
   ) { }
