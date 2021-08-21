@@ -1,8 +1,6 @@
 ﻿//#region Angular & Material
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, NavigationStart } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
-import { Subscription } from 'rxjs';
 //#endregion
 
 //#region NgRx
@@ -12,7 +10,6 @@ import * as AlertSelector from '@app_alert/_store/alert.selectors';
 
 //#region App Component, Model
 import { SnackbarComponent } from '@app_alert/component/snackbar/snackbar.component';
-import { Alert } from '@app_alert/model/alert.model';
 import { AlertTypeEnumClass } from '@app_alert/model/enum/alert-type.enum';
 //#endregion
 
