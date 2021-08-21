@@ -17,7 +17,5 @@ export const {
 } = adapter.getSelectors();
 
 export const getAccounts = createSelector(selectAccount, selectAll)
-
-
 export const isLogged = createSelector(selectAccount, (state: AccountState) => state.isLogged);
 export const tokenStatus = createSelector(selectAccount, (state: AccountState) => state.tokenStatus);
