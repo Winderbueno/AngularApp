@@ -62,10 +62,10 @@ export class AlertEffects {
 
     this.actions$.pipe(
       ofType(RouterActions.routerRequestAction),
-      withLatestFrom(this.store), // TODO - only get alert state instead of all app state ?
+      withLatestFrom(this.store.select(AlertSelectors.keepAfterRouteChange)),
       map((actionAndStore) => {
         // TODO - Don't dismiss Alert if no alert in the state
-        if(actionAndStore[1].alert?.keepAfterRouteChange===true){
+        if(actionAndStore[1]===true){
           return AlertActions.hasBeenKeptAfterRouteChange();
         } else {
           return AlertActions.dismissAlert();
@@ -76,6 +76,6 @@ export class AlertEffects {
 
   constructor(
     private actions$: Actions,
-    private store: Store<AlertState>, // TODO - Comprendre pourquoi besoin specif le state
+    private store: Store, // TODO - Comprendre pourquoi besoin specif le state
   ) { }
 }
