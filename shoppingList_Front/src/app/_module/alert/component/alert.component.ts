@@ -21,15 +21,11 @@ import { AlertTypeEnumClass } from '@app_alert/model/enum/alert-type.enum';
     selector: 'app-alert',
     template: ``
 })
-export class AlertComponent implements OnInit, OnDestroy {
+export class AlertComponent implements OnInit {
 
     snackBarRef!: MatSnackBarRef<SnackbarComponent>;
-    alert: Alert = new Alert();
-    alertSubscription!: Subscription;
-    routeSubscription!: Subscription;
 
     constructor(
-        private router: Router,
         private store: Store,
         private snackBar: MatSnackBar) {
     }
@@ -38,7 +34,7 @@ export class AlertComponent implements OnInit, OnDestroy {
 
       this.store.select(AlertSelector.getAlert).subscribe(alert => {
 
-        // alert is defined, trigger snack Bar
+        // alert is defined, trigger snackBar
         if (alert != undefined) {
           if (alert.message) {
             this.openSnackBar(alert.message, AlertTypeEnumClass[alert.type]);
@@ -47,21 +43,6 @@ export class AlertComponent implements OnInit, OnDestroy {
           this.snackBarRef.dismiss();
         }
       });
-
-      // TODO
-      // Clear alerts on location change
-      /*this.routeSubscription = this.router.events
-        .subscribe(event => {
-        if (event instanceof NavigationStart) {
-            this.alertService.clear();
-        }
-      });*/
-    }
-
-    ngOnDestroy() {
-        // Unsubscribe to avoid memory leaks
-        this.alertSubscription.unsubscribe();
-        this.routeSubscription.unsubscribe();
     }
 
     openSnackBar(msg: string, panelClass: string) {
