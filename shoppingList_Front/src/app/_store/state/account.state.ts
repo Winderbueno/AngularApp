@@ -13,8 +13,13 @@ export interface AccountState extends EntityState<Account> {
   // Additional entity state properties
   // connectedAccountId: string | null;
   isLogged:boolean;
-  tokenStatus:TokenStatusEnum;
+
+  // To refresh connection
+
   refreshTokenTimeout: NodeJS.Timeout;
+
+  // To reset Pwd
+  resetTokenStatus:TokenStatusEnum;
 }
 
 
@@ -29,6 +34,8 @@ export const adapter : EntityAdapter<Account> =
 export const initialState: AccountState =
   adapter.getInitialState({
     isLogged: false,
-    tokenStatus: TokenStatusEnum.Validating, // TODO init the timout
-    refreshTokenTimeout: setTimeout(() => {return;},5/*this.refreshToken().subscribe()*/)
+
+    refreshTokenTimeout: setTimeout(() => {return;},5/*this.refreshToken().subscribe()*/), // TODO init the timout
+
+    resetTokenStatus: TokenStatusEnum.Validating
   });

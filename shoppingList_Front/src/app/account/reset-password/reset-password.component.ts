@@ -25,7 +25,7 @@ export class ResetPasswordComponent extends FormComponent {
 
     // TO_TEST - Get info from Store
     this.store.select(RouterSelector.selectQueryParam('token')).subscribe(value => this.token = value);
-    this.store.select(AccountSelector.tokenStatus).subscribe(value => this.tokenStatus=value);
+    this.store.select(AccountSelector.resetTokenStatus).subscribe(value => this.tokenStatus=value);
 
     // Remove token from url to prevent http referer leakage
     this.router.navigate([], { relativeTo: this.route, replaceUrl: true });
