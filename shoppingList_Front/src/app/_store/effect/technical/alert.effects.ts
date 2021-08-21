@@ -62,12 +62,12 @@ export class AlertEffects {
 
     this.actions$.pipe(
       ofType(RouterActions.routerRequestAction),
-      withLatestFrom(this.store.select(AlertSelectors.keepAfterRouteChange)),
+      withLatestFrom(this.store.select(AlertSelectors.getAlertState)),
       map((actionAndStore) => {
-        // TODO - Don't dismiss Alert if no alert in the state
-        if(actionAndStore[1]===true){
+
+        if(actionAndStore[1].keepAfterRouteChange===true){
           return AlertActions.hasBeenKeptAfterRouteChange();
-        } else {
+        } else { // TODO - Don't dismiss Alert if no alert in the state, but require 'not to dispatch in this case action'
           return AlertActions.dismissAlert();
         }
       })

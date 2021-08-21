@@ -5,6 +5,10 @@ import { createSelector, createFeatureSelector } from '@ngrx/store';
 
 export const selectAlert = createFeatureSelector<AlertState>('alert');
 
+export const getAlertState = createSelector(
+  selectAlert,
+  (state: AlertState) => state);
+
 export const getAlert = createSelector(
   selectAlert,
   (state: AlertState) => state.alert);
