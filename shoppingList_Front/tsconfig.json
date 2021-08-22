@@ -34,11 +34,12 @@
 
       // Store
       "@app_store/*": ["src/app/_store/*"],
-      "@app_action/*": ["src/app/_store/action/*"],
       "@app_effect/*": ["src/app/_store/effect/*"],
-      "@app_reducer/*": ["src/app/state/reducer/*"],
-      "@app_selector/*": ["src/app/state/selector/*"],
-      "@app_state/*": ["src/app/state/state/*"],
+      "@app_reducer/*": ["src/app/_store/reducer/*"],
+      "@app_selector/*": ["src/app/_store/selector/*"],
+      "@app_state/*": ["src/app/_store/state/*"],
+      "@account_store/*": ["src/app/account/_store"],
+      "@shoppingList_store/*": ["src/app/shopping-list/_store"],
 
       // Model
       "@app_model/*": ["src/app/_model/*"],
@@ -55,6 +56,8 @@
       "@app_loader/*": ["src/app/_module/loader/*"],
       "@app_material/*": ["src/app/_module/material/*"],
       "@app_router/*": ["src/app/_module/router/*"],
+      "@app_action/*": ["src/app/_module/store/action/*"],
+      "@mod_store/*": ["src/app/_module/store/*"],
     },
   },
   "angularCompilerOptions": {

@@ -1,5 +1,5 @@
 //#region NgRx
-import { AccountState, adapter } from '@app/state/state/account.state';
+import { AccountState, adapter } from './account.state';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 //#endregion
 

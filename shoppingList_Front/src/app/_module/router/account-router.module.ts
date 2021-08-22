@@ -10,7 +10,7 @@ import {
   RegisterComponent,
   ForgotPasswordComponent,
   ResetPasswordComponent,
-  VerifyEmailComponent } from '@app_account/.';
+  VerifyEmailComponent } from '@app/account/component';
 //#endregion
 
 const routes: Routes = [

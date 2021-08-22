@@ -12,7 +12,7 @@ import { ShoppingListRouterModule } from '@app_router/shopping-list-router.modul
 //#region Component
 import {
   DialogAddProductComponent,
-  ShoppingListComponent } from '@app_shoppingList/.';
+  ShoppingListComponent } from '@app/shopping-list/component';
 //#endregion
 
 

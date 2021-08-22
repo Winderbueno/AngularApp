@@ -6,12 +6,12 @@ import { map, catchError, exhaustMap } from 'rxjs/operators';
 
 //#region NgRx
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import * as AccountAPIActions from '@app/_service/action/account.api.actions';
-import { forgotPasswordSubmit } from '@app_account/forgot-password/forgot-password.actions';
-import { loginSubmit } from '@app_account/login/login.actions';
 import { toolbarLogOut } from '@app_layout/toolbar/toolbar.component.actions';
-import { registerSubmit } from '@app_account/register/register.actions';
-import * as ComponentActions from '@app_account/reset-password/reset-password.actions';
+import * as AccountAPIActions from '@app_service/action/account.api.actions';
+import { forgotPasswordSubmit } from '@app_account/component/forgot-password/forgot-password.actions';
+import { loginSubmit } from '@app_account/component/login/login.actions';
+import { registerSubmit } from '@app_account/component/register/register.actions';
+import * as ComponentActions from '@app_account/component/reset-password/reset-password.actions';
 //#endregion
 
 //#region App Service

@@ -4,7 +4,6 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 //#region Model
 import { Account } from '@app_model/account.model';
-import { TokenStatusEnum } from '@app_model/enum/token-status.enum';
 //#endregion
 
 
