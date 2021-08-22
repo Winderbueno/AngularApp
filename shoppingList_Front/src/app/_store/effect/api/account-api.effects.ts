@@ -102,22 +102,6 @@ export class AccountAPIEffects {
     ))
   ));
 
-
-  validateResetToken$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(validateResetToken),
-      exhaustMap((action) =>
-        this.accountService.validateResetToken(action.token).pipe(
-          /* TODO - NgRx
-            next: this.token = token; this.tokenStatus = TokenStatusEnum.Valid;
-            error: () => { this.tokenStatus = TokenStatusEnum.Invalid;
-          */
-          map(() => AccountAPIActions.validateResetTokenSuccess()),
-          catchError((error) => of(AccountAPIActions.validateResetTokenFailure({ error: error })))
-    ))
-  ));
-
-
   verifyEmail$ = createEffect(() =>
     this.actions$.pipe(
       ofType(verifyEmailSubmit),

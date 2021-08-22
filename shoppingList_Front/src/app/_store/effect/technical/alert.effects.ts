@@ -10,6 +10,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 //#region App Action, Selector, Model
 import * as AccountAPIActions from '@app_action/api/account.api.actions';
+import * as ShoppingListAPIActions from '@app_action/api/shopping-list.api.actions';
 import * as RouterActions from '@ngrx/router-store';
 import * as AlertActions from '@app_alert/_store/alert.actions';
 import * as AlertSelectors from '@app_alert/_store/alert.selectors';
@@ -24,6 +25,7 @@ export class AlertEffects {
 
     this.actions$.pipe(
       ofType(
+        ShoppingListAPIActions.loadActiveFailure,
         AccountAPIActions.loginFailure,
         AccountAPIActions.logoutFailure,
         AccountAPIActions.registerFailure,
