@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 //#endregion
 
 //#region NgRx
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import * as RouterSelector from '@app_selector/router.selectors';
 //#endregion
 
