@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 //#endregion
 
 //#region App Component, Model
-import { TokenStore } from '../../_store/component-store/token.store';
+import { TokenStore } from '../../_component-store/token.store';
 import { FormComponent } from '@app_form/component/form.component';
 import * as ComponentActions from './reset-password.actions';
 import { TokenStatusEnum } from "@app_enum/token-status.enum";
