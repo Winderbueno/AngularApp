@@ -36,9 +36,9 @@
       "@app_store/*": ["src/app/_store/*"],
       "@app_action/*": ["src/app/_store/action/*"],
       "@app_effect/*": ["src/app/_store/effect/*"],
-      "@app_reducer/*": ["src/app/_store/reducer/*"],
-      "@app_selector/*": ["src/app/_store/selector/*"],
-      "@app_state/*": ["src/app/_store/state/*"],
+      "@app_reducer/*": ["src/app/state/reducer/*"],
+      "@app_selector/*": ["src/app/state/selector/*"],
+      "@app_state/*": ["src/app/state/state/*"],
 
       // Model
       "@app_model/*": ["src/app/_model/*"],

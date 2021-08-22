@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 //#region NgRx
 import { Store } from '@ngrx/store';
 import * as ComponentActions from './shopping-list.actions';
-import * as ShoppingListSelector from '@app_selector/shopping-list.selectors';
+import * as ShoppingListSelector from '@app/state/selector/shopping-list.selectors';
 //#endregion
 
 //#region App Component, Model

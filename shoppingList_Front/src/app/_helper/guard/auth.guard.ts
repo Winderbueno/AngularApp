@@ -5,7 +5,7 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 
 //#region NgRx
 import { Store } from '@ngrx/store';
-import * as AccountSelector from '@app_selector/account.selectors';
+import * as AccountSelector from '@app/state/selector/account.selectors';
 //#endregion
 
 //#region App Model

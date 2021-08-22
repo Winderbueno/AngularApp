@@ -1,5 +1,5 @@
 //#region NgRx
-import { ShoppingListState, adapter } from '@app_state/shopping-list.state';
+import { ShoppingListState, adapter } from '@app/state/state/shopping-list.state';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 //#endregion
 

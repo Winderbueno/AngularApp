@@ -1,6 +1,6 @@
 //#region NgRx
 import { Action, createReducer, on } from '@ngrx/store';
-import { AccountState, initialState, adapter } from '@app_state/account.state';
+import { AccountState, initialState, adapter } from '@app/state/state/account.state';
 import * as AccountAPIActions from '@app/_service/action/account.api.actions';
 //#endregion
 

@@ -11,7 +11,7 @@ import { Store } from '@ngrx/store';
 
 //#region App Component, Model
 import { Account } from '@app/_model/account.model';
-import * as AccountSelector from '@app_selector/account.selectors';
+import * as AccountSelector from '@app/state/selector/account.selectors';
 import * as LoaderActions from '@app_loader/_store/loader.actions';
 //#endregion
 
