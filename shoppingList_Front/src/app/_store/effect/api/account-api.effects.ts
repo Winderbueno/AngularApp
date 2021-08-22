@@ -12,8 +12,6 @@ import { loginSubmit } from '@app_account/login/login.actions';
 import { toolbarLogOut } from '@app_layout/toolbar/toolbar.component.actions';
 import { registerSubmit } from '@app_account/register/register.actions';
 import * as ComponentActions from '@app_account/reset-password/reset-password.actions';
-import { validateResetToken } from '@app_account/reset-password/reset-password.actions';
-import { verifyEmailSubmit } from '@app_account/verify-email/verify-email.actions';
 //#endregion
 
 //#region App Service
@@ -102,20 +100,6 @@ export class AccountAPIEffects {
     ))
   ));
 
-  verifyEmail$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(verifyEmailSubmit),
-      exhaustMap((action) =>
-        this.accountService.verifyEmail(action.token).pipe(
-          /* TODO - NgRx
-            error: () => { this.emailStatus = EmailStatusEnum.Failed; }
-          */
-          map(() => AccountAPIActions.verifyEmailSuccess({
-            message: 'Verification successful, you can now login'
-          })),
-          catchError((error) => of(AccountAPIActions.verifyEmailFailure({ error: error })))
-    ))
-  ));
 
   constructor(
     private actions$: Actions,

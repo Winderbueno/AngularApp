@@ -9,6 +9,7 @@ import { catchError, switchMap, tap } from 'rxjs/operators';
 
 //#region App Action
 import * as AccountAPIActions from '@app_action/api/account.api.actions';
+import { Store } from '@ngrx/store';
 //#endregion
 
 export interface ComponentState {
@@ -17,9 +18,11 @@ export interface ComponentState {
 }
 
 @Injectable()
-export class ResetPasswordStore extends ComponentStore<ComponentState> {
+export class TokenStore extends ComponentStore<ComponentState> {
 
-  constructor(private readonly accountService: AccountService) {
+  constructor(
+    private readonly accountService: AccountService,
+    protected store: Store) {
     super({
       tokenStatus: TokenStatusEnum.Validating,
       token: ''
@@ -42,6 +45,26 @@ export class ResetPasswordStore extends ComponentStore<ComponentState> {
         tap({
           next: () => this.setTokenStatus(TokenStatusEnum.Valid),
           error: () => this.setTokenStatus(TokenStatusEnum.Invalid)
+        }),
+        // Handle potential error within inner pipe.
+        catchError(() => EMPTY),
+      )),
+      );
+  });
+
+  // Validate Reset Token
+  readonly verifyEmail = this.effect((token$: Observable<string|undefined>) => {
+    return token$.pipe(
+      switchMap((token) => this.accountService.verifyEmail(token).pipe(
+        tap({
+          next: () => {
+            this.setTokenStatus(TokenStatusEnum.Valid);
+            this.store.dispatch(AccountAPIActions.verifyEmailSuccess({ message: 'Verification successful, you can now login' }));
+          },
+          error: (error) => {
+            this.setTokenStatus(TokenStatusEnum.Invalid);
+            this.store.dispatch(AccountAPIActions.verifyEmailFailure({ error: error }));
+          }
         }),
         // Handle potential error within inner pipe.
         catchError(() => EMPTY),

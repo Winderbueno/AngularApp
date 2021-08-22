@@ -3,43 +3,37 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 //#endregion
 
-//#region NgRx
-import { Store } from '@ngrx/store';
-import * as RouterSelector from '@app_selector/router.selectors';
-//#endregion
-
 //#region App Component, Model
-import * as ComponentActions from './verify-email.actions';
-import { EmailStatusEnum } from "@app_enum/email-status.enum";
+import { TokenStore } from '../../_store/component-store/token.store';
+import { TokenStatusEnum } from "@app_enum/token-status.enum";
 //#endregion
 
 
-@Component({ templateUrl: 'verify-email.component.html' })
+@Component({
+  templateUrl: 'verify-email.component.html',
+  providers: [TokenStore],
+})
 export class VerifyEmailComponent implements OnInit {
 
-  EmailStatusEnum = EmailStatusEnum;
-  emailStatus = EmailStatusEnum.Verifying;
-  token: string | undefined = '';
+  TokenStatusEnum = TokenStatusEnum;
+  tokenStatus = this.tokenStore.tokenStatus$;
+  token = this.tokenStore.token$;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private store: Store
+    private readonly tokenStore: TokenStore,
   ) { }
 
   ngOnInit() {
-    // Get info from Store
-    this.store.select(RouterSelector.selectQueryParam('token')).subscribe(value => this.token = value);
+
+    const token = this.route.snapshot.queryParams['token']
+    this.tokenStore.setToken(token);
 
     // Remove token from url to prevent http referer leakage
-    // TODO - Get Route from store
     this.router.navigate([], { relativeTo: this.route, replaceUrl: true });
 
-    // Dispatch Verify Email action
-    this.store.dispatch(
-      ComponentActions.verifyEmailSubmit({
-        token: this.token
-      })
-    );
+    // Call Backend to Verify Email Token
+    this.tokenStore.verifyEmail(token);
   }
 }

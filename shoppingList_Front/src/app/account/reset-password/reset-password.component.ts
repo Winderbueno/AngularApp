@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 //#endregion
 
 //#region App Component, Model
-import { ResetPasswordStore } from './reset-password.store';
+import { TokenStore } from '../../_store/component-store/token.store';
 import { FormComponent } from '@app_form/component/form.component';
 import * as ComponentActions from './reset-password.actions';
 import { TokenStatusEnum } from "@app_enum/token-status.enum";
@@ -14,19 +14,19 @@ import { Store } from '@ngrx/store';
 
 @Component({
   templateUrl: 'reset-password.component.html',
-  providers: [ResetPasswordStore],
+  providers: [TokenStore],
 })
 export class ResetPasswordComponent extends FormComponent {
 
   TokenStatusEnum = TokenStatusEnum;
-  tokenStatus = this.componentStore.tokenStatus$;
-  token = this.componentStore.token$;
+  tokenStatus = this.tokenStore.tokenStatus$;
+  token = this.tokenStore.token$;
 
   constructor(
     router: Router,
     route: ActivatedRoute,
     store: Store,
-    private readonly componentStore: ResetPasswordStore,
+    private readonly tokenStore: TokenStore,
   ) {
     super(router, route, store);
   }
@@ -37,18 +37,18 @@ export class ResetPasswordComponent extends FormComponent {
     super.ngOnInit();
 
     const token = this.route.snapshot.queryParams['token']
-    this.componentStore.setToken(token);
+    this.tokenStore.setToken(token);
 
     // Remove token from url to prevent http referer leakage
     this.router.navigate([], { relativeTo: this.route, replaceUrl: true });
 
-    // Dispatch ValidateResetToken action
-    this.componentStore.validateResetToken(token);
+    // Call Backend to ValidateResetToken
+    this.tokenStore.validateResetToken(token);
   }
 
   submitAction() {
 
-    this.componentStore.token$
+    this.tokenStore.token$
       .subscribe(token => {
 
         // Dispatch ResetPassword action
