@@ -9,7 +9,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 //#endregion
 
 //#region App Action
-import * as AccountAPIActions from '@app_action/api/account.api.actions';
+import * as AccountAPIActions from '@app_service/action/account.api.actions';
 //#endregion
 
 

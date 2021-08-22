@@ -8,7 +8,7 @@ import { catchError, switchMap, tap } from 'rxjs/operators';
 //#endregion
 
 //#region App Action
-import * as AccountAPIActions from '@app_action/api/account.api.actions';
+import * as AccountAPIActions from '@app_service/action/account.api.actions';
 import { Store } from '@ngrx/store';
 //#endregion
 
