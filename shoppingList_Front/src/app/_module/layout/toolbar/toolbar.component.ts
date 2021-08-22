@@ -9,7 +9,7 @@ import { Store } from '@ngrx/store';
 
 //#region App Component, Model
 import * as ComponentActions from './toolbar.component.actions';
-import * as AccountSelector from '@app_account/_store/account.selectors';
+import * as AccountSelector from '@account_store/account.selectors';
 import { Account } from '@app_model/account.model';
 //#endregion
 

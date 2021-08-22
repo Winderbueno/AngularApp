@@ -20,7 +20,7 @@ import * as fromShoppingList from '@app_shoppingList/_store/shopping-list.reduce
 
 //#region App Module
 import { AppEffectsModule } from '@app_effect/app-effect.module';
-import { AppRouterModule } from '@app_router/app-router.module';
+import { AppRouterModule } from '@app/app-router.module';
 import { AlertModule } from '@app_alert/alert.module';
 import { LayoutModule } from '@app_layout/layout.module';
 //#endregion

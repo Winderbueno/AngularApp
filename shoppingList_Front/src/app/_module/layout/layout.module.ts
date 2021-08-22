@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 //#endregion
 
 //#region App Module
-import { AppRouterModule } from '@app_router/app-router.module';
+import { AppRouterModule } from '@app/app-router.module';
 import { MaterialModule } from '@app_material/material.module';
 //#endregion
 

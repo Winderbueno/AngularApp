@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 //#region App Module
 import { MaterialModule } from '@app_material/material.module';
 import { FormModule } from '@app_form/form.module';
-import { ShoppingListRouterModule } from '@app_router/shopping-list-router.module';
+import { ShoppingListRouterModule } from '@app/shopping-list/shopping-list-router.module';
 //#endregion
 
 //#region Component

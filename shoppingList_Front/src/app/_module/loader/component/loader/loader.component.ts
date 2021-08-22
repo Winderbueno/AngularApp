@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 
 //#region NgRx
 import { Store } from '@ngrx/store';
-import * as LoaderSelector from '../../_store/loader.selectors';
+import * as LoaderSelector from '@loader_store/loader.selectors';
 //#endregion
 
 

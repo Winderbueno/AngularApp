@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 
 //#region NgRx
 import { Store } from '@ngrx/store';
-import * as LoaderActions from '@app_loader/_store/loader.actions';
+import * as LoaderActions from '@loader_store/loader.actions';
 //#endregion
 
 

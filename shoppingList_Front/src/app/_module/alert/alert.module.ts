@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 
 //#region NgRx Module
 import { StoreModule } from '@ngrx/store';
-import * as fromAlert from './_store/alert.reducer';
 //#endregion
 
 //#region App Module
@@ -13,6 +12,7 @@ import { MaterialModule } from '@app_material/material.module';
 //#endregion
 
 //#region Component
+import * as fromAlert from '@alert_store/alert.reducer';
 import { AlertComponent } from '@app_alert/component/alert.component';
 import { SnackbarComponent } from '@app_alert/component/snackbar/snackbar.component';
 //#endregion

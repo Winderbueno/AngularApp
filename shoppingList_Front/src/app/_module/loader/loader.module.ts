@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 
 //#region NgRx Module
 import { StoreModule } from '@ngrx/store';
-import * as fromLoader from './_store/loader.reducer';
+import * as fromLoader from '@loader_store/loader.reducer';
 //#endregion
 
 //#region App Module

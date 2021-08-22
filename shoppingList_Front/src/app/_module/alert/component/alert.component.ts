@@ -5,7 +5,7 @@ import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 
 //#region NgRx
 import { Store } from '@ngrx/store';
-import * as AlertSelector from '@app_alert/_store/alert.selectors';
+import * as AlertSelector from '@alert_store/alert.selectors';
 //#endregion
 
 //#region App Component, Model

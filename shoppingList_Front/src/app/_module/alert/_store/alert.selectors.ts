@@ -1,7 +1,11 @@
 //#region NgRx
-import { AlertState } from './alert.state';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 //#endregion
+
+//#region App Model, Action
+import { AlertState } from '@alert_store/alert.state';
+//#endregion
+
 
 export const selectAlert = createFeatureSelector<AlertState>('alert');
 

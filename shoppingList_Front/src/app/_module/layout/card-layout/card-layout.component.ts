@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 //#region NgRx
 import { Store } from '@ngrx/store';
-import * as AccountSelector from '@app_account/_store/account.selectors';
+import * as AccountSelector from '@account_store/account.selectors';
 //#endregion
 
 

@@ -10,9 +10,8 @@ import { Store } from '@ngrx/store';
 //#endregion
 
 //#region App Component, Model
-import { Account } from '@app/_model/account.model';
 import * as AccountSelector from '@account_store/account.selectors';
-import * as LoaderActions from '@app_loader/_store/loader.actions';
+import * as LoaderActions from '@loader_store/loader.actions';
 //#endregion
 
 

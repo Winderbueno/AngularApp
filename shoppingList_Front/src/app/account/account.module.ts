@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 //#endregion
 
 //#region App Module
-import { AccountRouterModule } from '@app_router/account-router.module';
+import { AccountRouterModule } from '@app_account/account-router.module';
 import { MaterialModule } from '@app_material/material.module';
 import { FormModule } from '@app_form/form.module';
 //#endregion
@@ -15,7 +15,7 @@ import {
   RegisterComponent,
   ForgotPasswordComponent,
   ResetPasswordComponent,
-  VerifyEmailComponent } from '@app/account/component/.';
+  VerifyEmailComponent } from '@app_account/component/.';
 //#endregion
 
 

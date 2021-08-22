@@ -9,8 +9,8 @@ import { Store } from '@ngrx/store';
 //#endregion
 
 //#region App Component, Model
-import { Account } from '@app/_model/account.model';
-import * as AccountSelector from '@app_account/_store/account.selectors';
+import { Account } from '@app_model/account.model';
+import * as AccountSelector from '@account_store/account.selectors';
 //#endregion
 
 // Api Info

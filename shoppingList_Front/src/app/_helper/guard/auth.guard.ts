@@ -8,10 +8,6 @@ import { Store } from '@ngrx/store';
 import * as AccountSelector from '@account_store/account.selectors';
 //#endregion
 
-//#region App Model
-import { Account } from '@app_model/account.model';
-//#endregion
-
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {

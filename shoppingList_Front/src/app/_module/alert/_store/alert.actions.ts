@@ -5,7 +5,7 @@ import { props } from '@ngrx/store';
 //#region App Model, Action
 import { ActionSource } from '@app_action/enum/action-source';
 import { createAction } from '@app_action/creator/action-creator';
-import { AlertTypeEnum } from '../model/enum/alert-type.enum';
+import { AlertTypeEnum } from '@app_alert/model/enum/alert-type.enum';
 //#endregion
 
 

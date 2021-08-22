@@ -5,7 +5,7 @@ import { MatSnackBarRef, MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar'
 
 //#region NgRx
 import { Store } from '@ngrx/store';
-import * as AlertActions from '@app_alert/_store/alert.actions';
+import * as AlertActions from '@alert_store/alert.actions';
 //#endregion
 
 
