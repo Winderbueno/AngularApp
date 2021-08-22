@@ -2,7 +2,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { AccountState, initialState, adapter } from '@app_state/account.state';
 import * as AccountAPIActions from '@app_action/api/account.api.actions';
-import { TokenStatusEnum } from '@app/_model/enum/token-status.enum';
 //#endregion
 
 
@@ -43,14 +42,6 @@ const accountReducer = createReducer(
         //refreshTokenTimeout: clearTimeout(state.refreshTokenTimeout) // TODO - Check if work
       })
     }
-  ),
-
-  on(AccountAPIActions.validateResetTokenSuccess,
-    (state) => { return { ...state, resetTokenStatus: TokenStatusEnum.Valid };}
-  ),
-
-  on(AccountAPIActions.validateResetTokenFailure,
-    (state) => { return { ...state, resetTokenStatus: TokenStatusEnum.Invalid };}
   ),
 
 );

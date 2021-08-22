@@ -18,6 +18,3 @@ export const {
 
 export const getAccounts = createSelector(selectAccount, selectAll)
 export const isLogged = createSelector(selectAccount, (state: AccountState) => state.isLogged);
-
-
-export const resetTokenStatus = createSelector(selectAccount, (state: AccountState) => state.resetTokenStatus);
