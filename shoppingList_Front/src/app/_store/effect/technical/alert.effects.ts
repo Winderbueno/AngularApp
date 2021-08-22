@@ -6,15 +6,14 @@ import { map, withLatestFrom } from 'rxjs/operators';
 //#region NgRx
 import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import * as AccountAPIActions from '@app_action/api/account.api.actions';
-import * as AlertActions from '@app_alert/_store/alert.actions';
-import * as AlertSelectors from '@app_alert/_store/alert.selectors';
-import * as RouterActions from '@ngrx/router-store';
-import { AlertState } from '@app_alert/_store/alert.state';
-import { AlertTypeEnum } from '../../../_module/alert/model/enum/alert-type.enum';
 //#endregion
 
-//#region App Service
+//#region App Action, Selector, Model
+import * as AccountAPIActions from '@app_action/api/account.api.actions';
+import * as RouterActions from '@ngrx/router-store';
+import * as AlertActions from '@app_alert/_store/alert.actions';
+import * as AlertSelectors from '@app_alert/_store/alert.selectors';
+import { AlertTypeEnum } from '@app_alert/model/enum/alert-type.enum';
 //#endregion
 
 
@@ -76,6 +75,6 @@ export class AlertEffects {
 
   constructor(
     private actions$: Actions,
-    private store: Store, // TODO - Comprendre pourquoi besoin specif le state
+    private store: Store,
   ) { }
 }
