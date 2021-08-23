@@ -82,7 +82,7 @@ export class AccountAPIEffects {
               Then : startRefreshTokenTimer();
             error:  }
           */
-          map(() => AccountAPIActions.refreshTokenSuccess()),
+          map((account: Account) => AccountAPIActions.refreshTokenSuccess({ account: account })),
           catchError((error) => of(AccountAPIActions.refreshTokenFailure({ error: error })))
     ))
   ));
@@ -93,7 +93,7 @@ export class AccountAPIEffects {
       ofType(ComponentActions.resetPasswordSubmit),
       exhaustMap((action) =>
         this.accountService.resetPassword(action.token, action.password, action.confirmPassword).pipe(
-          map(() => AccountAPIActions.resetPasswordSuccess({
+          map(() => AccountAPIActions.resetPasswordSuccess({ // TODO - Warn Error msg are in the back, Success msg are in the Front
             message: 'Password successfully reinitialised, you can now log in :)'
           })),
           catchError((error) => of(AccountAPIActions.resetPasswordFailure({ error: error })))

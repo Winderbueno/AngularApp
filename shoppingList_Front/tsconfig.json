@@ -33,6 +33,7 @@
       "@app_shoppingList/*": ["src/app/shopping-list/*"],
 
       // Store
+      "@app_store/*": ["src/app/_store/*"],
       "@app_effect/*": ["src/app/_store/effect/*"],
       "@app_selector/*": ["src/app/_store/selector/*"],
       "@account_store/*": ["src/app/account/_store/*"],

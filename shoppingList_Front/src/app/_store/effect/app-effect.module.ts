@@ -11,6 +11,7 @@ import { ShoppingListAPIEffects } from '@app_effect/api/shopping-list-api.effect
 //#region Technical Effect
 import { AlertEffects } from '@app_effect/technical/alert.effects';
 import { RouterEffects } from '@app_effect/technical/router.effects';
+import { TimeOutEffects } from '../timeout/timeout.effects';
 //#endregion
 
 
@@ -26,7 +27,8 @@ import { RouterEffects } from '@app_effect/technical/router.effects';
     /* Technical Effect */
     EffectsModule.forFeature([
       AlertEffects,
-      RouterEffects
+      RouterEffects,
+      TimeOutEffects,
     ]),
   ],
   declarations: []

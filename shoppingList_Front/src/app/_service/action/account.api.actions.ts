@@ -16,14 +16,16 @@ export const loginSuccess = createAction(
   ActionSource.API,
   'Account',
   'Login Success',
-  props<{ account: Account }>());
+  props<{ account: Account }>()
+);
 
 
 export const loginFailure = createAction(
   ActionSource.API,
   'Account',
   'Login Failure',
-  props<{ error: string }>());
+  props<{ error: string }>()
+);
 
 
 export const logoutSuccess = createAction(
@@ -37,7 +39,8 @@ export const logoutFailure = createAction(
   ActionSource.API,
   'Account',
   'Logout Failure',
-  props<{ error: string }>());
+  props<{ error: string }>()
+);
 
 
 export const registerSuccess = createAction(
@@ -52,7 +55,8 @@ export const registerFailure = createAction(
   ActionSource.API,
   'Account',
   'Register Failure',
-  props<{ error: string }>());
+  props<{ error: string }>()
+);
 
 
 export const verifyEmailSuccess = createAction(
@@ -67,7 +71,8 @@ export const verifyEmailFailure = createAction(
   ActionSource.API,
   'Account',
   'VerifyEmail Failure',
-  props<{ error: string }>());
+  props<{ error: string }>()
+);
 
 
 export const forgotPasswordSuccess = createAction(
@@ -82,7 +87,8 @@ export const forgotPasswordFailure = createAction(
   ActionSource.API,
   'Account',
   'ForgotPassword Failure',
-  props<{ error: string }>());
+  props<{ error: string }>()
+);
 
 
 export const resetPasswordSuccess = createAction(
@@ -97,13 +103,15 @@ export const resetPasswordFailure = createAction(
   ActionSource.API,
   'Account',
   'ResetPassword Failure',
-  props<{ error: string }>());
+  props<{ error: string }>()
+);
 
 
 export const refreshTokenSuccess = createAction(
   ActionSource.API,
   'Account',
   'RefreshToken Success',
+  props<{ account: Account }>()
 );
 
 
@@ -111,7 +119,8 @@ export const refreshTokenFailure = createAction(
   ActionSource.API,
   'Account',
   'RefreshToken Failure',
-  props<{ error: string }>());
+  props<{ error: string }>()
+);
 
 
 export const validateResetTokenSuccess = createAction(
@@ -125,4 +134,5 @@ export const validateResetTokenFailure = createAction(
   ActionSource.API,
   'Account',
   'ValidateResetToken Failure',
-  props<{ error: string }>());
+  props<{ error: string }>()
+);

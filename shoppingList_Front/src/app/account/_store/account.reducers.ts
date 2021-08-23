@@ -10,28 +10,14 @@ const accountReducer = createReducer(
   initialState,
 
   on(AccountAPIActions.loginSuccess,
+     AccountAPIActions.refreshTokenSuccess,
     (state, { account }) => {
-
-      /* TODO - Do this when Login Success
-
-        // Execute this :
-        startRefreshTokenTimer() {
-          if (this.accountValue.jwtToken) {
-          // Parse json object from base64 encoded jwt token
-          const jwtToken = JSON.parse(atob(this.accountValue.jwtToken.split('.')[1]));
-
-          // Set a timeout to refresh the token a minute before it expires
-          const expires = new Date(jwtToken.exp * 1000);
-          const timeout = expires.getTime() - Date.now() - (60 * 1000);
-          this.refreshTokenTimeout = setTimeout(() => this.refreshToken().subscribe(), timeout);
-        }*/
       return adapter.addOne(account, {
         ...state,
-        isLogged: true,
+        isLogged: true
       })
     }
   ),
-
 
   on(AccountAPIActions.logoutSuccess,
     (state) => {
