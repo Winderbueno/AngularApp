@@ -35,6 +35,7 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     // Form definition
+    // TODO - Put this in an NgRx Store :O ?
     this._form = new FormGroup({});
   }
 
