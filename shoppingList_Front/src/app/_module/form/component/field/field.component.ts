@@ -9,7 +9,22 @@ import { FormErrorService } from '@app_form/service/form-error.service';
 
 /**
  * Field Component
- *  @param formMod - FormGroup to add the field control on
+ *
+ * This component manage a Field based on 'FormControl' that has :
+ *  - A Name (Technical Name that refer to the Control)
+ *  - A Label (Displayed Name)
+ *  - A List of Validators (Accessible from children)
+ *  - Related Error Messages (Accessible from children)
+ *
+ * It attaches the FormControl to the provided input FormGroup
+ *
+ *  @param formMod - FormGroup to add the FormControl on
+ *  @param ctrlName - FormControl Technical Name
+ *    If a label is not provided, the Control name is used as label
+ *  @param label - (Optional) - Label of the field
+ *  @param required - (Optional) - Set 'required' validator on FormControl
+ *    true by default
+ *
  */
 @Component({
   selector: 'app-field',

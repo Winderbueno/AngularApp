@@ -7,9 +7,15 @@
   width: 100%;
 }
 
-.form > * {
+// TODO - Could be replace be an "app-form-field"
+app-field-password,
+app-submit-button,
+app-checkbox-field,
+app-input-field,
+app-select-field {
   display: flex;
   width: 100%;
+  flex:1;
 }
 
 mat-form-field {

@@ -1,6 +1,20 @@
 ﻿<!-- Input Field -->
 <mat-form-field>
+
+  <!-- Label -->
   <mat-label>{{ label }}</mat-label>
-  <input matInput [formControl]="ctrl">
+
+  <!-- Input -->
+  <input matInput [formControl]="ctrl" [type]="inputHide ? 'password' : 'text'">
+
+  <!-- If With Feature 'Visibility', Add a button to manage input visibility -->
+  <button *ngIf="withFeature==='visibility'" type="button" mat-icon-button matSuffix (click)="inputHide = !inputHide">
+    <mat-icon>{{inputHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+  </button>
+
+  <!-- Error -->
   <mat-error *ngIf="ctrl.invalid">{{ err.getErrorMsg(ctrl) }}</mat-error>
+
 </mat-form-field>
+
+
