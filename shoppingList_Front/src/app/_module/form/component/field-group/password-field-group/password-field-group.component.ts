@@ -20,9 +20,9 @@ import { MustMatch } from '@app_form/validator/must-match.validator';
  *  - The "confirmPwd" has to have the same value as the pwd
  */
 @Component({
-  selector: 'app-field-password',
-  templateUrl: 'password-field.component.html' })
-export class PasswordFieldComponent implements AfterViewInit {
+  selector: 'app-password-field-group',
+  templateUrl: 'password-field-group.component.html' })
+export class PasswordFieldGroupComponent implements AfterViewInit {
 
   @Input() formMod!: FormGroup;
   @Input() withConfirm: boolean = false;

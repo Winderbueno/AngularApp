@@ -13,7 +13,7 @@ import {
   CheckBoxFieldComponent,
   InputFieldComponent,
   SelectFieldComponent,
-  PasswordFieldComponent,
+  PasswordFieldGroupComponent,
   SubmitButtonComponent } from './component/';
 //#endregion
 
@@ -29,13 +29,13 @@ import {
   ],
   declarations: [
 
-    // Generic Field
+    // Field
     CheckBoxFieldComponent,
     InputFieldComponent,
     SelectFieldComponent,
 
-    // Particular Field
-    PasswordFieldComponent,
+    // Field Group
+    PasswordFieldGroupComponent,
 
     SubmitButtonComponent,
   ],
@@ -44,13 +44,13 @@ import {
     // Form Tools
     ReactiveFormsModule,
 
-    // Generic Field
+    // Field
     CheckBoxFieldComponent,
     InputFieldComponent,
     SelectFieldComponent,
 
-    // Particular Field
-    PasswordFieldComponent,
+    // Field Group
+    PasswordFieldGroupComponent,
 
     SubmitButtonComponent
   ]
