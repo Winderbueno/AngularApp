@@ -10,12 +10,12 @@ import { createAction } from '@app_action/creator/action-creator';
 
 export const refreshTokenTimeOutEnded = createAction(
   ActionSource.API,
-  'Refresh Token Timout',
+  'Refresh Token TimeOut',
   'Ended',
 );
 
 export const startRefreshTokenTimeOut = createAction(
   ActionSource.API,
-  'Refresh Token Timout',
+  'Refresh Token TimeOut',
   'Start',
 );

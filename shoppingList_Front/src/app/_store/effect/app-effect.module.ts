@@ -1,6 +1,7 @@
 //#region Angular & Material & NgRx
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 //#endregion
 
 //#region API Effect
@@ -9,6 +10,7 @@ import { ShoppingListAPIEffects } from '@app_effect/api/shopping-list-api.effect
 //#endregion
 
 //#region Technical Effect
+import * as fromTimeOut from '@app_store/timeout/timeout.reducer';
 import { AlertEffects } from '@app_effect/technical/alert.effects';
 import { RouterEffects } from '@app_effect/technical/router.effects';
 import { TimeOutEffects } from '../timeout/timeout.effects';
@@ -28,8 +30,13 @@ import { TimeOutEffects } from '../timeout/timeout.effects';
     EffectsModule.forFeature([
       AlertEffects,
       RouterEffects,
-      TimeOutEffects,
+      TimeOutEffects
     ]),
+
+    /* Store */
+    // TODO -> SHoudl be somewhere else
+    StoreModule.forFeature('timeout', fromTimeOut.reducer),
+
   ],
   declarations: []
 })
