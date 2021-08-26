@@ -21,7 +21,6 @@ const alertReducer = createReducer(
           type: action.alertType,
           message: action.message,
         }),
-
       };
     }
   ),

@@ -5,7 +5,6 @@ import * as LoaderActions from '@loader_store/loader.actions';
 //#endregion
 
 
-/* Reducer */
 const loaderReducer = createReducer(
   initialState,
 

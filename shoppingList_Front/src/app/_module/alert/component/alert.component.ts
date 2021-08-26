@@ -46,7 +46,7 @@ export class AlertComponent implements OnInit {
       this.snackBarRef = this.snackBar.openFromComponent(SnackbarComponent, {
         data: msg,
         panelClass: panelClass,
-        duration: 10000
+        duration: 10000 // TODO - should be in app conf
       });
     }
 }
