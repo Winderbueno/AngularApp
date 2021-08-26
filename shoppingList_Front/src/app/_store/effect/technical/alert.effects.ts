@@ -77,6 +77,6 @@ export class AlertEffects {
 
   constructor(
     private actions$: Actions,
-    private store: Store,
+    private store: Store
   ) { }
 }
