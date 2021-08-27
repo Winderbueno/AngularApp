@@ -1,10 +1,6 @@
-//#region Angular & Material
+//#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
-import { timer } from 'rxjs';
-import { map, switchMap, withLatestFrom } from 'rxjs/operators';
-//#endregion
-
-//#region NgRx
+import { map, withLatestFrom } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 //#endregion

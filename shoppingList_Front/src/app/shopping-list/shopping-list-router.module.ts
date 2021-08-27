@@ -1,4 +1,4 @@
-//#region Angular & Material
+//#region Angular, Material, NgRx
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 //#endregion

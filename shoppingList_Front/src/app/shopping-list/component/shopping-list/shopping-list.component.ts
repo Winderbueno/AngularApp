@@ -1,4 +1,4 @@
-//#region Angular & Material
+//#region Angular, Material, NgRx
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatAccordion } from '@angular/material/expansion';

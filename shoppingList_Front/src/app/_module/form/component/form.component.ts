@@ -1,4 +1,4 @@
-//#region Angular & Material
+//#region Angular, Material, NgRx
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';

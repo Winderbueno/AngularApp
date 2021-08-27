@@ -1,4 +1,4 @@
-//#region Angular & Material
+//#region Angular, Material, NgRx
 import { Component } from '@angular/core';
 //#endregion
 

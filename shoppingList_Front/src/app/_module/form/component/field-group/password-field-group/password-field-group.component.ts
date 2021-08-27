@@ -1,4 +1,4 @@
-﻿//#region Angular & Material
+﻿//#region Angular, Material, NgRx
 import { Component, Input, AfterViewInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 //#endregion

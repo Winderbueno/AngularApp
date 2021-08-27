@@ -1,4 +1,4 @@
-﻿//#region Angular & Material
+﻿//#region Angular, Material, NgRx
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 //#endregion

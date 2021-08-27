@@ -1,4 +1,4 @@
-//#region Angular & Material & NgRx
+//#region Angular, Material, NgRx & NgRx
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';

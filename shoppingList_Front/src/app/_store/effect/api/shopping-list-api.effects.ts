@@ -1,4 +1,4 @@
-//#region Angular & Material
+//#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { map, switchMap, catchError } from 'rxjs/operators';

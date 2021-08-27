@@ -1,4 +1,4 @@
-//#region Angular & Material
+//#region Angular, Material, NgRx
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, ValidatorFn, Validators } from '@angular/forms';
 //#endregion
