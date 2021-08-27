@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+//#endregion
 
 //#region App Module
 import { MaterialModule } from '@app_material/material.module';

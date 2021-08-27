@@ -1,10 +1,10 @@
 ﻿//#region Angular, Material, NgRx
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 //#endregion
 
-//#region NgRx
-import { Store } from '@ngrx/store';
+//#region App Model, Action, Selector
 import * as AccountSelector from '@account_store/account.selectors';
 //#endregion
 

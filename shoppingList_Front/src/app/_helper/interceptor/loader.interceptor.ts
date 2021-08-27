@@ -1,11 +1,11 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 //#endregion
 
-//#region NgRx
-import { Store } from '@ngrx/store';
+//#region App Model, Action, Selector
 import * as LoaderActions from '@loader_store/loader.actions';
 //#endregion
 

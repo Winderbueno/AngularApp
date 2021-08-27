@@ -1,14 +1,11 @@
 ﻿//#region Angular, Material, NgRx
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
-//#endregion
-
-//#region NgRx
 import { Store } from '@ngrx/store';
-import * as AlertSelector from '@alert_store/alert.selectors';
 //#endregion
 
-//#region App Component, Model
+//#region App Model, Action, Selector
+import * as AlertSelector from '@alert_store/alert.selectors';
 import { SnackbarComponent } from '@app_alert/component/snackbar/snackbar.component';
 import { AlertTypeEnumClass } from '@app_alert/model/enum/alert-type.enum';
 //#endregion

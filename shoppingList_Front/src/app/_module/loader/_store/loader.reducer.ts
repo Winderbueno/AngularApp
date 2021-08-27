@@ -1,5 +1,8 @@
 //#region NgRx
 import { Action, createReducer, on } from '@ngrx/store';
+//#endregion
+
+//#region Loader Store
 import { LoaderState, initialState } from '@loader_store/loader.state';
 import * as LoaderActions from '@loader_store/loader.actions';
 //#endregion

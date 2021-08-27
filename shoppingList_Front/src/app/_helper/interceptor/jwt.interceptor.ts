@@ -1,14 +1,11 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 //#endregion
 
-//#region NgRx
-import { Store } from '@ngrx/store';
-//#endregion
-
-//#region App Component, Model
+//#region App Model, Action, Selector
 import { Account } from '@app_model/account.model';
 import * as AccountSelector from '@account_store/account.selectors';
 //#endregion

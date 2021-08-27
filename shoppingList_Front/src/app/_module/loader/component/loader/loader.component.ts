@@ -1,9 +1,9 @@
 ﻿//#region Angular, Material, NgRx
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 //#endregion
 
-//#region NgRx
-import { Store } from '@ngrx/store';
+//#region App Model, Action, Selector
 import * as LoaderSelector from '@loader_store/loader.selectors';
 //#endregion
 

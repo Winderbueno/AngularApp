@@ -3,7 +3,7 @@ import { ActionCreator, ActionCreatorProps, NotAllowedCheck } from '@ngrx/store'
 import { TypedAction } from '@ngrx/store/src/models';
 //#endregion
 
-//#region App Component, Model
+//#region App Action
 import { createAction } from '@app_action/creator/action-creator';
 import { ActionSource } from '@app_action/enum/action-source';
 //#endregion

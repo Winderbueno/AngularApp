@@ -1,15 +1,15 @@
-//#region NgRx
+//#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
-import { AccountService } from '@app/_service/account.service';
-import { TokenStatusEnum } from '@app_model/enum/token-status.enum';
 import { ComponentStore } from '@ngrx/component-store';
+import { Store } from '@ngrx/store';
 import { EMPTY, Observable } from 'rxjs';
 import { catchError, switchMap, tap } from 'rxjs/operators';
 //#endregion
 
-//#region App Action
+//#region App Model, Action, Selector
+import { AccountService } from '@app/_service/account.service';
+import { TokenStatusEnum } from '@app_model/enum/token-status.enum';
 import * as AccountAPIActions from '@app_service/action/account.api.actions';
-import { Store } from '@ngrx/store';
 //#endregion
 
 export interface ComponentState {
@@ -52,13 +52,13 @@ export class TokenStore extends ComponentStore<ComponentState> {
       );
   });
 
-  // Validate Reset Token
+  // Validate Mail Token
   readonly verifyEmail = this.effect((token$: Observable<string|undefined>) => {
     return token$.pipe(
       switchMap((token) => this.accountService.verifyEmail(token).pipe(
         tap({
           next: () => {
-            this.setTokenStatus(TokenStatusEnum.Valid);
+            this.setTokenStatus(TokenStatusEnum.Valid); // TODO Message to standardize
             this.store.dispatch(AccountAPIActions.verifyEmailSuccess({ message: 'Verification successful, you can now login' }));
           },
           error: (error) => {

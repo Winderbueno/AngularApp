@@ -2,9 +2,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-//#endregion
-
-//#region NgRx
 import { Store } from '@ngrx/store';
 //#endregion
 

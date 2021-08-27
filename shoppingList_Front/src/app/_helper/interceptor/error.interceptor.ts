@@ -3,17 +3,13 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
-//#endregion
-
-//#region NgRx
 import { Store } from '@ngrx/store';
 //#endregion
 
-//#region App Component, Model
+//#region App Model, Action, Selector
 import * as AccountSelector from '@account_store/account.selectors';
 import * as LoaderActions from '@loader_store/loader.actions';
 //#endregion
-
 
 
 @Injectable({ providedIn: 'root' })

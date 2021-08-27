@@ -1,9 +1,6 @@
 //#region Angular, Material, NgRx
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-//#endregion
-
-//#region NgRx Module
 import { StoreModule } from '@ngrx/store';
 //#endregion
 
@@ -11,7 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { MaterialModule } from '@app_material/material.module';
 //#endregion
 
-//#region Component
+//#region App Model, Action, Selector
 import * as fromAlert from '@alert_store/alert.reducer';
 import { AlertComponent } from '@app_alert/component/alert.component';
 import { SnackbarComponent } from '@app_alert/component/snackbar/snackbar.component';
