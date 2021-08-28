@@ -23,6 +23,7 @@ import { AppEffectsModule } from '@app_effect/app-effect.module';
 import { AppRouterModule } from '@app/app-router.module';
 import { AlertModule } from '@app_alert/alert.module';
 import { LayoutModule } from '@app_layout/layout.module';
+import { TimerModule } from '@app_timer/timer.module';
 //#endregion
 
 //#region Service
@@ -70,6 +71,7 @@ const appearance: MatFormFieldDefaultOptions = { appearance: 'outline' };
     /* App Module */
     AppEffectsModule,
     AppRouterModule,
+    TimerModule,
     AlertModule,
     LayoutModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),

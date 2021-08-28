@@ -26,7 +26,7 @@
       "@shoppingList_store/*": ["src/app/shopping-list/_store/*"],
       "@alert_store/*": ["src/app/_module/alert/_store/*"],
       "@loader_store/*": ["src/app/_module/loader/_store/*"],
-      "@timeout_store/*": ["src/app/_module/timeout/_store/*"],
+      "@timer_store/*": ["src/app/_module/timer/_store/*"],
 
       // Model
       "@app_model/*": ["src/app/_model/*"],
@@ -42,6 +42,7 @@
       "@app_layout/*": ["src/app/_module/layout/*"],
       "@app_loader/*": ["src/app/_module/loader/*"],
       "@app_material/*": ["src/app/_module/material/*"],
+      "@app_timer/*": ["src/app/_module/timer/*"],
       "@app_action/*": ["src/app/_module/store/action/*"],
       "@mod_store/*": ["src/app/_module/store/*"],
     },

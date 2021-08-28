@@ -7,7 +7,7 @@ import { map, catchError, exhaustMap } from 'rxjs/operators';
 
 //#region App Action
 import * as AccountAPIActions from '@app_service/action/account.api.actions';
-import * as TimeOutActions from '@timeout_store/timeout.actions';
+import * as TimerTriggeredActions from '@app_store/timer-triggered.actions';
 import { forgotPasswordSubmit } from '@app_account/component/forgot-password/forgot-password.actions';
 import { toolbarLogOut } from '@app_layout/toolbar/toolbar.component.actions';
 import { loginSubmit } from '@app_account/component/login/login.actions';
@@ -76,7 +76,7 @@ export class AccountAPIEffects {
     this.actions$.pipe(
       ofType(
         // TODO -> Also called at App Init, maybe start timout at App Init ?
-        TimeOutActions.refreshTokenTimeOutEnded),
+        TimerTriggeredActions.refreshTokenTimeOutEnded),
       exhaustMap(() =>
         this.accountService.refreshToken().pipe(
           /* TODO_NGRX
