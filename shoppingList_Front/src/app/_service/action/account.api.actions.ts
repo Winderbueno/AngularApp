@@ -1,20 +1,18 @@
-//#region NgRx
+//#region Action Creator
 import { props } from '@ngrx/store';
-//#endregion
-
-//#region App Action
-import { ActionSource } from '@app_action/enum/action-source';
 import { createAction } from '@app_action/creator/action-creator';
+import { ActionSource } from '@app_action/enum/action-source';
+import { API } from '@app_action/enum/action-api';
 //#endregion
 
-//#region Model
+//#region App Model
 import { Account } from '@app_model/account.model';
 //#endregion
 
 
 export const loginSuccess = createAction(
   ActionSource.API,
-  'Account',
+  API.ACCOUNT,
   'Login Success',
   props<{ account: Account }>()
 );
@@ -22,7 +20,7 @@ export const loginSuccess = createAction(
 
 export const loginFailure = createAction(
   ActionSource.API,
-  'Account',
+  API.ACCOUNT,
   'Login Failure',
   props<{ error: string }>()
 );
@@ -30,14 +28,14 @@ export const loginFailure = createAction(
 
 export const logoutSuccess = createAction(
   ActionSource.API,
-  'Account',
+  API.ACCOUNT,
   'Logout Success',
 );
 
 
 export const logoutFailure = createAction(
   ActionSource.API,
-  'Account',
+  API.ACCOUNT,
   'Logout Failure',
   props<{ error: string }>()
 );
@@ -45,7 +43,7 @@ export const logoutFailure = createAction(
 
 export const registerSuccess = createAction(
   ActionSource.API,
-  'Account',
+  API.ACCOUNT,
   'Register Success',
   props<{ message: string }>()
 );
@@ -53,7 +51,7 @@ export const registerSuccess = createAction(
 
 export const registerFailure = createAction(
   ActionSource.API,
-  'Account',
+  API.ACCOUNT,
   'Register Failure',
   props<{ error: string }>()
 );
@@ -61,7 +59,7 @@ export const registerFailure = createAction(
 
 export const verifyEmailSuccess = createAction(
   ActionSource.API,
-  'Account',
+  API.ACCOUNT,
   'VerifyEmail Success',
   props<{ message: string }>()
 );
@@ -69,7 +67,7 @@ export const verifyEmailSuccess = createAction(
 
 export const verifyEmailFailure = createAction(
   ActionSource.API,
-  'Account',
+  API.ACCOUNT,
   'VerifyEmail Failure',
   props<{ error: string }>()
 );
@@ -77,7 +75,7 @@ export const verifyEmailFailure = createAction(
 
 export const forgotPasswordSuccess = createAction(
   ActionSource.API,
-  'Account',
+  API.ACCOUNT,
   'ForgotPassword Success',
   props<{ message: string }>()
 );
@@ -85,7 +83,7 @@ export const forgotPasswordSuccess = createAction(
 
 export const forgotPasswordFailure = createAction(
   ActionSource.API,
-  'Account',
+  API.ACCOUNT,
   'ForgotPassword Failure',
   props<{ error: string }>()
 );
@@ -93,7 +91,7 @@ export const forgotPasswordFailure = createAction(
 
 export const resetPasswordSuccess = createAction(
   ActionSource.API,
-  'Account',
+  API.ACCOUNT,
   'ResetPassword Success',
   props<{ message: string }>()
 );
@@ -101,7 +99,7 @@ export const resetPasswordSuccess = createAction(
 
 export const resetPasswordFailure = createAction(
   ActionSource.API,
-  'Account',
+  API.ACCOUNT,
   'ResetPassword Failure',
   props<{ error: string }>()
 );
@@ -109,7 +107,7 @@ export const resetPasswordFailure = createAction(
 
 export const refreshTokenSuccess = createAction(
   ActionSource.API,
-  'Account',
+  API.ACCOUNT,
   'RefreshToken Success',
   props<{ account: Account }>()
 );
@@ -117,7 +115,7 @@ export const refreshTokenSuccess = createAction(
 
 export const refreshTokenFailure = createAction(
   ActionSource.API,
-  'Account',
+  API.ACCOUNT,
   'RefreshToken Failure',
   props<{ error: string }>()
 );
@@ -125,14 +123,14 @@ export const refreshTokenFailure = createAction(
 
 export const validateResetTokenSuccess = createAction(
   ActionSource.API,
-  'Account',
+  API.ACCOUNT,
   'ValidateResetToken Success',
 );
 
 
 export const validateResetTokenFailure = createAction(
   ActionSource.API,
-  'Account',
+  API.ACCOUNT,
   'ValidateResetToken Failure',
   props<{ error: string }>()
 );

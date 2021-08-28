@@ -7,8 +7,8 @@ import { catchError, switchMap, tap } from 'rxjs/operators';
 //#endregion
 
 //#region App Model, Action, Selector
-import { AccountService } from '@app/_service/account.service';
 import { TokenStatusEnum } from '@app_model/enum/token-status.enum';
+import { AccountService } from '@app_service/account.service';
 import * as AccountAPIActions from '@app_service/action/account.api.actions';
 //#endregion
 

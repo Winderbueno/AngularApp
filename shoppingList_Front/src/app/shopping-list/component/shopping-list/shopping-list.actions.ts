@@ -1,7 +1,6 @@
 //#region NgRx
 import { props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
-
 //#endregion
 
 //#region App Action

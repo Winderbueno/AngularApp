@@ -1,5 +1,5 @@
 //#region NgRx
-import { TimeOutState } from '@app/_store/timeout/timeout.state';
+import { TimeOutState } from './timeout.state';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 //#endregion
 

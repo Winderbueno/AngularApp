@@ -1,15 +1,15 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, catchError, exhaustMap } from 'rxjs/operators';
 //#endregion
 
-//#region NgRx
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { toolbarLogOut } from '@app_layout/toolbar/toolbar.component.actions';
+//#region App Action
 import * as AccountAPIActions from '@app_service/action/account.api.actions';
-import * as TimeOutActions from '@app_store/timeout/timeout.actions';
+import * as TimeOutActions from '@timeout_store/timeout.actions';
 import { forgotPasswordSubmit } from '@app_account/component/forgot-password/forgot-password.actions';
+import { toolbarLogOut } from '@app_layout/toolbar/toolbar.component.actions';
 import { loginSubmit } from '@app_account/component/login/login.actions';
 import { registerSubmit } from '@app_account/component/register/register.actions';
 import * as ComponentActions from '@app_account/component/reset-password/reset-password.actions';

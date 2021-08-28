@@ -1,6 +1,6 @@
 //#region NgRx
 import { Action, createReducer, on } from '@ngrx/store';
-import { TimeOutState, initialState } from '@app/_store/timeout/timeout.state';
+import { TimeOutState, initialState } from './timeout.state';
 import * as AccountAPIActions from '@app_service/action/account.api.actions';
 //#endregion
 

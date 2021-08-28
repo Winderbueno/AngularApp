@@ -1,24 +1,26 @@
-//#region NgRx
-import { createAction, props } from '@ngrx/store';
+//#region Action Creator
+import { props } from '@ngrx/store';
+import { createAction } from '@app_action/creator/action-creator';
+import { ActionSource } from '@app_action/enum/action-source';
+import { API } from '@app_action/enum/action-api';
 //#endregion
 
-//#region App Component, Model
+//#region App Model
 import { ShoppingList } from '@app_model/shopping-list.model';
 //#endregion
 
 
-/* Action Type */
-export enum ShoppingListAPIActionTypes {
-  LOAD_ACTIVE_SUCCESS = '[ShoppingList API] Load Active Success',
-  LOAD_ACTIVE_FAILURE = '[ShoppingList API] Load Active Failure',
-}
-
-
 export const loadActiveSuccess = createAction(
-  ShoppingListAPIActionTypes.LOAD_ACTIVE_SUCCESS,
-  props<{ shoppingList: ShoppingList }>());
+  ActionSource.API,
+  API.SHOPPING_LIST,
+  'Load Active Success',
+  props<{ shoppingList: ShoppingList }>()
+);
 
 
 export const loadActiveFailure = createAction(
-  ShoppingListAPIActionTypes.LOAD_ACTIVE_FAILURE,
-  props<{ error:string }>());
+  ActionSource.API,
+  API.SHOPPING_LIST,
+  'Load Active Failure',
+  props<{ error: string }>()
+);

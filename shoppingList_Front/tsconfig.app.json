@@ -26,6 +26,7 @@
       "@shoppingList_store/*": ["src/app/shopping-list/_store/*"],
       "@alert_store/*": ["src/app/_module/alert/_store/*"],
       "@loader_store/*": ["src/app/_module/loader/_store/*"],
+      "@timeout_store/*": ["src/app/_module/timeout/_store/*"],
 
       // Model
       "@app_model/*": ["src/app/_model/*"],

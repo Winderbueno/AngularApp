@@ -1,13 +1,13 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
-import { map, withLatestFrom } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { map, withLatestFrom } from 'rxjs/operators';
 //#endregion
 
 //#region App Action
-import * as TimeOutSelector from '@app/_store/timeout/timeout.selectors';
-import * as TimeOutActions from '@app/_store/timeout/timeout.actions';
+import * as TimeOutSelector from '@timeout_store/timeout.selectors';
+import * as TimeOutActions from '@timeout_store/timeout.actions';
 import * as AccountAPIActions from '@app_service/action/account.api.actions';
 //#endregion
 

@@ -8,6 +8,7 @@ import { map, switchMap, catchError } from 'rxjs/operators';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as ShoppingListAPIActions from '@app/_service/action/shopping-list.api.actions';
 import * as ShoppingListComponentActions from '@app/shopping-list/component/shopping-list/shopping-list.actions';
+import * as AccountAPIActions from '@app_service/action/account.api.actions';
 //#endregion
 
 //#region App Service
@@ -21,7 +22,9 @@ export class ShoppingListAPIEffects {
 
   // Load user's active shoppingList from server
   getActive$ = createEffect(() => this.actions$.pipe(
-    ofType(ShoppingListComponentActions.loadActive),
+    ofType(
+      ShoppingListComponentActions.loadActive,
+      AccountAPIActions.loginSuccess),
 
     switchMap(() =>
       this.shoppingListService.getActive().pipe(
