@@ -10,7 +10,7 @@ const accountReducer = createReducer(
   initialState,
 
   on(AccountAPIActions.loginSuccess,
-     AccountAPIActions.refreshTokenSuccess,
+     AccountAPIActions.refreshTokenSuccess, // TODO - Test that it works
     (state, { account }) => {
       return adapter.addOne(account, {
         ...state,

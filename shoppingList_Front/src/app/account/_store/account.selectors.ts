@@ -3,8 +3,6 @@ import { AccountState, adapter } from './account.state';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 //#endregion
 
-import {  } from '@ngrx/store';
-
 export const selectAccount = createFeatureSelector<AccountState>('account');
 
 /* Selector */

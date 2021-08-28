@@ -9,12 +9,8 @@ import { Account } from '@app_model/account.model';
 
 /* State */
 export interface AccountState extends EntityState<Account> {
-  // Additional entity state properties
   // connectedAccountId: string | null;
   isLogged:boolean;
-
-  // To refresh connection
-  refreshTokenTimeout: NodeJS.Timeout;
 }
 
 
@@ -29,5 +25,4 @@ export const adapter : EntityAdapter<Account> =
 export const initialState: AccountState =
   adapter.getInitialState({
     isLogged: false,
-    refreshTokenTimeout: setTimeout(() => {return;},5/*this.refreshToken().subscribe()*/), // TODO init the timout
   });
