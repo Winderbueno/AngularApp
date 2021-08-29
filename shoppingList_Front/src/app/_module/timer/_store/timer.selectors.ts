@@ -1,9 +1,12 @@
 //#region NgRx
 import { TimerState, adapter } from './timer.state';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
+import { filter, memoize } from 'lodash';
+import { Dictionary } from '@ngrx/entity';
+import { Timer } from '../model/timer.model';
 //#endregion
 
-export const selectTimeOut = createFeatureSelector<TimerState>('timeout');
+export const selectTimer = createFeatureSelector<TimerState>('timer');
 
 /* Selector */
 export const {
@@ -13,13 +16,11 @@ export const {
   selectTotal
 } = adapter.getSelectors();
 
-export const selectTimeOutByName =
+export const selectTimerByName = (timerName: string | undefined) =>
   createSelector(
     selectEntities,
-    (entities) => {
-      if(entities != undefined){
-        entities[0] // TODO - filter to get the right one based on name (use lodash ?)
-      }
-    });
+    (entities: Dictionary<Timer>) => filter(entities, { name: timerName })
+  );
 
-export const getTimeOut = createSelector(selectTimeOut, (state: TimerState) => state.entities[0]);
+export const getTimeOut = (name: string) =>
+  createSelector(selectTimer, (state: TimerState) => state.entities[name]);

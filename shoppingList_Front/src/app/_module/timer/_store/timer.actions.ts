@@ -30,5 +30,16 @@ export const timerDefined = createAction(
   ActionSource.MODULE,
   Module.TIMER,
   'Defined',
-  props<{ name: string }>()
+  props<{
+    name: string,
+    timeoutHandler: number
+  }>()
+);
+
+
+export const timerDeleted = createAction(
+  ActionSource.MODULE,
+  Module.TIMER,
+  'Deleted',
+  props<{ name: string | undefined }>()
 );

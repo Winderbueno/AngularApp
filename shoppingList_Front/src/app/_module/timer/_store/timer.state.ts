@@ -8,7 +8,7 @@ export interface TimerState extends EntityState<Timer> {}
 /* Adapter */
 export const adapter : EntityAdapter<Timer> =
   createEntityAdapter<Timer>({
-    selectId: (timeOut: Timer) => timeOut.timeOutId,
+    selectId: (timer: Timer) => timer.name,
   });
 
 

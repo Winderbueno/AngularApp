@@ -2,6 +2,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { TimerState, initialState, adapter } from './timer.state';
 import * as TimerActions from '@timer_store/timer.actions';
+import { filter } from 'lodash';
 //#endregion
 
 
@@ -13,10 +14,27 @@ const timeOutReducer = createReducer(
   ),
 
 
-  /*on(TimerActions.deleteTimer,
+  on(TimerActions.timerDefined,
+    (state, action) => {
+      return adapter.updateOne(
+        {
+          id: action.name,
+          changes: { timeoutHandler: action.timeoutHandler }
+        }, state);
+    }
+  ),
+
+
+  on(TimerActions.timerDeleted,
     //refreshTokenTimeout: clearTimeout(state.refreshTokenTimeout) // TODO - Check if work
-    (state, action) => { return adapter.removeOne(action.timer, state) }
-  ),*/
+    (state, action) => {
+      if(action.name === undefined){
+        return state;
+      } else {
+        return adapter.removeOne(action.name, state);
+      }
+    }
+  ),
 
 );
 
