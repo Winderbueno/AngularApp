@@ -28,6 +28,7 @@ const timeOutReducer = createReducer(
   // When the effect have deleted the timer, we delete it from the state
   on(TimerActions.timerDeleted,
     (state, action) => {
+      // TODO - have a name always defined
       if(action.name === undefined){
         return state;
       } else {

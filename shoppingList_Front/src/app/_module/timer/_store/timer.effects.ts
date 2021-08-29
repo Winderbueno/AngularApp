@@ -39,6 +39,7 @@ export class TimerEffects {
       withLatestFrom((action) => this.store.select(TimerSelectors.selectTimerByName(action.name))),
       map((timer) => {
 
+        // TODO - Why is this an Observable ?
         timer.subscribe(val => {
           clearTimeout(val?.timeoutHandler);
           this.name = val?.name;
