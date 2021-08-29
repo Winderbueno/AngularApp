@@ -2,6 +2,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { ShoppingListState, initialState, adapter } from './shopping-list.state';
 import * as ShoppingListAPIActions from '@app/_service/action/shopping-list.api.actions';
+import * as AccountAPIActions from '@app/_service/action/account.api.actions';
 //#endregion
 
 
@@ -11,13 +12,22 @@ const shoppingListReducer = createReducer(
 
   on(ShoppingListAPIActions.loadActiveSuccess,
     (state, { shoppingList }) => {
-      return adapter.addOne(shoppingList, state)
+      return adapter.addOne(shoppingList,
+        { ...state,
+          isActiveLoaded: true
+        }
+      )
     }
   ),
 
-  // TODO - error: error => { this.alertService.error(error); }
-  on(ShoppingListAPIActions.loadActiveFailure,
-    state => state),
+  on(AccountAPIActions.logoutSuccess,
+      (state) => {
+        return adapter.removeAll({
+          ...state,
+          isActiveLoaded: false,
+        })
+      }
+    ),
 );
 
 export function reducer(state: ShoppingListState | undefined, action: Action) {

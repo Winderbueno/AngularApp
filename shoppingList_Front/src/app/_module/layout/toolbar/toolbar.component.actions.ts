@@ -1,6 +1,6 @@
 //#region Action Creator
 import { createAction } from '@app_action/creator/action-creator';
-import { ActionSource } from '@app_action/enum/action-source';
+import { ActionSource } from '@app_action/enum/action-source.enum';
 //#endregion
 
 

@@ -1,11 +1,8 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { tap } from 'rxjs/operators';
-//#endregion
-
-//#region NgRx
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { tap } from 'rxjs/operators';
 //#endregion
 
 //#region App Action
@@ -34,7 +31,7 @@ export class RouterEffects {
 
   /* If Login Succeed, this effect route to the page
    * the user attempted to access before login */
-  routeToRequestedPage$ = createEffect(
+  routeToRequestedPageAfterLogin$ = createEffect(
 
     () => this.actions$.pipe(
       ofType(AccountAPIActions.loginSuccess),

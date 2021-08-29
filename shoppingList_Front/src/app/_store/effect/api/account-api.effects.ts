@@ -30,7 +30,7 @@ export class AccountAPIEffects {
       exhaustMap((action) =>
         this.accountService.forgotPassword(action.email).pipe(
           map(() => AccountAPIActions.forgotPasswordSuccess({
-            message: 'Please check your email for password reset instructions'
+            message: 'Please check your email for password reset instructions' // TODO - Msg
           })),
           catchError((error) => of(AccountAPIActions.forgotPasswordFailure({ error: error })))
     ))
@@ -65,7 +65,7 @@ export class AccountAPIEffects {
       exhaustMap((action) =>
         this.accountService.register(action.account).pipe(
           map(() => AccountAPIActions.registerSuccess({
-            message: 'Registration successful, please check your email for verification instructions'
+            message: 'Registration successful, please check your email for verification instructions' // TODO - Msg
           })),
           catchError((error) => of(AccountAPIActions.registerFailure({ error: error })))
     ))
@@ -79,12 +79,6 @@ export class AccountAPIEffects {
         TimerTriggeredActions.refreshTokenTimeOutEnded),
       exhaustMap(() =>
         this.accountService.refreshToken().pipe(
-          /* TODO_NGRX
-            next:
-              set Account info in store
-              Then : startRefreshTokenTimer();
-            error:  }
-          */
           map((account: Account) => AccountAPIActions.refreshTokenSuccess({ account: account })),
           catchError((error) => of(AccountAPIActions.refreshTokenFailure({ error: error })))
     ))
@@ -96,7 +90,7 @@ export class AccountAPIEffects {
       ofType(ComponentActions.resetPasswordSubmit),
       exhaustMap((action) =>
         this.accountService.resetPassword(action.token, action.password, action.confirmPassword).pipe(
-          map(() => AccountAPIActions.resetPasswordSuccess({ // TODO - Warn Error msg are in the back, Success msg are in the Front
+          map(() => AccountAPIActions.resetPasswordSuccess({ // TODO - Msg (Error msg are in BACK, Success msg are here)
             message: 'Password successfully reinitialised, you can now log in :)'
           })),
           catchError((error) => of(AccountAPIActions.resetPasswordFailure({ error: error })))
