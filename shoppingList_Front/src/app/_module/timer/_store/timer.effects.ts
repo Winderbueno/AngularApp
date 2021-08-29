@@ -14,6 +14,7 @@ import * as TimerSelectors from '@timer_store/timer.selectors';
 @Injectable()
 export class TimerEffects {
 
+  // TODO - Find a way not to use a class property ?
   name: string|undefined = 'test';
 
   defineTimeout$ = createEffect(() =>
@@ -35,17 +36,14 @@ export class TimerEffects {
   deleteTimeout$ = createEffect(() =>
     this.actions$.pipe(
       ofType(TimerActions.deleteTimer),
-      // TODO - Should get Timer By Name
-      withLatestFrom((action) => this.store.select(TimerSelectors.getTimeOut(action.name))),
+      withLatestFrom((action) => this.store.select(TimerSelectors.selectTimerByName(action.name))),
       map((timer) => {
-
 
         timer.subscribe(val => {
           clearTimeout(val?.timeoutHandler);
           this.name = val?.name;
           }
         )
-
 
         return TimerActions.timerDeleted({ name: this.name });
       })
