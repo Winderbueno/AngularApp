@@ -9,7 +9,7 @@ import { Store } from '@ngrx/store';
 //#endregion
 
 //#region App Component, Model
-import { FormComponent } from '@app_form/component/form.component';
+import { FormComponent } from '@form/component/form.component';
 import { Enum } from '@app_model/enum.model';
 import { CreateProductReq } from '@app_model/create-product-req.model';
 import { AccountService } from '@app_service/account.service';

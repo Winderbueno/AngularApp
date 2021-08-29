@@ -5,8 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 //#endregion
 
 //#region App Module
-import { MaterialModule } from '@app_material/material.module';
-import { LoaderModule } from '@app_loader/loader.module';
+import { MaterialModule } from '@material/material.module';
+import { LoaderModule } from '@loader/loader.module';
 //#endregion
 
 //#region Component

@@ -4,7 +4,7 @@ import { FormGroup, FormControl, ValidatorFn, Validators } from '@angular/forms'
 //#endregion
 
 //#region App Component, Model
-import { FormErrorService } from '@app_form/service/form-error.service';
+import { FormErrorService } from '@form/service/form-error.service';
 //#endregion
 
 /**

@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 //#endregion
 
 //#region Routed Component
-import { CardLayoutComponent } from '@app_layout/card-layout/card-layout.component';
+import { CardLayoutComponent } from '@layout/card-layout/card-layout.component';
 import {
   LoginComponent,
   RegisterComponent,

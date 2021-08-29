@@ -4,8 +4,8 @@ import { Update } from '@ngrx/entity';
 //#endregion
 
 //#region App Action
-import { createAction } from '@app_action/creator/action-creator';
-import { ActionSource } from '@app_action/enum/action-source.enum';
+import { createAction } from '@action_creator/creator/action-creator';
+import { ActionSource } from '@action_creator/enum/action-source.enum';
 //#endregion
 
 //#region App Model

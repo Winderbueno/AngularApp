@@ -1,5 +1,5 @@
 //#region App Model
-import { Alert } from "@app_alert/model/alert.model";
+import { Alert } from "@alert/model/alert.model";
 //#endregion
 
 /* State */

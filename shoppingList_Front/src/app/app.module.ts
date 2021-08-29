@@ -21,9 +21,9 @@ import * as fromShoppingList from '@app_shoppingList/_store/shopping-list.reduce
 //#region App Module
 import { AppEffectsModule } from '@app_effect/app-effect.module';
 import { AppRouterModule } from '@app/app-router.module';
-import { AlertModule } from '@app_alert/alert.module';
-import { LayoutModule } from '@app_layout/layout.module';
-import { TimerModule } from '@app_timer/timer.module';
+import { AlertModule } from '@alert/alert.module';
+import { LayoutModule } from '@layout/layout.module';
+import { TimerModule } from '@timer/timer.module';
 //#endregion
 
 //#region Service

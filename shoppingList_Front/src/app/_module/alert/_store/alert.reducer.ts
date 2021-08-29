@@ -5,7 +5,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 //#region App Model, Action, Selector
 import { AlertState, initialState } from '@alert_store/alert.state';
 import * as AlertActions from '@alert_store/alert.actions';
-import { Alert } from '@app_alert/model/alert.model';
+import { Alert } from '@alert/model/alert.model';
 //#endregion
 
 

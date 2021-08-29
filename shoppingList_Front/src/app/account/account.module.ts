@@ -5,8 +5,8 @@ import { CommonModule } from '@angular/common';
 
 //#region App Module
 import { AccountRouterModule } from '@app_account/account-router.module';
-import { MaterialModule } from '@app_material/material.module';
-import { FormModule } from '@app_form/form.module';
+import { MaterialModule } from '@material/material.module';
+import { FormModule } from '@form/form.module';
 //#endregion
 
 //#region Component

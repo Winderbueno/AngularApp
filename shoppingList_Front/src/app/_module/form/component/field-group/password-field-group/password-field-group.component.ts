@@ -4,7 +4,7 @@ import { FormGroup } from '@angular/forms';
 //#endregion
 
 //#region App Component, Model
-import { MustMatch } from '@app_form/validator/must-match.validator';
+import { MustMatch } from '@form/validator/must-match.validator';
 //#endregion
 
 

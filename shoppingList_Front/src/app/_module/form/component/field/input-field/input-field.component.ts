@@ -4,7 +4,7 @@ import { Validators } from '@angular/forms';
 //#endregion
 
 //#region App Component, Model
-import { FieldComponent } from '@app_form/component/field/field.component';
+import { FieldComponent } from '@form/component/field/field.component';
 //#endregion
 
 

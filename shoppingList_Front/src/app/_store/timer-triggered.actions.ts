@@ -1,10 +1,10 @@
 //#region NgRx
-import { createAction } from '@app_action/creator/action-creator';
+import { createAction } from '@action_creator/creator/action-creator';
 //#endregion
 
 //#region App Model, Action
-import { ActionSource } from '@app_action/enum/action-source.enum';
-import { Module } from '@app_action/enum/module.enum';
+import { ActionSource } from '@action_creator/enum/action-source.enum';
+import { Module } from '@action_creator/enum/module.enum';
 //#endregion
 
 

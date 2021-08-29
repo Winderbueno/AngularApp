@@ -12,9 +12,9 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as AccountAPIActions from '@app_service/action/account.api.actions';
 import * as ShoppingListAPIActions from '@app_service/action/shopping-list.api.actions';
 import * as RouterActions from '@ngrx/router-store';
-import * as AlertActions from '@app_alert/_store/alert.actions';
-import * as AlertSelectors from '@app_alert/_store/alert.selectors';
-import { AlertTypeEnum } from '@app_alert/model/enum/alert-type.enum';
+import * as AlertActions from '@alert/_store/alert.actions';
+import * as AlertSelectors from '@alert/_store/alert.selectors';
+import { AlertTypeEnum } from '@alert/model/enum/alert-type.enum';
 //#endregion
 
 

@@ -3,9 +3,9 @@ import { props } from '@ngrx/store';
 //#endregion
 
 //#region App Action
-import { createAction } from '@app_action/creator/action-creator';
-import { createSubmitAction } from '@app_action/creator/component-submit-action-creator';
-import { ActionSource } from '@app_action/enum/action-source.enum';
+import { createAction } from '@action_creator/creator/action-creator';
+import { createSubmitAction } from '@action_creator/creator/component-submit-action-creator';
+import { ActionSource } from '@action_creator/enum/action-source.enum';
 //#endregion
 
 

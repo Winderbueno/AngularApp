@@ -6,8 +6,8 @@ import { Store } from '@ngrx/store';
 
 //#region App Model, Action, Selector
 import * as AlertSelector from '@alert_store/alert.selectors';
-import { SnackbarComponent } from '@app_alert/component/snackbar/snackbar.component';
-import { AlertTypeEnumClass } from '@app_alert/model/enum/alert-type.enum';
+import { SnackbarComponent } from '@alert/component/snackbar/snackbar.component';
+import { AlertTypeEnumClass } from '@alert/model/enum/alert-type.enum';
 //#endregion
 
 

@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 
 //#region App Component, Model
 import { TokenStore } from '@mod_store/_component-store/token.store';
-import { FormComponent } from '@app_form/component/form.component';
+import { FormComponent } from '@form/component/form.component';
 import * as ComponentActions from './reset-password.actions';
 import { TokenStatusEnum } from "@app_enum/token-status.enum";
 import { ActivatedRoute, Router } from '@angular/router';

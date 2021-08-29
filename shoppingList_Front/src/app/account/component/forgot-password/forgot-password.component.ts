@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 
 
 //#region App Component, Model
-import { FormComponent } from '@app_form/component/form.component';
+import { FormComponent } from '@form/component/form.component';
 import * as ComponentActions from './forgot-password.actions';
 //#endregion
 

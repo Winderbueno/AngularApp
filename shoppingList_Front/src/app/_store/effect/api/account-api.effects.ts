@@ -9,7 +9,7 @@ import { map, catchError, exhaustMap } from 'rxjs/operators';
 import * as AccountAPIActions from '@app_service/action/account.api.actions';
 import * as TimerTriggeredActions from '@app_store/timer-triggered.actions';
 import { forgotPasswordSubmit } from '@app_account/component/forgot-password/forgot-password.actions';
-import { toolbarLogOut } from '@app_layout/toolbar/toolbar.component.actions';
+import { toolbarLogOut } from '@layout/toolbar/toolbar.component.actions';
 import { loginSubmit } from '@app_account/component/login/login.actions';
 import { registerSubmit } from '@app_account/component/register/register.actions';
 import * as ComponentActions from '@app_account/component/reset-password/reset-password.actions';

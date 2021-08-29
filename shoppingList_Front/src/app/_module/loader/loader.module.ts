@@ -5,7 +5,7 @@ import { StoreModule } from '@ngrx/store';
 //#endregion
 
 //#region App Module
-import { MaterialModule } from '@app_material/material.module';
+import { MaterialModule } from '@material/material.module';
 //#endregion
 
 //#region Loader Store
