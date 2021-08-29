@@ -12,7 +12,15 @@ const timeOutReducer = createReducer(
     (state, action) => { return adapter.addOne(action.timer, state) }
   ),
 
+
+  /*on(TimerActions.deleteTimer,
+    //refreshTokenTimeout: clearTimeout(state.refreshTokenTimeout) // TODO - Check if work
+    (state, action) => { return adapter.removeOne(action.timer, state) }
+  ),*/
+
 );
+
+
 
 export function reducer(state: TimerState | undefined, action: Action) {
   return timeOutReducer(state, action);

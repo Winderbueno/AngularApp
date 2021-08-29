@@ -21,11 +21,9 @@ const accountReducer = createReducer(
 
   on(AccountAPIActions.logoutSuccess,
     (state) => {
-
       return adapter.removeAll({
         ...state,
         isLogged: false,
-        //refreshTokenTimeout: clearTimeout(state.refreshTokenTimeout) // TODO - Check if work
       })
     }
   ),

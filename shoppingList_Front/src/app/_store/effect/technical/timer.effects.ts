@@ -45,6 +45,22 @@ export class TimerEffects {
   );
 
 
+  deleteRefreshTokenTimeout$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(
+        AccountAPIActions.logoutSuccess,
+        AccountAPIActions.logoutFailure,
+        AccountAPIActions.refreshTokenFailure),
+      map(() => {
+        return TimerActions.deleteTimer({ name: 'RefreshToken' });
+      })
+    )
+  );
+
+
+
+
+
   constructor(
     private actions$: Actions,
     private store: Store
