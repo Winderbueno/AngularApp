@@ -14,6 +14,7 @@ const timeOutReducer = createReducer(
   ),
 
 
+  // When the effect have defined the timer, we add it to the state
   on(TimerActions.timerDefined,
     (state, action) => {
       return adapter.updateOne(
@@ -24,9 +25,8 @@ const timeOutReducer = createReducer(
     }
   ),
 
-
+  // When the effect have deleted the timer, we delete it from the state
   on(TimerActions.timerDeleted,
-    //refreshTokenTimeout: clearTimeout(state.refreshTokenTimeout) // TODO - Check if work
     (state, action) => {
       if(action.name === undefined){
         return state;
