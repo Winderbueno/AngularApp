@@ -1,5 +1,6 @@
 //#region Angular, Material, NgRx
 import { Component } from '@angular/core';
+import { TypedAction } from '@ngrx/store/src/models';
 //#endregion
 
 //#region App Component, Model
@@ -16,13 +17,10 @@ export class LoginComponent extends FormComponent {
     super.ngOnInit();
   }
 
-  submitAction(): void {
-    // Dispatch Login action
-    this.store.dispatch(
-      ComponentActions.loginSubmit({
-        email: this.ctrls.Email.value,
-        password: this.ctrls.Password.value // TODO - Put CtrlName as an input for password-field
-      })
-    );
+  action(): TypedAction<string> {
+    return ComponentActions.loginSubmit({
+      email: this.ctrls.Email.value,
+      password: this.ctrls.Password.value
+    });
   }
 }

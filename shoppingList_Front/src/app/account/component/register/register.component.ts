@@ -1,5 +1,6 @@
 ﻿//#region Angular, Material, NgRx
 import { Component } from '@angular/core';
+import { TypedAction } from '@ngrx/store/src/models';
 //#endregion
 
 //#region App Component, Model
@@ -16,12 +17,9 @@ export class RegisterComponent extends FormComponent {
     super.ngOnInit();
   }
 
-  submitAction() {
-    // Dispatch Register action
-    this.store.dispatch(
-      ComponentActions.registerSubmit({
-        account: this.form.value,
-      })
-    );
+  action(): TypedAction<string> {
+    return ComponentActions.registerSubmit({
+      account: this.form.value,
+    });
   }
 }

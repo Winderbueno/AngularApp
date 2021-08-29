@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { TypedAction } from '@ngrx/store/src/models';
+import * as FormActions from '@form/form.actions';
 //#endregion
 
 
@@ -14,15 +16,16 @@ export class FormComponent implements OnInit {
 
   // Form
   private _form!: FormGroup;
-  private _submitted: boolean = false; // TODO -Encapsulate this info in a Form Object with FormGroup ?
   private _title: string = "Form Title";
+  private _submitted: boolean = false; // TODO -Encapsulate this info in a Form Object with FormGroup ?
 
   // Accessor
   get form() { return this._form;}
-  get submitted() { return this._submitted; }
+  get ctrls() { return this._form.controls; }
   get title() { return this._title;}
   protected set title(title:string) { this._title=title }
-  get ctrls() { return this._form.controls; }
+  get submitted() { return this._submitted; }
+
 
   constructor(
     protected router: Router,
@@ -46,5 +49,11 @@ export class FormComponent implements OnInit {
     this.submitAction();
   }
 
-  submitAction() : void {}
+  submitAction() : void {
+    this.store.dispatch(this.action());
+  }
+
+  action() : TypedAction<string> {
+    return FormActions.formSubmit;
+  }
 }

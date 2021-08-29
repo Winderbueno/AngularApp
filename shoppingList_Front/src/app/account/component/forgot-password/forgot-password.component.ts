@@ -1,7 +1,7 @@
 ﻿//#region Angular, Material, NgRx
 import { Component } from '@angular/core';
+import { TypedAction } from '@ngrx/store/src/models';
 //#endregion
-
 
 //#region App Component, Model
 import { FormComponent } from '@form/component/form.component';
@@ -17,13 +17,9 @@ export class ForgotPasswordComponent extends FormComponent {
     super.ngOnInit();
   }
 
-  submitAction() {
-
-    // Dispatch Forgot Password action
-    this.store.dispatch(
-      ComponentActions.forgotPasswordSubmit({
-        email: this.ctrls.Email.value,
-      })
-    );
+  action(): TypedAction<string> {
+    return ComponentActions.forgotPasswordSubmit({
+      email: this.ctrls.Email.value,
+    })
   }
 }
