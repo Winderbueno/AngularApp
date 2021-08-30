@@ -17,7 +17,7 @@ export class TimerEffects {
   // TODO - Find a way not to use a class property ?
   name: string|undefined = 'test';
 
-  defineTimeout$ = createEffect(() =>
+  defineTimer$ = createEffect(() =>
     this.actions$.pipe(
       ofType(TimerActions.defineTimer),
       map((action) => {
@@ -33,7 +33,7 @@ export class TimerEffects {
   );
 
 
-  deleteTimeout$ = createEffect(() =>
+  deleteTimer$ = createEffect(() =>
     this.actions$.pipe(
       ofType(TimerActions.deleteTimer),
       withLatestFrom((action) => this.store.select(TimerSelectors.selectTimerByName(action.name))),

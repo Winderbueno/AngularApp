@@ -2,11 +2,10 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { TimerState, initialState, adapter } from './timer.state';
 import * as TimerActions from '@timer_store/timer.actions';
-import { filter } from 'lodash';
 //#endregion
 
 
-const timeOutReducer = createReducer(
+const timerReducer = createReducer(
   initialState,
 
   on(TimerActions.defineTimer,
@@ -40,7 +39,6 @@ const timeOutReducer = createReducer(
 );
 
 
-
 export function reducer(state: TimerState | undefined, action: Action) {
-  return timeOutReducer(state, action);
+  return timerReducer(state, action);
 }

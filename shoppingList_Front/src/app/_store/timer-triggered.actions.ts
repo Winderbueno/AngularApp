@@ -8,7 +8,7 @@ import { Module } from '@action_creator/enum/module.enum';
 //#endregion
 
 
-export const refreshTokenTimeOutEnded = createAction(
+export const refreshTokenTimerEnded = createAction(
   ActionSource.MODULE,
   Module.TIMER,
   'Refresh Token - Ended'

@@ -16,17 +16,17 @@ import { Timer } from '@timer/model/timer.model';
 @Injectable()
 export class TimerEffects {
 
-  defineRefreshTokenTimeout$ = createEffect(() =>
+  defineRefreshTokenTimer$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AccountAPIActions.loginSuccess,
         AccountAPIActions.refreshTokenSuccess),
       map((action) => {
 
-        // Define Refresh Token Timeout
+        // Define Refresh Token Timer
         let timer = new Timer({ // TODO
           name: 'RefreshToken',
           time: 10000, // TODO - Put this in a config file
-          action: TimerTriggeredActions.refreshTokenTimeOutEnded()
+          action: TimerTriggeredActions.refreshTokenTimerEnded()
         });
 
         // Get RefreshToken Time
@@ -34,7 +34,7 @@ export class TimerEffects {
           // Parse json object from base64 encoded jwt token
           const jwtToken = JSON.parse(atob(action.account.jwtToken.split('.')[1]));
 
-          // Set a timeout to refresh the token a minute before it expires
+          // Set a timer to refresh the token a minute before it expires
           const expires = new Date(jwtToken.exp * 1000);
           timer.time = expires.getTime() - Date.now() - (60 * 1000);
         }
@@ -45,7 +45,7 @@ export class TimerEffects {
   );
 
 
-  deleteRefreshTokenTimeout$ = createEffect(() =>
+  deleteRefreshTokenTimer$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
         AccountAPIActions.logoutSuccess,

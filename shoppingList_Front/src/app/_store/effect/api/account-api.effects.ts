@@ -76,7 +76,7 @@ export class AccountAPIEffects {
     this.actions$.pipe(
       ofType(
         // TODO -> Also called at App Init, maybe start timout at App Init ?
-        TimerTriggeredActions.refreshTokenTimeOutEnded),
+        TimerTriggeredActions.refreshTokenTimerEnded),
       exhaustMap(() =>
         this.accountService.refreshToken().pipe(
           map((account: Account) => AccountAPIActions.refreshTokenSuccess({ account: account })),

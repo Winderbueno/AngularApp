@@ -5,7 +5,7 @@ import { StoreModule } from '@ngrx/store';
 //#endregion
 
 //#region Technical Effect
-import * as fromTimeOut from '@timer_store/timer.reducer';
+import * as fromTimer from '@timer_store/timer.reducer';
 import { TimerEffects } from '@timer_store/timer.effects';
 //#endregion
 
@@ -18,7 +18,7 @@ import { TimerEffects } from '@timer_store/timer.effects';
 
     /* Store */
     // TODO -> SHoudl be somewhere else
-    StoreModule.forFeature('timer', fromTimeOut.reducer),
+    StoreModule.forFeature('timer', fromTimer.reducer),
 
   ],
   declarations: []
