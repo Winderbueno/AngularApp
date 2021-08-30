@@ -1,12 +1,19 @@
 //#region Angular, Material, NgRx
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
 //#region App Module
 import { AccountRouterModule } from '@app_account/account-router.module';
 import { MaterialModule } from '@material/material.module';
 import { FormModule } from '@form/form.module';
+//#endregion
+
+//#region Effect
+import { AlertEffects } from '@app_account/_store/effect/alert.effects';
+import { RouterEffects } from '@app_account/_store/effect/router.effects';
+import { TimerEffects } from '@app_account/_store/effect/timer.effects';
 //#endregion
 
 //#region Component
@@ -28,6 +35,13 @@ import {
     AccountRouterModule,
     MaterialModule,
     FormModule,
+
+    /* Effect */
+    EffectsModule.forFeature([
+      AlertEffects,
+      RouterEffects,
+      TimerEffects,
+    ]),
   ],
   declarations: [
     LoginComponent,

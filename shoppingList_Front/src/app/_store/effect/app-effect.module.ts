@@ -8,12 +8,6 @@ import { AccountAPIEffects } from '@app_effect/api/account-api.effects';
 import { ShoppingListAPIEffects } from '@app_effect/api/shopping-list-api.effects';
 //#endregion
 
-//#region Technical Effect
-import { AlertEffects } from '@app_effect/technical/alert.effects';
-import { RouterEffects } from '@app_effect/technical/router.effects';
-import { TimerEffects } from '@app_effect/technical/timer.effects';
-//#endregion
-
 
 @NgModule({
   imports: [
@@ -24,12 +18,6 @@ import { TimerEffects } from '@app_effect/technical/timer.effects';
       ShoppingListAPIEffects
     ]),
 
-    /* Technical Effect */
-    EffectsModule.forFeature([
-      AlertEffects,
-      RouterEffects,
-      TimerEffects,
-    ]),
   ],
   declarations: []
 })
