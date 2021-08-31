@@ -6,11 +6,11 @@ import { map, switchMap, catchError } from 'rxjs/operators';
 //#endregion
 
 //#region App Action, Service, Selector
-import * as ShoppingListAPIActions from '@app/shopping-list/store/action/shopping-list.api.actions';
-import * as ShoppingListComponentActions from '@app/shopping-list/component/shopping-list/shopping-list.actions';
-import * as AccountAPIActions from '@app/account/store/action/account.api.actions';
-import { ShoppingListService } from '@app/shopping-list/service/shopping-list.service';
-import { ShoppingList } from '@app_model/shopping-list.model';
+import * as ShoppingListAPIActions from '@app_shoppingList/store/action/shopping-list.api.actions';
+import * as ShoppingListComponentActions from '@app_shoppingList/component/shopping-list/shopping-list.actions';
+import * as AccountAPIActions from '@app_account/store/action/account.api.actions';
+import { ShoppingListService } from '@app_shoppingList/service/shopping-list.service';
+import { ShoppingList } from '@app_shoppingList/model/shopping-list.model';
 //#endregion
 
 

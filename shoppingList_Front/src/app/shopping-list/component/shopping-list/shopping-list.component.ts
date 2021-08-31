@@ -9,8 +9,8 @@ import { Observable } from 'rxjs';
 //#region App Component, Model
 import * as ComponentActions from './shopping-list.actions';
 import * as ShoppingListSelector from '@app_shoppingList/store/shopping-list.selectors';
-import { ShoppingList } from '@app_model/shopping-list.model';
-import { UsedProduct } from '@app_model/used-product.model';
+import { ShoppingList } from '@app_shoppingList/model/shopping-list.model';
+import { UsedProduct } from '@app_shoppingList/model/used-product.model';
 import { DialogAddProductComponent } from '@app_shoppingList/component/dialog-add-product/dialog-add-product.component';
 //#endregion
 

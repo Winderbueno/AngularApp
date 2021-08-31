@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 //#endregion
 
 //#region App Component, Model
-import { Enum } from '@app_model/enum.model';
+import { Enum } from '@enum/model/enum.model';
 //#endregion
 
 // Api Info

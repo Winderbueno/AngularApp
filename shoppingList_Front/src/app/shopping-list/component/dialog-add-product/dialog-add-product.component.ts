@@ -7,11 +7,11 @@ import { Store } from '@ngrx/store';
 
 //#region App Component, Model
 import { FormComponent } from '@form/component/form.component';
-import { Enum } from '@app_model/enum.model';
-import { CreateProductReq } from '@app_model/create-product-req.model';
+import { Enum } from '@enum/model/enum.model';
+import { EnumService } from '@enum/service/enum.service';
 import { AccountService } from '@app_account/service/account.service';
-import { EnumService } from '@app/_module/enum/enum.service';
-import { ShoppingListService } from '@app/shopping-list/service/shopping-list.service';
+import { CreateProductReq } from '@app_shoppingList/model/create-product-req.model';
+import { ShoppingListService } from '@app_shoppingList/service/shopping-list.service';
 //#endregion
 
 @Component({

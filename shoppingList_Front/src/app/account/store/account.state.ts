@@ -3,7 +3,7 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 //#endregion
 
 //#region Model
-import { Account } from '@app_model/account.model';
+import { Account } from '@app_account/model/account.model';
 //#endregion
 
 

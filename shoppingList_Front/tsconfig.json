@@ -27,24 +27,23 @@
       // App
       "@app/*": ["src/app/*"],
       "@app_helper/*": ["src/app/_helper/*"],
-      "@app_model/*": ["src/app/_model/*"],
-      "@app_enum/*": ["src/app/_model/enum/*"],
-      "@app_service/*": ["src/app/_service/*"],
       "@app_module/*": ["src/app/_module/*"],
 
-      // Feature Module
+      // App Feature
       "@app_account/*": ["src/app/account/*"],
+      "@app_product/*": ["src/app/product/*"],
       "@app_shoppingList/*": ["src/app/shopping-list/*"],
 
-      // Technical Module
+      // App Module
       "@action/*": ["src/app/_module/action/*"],
       "@alert/*": ["src/app/_module/alert/*"],
+      "@enum/*": ["src/app/_module/enum/*"],
       "@form/*": ["src/app/_module/form/*"],
       "@layout/*": ["src/app/_module/layout/*"],
       "@loader/*": ["src/app/_module/loader/*"],
       "@material/*": ["src/app/_module/material/*"],
+      "@router/*": ["src/app/_module/router/*"],
       "@timer/*": ["src/app/_module/timer/*"],
-      "@mod_store/*": ["src/app/_module/store/*"],
     },
   },
   "angularCompilerOptions": {

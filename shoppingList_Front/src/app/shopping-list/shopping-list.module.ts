@@ -7,17 +7,17 @@ import { EffectsModule } from '@ngrx/effects';
 //#region App Module
 import { MaterialModule } from '@material/material.module';
 import { FormModule } from '@form/form.module';
-import { ShoppingListRouterModule } from '@app/shopping-list/shopping-list-router.module';
+import { ShoppingListRouterModule } from '@app_shoppingList/shopping-list-router.module';
 //#endregion
 
 //#region Effect
-import { ShoppingListAPIEffects } from '@app/shopping-list/store/effect/shopping-list-api.effects';
+import { ShoppingListAPIEffects } from '@app_shoppingList/store/effect/shopping-list-api.effects';
 //#endregion
 
 //#region Component
 import {
   DialogAddProductComponent,
-  ShoppingListComponent } from '@app/shopping-list/component';
+  ShoppingListComponent } from '@app_shoppingList/component';
 //#endregion
 
 

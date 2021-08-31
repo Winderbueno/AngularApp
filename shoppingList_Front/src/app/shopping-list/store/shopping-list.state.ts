@@ -3,7 +3,7 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 //#endregion
 
 //#region Model
-import { ShoppingList } from '@app_model/shopping-list.model';
+import { ShoppingList } from '@app_shoppingList/model/shopping-list.model';
 //#endregion
 
 
