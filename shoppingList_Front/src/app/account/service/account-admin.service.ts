@@ -6,7 +6,7 @@ import { map, finalize } from 'rxjs/operators';
 
 //#region App Component, Model
 import { Account } from '@app_model/account.model';
-import { AccountService } from '@app_service/account.service';
+import { AccountService } from '@app_account/service/account.service';
 //#endregion
 
 // Api Info

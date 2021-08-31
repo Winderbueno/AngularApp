@@ -1,5 +1,5 @@
 //#region App Component, Model
-import { AccountService } from '@app_service/account.service';
+import { AccountService } from '@app_account/service/account.service';
 //#endregion
 
 

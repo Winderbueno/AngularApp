@@ -2,9 +2,6 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
-//#endregion
-
-//#region NgRx
 import { Store } from '@ngrx/store';
 //#endregion
 
@@ -12,9 +9,9 @@ import { Store } from '@ngrx/store';
 import { FormComponent } from '@form/component/form.component';
 import { Enum } from '@app_model/enum.model';
 import { CreateProductReq } from '@app_model/create-product-req.model';
-import { AccountService } from '@app_service/account.service';
+import { AccountService } from '@app_account/service/account.service';
 import { EnumService } from '@app_service/enum.service';
-import { ShoppingListService } from '@app_service/shopping-list.service';
+import { ShoppingListService } from '@app/shopping-list/service/shopping-list.service';
 //#endregion
 
 @Component({

@@ -8,8 +8,8 @@ import { catchError, switchMap, tap } from 'rxjs/operators';
 
 //#region App Model, Action, Selector
 import { TokenStatusEnum } from '@app_model/enum/token-status.enum';
-import { AccountService } from '@app_service/account.service';
-import * as AccountAPIActions from '@app_service/action/account.api.actions';
+import { AccountService } from '@app_account/service/account.service';
+import * as AccountAPIActions from '@app/account/store/action/account.api.actions';
 //#endregion
 
 export interface ComponentState {

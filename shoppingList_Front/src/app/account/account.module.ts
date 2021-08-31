@@ -11,9 +11,10 @@ import { FormModule } from '@form/form.module';
 //#endregion
 
 //#region Effect
-import { AlertEffects } from '@app_account/effect/alert.effects';
-import { RouterEffects } from '@app_account/effect/router.effects';
-import { TimerEffects } from '@app_account/effect/timer.effects';
+import { AccountAPIEffects } from '@app_account/store/effect/account-api.effects';
+import { AlertEffects } from '@app_account/store/effect/alert.effects';
+import { RouterEffects } from '@app_account/store/effect/router.effects';
+import { TimerEffects } from '@app_account/store/effect/timer.effects';
 //#endregion
 
 //#region Component
@@ -38,6 +39,7 @@ import {
 
     /* Effect */
     EffectsModule.forFeature([
+      AccountAPIEffects,
       AlertEffects,
       RouterEffects,
       TimerEffects,

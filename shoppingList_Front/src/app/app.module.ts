@@ -19,7 +19,6 @@ import * as fromShoppingList from '@app_shoppingList/store/shopping-list.reducer
 //#endregion
 
 //#region App Module
-import { AppEffectsModule } from '@app_effect/app-effect.module';
 import { AppRouterModule } from '@app/app-router.module';
 import { AlertModule } from '@alert/alert.module';
 import { LayoutModule } from '@layout/layout.module';
@@ -28,7 +27,7 @@ import { TimerModule } from '@timer/timer.module';
 
 //#region Service
 import { appInitializer } from '@app_helper/app.initializer';
-import { AccountService } from '@app_service/account.service';
+import { AccountService } from '@app_account/service/account.service'; // TODO - Should not be used
 //#endregion
 
 //#region Interceptor
@@ -69,7 +68,6 @@ const appearance: MatFormFieldDefaultOptions = { appearance: 'outline' };
     EffectsModule.forRoot([]),
 
     /* App Module */
-    AppEffectsModule,
     AppRouterModule,
     TimerModule,
     AlertModule,

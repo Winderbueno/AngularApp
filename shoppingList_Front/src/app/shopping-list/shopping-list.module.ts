@@ -1,12 +1,17 @@
 //#region Angular, Material, NgRx
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
 //#region App Module
 import { MaterialModule } from '@material/material.module';
 import { FormModule } from '@form/form.module';
 import { ShoppingListRouterModule } from '@app/shopping-list/shopping-list-router.module';
+//#endregion
+
+//#region Effect
+import { ShoppingListAPIEffects } from '@app/shopping-list/store/effect/shopping-list-api.effects';
 //#endregion
 
 //#region Component
@@ -25,6 +30,11 @@ import {
     ShoppingListRouterModule,
     MaterialModule,
     FormModule,
+
+    /* API Effect */
+    EffectsModule.forFeature([
+      ShoppingListAPIEffects
+    ]),
   ],
   declarations: [
     ShoppingListComponent,
