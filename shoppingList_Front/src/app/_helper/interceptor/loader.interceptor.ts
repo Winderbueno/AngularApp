@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 //#endregion
 
 //#region App Model, Action, Selector
-import * as LoaderActions from '@loader_store/loader.actions';
+import * as LoaderActions from '@loader/store/loader.actions';
 //#endregion
 
 

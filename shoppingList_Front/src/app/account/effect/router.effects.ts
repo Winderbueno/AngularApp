@@ -29,18 +29,18 @@ export class RouterEffects {
     { dispatch: false }
   );
 
+
   /* If Login Succeed, this effect route to the page
    * the user attempted to access before login */
-  routeToRequestedPageAfterLogin$ = createEffect(
+  routeToRequestedPageAfterLogin$ = createEffect(() =>
 
-    () => this.actions$.pipe(
+    this.actions$.pipe(
       ofType(AccountAPIActions.loginSuccess),
       tap(() => {
         // TODO - Get router param from store with selector
         // Get return url from route parameters or default to '/'
         const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
         this.router.navigate([returnUrl]);
-
       })
     ),
     { dispatch: false }

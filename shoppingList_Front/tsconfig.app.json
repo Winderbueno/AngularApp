@@ -22,11 +22,6 @@
       "@app_store/*": ["src/app/_store/*"],
       "@app_effect/*": ["src/app/_store/effect/*"],
       "@app_selector/*": ["src/app/_store/selector/*"],
-      "@account_store/*": ["src/app/account/_store/*"],
-      "@shoppingList_store/*": ["src/app/shopping-list/_store/*"],
-      "@alert_store/*": ["src/app/_module/alert/_store/*"],
-      "@loader_store/*": ["src/app/_module/loader/_store/*"],
-      "@timer_store/*": ["src/app/_module/timer/_store/*"],
 
       // Model
       "@app_model/*": ["src/app/_model/*"],

@@ -2,19 +2,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatAccordion } from '@angular/material/expansion';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 //#endregion
 
-//#region NgRx
-import { Store } from '@ngrx/store';
-import * as ComponentActions from './shopping-list.actions';
-import * as ShoppingListSelector from '@app_shoppingList/_store/shopping-list.selectors';
-//#endregion
-
 //#region App Component, Model
+import * as ComponentActions from './shopping-list.actions';
+import * as ShoppingListSelector from '@app_shoppingList/store/shopping-list.selectors';
 import { ShoppingList } from '@app_model/shopping-list.model';
 import { UsedProduct } from '@app_model/used-product.model';
-import { DialogAddProductComponent } from '@app/shopping-list/component/dialog-add-product/dialog-add-product.component';
+import { DialogAddProductComponent } from '@app_shoppingList/component/dialog-add-product/dialog-add-product.component';
 //#endregion
 
 

@@ -1,19 +1,15 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
 import { map, withLatestFrom } from 'rxjs/operators';
-//#endregion
-
-//#region NgRx
 import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import * as RouterActions from '@ngrx/router-store';
 //#endregion
 
 //#region App Action, Selector, Model
 import * as AccountAPIActions from '@app_service/action/account.api.actions';
-import * as ShoppingListAPIActions from '@app_service/action/shopping-list.api.actions';
-import * as RouterActions from '@ngrx/router-store';
-import * as AlertActions from '@alert/_store/alert.actions';
-import * as AlertSelectors from '@alert/_store/alert.selectors';
+import * as AlertActions from '@alert/store/alert.actions';
+import * as AlertSelectors from '@alert/store/alert.selectors';
 import { AlertTypeEnum } from '@alert/model/enum/alert-type.enum';
 //#endregion
 
@@ -25,7 +21,6 @@ export class AlertEffects {
 
     this.actions$.pipe(
       ofType(
-        ShoppingListAPIActions.loadActiveFailure,
         AccountAPIActions.loginFailure,
         AccountAPIActions.logoutFailure,
         AccountAPIActions.registerFailure,
@@ -60,7 +55,7 @@ export class AlertEffects {
 
 
   dismissAlert$ = createEffect(() =>
-    // TODO -> SHould not be in Account Module
+    // TODO -> Should not be in Account Module
     this.actions$.pipe(
       ofType(RouterActions.routerRequestAction),
       withLatestFrom(this.store.select(AlertSelectors.getAlertState)),

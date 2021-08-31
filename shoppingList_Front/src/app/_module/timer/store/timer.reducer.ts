@@ -1,7 +1,10 @@
 //#region NgRx
 import { Action, createReducer, on } from '@ngrx/store';
+//#endregion
+
+//#region App Action, Selector
 import { TimerState, initialState, adapter } from './timer.state';
-import * as TimerActions from '@timer_store/timer.actions';
+import * as TimerActions from '@timer/store/timer.actions';
 //#endregion
 
 

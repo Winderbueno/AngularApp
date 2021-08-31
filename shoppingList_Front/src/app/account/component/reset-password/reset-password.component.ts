@@ -1,14 +1,14 @@
 ﻿//#region Angular, Material, NgRx
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 //#endregion
 
 //#region App Component, Model
-import { TokenStore } from '@mod_store/_component-store/token.store';
+import { TokenStore } from '@mod_store/component-store/token.store';
 import { FormComponent } from '@form/component/form.component';
 import * as ComponentActions from './reset-password.actions';
 import { TokenStatusEnum } from "@app_enum/token-status.enum";
-import { ActivatedRoute, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
 //#endregion
 
 

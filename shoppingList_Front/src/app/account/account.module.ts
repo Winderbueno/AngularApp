@@ -11,9 +11,9 @@ import { FormModule } from '@form/form.module';
 //#endregion
 
 //#region Effect
-import { AlertEffects } from '@app_account/_store/effect/alert.effects';
-import { RouterEffects } from '@app_account/_store/effect/router.effects';
-import { TimerEffects } from '@app_account/_store/effect/timer.effects';
+import { AlertEffects } from '@app_account/effect/alert.effects';
+import { RouterEffects } from '@app_account/effect/router.effects';
+import { TimerEffects } from '@app_account/effect/timer.effects';
 //#endregion
 
 //#region Component

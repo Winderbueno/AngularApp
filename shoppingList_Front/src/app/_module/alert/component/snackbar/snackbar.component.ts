@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 //#endregion
 
 //#region App Model, Action, Selector
-import * as AlertActions from '@alert_store/alert.actions';
+import * as AlertActions from '@alert/store/alert.actions';
 //#endregion
 
 

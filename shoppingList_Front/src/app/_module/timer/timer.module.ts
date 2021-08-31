@@ -5,8 +5,8 @@ import { StoreModule } from '@ngrx/store';
 //#endregion
 
 //#region Technical Effect
-import * as fromTimer from '@timer_store/timer.reducer';
-import { TimerEffects } from '@timer_store/timer.effects';
+import * as fromTimer from '@timer/store/timer.reducer';
+import { TimerEffects } from '@timer/store/timer.effects';
 //#endregion
 
 

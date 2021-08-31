@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 //#endregion
 
 //#region App Model, Action, Selector
-import * as AccountSelector from '@account_store/account.selectors';
+import * as AccountSelector from '@app_account/store/account.selectors';
 //#endregion
 
 

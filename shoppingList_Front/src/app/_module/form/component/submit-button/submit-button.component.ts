@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 //#endregion
 
 //#region App Model, Action, Selector
-import * as LoaderSelector from '@loader_store/loader.selectors';
+import * as LoaderSelector from '@loader/store/loader.selectors';
 //#endregion
 
 
