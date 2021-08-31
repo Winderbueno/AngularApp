@@ -13,8 +13,8 @@ import { AuthGuard } from '@app_helper/guard/auth.guard';
 
 
 // Lazy loaded module
-const accountModule = () => import('@app_account/account.module').then(x => x.AccountModule);
-const shoppingListModule = () => import('@app_shoppingList/shopping-list.module').then(x => x.ShoppingListModule);
+const accountModule = () => import('@account/account.module').then(x => x.AccountModule);
+const shoppingListModule = () => import('@shoppingList/shopping-list.module').then(x => x.ShoppingListModule);
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },

@@ -8,7 +8,7 @@ import { ActionSource } from '@action/enum/action-source.enum';
 //#endregion
 
 //#region App Model
-import { Account } from '@app_account/model/account.model';
+import { Account } from '@account/model/account.model';
 //#endregion
 
 

@@ -6,18 +6,18 @@ import { map, catchError, exhaustMap } from 'rxjs/operators';
 //#endregion
 
 //#region App Action
-import * as AccountAPIActions from '@app_account/store/action/account.api.actions';
-import * as TimerTriggeredActions from '@app_account/store/action/timer-triggered.actions';
-import { forgotPasswordSubmit } from '@app_account/component/forgot-password/forgot-password.actions';
+import * as AccountAPIActions from '@account/store/action/account.api.actions';
+import * as TimerTriggeredActions from '@account/store/action/timer-triggered.actions';
+import { forgotPasswordSubmit } from '@account/component/forgot-password/forgot-password.actions';
 import { toolbarLogOut } from '@layout/toolbar/toolbar.component.actions';
-import { loginSubmit } from '@app_account/component/login/login.actions';
-import { registerSubmit } from '@app_account/component/register/register.actions';
-import * as ComponentActions from '@app_account/component/reset-password/reset-password.actions';
+import { loginSubmit } from '@account/component/login/login.actions';
+import { registerSubmit } from '@account/component/register/register.actions';
+import * as ComponentActions from '@account/component/reset-password/reset-password.actions';
 //#endregion
 
 //#region App Service
-import { AccountService } from '@app_account/service/account.service';
-import { Account } from '@app_account/model/account.model';
+import { AccountService } from '@account/service/account.service';
+import { Account } from '@account/model/account.model';
 //#endregion
 
 

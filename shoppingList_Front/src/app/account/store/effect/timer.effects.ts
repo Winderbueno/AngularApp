@@ -7,8 +7,8 @@ import { map } from 'rxjs/operators';
 
 //#region App Action
 import * as TimerActions from '@timer/store/timer.actions';
-import * as TimerTriggeredActions from '@app_account/store/action/timer-triggered.actions';
-import * as AccountAPIActions from '@app_account/store/action/account.api.actions';
+import * as TimerTriggeredActions from '@account/store/action/timer-triggered.actions';
+import * as AccountAPIActions from '@account/store/action/account.api.actions';
 import { Timer } from '@timer/model/timer.model';
 //#endregion
 

@@ -9,9 +9,9 @@ import { Store } from '@ngrx/store';
 import { FormComponent } from '@form/component/form.component';
 import { Enum } from '@enum/model/enum.model';
 import { EnumService } from '@enum/service/enum.service';
-import { AccountService } from '@app_account/service/account.service';
-import { CreateProductReq } from '@app_shoppingList/model/create-product-req.model';
-import { ShoppingListService } from '@app_shoppingList/service/shopping-list.service';
+import { AccountService } from '@account/service/account.service';
+import { CreateProductReq } from '@shoppingList/model/create-product-req.model';
+import { ShoppingListService } from '@shoppingList/service/shopping-list.service';
 //#endregion
 
 @Component({

@@ -8,10 +8,10 @@ import { Observable } from 'rxjs';
 
 //#region App Component, Model
 import * as ComponentActions from './shopping-list.actions';
-import * as ShoppingListSelector from '@app_shoppingList/store/shopping-list.selectors';
-import { ShoppingList } from '@app_shoppingList/model/shopping-list.model';
-import { UsedProduct } from '@app_shoppingList/model/used-product.model';
-import { DialogAddProductComponent } from '@app_shoppingList/component/dialog-add-product/dialog-add-product.component';
+import * as ShoppingListSelector from '@shoppingList/store/shopping-list.selectors';
+import { ShoppingList } from '@shoppingList/model/shopping-list.model';
+import { UsedProduct } from '@shoppingList/model/used-product.model';
+import { DialogAddProductComponent } from '@shoppingList/component/dialog-add-product/dialog-add-product.component';
 //#endregion
 
 

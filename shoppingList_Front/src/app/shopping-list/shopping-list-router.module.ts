@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 //#endregion
 
 //#region Routed Component
-import { ShoppingListComponent } from '@app_shoppingList/component';
+import { ShoppingListComponent } from '@shoppingList/component';
 //#endregion
 
 const routes: Routes = [

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 //#endregion
 
 //#region App Component, Model
-import { Account } from '@app_account/model/account.model';
+import { Account } from '@account/model/account.model';
 //#endregion
 
 // Api Info

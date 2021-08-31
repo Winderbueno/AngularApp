@@ -6,9 +6,9 @@ import { map } from 'rxjs/operators';
 //#endregion
 
 //#region App Component, Model
-import { ShoppingList } from '@app_shoppingList/model/shopping-list.model';
-import { UsedProduct } from '@app_shoppingList/model/used-product.model';
-import { CreateProductReq } from '@app_shoppingList/model/create-product-req.model';
+import { ShoppingList } from '@shoppingList/model/shopping-list.model';
+import { UsedProduct } from '@shoppingList/model/used-product.model';
+import { CreateProductReq } from '@shoppingList/model/create-product-req.model';
 //#endregion
 
 // Api Info

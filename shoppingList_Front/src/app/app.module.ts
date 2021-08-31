@@ -14,8 +14,8 @@ import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 //#endregion
 
 //#region NgRx Effect & Reducer
-import * as fromAccount from '@app_account/store/account.reducers';
-import * as fromShoppingList from '@app_shoppingList/store/shopping-list.reducers';
+import * as fromAccount from '@account/store/account.reducers';
+import * as fromShoppingList from '@shoppingList/store/shopping-list.reducers';
 //#endregion
 
 //#region App Module
@@ -27,7 +27,7 @@ import { TimerModule } from '@timer/timer.module';
 
 //#region Service
 import { appInitializer } from '@app_helper/app.initializer';
-import { AccountService } from '@app_account/service/account.service'; // TODO - Should not be used
+import { AccountService } from '@account/service/account.service'; // TODO - Should not be used
 //#endregion
 
 //#region Interceptor

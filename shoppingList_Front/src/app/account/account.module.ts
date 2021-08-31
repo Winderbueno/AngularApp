@@ -5,16 +5,16 @@ import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
 //#region App Module
-import { AccountRouterModule } from '@app_account/account-router.module';
+import { AccountRouterModule } from '@account/account-router.module';
 import { MaterialModule } from '@material/material.module';
 import { FormModule } from '@form/form.module';
 //#endregion
 
 //#region Effect
-import { AccountAPIEffects } from '@app_account/store/effect/account-api.effects';
-import { AlertEffects } from '@app_account/store/effect/alert.effects';
-import { RouterEffects } from '@app_account/store/effect/router.effects';
-import { TimerEffects } from '@app_account/store/effect/timer.effects';
+import { AccountAPIEffects } from '@account/store/effect/account-api.effects';
+import { AlertEffects } from '@account/store/effect/alert.effects';
+import { RouterEffects } from '@account/store/effect/router.effects';
+import { TimerEffects } from '@account/store/effect/timer.effects';
 //#endregion
 
 //#region Component
@@ -23,7 +23,7 @@ import {
   RegisterComponent,
   ForgotPasswordComponent,
   ResetPasswordComponent,
-  VerifyEmailComponent } from '@app_account/component/.';
+  VerifyEmailComponent } from '@account/component/.';
 //#endregion
 
 

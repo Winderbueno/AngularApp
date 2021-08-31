@@ -6,7 +6,7 @@ import { API } from '@action/enum/api.enum';
 //#endregion
 
 //#region App Model
-import { Account } from '@app_account/model/account.model';
+import { Account } from '@account/model/account.model';
 //#endregion
 
 

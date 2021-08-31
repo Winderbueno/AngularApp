@@ -6,7 +6,7 @@ import { tap } from 'rxjs/operators';
 //#endregion
 
 //#region App Action
-import * as AccountAPIActions from '@app_account/store/action/account.api.actions';
+import * as AccountAPIActions from '@account/store/action/account.api.actions';
 //#endregion
 
 

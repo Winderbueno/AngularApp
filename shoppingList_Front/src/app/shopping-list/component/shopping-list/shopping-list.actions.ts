@@ -9,7 +9,7 @@ import { ActionSource } from '@action/enum/action-source.enum';
 //#endregion
 
 //#region App Model
-import { UsedProduct } from '@app_shoppingList/model/used-product.model';
+import { UsedProduct } from '@shoppingList/model/used-product.model';
 //#endregion
 
 

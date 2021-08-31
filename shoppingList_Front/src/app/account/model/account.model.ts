@@ -1,4 +1,4 @@
-import { RoleEnum } from "@app_account/model/enum/role.enum";
+import { RoleEnum } from "@account/model/enum/role.enum";
 
 export class Account {
 

@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
 //#endregion
 
 //#region App Model, Action, Selector
-import { Account } from '@app_account/model/account.model';
-import * as AccountSelector from '@app_account/store/account.selectors';
+import { Account } from '@account/model/account.model';
+import * as AccountSelector from '@account/store/account.selectors';
 //#endregion
 
 // Api Info
