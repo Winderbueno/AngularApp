@@ -23,13 +23,13 @@
       "@app_shoppingList/*": ["src/app/shopping-list/*"],
 
       // Technical Module
+      "@action/*": ["src/app/_module/action/*"],
       "@alert/*": ["src/app/_module/alert/*"],
       "@form/*": ["src/app/_module/form/*"],
       "@layout/*": ["src/app/_module/layout/*"],
       "@loader/*": ["src/app/_module/loader/*"],
       "@material/*": ["src/app/_module/material/*"],
       "@timer/*": ["src/app/_module/timer/*"],
-      "@action_creator/*": ["src/app/_module/store/action/*"],
       "@mod_store/*": ["src/app/_module/store/*"],
     },
   },

@@ -5,7 +5,7 @@ import { TypedAction } from '@ngrx/store/src/models';
 //#endregion
 
 //#region App Action
-import { ActionSource } from '@action_creator/enum/action-source.enum';
+import { ActionSource } from '@action/enum/action-source.enum';
 //#endregion
 
 

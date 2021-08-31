@@ -27,27 +27,23 @@
       // App
       "@app/*": ["src/app/*"],
       "@app_helper/*": ["src/app/_helper/*"],
+      "@app_model/*": ["src/app/_model/*"],
+      "@app_enum/*": ["src/app/_model/enum/*"],
+      "@app_service/*": ["src/app/_service/*"],
+      "@app_module/*": ["src/app/_module/*"],
 
-      // Feature
+      // Feature Module
       "@app_account/*": ["src/app/account/*"],
       "@app_shoppingList/*": ["src/app/shopping-list/*"],
 
-      // Model
-      "@app_model/*": ["src/app/_model/*"],
-      "@app_enum/*": ["src/app/_model/enum/*"],
-
-      // Service
-      "@app_service/*": ["src/app/_service/*"],
-
-      // Module
-      "@app_module/*": ["src/app/_module/*"],
+      // Technical Module
+      "@action/*": ["src/app/_module/action/*"],
       "@alert/*": ["src/app/_module/alert/*"],
       "@form/*": ["src/app/_module/form/*"],
       "@layout/*": ["src/app/_module/layout/*"],
       "@loader/*": ["src/app/_module/loader/*"],
       "@material/*": ["src/app/_module/material/*"],
       "@timer/*": ["src/app/_module/timer/*"],
-      "@action_creator/*": ["src/app/_module/store/action/*"],
       "@mod_store/*": ["src/app/_module/store/*"],
     },
   },

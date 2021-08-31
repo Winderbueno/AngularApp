@@ -10,7 +10,7 @@ import { FormComponent } from '@form/component/form.component';
 import { Enum } from '@app_model/enum.model';
 import { CreateProductReq } from '@app_model/create-product-req.model';
 import { AccountService } from '@app_account/service/account.service';
-import { EnumService } from '@app_service/enum.service';
+import { EnumService } from '@app/_module/enum/enum.service';
 import { ShoppingListService } from '@app/shopping-list/service/shopping-list.service';
 //#endregion
 

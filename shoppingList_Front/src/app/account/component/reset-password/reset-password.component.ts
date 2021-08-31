@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 //#endregion
 
 //#region App Component, Model
-import { TokenStore } from '@mod_store/component-store/token.store';
+import { TokenStore } from '@app/account/component-store/token.store';
 import { FormComponent } from '@form/component/form.component';
 import * as ComponentActions from './reset-password.actions';
 import { TokenStatusEnum } from "@app_enum/token-status.enum";
