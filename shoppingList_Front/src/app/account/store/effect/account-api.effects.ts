@@ -1,18 +1,19 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { of } from 'rxjs';
-import { map, catchError, exhaustMap } from 'rxjs/operators';
+import { of, EMPTY } from 'rxjs';
+import { map, catchError, exhaustMap, tap } from 'rxjs/operators';
 //#endregion
 
 //#region App Action
 import * as AccountAPIActions from '@account/store/action/account.api.actions';
 import * as TimerTriggeredActions from '@account/store/action/timer-triggered.actions';
+import * as TokenActions from '@token/store/token.actions';
 import { forgotPasswordSubmit } from '@account/component/forgot-password/forgot-password.actions';
 import { toolbarLogOut } from '@layout/toolbar/toolbar.component.actions';
 import { loginSubmit } from '@account/component/login/login.actions';
 import { registerSubmit } from '@account/component/register/register.actions';
-import * as ComponentActions from '@account/component/reset-password/reset-password.actions';
+import { validateResetToken, resetPasswordSubmit } from '@account/component/reset-password/reset-password.actions';
 //#endregion
 
 //#region App Service
@@ -87,7 +88,7 @@ export class AccountAPIEffects {
 
   resetPassword$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(ComponentActions.resetPasswordSubmit),
+      ofType(resetPasswordSubmit),
       exhaustMap((action) =>
         this.accountService.resetPassword(action.token, action.password, action.confirmPassword).pipe(
           map(() => AccountAPIActions.resetPasswordSuccess({ // TODO - Msg (Error msg are in BACK, Success msg are here)
@@ -96,6 +97,18 @@ export class AccountAPIEffects {
           catchError((error) => of(AccountAPIActions.resetPasswordFailure({ error: error })))
     ))
   ));
+
+
+  validateResetToken$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(validateResetToken),
+      exhaustMap((action) =>
+        this.accountService.validateResetToken(action.token).pipe(
+          map(() => TokenActions.validateToken({ token : token})),
+          catchError((error) => TokenActions.tokenDefined), //
+      )),
+      );
+  });
 
 
   constructor(
