@@ -13,11 +13,10 @@ import { TimerEffects } from '@timer/store/timer.effects';
 @NgModule({
   imports: [
 
-    /* Technical Effect */
+    /* Effect */
     EffectsModule.forFeature([TimerEffects]),
 
     /* Store */
-    // TODO -> SHoudl be somewhere else
     StoreModule.forFeature('timer', fromTimer.reducer),
 
   ],

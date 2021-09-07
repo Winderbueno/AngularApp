@@ -30,27 +30,27 @@ import {
   ],
   declarations: [
 
-    // Field
+    /* Field */
     CheckBoxFieldComponent,
     InputFieldComponent,
     SelectFieldComponent,
 
-    // Field Group
+    /* Field Group */
     PasswordFieldGroupComponent,
 
     SubmitButtonComponent,
   ],
   exports: [
 
-    // Form Tools
+    /* Form Tools */
     ReactiveFormsModule,
 
-    // Field
+    /* Field */
     CheckBoxFieldComponent,
     InputFieldComponent,
     SelectFieldComponent,
 
-    // Field Group
+    /* Field Group */
     PasswordFieldGroupComponent,
 
     SubmitButtonComponent
