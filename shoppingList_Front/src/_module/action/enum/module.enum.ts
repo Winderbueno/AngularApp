@@ -3,5 +3,6 @@ export enum Module {
   ALERT = 'Alert',
   FORM = 'Form',
   LOADER = 'Loader',
-  TIMER = 'Timer'
+  TIMER = 'Timer',
+  TOKEN = 'Token',
 }

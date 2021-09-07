@@ -4,8 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 //#endregion
 
 //#region App Component, Model
-import { TokenStore } from '@account/component-store/token.store';
-import { TokenStatusEnum } from "@account/model/enum/token-status.enum";
+import { TokenStore } from '@token/token.store';
+import { TokenStatusEnum } from "@token/model/enum/token-status.enum";
 //#endregion
 
 

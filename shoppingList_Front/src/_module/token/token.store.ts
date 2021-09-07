@@ -7,7 +7,7 @@ import { catchError, switchMap, tap } from 'rxjs/operators';
 //#endregion
 
 //#region App Model, Action, Selector
-import { TokenStatusEnum } from '@account/model/enum/token-status.enum';
+import { TokenStatusEnum } from '@token/model/enum/token-status.enum';
 import { AccountService } from '@account/service/account.service';
 import * as AccountAPIActions from '@account/store/action/account.api.actions';
 //#endregion
@@ -39,18 +39,7 @@ export class TokenStore extends ComponentStore<ComponentState> {
 
 
   // Validate Reset Token
-  readonly validateResetToken = this.effect((token$: Observable<string|undefined>) => {
-    return token$.pipe(
-      switchMap((token) => this.accountService.validateResetToken(token).pipe(
-        tap({
-          next: () => this.setTokenStatus(TokenStatusEnum.Valid),
-          error: () => this.setTokenStatus(TokenStatusEnum.Invalid)
-        }),
-        // Handle potential error within inner pipe.
-        catchError(() => EMPTY),
-      )),
-      );
-  });
+
 
   // Validate Mail Token
   readonly verifyEmail = this.effect((token$: Observable<string|undefined>) => {

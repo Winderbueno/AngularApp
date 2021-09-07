@@ -30,6 +30,7 @@
       "@material/*": ["src/_module/material/*"],
       "@router/*": ["src/_module/router/*"],
       "@timer/*": ["src/_module/timer/*"],
+      "@token/*": ["src/_module/token/*"],
     },
   },
   "files": [
