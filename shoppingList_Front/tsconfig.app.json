@@ -13,7 +13,7 @@
       // App
       "@app/*": ["src/app/*"],
       "@app_helper/*": ["src/app/_helper/*"],
-      "@app_module/*": ["src/app/_module/*"],
+      "@module/*": ["src/_module/*"],
 
       // App Feature
       "@account/*": ["src/app/account/*"],
@@ -21,15 +21,15 @@
       "@shoppingList/*": ["src/app/shopping-list/*"],
 
       // App Module
-      "@action/*": ["src/app/_module/action/*"],
-      "@alert/*": ["src/app/_module/alert/*"],
-      "@enum/*": ["src/app/_module/enum/*"],
-      "@form/*": ["src/app/_module/form/*"],
-      "@layout/*": ["src/app/_module/layout/*"],
-      "@loader/*": ["src/app/_module/loader/*"],
-      "@material/*": ["src/app/_module/material/*"],
-      "@router/*": ["src/app/_module/router/*"],
-      "@timer/*": ["src/app/_module/timer/*"],
+      "@action/*": ["src/_module/action/*"],
+      "@alert/*": ["src/_module/alert/*"],
+      "@enum/*": ["src/_module/enum/*"],
+      "@form/*": ["src/_module/form/*"],
+      "@layout/*": ["src/_module/layout/*"],
+      "@loader/*": ["src/_module/loader/*"],
+      "@material/*": ["src/_module/material/*"],
+      "@router/*": ["src/_module/router/*"],
+      "@timer/*": ["src/_module/timer/*"],
     },
   },
   "files": [
