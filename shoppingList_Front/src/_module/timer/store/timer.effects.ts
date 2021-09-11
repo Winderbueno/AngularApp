@@ -5,9 +5,9 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, withLatestFrom } from 'rxjs/operators';
 //#endregion
 
-//#region App Action, Selector
-import * as TimerActions from '@timer/store/timer.actions';
-import * as TimerSelectors from '@timer/store/timer.selectors';
+//#region Store
+import * as TimerActions from './timer.actions';
+import * as TimerSelectors from './timer.selectors';
 //#endregion
 
 

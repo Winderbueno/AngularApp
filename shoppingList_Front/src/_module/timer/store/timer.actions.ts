@@ -5,8 +5,8 @@ import { ActionSource } from '@action/enum/action-source.enum';
 import { Module } from '@action/enum/module.enum';
 //#endregion
 
-//#region App Model, Action
-import { Timer } from '@timer/model/timer.model';
+//#region Model
+import { Timer } from '../model/timer.model';
 //#endregion
 
 

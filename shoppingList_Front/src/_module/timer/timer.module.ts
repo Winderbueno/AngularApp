@@ -1,10 +1,10 @@
-//#region Angular, Material, NgRx & NgRx
+//#region Angular, Material, NgRx
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 //#endregion
 
-//#region Technical Effect
+//#region Store
 import * as fromTimer from '@timer/store/timer.reducer';
 import { TimerEffects } from '@timer/store/timer.effects';
 //#endregion

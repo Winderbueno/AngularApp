@@ -1,8 +1,11 @@
 //#region NgRx
-import { TimerState, adapter } from './timer.state';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { filter, memoize } from 'lodash';
 import { Dictionary } from '@ngrx/entity';
+import { filter, memoize } from 'lodash'; // TODO - Need to use lodash ?
+//#endregion
+
+//#region Store, Model
+import { TimerState, adapter } from './timer.state';
 import { Timer } from '../model/timer.model';
 //#endregion
 

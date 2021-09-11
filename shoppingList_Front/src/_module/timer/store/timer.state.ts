@@ -1,5 +1,10 @@
-import { Timer } from "../model/timer.model";
+//#region NgRx
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+//#endregion
+
+//#region Store, Model
+import { Timer } from "../model/timer.model";
+//#endregion
 
 /* State */
 export interface TimerState extends EntityState<Timer> {}
