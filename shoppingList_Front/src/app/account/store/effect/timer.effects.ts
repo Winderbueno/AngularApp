@@ -1,14 +1,16 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map } from 'rxjs/operators';
 //#endregion
 
-//#region App Action
+//#region Action
 import * as TimerActions from '@timer/store/timer.actions';
 import * as TimerTriggeredActions from '@account/store/action/timer-triggered.actions';
 import * as AccountAPIActions from '@account/store/action/account.api.actions';
+//#endregion
+
+//#region Model
 import { Timer } from '@timer/model/timer.model';
 //#endregion
 
@@ -18,12 +20,14 @@ export class TimerEffects {
 
   defineRefreshTokenTimer$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(AccountAPIActions.loginSuccess,
-        AccountAPIActions.refreshTokenSuccess),
+      ofType(
+        AccountAPIActions.loginSuccess,
+        AccountAPIActions.refreshTokenSuccess
+      ),
       map((action) => {
 
         // Define Refresh Token Timer
-        let timer = new Timer({ // TODO
+        let timer = new Timer({
           name: 'RefreshToken',
           time: 10000, // TODO - Put this in a config file
           action: TimerTriggeredActions.refreshTokenTimerEnded()
@@ -50,7 +54,8 @@ export class TimerEffects {
       ofType(
         AccountAPIActions.logoutSuccess,
         AccountAPIActions.logoutFailure,
-        AccountAPIActions.refreshTokenFailure),
+        AccountAPIActions.refreshTokenFailure
+      ),
       map(() => {
         return TimerActions.deleteTimer({ name: 'RefreshToken' });
       })
@@ -59,7 +64,6 @@ export class TimerEffects {
 
 
   constructor(
-    private actions$: Actions,
-    private store: Store
+    private actions$: Actions
   ) { }
 }

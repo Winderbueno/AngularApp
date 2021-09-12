@@ -15,7 +15,6 @@ const timerReducer = createReducer(
     (state, action) => { return adapter.addOne(action.timer, state) }
   ),
 
-
   // When the effect have defined the timer, we add it to the state
   on(TimerActions.timerDefined,
     (state, action) => {

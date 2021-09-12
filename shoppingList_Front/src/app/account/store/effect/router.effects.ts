@@ -21,7 +21,8 @@ export class RouterEffects {
         AccountAPIActions.forgotPasswordSuccess,
         AccountAPIActions.resetPasswordSuccess,
         AccountAPIActions.registerSuccess,
-        AccountAPIActions.verifyEmailSuccess),
+        AccountAPIActions.verifyEmailSuccess
+      ),
       tap(() => {
         this.router.navigate(['account/login']);
       })

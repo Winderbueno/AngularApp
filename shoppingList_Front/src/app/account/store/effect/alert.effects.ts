@@ -6,7 +6,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as RouterActions from '@ngrx/router-store';
 //#endregion
 
-//#region App Action, Selector, Model
+//#region Action, Selector, Model
 import * as AccountAPIActions from '@account/store/action/account.api.actions';
 import * as AlertActions from '@alert/store/alert.actions';
 import * as AlertSelectors from '@alert/store/alert.selectors';
@@ -27,7 +27,8 @@ export class AlertEffects {
         AccountAPIActions.forgotPasswordFailure,
         AccountAPIActions.registerFailure,
         AccountAPIActions.verifyEmailFailure,
-        AccountAPIActions.resetPasswordFailure),
+        AccountAPIActions.resetPasswordFailure
+      ),
       map((error) => AlertActions.triggerAlert({
         alertType: AlertTypeEnum.Error,
         message: error.error,
@@ -44,7 +45,8 @@ export class AlertEffects {
         AccountAPIActions.resetPasswordSuccess,
         AccountAPIActions.registerSuccess,
         AccountAPIActions.verifyEmailSuccess,
-        AccountAPIActions.forgotPasswordSuccess),
+        AccountAPIActions.forgotPasswordSuccess
+      ),
       map((action) => AlertActions.triggerAlert({
         alertType: AlertTypeEnum.Success,
         message: action.message,

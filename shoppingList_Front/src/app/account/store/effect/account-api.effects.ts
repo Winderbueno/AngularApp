@@ -1,19 +1,15 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { of, EMPTY } from 'rxjs';
-import { map, catchError, exhaustMap, tap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { map, catchError, exhaustMap } from 'rxjs/operators';
 //#endregion
 
-//#region App Action
+//#region Action
 import * as AccountAPIActions from '@account/store/action/account.api.actions';
 import * as TimerTriggeredActions from '@account/store/action/timer-triggered.actions';
-import * as TokenActions from '@token/store/token.actions';
-import { forgotPasswordSubmit } from '@account/component/forgot-password/forgot-password.actions';
+import { forgotPasswordSubmit, loginSubmit, registerSubmit, resetPasswordSubmit } from '@account/component/';
 import { toolbarLogOut } from '@layout/toolbar/toolbar.component.actions';
-import { loginSubmit } from '@account/component/login/login.actions';
-import { registerSubmit } from '@account/component/register/register.actions';
-import { validateResetToken, resetPasswordSubmit } from '@account/component/reset-password/reset-password.actions';
 //#endregion
 
 //#region App Service
@@ -99,20 +95,8 @@ export class AccountAPIEffects {
   ));
 
 
-  validateResetToken$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(validateResetToken),
-      exhaustMap((action) =>
-        this.accountService.validateResetToken(action.token).pipe(
-          map(() => TokenActions.validateToken({ token : token})),
-          catchError((error) => TokenActions.tokenDefined), //
-      )),
-      );
-  });
-
-
   constructor(
     private actions$: Actions,
     private accountService: AccountService
-  ) { }
+  ) {}
 }
