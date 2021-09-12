@@ -1,13 +1,14 @@
 ﻿//#region Angular, Material, NgRx
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 //#endregion
 
 //#region App Component, Model
 import { TokenStore } from '@module/token/token.store';
 import { FormComponent } from '@form/component/form.component';
 import * as ComponentActions from './reset-password.actions';
+import * as TokenSelectors from '@token/store/token.selectors';
 import { TokenStatusEnum } from "@token/model/enum/token-status.enum";
 import { Token } from '@token/model/token.model';
 //#endregion
@@ -22,6 +23,8 @@ export class ResetPasswordComponent extends FormComponent {
   TokenStatusEnum = TokenStatusEnum;
   tokenStatus = this.tokenStore.tokenStatus$;
   token = this.tokenStore.token$;
+
+  tokenNew:Token|undefined;
 
   constructor(
     router: Router,
@@ -51,6 +54,10 @@ export class ResetPasswordComponent extends FormComponent {
         }),
       })
     );
+
+
+    const testToken$ = this.store.select(TokenSelectors.selectTokenByName('test'));
+
   }
 
   submitAction() {
