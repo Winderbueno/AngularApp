@@ -2,10 +2,14 @@
 import { props } from '@ngrx/store';
 //#endregion
 
-//#region App Action
+//#region Action Creator
 import { createAction } from '@action/creator/action-creator';
 import { createSubmitAction } from '@action/creator/component-submit-action-creator';
 import { ActionSource } from '@action/enum/action-source.enum';
+//#endregion
+
+//#region Model
+import { Token } from '@token/model/token.model';
 //#endregion
 
 
@@ -14,7 +18,7 @@ export const validateResetToken = createAction (
   'Reset Password',
   'validateResetToken',
   props<{
-    token: string | undefined }>()
+    token: Token }>()
 );
 
 
