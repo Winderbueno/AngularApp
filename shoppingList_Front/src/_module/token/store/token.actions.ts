@@ -10,19 +10,27 @@ import { Token } from '@token/model/token.model';
 //#endregion
 
 
-export const storeToken = createAction(
-  ActionSource.MODULE,
-  Module.TOKEN,
-  'Store',
-  props<{ token: Token }>()
-);
-
-
 export const validateToken = createAction(
   ActionSource.MODULE,
   Module.TOKEN,
   'Validate',
-  props<{ usage: string }>()
+  props<{ token: Token }>()
+);
+
+
+export const tokenValidated = createAction(
+  ActionSource.MODULE,
+  Module.TOKEN,
+  'Validated',
+  props<{ name: string }>()
+);
+
+
+export const tokenInvalidated = createAction(
+  ActionSource.MODULE,
+  Module.TOKEN,
+  'Invalidated',
+  props<{ name: string }>()
 );
 
 
@@ -31,23 +39,4 @@ export const deleteToken = createAction(
   Module.TOKEN,
   'Delete',
   props<{ name: string }>()
-);
-
-
-export const tokenValidated = createAction(
-  ActionSource.MODULE,
-  Module.TOKEN,
-  'Validated',
-  props<{
-    name: string,
-    timeoutHandler: number
-  }>()
-);
-
-
-export const tokenDeleted = createAction(
-  ActionSource.MODULE,
-  Module.TOKEN,
-  'Deleted',
-  props<{ name: string | undefined }>()
 );
