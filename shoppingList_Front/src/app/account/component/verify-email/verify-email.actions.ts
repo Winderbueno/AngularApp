@@ -1,8 +1,5 @@
-//#region NgRx
-import { props } from '@ngrx/store';
-//#endregion
-
 //#region Action Creator
+import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
 import { ActionSource } from '@action/enum/action-source.enum';
 //#endregion
