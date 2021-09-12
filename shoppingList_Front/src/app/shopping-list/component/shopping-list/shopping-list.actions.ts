@@ -3,7 +3,7 @@ import { props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
 //#endregion
 
-//#region App Action
+//#region Action Creator
 import { createAction } from '@action/creator/action-creator';
 import { ActionSource } from '@action/enum/action-source.enum';
 //#endregion

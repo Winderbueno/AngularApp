@@ -3,7 +3,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatAccordion } from '@angular/material/expansion';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 //#endregion
 
 //#region App Component, Model
