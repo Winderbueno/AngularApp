@@ -9,6 +9,7 @@ import { TokenStore } from '@module/token/token.store';
 import { FormComponent } from '@form/component/form.component';
 import * as ComponentActions from './reset-password.actions';
 import { TokenStatusEnum } from "@token/model/enum/token-status.enum";
+import { Token } from '@token/model/token.model';
 //#endregion
 
 
@@ -36,14 +37,20 @@ export class ResetPasswordComponent extends FormComponent {
     super.title = "Reset Password";
     super.ngOnInit();
 
-    const token = this.route.snapshot.queryParams['token']
-    this.tokenStore.setToken(token);
+    const token = this.route.snapshot.queryParams['token'];
 
     // Remove token from url to prevent http referer leakage
     this.router.navigate([], { relativeTo: this.route, replaceUrl: true });
 
-    // Call Backend to ValidateResetToken
-    this.tokenStore.validateResetToken(token);
+    // Dispatch ResetPassword action
+    this.store.dispatch(
+      ComponentActions.validateResetToken({
+        token: new Token({
+          name:"resetPwd",
+          value: token
+        }),
+      })
+    );
   }
 
   submitAction() {
