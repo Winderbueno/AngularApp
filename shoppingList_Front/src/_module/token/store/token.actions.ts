@@ -6,7 +6,7 @@ import { Module } from '@action/enum/module.enum';
 //#endregion
 
 //#region App Model, Action
-import { Token } from '@token/model/token.model';
+import { Token } from '../model/token.model';
 //#endregion
 
 

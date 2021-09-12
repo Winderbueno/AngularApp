@@ -27,6 +27,17 @@ const tokenReducer = createReducer(
     }
   ),
 
+
+  on(TokenActions.tokenInvalidated,
+    (state, action) => {
+      return adapter.updateOne(
+        {
+          id: action.name,
+          changes: { status: TokenStatusEnum.Invalid }
+        }, state);
+    }
+  ),
+
 );
 
 
