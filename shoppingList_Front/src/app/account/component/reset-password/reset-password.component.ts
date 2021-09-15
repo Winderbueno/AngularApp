@@ -1,11 +1,11 @@
 ﻿//#region Angular, Material, NgRx
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
+import { TypedAction } from '@ngrx/store/src/models';
 //#endregion
 
 //#region App Component, Model
-import { TokenStore } from '@module/token/token.store';
 import { FormComponent } from '@form/component/form.component';
 import * as ComponentActions from './reset-password.actions';
 import * as TokenSelectors from '@token/store/token.selectors';
@@ -14,25 +14,21 @@ import { Token } from '@token/model/token.model';
 //#endregion
 
 
-@Component({
-  templateUrl: 'reset-password.component.html',
-  providers: [TokenStore],
-})
+@Component({ templateUrl: 'reset-password.component.html' })
 export class ResetPasswordComponent extends FormComponent {
 
   TokenStatusEnum = TokenStatusEnum;
-  tokenStatus = this.tokenStore.tokenStatus$;
-  token = this.tokenStore.token$;
-
-  tokenNew:Token|undefined;
+  token:Token|undefined;
 
   constructor(
     router: Router,
     route: ActivatedRoute,
     store: Store,
-    private readonly tokenStore: TokenStore,
   ) {
     super(router, route, store);
+
+    // TODO
+    this.store.select(TokenSelectors.selectTokenByName('resetPwd')).subscribe(val => this.token=val);
   }
 
   ngOnInit() {
@@ -54,25 +50,13 @@ export class ResetPasswordComponent extends FormComponent {
         }),
       })
     );
-
-
-    const testToken$ = this.store.select(TokenSelectors.selectTokenByName('test'));
-
   }
 
-  submitAction() {
-
-    this.tokenStore.token$
-      .subscribe(token => {
-
-        // Dispatch ResetPassword action
-        this.store.dispatch(
-          ComponentActions.resetPasswordSubmit({
-            token: token,
-            password: this.ctrls.Password.value,
-            confirmPassword: this.ctrls.ConfirmPassword.value
-          })
-        );
-      });
+  action(): TypedAction<string> {
+    return ComponentActions.resetPasswordSubmit({
+      token: this.token?.value,
+      password: this.ctrls.Password.value,
+      confirmPassword: this.ctrls.ConfirmPassword.value
+    })
   }
 }

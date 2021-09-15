@@ -14,6 +14,4 @@ export const {
 } = adapter.getSelectors();
 
 export const selectTokenByName = (name: string) =>
-  createSelector(
-    selectEntities,
-    (entities) => entities[name]);
+  createSelector(selectToken, (state: TokenState) => state.entities[name]);
