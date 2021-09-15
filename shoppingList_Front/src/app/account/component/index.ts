@@ -2,7 +2,7 @@
 export { loginSubmit } from './login/login.actions';
 export { registerSubmit } from './register/register.actions';
 export { forgotPasswordSubmit } from './forgot-password/forgot-password.actions';
-export { validateEmailToken } from './verify-email/verify-email.actions';
+export { validateEmailToken, emailTokenValidated } from './verify-email/verify-email.actions';
 export { validateResetToken, resetPasswordSubmit } from './reset-password/reset-password.actions';
 
 /* Component */

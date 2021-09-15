@@ -27,8 +27,8 @@ export class ResetPasswordComponent extends FormComponent {
   ) {
     super(router, route, store);
 
-    // TODO
-    this.store.select(TokenSelectors.selectTokenByName('resetPwd')).subscribe(val => this.token=val);
+    // Suscribe to the token state
+    this.store.select(TokenSelectors.selectTokenByName('resetPwd')).subscribe(token => this.token=token);
   }
 
   ngOnInit() {
@@ -45,7 +45,7 @@ export class ResetPasswordComponent extends FormComponent {
     this.store.dispatch(
       ComponentActions.validateResetToken({
         token: new Token({
-          name:"resetPwd",
+          name: 'resetPwd',
           value: token
         }),
       })

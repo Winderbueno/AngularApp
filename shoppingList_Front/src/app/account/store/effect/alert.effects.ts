@@ -11,6 +11,7 @@ import * as AccountAPIActions from '@account/store/action/account.api.actions';
 import * as AlertActions from '@alert/store/alert.actions';
 import * as AlertSelectors from '@alert/store/alert.selectors';
 import { AlertTypeEnum } from '@alert/model/enum/alert-type.enum';
+import { emailTokenValidated } from '@account/component/';
 //#endregion
 
 
@@ -44,7 +45,7 @@ export class AlertEffects {
       ofType(
         AccountAPIActions.resetPasswordSuccess,
         AccountAPIActions.registerSuccess,
-        AccountAPIActions.verifyEmailSuccess,
+        AccountAPIActions.verifyEmailSuccess, // TODO - Replace by emailTokenValidated
         AccountAPIActions.forgotPasswordSuccess
       ),
       map((action) => AlertActions.triggerAlert({

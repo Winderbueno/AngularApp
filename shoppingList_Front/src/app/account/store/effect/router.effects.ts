@@ -5,8 +5,9 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { tap } from 'rxjs/operators';
 //#endregion
 
-//#region App Action
+//#region Action
 import * as AccountAPIActions from '@account/store/action/account.api.actions';
+import { emailTokenValidated } from '@account/component/';
 //#endregion
 
 
@@ -21,7 +22,7 @@ export class RouterEffects {
         AccountAPIActions.forgotPasswordSuccess,
         AccountAPIActions.resetPasswordSuccess,
         AccountAPIActions.registerSuccess,
-        AccountAPIActions.verifyEmailSuccess
+        emailTokenValidated,
       ),
       tap(() => {
         this.router.navigate(['account/login']);

@@ -1,9 +1,9 @@
 ﻿<h1>Verify Email</h1>
 
-<div *ngIf="(tokenStatus|async) == TokenStatusEnum.Validating">
+<div *ngIf="(token?.status) == TokenStatusEnum.Validating">
   Verifying...
 </div>
 
-<div *ngIf="(tokenStatus|async) == TokenStatusEnum.Invalid">
+<div *ngIf="(token?.status) == TokenStatusEnum.Invalid">
   Verification failed, you can also verify your account using the <a mat-button routerLink="../forgot-password">forgot password</a> page.
 </div>

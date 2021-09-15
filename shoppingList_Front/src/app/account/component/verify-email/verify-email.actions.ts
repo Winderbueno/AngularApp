@@ -16,3 +16,10 @@ export const validateEmailToken = createAction (
   props<{
     token: Token }>()
 );
+
+
+export const emailTokenValidated = createAction(
+  ActionSource.COMPONENT,
+  'Verify Email',
+  'emailTokenValidated'
+);
