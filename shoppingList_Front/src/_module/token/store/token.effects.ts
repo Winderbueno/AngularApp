@@ -20,7 +20,7 @@ export class TokenEffects {
       exhaustMap((action) => {
 
         // TODO - BACK -> Only 1 method for Token Validation
-        if(action.token.name === "ResetPWD")
+        if(action.token.name === "resetPwd")
           return this.accountService.validateResetToken(action.token.value).pipe(
             map(() => TokenActions.tokenValidated({ name : action.token.name })),
             catchError(() => of(TokenActions.tokenInvalidated({ name : action.token.name })))

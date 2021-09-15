@@ -11,10 +11,12 @@ import { FormModule } from '@form/form.module';
 //#endregion
 
 //#region Effect
-import { AccountAPIEffects } from '@account/store/effect/account-api.effects';
-import { AlertEffects } from '@account/store/effect/alert.effects';
-import { RouterEffects } from '@account/store/effect/router.effects';
-import { TimerEffects } from '@account/store/effect/timer.effects';
+import {
+  AccountAPIEffects,
+  AlertEffects,
+  RouterEffects,
+  TimerEffects,
+  TokenEffects } from '@account/store/';
 //#endregion
 
 //#region Component
@@ -23,7 +25,7 @@ import {
   RegisterComponent,
   ForgotPasswordComponent,
   ResetPasswordComponent,
-  VerifyEmailComponent } from '@account/component/.';
+  VerifyEmailComponent } from '@account/component/';
 //#endregion
 
 
@@ -43,6 +45,7 @@ import {
       AlertEffects,
       RouterEffects,
       TimerEffects,
+      TokenEffects,
     ]),
   ],
   declarations: [

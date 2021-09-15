@@ -23,6 +23,7 @@ import { AppRouterModule } from '@app/app-router.module';
 import { AlertModule } from '@alert/alert.module';
 import { LayoutModule } from '@layout/layout.module';
 import { TimerModule } from '@timer/timer.module';
+import { TokenModule } from '@token/token.module';
 //#endregion
 
 //#region Service
@@ -58,20 +59,23 @@ const appearance: MatFormFieldDefaultOptions = { appearance: 'outline' };
     /* NgRx */
     StoreModule.forRoot({
       router: routerReducer,
-      account: fromAccount.reducer,
+      account: fromAccount.reducer, // TODO - add reducer in Account feature module ?
       shoppingList: fromShoppingList.reducer
     }),
 
     StoreRouterConnectingModule.forRoot(),
 
-    /* NgRx Effect */
+    /* Root Effect */
     EffectsModule.forRoot([]),
 
     /* App Module */
     AppRouterModule,
-    TimerModule,
     AlertModule,
     LayoutModule,
+    TimerModule,
+    TokenModule,
+
+    /* DevTool Conf */
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [
