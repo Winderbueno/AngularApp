@@ -52,7 +52,7 @@ export class ResetPasswordComponent extends FormComponent {
     );
   }
 
-  action(): TypedAction<string> {
+  submitAction(): TypedAction<string> {
     return ComponentActions.resetPasswordSubmit({
       token: this.token?.value,
       password: this.ctrls.Password.value,

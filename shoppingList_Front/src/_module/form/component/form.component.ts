@@ -46,14 +46,14 @@ export class FormComponent implements OnInit {
     // Stop here if form is invalid
     if (this._form.invalid) { return; }
 
-    this.submitAction();
+    this.dispatchSubmitAction();
   }
 
-  submitAction() : void {
-    this.store.dispatch(this.action());
+  dispatchSubmitAction() : void {
+    this.store.dispatch(this.submitAction());
   }
 
-  action() : TypedAction<string> {
+  submitAction() : TypedAction<string> {
     return FormActions.formSubmit;
   }
 }

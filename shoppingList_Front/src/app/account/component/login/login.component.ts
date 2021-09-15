@@ -17,7 +17,7 @@ export class LoginComponent extends FormComponent {
     super.ngOnInit();
   }
 
-  action(): TypedAction<string> {
+  submitAction(): TypedAction<string> {
     return ComponentActions.loginSubmit({
       email: this.ctrls.Email.value,
       password: this.ctrls.Password.value

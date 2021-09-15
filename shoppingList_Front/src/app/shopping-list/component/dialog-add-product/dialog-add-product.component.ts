@@ -55,7 +55,7 @@ export class DialogAddProductComponent extends FormComponent {
     });*/
   }
 
-  submitAction() {
+  dispatchSubmitAction() {
 
     // Get Active List Id
     var idSl: string = this.shoppingListService.active.shoppingListId;

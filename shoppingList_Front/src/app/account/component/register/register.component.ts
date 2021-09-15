@@ -17,7 +17,7 @@ export class RegisterComponent extends FormComponent {
     super.ngOnInit();
   }
 
-  action(): TypedAction<string> {
+  submitAction(): TypedAction<string> {
     return ComponentActions.registerSubmit({
       account: this.form.value,
     });
