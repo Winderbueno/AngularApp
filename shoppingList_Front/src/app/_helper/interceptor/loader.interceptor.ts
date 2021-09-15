@@ -21,7 +21,7 @@ export class LoaderInterceptor implements HttpInterceptor {
       // Start loader
       this.store.dispatch(
         LoaderActions.startLoader({
-          loaderTrigger: request.url.toString()
+          triggerSource: request.url.toString()
         })
       );
 

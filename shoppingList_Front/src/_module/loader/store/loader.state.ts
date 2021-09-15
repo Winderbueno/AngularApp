@@ -5,11 +5,11 @@ export interface LoaderState {
   isLoading: boolean;
 
   // Identify what has triggered the loader (a request)
-  loaderTrigger: string;
+  triggerSource: string;
 }
 
 /* Initial State */
 export const initialState: LoaderState = {
   isLoading: false,
-  loaderTrigger:"nothing"
+  triggerSource:"nothing"
 };

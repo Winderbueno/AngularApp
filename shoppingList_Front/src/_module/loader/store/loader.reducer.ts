@@ -12,11 +12,11 @@ const loaderReducer = createReducer(
   initialState,
 
   on(LoaderActions.startLoader,
-    (state, { loaderTrigger }) => {
+    (state, { triggerSource }) => {
       return {
         ...state,
         isLoading: true,
-        loaderTrigger: loaderTrigger
+        triggerSource: triggerSource
       };
     }
   ),
@@ -26,7 +26,7 @@ const loaderReducer = createReducer(
       return {
         ...state,
         isLoading: false,
-        loaderTrigger: "nothing"
+        triggerSource: "nothing"
       };
     }
   ),

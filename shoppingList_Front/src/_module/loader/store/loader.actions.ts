@@ -10,7 +10,7 @@ export const startLoader = createAction(
   ActionSource.MODULE,
   Module.LOADER,
   'Start',
-  props<{ loaderTrigger: string }>()
+  props<{ triggerSource: string }>()
 );
 
 
