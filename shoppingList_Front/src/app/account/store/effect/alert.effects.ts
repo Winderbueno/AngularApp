@@ -27,7 +27,6 @@ export class AlertEffects {
         AccountAPIActions.registerFailure,
         AccountAPIActions.forgotPasswordFailure,
         AccountAPIActions.registerFailure,
-        AccountAPIActions.verifyEmailFailure,
         AccountAPIActions.resetPasswordFailure
       ),
       map((error) => AlertActions.triggerAlert({
@@ -45,8 +44,8 @@ export class AlertEffects {
       ofType(
         AccountAPIActions.resetPasswordSuccess,
         AccountAPIActions.registerSuccess,
-        AccountAPIActions.verifyEmailSuccess, // TODO - Replace by emailTokenValidated
-        AccountAPIActions.forgotPasswordSuccess
+        AccountAPIActions.forgotPasswordSuccess,
+        emailTokenValidated
       ),
       map((action) => AlertActions.triggerAlert({
         alertType: AlertTypeEnum.Success,

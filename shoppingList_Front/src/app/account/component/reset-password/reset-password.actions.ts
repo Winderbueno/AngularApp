@@ -19,6 +19,15 @@ export const validateResetToken = createAction (
 );
 
 
+export const deleteResetToken = createAction (
+  ActionSource.COMPONENT,
+  'Reset Password',
+  'deleteResetToken',
+  props<{
+    name: string }>()
+);
+
+
 // TODO Put this action as a standard action in Form Module
 export const resetPasswordSubmit = createSubmitAction (
   ActionSource.COMPONENT,

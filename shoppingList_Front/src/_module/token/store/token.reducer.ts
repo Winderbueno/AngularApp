@@ -38,6 +38,13 @@ const tokenReducer = createReducer(
     }
   ),
 
+
+  on(TokenActions.deleteToken,
+    (state, action) => {
+      return adapter.removeOne(action.name, state);
+    }
+  ),
+
 );
 
 

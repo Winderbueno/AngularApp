@@ -2,8 +2,8 @@
 export { loginSubmit } from './login/login.actions';
 export { registerSubmit } from './register/register.actions';
 export { forgotPasswordSubmit } from './forgot-password/forgot-password.actions';
-export { validateEmailToken, emailTokenValidated } from './verify-email/verify-email.actions';
-export { validateResetToken, resetPasswordSubmit } from './reset-password/reset-password.actions';
+export { validateEmailToken, deleteEmailToken, emailTokenValidated } from './verify-email/verify-email.actions';
+export { validateResetToken, deleteResetToken, resetPasswordSubmit } from './reset-password/reset-password.actions';
 
 /* Component */
 export { LoginComponent } from './login/login.component';

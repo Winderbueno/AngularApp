@@ -1,5 +1,5 @@
 ﻿//#region Angular, Material, NgRx
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
@@ -15,10 +15,11 @@ import { Token } from '@token/model/token.model';
 
 
 @Component({ templateUrl: 'reset-password.component.html' })
-export class ResetPasswordComponent extends FormComponent {
+export class ResetPasswordComponent extends FormComponent implements OnDestroy {
 
   TokenStatusEnum = TokenStatusEnum;
   token:Token|undefined;
+  tokenName: string = 'resetPwd';
 
   constructor(
     router: Router,
@@ -28,7 +29,8 @@ export class ResetPasswordComponent extends FormComponent {
     super(router, route, store);
 
     // Suscribe to the token state
-    this.store.select(TokenSelectors.selectTokenByName('resetPwd')).subscribe(token => this.token=token);
+    this.store.select(TokenSelectors.selectTokenByName(this.tokenName))
+      .subscribe(token => this.token=token);
   }
 
   ngOnInit() {
@@ -45,7 +47,7 @@ export class ResetPasswordComponent extends FormComponent {
     this.store.dispatch(
       ComponentActions.validateResetToken({
         token: new Token({
-          name: 'resetPwd',
+          name: this.tokenName,
           value: token
         }),
       })
@@ -58,5 +60,11 @@ export class ResetPasswordComponent extends FormComponent {
       password: this.ctrls.Password.value,
       confirmPassword: this.ctrls.ConfirmPassword.value
     })
+  }
+
+  ngOnDestroy() {
+    this.store.dispatch(
+      ComponentActions.deleteResetToken({ name: this.tokenName})
+    );
   }
 }

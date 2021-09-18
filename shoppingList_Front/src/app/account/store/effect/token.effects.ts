@@ -7,7 +7,11 @@ import { map } from 'rxjs/operators';
 
 //#region App Action
 import * as TokenActions from '@token/store/token.actions';
-import { validateResetToken, validateEmailToken } from '@account/component/';
+import {
+  validateResetToken,
+  validateEmailToken,
+  deleteEmailToken,
+  deleteResetToken } from '@account/component/';
 //#endregion
 
 
@@ -22,6 +26,19 @@ export class TokenEffects {
       ),
       map((action) => {
         return TokenActions.validateToken({ token: action.token });
+      })
+    )
+  );
+
+
+  deleteToken$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(
+        deleteResetToken,
+        deleteEmailToken,
+      ),
+      map((action) => {
+        return TokenActions.deleteToken({ name: action.name });
       })
     )
   );

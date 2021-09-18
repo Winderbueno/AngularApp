@@ -18,8 +18,19 @@ export const validateEmailToken = createAction (
 );
 
 
+export const deleteEmailToken = createAction (
+  ActionSource.COMPONENT,
+  'Verify Email',
+  'deleteEmailToken',
+  props<{
+    name: string }>()
+);
+
+
 export const emailTokenValidated = createAction(
   ActionSource.COMPONENT,
   'Verify Email',
-  'emailTokenValidated'
+  'emailTokenValidated',
+  props<{
+    message: string }>()
 );
