@@ -20,14 +20,16 @@ const shoppingListReducer = createReducer(
     }
   ),
 
-  on(AccountAPIActions.logoutSuccess,
-      (state) => {
-        return adapter.removeAll({
-          ...state,
-          isActiveLoaded: false,
-        })
-      }
-    ),
+  on(
+    AccountAPIActions.logoutSuccess,
+    AccountAPIActions.logoutFailure,
+    (state) => {
+      return adapter.removeAll({
+        ...state,
+        isActiveLoaded: false,
+      })
+    }
+  ),
 );
 
 export function reducer(state: ShoppingListState | undefined, action: Action) {

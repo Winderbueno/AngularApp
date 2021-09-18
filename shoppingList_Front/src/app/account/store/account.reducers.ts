@@ -19,7 +19,9 @@ const accountReducer = createReducer(
     }
   ),
 
-  on(AccountAPIActions.logoutSuccess,
+  on(
+    AccountAPIActions.logoutSuccess,
+    AccountAPIActions.logoutFailure,
     (state) => {
       return adapter.removeAll({
         ...state,
