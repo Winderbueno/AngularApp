@@ -1,12 +1,6 @@
 /* Material Theme */
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
-/* Container */
-@import './container.scss';
-
-/* Forms */
-@import './form.scss';
-
 /* Alert */
 @import './alert.scss';
 
@@ -14,6 +8,15 @@
 @import './button/github-star-badge.scss';
 @import './button/circle-link.scss';
 @import './button/chip.scss';
+
+/* Container */
+@import './container.scss';
+
+/* Form */
+@import './form.scss';
+
+/* Loader */
+@import './loader.scss';
 
 /* Text */
 @import './text.scss';
