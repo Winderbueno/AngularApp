@@ -6,7 +6,7 @@ import { map, catchError, exhaustMap } from 'rxjs/operators';
 //#endregion
 
 //#region Action
-import * as AccountAPIActions from '@account/store/action/account.api.actions';
+import * as AccountAPIActions from '@account/service/account.api.actions';
 import * as TimerTriggeredActions from '@account/store/action/timer-triggered.actions';
 import { forgotPasswordSubmit, loginSubmit, registerSubmit, resetPasswordSubmit } from '@account/component/';
 import { toolbarLogOut } from '@layout/component';

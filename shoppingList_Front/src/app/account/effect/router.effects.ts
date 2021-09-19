@@ -6,7 +6,7 @@ import { tap } from 'rxjs/operators';
 //#endregion
 
 //#region Action
-import * as AccountAPIActions from '@account/store/action/account.api.actions';
+import * as AccountAPIActions from '@account/service/account.api.actions';
 import { emailTokenValidated } from '@account/component/';
 //#endregion
 

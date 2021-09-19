@@ -7,7 +7,7 @@ import * as RouterActions from '@ngrx/router-store';
 //#endregion
 
 //#region Action, Selector, Model
-import * as AccountAPIActions from '@account/store/action/account.api.actions';
+import * as AccountAPIActions from '@account/service/account.api.actions';
 import * as AlertActions from '@alert/store/alert.actions';
 import * as AlertSelectors from '@alert/store/alert.selectors';
 import { AlertTypeEnum } from '@alert/model/enum/alert-type.enum';

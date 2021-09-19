@@ -21,7 +21,7 @@ import {
   AlertEffects,
   RouterEffects,
   TimerEffects,
-  TokenEffects } from '@account/store/';
+  TokenEffects } from '@account/.';
 //#endregion
 
 //#region Component
