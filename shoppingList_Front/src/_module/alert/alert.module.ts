@@ -8,10 +8,14 @@ import { StoreModule } from '@ngrx/store';
 import { MaterialModule } from '@material/material.module';
 //#endregion
 
-//#region App Model, Action, Selector
+//#region Store
 import * as fromAlert from '@alert/store/alert.reducer';
-import { AlertComponent } from '@alert/component/alert.component';
-import { SnackbarComponent } from '@alert/component/snackbar/snackbar.component';
+//#endregion
+
+//#region Component
+import {
+  AlertComponent,
+  SnackbarComponent } from './component/';
 //#endregion
 
 
@@ -20,11 +24,11 @@ import { SnackbarComponent } from '@alert/component/snackbar/snackbar.component'
     /* Angular */
     CommonModule,
 
-    /* Store */
-    StoreModule.forFeature('alert', fromAlert.reducer),
-
     /* App Module */
     MaterialModule,
+
+    /* Store */
+    StoreModule.forFeature('alert', fromAlert.reducer),
   ],
   declarations: [
     AlertComponent,

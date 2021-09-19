@@ -8,7 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { MaterialModule } from '@material/material.module';
 //#endregion
 
-//#region Loader Store
+//#region Store
 import * as fromLoader from '@loader/store/loader.reducer';
 //#endregion
 
@@ -23,11 +23,11 @@ import {
     /* Angular */
     CommonModule,
 
-    /* Store */
-    StoreModule.forFeature('loader', fromLoader.reducer),
-
     /* App Module */
     MaterialModule,
+
+    /* Store */
+    StoreModule.forFeature('loader', fromLoader.reducer),
   ],
   declarations: [
     LoaderComponent,

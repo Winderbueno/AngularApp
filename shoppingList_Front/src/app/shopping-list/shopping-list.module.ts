@@ -1,6 +1,7 @@
 //#region Angular, Material, NgRx
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
@@ -8,6 +9,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { MaterialModule } from '@material/material.module';
 import { FormModule } from '@form/form.module';
 import { ShoppingListRouterModule } from '@shoppingList/shopping-list-router.module';
+//#endregion
+
+//#region Store
+import * as fromShoppingList from '@shoppingList/store/shopping-list.reducers';
 //#endregion
 
 //#region Effect
@@ -31,10 +36,11 @@ import {
     MaterialModule,
     FormModule,
 
-    /* API Effect */
-    EffectsModule.forFeature([
-      ShoppingListAPIEffects
-    ]),
+    /* Store */
+    StoreModule.forFeature('shoppingList', fromShoppingList.reducer),
+
+    /* Effect */
+    EffectsModule.forFeature([ShoppingListAPIEffects]),
   ],
   declarations: [
     ShoppingListComponent,

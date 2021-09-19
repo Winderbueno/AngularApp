@@ -1,6 +1,7 @@
 //#region Angular, Material, NgRx
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
@@ -8,6 +9,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { AccountRouterModule } from '@account/account-router.module';
 import { MaterialModule } from '@material/material.module';
 import { FormModule } from '@form/form.module';
+//#endregion
+
+//#region Store
+import * as fromAccount from '@account/store/account.reducers';
 //#endregion
 
 //#region Effect
@@ -38,6 +43,9 @@ import {
     AccountRouterModule,
     MaterialModule,
     FormModule,
+
+    /* Store */
+    StoreModule.forFeature('account', fromAccount.reducer),
 
     /* Effect */
     EffectsModule.forFeature([

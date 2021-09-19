@@ -13,7 +13,7 @@ import {
   CardLayoutComponent,
   FooterComponent,
   ToolbarComponent,
-  HomeComponent } from './';
+  HomeComponent } from './component';
 //#endregion
 
 

@@ -29,7 +29,6 @@ import {
     LoaderModule
   ],
   declarations: [
-
     /* Field */
     CheckBoxFieldComponent,
     InputFieldComponent,
@@ -41,7 +40,6 @@ import {
     SubmitButtonComponent,
   ],
   exports: [
-
     /* Form Tools */
     ReactiveFormsModule,
 
