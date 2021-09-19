@@ -5,11 +5,11 @@ import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
 //#region Store
-import * as fromTimer from '@timer/store/timer.reducer';
+import * as fromTimer from './store/timer.reducer';
 //#endregion
 
 //#region Effect
-import { TimerEffects } from '@timer/store/timer.effects';
+import { TimerEffects } from './effect/timer.effects';
 //#endregion
 
 

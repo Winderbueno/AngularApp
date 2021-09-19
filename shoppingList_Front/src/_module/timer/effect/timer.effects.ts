@@ -6,8 +6,8 @@ import { map, withLatestFrom } from 'rxjs/operators';
 //#endregion
 
 //#region Store
-import * as TimerActions from './timer.actions';
-import * as TimerSelectors from './timer.selectors';
+import * as TimerActions from '../store/timer.actions';
+import * as TimerSelectors from '../store/timer.selectors';
 //#endregion
 
 

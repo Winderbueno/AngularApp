@@ -5,11 +5,11 @@ import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
 //#region Store
-import * as fromToken from '@token/store/token.reducer';
+import * as fromToken from './store/token.reducer';
 //#endregion
 
-//#region Store
-import { TokenEffects } from '@token/store/token.effects';
+//#region Effect
+import { TokenEffects } from './effect/token.effects';
 //#endregion
 
 

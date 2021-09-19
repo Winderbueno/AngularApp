@@ -8,21 +8,21 @@ import { EffectsModule } from '@ngrx/effects';
 //#region App Module
 import { MaterialModule } from '@material/material.module';
 import { FormModule } from '@form/form.module';
-import { ShoppingListRouterModule } from '@shoppingList/shopping-list-router.module';
+import { ShoppingListRouterModule } from './shopping-list-router.module';
 //#endregion
 
 //#region Store
-import * as fromShoppingList from '@shoppingList/store/shopping-list.reducers';
+import * as fromShoppingList from './store/shopping-list.reducers';
 //#endregion
 
 //#region Effect
-import { ShoppingListAPIEffects } from '@shoppingList/store/effect/shopping-list-api.effects';
+import { ShoppingListAPIEffects } from './effect/shopping-list-api.effects';
 //#endregion
 
 //#region Component
 import {
   DialogAddProductComponent,
-  ShoppingListComponent } from '@shoppingList/component';
+  ShoppingListComponent } from './component';
 //#endregion
 
 
