@@ -11,9 +11,7 @@ import { MaterialModule } from '@material/material.module';
 import { FormModule } from '@form/form.module';
 //#endregion
 
-//#region Store
-import * as fromAccount from '@account/store/account.reducers';
-//#endregion
+
 
 //#region Effect
 import {
@@ -45,7 +43,7 @@ import {
     FormModule,
 
     /* Store */
-    StoreModule.forFeature('account', fromAccount.reducer),
+    //StoreModule.forFeature(),
 
     /* Effect */
     EffectsModule.forFeature([

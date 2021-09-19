@@ -36,6 +36,10 @@ import { ErrorInterceptor } from '@app_helper/interceptor/error.interceptor';
 import { AppComponent } from './app.component';
 //#endregion
 
+//#region Store
+import * as fromAccount from '@account/store/account.reducers';
+//#endregion
+
 //#region App Conf
 import { environment } from '../environments/environment';
 //#endregion
@@ -58,6 +62,7 @@ import { environment } from '../environments/environment';
     /* Store */
     StoreModule.forRoot({
       router: routerReducer,
+      account: fromAccount.reducer, // TODO put in a feature
     }),
 
     StoreRouterConnectingModule.forRoot(),
