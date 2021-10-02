@@ -30,7 +30,7 @@ export class TimerEffects {
         let timer = new Timer({
           name: 'RefreshToken',
           time: 10000, // TODO - Put this in a config file
-          action: TimerTriggeredActions.refreshTokenTimerEnded()
+          action: TimerTriggeredActions.refreshTokenTimerEndedAction()
         });
 
         // Get RefreshToken Time

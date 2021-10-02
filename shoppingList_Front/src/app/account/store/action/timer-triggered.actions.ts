@@ -5,7 +5,7 @@ import { Module } from '@action/enum/module.enum';
 //#endregion
 
 
-export const refreshTokenTimerEnded = createAction(
+export const refreshTokenTimerEndedAction = createAction(
   ActionSource.MODULE,
   Module.TIMER,
   'Refresh Token - Ended'
