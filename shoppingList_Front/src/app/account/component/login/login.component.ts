@@ -18,7 +18,7 @@ export class LoginComponent extends FormComponent {
   }
 
   submitAction(): TypedAction<string> {
-    return ComponentActions.loginSubmit({
+    return ComponentActions.loginSubmitAction({
       email: this.ctrls.Email.value,
       password: this.ctrls.Password.value
     });

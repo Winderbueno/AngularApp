@@ -1,26 +1,23 @@
-//#region NgRx
+//#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
-//#endregion
-
-//#region Action Creator
 import { createAction } from '@action/creator/action-creator';
 import { ActionSource } from '@action/enum/action-source.enum';
 //#endregion
 
-//#region App Model
+//#region Model
 import { UsedProduct } from '@shoppingList/model/used-product.model';
 //#endregion
 
 
-export const loadActive = createAction (
+export const loadActiveAction = createAction (
   ActionSource.COMPONENT,
   'Shopping List',
   'LoadActive'
 );
 
 
-export const resetBoughtStatus = createAction (
+export const resetBoughtStatusAction = createAction (
   ActionSource.COMPONENT,
   'Shopping List',
   'Reset Bought Status',
@@ -29,7 +26,7 @@ export const resetBoughtStatus = createAction (
 );
 
 
-export const addProduct = createAction (
+export const addProductAction = createAction (
   ActionSource.COMPONENT,
   'Shopping List',
   'AddProduct',
@@ -38,7 +35,7 @@ export const addProduct = createAction (
 );
 
 
-export const updateProduct = createAction (
+export const updateProductAction = createAction (
   ActionSource.COMPONENT,
   'Shopping List',
   'UpdtProduct',
@@ -48,7 +45,17 @@ export const updateProduct = createAction (
 );
 
 
-export const deleteProduct = createAction (
+export const swapProductBoughtStatusAction = createAction (
+  ActionSource.COMPONENT,
+  'Shopping List',
+  'UpdtProduct',
+  props<{
+    ShoppingListId: string,
+    product: Update<UsedProduct> }>()
+);
+
+
+export const deleteProductAction = createAction (
   ActionSource.COMPONENT,
   'Shopping List',
   'DeleteProduct',

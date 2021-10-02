@@ -4,7 +4,10 @@ import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
-import * as FormActions from '@form/form.actions';
+//#endregion
+
+//#region Store
+import * as fromStore from '../store';
 //#endregion
 
 
@@ -54,6 +57,6 @@ export class FormComponent implements OnInit {
   }
 
   submitAction() : TypedAction<string> {
-    return FormActions.formSubmit;
+    return fromStore.formSubmitAction;
   }
 }

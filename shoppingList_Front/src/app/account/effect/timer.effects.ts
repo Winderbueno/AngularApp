@@ -5,9 +5,9 @@ import { map } from 'rxjs/operators';
 //#endregion
 
 //#region Action
-import * as TimerActions from '@timer/store/timer.actions';
+import * as fromAPI from '../service/account.api.actions';
+import * as fromTimer from '@timer/store/';
 import * as TimerTriggeredActions from '@account/store/action/timer-triggered.actions';
-import * as AccountAPIActions from '@account/service/account.api.actions';
 //#endregion
 
 //#region Model
@@ -21,8 +21,8 @@ export class TimerEffects {
   defineRefreshTokenTimer$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
-        AccountAPIActions.loginSuccess,
-        AccountAPIActions.refreshTokenSuccess
+        fromAPI.loginSuccessAction,
+        fromAPI.refreshTokenSuccessAction
       ),
       map((action) => {
 
@@ -43,7 +43,7 @@ export class TimerEffects {
           timer.time = expires.getTime() - Date.now() - (60 * 1000);
         }
 
-        return TimerActions.defineTimer({ timer: timer });
+        return fromTimer.defineTimerAction({ timer: timer });
       })
     )
   );
@@ -52,12 +52,12 @@ export class TimerEffects {
   deleteRefreshTokenTimer$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
-        AccountAPIActions.logoutSuccess,
-        AccountAPIActions.logoutFailure,
-        AccountAPIActions.refreshTokenFailure
+        fromAPI.logoutSuccessAction,
+        fromAPI.logoutFailureAction,
+        fromAPI.refreshTokenFailureAction
       ),
       map(() => {
-        return TimerActions.deleteTimer({ name: 'RefreshToken' });
+        return fromTimer.deleteTimerAction({ name: 'RefreshToken' });
       })
     )
   );

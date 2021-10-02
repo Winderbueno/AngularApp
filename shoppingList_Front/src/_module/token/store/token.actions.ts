@@ -1,16 +1,16 @@
-//#region Action Creator
+//#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
 import { ActionSource } from '@action/enum/action-source.enum';
 import { Module } from '@action/enum/module.enum';
 //#endregion
 
-//#region App Model, Action
+//#region Model
 import { Token } from '../model/token.model';
 //#endregion
 
 
-export const validateToken = createAction(
+export const validateTokenAction = createAction(
   ActionSource.MODULE,
   Module.TOKEN,
   'Validate',
@@ -18,7 +18,15 @@ export const validateToken = createAction(
 );
 
 
-export const tokenValidated = createAction(
+export const deleteTokenAction = createAction(
+  ActionSource.MODULE,
+  Module.TOKEN,
+  'Delete',
+  props<{ name: string }>()
+);
+
+
+export const tokenValidatedAction = createAction(
   ActionSource.MODULE,
   Module.TOKEN,
   'Validated',
@@ -26,17 +34,9 @@ export const tokenValidated = createAction(
 );
 
 
-export const tokenInvalidated = createAction(
+export const tokenInvalidatedAction = createAction(
   ActionSource.MODULE,
   Module.TOKEN,
   'Invalidated',
-  props<{ name: string }>()
-);
-
-
-export const deleteToken = createAction(
-  ActionSource.MODULE,
-  Module.TOKEN,
-  'Delete',
   props<{ name: string }>()
 );

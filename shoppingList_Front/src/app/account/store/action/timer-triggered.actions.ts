@@ -1,8 +1,5 @@
-//#region NgRx
+//#region NgRx, Action Creator
 import { createAction } from '@action/creator/action-creator';
-//#endregion
-
-//#region App Model, Action
 import { ActionSource } from '@action/enum/action-source.enum';
 import { Module } from '@action/enum/module.enum';
 //#endregion

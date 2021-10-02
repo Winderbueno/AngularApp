@@ -1,10 +1,7 @@
-//#region NgRx
+//#region NgRx, Action Creator
 import * as ngrx from '@ngrx/store';
 import { ActionCreator, ActionCreatorProps, NotAllowedCheck } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
-//#endregion
-
-//#region App Action
 import { ActionSource } from '@action/enum/action-source.enum';
 //#endregion
 

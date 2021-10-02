@@ -18,7 +18,7 @@ export class RegisterComponent extends FormComponent {
   }
 
   submitAction(): TypedAction<string> {
-    return ComponentActions.registerSubmit({
+    return ComponentActions.registerSubmitAction({
       account: this.form.value,
     });
   }

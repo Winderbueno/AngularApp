@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 //#endregion
 
-//#region App Model, Action, Selector
-import * as LoaderSelector from '@loader/store/loader.selectors';
+//#region Store
+import * as fromStore from '../../store/';
 //#endregion
 
 
@@ -19,7 +19,7 @@ export class LoaderComponent {
   isLoading: boolean | undefined;
 
   constructor(private store: Store) {
-    this.store.select(LoaderSelector.isLoading)
+    this.store.select(fromStore.isLoading)
       .subscribe(value => this.isLoading=value);
   }
 }

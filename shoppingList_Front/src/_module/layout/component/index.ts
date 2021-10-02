@@ -1,5 +1,5 @@
 ﻿/* Action */
-export { toolbarLogOut } from './toolbar/toolbar.component.actions';
+export { toolbarLogOutAction } from './toolbar/toolbar.component.actions';
 
 /* Component */
 export { CardLayoutComponent } from './card-layout/card-layout.component';

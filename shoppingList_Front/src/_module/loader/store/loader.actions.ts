@@ -1,4 +1,4 @@
-//#region Action Creator
+//#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { ActionSource } from '@action/enum/action-source.enum';
 import { createAction } from '@action/creator/action-creator';
@@ -6,7 +6,7 @@ import { Module } from '@action/enum/module.enum';
 //#endregion
 
 
-export const startLoader = createAction(
+export const startLoaderAction = createAction(
   ActionSource.MODULE,
   Module.LOADER,
   'Start',
@@ -14,7 +14,7 @@ export const startLoader = createAction(
 );
 
 
-export const stopLoader = createAction(
+export const stopLoaderAction = createAction(
   ActionSource.MODULE,
   Module.LOADER,
   'Stop',

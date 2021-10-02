@@ -5,7 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
 //#region Store
-import * as fromTimer from './store/timer.reducer';
+import * as fromStore from './store/';
 //#endregion
 
 //#region Effect
@@ -16,7 +16,7 @@ import { TimerEffects } from './effect/timer.effects';
 @NgModule({
   imports: [
     /* Store */
-    StoreModule.forFeature('timer', fromTimer.reducer),
+    StoreModule.forFeature('timer', fromStore.reducer),
 
     /* Effect */
     EffectsModule.forFeature([TimerEffects]),

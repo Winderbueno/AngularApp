@@ -6,8 +6,7 @@ import { map, withLatestFrom } from 'rxjs/operators';
 //#endregion
 
 //#region Store
-import * as TimerActions from '../store/timer.actions';
-import * as TimerSelectors from '../store/timer.selectors';
+import * as fromStore from '../store';
 //#endregion
 
 
@@ -19,12 +18,12 @@ export class TimerEffects {
 
   defineTimer$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(TimerActions.defineTimer),
+      ofType(fromStore.defineTimerAction),
       map((action) => {
         // TODO - Change impl and use RxJS Timer ?
         let timeout = setTimeout(() => this.store.dispatch(action.timer.action), action.timer.time);
 
-        return TimerActions.timerDefined({
+        return fromStore.timerDefinedAction({
           name: action.timer.name,
           timeoutHandler: timeout
         });
@@ -35,8 +34,8 @@ export class TimerEffects {
 
   deleteTimer$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(TimerActions.deleteTimer),
-      withLatestFrom((action) => this.store.select(TimerSelectors.selectTimerByName(action.name))),
+      ofType(fromStore.deleteTimerAction),
+      withLatestFrom((action) => this.store.select(fromStore.selectTimerByName(action.name))),
       map((timer) => {
 
         // TODO - Why is this an Observable ?
@@ -46,7 +45,7 @@ export class TimerEffects {
           }
         )
 
-        return TimerActions.timerDeleted({ name: this.name });
+        return fromStore.timerDeletedAction({ name: this.name });
       })
     )
   );

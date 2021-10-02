@@ -2,8 +2,8 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 //#endregion
 
-//#region App Model, Action, Selector
-import { AlertState } from '@alert/store/alert.state';
+//#region State
+import { AlertState } from './alert.state';
 //#endregion
 
 

@@ -9,7 +9,7 @@ import { MaterialModule } from '@material/material.module';
 //#endregion
 
 //#region Store
-import * as fromLoader from '@loader/store/loader.reducer';
+import * as fromStore from './store/';
 //#endregion
 
 //#region Component
@@ -27,7 +27,7 @@ import {
     MaterialModule,
 
     /* Store */
-    StoreModule.forFeature('loader', fromLoader.reducer),
+    StoreModule.forFeature('loader', fromStore.reducer),
   ],
   declarations: [
     LoaderComponent,

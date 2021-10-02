@@ -2,17 +2,20 @@
 import { Action, createReducer, on } from '@ngrx/store';
 //#endregion
 
-//#region App Model, Action, Selector
-import { AlertState, initialState } from '@alert/store/alert.state';
-import * as AlertActions from '@alert/store/alert.actions';
-import { Alert } from '@alert/model/alert.model';
+//#region State, Action
+import { AlertState, initialState } from './alert.state';
+import * as fromAction from './alert.actions';
+//#endregion
+
+//#region Model
+import { Alert } from '../model/alert.model';
 //#endregion
 
 
 const alertReducer = createReducer(
   initialState,
 
-  on(AlertActions.triggerAlert,
+  on(fromAction.triggerAlertAction,
     (state, action) => {
       return {
         ...state,
@@ -25,11 +28,11 @@ const alertReducer = createReducer(
     }
   ),
 
-  on(AlertActions.dismissAlert,
+  on(fromAction.dismissAlertAction,
     (state) => { return { ...state, alert: undefined }; }
   ),
 
-  on(AlertActions.hasBeenKeptAfterRouteChange,
+  on(fromAction.keptAfterRouteChangeAction,
     (state) => { return { ...state, keepAfterRouteChange: false }; }
   ),
 

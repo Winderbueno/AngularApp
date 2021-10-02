@@ -1,4 +1,4 @@
-//#region Action Creator
+//#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { createSubmitAction } from '@action/creator/component-submit-action-creator';
 import { ActionSource } from '@action/enum/action-source.enum';
@@ -9,7 +9,7 @@ import { Account } from '@account/model/account.model';
 //#endregion
 
 
-export const registerSubmit = createSubmitAction (
+export const registerSubmitAction = createSubmitAction (
   ActionSource.COMPONENT,
   'Register',
   props<{

@@ -18,7 +18,7 @@ export class ForgotPasswordComponent extends FormComponent {
   }
 
   submitAction(): TypedAction<string> {
-    return ComponentActions.forgotPasswordSubmit({
+    return ComponentActions.forgotPasswordSubmitAction({
       email: this.ctrls.Email.value,
     })
   }

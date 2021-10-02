@@ -4,8 +4,8 @@ import { MatSnackBarRef, MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar'
 import { Store } from '@ngrx/store';
 //#endregion
 
-//#region App Model, Action, Selector
-import * as AlertActions from '@alert/store/alert.actions';
+//#region Store
+import * as fromStore from '../../store/';
 //#endregion
 
 
@@ -23,7 +23,7 @@ export class SnackbarComponent {
 
   dismissAlert() {
     this.snackBarRef.dismiss();
-    this.store.dispatch(AlertActions.dismissAlert());
+    this.store.dispatch(fromStore.dismissAlertAction());
   }
 
 }

@@ -1,4 +1,4 @@
-//#region Action Creator
+//#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
 import { createSubmitAction } from '@action/creator/component-submit-action-creator';
@@ -10,7 +10,7 @@ import { Token } from '@token/model/token.model';
 //#endregion
 
 
-export const validateResetToken = createAction (
+export const validateResetTokenAction = createAction (
   ActionSource.COMPONENT,
   'Reset Password',
   'validateResetToken',
@@ -19,7 +19,7 @@ export const validateResetToken = createAction (
 );
 
 
-export const deleteResetToken = createAction (
+export const deleteResetTokenAction = createAction (
   ActionSource.COMPONENT,
   'Reset Password',
   'deleteResetToken',
@@ -29,7 +29,7 @@ export const deleteResetToken = createAction (
 
 
 // TODO Put this action as a standard action in Form Module
-export const resetPasswordSubmit = createSubmitAction (
+export const resetPasswordSubmitAction = createSubmitAction (
   ActionSource.COMPONENT,
   'Reset Password',
   props<{

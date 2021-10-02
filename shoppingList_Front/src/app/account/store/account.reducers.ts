@@ -1,16 +1,19 @@
 //#region NgRx
 import { Action, createReducer, on } from '@ngrx/store';
+//#endregion
+
+//#region State, Action
 import { AccountState, initialState, adapter } from './account.state';
-import * as AccountAPIActions from '@account/service/account.api.actions';
+import * as fromAPI from '../service/account.api.actions';
 //#endregion
 
 
-/* Reducer */
 const accountReducer = createReducer(
   initialState,
 
-  on(AccountAPIActions.loginSuccess,
-     AccountAPIActions.refreshTokenSuccess, // TODO - Test that it works
+  on(
+    fromAPI.loginSuccessAction,
+    fromAPI.refreshTokenSuccessAction, // TODO - Test that it works
     (state, { account }) => {
       return adapter.addOne(account, {
         ...state,
@@ -20,8 +23,8 @@ const accountReducer = createReducer(
   ),
 
   on(
-    AccountAPIActions.logoutSuccess,
-    AccountAPIActions.logoutFailure,
+    fromAPI.logoutSuccessAction,
+    fromAPI.logoutFailureAction,
     (state) => {
       return adapter.removeAll({
         ...state,

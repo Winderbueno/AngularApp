@@ -45,7 +45,7 @@ export class ResetPasswordComponent extends FormComponent implements OnDestroy {
 
     // Dispatch ResetPassword action
     this.store.dispatch(
-      ComponentActions.validateResetToken({
+      ComponentActions.validateResetTokenAction({
         token: new Token({
           name: this.tokenName,
           value: token
@@ -55,7 +55,7 @@ export class ResetPasswordComponent extends FormComponent implements OnDestroy {
   }
 
   submitAction(): TypedAction<string> {
-    return ComponentActions.resetPasswordSubmit({
+    return ComponentActions.resetPasswordSubmitAction({
       token: this.token?.value,
       password: this.ctrls.Password.value,
       confirmPassword: this.ctrls.ConfirmPassword.value
@@ -64,7 +64,7 @@ export class ResetPasswordComponent extends FormComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.store.dispatch(
-      ComponentActions.deleteResetToken({ name: this.tokenName})
+      ComponentActions.deleteResetTokenAction({ name: this.tokenName})
     );
   }
 }

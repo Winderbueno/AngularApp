@@ -2,9 +2,12 @@
 import { Action, createReducer, on } from '@ngrx/store';
 //#endregion
 
-//#region Store, Model
+//#region State, Action
 import { TokenState, initialState, adapter } from './token.state';
-import * as TokenActions from './token.actions';
+import * as fromAction from './token.actions';
+//#endregion
+
+//#region Model
 import { TokenStatusEnum } from "../model/enum/token-status.enum";
 //#endregion
 
@@ -12,12 +15,12 @@ import { TokenStatusEnum } from "../model/enum/token-status.enum";
 const tokenReducer = createReducer(
   initialState,
 
-  on(TokenActions.validateToken,
+  on(fromAction.validateTokenAction,
     (state, action) => { return adapter.addOne(action.token, state) }
   ),
 
 
-  on(TokenActions.tokenValidated,
+  on(fromAction.tokenValidatedAction,
     (state, action) => {
       return adapter.updateOne(
         {
@@ -28,7 +31,7 @@ const tokenReducer = createReducer(
   ),
 
 
-  on(TokenActions.tokenInvalidated,
+  on(fromAction.tokenInvalidatedAction,
     (state, action) => {
       return adapter.updateOne(
         {
@@ -39,7 +42,7 @@ const tokenReducer = createReducer(
   ),
 
 
-  on(TokenActions.deleteToken,
+  on(fromAction.deleteTokenAction,
     (state, action) => {
       return adapter.removeOne(action.name, state);
     }

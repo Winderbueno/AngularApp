@@ -6,8 +6,8 @@ import { exhaustMap, catchError, map } from 'rxjs/operators';
 //#endregion
 
 //#region Action
-import * as TokenActions from '@token/store/token.actions';
-import { AccountService } from '@account/service/account.service';
+import * as fromStore from '../store';
+import { AccountService } from '@account/service/account.service'; // TODO - Should be a token Service
 //#endregion
 
 
@@ -16,19 +16,19 @@ export class TokenEffects {
 
   validateToken$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(TokenActions.validateToken),
+      ofType(fromStore.validateTokenAction),
       exhaustMap((action) => {
 
         // TODO - BACK -> Only 1 method for Token Validation
         if(action.token.name === "resetPwd")
           return this.accountService.validateResetToken(action.token.value).pipe(
-            map(() => TokenActions.tokenValidated({ name : action.token.name })),
-            catchError(() => of(TokenActions.tokenInvalidated({ name : action.token.name })))
+            map(() => fromStore.tokenValidatedAction({ name : action.token.name })),
+            catchError(() => of(fromStore.tokenInvalidatedAction({ name : action.token.name })))
           );
         else {
           return this.accountService.verifyEmail(action.token.value).pipe(
-            map(() => TokenActions.tokenValidated({ name : action.token.name })),
-            catchError(() => of(TokenActions.tokenInvalidated({ name : action.token.name })))
+            map(() => fromStore.tokenValidatedAction({ name : action.token.name })),
+            catchError(() => of(fromStore.tokenInvalidatedAction({ name : action.token.name })))
           );
         }
       })

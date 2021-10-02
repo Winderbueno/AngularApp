@@ -5,13 +5,9 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map } from 'rxjs/operators';
 //#endregion
 
-//#region App Action
-import * as TokenActions from '@token/store/token.actions';
-import {
-  validateResetToken,
-  validateEmailToken,
-  deleteEmailToken,
-  deleteResetToken } from '@account/component/';
+//#region Action, Selector
+import * as fromComponent from '@account/component/';
+import * as fromToken from '@token/store/';
 //#endregion
 
 
@@ -21,11 +17,11 @@ export class TokenEffects {
   validateToken$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
-        validateResetToken,
-        validateEmailToken,
+        fromComponent.validateResetTokenAction,
+        fromComponent.validateEmailTokenAction,
       ),
       map((action) => {
-        return TokenActions.validateToken({ token: action.token });
+        return fromToken.validateTokenAction({ token: action.token });
       })
     )
   );
@@ -34,17 +30,16 @@ export class TokenEffects {
   deleteToken$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
-        deleteResetToken,
-        deleteEmailToken,
+        fromComponent.deleteResetTokenAction,
+        fromComponent.deleteEmailTokenAction,
       ),
       map((action) => {
-        return TokenActions.deleteToken({ name: action.name });
+        return fromToken.deleteTokenAction({ name: action.name });
       })
     )
   );
 
   constructor(
-    private actions$: Actions,
-    private store: Store
+    private actions$: Actions
   ) { }
 }

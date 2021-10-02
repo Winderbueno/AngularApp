@@ -2,16 +2,16 @@
 import { Action, createReducer, on } from '@ngrx/store';
 //#endregion
 
-//#region Loader Store
-import { LoaderState, initialState } from '@loader/store/loader.state';
-import * as LoaderActions from '@loader/store/loader.actions';
+//#region State, Action
+import { LoaderState, initialState } from './loader.state';
+import * as fromAction from './loader.actions';
 //#endregion
 
 
 const loaderReducer = createReducer(
   initialState,
 
-  on(LoaderActions.startLoader,
+  on(fromAction.startLoaderAction,
     (state, { triggerSource }) => {
       return {
         ...state,
@@ -21,7 +21,7 @@ const loaderReducer = createReducer(
     }
   ),
 
-  on(LoaderActions.stopLoader,
+  on(fromAction.stopLoaderAction,
     (state) => {
       return {
         ...state,

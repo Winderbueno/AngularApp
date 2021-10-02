@@ -1,4 +1,4 @@
-//#region Action Creator
+//#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
 import { ActionSource } from '@action/enum/action-source.enum';
@@ -10,7 +10,7 @@ import { Timer } from '../model/timer.model';
 //#endregion
 
 
-export const defineTimer = createAction(
+export const defineTimerAction = createAction(
   ActionSource.MODULE,
   Module.TIMER,
   'Define',
@@ -18,7 +18,7 @@ export const defineTimer = createAction(
 );
 
 
-export const deleteTimer = createAction(
+export const deleteTimerAction = createAction(
   ActionSource.MODULE,
   Module.TIMER,
   'Delete',
@@ -26,7 +26,7 @@ export const deleteTimer = createAction(
 );
 
 
-export const timerDefined = createAction(
+export const timerDefinedAction = createAction(
   ActionSource.MODULE,
   Module.TIMER,
   'Defined',
@@ -37,7 +37,7 @@ export const timerDefined = createAction(
 );
 
 
-export const timerDeleted = createAction(
+export const timerDeletedAction = createAction(
   ActionSource.MODULE,
   Module.TIMER,
   'Deleted',

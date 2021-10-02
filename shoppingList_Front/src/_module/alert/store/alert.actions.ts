@@ -1,16 +1,16 @@
-//#region Action Creator
+//#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
 import { ActionSource } from '@action/enum/action-source.enum';
 import { Module } from '@action/enum/module.enum';
 //#endregion
 
-//#region App Model
-import { AlertTypeEnum } from '@alert/model/enum/alert-type.enum';
+//#region Model
+import { AlertTypeEnum } from '../model/enum/alert-type.enum';
 //#endregion
 
 
-export const triggerAlert = createAction(
+export const triggerAlertAction = createAction(
   ActionSource.MODULE,
   Module.ALERT,
   'Trigger',
@@ -21,15 +21,15 @@ export const triggerAlert = createAction(
 );
 
 
-export const dismissAlert = createAction(
+export const dismissAlertAction = createAction(
   ActionSource.MODULE,
   Module.ALERT,
   'Dismiss',
 );
 
 
-export const hasBeenKeptAfterRouteChange = createAction(
+export const keptAfterRouteChangeAction = createAction(
   ActionSource.MODULE,
   Module.ALERT,
-  'Kept After Router Change',
+  'Kept After Route Change',
 );

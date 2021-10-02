@@ -5,7 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
 //#region Store
-import * as fromToken from './store/token.reducer';
+import * as fromStore from './store/';
 //#endregion
 
 //#region Effect
@@ -16,7 +16,7 @@ import { TokenEffects } from './effect/token.effects';
 @NgModule({
   imports: [
     /* Store */
-    StoreModule.forFeature('token', fromToken.reducer),
+    StoreModule.forFeature('token', fromStore.reducer),
 
     /* Effect */
     EffectsModule.forFeature([TokenEffects]),

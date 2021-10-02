@@ -5,14 +5,14 @@ import { of } from 'rxjs';
 import { map, catchError, exhaustMap } from 'rxjs/operators';
 //#endregion
 
-//#region Action
-import * as AccountAPIActions from '@account/service/account.api.actions';
+//#region Action, Selector
+import * as fromAPI from '../service/account.api.actions';
+import * as fromComponent from '../component/';
 import * as TimerTriggeredActions from '@account/store/action/timer-triggered.actions';
-import { forgotPasswordSubmit, loginSubmit, registerSubmit, resetPasswordSubmit } from '@account/component/';
-import { toolbarLogOut } from '@layout/component';
+import { toolbarLogOutAction } from '@layout/component';// TODO -
 //#endregion
 
-//#region App Service
+//#region Service, Model
 import { AccountService } from '@account/service/account.service';
 import { Account } from '@account/model/account.model';
 //#endregion
@@ -23,48 +23,48 @@ export class AccountAPIEffects {
 
   forgotPassword$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(forgotPasswordSubmit),
+      ofType(fromComponent.forgotPasswordSubmitAction),
       exhaustMap((action) =>
         this.accountService.forgotPassword(action.email).pipe(
-          map(() => AccountAPIActions.forgotPasswordSuccess({
+          map(() => fromAPI.forgotPasswordSuccessAction({
             message: 'Please check your email for password reset instructions' // TODO - Msg
           })),
-          catchError((error) => of(AccountAPIActions.forgotPasswordFailure({ error: error })))
+          catchError((error) => of(fromAPI.forgotPasswordFailureAction({ error: error })))
     ))
   ));
 
 
   login$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(loginSubmit),
+      ofType(fromComponent.loginSubmitAction),
       exhaustMap((action) =>
         this.accountService.login(action.email, action.password).pipe(
-          map((account: Account) => AccountAPIActions.loginSuccess({ account: account })),
-          catchError((error) => of(AccountAPIActions.loginFailure({ error: error })))
+          map((account: Account) => fromAPI.loginSuccessAction({ account: account })),
+          catchError((error) => of(fromAPI.loginFailureAction({ error: error })))
     ))
   ));
 
 
   logout$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(toolbarLogOut),
+      ofType(toolbarLogOutAction), // TODO
       exhaustMap(() =>
         this.accountService.logout().pipe(
-          map(() => AccountAPIActions.logoutSuccess()),
-          catchError((error) => of(AccountAPIActions.logoutFailure({ error: error })))
+          map(() => fromAPI.logoutSuccessAction()),
+          catchError((error) => of(fromAPI.logoutFailureAction({ error: error })))
     ))
   ));
 
 
   register$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(registerSubmit),
+      ofType(fromComponent.registerSubmitAction),
       exhaustMap((action) =>
         this.accountService.register(action.account).pipe(
-          map(() => AccountAPIActions.registerSuccess({
+          map(() => fromAPI.registerSuccessAction({
             message: 'Registration successful, please check your email for verification instructions' // TODO - Msg
           })),
-          catchError((error) => of(AccountAPIActions.registerFailure({ error: error })))
+          catchError((error) => of(fromAPI.registerFailureAction({ error: error })))
     ))
   ));
 
@@ -76,21 +76,21 @@ export class AccountAPIEffects {
         TimerTriggeredActions.refreshTokenTimerEnded),
       exhaustMap(() =>
         this.accountService.refreshToken().pipe(
-          map((account: Account) => AccountAPIActions.refreshTokenSuccess({ account: account })),
-          catchError((error) => of(AccountAPIActions.refreshTokenFailure({ error: error })))
+          map((account: Account) => fromAPI.refreshTokenSuccessAction({ account: account })),
+          catchError((error) => of(fromAPI.refreshTokenFailureAction({ error: error })))
     ))
   ));
 
 
   resetPassword$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(resetPasswordSubmit),
+      ofType(fromComponent.resetPasswordSubmitAction),
       exhaustMap((action) =>
         this.accountService.resetPassword(action.token, action.password, action.confirmPassword).pipe(
-          map(() => AccountAPIActions.resetPasswordSuccess({ // TODO - Msg (Error msg are in BACK, Success msg are here)
+          map(() => fromAPI.resetPasswordSuccessAction({ // TODO - Msg (Error msg are in BACK, Success msg are here)
             message: 'Password successfully reinitialised, you can now log in :)'
           })),
-          catchError((error) => of(AccountAPIActions.resetPasswordFailure({ error: error })))
+          catchError((error) => of(fromAPI.resetPasswordFailureAction({ error: error })))
     ))
   ));
 

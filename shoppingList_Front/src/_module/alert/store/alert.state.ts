@@ -1,4 +1,4 @@
-//#region App Model
+//#region Model
 import { Alert } from "@alert/model/alert.model";
 //#endregion
 

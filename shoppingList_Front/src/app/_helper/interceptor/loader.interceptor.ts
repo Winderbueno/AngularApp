@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 //#endregion
 
 //#region App Model, Action, Selector
-import * as LoaderActions from '@loader/store/loader.actions';
+import * as fromLoader from '@loader/store/';
 //#endregion
 
 
@@ -20,7 +20,7 @@ export class LoaderInterceptor implements HttpInterceptor {
 
       // Start loader
       this.store.dispatch(
-        LoaderActions.startLoader({
+        fromLoader.startLoaderAction({
           triggerSource: request.url.toString()
         })
       );

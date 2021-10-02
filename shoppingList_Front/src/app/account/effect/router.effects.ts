@@ -5,9 +5,9 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { tap } from 'rxjs/operators';
 //#endregion
 
-//#region Action
-import * as AccountAPIActions from '@account/service/account.api.actions';
-import { emailTokenValidated } from '@account/component/';
+//#region Action, Selector
+import * as fromAPI from '../service/account.api.actions';
+import * as fromComponent from '../component/';
 //#endregion
 
 
@@ -18,11 +18,11 @@ export class RouterEffects {
 
     this.actions$.pipe(
       ofType(
-        AccountAPIActions.logoutSuccess,
-        AccountAPIActions.forgotPasswordSuccess,
-        AccountAPIActions.resetPasswordSuccess,
-        AccountAPIActions.registerSuccess,
-        emailTokenValidated,
+        fromAPI.logoutSuccessAction,
+        fromAPI.forgotPasswordSuccessAction,
+        fromAPI.resetPasswordSuccessAction,
+        fromAPI.registerSuccessAction,
+        fromComponent.emailTokenValidatedAction,
       ),
       tap(() => {
         this.router.navigate(['account/login']);
@@ -37,7 +37,7 @@ export class RouterEffects {
   routeToRequestedPageAfterLogin$ = createEffect(() =>
 
     this.actions$.pipe(
-      ofType(AccountAPIActions.loginSuccess),
+      ofType(fromAPI.loginSuccessAction),
       tap(() => {
         // TODO - Get router param from store with selector
         // Get return url from route parameters or default to '/'

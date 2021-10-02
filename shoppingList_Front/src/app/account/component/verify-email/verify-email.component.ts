@@ -30,7 +30,7 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
       this.token=token;
 
       if(token && token.status === TokenStatusEnum.Valid) {
-          this.store.dispatch(ComponentActions.emailTokenValidated({ message: 'Verification successful, you can now login' }));
+          this.store.dispatch(ComponentActions.emailTokenValidatedAction({ message: 'Verification successful, you can now login' }));
       }
     });
   }
@@ -44,7 +44,7 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
 
     // Dispatch validate Email Token action
     this.store.dispatch(
-      ComponentActions.validateEmailToken({
+      ComponentActions.validateEmailTokenAction({
         token: new Token({
           name:this.tokenName,
           value: token
@@ -55,7 +55,7 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.store.dispatch(
-      ComponentActions.deleteEmailToken({ name: this.tokenName})
+      ComponentActions.deleteEmailTokenAction({ name: this.tokenName})
     );
   }
 }

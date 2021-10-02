@@ -39,7 +39,7 @@ export class ShoppingListComponent implements OnInit {
   ngOnInit(): void {
     // Dispatch a Load Active Shopping List action
     this.store.dispatch(
-      ComponentActions.loadActive()
+      ComponentActions.loadActiveAction()
     );
   }
 
@@ -48,7 +48,7 @@ export class ShoppingListComponent implements OnInit {
 
     // Dispatch a ResetBoughtStatus action
     this.store.dispatch(
-      ComponentActions.resetBoughtStatus(
+      ComponentActions.resetBoughtStatusAction(
         { ShoppingListId: "1" }
       ));
 

@@ -8,7 +8,7 @@ import { Store } from '@ngrx/store';
 
 //#region App Model, Action, Selector
 import * as AccountSelector from '@account/store/account.selectors';
-import * as LoaderActions from '@loader/store/loader.actions';
+import * as fromLoader from '@loader/store/';
 //#endregion
 
 
@@ -30,7 +30,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request)
       .pipe()
       // As the server answered, we stop the loader
-      .pipe(finalize(() => this.store.dispatch(LoaderActions.stopLoader())))
+      .pipe(finalize(() => this.store.dispatch(fromLoader.stopLoaderAction())))
       // Dealing with error response
       .pipe(catchError(err => {
 
