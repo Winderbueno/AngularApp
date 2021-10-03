@@ -16,8 +16,7 @@ import * as fromStore from './store/';
 //#endregion
 
 //#region Effect
-import {
-  ShoppingListAPIEffects } from './effect/';
+import { ShoppingListAPIEffects } from './effect/';
 //#endregion
 
 //#region Component
@@ -38,7 +37,7 @@ import {
     FormModule,
 
     /* Store */
-    StoreModule.forFeature('shoppingList', fromStore.reducer),
+    StoreModule.forFeature(fromStore.featureKey, fromStore.reducer),
 
     /* Effect */
     EffectsModule.forFeature([
@@ -49,7 +48,8 @@ import {
     ShoppingListComponent,
     DialogAddProductComponent
   ],
-  entryComponents: [ // Component Instantiated at runtime
+  entryComponents: [
+    // Component Instantiated at runtime
     DialogAddProductComponent
   ],
 })

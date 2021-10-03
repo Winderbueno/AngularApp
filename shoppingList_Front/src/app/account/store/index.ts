@@ -1,9 +1,4 @@
-﻿/* State */
-export {
-  AccountState
-} from './account.state'
-
-/* Reducer */
+﻿/* Reducer */
 export {
   reducer
 } from './account.reducers';

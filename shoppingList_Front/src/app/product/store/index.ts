@@ -1,10 +1,6 @@
-﻿/* State */
+﻿/* Reducer */
 export {
-  ProductState
-} from './product.state'
-
-/* Reducer */
-export {
+  featureKey,
   reducer
 } from './product.reducers';
 

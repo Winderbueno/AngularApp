@@ -1,10 +1,6 @@
-﻿/* State */
+﻿/* Reducer */
 export {
-  ShoppingListState
-} from './shopping-list.state'
-
-/* Reducer */
-export {
+  featureKey,
   reducer
 } from './shopping-list.reducers';
 

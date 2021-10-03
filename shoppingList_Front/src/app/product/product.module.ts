@@ -35,16 +35,16 @@ import * as fromStore from './store';
     FormModule,
 
     /* Store */
-    StoreModule.forFeature('shoppingList', fromStore.reducer),
+    StoreModule.forFeature(fromStore.featureKey, fromStore.reducer),
 
     /* Effect */
     EffectsModule.forFeature([]),
   ],
   declarations: [
-    // TODO - Add Component
+    // TODO - Component
   ],
   entryComponents: [
-    // TODO - Add Component Instantiated at runtime
+    // TODO - Component Instantiated at runtime
   ],
 })
 export class ShoppingListModule { }
