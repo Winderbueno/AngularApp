@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { Validators } from '@angular/forms';
 //#endregion
 
-//#region App Component, Model
+//#region Component, Model, Service
 import { FieldComponent } from '@form/component/field/field.component';
 //#endregion
 

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 //#endregion
 
-//#region App Module
+//#region Module
 import { MaterialModule } from '@material/material.module';
 //#endregion
 
@@ -23,7 +23,7 @@ import {
     /* Angular */
     CommonModule,
 
-    /* App Module */
+    /* Module */
     MaterialModule,
 
     /* Store */

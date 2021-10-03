@@ -4,8 +4,8 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import { Store } from '@ngrx/store';
 //#endregion
 
-//#region App Model, Action, Selector
-import * as AccountSelector from '@account/store/account.selectors';
+//#region Module
+import * as fromAccount from '@account/store/';
 //#endregion
 
 
@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
         private router: Router,
         private store: Store
     ) {
-      this.store.select(AccountSelector.isLogged).subscribe(value => this.isLogged=value);
+      this.store.select(fromAccount.isLogged).subscribe(value => this.isLogged=value);
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {

@@ -3,8 +3,8 @@ import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 //#endregion
 
-//#region App Model, Action, Selector
-import * as LoaderSelector from '@loader/store/loader.selectors';
+//#region Module
+import * as fromLoader from '@loader/store/';
 //#endregion
 
 
@@ -24,7 +24,7 @@ export class SubmitButtonComponent {
   constructor(
     private store: Store
   ) {
-    this.store.select(LoaderSelector.isLoading).subscribe(value => this.isLoading=value);
+    this.store.select(fromLoader.isLoading).subscribe(value => this.isLoading=value);
   }
 
 }

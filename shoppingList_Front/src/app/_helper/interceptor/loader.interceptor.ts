@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 //#endregion
 
-//#region App Model, Action, Selector
+//#region Module
 import * as fromLoader from '@loader/store/';
 //#endregion
 

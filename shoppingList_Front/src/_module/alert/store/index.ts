@@ -17,5 +17,6 @@ export {
 
 /* Selector */
 export {
-  getAlertState
+  selectAlertState,
+  selectCurrentAlert
 } from './alert.selectors';

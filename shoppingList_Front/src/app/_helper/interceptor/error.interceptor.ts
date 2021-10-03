@@ -6,8 +6,8 @@ import { catchError, finalize } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 //#endregion
 
-//#region App Model, Action, Selector
-import * as AccountSelector from '@account/store/account.selectors';
+//#region Module
+import * as fromAccount from '@account/store/';
 import * as fromLoader from '@loader/store/';
 //#endregion
 
@@ -34,7 +34,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       // Dealing with error response
       .pipe(catchError(err => {
 
-          this.store.select(AccountSelector.isLogged).subscribe(value => this.isLogged=value)
+          this.store.select(fromAccount.isLogged).subscribe(value => this.isLogged=value)
 
           // Handle HTTP Error - 'unauthorized' and 'forbidden'
           if ([401, 403].includes(err.status) && this.isLogged) {

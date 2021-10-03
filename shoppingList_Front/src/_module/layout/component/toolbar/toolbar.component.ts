@@ -4,10 +4,13 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 //#endregion
 
-//#region Action, Model
-import * as ComponentActions from './toolbar.component.actions';
-import * as AccountSelector from '@account/store/account.selectors';
+//#region Module
+import * as fromAccount from '@account/store/';
 import { Account } from '@account/model/account.model';
+//#endregion
+
+//#region Action
+import * as ComponentActions from './toolbar.component.actions';
 //#endregion
 
 
@@ -25,8 +28,8 @@ export class ToolbarComponent implements OnInit {
     private router: Router,
     private store: Store
   ) { // TODO - Change selector to "GetConnectedAccount"
-    this.store.select(AccountSelector.isLogged).subscribe(value => this.isLogged=value);
-    this.store.select(AccountSelector.getAccounts).subscribe(value => this.account=value);
+    this.store.select(fromAccount.isLogged).subscribe(value => this.isLogged=value);
+    this.store.select(fromAccount.selectAccounts).subscribe(value => this.account=value);
   }
 
   ngOnInit(): void {}

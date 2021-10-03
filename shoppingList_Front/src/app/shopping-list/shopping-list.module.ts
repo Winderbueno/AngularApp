@@ -5,7 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
-//#region App Module
+//#region Module
 import { MaterialModule } from '@material/material.module';
 import { FormModule } from '@form/form.module';
 import { ShoppingListRouterModule } from './shopping-list-router.module';
@@ -31,7 +31,7 @@ import {
     /* Angular */
     CommonModule,
 
-    /* App Module */
+    /* Module */
     ShoppingListRouterModule,
     MaterialModule,
     FormModule,

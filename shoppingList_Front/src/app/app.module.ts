@@ -13,7 +13,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 //#endregion
 
-//#region App Module
+//#region Module
 import { AppRouterModule } from '@app/app-router.module';
 import { AlertModule } from '@alert/alert.module';
 import { LayoutModule } from '@layout/layout.module';
@@ -52,7 +52,7 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     HttpClientModule,
 
-    /* App Module */
+    /* Module */
     AppRouterModule,
     AlertModule,
     LayoutModule,

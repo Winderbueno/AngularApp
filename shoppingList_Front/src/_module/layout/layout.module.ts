@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 //#endregion
 
-//#region App Module
+//#region Module
 import { AppRouterModule } from '@app/app-router.module';
 import { MaterialModule } from '@material/material.module';
 //#endregion
@@ -22,7 +22,7 @@ import {
     /* Angular */
     CommonModule,
 
-    /* App Module */
+    /* Module */
     AppRouterModule,
     MaterialModule,
   ],

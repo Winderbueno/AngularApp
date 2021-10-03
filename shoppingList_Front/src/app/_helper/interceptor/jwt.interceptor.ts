@@ -5,9 +5,9 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 //#endregion
 
-//#region App Model, Action, Selector
+//#region Module
+import * as fromAccount from '@account/store/';
 import { Account } from '@account/model/account.model';
-import * as AccountSelector from '@account/store/account.selectors';
 //#endregion
 
 // Api Info
@@ -24,7 +24,7 @@ export class JwtInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // Add auth header with jwt if user is logged in and request is to the api url
-        this.store.select(AccountSelector.getAccounts).subscribe(value => this.account=value);
+        this.store.select(fromAccount.selectAccounts).subscribe(value => this.account=value);
 
 
         const isLoggedIn = this.account[0] && this.account[0].jwtToken;

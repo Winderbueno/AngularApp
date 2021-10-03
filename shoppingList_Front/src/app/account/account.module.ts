@@ -1,17 +1,14 @@
 //#region Angular, Material, NgRx
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
-//#region App Module
+//#region Module
 import { AccountRouterModule } from '@account/account-router.module';
 import { MaterialModule } from '@material/material.module';
 import { FormModule } from '@form/form.module';
 //#endregion
-
-
 
 //#region Effect
 import {
@@ -19,7 +16,7 @@ import {
   AlertEffects,
   RouterEffects,
   TimerEffects,
-  TokenEffects } from '@account/.';
+  TokenEffects } from './effect';
 //#endregion
 
 //#region Component
@@ -28,7 +25,7 @@ import {
   RegisterComponent,
   ForgotPasswordComponent,
   ResetPasswordComponent,
-  VerifyEmailComponent } from '@account/component/';
+  VerifyEmailComponent } from './component/';
 //#endregion
 
 
@@ -37,13 +34,13 @@ import {
     /* Angular */
     CommonModule,
 
-    /* App Module */
+    /* Module */
     AccountRouterModule,
     MaterialModule,
     FormModule,
 
     /* Store */
-    //StoreModule.forFeature(),
+    //StoreModule.forFeature(), // TODO
 
     /* Effect */
     EffectsModule.forFeature([

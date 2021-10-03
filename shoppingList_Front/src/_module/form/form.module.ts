@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 //#endregion
 
-//#region App Module
+//#region Module
 import { MaterialModule } from '@material/material.module';
 import { LoaderModule } from '@loader/loader.module';
 //#endregion
@@ -24,7 +24,7 @@ import {
     CommonModule,
     ReactiveFormsModule,
 
-    /* App Module */
+    /* Module */
     MaterialModule,
     LoaderModule
   ],

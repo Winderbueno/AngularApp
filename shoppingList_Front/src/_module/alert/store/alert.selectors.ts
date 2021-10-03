@@ -9,11 +9,11 @@ import { AlertState } from './alert.state';
 
 export const selectAlert = createFeatureSelector<AlertState>('alert');
 
-export const getAlertState = createSelector(
+export const selectAlertState = createSelector(
   selectAlert,
   (state: AlertState) => state);
 
-export const getAlert = createSelector(
+export const selectCurrentAlert = createSelector(
   selectAlert,
   (state: AlertState) => state.alert);
 
