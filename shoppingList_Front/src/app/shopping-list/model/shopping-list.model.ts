@@ -1,4 +1,4 @@
-import { CatUsedProduct } from "@shoppingList/model/used-product.model";
+import { CatUsedProduct } from "./used-product.model";
 
 export interface ShoppingList {
 

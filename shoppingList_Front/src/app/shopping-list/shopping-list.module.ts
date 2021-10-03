@@ -12,11 +12,12 @@ import { ShoppingListRouterModule } from './shopping-list-router.module';
 //#endregion
 
 //#region Store
-import * as fromShoppingList from './store/shopping-list.reducers';
+import * as fromStore from './store/';
 //#endregion
 
 //#region Effect
-import { ShoppingListAPIEffects } from './effect/shopping-list-api.effects';
+import {
+  ShoppingListAPIEffects } from './effect/';
 //#endregion
 
 //#region Component
@@ -37,10 +38,12 @@ import {
     FormModule,
 
     /* Store */
-    StoreModule.forFeature('shoppingList', fromShoppingList.reducer),
+    StoreModule.forFeature('shoppingList', fromStore.reducer),
 
     /* Effect */
-    EffectsModule.forFeature([ShoppingListAPIEffects]),
+    EffectsModule.forFeature([
+      ShoppingListAPIEffects
+    ]),
   ],
   declarations: [
     ShoppingListComponent,

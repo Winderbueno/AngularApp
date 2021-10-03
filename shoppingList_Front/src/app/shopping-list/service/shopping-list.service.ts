@@ -1,11 +1,10 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 //#endregion
 
-//#region App Component, Model
+//#region Model
 import { ShoppingList } from '@shoppingList/model/shopping-list.model';
 import { UsedProduct } from '@shoppingList/model/used-product.model';
 import { CreateProductReq } from '@shoppingList/model/create-product-req.model';
@@ -19,33 +18,16 @@ const baseUrl = `${envBusinessAPI.apiUrl}/shoppinglist`;
 @Injectable({ providedIn: 'root' })
 export class ShoppingListService {
 
-  private _sLSubject!: BehaviorSubject<ShoppingList>;
-  public sL$!: Observable<ShoppingList>;
-
-  constructor(private http: HttpClient) {
-    // No Account logged in is a user with a '-1' id } */
-    this._sLSubject = new BehaviorSubject<ShoppingList>({ shoppingListId: "-1" });
-    this.sL$ = this._sLSubject.asObservable();
-  }
-
-  public get active(): ShoppingList { return this._sLSubject.value; }
+  constructor(private http: HttpClient) {}
 
   /** Get active shoppingList */
   getActive():Observable<ShoppingList> {
-    return this.http.get<ShoppingList>(`${baseUrl}/active`)
-      .pipe(map(sL => {
-        this._sLSubject.next(sL);
-        return sL;
-      }));
+    return this.http.get<ShoppingList>(`${baseUrl}/active`);
   }
 
   /** For all shoppingList product, reset bought status */
   resetBoughtStatus(idSL: string) : Observable<ShoppingList> {
-    return this.http.put<ShoppingList>(`${baseUrl}/reset-bought/${idSL}`, [])
-      .pipe(map(sL => {
-        this._sLSubject.next(sL);
-        return sL;
-      }));
+    return this.http.put<ShoppingList>(`${baseUrl}/reset-bought/${idSL}`, []);
   }
 
   /** In a shoppingList, create a product */

@@ -58,7 +58,7 @@ export class DialogAddProductComponent extends FormComponent {
   dispatchSubmitAction() {
 
     // Get Active List Id
-    var idSl: string = this.shoppingListService.active.shoppingListId;
+    //var idSl: string = this.shoppingListService.active.shoppingListId;
 
     // Create product to create
     var prodToCreate: CreateProductReq = {

@@ -6,7 +6,7 @@ import { API } from '@action/enum/api.enum';
 //#endregion
 
 //#region Model
-import { ShoppingList } from '../model/shopping-list.model';
+import { ShoppingList } from '@shoppingList/model/shopping-list.model';
 //#endregion
 
 

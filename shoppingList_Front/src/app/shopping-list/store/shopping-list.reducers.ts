@@ -4,7 +4,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 
 //#region State, Action
 import { ShoppingListState, initialState, adapter } from './shopping-list.state';
-import * as fromAPI from '@shoppingList/service/shopping-list.api.actions';
+import * as fromAPI from '../service/shopping-list.api.actions';
 import * as AccountAPIActions from '@account/service/account.api.actions'; // TODO
 //#endregion
 

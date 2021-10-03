@@ -8,9 +8,12 @@ import { Store } from '@ngrx/store';
 //#region App Component, Model
 import * as ComponentActions from './shopping-list.actions';
 import * as ShoppingListSelector from '@shoppingList/store/shopping-list.selectors';
+import { DialogAddProductComponent } from '@shoppingList/component/dialog-add-product/dialog-add-product.component';
+//#endregion
+
+//#region Model
 import { ShoppingList } from '@shoppingList/model/shopping-list.model';
 import { UsedProduct } from '@shoppingList/model/used-product.model';
-import { DialogAddProductComponent } from '@shoppingList/component/dialog-add-product/dialog-add-product.component';
 //#endregion
 
 
@@ -33,7 +36,7 @@ export class ShoppingListComponent implements OnInit {
     public dialog: MatDialog,
     private store: Store
   ) {
-    this.store.select(ShoppingListSelector.getActive).subscribe(value => this.myShoppingList=value);
+    this.store.select(ShoppingListSelector.selectActive).subscribe(value => this.myShoppingList=value);
   }
 
   ngOnInit(): void {
