@@ -4,10 +4,10 @@ import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 //#endregion
 
-//#region App Model, Action, Selector
-import * as AlertSelector from '@alert/store/alert.selectors';
-import { SnackbarComponent } from '@alert/component/snackbar/snackbar.component';
-import { AlertTypeEnumClass } from '@alert/model/enum/alert-type.enum';
+//#region Store, Component, Model
+import * as fromStore from '../../store/';
+import { SnackbarComponent } from '../snackbar/snackbar.component';
+import { AlertTypeEnumClass } from '../../model/enum/alert-type.enum';
 //#endregion
 
 
@@ -26,13 +26,11 @@ export class AlertComponent implements OnInit {
 
     ngOnInit() {
 
-      this.store.select(AlertSelector.getAlert).subscribe(alert => {
+      this.store.select(fromStore.selectCurrentAlert).subscribe(alert => {
 
-        // alert is defined, trigger snackBar
+        // If alert is defined, trigger snackBar
         if (alert != undefined) {
-          if (alert.message) {
             this.openSnackBar(alert.message, AlertTypeEnumClass[alert.type]);
-          }
         } else if (this.snackBarRef != null) {
           this.snackBarRef.dismiss();
         }

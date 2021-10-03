@@ -3,7 +3,7 @@ import { AlertTypeEnum } from "./enum/alert-type.enum";
 export class Alert {
 
     type!: AlertTypeEnum;
-    message?: string;
+    message: string = 'Default Alert Message';
 
     constructor(init?:Partial<Alert>) {
         Object.assign(this, init);
