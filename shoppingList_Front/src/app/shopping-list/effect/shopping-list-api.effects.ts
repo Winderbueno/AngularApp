@@ -5,12 +5,14 @@ import { of } from 'rxjs';
 import { map, switchMap, catchError } from 'rxjs/operators';
 //#endregion
 
-//#region Action, Service, Selector
-import * as ShoppingListAPIActions from '@shoppingList/store/action/shopping-list.api.actions';
-import * as ShoppingListComponentActions from '@shoppingList/component/shopping-list/shopping-list.actions';
-import * as AccountAPIActions from '@account/service/account.api.actions';
-import { ShoppingListService } from '@shoppingList/service/shopping-list.service';
-import { ShoppingList } from '@shoppingList/model/shopping-list.model';
+//#region Action, Selector
+import * as fromAPI from '../service/shopping-list.api.actions';
+import * as fromComponent from '../component/';
+//#endregion
+
+//#region Service, Model
+import { ShoppingListService } from '../service/shopping-list.service';
+import { ShoppingList } from '../model/shopping-list.model';
 //#endregion
 
 
@@ -20,19 +22,17 @@ export class ShoppingListAPIEffects {
   // Load user's active shoppingList from server
   getActive$ = createEffect(() => this.actions$.pipe(
     ofType(
-      ShoppingListComponentActions.loadActive,
-      AccountAPIActions.loginSuccess),
-
+      fromComponent.loadActiveAction
+    ),
     switchMap(() =>
       this.shoppingListService.getActive().pipe(
-        map((sl: ShoppingList) => ShoppingListAPIActions.loadActiveSuccess({ shoppingList: sl })),
-        catchError((error) => of(ShoppingListAPIActions.loadActiveFailure({ error: error })))
+        map((sl: ShoppingList) => fromAPI.loadActiveSuccessAction({ shoppingList: sl })),
+        catchError((error) => of(fromAPI.loadActiveFailureAction({ error: error })))
       )
     )
   )
   );
 
-  //{ shoppingList: shoppingList }
   constructor(
     private actions$: Actions,
     private shoppingListService: ShoppingListService

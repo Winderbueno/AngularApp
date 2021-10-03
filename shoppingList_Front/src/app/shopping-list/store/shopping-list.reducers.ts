@@ -1,16 +1,18 @@
 //#region NgRx
 import { Action, createReducer, on } from '@ngrx/store';
+//#endregion
+
+//#region State, Action
 import { ShoppingListState, initialState, adapter } from './shopping-list.state';
-import * as ShoppingListAPIActions from '@shoppingList/store/action/shopping-list.api.actions';
-import * as AccountAPIActions from '@account/service/account.api.actions';
+import * as fromAPI from '@shoppingList/service/shopping-list.api.actions';
+import * as AccountAPIActions from '@account/service/account.api.actions'; // TODO
 //#endregion
 
 
-/* Reducer */
 const shoppingListReducer = createReducer(
   initialState,
 
-  on(ShoppingListAPIActions.loadActiveSuccess,
+  on(fromAPI.loadActiveSuccessAction,
     (state, { shoppingList }) => {
       return adapter.addOne(shoppingList,
         { ...state,
@@ -21,8 +23,8 @@ const shoppingListReducer = createReducer(
   ),
 
   on(
-    AccountAPIActions.logoutSuccess,
-    AccountAPIActions.logoutFailure,
+    AccountAPIActions.logoutSuccessAction, // TODO
+    AccountAPIActions.logoutFailureAction,
     (state) => {
       return adapter.removeAll({
         ...state,
