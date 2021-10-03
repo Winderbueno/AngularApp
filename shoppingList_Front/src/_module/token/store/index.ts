@@ -1,10 +1,6 @@
-﻿/* State */
+﻿/* Reducer */
 export {
-  TokenState
-} from './token.state'
-
-/* Reducer */
-export {
+  featureKey,
   reducer
 } from './token.reducer';
 

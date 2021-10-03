@@ -9,7 +9,7 @@ import { MaterialModule } from '@material/material.module';
 //#endregion
 
 //#region Store
-import * as fromAlert from '@alert/store/alert.reducer';
+import * as fromStore from './store/';
 //#endregion
 
 //#region Component
@@ -28,7 +28,7 @@ import {
     MaterialModule,
 
     /* Store */
-    StoreModule.forFeature('alert', fromAlert.reducer),
+    StoreModule.forFeature(fromStore.featureKey, fromStore.reducer),
   ],
   declarations: [
     AlertComponent,

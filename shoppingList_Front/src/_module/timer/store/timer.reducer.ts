@@ -7,6 +7,7 @@ import { TimerState, initialState, adapter } from './timer.state';
 import * as fromAction from './timer.actions';
 //#endregion
 
+export const featureKey = 'timer';
 
 const timerReducer = createReducer(
   initialState,

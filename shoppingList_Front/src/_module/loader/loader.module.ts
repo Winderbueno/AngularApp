@@ -13,8 +13,7 @@ import * as fromStore from './store/';
 //#endregion
 
 //#region Component
-import {
-  LoaderComponent } from './component/';
+import { LoaderComponent } from './component/';
 //#endregion
 
 
@@ -27,7 +26,7 @@ import {
     MaterialModule,
 
     /* Store */
-    StoreModule.forFeature('loader', fromStore.reducer),
+    StoreModule.forFeature(fromStore.featureKey, fromStore.reducer),
   ],
   declarations: [
     LoaderComponent,

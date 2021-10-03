@@ -1,10 +1,6 @@
-﻿/* State */
+﻿/* Reducer */
 export {
-  AlertState
-} from './alert.state'
-
-/* Reducer */
-export {
+  featureKey,
   reducer
 } from './alert.reducer';
 

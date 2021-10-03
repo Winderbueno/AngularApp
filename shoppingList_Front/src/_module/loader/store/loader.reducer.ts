@@ -7,6 +7,7 @@ import { LoaderState, initialState } from './loader.state';
 import * as fromAction from './loader.actions';
 //#endregion
 
+export const featureKey = 'loader';
 
 const loaderReducer = createReducer(
   initialState,

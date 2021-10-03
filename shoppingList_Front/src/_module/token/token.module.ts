@@ -9,14 +9,14 @@ import * as fromStore from './store/';
 //#endregion
 
 //#region Effect
-import { TokenEffects } from './effect/token.effects';
+import { TokenEffects } from './effect/';
 //#endregion
 
 
 @NgModule({
   imports: [
     /* Store */
-    StoreModule.forFeature('token', fromStore.reducer),
+    StoreModule.forFeature(fromStore.featureKey, fromStore.reducer),
 
     /* Effect */
     EffectsModule.forFeature([TokenEffects]),

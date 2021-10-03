@@ -11,6 +11,7 @@ import * as fromAction from './alert.actions';
 import { Alert } from '../model/alert.model';
 //#endregion
 
+export const featureKey = 'alert';
 
 const alertReducer = createReducer(
   initialState,

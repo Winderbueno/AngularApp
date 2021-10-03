@@ -1,10 +1,6 @@
-﻿/* State */
+﻿/* Reducer */
 export {
-  LoaderState
-} from './loader.state'
-
-/* Reducer */
-export {
+  featureKey,
   reducer
 } from './loader.reducer';
 

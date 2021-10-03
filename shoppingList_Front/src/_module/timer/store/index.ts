@@ -1,10 +1,6 @@
-﻿/* State */
+﻿/* Reducer */
 export {
-  TimerState
-} from './timer.state'
-
-/* Reducer */
-export {
+  featureKey,
   reducer
 } from './timer.reducer';
 

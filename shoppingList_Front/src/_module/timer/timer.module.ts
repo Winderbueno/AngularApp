@@ -9,14 +9,14 @@ import * as fromStore from './store/';
 //#endregion
 
 //#region Effect
-import { TimerEffects } from './effect/timer.effects';
+import { TimerEffects } from './effect/';
 //#endregion
 
 
 @NgModule({
   imports: [
     /* Store */
-    StoreModule.forFeature('timer', fromStore.reducer),
+    StoreModule.forFeature(fromStore.featureKey, fromStore.reducer),
 
     /* Effect */
     EffectsModule.forFeature([TimerEffects]),
