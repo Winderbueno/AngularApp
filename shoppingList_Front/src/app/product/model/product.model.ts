@@ -1,7 +1,11 @@
 export interface Product {
+    productId: number;
 
-  productId: string;
-  category: string;
-  subCategory: string;
-  name: string;
+    category: string;
+    subCategory: string;
+
+    name: string;
+    bought: boolean;
+    quantity: number;
+    note: string;
 }
