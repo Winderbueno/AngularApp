@@ -2,7 +2,7 @@
 export {
   featureKey,
   reducer
-} from './loader.reducer';
+} from './loader.reducers';
 
 /* Action */
 export {

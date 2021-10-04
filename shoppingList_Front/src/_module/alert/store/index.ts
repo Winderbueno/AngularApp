@@ -2,7 +2,7 @@
 export {
   featureKey,
   reducer
-} from './alert.reducer';
+} from './alert.reducers';
 
 /* Action */
 export {

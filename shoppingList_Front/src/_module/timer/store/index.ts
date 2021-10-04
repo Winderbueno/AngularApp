@@ -2,7 +2,7 @@
 export {
   featureKey,
   reducer
-} from './timer.reducer';
+} from './timer.reducers';
 
 /* Action */
 export {
