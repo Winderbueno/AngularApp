@@ -33,7 +33,7 @@ import { ErrorInterceptor } from '@app_helper/interceptor/error.interceptor';
 //#endregion
 
 //#region Component
-import { AppComponent } from './app.component';
+import { AppComponent } from './component/app.component';
 //#endregion
 
 //#region Store
@@ -41,7 +41,7 @@ import * as fromAccount from '@account/store/account.reducers';
 //#endregion
 
 //#region App Conf
-import { environment } from '../environments/environment';
+import { environment } from '@env/environment';
 //#endregion
 
 
