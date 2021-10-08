@@ -8,6 +8,7 @@ import { map, catchError, exhaustMap } from 'rxjs/operators';
 //#region Action, Selector
 import * as fromAPI from '../service/account.api.actions';
 import * as fromComponent from '../component/';
+import * as fromStore from '../store/'
 import * as TimerTriggeredActions from '@account/store/action/timer-triggered.actions';
 import { toolbarLogOutAction } from '@layout/component';// TODO -
 //#endregion
@@ -72,8 +73,8 @@ export class AccountAPIEffects {
   refreshToken$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
-        // TODO -> Also called at App Init, maybe start timout at App Init ?
-        TimerTriggeredActions.refreshTokenTimerEndedAction),
+        fromStore.refreshTokenAction,
+        TimerTriggeredActions.refreshTokenTimerEndedAction), // TODO - Maybe not use this action this way ?
       exhaustMap(() =>
         this.accountService.refreshToken().pipe(
           map((account: Account) => fromAPI.refreshTokenSuccessAction({ account: account })),

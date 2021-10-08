@@ -7,6 +7,7 @@ import { AccountState, initialState, adapter } from './account.state';
 import * as fromAPI from '../service/account.api.actions';
 //#endregion
 
+export const featureKey = 'account';
 
 const accountReducer = createReducer(
   initialState,

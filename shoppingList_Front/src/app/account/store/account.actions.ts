@@ -4,9 +4,9 @@ import { ActionSource } from '@action/enum/action-source.enum';
 import { Module } from '@action/enum/module.enum';
 //#endregion
 
-// TODO - Change timer Impl
-export const refreshTokenTimerEndedAction = createAction(
+
+export const refreshTokenAction = createAction(
   ActionSource.MODULE,
-  Module.TIMER,
-  'Refresh Token - Ended'
+  Module.ACCOUNT,
+  'Refresh Token'
 );

@@ -1,6 +1,7 @@
 //#region Angular, Material, NgRx
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
@@ -10,9 +11,12 @@ import { MaterialModule } from '@material/material.module';
 import { FormModule } from '@form/form.module';
 //#endregion
 
+//#region Store
+import * as fromStore from './store/';
+//#endregion
+
 //#region Effect
 import {
-  AccountAPIEffects,
   AlertEffects,
   RouterEffects,
   TimerEffects,
@@ -40,11 +44,10 @@ import {
     FormModule,
 
     /* Store */
-    //StoreModule.forFeature(), // TODO
+    StoreModule.forFeature(fromStore.featureKey, fromStore.reducer),
 
     /* Effect */
     EffectsModule.forFeature([
-      AccountAPIEffects,
       AlertEffects,
       RouterEffects,
       TimerEffects,

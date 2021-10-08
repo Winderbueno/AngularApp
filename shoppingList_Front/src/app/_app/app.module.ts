@@ -1,5 +1,5 @@
 //#region Angular, Material
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -8,22 +8,18 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 //#region NgRx
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 //#endregion
 
 //#region Module
 import { AppRouterModule } from '@app/app-router.module';
+import { AccountModule } from '@account/account.module';
 import { AlertModule } from '@alert/alert.module';
 import { LayoutModule } from '@layout/layout.module';
 import { TimerModule } from '@timer/timer.module';
 import { TokenModule } from '@token/token.module';
-//#endregion
-
-//#region Service
-import { appInitializer } from '@app_helper/app.initializer';
-import { AccountService } from '@account/service/account.service'; // TODO - Should not be used
 //#endregion
 
 //#region Interceptor
@@ -37,11 +33,22 @@ import { AppComponent } from './component/app.component';
 //#endregion
 
 //#region Store
-import * as fromAccount from '@account/store/account.reducers';
+import * as fromStore from './store/';
+//#endregion
+
+//#region Effect
+import { AccountEffects } from './effect/';
+import { AccountAPIEffects } from '@account/effect';
 //#endregion
 
 //#region App Conf
 import { environment } from '@env/environment';
+//#endregion
+
+//#region Meta-Reducer
+const metaReducers: Array<MetaReducer<any, any>> = [
+  fromStore.localStorageSyncReducer
+];
 //#endregion
 
 
@@ -54,6 +61,7 @@ import { environment } from '@env/environment';
 
     /* Module */
     AppRouterModule,
+    AccountModule,
     AlertModule,
     LayoutModule,
     TimerModule,
@@ -62,20 +70,25 @@ import { environment } from '@env/environment';
     /* Store */
     StoreModule.forRoot({
       router: routerReducer,
-      account: fromAccount.reducer, // TODO put in a feature
+    },{
+      metaReducers
     }),
 
     StoreRouterConnectingModule.forRoot(),
 
     /* Store DevTool */
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production
+    }),
 
     /* Effect */
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([
+      AccountEffects,
+      AccountAPIEffects // TODO - Should be in Account Feature Module ?
+    ]),
   ],
   providers: [
-    { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AccountService] },
-
     /* Material Configuration */
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
 

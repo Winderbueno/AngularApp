@@ -1,0 +1,25 @@
+//#region NgRx
+import { ActionReducer } from '@ngrx/store';
+//#endregion
+
+//#region Module
+import { localStorageSync } from 'ngrx-store-localstorage';
+import * as fromAccount from '@account/store/';
+import * as fromShoppingList from '@shoppingList/store/';
+import * as fromTimer from '@timer/store/';
+import * as fromToken from '@token/store/';
+//#endregion
+
+
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+  return localStorageSync({
+    // Feature State that are synced with local storage
+    keys: [
+      fromAccount.featureKey,
+      fromShoppingList.featureKey,
+      fromTimer.featureKey,
+      fromToken.featureKey
+    ],
+    rehydrate: true
+  })(reducer);
+}

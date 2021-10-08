@@ -1,11 +1,13 @@
 ﻿/* Reducer */
 export {
+  featureKey,
   reducer
 } from './account.reducers';
 
 /* Action */
-/*export { TODO
-} from './account.actions';*/
+export {
+  refreshTokenAction,
+} from './account.actions';
 
 /* Selector */
 export {
