@@ -10,7 +10,11 @@ import * as fromTimer from '@timer/store/';
 import * as fromToken from '@token/store/';
 //#endregion
 
-
+/**
+ * MetaReducer based on 'localStorageSync' module
+ * It has the responsability of syncing NgRx Store State with localStorage
+ * Its functionning can be configured in this file
+ */
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({
     // Feature State that are synced with local storage
