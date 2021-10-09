@@ -18,7 +18,6 @@ export class RouterEffects {
 
     this.actions$.pipe(
       ofType(
-        fromAPI.logoutSuccessAction,
         fromAPI.forgotPasswordSuccessAction,
         fromAPI.resetPasswordSuccessAction,
         fromAPI.registerSuccessAction,
