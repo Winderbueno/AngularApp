@@ -1,4 +1,3 @@
-/* Action Sources */
 export enum ModuleEnum {
   ACCOUNT = 'Account',
   ALERT = 'Alert',
