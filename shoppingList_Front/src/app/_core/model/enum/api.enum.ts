@@ -1,5 +1,5 @@
 /* Action Sources */
-export enum API {
+export enum APIEnum {
   ACCOUNT = 'Account',
   SHOPPING_LIST = 'ShoppingList',
 }

@@ -1,136 +1,136 @@
 //#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
-import { ActionSource } from '@action/enum/action-source.enum';
-import { API } from '@action/enum/api.enum';
+import { ActionSourceEnum } from '@action/enum/action-source.enum';
 //#endregion
 
 //#region Model
+import { APIEnum } from '@app/model/enum/api.enum';
 import { Account } from '@account/model/account.model';
 //#endregion
 
 
 export const loginSuccessAction = createAction(
-  ActionSource.API,
-  API.ACCOUNT,
+  ActionSourceEnum.API,
+  APIEnum.ACCOUNT,
   'Login Success',
   props<{ account: Account }>()
 );
 
 
 export const loginFailureAction = createAction(
-  ActionSource.API,
-  API.ACCOUNT,
+  ActionSourceEnum.API,
+  APIEnum.ACCOUNT,
   'Login Failure',
   props<{ error: string }>()
 );
 
 
 export const logoutSuccessAction = createAction(
-  ActionSource.API,
-  API.ACCOUNT,
+  ActionSourceEnum.API,
+  APIEnum.ACCOUNT,
   'Logout Success',
 );
 
 
 export const logoutFailureAction = createAction(
-  ActionSource.API,
-  API.ACCOUNT,
+  ActionSourceEnum.API,
+  APIEnum.ACCOUNT,
   'Logout Failure',
   props<{ error: string }>()
 );
 
 
 export const registerSuccessAction = createAction(
-  ActionSource.API,
-  API.ACCOUNT,
+  ActionSourceEnum.API,
+  APIEnum.ACCOUNT,
   'Register Success',
   props<{ message: string }>()
 );
 
 
 export const registerFailureAction = createAction(
-  ActionSource.API,
-  API.ACCOUNT,
+  ActionSourceEnum.API,
+  APIEnum.ACCOUNT,
   'Register Failure',
   props<{ error: string }>()
 );
 
 
 export const verifyEmailSuccessAction = createAction(
-  ActionSource.API,
-  API.ACCOUNT,
+  ActionSourceEnum.API,
+  APIEnum.ACCOUNT,
   'VerifyEmail Success',
   props<{ message: string }>()
 );
 
 
 export const verifyEmailFailureAction = createAction(
-  ActionSource.API,
-  API.ACCOUNT,
+  ActionSourceEnum.API,
+  APIEnum.ACCOUNT,
   'VerifyEmail Failure',
   props<{ error: string }>()
 );
 
 
 export const forgotPasswordSuccessAction = createAction(
-  ActionSource.API,
-  API.ACCOUNT,
+  ActionSourceEnum.API,
+  APIEnum.ACCOUNT,
   'ForgotPassword Success',
   props<{ message: string }>()
 );
 
 
 export const forgotPasswordFailureAction = createAction(
-  ActionSource.API,
-  API.ACCOUNT,
+  ActionSourceEnum.API,
+  APIEnum.ACCOUNT,
   'ForgotPassword Failure',
   props<{ error: string }>()
 );
 
 
 export const resetPasswordSuccessAction = createAction(
-  ActionSource.API,
-  API.ACCOUNT,
+  ActionSourceEnum.API,
+  APIEnum.ACCOUNT,
   'ResetPassword Success',
   props<{ message: string }>()
 );
 
 
 export const resetPasswordFailureAction = createAction(
-  ActionSource.API,
-  API.ACCOUNT,
+  ActionSourceEnum.API,
+  APIEnum.ACCOUNT,
   'ResetPassword Failure',
   props<{ error: string }>()
 );
 
 
 export const refreshTokenSuccessAction = createAction(
-  ActionSource.API,
-  API.ACCOUNT,
+  ActionSourceEnum.API,
+  APIEnum.ACCOUNT,
   'RefreshToken Success',
   props<{ account: Account }>()
 );
 
 
 export const refreshTokenFailureAction = createAction(
-  ActionSource.API,
-  API.ACCOUNT,
+  ActionSourceEnum.API,
+  APIEnum.ACCOUNT,
   'RefreshToken Failure',
   props<{ error: string }>()
 );
 
 
 export const validateResetTokenSuccessAction = createAction(
-  ActionSource.API,
-  API.ACCOUNT,
+  ActionSourceEnum.API,
+  APIEnum.ACCOUNT,
   'ValidateResetToken Success',
 );
 
 
 export const validateResetTokenFailureAction = createAction(
-  ActionSource.API,
-  API.ACCOUNT,
+  ActionSourceEnum.API,
+  APIEnum.ACCOUNT,
   'ValidateResetToken Failure',
   props<{ error: string }>()
 );

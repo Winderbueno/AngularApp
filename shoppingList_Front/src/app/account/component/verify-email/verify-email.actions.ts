@@ -1,7 +1,7 @@
 //#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
-import { ActionSource } from '@action/enum/action-source.enum';
+import { ActionSourceEnum } from '@action/enum/action-source.enum';
 //#endregion
 
 //#region Model
@@ -10,7 +10,7 @@ import { Token } from '@token/model/token.model';
 
 
 export const validateEmailTokenAction = createAction (
-  ActionSource.COMPONENT,
+  ActionSourceEnum.COMPONENT,
   'Verify Email',
   'validateEmailToken',
   props<{
@@ -19,7 +19,7 @@ export const validateEmailTokenAction = createAction (
 
 
 export const deleteEmailTokenAction = createAction (
-  ActionSource.COMPONENT,
+  ActionSourceEnum.COMPONENT,
   'Verify Email',
   'deleteEmailToken',
   props<{
@@ -28,7 +28,7 @@ export const deleteEmailTokenAction = createAction (
 
 
 export const emailTokenValidatedAction = createAction(
-  ActionSource.COMPONENT,
+  ActionSourceEnum.COMPONENT,
   'Verify Email',
   'emailTokenValidated',
   props<{

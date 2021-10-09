@@ -2,19 +2,19 @@
 import * as ngrx from '@ngrx/store';
 import { ActionCreator, ActionCreatorProps, NotAllowedCheck } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
-import { ActionSource } from '@action/enum/action-source.enum';
+import { ActionSourceEnum } from '@action/enum/action-source.enum';
 //#endregion
 
 
 export function createAction (
-  sourceType: ActionSource,
+  sourceType: ActionSourceEnum,
   sourceName: string,
   method: string)
   : ActionCreator<string, () => TypedAction<string>>;
 
 
 export function createAction <P extends object>(
-  sourceType: ActionSource,
+  sourceType: ActionSourceEnum,
   sourceName: string,
   method: string,
   config: ActionCreatorProps<P> & NotAllowedCheck<P>)
@@ -22,7 +22,7 @@ export function createAction <P extends object>(
 
 // Implementation
 export function createAction <P extends object>(
-  sourceType: ActionSource,
+  sourceType: ActionSourceEnum,
   sourceName: string,
   method: string,
   config?: ActionCreatorProps<P> & NotAllowedCheck<P>)

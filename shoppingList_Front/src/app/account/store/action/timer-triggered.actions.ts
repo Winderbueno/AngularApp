@@ -1,12 +1,15 @@
 //#region NgRx, Action Creator
 import { createAction } from '@action/creator/action-creator';
-import { ActionSource } from '@action/enum/action-source.enum';
-import { Module } from '@action/enum/module.enum';
+import { ActionSourceEnum } from '@action/enum/action-source.enum';
+//#endregion
+
+//#region Model
+import { ModuleEnum } from '@app/model/enum/module.enum';
 //#endregion
 
 // TODO - Change timer Impl
 export const refreshTokenTimerEndedAction = createAction(
-  ActionSource.MODULE,
-  Module.TIMER,
+  ActionSourceEnum.MODULE,
+  ModuleEnum.TIMER,
   'Refresh Token - Ended'
 );

@@ -5,7 +5,7 @@ export class Timer {
     name!: string;
     time?: number;
 
-    timeoutHandler!: number;
+    timeoutHandler!: number; // Id of Node.JS Timeout Created
     action!: TypedAction<string>;
 
     constructor(init?:Partial<Timer>) {

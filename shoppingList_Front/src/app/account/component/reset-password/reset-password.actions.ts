@@ -2,7 +2,7 @@
 import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
 import { createSubmitAction } from '@action/creator/component-submit-action-creator';
-import { ActionSource } from '@action/enum/action-source.enum';
+import { ActionSourceEnum } from '@action/enum/action-source.enum';
 //#endregion
 
 //#region Model
@@ -11,7 +11,7 @@ import { Token } from '@token/model/token.model';
 
 
 export const validateResetTokenAction = createAction (
-  ActionSource.COMPONENT,
+  ActionSourceEnum.COMPONENT,
   'Reset Password',
   'validateResetToken',
   props<{
@@ -20,7 +20,7 @@ export const validateResetTokenAction = createAction (
 
 
 export const deleteResetTokenAction = createAction (
-  ActionSource.COMPONENT,
+  ActionSourceEnum.COMPONENT,
   'Reset Password',
   'deleteResetToken',
   props<{
@@ -30,7 +30,7 @@ export const deleteResetTokenAction = createAction (
 
 // TODO Put this action as a standard action in Form Module
 export const resetPasswordSubmitAction = createSubmitAction (
-  ActionSource.COMPONENT,
+  ActionSourceEnum.COMPONENT,
   'Reset Password',
   props<{
     token: string | undefined,

@@ -2,7 +2,7 @@
 import { props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
 import { createAction } from '@action/creator/action-creator';
-import { ActionSource } from '@action/enum/action-source.enum';
+import { ActionSourceEnum } from '@action/enum/action-source.enum';
 //#endregion
 
 //#region Model
@@ -11,7 +11,7 @@ import { UsedProduct } from '../../model/used-product.model';
 
 
 export const resetBoughtStatusAction = createAction (
-  ActionSource.COMPONENT,
+  ActionSourceEnum.COMPONENT,
   'Shopping List',
   'Reset Bought Status',
   props<{
@@ -20,7 +20,7 @@ export const resetBoughtStatusAction = createAction (
 
 
 export const addProductAction = createAction (
-  ActionSource.COMPONENT,
+  ActionSourceEnum.COMPONENT,
   'Shopping List',
   'AddProduct',
   props<{
@@ -29,7 +29,7 @@ export const addProductAction = createAction (
 
 
 export const updateProductAction = createAction (
-  ActionSource.COMPONENT,
+  ActionSourceEnum.COMPONENT,
   'Shopping List',
   'UpdtProduct',
   props<{
@@ -39,7 +39,7 @@ export const updateProductAction = createAction (
 
 
 export const swapProductBoughtStatusAction = createAction (
-  ActionSource.COMPONENT,
+  ActionSourceEnum.COMPONENT,
   'Shopping List',
   'UpdtProduct',
   props<{
@@ -49,7 +49,7 @@ export const swapProductBoughtStatusAction = createAction (
 
 
 export const deleteProductAction = createAction (
-  ActionSource.COMPONENT,
+  ActionSourceEnum.COMPONENT,
   'Shopping List',
   'DeleteProduct',
   props<{

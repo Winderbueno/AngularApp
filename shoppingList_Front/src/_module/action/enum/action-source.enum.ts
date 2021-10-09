@@ -1,7 +1,6 @@
 /* Action Sources */
-export enum ActionSource {
+export enum ActionSourceEnum {
   API = 'API',
   COMPONENT = 'Component',
-  MODULE = 'Module',
-  PAGE = 'Page'
+  MODULE = 'Module'
 }
