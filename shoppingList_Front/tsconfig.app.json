@@ -11,7 +11,7 @@
       "@env/*": ["src/environments/*"],
 
       // App
-      "@app/*": ["src/app/_app/*"],
+      "@app/*": ["src/app/_core/*"],
       "@app_helper/*": ["src/app/_helper/*"],
       "@module/*": ["src/_module/*"],
 
