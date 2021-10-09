@@ -7,8 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from '@layout/component/home/home.component';
 //#endregion
 
-//#region App Component, Model
-import { AuthGuard } from '@app_helper/guard/auth.guard';
+//#region Guard
+import { AuthGuard } from '@shoppingList/guard/auth.guard';
 //#endregion
 
 
