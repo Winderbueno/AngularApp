@@ -10,13 +10,6 @@ import { UsedProduct } from '../../model/used-product.model';
 //#endregion
 
 
-export const loadActiveAction = createAction (
-  ActionSource.COMPONENT,
-  'Shopping List',
-  'LoadActive'
-);
-
-
 export const resetBoughtStatusAction = createAction (
   ActionSource.COMPONENT,
   'Shopping List',

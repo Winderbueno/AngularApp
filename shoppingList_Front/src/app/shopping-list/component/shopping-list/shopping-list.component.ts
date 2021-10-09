@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 
 //#region App Component, Model
 import * as ComponentActions from './shopping-list.actions';
-import * as ShoppingListSelector from '@shoppingList/store/shopping-list.selectors';
+import * as fromStore from '@shoppingList/store/';
 import { DialogAddProductComponent } from '@shoppingList/component/dialog-add-product/dialog-add-product.component';
 //#endregion
 
@@ -36,15 +36,10 @@ export class ShoppingListComponent implements OnInit {
     public dialog: MatDialog,
     private store: Store
   ) {
-    this.store.select(ShoppingListSelector.selectActive).subscribe(value => this.myShoppingList=value);
+    this.store.select(fromStore.selectActive).subscribe(value => this.myShoppingList=value);
   }
 
-  ngOnInit(): void {
-    // Dispatch a Load Active Shopping List action
-    this.store.dispatch(
-      ComponentActions.loadActiveAction()
-    );
-  }
+  ngOnInit(): void {}
 
   /** For all shoppingList product, reset 'bought' status */
   resetBoughtStatus(): void {

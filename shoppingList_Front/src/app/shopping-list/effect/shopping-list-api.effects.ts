@@ -7,7 +7,7 @@ import { map, switchMap, catchError } from 'rxjs/operators';
 
 //#region Action, Selector
 import * as fromAPI from '../service/shopping-list.api.actions';
-import * as fromComponent from '../component/';
+import * as fromStore from '../store/';
 //#endregion
 
 //#region Service, Model
@@ -22,7 +22,7 @@ export class ShoppingListAPIEffects {
   // Load user's active shoppingList from server
   getActive$ = createEffect(() => this.actions$.pipe(
     ofType(
-      fromComponent.loadActiveAction
+      fromStore.loadActiveAction,
     ),
     switchMap(() =>
       this.shoppingListService.getActive().pipe(

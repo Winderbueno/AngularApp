@@ -1,6 +1,5 @@
 ﻿/* Action */
 export {
-  loadActiveAction,
   resetBoughtStatusAction,
   addProductAction,
   updateProductAction,
