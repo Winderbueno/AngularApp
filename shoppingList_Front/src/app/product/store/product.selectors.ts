@@ -1,11 +1,15 @@
 //#region NgRx
-import { ProductState, adapter } from './product.state';
 import { createFeatureSelector } from '@ngrx/store';
 //#endregion
 
-export const selectProduct = createFeatureSelector<ProductState>('product');
+//#region Store
+import { ProductState, adapter } from './product.state';
+import { featureKey } from '.';
+//#endregion
 
-/* Selector */
+export const selectState = createFeatureSelector<ProductState>(featureKey);
+
+/* Entity State */
 export const {
   selectAll,
   selectEntities,

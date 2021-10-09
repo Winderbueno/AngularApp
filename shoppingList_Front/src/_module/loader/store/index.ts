@@ -12,5 +12,6 @@ export {
 
 /* Selector */
 export {
+  selectState,
   isLoading
 } from './loader.selectors';

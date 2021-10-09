@@ -14,5 +14,6 @@ export {
 
 /* Selector */
 export {
+  selectState,
   selectTimerByName
 } from './timer.selectors';

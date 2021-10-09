@@ -11,3 +11,9 @@ export {
   tokenValidatedAction,
   tokenInvalidatedAction
 } from './token.actions';
+
+/* Selector */
+export {
+  selectState,
+  selectTokenByName
+} from './token.selectors';

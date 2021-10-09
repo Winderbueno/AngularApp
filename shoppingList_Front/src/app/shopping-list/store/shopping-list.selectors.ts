@@ -1,17 +1,21 @@
 //#region NgRx
-import { ShoppingListState, adapter } from './shopping-list.state';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 //#endregion
 
-export const selectShoppingList = createFeatureSelector<ShoppingListState>('shoppingList');
+//#region Store
+import { ShoppingListState, adapter } from './shopping-list.state';
+import { featureKey } from '.';
+//#endregion
 
-/* Selector */
+export const selectState = createFeatureSelector<ShoppingListState>(featureKey);
+
+/* Entity State */
 export const {
   selectAll,
   selectEntities,
   selectIds,
   selectTotal
-
 } = adapter.getSelectors();
 
-export const selectActive = createSelector(selectShoppingList, selectAll)
+export const selectActive = createSelector(selectState, selectAll);
+export const isActiveLoaded = createSelector(selectState, (state: ShoppingListState) => state.isActiveLoaded);

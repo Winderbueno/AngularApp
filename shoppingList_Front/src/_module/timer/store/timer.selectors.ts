@@ -6,12 +6,13 @@ import { filter, memoize } from 'lodash'; // TODO - Need to use lodash ?
 
 //#region Store, Model
 import { TimerState, adapter } from './timer.state';
+import { featureKey } from '.';
 import { Timer } from '../model/timer.model';
 //#endregion
 
-export const selectTimer = createFeatureSelector<TimerState>('timer');
+export const selectState = createFeatureSelector<TimerState>(featureKey);
 
-/* Selector */
+/* Entity State */
 export const {
   selectAll,
   selectEntities,
@@ -20,7 +21,7 @@ export const {
 } = adapter.getSelectors();
 
 export const selectTimerByName = (name: string) =>
-  createSelector(selectTimer, (state: TimerState) => state.entities[name]);
+  createSelector(selectState, (state: TimerState) => state.entities[name]);
 
 // TODO - Why this selector cannot be use in "WithLatestFrom"
 /*export const selectTimerByName = (timerName: string | undefined) =>

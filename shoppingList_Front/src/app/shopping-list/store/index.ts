@@ -5,10 +5,12 @@ export {
 } from './shopping-list.reducers';
 
 /* Action */
-/*export { TODO
-} from './shopping-list.actions';*/
+export {
+  loadActiveAction
+} from './shopping-list.actions';
 
 /* Selector */
 export {
+  isActiveLoaded,
   selectActive
 } from './shopping-list.selectors';

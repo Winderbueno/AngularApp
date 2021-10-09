@@ -2,13 +2,11 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 //#endregion
 
-//#region State
+//#region Store
 import { LoaderState } from './loader.state';
+import { featureKey } from '.';
 //#endregion
 
+export const selectState = createFeatureSelector<LoaderState>(featureKey);
 
-export const selectLoader = createFeatureSelector<LoaderState>('loader');
-
-export const isLoading = createSelector(
-  selectLoader,
-  (state: LoaderState) => state.isLoading);
+export const isLoading = createSelector(selectState, (state: LoaderState) => state.isLoading);

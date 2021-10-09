@@ -1,11 +1,15 @@
 //#region NgRx
-import { TokenState, adapter } from './token.state';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 //#endregion
 
-export const selectToken = createFeatureSelector<TokenState>('token');
+//#region Store
+import { TokenState, adapter } from './token.state';
+import { featureKey } from '.';
+//#endregion
 
-/* Selector */
+export const selectState = createFeatureSelector<TokenState>(featureKey);
+
+/* Entity State */
 export const {
   selectAll,
   selectEntities,
@@ -14,4 +18,4 @@ export const {
 } = adapter.getSelectors();
 
 export const selectTokenByName = (name: string) =>
-  createSelector(selectToken, (state: TokenState) => state.entities[name]);
+  createSelector(selectState, (state: TokenState) => state.entities[name]);

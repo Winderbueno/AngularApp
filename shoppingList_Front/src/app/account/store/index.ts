@@ -11,6 +11,7 @@ export {
 
 /* Selector */
 export {
+  selectState,
+  selectAccounts,
   isLogged,
-  selectAccounts
 } from './account.selectors';

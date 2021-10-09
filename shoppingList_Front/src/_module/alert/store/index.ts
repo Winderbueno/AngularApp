@@ -13,6 +13,7 @@ export {
 
 /* Selector */
 export {
-  selectAlertState,
-  selectCurrentAlert
+  selectState,
+  selectCurrentAlert,
+  isAlerting
 } from './alert.selectors';

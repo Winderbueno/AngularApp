@@ -62,7 +62,7 @@ export class AlertEffects {
     // TODO -> Should not be in Account Module
     this.actions$.pipe(
       ofType(fromRouter.routerRequestAction),
-      withLatestFrom(this.store.select(fromAlert.selectAlertState)),
+      withLatestFrom(this.store.select(fromAlert.selectState)),
       map(([action, alertState]) => {
 
         if(alertState.keepAfterRouteChange===true){
