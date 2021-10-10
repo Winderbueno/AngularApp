@@ -24,3 +24,19 @@ export const loadActiveFailureAction = createAction(
   'Load Active Failure',
   props<{ error: string }>()
 );
+
+
+export const resetBoughtStatusSuccessAction = createAction(
+  ActionSourceEnum.API,
+  APIEnum.SHOPPING_LIST,
+  'Reset Bought Status Success',
+  props<{ shoppingList: ShoppingList }>()
+);
+
+
+export const resetBoughtStatusFailureAction = createAction(
+  ActionSourceEnum.API,
+  APIEnum.SHOPPING_LIST,
+  'Reset Bought Status Failure',
+  props<{ error: string }>()
+);

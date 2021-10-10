@@ -19,7 +19,7 @@ export const resetBoughtStatusAction = createAction (
 );
 
 
-export const addProductAction = createAction (
+export const addProductToShoppingListAction = createAction (
   ActionSourceEnum.COMPONENT,
   'Shopping List',
   'AddProduct',
@@ -28,7 +28,7 @@ export const addProductAction = createAction (
 );
 
 
-export const updateProductAction = createAction (
+export const updateShoppingListProductAction = createAction (
   ActionSourceEnum.COMPONENT,
   'Shopping List',
   'UpdtProduct',
@@ -38,17 +38,17 @@ export const updateProductAction = createAction (
 );
 
 
-export const swapProductBoughtStatusAction = createAction (
+export const swapShoppingListProductBoughtStatusAction = createAction (
   ActionSourceEnum.COMPONENT,
   'Shopping List',
-  'UpdtProduct',
+  'Swap Product Bought Status',
   props<{
     ShoppingListId: string,
     product: Update<UsedProduct> }>()
 );
 
 
-export const deleteProductAction = createAction (
+export const deleteProductFromShoppingListAction = createAction (
   ActionSourceEnum.COMPONENT,
   'Shopping List',
   'DeleteProduct',

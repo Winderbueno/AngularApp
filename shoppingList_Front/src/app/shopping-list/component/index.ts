@@ -1,10 +1,10 @@
 ﻿/* Action */
 export {
   resetBoughtStatusAction,
-  addProductAction,
-  updateProductAction,
-  swapProductBoughtStatusAction,
-  deleteProductAction } from './shopping-list/shopping-list.actions';
+  addProductToShoppingListAction,
+  updateShoppingListProductAction,
+  swapShoppingListProductBoughtStatusAction,
+  deleteProductFromShoppingListAction } from './shopping-list/shopping-list.actions';
 
 /* Component */
 export { DialogAddProductComponent } from './dialog-add-product/dialog-add-product.component';
