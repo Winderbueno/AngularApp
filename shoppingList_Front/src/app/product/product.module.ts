@@ -6,9 +6,9 @@ import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
 //#region Module
+import { ProductRouterModule } from './product-router.module';
 import { MaterialModule } from '@material/material.module';
 import { FormModule } from '@form/form.module';
-import { ProductRouterModule } from './product-router.module';
 //#endregion
 
 //#region Store
@@ -47,4 +47,4 @@ import * as fromStore from './store';
     // TODO - Component Instantiated at runtime
   ],
 })
-export class ShoppingListModule { }
+export class ProductModule { }

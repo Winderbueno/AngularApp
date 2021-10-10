@@ -62,4 +62,4 @@ import {
     ResetPasswordComponent
   ]
 })
-export class AccountModule { }
+export class AccountModule {}

@@ -6,9 +6,10 @@ import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
 //#region Module
+import { ShoppingListRouterModule } from './shopping-list-router.module';
 import { MaterialModule } from '@material/material.module';
 import { FormModule } from '@form/form.module';
-import { ShoppingListRouterModule } from './shopping-list-router.module';
+import { ProductModule } from '@product/product.module';
 //#endregion
 
 //#region Store
@@ -53,4 +54,4 @@ import {
     DialogAddProductComponent
   ],
 })
-export class ShoppingListModule { }
+export class ShoppingListModule {}

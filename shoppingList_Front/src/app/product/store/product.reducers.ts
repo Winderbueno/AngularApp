@@ -13,7 +13,7 @@ const productReducer = createReducer(
   initialState,
 
   // TODO
-  on(fromComponent.swapProductBoughtStatusAction,
+  on(fromComponent.swapShoppingListProductBoughtStatusAction,
     (state, action) => {
       return adapter.updateOne(
         {
