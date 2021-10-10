@@ -23,9 +23,9 @@ import { TokenModule } from '@token/token.module';
 //#endregion
 
 //#region Interceptor
-import { LoaderInterceptor } from '@app_helper/interceptor/loader.interceptor';
-import { JwtInterceptor } from '@app_helper/interceptor/jwt.interceptor';
-import { ErrorInterceptor } from '@app_helper/interceptor/error.interceptor';
+import { LoaderInterceptor } from '@app/interceptor/loader.interceptor';
+import { JwtInterceptor } from '@app/interceptor/jwt.interceptor';
+import { ErrorInterceptor } from '@app/interceptor/error.interceptor';
 //#endregion
 
 //#region Component
