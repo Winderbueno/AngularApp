@@ -2,14 +2,13 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, withLatestFrom } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 //#endregion
 
 //#region Action, Selector
 import * as fromAPI from '@account/service/account.api.actions';
 import * as fromComponent from '@account/component/';
 import * as fromAlert from '@alert/store/';
-import * as fromRouter from '@ngrx/router-store';
 //#endregion
 
 //#region Model
@@ -57,22 +56,6 @@ export class AlertEffects {
     )
   );
 
-
-  dismissAlert$ = createEffect(() =>
-    // TODO -> Should not be in Account Module
-    this.actions$.pipe(
-      ofType(fromRouter.routerRequestAction),
-      withLatestFrom(this.store.select(fromAlert.selectState)),
-      map(([action, alertState]) => {
-
-        if(alertState.keepAfterRouteChange===true){
-          return fromAlert.keptAfterRouteChangeAction();
-        } else { // TODO - Don't dismiss Alert if no alert in the state, but require 'not to dispatch in this case action'
-          return fromAlert.dismissAlertAction();
-        }
-      })
-    )
-  );
 
   constructor(
     private actions$: Actions,
