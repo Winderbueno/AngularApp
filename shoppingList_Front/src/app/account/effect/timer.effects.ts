@@ -1,7 +1,8 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map } from 'rxjs/operators';
+import { filter, map, withLatestFrom } from 'rxjs/operators';
 //#endregion
 
 //#region Action
@@ -18,6 +19,8 @@ import { Timer } from '@timer/model/timer.model';
 @Injectable()
 export class TimerEffects {
 
+  refreshTokenName:string = 'RefreshToken';
+
   defineRefreshTokenTimer$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
@@ -28,7 +31,7 @@ export class TimerEffects {
 
         // Define Refresh Token Timer
         let timer = new Timer({
-          name: 'RefreshToken',
+          name: this.refreshTokenName,
           time: 10000, // TODO - Put this in a config file
           action: TimerTriggeredActions.refreshTokenTimerEndedAction()
         });
@@ -56,14 +59,15 @@ export class TimerEffects {
         fromAPI.logoutFailureAction,
         fromAPI.refreshTokenFailureAction
       ),
-      map(() => {
-        return fromTimer.deleteTimerAction({ name: 'RefreshToken' });
-      })
+      withLatestFrom(this.store.select(fromTimer.selectTimerByName(this.refreshTokenName))),
+      filter(([action, timer]) => timer != null),
+      map(() => { return fromTimer.deleteTimerAction({ name: this.refreshTokenName }); })
     )
   );
 
 
   constructor(
-    private actions$: Actions
+    private actions$: Actions,
+    private store: Store
   ) { }
 }

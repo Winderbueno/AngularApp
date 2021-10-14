@@ -5,6 +5,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 //#region State, Action
 import { AccountState, initialState, adapter } from './account.state';
 import * as fromAPI from '../service/account.api.actions';
+import * as fromAction from './account.actions';
 //#endregion
 
 export const featureKey = 'account';
@@ -26,6 +27,7 @@ const accountReducer = createReducer(
   on(
     fromAPI.logoutSuccessAction,
     fromAPI.logoutFailureAction,
+    fromAction.autoLogOutAction,
     (state) => {
       return adapter.removeAll({
         ...state,

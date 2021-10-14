@@ -6,8 +6,9 @@ import { map } from 'rxjs/operators';
 //#endregion
 
 //#region Action, Selector
-import * as fromAPI from '@account/service/account.api.actions';
-import * as fromComponent from '@account/component/';
+import * as fromAPI from '../service/account.api.actions';
+import * as fromComponent from '../component/';
+import * as fromStore from '../store/';
 import * as fromAlert from '@alert/store/';
 //#endregion
 
@@ -30,10 +31,25 @@ export class AlertEffects {
         fromAPI.registerFailureAction,
         fromAPI.resetPasswordFailureAction
       ),
-      map((error) => fromAlert.triggerAlertAction({
+      map((action) => fromAlert.triggerAlertAction({
         alertType: AlertTypeEnum.Error,
-        message: error.error,
+        message: action.error,
         keepAfterRouteChange: false
+      }))
+    )
+  );
+
+
+  triggerKeepAfterRouteErrorAlert$ = createEffect(() =>
+
+    this.actions$.pipe(
+      ofType(
+        fromStore.autoLogOutAction,
+      ),
+      map((action) => fromAlert.triggerAlertAction({
+        alertType: AlertTypeEnum.Error,
+        message: action.error,
+        keepAfterRouteChange: true
       }))
     )
   );
