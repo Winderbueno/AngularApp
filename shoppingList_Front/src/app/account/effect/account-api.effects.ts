@@ -9,7 +9,6 @@ import { map, catchError, exhaustMap } from 'rxjs/operators';
 import * as fromAPI from '../service/account.api.actions';
 import * as fromComponent from '../component/';
 import * as fromStore from '../store/'
-import * as TimerTriggeredActions from '@account/store/action/timer-triggered.actions';
 import { toolbarLogOutAction } from '@layout/component';// TODO -
 //#endregion
 
@@ -72,9 +71,7 @@ export class AccountAPIEffects {
 
   refreshToken$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(
-        fromStore.refreshTokenAction,
-        TimerTriggeredActions.refreshTokenTimerEndedAction), // TODO - Maybe not use this action this way ?
+      ofType(fromStore.refreshTokenAction),
       exhaustMap(() =>
         this.accountService.refreshToken().pipe(
           map((account: Account) => fromAPI.refreshTokenSuccessAction({ account: account })),

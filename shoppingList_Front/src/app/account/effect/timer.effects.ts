@@ -7,8 +7,8 @@ import { filter, map, withLatestFrom } from 'rxjs/operators';
 
 //#region Action
 import * as fromAPI from '../service/account.api.actions';
+import * as fromStore from '../store/';
 import * as fromTimer from '@timer/store/';
-import * as TimerTriggeredActions from '@account/store/action/timer-triggered.actions';
 //#endregion
 
 //#region Model
@@ -33,7 +33,7 @@ export class TimerEffects {
         let timer = new Timer({
           name: this.refreshTokenName,
           time: 10000, // TODO - Put this in a config file
-          action: TimerTriggeredActions.refreshTokenTimerEndedAction()
+          action: fromStore.refreshTokenAction()
         });
 
         // Get RefreshToken Time
@@ -43,7 +43,7 @@ export class TimerEffects {
 
           // Set a timer to refresh the token a minute before it expires
           const expires = new Date(jwtToken.exp * 1000);
-          timer.time = expires.getTime() - Date.now() - (60 * 1000);
+          //timer.time = expires.getTime() - Date.now() - (60 * 1000);
         }
 
         return fromTimer.defineTimerAction({ timer: timer });
