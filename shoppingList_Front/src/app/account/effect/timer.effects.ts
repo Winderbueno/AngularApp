@@ -43,7 +43,7 @@ export class TimerEffects {
 
           // Set a timer to refresh the token a minute before it expires
           const expires = new Date(jwtToken.exp * 1000);
-          //timer.time = expires.getTime() - Date.now() - (60 * 1000);
+          timer.time = expires.getTime() - Date.now() - (60 * 1000);
         }
 
         return fromTimer.defineTimerAction({ timer: timer });
