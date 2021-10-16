@@ -21,20 +21,17 @@
       "dom"
     ],
     "paths": {
-      // Env
-      "@env/*": ["src/environments/*"],
-
       // App
       "@app/*": ["src/app/_core/*"],
-      "@app_helper/*": ["src/app/_helper/*"],
       "@module/*": ["src/_module/*"],
+      "@env/*": ["src/environments/*"],
 
-      // App Feature
+      // Feature
       "@account/*": ["src/app/account/*"],
       "@product/*": ["src/app/product/*"],
       "@shoppingList/*": ["src/app/shopping-list/*"],
 
-      // App Module
+      // Module
       "@action/*": ["src/_module/action/*"],
       "@alert/*": ["src/_module/alert/*"],
       "@enum/*": ["src/_module/enum/*"],
