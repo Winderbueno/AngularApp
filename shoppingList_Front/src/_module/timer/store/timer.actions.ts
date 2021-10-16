@@ -43,3 +43,11 @@ export const timerDeletedAction = createAction(
   'Deleted',
   props<{ name: string | undefined }>()
 );
+
+
+export const timerEndedAction = createAction(
+  ActionSourceEnum.MODULE,
+  ModuleEnum.TIMER,
+  'Ended',
+  props<{ name: string | undefined }>()
+);

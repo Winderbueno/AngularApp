@@ -9,7 +9,8 @@ export {
   defineTimerAction,
   deleteTimerAction,
   timerDefinedAction,
-  timerDeletedAction
+  timerDeletedAction,
+  timerEndedAction
 } from './timer.actions';
 
 /* Selector */

@@ -20,8 +20,11 @@ export const {
   selectTotal
 } = adapter.getSelectors();
 
-export const selectTimerByName = (name: string) =>
-  createSelector(selectState, (state: TimerState) => state.entities[name]);
+export const selectTimerByName = (name: string | undefined) =>
+  createSelector(selectState, (state: TimerState) => {
+    if(name == undefined) { return undefined; }
+    else { return state.entities[name]; }
+  });
 
 // TODO - Why this selector cannot be use in "WithLatestFrom"
 /*export const selectTimerByName = (timerName: string | undefined) =>
