@@ -11,7 +11,7 @@ import * as fromStore from '../store';
 //#endregion
 
 //#region Model
-import { AlertTypeEnum } from '@alert/model/enum/alert-type.enum';
+import { AlertTypeEnum } from '@alert/model/enum/alert-type.enum'; // TODO - not necessary ?
 //#endregion
 
 
