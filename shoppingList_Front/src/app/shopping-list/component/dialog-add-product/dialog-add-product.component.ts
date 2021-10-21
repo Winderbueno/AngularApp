@@ -3,13 +3,16 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+//#endregion
+
+//#region Store
+import * as fromEnum from '@enum/store/';
 //#endregion
 
 //#region App Component, Model
 import { FormComponent } from '@form/component/form.component';
 import { Enum } from '@enum/model/enum.model';
-import { EnumService } from '@enum/service/enum.service';
-import { AccountService } from '@account/service/account.service';
 import { CreateProductReq } from '@shoppingList/model/create-product-req.model';
 import { ShoppingListService } from '@shoppingList/service/shopping-list.service';
 //#endregion
@@ -21,38 +24,25 @@ import { ShoppingListService } from '@shoppingList/service/shopping-list.service
 export class DialogAddProductComponent extends FormComponent {
 
   // Proposition values
-  productCatEnum!: Enum;
-  productSubCatEnum!: Enum;
+  productCatEnum$!: Observable<Enum|undefined>;
+  productSubCatEnum$!: Observable<Enum|undefined>;
 
   // TODO - Optimize constructor because we herit from FormCompo ?
   constructor(
     router: Router,
     route: ActivatedRoute,
-    accountService: AccountService,
     store: Store<{}>, // TODO
     public dialogRef: MatDialogRef<DialogAddProductComponent>,
-    private enumService: EnumService,
     private shoppingListService: ShoppingListService,
   ) {
+
     super(router, route, store);
+    this.productCatEnum$ = this.store.select(fromEnum.selectEnumByName('ProductCategory'));
+    this.productSubCatEnum$ = this.store.select(fromEnum.selectEnumByName('ProductSubCategory'));
   }
 
   ngOnInit(): void {
-
     super.ngOnInit();
-
-    // TODO - Change Backend Design to only have 1 backend call to retrieve multiple enums values
-    // TODO NgrX
-    /*this.enumService.getValuesOf("ProductCategory")
-      .subscribe({
-        next: res => { this.productCatEnum = res; },
-        error: error => this.alertService.error(error)
-      });
-    this.enumService.getValuesOf("ProductSubCategory")
-      .subscribe({
-        next: res => { this.productSubCatEnum = res; },
-        error: error => this.alertService.error(error)
-    });*/
   }
 
   dispatchSubmitAction() {

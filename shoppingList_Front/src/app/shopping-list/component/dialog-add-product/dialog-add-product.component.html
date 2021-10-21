@@ -6,10 +6,16 @@
   <app-input-field [formMod]="form" [ctrlName]="'ProductName'" [label]="'Product Name'"></app-input-field>
 
   <!-- Product Category -->
-  <app-select-field [formMod]="form" [ctrlName]="'Category'" [enum]="productCatEnum"></app-select-field>
+  <app-select-field
+    [formMod]="form"
+    [ctrlName]="'Category'"
+    [enum]="(productCatEnum$|async)!"></app-select-field>
 
   <!-- Product Sub Category -->
-  <app-select-field [formMod]="form" [ctrlName]="'SubCategory'" [enum]="productSubCatEnum"></app-select-field>
+  <app-select-field
+    [formMod]="form"
+    [ctrlName]="'SubCategory'"
+    [enum]="(productSubCatEnum$|async)!"></app-select-field>
 
   <!-- TODO - Proposition de produit -->
   <!-- <p>Ceci pourrait correspondre :</p>
