@@ -4,7 +4,7 @@ import { ActionSourceEnum } from '@action/enum/action-source.enum';
 //#endregion
 
 //#region Model
-import { ModuleEnum } from '@app/model/enum/module.enum';
+import { ModuleEnum } from '@app/model/enum/module.enum'; // TODO - Warn dependence sur App...
 //#endregion
 
 
