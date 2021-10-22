@@ -28,6 +28,7 @@
     "@ngrx/store": "^12.3.0",
     "@ngrx/store-devtools": "^12.3.0",
     "lodash": "^4.17.21",
+    "ngrx-entity-relationship": "^1.7.0",
     "ngrx-store-localstorage": "^12.0.1",
     "rxjs": "^7.4.0",
     "tslib": "^2.0.0",
