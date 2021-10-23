@@ -1,17 +1,21 @@
 <h1 mat-dialog-title>Add Your Product</h1>
 
+ <!-- Add Product Form -->
 <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
 
-  <!-- Product Name -->
-  <app-input-field [formMod]="form" [ctrlName]="'ProductName'" [label]="'Product Name'"></app-input-field>
+  <!-- Name -->
+  <app-input-field
+    [formMod]="form"
+    [ctrlName]="'ProductName'"
+    [label]="'Name'"></app-input-field>
 
-  <!-- Product Category -->
+  <!-- Category -->
   <app-select-field
     [formMod]="form"
     [ctrlName]="'Category'"
     [enum]="(productCatEnum$|async)!"></app-select-field>
 
-  <!-- Product Sub Category -->
+  <!-- Sub Category -->
   <app-select-field
     [formMod]="form"
     [ctrlName]="'SubCategory'"
