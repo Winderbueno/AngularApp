@@ -13,7 +13,7 @@ import * as fromEnum from '@enum/store/';
 //#region App Component, Model
 import { FormComponent } from '@form/component/form.component';
 import { Enum } from '@enum/model/enum.model';
-import { CreateProductReq } from '@shoppingList/model/create-product-req.model';
+import { CreateProductReq } from '@shoppingList/model/current/create-product-req.model';
 import { ShoppingListService } from '@shoppingList/service/shopping-list.service';
 //#endregion
 

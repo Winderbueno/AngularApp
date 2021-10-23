@@ -6,7 +6,7 @@ import { ActionSourceEnum } from '@action/enum/action-source.enum';
 //#endregion
 
 //#region Model
-import { UsedProduct } from '../../model/used-product.model';
+import { UsedProduct } from '../../model/current/used-product.model';
 //#endregion
 
 

@@ -12,8 +12,8 @@ import { DialogAddProductComponent } from '@shoppingList/component/dialog-add-pr
 //#endregion
 
 //#region Model
-import { ShoppingList } from '@shoppingList/model/shopping-list.model';
-import { UsedProduct } from '@shoppingList/model/used-product.model';
+import { ShoppingList } from '@shoppingList/model/current/shopping-list.model';
+import { UsedProduct } from '@shoppingList/model/current/used-product.model';
 //#endregion
 
 

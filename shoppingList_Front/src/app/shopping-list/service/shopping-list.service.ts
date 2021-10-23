@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
 //#endregion
 
 //#region Model
-import { ShoppingList } from '@shoppingList/model/shopping-list.model';
-import { UsedProduct } from '@shoppingList/model/used-product.model';
-import { CreateProductReq } from '@shoppingList/model/create-product-req.model';
+import { ShoppingList } from '@shoppingList/model/current/shopping-list.model';
+import { UsedProduct } from '@shoppingList/model/current/used-product.model';
+import { CreateProductReq } from '@shoppingList/model/current/create-product-req.model';
 //#endregion
 
 // Api Info

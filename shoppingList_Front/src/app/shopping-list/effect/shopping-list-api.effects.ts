@@ -12,7 +12,7 @@ import * as fromStore from '../store/';
 
 //#region Service, Model
 import { ShoppingListService } from '../service/shopping-list.service';
-import { ShoppingList } from '../model/shopping-list.model';
+import { ShoppingList } from '../model/current/shopping-list.model';
 //#endregion
 
 
