@@ -4,15 +4,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 //#endregion
 
-//#region App Component, Model
-import { Product } from '@product/model/product.model';
+//#region Model
+import { Product } from '../model/product.model';
 //#endregion
 
 // Api Info
 import { envBusinessAPI } from '@env/environment';
 const baseUrl = `${envBusinessAPI.apiUrl}/products`;
 
-// TODO - Le dossier "product" est actuellement non utilise dans l'App, A suppr ?
+// TODO - Faire le back
 @Injectable({ providedIn: 'root' })
 export class ProductService {
 

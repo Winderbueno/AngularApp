@@ -1,11 +1,9 @@
-export interface Product {
-    productId: number;
+export class Product {
+    id!: string;
 
-    category: string;
-    subCategory: string;
+    name?: string;
+    description?: string;
 
-    name: string;
-    bought: boolean;
-    quantity: number;
-    note: string;
+    dimension?:string;
+    poids?:string;
 }
