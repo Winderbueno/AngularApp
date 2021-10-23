@@ -47,6 +47,18 @@
         </mat-chip-list>
       </li>
     </mat-expansion-panel>
+
+    <!-- In edition mode, Add a category -->
+    <mat-expansion-panel *ngIf="edit_mode" [disabled]=true hideToggle>
+
+      <!-- TODO - Use primary or secondary color -->
+      <!-- TODO - Put Style in CSS file -->
+      <!-- TODO - Add a '+' Icone at end of line -->
+      <mat-expansion-panel-header style='background-color:cornflowerblue'>
+        <mat-panel-title>Ajouter une categorie</mat-panel-title>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+
   </mat-accordion>
 
 </div>
