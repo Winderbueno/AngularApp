@@ -3,8 +3,8 @@ import { createSelector, createFeatureSelector } from '@ngrx/store';
 //#endregion
 
 //#region Store
-import { ShoppingListState, adapter } from './shopping-list.state';
-import { featureKey } from '.';
+import { ShoppingListState, adapter } from '../shopping-list.state';
+import { featureKey } from '../.';
 //#endregion
 
 export const selectState = createFeatureSelector<ShoppingListState>(featureKey);

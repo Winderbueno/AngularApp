@@ -13,4 +13,4 @@ export {
 export {
   isActiveLoaded,
   selectActive
-} from './shopping-list.selectors';
+} from './selectors/shopping-list.selectors';
