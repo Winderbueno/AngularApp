@@ -1,6 +1,7 @@
-﻿/* Reducer */
+﻿export const featureKey = 'product';
+
+/* Reducer */
 export {
-  featureKey,
   reducer
 } from './product.reducers';
 

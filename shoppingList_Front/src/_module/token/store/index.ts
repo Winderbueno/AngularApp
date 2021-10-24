@@ -1,6 +1,7 @@
-﻿/* Reducer */
+﻿export const featureKey = 'token';
+
+/* Reducer */
 export {
-  featureKey,
   reducer
 } from './token.reducers';
 

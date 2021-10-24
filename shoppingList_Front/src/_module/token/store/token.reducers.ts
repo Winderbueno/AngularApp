@@ -11,7 +11,6 @@ import * as fromAction from './token.actions';
 import { TokenStatusEnum } from "../model/enum/token-status.enum";
 //#endregion
 
-export const featureKey = 'token';
 
 const tokenReducer = createReducer(
   initialState,
@@ -19,7 +18,6 @@ const tokenReducer = createReducer(
   on(fromAction.validateTokenAction,
     (state, action) => { return adapter.addOne(action.token, state) }
   ),
-
 
   on(fromAction.tokenValidatedAction,
     (state, action) => {
@@ -31,7 +29,6 @@ const tokenReducer = createReducer(
     }
   ),
 
-
   on(fromAction.tokenInvalidatedAction,
     (state, action) => {
       return adapter.updateOne(
@@ -42,11 +39,9 @@ const tokenReducer = createReducer(
     }
   ),
 
-
   on(fromAction.deleteTokenAction,
     (state, action) => { return adapter.removeOne(action.name, state); }
   ),
-
 );
 
 

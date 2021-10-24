@@ -1,4 +1,5 @@
 ﻿// TODO - NgrX Adaptation
+//export const featureKey = 'form';
 
 /* State *//*
 export {

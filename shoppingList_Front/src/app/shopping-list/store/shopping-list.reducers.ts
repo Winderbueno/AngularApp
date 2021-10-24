@@ -8,7 +8,6 @@ import * as fromAPI from '../service/shopping-list.api.actions';
 import * as AccountAPIActions from '@account/service/account.api.actions'; // TODO
 //#endregion
 
-export const featureKey = 'shoppingList';
 
 const shoppingListReducer = createReducer(
   initialState,
@@ -34,6 +33,7 @@ const shoppingListReducer = createReducer(
     }
   ),
 );
+
 
 export function reducer(state: ShoppingListState | undefined, action: Action) {
   return shoppingListReducer(state, action);

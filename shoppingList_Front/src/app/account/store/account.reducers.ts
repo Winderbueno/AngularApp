@@ -8,7 +8,6 @@ import * as fromAPI from '../service/account.api.actions';
 import * as fromAction from './account.actions';
 //#endregion
 
-export const featureKey = 'account';
 
 const accountReducer = createReducer(
   initialState,
@@ -35,8 +34,8 @@ const accountReducer = createReducer(
       })
     }
   ),
-
 );
+
 
 export function reducer(state: AccountState | undefined, action: Action) {
   return accountReducer(state, action);

@@ -1,6 +1,7 @@
-﻿/* Reducer */
+﻿export const featureKey = 'loader';
+
+/* Reducer */
 export {
-  featureKey,
   reducer
 } from './loader.reducers';
 
