@@ -1,13 +1,13 @@
+import { Category } from "./category.model";
 import { Level } from "./level.model";
 
-export class Categorisation<Type> {
+export class Categorisation {
+
   id!: string;
 
   levelList?:Level[];
   levelIds?:string[];
 
-  // Add Category
-  // Modify Category Name
-  // Remove Category
-
+  categoryList?:Category[];
+  categoryIds?:string[];
 }

@@ -11,7 +11,7 @@ import * as fromAction from './token.actions';
 import { TokenStatusEnum } from "../model/enum/token-status.enum";
 //#endregion
 
-export const featureKey = 'token';
+export const featureKey = 'categorisation';
 
 const tokenReducer = createReducer(
   initialState,

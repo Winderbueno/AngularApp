@@ -1,6 +1,7 @@
 export enum ModuleEnum {
   ACCOUNT = 'Account',
   ALERT = 'Alert',
+  CATEGORISATION = 'Categorisation',
   ENUM = 'Enum',
   FORM = 'Form',
   LOADER = 'Loader',

@@ -3,11 +3,11 @@ import { createSelector, createFeatureSelector } from '@ngrx/store';
 //#endregion
 
 //#region Store
-import { TokenState, adapter } from './token.state';
-import { featureKey } from '.';
+import { CategorisationState, adapter } from './categorisation.state';
+import { featureKey } from '..';
 //#endregion
 
-export const selectState = createFeatureSelector<TokenState>(featureKey);
+export const selectState = createFeatureSelector<CategorisationState>(featureKey);
 
 /* Entity State */
 export const {
@@ -18,4 +18,4 @@ export const {
 } = adapter.getSelectors();
 
 export const selectTokenByName = (name: string) =>
-  createSelector(selectState, (state: TokenState) => state.entities[name]);
+  createSelector(selectState, (state: CategorisationState) => state.entities[name]);

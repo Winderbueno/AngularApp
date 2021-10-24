@@ -1,7 +1,10 @@
-export interface Category<Type> {
-  id: string;
-  name: string;
+import { Level } from "./level.model";
 
-  contents: Type[];
-  contentIds:string[];
+export class Category {
+
+  id!: string;
+  name!: string;
+
+  levelList?:Level;
+  levelId?:string;
 }

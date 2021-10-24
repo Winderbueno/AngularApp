@@ -6,14 +6,10 @@ export {
 
 /* Action */
 export {
-  deleteTokenAction,
-  validateTokenAction,
-  tokenValidatedAction,
-  tokenInvalidatedAction
 } from './token.actions';
 
 /* Selector */
 export {
   selectState,
   selectTokenByName
-} from './token.selectors';
+} from './categorisation/categorisation.selectors';
