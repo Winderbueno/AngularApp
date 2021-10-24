@@ -44,9 +44,7 @@ const tokenReducer = createReducer(
 
 
   on(fromAction.deleteTokenAction,
-    (state, action) => {
-      return adapter.removeOne(action.name, state);
-    }
+    (state, action) => { return adapter.removeOne(action.name, state); }
   ),
 
 );
