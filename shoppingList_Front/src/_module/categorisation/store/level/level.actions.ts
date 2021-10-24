@@ -6,29 +6,29 @@ import { ActionSourceEnum } from '@action/enum/action-source.enum';
 
 //#region Model
 import { ModuleEnum } from '@app/model/enum/module.enum';
-import { Categorisation } from '../../model/categorisation.model';
+import { Level } from '@module/categorisation/model/level.model';
 //#endregion
 
 
-export const loadCategorisationAction = createAction(
+export const loadLevelAction = createAction(
   ActionSourceEnum.MODULE,
   ModuleEnum.CATEGORISATION,
-  'Load Categorisation',
-  props<{ categorisation: Categorisation[] }>()
+  'Load Level',
+  props<{ levels: Level[] }>()
 );
 
 
-export const addCategorisationAction = createAction(
+export const addLevelAction = createAction(
   ActionSourceEnum.MODULE,
   ModuleEnum.CATEGORISATION,
-  'Add Categorisation',
-  props<{ categorisation: Categorisation }>()
+  'Add Level',
+  props<{ level: Level }>()
 );
 
 
-export const deleteCategorisationAction = createAction(
+export const deleteCategoryAction = createAction(
   ActionSourceEnum.MODULE,
   ModuleEnum.CATEGORISATION,
-  'Delete Categorisation',
+  'Delete Level',
   props<{ name: string }>()
 );

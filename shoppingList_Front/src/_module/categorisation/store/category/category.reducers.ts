@@ -30,6 +30,6 @@ const categoryReducer = createReducer(
 );
 
 
-export function reducer(state: CategoryState | undefined, action: Action) {
+export function reducer(state: CategoryState, action: Action) {
   return categoryReducer(state, action);
 }

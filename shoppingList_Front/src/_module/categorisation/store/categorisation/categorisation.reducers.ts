@@ -3,50 +3,20 @@ import { Action, createReducer, on } from '@ngrx/store';
 //#endregion
 
 //#region State, Action
-import { TokenState, initialState, adapter } from './token.state';
-import * as fromAction from './token.actions';
+import { CategorisationState, initialState, adapter } from './categorisation.state';
+import * as fromAction from './categorisation.actions';
 //#endregion
-
-//#region Model
-import { TokenStatusEnum } from "../model/enum/token-status.enum";
-//#endregion
-
-export const featureKey = 'categorisation';
 
 const tokenReducer = createReducer(
   initialState,
 
-  on(fromAction.validateTokenAction,
-    (state, action) => { return adapter.addOne(action.token, state) }
+  on(fromAction.addCategorisationAction,
+    (state, action) => { return adapter.addOne(action., state) }
   ),
 
 
-  on(fromAction.tokenValidatedAction,
-    (state, action) => {
-      return adapter.updateOne(
-        {
-          id: action.name,
-          changes: { status: TokenStatusEnum.Valid }
-        }, state);
-    }
-  ),
-
-
-  on(fromAction.tokenInvalidatedAction,
-    (state, action) => {
-      return adapter.updateOne(
-        {
-          id: action.name,
-          changes: { status: TokenStatusEnum.Invalid }
-        }, state);
-    }
-  ),
-
-
-  on(fromAction.deleteTokenAction,
-    (state, action) => {
-      return adapter.removeOne(action.name, state);
-    }
+  on(fromAction.deleteCategorisationAction,
+    (state, action) => { return adapter.removeOne(action.name, state); }
   ),
 
 );
