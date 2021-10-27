@@ -9,13 +9,11 @@ import { Enum } from "../model/enum.model";
 /* State */
 export interface EnumState extends EntityState<Enum> {}
 
-
 /* Adapter */
 export const adapter : EntityAdapter<Enum> =
   createEntityAdapter<Enum>({
     selectId: (obj: Enum) => obj.name, // TODO - enum is a reserved word of TS
   });
-
 
 /* Initial State */
 export const initialState: EnumState =

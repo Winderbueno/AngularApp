@@ -6,7 +6,6 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { ShoppingList } from '@shoppingList/model/current/shopping-list.model';
 //#endregion
 
-
 /* State */
 export interface ShoppingListState extends EntityState<ShoppingList> {
   // Additional entity state properties
@@ -17,13 +16,11 @@ export interface ShoppingListState extends EntityState<ShoppingList> {
   accordion_expanded: boolean;
 }
 
-
 /* Adapter */
 export const adapter : EntityAdapter<ShoppingList> =
   createEntityAdapter<ShoppingList>({
     selectId: (shoppingList: ShoppingList) => shoppingList.shoppingListId,
   });
-
 
 /* Initial State */
 export const initialState: ShoppingListState =
