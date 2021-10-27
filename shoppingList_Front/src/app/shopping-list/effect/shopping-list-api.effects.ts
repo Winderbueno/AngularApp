@@ -6,7 +6,7 @@ import { map, switchMap, catchError } from 'rxjs/operators';
 //#endregion
 
 //#region Action, Selector
-import * as fromAPI from '../store/action/shopping-list.api.actions';
+import * as fromAPI from '../service/shopping-list.api.actions';
 import * as fromStore from '../store/';
 //#endregion
 

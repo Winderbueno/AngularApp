@@ -6,7 +6,8 @@ import { filter, map, withLatestFrom } from 'rxjs/operators';
 //#endregion
 
 //#region Action
-import * as fromAction from '../store/action/';
+import * as fromAPI from '../service/account.api.actions';
+import * as fromStore from '../store/';
 import * as fromTimer from '@timer/store/';
 //#endregion
 
@@ -23,8 +24,8 @@ export class TimerEffects {
   defineRefreshTokenTimer$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
-        fromAction.loginSuccessAction,
-        fromAction.refreshTokenSuccessAction
+        fromAPI.loginSuccessAction,
+        fromAPI.refreshTokenSuccessAction
       ),
       map((action) => {
 
@@ -32,7 +33,7 @@ export class TimerEffects {
         let timer = new Timer({
           name: this.refreshTokenName,
           time: 10000, // TODO - Put this in a config file
-          action: fromAction.refreshTokenAction()
+          action: fromStore.refreshTokenAction()
         });
 
         // Get RefreshToken Time
@@ -54,9 +55,9 @@ export class TimerEffects {
   deleteRefreshTokenTimer$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
-        fromAction.logoutSuccessAction,
-        fromAction.logoutFailureAction,
-        fromAction.refreshTokenFailureAction
+        fromAPI.logoutSuccessAction,
+        fromAPI.logoutFailureAction,
+        fromAPI.refreshTokenFailureAction
       ),
       withLatestFrom(this.store.select(fromTimer.selectTimerByName(this.refreshTokenName))),
       filter(([action, timer]) => timer != null),

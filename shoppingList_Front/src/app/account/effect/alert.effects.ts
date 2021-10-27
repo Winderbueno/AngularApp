@@ -6,8 +6,9 @@ import { map } from 'rxjs/operators';
 //#endregion
 
 //#region Action, Selector
-import * as fromAction from '../store/action/';
+import * as fromAPI from '../service/account.api.actions';
 import * as fromComponent from '../component/';
+import * as fromStore from '../store/';
 import * as fromAlert from '@alert/store/';
 //#endregion
 
@@ -23,12 +24,12 @@ export class AlertEffects {
 
     this.actions$.pipe(
       ofType(
-        fromAction.loginFailureAction,
-        fromAction.logoutFailureAction,
-        fromAction.registerFailureAction,
-        fromAction.forgotPasswordFailureAction,
-        fromAction.registerFailureAction,
-        fromAction.resetPasswordFailureAction
+        fromAPI.loginFailureAction,
+        fromAPI.logoutFailureAction,
+        fromAPI.registerFailureAction,
+        fromAPI.forgotPasswordFailureAction,
+        fromAPI.registerFailureAction,
+        fromAPI.resetPasswordFailureAction
       ),
       map((action) => fromAlert.triggerAlertAction({
         alertType: AlertTypeEnum.Error,
@@ -43,7 +44,7 @@ export class AlertEffects {
 
     this.actions$.pipe(
       ofType(
-        fromAction.autoLogOutAction,
+        fromStore.autoLogOutAction,
       ),
       map((action) => fromAlert.triggerAlertAction({
         alertType: AlertTypeEnum.Error,
@@ -58,9 +59,9 @@ export class AlertEffects {
 
     this.actions$.pipe(
       ofType(
-        fromAction.resetPasswordSuccessAction,
-        fromAction.registerSuccessAction,
-        fromAction.forgotPasswordSuccessAction,
+        fromAPI.resetPasswordSuccessAction,
+        fromAPI.registerSuccessAction,
+        fromAPI.forgotPasswordSuccessAction,
         fromComponent.emailTokenValidatedAction
       ),
       map((action) => fromAlert.triggerAlertAction({
@@ -73,6 +74,7 @@ export class AlertEffects {
 
 
   constructor(
-    private actions$: Actions
+    private actions$: Actions,
+    private store: Store
   ) { }
 }

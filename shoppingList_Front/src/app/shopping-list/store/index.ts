@@ -8,7 +8,7 @@ export {
 /* Action */
 export {
   loadActiveAction
-} from './action/shopping-list.actions';
+} from './shopping-list.actions';
 
 /* Selector */
 export {

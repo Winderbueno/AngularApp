@@ -9,7 +9,7 @@ export {
 export {
   refreshTokenAction,
   autoLogOutAction
-} from './action/account.actions';
+} from './account.actions';
 
 /* Selector */
 export {

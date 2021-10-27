@@ -4,7 +4,8 @@ import { Action, createReducer, on } from '@ngrx/store';
 
 //#region State, Action
 import { AccountState, initialState, adapter } from './account.state';
-import * as fromAction from './action/';
+import * as fromAPI from '../service/account.api.actions';
+import * as fromAction from './account.actions';
 //#endregion
 
 
@@ -12,8 +13,8 @@ const accountReducer = createReducer(
   initialState,
 
   on(
-    fromAction.loginSuccessAction,
-    fromAction.refreshTokenSuccessAction, // TODO - Test that it works
+    fromAPI.loginSuccessAction,
+    fromAPI.refreshTokenSuccessAction, // TODO - Test that it works
     (state, { account }) => {
       return adapter.addOne(account, {
         ...state,
@@ -23,8 +24,8 @@ const accountReducer = createReducer(
   ),
 
   on(
-    fromAction.logoutSuccessAction,
-    fromAction.logoutFailureAction,
+    fromAPI.logoutSuccessAction,
+    fromAPI.logoutFailureAction,
     fromAction.autoLogOutAction,
     (state) => {
       return adapter.removeAll({

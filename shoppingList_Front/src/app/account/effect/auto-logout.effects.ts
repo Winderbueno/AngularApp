@@ -6,7 +6,7 @@ import { filter, map, withLatestFrom } from 'rxjs/operators';
 //#endregion
 
 //#region Action, Selector
-import * as fromAction from '../store/action/';
+import * as fromAPI from '../service/account.api.actions';
 import * as fromStore from '../store';
 //#endregion
 
@@ -21,10 +21,10 @@ export class AutoLogOutEffects {
   autoLogOutByRefreshToken$ = createEffect(() =>
 
     this.actions$.pipe(
-      ofType(fromAction.refreshTokenFailureAction),
+      ofType(fromAPI.refreshTokenFailureAction),
       withLatestFrom(this.store.select(fromStore.isLogged)),
       filter(([action, isLogged]) => isLogged === true),
-      map(([action]) => fromAction.autoLogOutAction({
+      map(([action]) => fromStore.autoLogOutAction({
         error: action.error,
       }))
     )
