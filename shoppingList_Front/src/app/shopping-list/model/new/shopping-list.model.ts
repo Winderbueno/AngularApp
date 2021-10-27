@@ -1,5 +1,5 @@
 import { Account } from "@account/model/account.model";
-import { Categorisation } from "./categorisation.model";
+import { Categorisation } from "@module/categorisation/model/categorisation.model";
 import { Item } from "./item.model";
 
 export interface ShoppingList {
@@ -14,7 +14,7 @@ export interface ShoppingList {
   account:Account;
   accountId?: string;
 
-  categorisation?: Categorisation<Item>;
+  categorisation?: Categorisation;
   categorisationId?: string;
 
   items?: Item[];
