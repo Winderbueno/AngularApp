@@ -7,7 +7,6 @@ import { ActionSourceEnum } from '@action/enum/action-source.enum';
 import { ModuleEnum } from '@app/model/enum/module.enum';
 //#endregion
 
-
 export const loadActiveAction = createAction (
   ActionSourceEnum.MODULE,
   ModuleEnum.SHOPPING_LIST,

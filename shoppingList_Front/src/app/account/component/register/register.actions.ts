@@ -8,7 +8,6 @@ import { ActionSourceEnum } from '@action/enum/action-source.enum';
 import { Account } from '@account/model/account.model';
 //#endregion
 
-
 export const registerSubmitAction = createSubmitAction (
   ActionSourceEnum.COMPONENT,
   'Register',

@@ -9,14 +9,12 @@ import { ModuleEnum } from '@app/model/enum/module.enum';
 import { Token } from '../model/token.model';
 //#endregion
 
-
 export const validateTokenAction = createAction(
   ActionSourceEnum.MODULE,
   ModuleEnum.TOKEN,
   'Validate',
   props<{ token: Token }>()
 );
-
 
 export const deleteTokenAction = createAction(
   ActionSourceEnum.MODULE,
@@ -25,14 +23,12 @@ export const deleteTokenAction = createAction(
   props<{ name: string }>()
 );
 
-
 export const tokenValidatedAction = createAction(
   ActionSourceEnum.MODULE,
   ModuleEnum.TOKEN,
   'Validated',
   props<{ name: string }>()
 );
-
 
 export const tokenInvalidatedAction = createAction(
   ActionSourceEnum.MODULE,

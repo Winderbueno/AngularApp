@@ -7,7 +7,6 @@ import { ActionSourceEnum } from '@action/enum/action-source.enum';
 import { ModuleEnum } from '@app/model/enum/module.enum'; // TODO - Warn dependence sur App...
 //#endregion
 
-
 export const loadEnumAction = createAction(
   ActionSourceEnum.MODULE,
   ModuleEnum.ENUM,

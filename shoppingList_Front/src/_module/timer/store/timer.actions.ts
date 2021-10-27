@@ -9,7 +9,6 @@ import { ModuleEnum } from '@app/model/enum/module.enum';
 import { Timer } from '../model/timer.model';
 //#endregion
 
-
 export const defineTimerAction = createAction(
   ActionSourceEnum.MODULE,
   ModuleEnum.TIMER,
@@ -17,14 +16,12 @@ export const defineTimerAction = createAction(
   props<{ timer: Timer }>()
 );
 
-
 export const deleteTimerAction = createAction(
   ActionSourceEnum.MODULE,
   ModuleEnum.TIMER,
   'Delete',
   props<{ name: string }>()
 );
-
 
 export const timerDefinedAction = createAction(
   ActionSourceEnum.MODULE,
@@ -36,14 +33,12 @@ export const timerDefinedAction = createAction(
   }>()
 );
 
-
 export const timerDeletedAction = createAction(
   ActionSourceEnum.MODULE,
   ModuleEnum.TIMER,
   'Deleted',
   props<{ name: string | undefined }>()
 );
-
 
 export const timerEndedAction = createAction(
   ActionSourceEnum.MODULE,

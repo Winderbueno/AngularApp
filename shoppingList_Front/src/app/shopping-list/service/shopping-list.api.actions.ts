@@ -9,14 +9,12 @@ import { APIEnum } from '@app/model/enum/api.enum';
 import { ShoppingList } from '@shoppingList/model/current/shopping-list.model';
 //#endregion
 
-
 export const loadActiveSuccessAction = createAction(
   ActionSourceEnum.API,
   APIEnum.SHOPPING_LIST,
   'Load Active Success',
   props<{ shoppingList: ShoppingList }>()
 );
-
 
 export const loadActiveFailureAction = createAction(
   ActionSourceEnum.API,
@@ -25,14 +23,12 @@ export const loadActiveFailureAction = createAction(
   props<{ error: string }>()
 );
 
-
 export const resetBoughtStatusSuccessAction = createAction(
   ActionSourceEnum.API,
   APIEnum.SHOPPING_LIST,
   'Reset Bought Status Success',
   props<{ shoppingList: ShoppingList }>()
 );
-
 
 export const resetBoughtStatusFailureAction = createAction(
   ActionSourceEnum.API,

@@ -8,13 +8,11 @@ import { ActionSourceEnum } from '@action/enum/action-source.enum';
 import { ModuleEnum } from '@app/model/enum/module.enum';
 //#endregion
 
-
 export const refreshTokenAction = createAction(
   ActionSourceEnum.MODULE,
   ModuleEnum.ACCOUNT,
   'Refresh Token'
 );
-
 
 export const autoLogOutAction = createAction(
   ActionSourceEnum.MODULE,

@@ -9,7 +9,6 @@ import { ModuleEnum } from '@app/model/enum/module.enum'; // TODO - there should
 import { AlertTypeEnum } from '../model/enum/alert-type.enum';
 //#endregion
 
-
 export const triggerAlertAction = createAction(
   ActionSourceEnum.MODULE,
   ModuleEnum.ALERT,
@@ -20,13 +19,11 @@ export const triggerAlertAction = createAction(
     keepAfterRouteChange?: boolean }>()
 );
 
-
 export const dismissAlertAction = createAction(
   ActionSourceEnum.MODULE,
   ModuleEnum.ALERT,
   'Dismiss',
 );
-
 
 export const keptAfterRouteChangeAction = createAction(
   ActionSourceEnum.MODULE,

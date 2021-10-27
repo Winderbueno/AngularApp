@@ -9,7 +9,6 @@ import { ActionSourceEnum } from '@action/enum/action-source.enum';
 import { Token } from '@token/model/token.model';
 //#endregion
 
-
 export const validateResetTokenAction = createAction (
   ActionSourceEnum.COMPONENT,
   'Reset Password',
@@ -18,7 +17,6 @@ export const validateResetTokenAction = createAction (
     token: Token }>()
 );
 
-
 export const deleteResetTokenAction = createAction (
   ActionSourceEnum.COMPONENT,
   'Reset Password',
@@ -26,7 +24,6 @@ export const deleteResetTokenAction = createAction (
   props<{
     name: string }>()
 );
-
 
 // TODO Put this action as a standard action in Form Module
 export const resetPasswordSubmitAction = createSubmitAction (
@@ -37,5 +34,3 @@ export const resetPasswordSubmitAction = createSubmitAction (
     password: string,
     confirmPassword: string }>()
 );
-
-

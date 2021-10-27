@@ -8,7 +8,6 @@ import { ActionSourceEnum } from '@action/enum/action-source.enum';
 import { Token } from '@token/model/token.model';
 //#endregion
 
-
 export const validateEmailTokenAction = createAction (
   ActionSourceEnum.COMPONENT,
   'Verify Email',
@@ -17,7 +16,6 @@ export const validateEmailTokenAction = createAction (
     token: Token }>()
 );
 
-
 export const deleteEmailTokenAction = createAction (
   ActionSourceEnum.COMPONENT,
   'Verify Email',
@@ -25,7 +23,6 @@ export const deleteEmailTokenAction = createAction (
   props<{
     name: string }>()
 );
-
 
 export const emailTokenValidatedAction = createAction(
   ActionSourceEnum.COMPONENT,

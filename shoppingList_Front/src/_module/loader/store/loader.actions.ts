@@ -8,14 +8,12 @@ import { createAction } from '@action/creator/action-creator';
 import { ModuleEnum } from '@app/model/enum/module.enum';
 //#endregion
 
-
 export const startLoaderAction = createAction(
   ActionSourceEnum.MODULE,
   ModuleEnum.LOADER,
   'Start',
   props<{ triggerSource: string }>()
 );
-
 
 export const stopLoaderAction = createAction(
   ActionSourceEnum.MODULE,
