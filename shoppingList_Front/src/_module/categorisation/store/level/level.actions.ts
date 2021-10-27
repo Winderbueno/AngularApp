@@ -9,14 +9,12 @@ import { ModuleEnum } from '@app/model/enum/module.enum';
 import { Level } from '@module/categorisation/model/level.model';
 //#endregion
 
-
 export const loadLevelAction = createAction(
   ActionSourceEnum.MODULE,
   ModuleEnum.CATEGORISATION,
   'Load Level',
   props<{ levels: Level[] }>()
 );
-
 
 export const addLevelAction = createAction(
   ActionSourceEnum.MODULE,
@@ -25,8 +23,7 @@ export const addLevelAction = createAction(
   props<{ level: Level }>()
 );
 
-
-export const deleteCategoryAction = createAction(
+export const deleteLevelAction = createAction(
   ActionSourceEnum.MODULE,
   ModuleEnum.CATEGORISATION,
   'Delete Level',

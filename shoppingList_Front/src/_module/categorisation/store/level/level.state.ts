@@ -1,17 +1,15 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { Category } from "@module/categorisation/model/category.model";
+import { Level } from "@module/categorisation/model/level.model";
 
 /* State */
-export interface CategoryState extends EntityState<Category> {}
-
+export interface LevelState extends EntityState<Level> {}
 
 /* Adapter */
-export const adapter : EntityAdapter<Category> =
-  createEntityAdapter<Category>({
-    selectId: (cat: Category) => cat.id,
+export const adapter : EntityAdapter<Level> =
+  createEntityAdapter<Level>({
+    selectId: (cat: Level) => cat.id,
   });
 
-
 /* Initial State */
-export const initialState: CategoryState =
+export const initialState: LevelState =
   adapter.getInitialState({});

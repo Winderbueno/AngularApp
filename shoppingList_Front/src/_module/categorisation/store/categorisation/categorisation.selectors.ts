@@ -1,5 +1,5 @@
 //#region NgRx
-import { createSelector, createFeatureSelector } from '@ngrx/store';
+import { createFeatureSelector } from '@ngrx/store';
 //#endregion
 
 //#region Store
@@ -16,6 +16,3 @@ export const {
   selectIds,
   selectTotal
 } = adapter.getSelectors();
-
-export const selectTokenByName = (name: string) =>
-  createSelector(selectState, (state: CategorisationState) => state.entities[name]);

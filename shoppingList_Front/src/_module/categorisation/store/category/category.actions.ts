@@ -9,7 +9,6 @@ import { ModuleEnum } from '@app/model/enum/module.enum';
 import { Category } from '@module/categorisation/model/category.model';
 //#endregion
 
-
 export const loadCategoryAction = createAction(
   ActionSourceEnum.MODULE,
   ModuleEnum.CATEGORISATION,
@@ -17,18 +16,16 @@ export const loadCategoryAction = createAction(
   props<{ category: Category[] }>()
 );
 
-
 export const addCategoryAction = createAction(
   ActionSourceEnum.MODULE,
   ModuleEnum.CATEGORISATION,
-  'Add',
+  'Add Category',
   props<{ category: Category }>()
 );
-
 
 export const deleteCategoryAction = createAction(
   ActionSourceEnum.MODULE,
   ModuleEnum.CATEGORISATION,
-  'Delete',
+  'Delete Category',
   props<{ name: string }>()
 );

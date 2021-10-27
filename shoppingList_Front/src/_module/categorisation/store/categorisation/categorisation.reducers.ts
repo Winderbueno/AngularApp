@@ -7,21 +7,16 @@ import { CategorisationState, initialState, adapter } from './categorisation.sta
 import * as fromAction from './categorisation.actions';
 //#endregion
 
-const tokenReducer = createReducer(
+//#region Model
+//#endregion
+
+const categorisationReducer = createReducer(
   initialState,
-
-  on(fromAction.addCategorisationAction,
-    (state, action) => { return adapter.addOne(action., state) }
-  ),
-
-
-  on(fromAction.deleteCategorisationAction,
-    (state, action) => { return adapter.removeOne(action.name, state); }
-  ),
-
+  on(fromAction.loadCategorisationAction, (state, action) => adapter.addMany(action.categorisation, state)),
+  on(fromAction.addCategorisationAction, (state, action) => adapter.addOne(action.categorisation, state)),
+  on(fromAction.deleteCategorisationAction, (state, action) => adapter.removeOne(action.name, state)),
 );
 
-
-export function reducer(state: TokenState | undefined, action: Action) {
-  return tokenReducer(state, action);
+export function reducer(state: CategorisationState | undefined, action: Action) {
+  return categorisationReducer(state, action);
 }

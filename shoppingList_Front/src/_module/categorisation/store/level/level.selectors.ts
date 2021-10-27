@@ -3,11 +3,11 @@ import { createFeatureSelector } from '@ngrx/store';
 //#endregion
 
 //#region Store
-import { CategoryState, adapter } from './category.state';
+import { LevelState, adapter } from './level.state';
 import { featureKey } from '.';
 //#endregion
 
-export const selectState = createFeatureSelector<CategoryState>(featureKey);
+export const selectState = createFeatureSelector<LevelState>(featureKey);
 
 /* Entity State */
 export const {

@@ -3,55 +3,20 @@ import { Action, createReducer, on } from '@ngrx/store';
 //#endregion
 
 //#region State, Action
-import { TokenState, initialState, adapter } from './token.state';
-import * as fromAction from './token.actions';
+import { LevelState, initialState, adapter } from './level.state';
+import * as fromAction from './level.actions';
 //#endregion
 
 //#region Model
-import { TokenStatusEnum } from "../model/enum/token-status.enum";
 //#endregion
 
-export const featureKey = 'token';
-
-const tokenReducer = createReducer(
+const levelReducer = createReducer(
   initialState,
-
-  on(fromAction.validateTokenAction,
-    (state, action) => { return adapter.addOne(action.token, state) }
-  ),
-
-
-  on(fromAction.tokenValidatedAction,
-    (state, action) => {
-      return adapter.updateOne(
-        {
-          id: action.name,
-          changes: { status: TokenStatusEnum.Valid }
-        }, state);
-    }
-  ),
-
-
-  on(fromAction.tokenInvalidatedAction,
-    (state, action) => {
-      return adapter.updateOne(
-        {
-          id: action.name,
-          changes: { status: TokenStatusEnum.Invalid }
-        }, state);
-    }
-  ),
-
-
-  on(fromAction.deleteTokenAction,
-    (state, action) => {
-      return adapter.removeOne(action.name, state);
-    }
-  ),
-
+  on(fromAction.loadLevelAction, (state, action) => adapter.addMany(action.levels, state)),
+  on(fromAction.addLevelAction, (state, action) => adapter.addOne(action.level, state)),
+  on(fromAction.deleteLevelAction, (state, action) => adapter.removeOne(action.name, state)),
 );
 
-
-export function reducer(state: TokenState | undefined, action: Action) {
-  return tokenReducer(state, action);
+export function reducer(state: LevelState | undefined, action: Action) {
+  return levelReducer(state, action);
 }

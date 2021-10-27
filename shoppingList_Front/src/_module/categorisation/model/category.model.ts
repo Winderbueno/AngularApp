@@ -5,6 +5,6 @@ export class Category {
   id!: string;
   name!: string;
 
-  levelList?:Level;
+  level?:Level;
   levelId?:string;
 }
