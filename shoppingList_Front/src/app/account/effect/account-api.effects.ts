@@ -6,9 +6,8 @@ import { map, catchError, exhaustMap } from 'rxjs/operators';
 //#endregion
 
 //#region Action, Selector
-import * as fromAPI from '../service/account.api.actions';
+import * as fromAction from '../store/action/';
 import * as fromComponent from '../component/';
-import * as fromStore from '../store/'
 import { toolbarLogOutAction } from '@layout/component';// TODO -
 //#endregion
 
@@ -26,10 +25,10 @@ export class AccountAPIEffects {
       ofType(fromComponent.forgotPasswordSubmitAction),
       exhaustMap((action) =>
         this.accountService.forgotPassword(action.email).pipe(
-          map(() => fromAPI.forgotPasswordSuccessAction({
+          map(() => fromAction.forgotPasswordSuccessAction({
             message: 'Please check your email for password reset instructions' // TODO - Msg
           })),
-          catchError((error) => of(fromAPI.forgotPasswordFailureAction({ error: error })))
+          catchError((error) => of(fromAction.forgotPasswordFailureAction({ error: error })))
     ))
   ));
 
@@ -39,8 +38,8 @@ export class AccountAPIEffects {
       ofType(fromComponent.loginSubmitAction),
       exhaustMap((action) =>
         this.accountService.login(action.email, action.password).pipe(
-          map((account: Account) => fromAPI.loginSuccessAction({ account: account })),
-          catchError((error) => of(fromAPI.loginFailureAction({ error: error })))
+          map((account: Account) => fromAction.loginSuccessAction({ account: account })),
+          catchError((error) => of(fromAction.loginFailureAction({ error: error })))
     ))
   ));
 
@@ -50,8 +49,8 @@ export class AccountAPIEffects {
       ofType(toolbarLogOutAction), // TODO
       exhaustMap(() =>
         this.accountService.logout().pipe(
-          map(() => fromAPI.logoutSuccessAction()),
-          catchError((error) => of(fromAPI.logoutFailureAction({ error: error })))
+          map(() => fromAction.logoutSuccessAction()),
+          catchError((error) => of(fromAction.logoutFailureAction({ error: error })))
     ))
   ));
 
@@ -61,21 +60,21 @@ export class AccountAPIEffects {
       ofType(fromComponent.registerSubmitAction),
       exhaustMap((action) =>
         this.accountService.register(action.account).pipe(
-          map(() => fromAPI.registerSuccessAction({
+          map(() => fromAction.registerSuccessAction({
             message: 'Registration successful, please check your email for verification instructions' // TODO - Msg
           })),
-          catchError((error) => of(fromAPI.registerFailureAction({ error: error })))
+          catchError((error) => of(fromAction.registerFailureAction({ error: error })))
     ))
   ));
 
 
   refreshToken$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(fromStore.refreshTokenAction),
+      ofType(fromAction.refreshTokenAction),
       exhaustMap(() =>
         this.accountService.refreshToken().pipe(
-          map((account: Account) => fromAPI.refreshTokenSuccessAction({ account: account })),
-          catchError((error) => of(fromAPI.refreshTokenFailureAction({ error: error })))
+          map((account: Account) => fromAction.refreshTokenSuccessAction({ account: account })),
+          catchError((error) => of(fromAction.refreshTokenFailureAction({ error: error })))
     ))
   ));
 
@@ -85,10 +84,10 @@ export class AccountAPIEffects {
       ofType(fromComponent.resetPasswordSubmitAction),
       exhaustMap((action) =>
         this.accountService.resetPassword(action.token, action.password, action.confirmPassword).pipe(
-          map(() => fromAPI.resetPasswordSuccessAction({ // TODO - Msg (Error msg are in BACK, Success msg are here)
+          map(() => fromAction.resetPasswordSuccessAction({ // TODO - Msg (Error msg are in BACK, Success msg are here)
             message: 'Password successfully reinitialised, you can now log in :)'
           })),
-          catchError((error) => of(fromAPI.resetPasswordFailureAction({ error: error })))
+          catchError((error) => of(fromAction.resetPasswordFailureAction({ error: error })))
     ))
   ));
 

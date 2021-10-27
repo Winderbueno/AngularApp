@@ -4,15 +4,15 @@ import { Action, createReducer, on } from '@ngrx/store';
 
 //#region State, Action
 import { ShoppingListState, initialState, adapter } from './shopping-list.state';
-import * as fromAPI from '../service/shopping-list.api.actions';
-import * as AccountAPIActions from '@account/service/account.api.actions'; // TODO
+import * as fromAction from './action/';
+import * as AccountAPIActions from '@account/store/action/account.api.actions'; // TODO
 //#endregion
 
 
 const shoppingListReducer = createReducer(
   initialState,
 
-  on(fromAPI.loadActiveSuccessAction,
+  on(fromAction.loadActiveSuccessAction,
     (state, { shoppingList }) => {
       return adapter.addOne(shoppingList,
         { ...state,
