@@ -7,24 +7,23 @@ import { TimerState, initialState, adapter } from './timer.state';
 import * as fromAction from './timer.actions';
 //#endregion
 
+export const featureKey = 'timer';
 
 const timerReducer = createReducer(
   initialState,
 
   on(fromAction.defineTimerAction,
-    (state, action) => { return adapter.addOne(action.timer, state) }
-  ),
+    (state, action) =>
+      adapter.addOne(action.timer, state)),
 
   // When the effect have defined the timer, we add it to the state
   on(fromAction.timerDefinedAction,
     (state, action) => {
-      return adapter.updateOne(
-        {
-          id: action.name,
-          changes: { timeoutHandler: action.timeoutHandler }
+      return adapter.updateOne({
+        id: action.name,
+        changes: { timeoutHandler: action.timeoutHandler }
         }, state);
-    }
-  ),
+    }),
 
   // When the effect have deleted the timer, we delete it from the state
   on(fromAction.timerDeletedAction,

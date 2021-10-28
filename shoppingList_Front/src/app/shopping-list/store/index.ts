@@ -1,7 +1,6 @@
-﻿export const featureKey = 'shoppingList';
-
-/* Reducer */
+﻿/* Reducer */
 export {
+  featureKey,
   reducer
 } from './shopping-list.reducers';
 

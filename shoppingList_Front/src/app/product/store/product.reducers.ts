@@ -7,6 +7,7 @@ import { ProductState, initialState, adapter } from './product.state';
 import * as fromComponent from '@shoppingList/component';
 //#endregion
 
+export const featureKey = 'product';
 
 const productReducer = createReducer(
   initialState,

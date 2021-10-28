@@ -11,37 +11,34 @@ import * as fromAction from './token.actions';
 import { TokenStatusEnum } from "../model/enum/token-status.enum";
 //#endregion
 
+export const featureKey = 'token';
 
 const tokenReducer = createReducer(
   initialState,
 
   on(fromAction.validateTokenAction,
-    (state, action) => { return adapter.addOne(action.token, state) }
-  ),
+    (state, action) =>
+      adapter.addOne(action.token, state)),
+
+  on(fromAction.deleteTokenAction,
+    (state, action) =>
+      adapter.removeOne(action.name, state)),
 
   on(fromAction.tokenValidatedAction,
     (state, action) => {
-      return adapter.updateOne(
-        {
+      return adapter.updateOne({
           id: action.name,
           changes: { status: TokenStatusEnum.Valid }
         }, state);
-    }
-  ),
+    }),
 
   on(fromAction.tokenInvalidatedAction,
     (state, action) => {
-      return adapter.updateOne(
-        {
+      return adapter.updateOne({
           id: action.name,
           changes: { status: TokenStatusEnum.Invalid }
         }, state);
-    }
-  ),
-
-  on(fromAction.deleteTokenAction,
-    (state, action) => { return adapter.removeOne(action.name, state); }
-  ),
+    }),
 );
 
 

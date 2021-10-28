@@ -1,7 +1,6 @@
-﻿export const featureKey = 'account';
-
-/* Reducer */
+﻿/* Reducer */
 export {
+  featureKey,
   reducer
 } from './account.reducers';
 

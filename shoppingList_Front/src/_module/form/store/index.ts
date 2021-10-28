@@ -1,5 +1,4 @@
 ﻿// TODO - NgrX Adaptation
-//export const featureKey = 'form';
 
 /* State *//*
 export {
@@ -8,6 +7,7 @@ export {
 
 /* Reducer *//*
 export {
+  featureKey,
   reducer
 } from './form.reducer';*/
 

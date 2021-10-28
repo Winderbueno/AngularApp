@@ -1,7 +1,6 @@
-﻿export const featureKey = 'level';
-
-/* Reducer */
+﻿/* Reducer */
 export {
+  featureKey,
   reducer
 } from './level.reducers';
 

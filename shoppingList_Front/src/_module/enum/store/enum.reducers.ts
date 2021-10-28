@@ -7,13 +7,11 @@ import { EnumState, initialState, adapter } from './enum.state';
 import * as fromAPI from '../service/enum.api.actions';
 //#endregion
 
+export const featureKey = 'enum';
 
 const enumReducer = createReducer(
   initialState,
-
-  on(fromAPI.loadAllSuccessAction,
-    (state, action) => { return adapter.addMany(action.enums, state) }
-  ),
+  on(fromAPI.loadAllSuccessAction, (state, action) => adapter.addMany(action.enums, state)),
 );
 
 

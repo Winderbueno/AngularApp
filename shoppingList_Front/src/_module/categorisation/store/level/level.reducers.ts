@@ -10,6 +10,8 @@ import * as fromAction from './level.actions';
 //#region Model
 //#endregion
 
+export const featureKey = 'level';
+
 const levelReducer = createReducer(
   initialState,
   on(fromAction.loadLevelAction, (state, action) => adapter.addMany(action.levels, state)),

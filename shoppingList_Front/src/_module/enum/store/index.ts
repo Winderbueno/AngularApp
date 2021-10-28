@@ -1,7 +1,6 @@
-﻿export const featureKey = 'enum';
-
-/* Reducer */
+﻿/* Reducer */
 export {
+  featureKey,
   reducer
 } from './enum.reducers';
 

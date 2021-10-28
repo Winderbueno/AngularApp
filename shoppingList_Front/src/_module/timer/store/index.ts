@@ -1,7 +1,6 @@
-﻿export const featureKey = 'timer';
-
-/* Reducer */
+﻿/* Reducer */
 export {
+  featureKey,
   reducer
 } from './timer.reducers';
 

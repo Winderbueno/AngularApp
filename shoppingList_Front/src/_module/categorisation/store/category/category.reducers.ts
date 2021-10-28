@@ -10,6 +10,8 @@ import * as fromAction from './category.actions';
 //#region Model
 //#endregion
 
+export const featureKey = 'category';
+
 const categoryReducer = createReducer(
   initialState,
   on(fromAction.loadCategoryAction, (state, action) => adapter.addMany(action.category, state)),
