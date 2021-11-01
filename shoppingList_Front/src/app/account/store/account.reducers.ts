@@ -16,8 +16,8 @@ const accountReducer = createReducer(
   on(
     fromAPI.loginSuccessAction,
     fromAPI.refreshTokenSuccessAction, // TODO - Test that it works
-    (state, { account }) => {
-      return adapter.addOne(account, {
+    (state, action) => {
+      return adapter.addOne(action.account, {
         ...state,
         isLogged: true
       })
