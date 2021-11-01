@@ -5,9 +5,9 @@ export class Categorisation {
 
   id!: string;
 
-  levelList?:Level[];
+  levels?:Level[];
   levelIds?:string[];
 
-  categoryList?:Category[];
+  categories?:Category[];
   categoryIds?:string[];
 }
