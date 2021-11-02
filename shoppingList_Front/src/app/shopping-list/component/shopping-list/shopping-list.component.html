@@ -33,7 +33,7 @@
         #panelH
         (click)="panelH._toggle()"
         style='background-color:cornflowerblue'>
-        <mat-panel-title>Ajouter une categorie</mat-panel-title>
+        <mat-panel-title>Add Category</mat-panel-title>
         <span class="material-icons">add_circle</span>
       </mat-expansion-panel-header>
     </mat-expansion-panel>
@@ -43,6 +43,10 @@
       <!-- Header containing the product category -->
       <mat-expansion-panel-header>
         <mat-panel-title>{{catProd.category}}</mat-panel-title>
+        <mat-chip *ngIf="edit_mode" (click)="deleteNode('test')">
+          <mat-icon>add_circle</mat-icon> Item
+        </mat-chip>
+        <mat-icon *ngIf="edit_mode" (click)="deleteNode('bjr')">delete</mat-icon>
       </mat-expansion-panel-header>
 
       <!-- Expanded Panel containing the product sub category and their products -->
@@ -54,11 +58,8 @@
               (click)="swapProductBoughtStatus(prod)"
               [selected]="prod.bought">
               {{prod.name}}
-
-                <mat-icon matChipRemove *ngIf="edit_mode" (click)="deleteProduct(prod)">cancel</mat-icon>
-
+              <mat-icon matChipRemove *ngIf="edit_mode" (click)="deleteProduct(prod)">cancel</mat-icon>
             </mat-chip>
-
           </div>
         </mat-chip-list>
       </li>

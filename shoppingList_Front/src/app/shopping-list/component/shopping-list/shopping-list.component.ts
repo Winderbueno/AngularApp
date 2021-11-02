@@ -98,6 +98,9 @@ export class ShoppingListComponent implements OnInit {
       }));*/
   }
 
+  deleteNode(nodeId: string): void {
+  }
+
   onSlideChange():void {
     if(this.accordion_expanded == false){
       this.Accordion.openAll();
