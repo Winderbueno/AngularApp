@@ -1,22 +1,19 @@
 /* Material Theme */
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
-/* Alert */
-@import './alert.scss';
-
 /* Button */
 @import './button/github-star-badge.scss';
 @import './button/circle-link.scss';
 @import './button/chip.scss';
 
+/* Module */
+@import './module/alert.scss';
+@import './module/form.scss';
+@import './module/loader.scss';
+@import './module/material.scss';
+
 /* Container */
 @import './container.scss';
-
-/* Form */
-@import './form.scss';
-
-/* Loader */
-@import './loader.scss';
 
 /* Text */
 @import './text.scss';
