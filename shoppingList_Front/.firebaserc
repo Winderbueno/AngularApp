@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "shoppinglistapp-44a01": {
+      "hosting": {
+        "shoppingList_Front": [
+          "shoppinglistapp-44a01"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "shoppinglistapp-44a01"
+  }
+}

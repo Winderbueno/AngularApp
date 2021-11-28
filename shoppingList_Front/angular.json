@@ -132,6 +132,16 @@
               "devServerTarget": "shoppingList_Front:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "shoppingList_Front:build:production",
+            "firebaseProject": "shoppinglistapp-44a01",
+            "firebaseHostingSite": "shoppinglistapp-44a01"
+          }
         }
       }
     }
