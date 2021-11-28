@@ -1,5 +1,6 @@
 <h1>Shopping List</h1>
 
+<!-- Action Bar -->
 <!-- TODO - Should be in an action bar component -->
 <div class="flex-container">
 
@@ -19,24 +20,25 @@
 
 </div>
 
-<div *ngIf="myShoppingList[0] && myShoppingList[0].catProducts">
+<!-- In "Edit mode", Add a category -->
+<mat-expansion-panel *ngIf="edit_mode" hideToggle>
 
+  <!-- TODO - Use primary or secondary color -->
+  <!-- TODO - Put Style in CSS file -->
+  <!-- TODO - Add a '+' Icone at end of line -->
+  <mat-expansion-panel-header
+    #panelH
+    (click)="panelH._toggle()"
+    style='background-color:cornflowerblue'>
+    <mat-panel-title>Add Category</mat-panel-title>
+    <span class="material-icons">add_circle</span>
+  </mat-expansion-panel-header>
+</mat-expansion-panel>
+
+<!-- Shopping List -->
+<div *ngIf="myShoppingList[0] && myShoppingList[0].catProducts">  
+  
   <mat-accordion [multi]=true #accordion="matAccordion">
-
-    <!-- In edition mode, Add a category -->
-    <mat-expansion-panel *ngIf="edit_mode" hideToggle>
-
-      <!-- TODO - Use primary or secondary color -->
-      <!-- TODO - Put Style in CSS file -->
-      <!-- TODO - Add a '+' Icone at end of line -->
-      <mat-expansion-panel-header
-        #panelH
-        (click)="panelH._toggle()"
-        style='background-color:cornflowerblue'>
-        <mat-panel-title>Add Category</mat-panel-title>
-        <span class="material-icons">add_circle</span>
-      </mat-expansion-panel-header>
-    </mat-expansion-panel>
 
     <mat-expansion-panel *ngFor="let catProd of myShoppingList[0].catProducts" hideToggle>
 
