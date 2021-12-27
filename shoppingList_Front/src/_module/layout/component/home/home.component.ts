@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 //#region Module
 import * as fromAlert from '@alert/store/';
 import * as fromTimer from '@timer/store';
+import * as fromLoader from '@loader/store';
 import { Timer } from '@timer/model/timer.model';
 //#endregion
 
@@ -19,17 +20,22 @@ export class HomeComponent implements OnInit {
 
   title = 'shoppingList_Front';
   alertAction = fromAlert.triggerAlertAction;
-  newTimer:Timer = new Timer({
-    name: 'Bonjour',
-    time: 5000, // TODO - Put this in a config file
+
+  triggerDelayedAlertTimer:Timer = new Timer({
+    name: 'TriggerDelayedAlert',
+    time: 3000,
     action: fromAlert.triggerAlertAction({
       alertType: fromAlert.AlertTypeEnum.Success,
       message: "A Wonderful Delayed alert",
       keepAfterRouteChange: false
     })
   });
-  timerAction = fromTimer.defineTimerAction({timer:this.newTimer});
-    
+
+  stopLoaderTimer:Timer = new Timer({
+    name: 'StopLoaderTimer',
+    time: 3000, // TODO - Put this in a config file
+    action: fromLoader.stopLoaderAction()
+  });    
 
   constructor(public store: Store) {}
 
@@ -46,8 +52,9 @@ export class HomeComponent implements OnInit {
   }
 
   triggerDelayedAlert() {
-    this.store.dispatch(fromTimer.deleteTimerAction({ name : 'Bonjour' }));
-    this.store.dispatch(fromTimer.defineTimerAction(this.timerAction));
+    this.store.dispatch(fromTimer.deleteTimerAction({ name : 'TriggerDelayedAlert' }));
+    this.store.dispatch(fromLoader.startLoaderAction({triggerSource : '' }));
+    this.store.dispatch(fromTimer.defineTimerAction({ timer : this.triggerDelayedAlertTimer }));
+    this.store.dispatch(fromTimer.defineTimerAction({ timer : this.stopLoaderTimer }));
   }
-
 }
