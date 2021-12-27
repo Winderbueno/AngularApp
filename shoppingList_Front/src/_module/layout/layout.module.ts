@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 //#region Module
 import { AppRouterModule } from '@app/app-router.module';
 import { MaterialModule } from '@material/material.module';
+import { FormModule } from '@form/form.module';
 //#endregion
 
 //#region Component
@@ -25,6 +26,7 @@ import {
     /* Module */
     AppRouterModule,
     MaterialModule,
+    FormModule
   ],
   declarations: [
     CardLayoutComponent,

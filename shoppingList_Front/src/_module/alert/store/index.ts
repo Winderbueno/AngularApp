@@ -17,3 +17,8 @@ export {
   selectCurrentAlert,
   isAlerting
 } from './alert.selectors';
+
+/* Enum */
+export {
+  AlertTypeEnum
+} from '../model/enum/alert-type.enum';
