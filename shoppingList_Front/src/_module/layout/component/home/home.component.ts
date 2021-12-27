@@ -57,4 +57,8 @@ export class HomeComponent implements OnInit {
     this.store.dispatch(fromTimer.defineTimerAction({ timer : this.triggerDelayedAlertTimer }));
     this.store.dispatch(fromTimer.defineTimerAction({ timer : this.stopLoaderTimer }));
   }
+
+  startLoader() { this.store.dispatch(fromLoader.startLoaderAction({triggerSource : '' })); }
+
+  stopLoader() { this.store.dispatch(fromLoader.stopLoaderAction()); }
 }
