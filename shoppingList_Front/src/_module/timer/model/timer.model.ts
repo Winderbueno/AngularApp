@@ -3,9 +3,9 @@ import { TypedAction } from "@ngrx/store/src/models";
 export class Timer {
 
     name!: string;
-    time?: number;
+    time!: number;
 
-    timeoutHandler!: number; // Id of Node.JS Timeout Created
+    timeoutHandler!: NodeJS.Timeout; // Id of Node.JS Timeout Created
     action!: TypedAction<string>;
 
     constructor(init?:Partial<Timer>) {

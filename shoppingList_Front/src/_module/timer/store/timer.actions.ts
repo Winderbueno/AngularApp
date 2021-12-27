@@ -29,7 +29,7 @@ export const timerDefinedAction = createAction(
   'Defined',
   props<{
     name: string,
-    timeoutHandler: number
+    timeoutHandler: NodeJS.Timeout
   }>()
 );
 
