@@ -1,6 +1,7 @@
 ﻿//#region Angular, Material, NgRx
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 //#endregion
 
 //#region Module
@@ -19,12 +20,12 @@ export class SubmitButtonComponent {
 
   @Input() text:string = "Submit";
 
-  isLoading:boolean=false;
+  isLoading$:Observable<boolean> | undefined;
 
   constructor(
     private store: Store
   ) {
-    this.store.select(fromLoader.isLoading).subscribe(value => this.isLoading=value);
+    this.isLoading$ = this.store.select(fromLoader.isLoading);
   }
 
 }
