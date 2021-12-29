@@ -1,7 +1,6 @@
 //#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
-import { createSubmitAction } from '@action/creator/component-submit-action-creator';
 import { ActionSourceEnum } from '@action/enum/action-source.enum';
 //#endregion
 
@@ -26,9 +25,10 @@ export const deleteResetTokenAction = createAction (
 );
 
 // TODO Put this action as a standard action in Form Module
-export const resetPasswordSubmitAction = createSubmitAction (
+export const resetPasswordSubmitAction = createAction (
   ActionSourceEnum.COMPONENT,
   'Reset Password',
+  'Submit',
   props<{
     token: string | undefined,
     password: string,

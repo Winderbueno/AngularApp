@@ -1,12 +1,13 @@
 //#region NgRx, Action Creator
 import { props } from '@ngrx/store';
-import { createSubmitAction } from '@action/creator/component-submit-action-creator';
+import { createAction } from '@action/creator/action-creator';
 import { ActionSourceEnum } from '@action/enum/action-source.enum';
 //#endregion
 
-export const loginSubmitAction = createSubmitAction (
+export const loginSubmitAction = createAction (
   ActionSourceEnum.COMPONENT,
   'Login',
+  'Submit',
   props<{
     email: string,
     password: string }>()
