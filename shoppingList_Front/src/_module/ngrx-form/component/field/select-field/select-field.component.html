@@ -1,0 +1,10 @@
+﻿<!-- Select Field -->
+<mat-form-field>
+  <mat-label>{{ label }}</mat-label>
+  <mat-select [formControl]="ctrl">
+    <span *ngIf="enum">
+      <mat-option value="{{value}}" *ngFor="let value of enum.values">{{value}}</mat-option>
+    </span>
+  </mat-select>
+  <mat-error *ngIf="ctrl.invalid">{{ err.getErrorMsg(ctrl) }}</mat-error>
+</mat-form-field>
