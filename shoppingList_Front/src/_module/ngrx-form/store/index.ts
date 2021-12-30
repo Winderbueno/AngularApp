@@ -16,5 +16,6 @@ export {
 
 /* Selector */
 export {
-  selectState
+  selectState,
+  selectForm
 } from './ngrx-form.selectors';

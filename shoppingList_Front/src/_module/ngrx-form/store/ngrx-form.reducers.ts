@@ -15,5 +15,5 @@ const formReducer = createReducer(
 );
 
 export function reducer(state: NgrxFormState | undefined, action: Action) {
-  return formReducer(state?.myForm, action);
+  return formReducer(state, action);
 }

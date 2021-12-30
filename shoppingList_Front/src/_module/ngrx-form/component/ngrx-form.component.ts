@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
-import { Observable } from 'rxjs';
 //#endregion
 
 //#region Store

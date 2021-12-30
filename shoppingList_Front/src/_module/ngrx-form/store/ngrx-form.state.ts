@@ -7,12 +7,13 @@ export interface NgrxFormState {
   myForm: FormGroupState<NgrxFormModel>;
 }
 
-const FORM_ID = 'some globally unique string';
+const FORM_ID = 'GloballyUniqueString';
 
-export const initialState = createFormGroupState<NgrxFormModel>(FORM_ID, {
-  someTextInput: '',
-  someCheckbox: false,
-  nested: {
-    someNumber: 0,
-  },
-});
+export const initialState : NgrxFormState = {
+  myForm: createFormGroupState<NgrxFormModel>(FORM_ID, {
+    someTextInput: '',
+    someCheckbox: false,
+    nested: {
+      someNumber: 0,
+    },}),
+};

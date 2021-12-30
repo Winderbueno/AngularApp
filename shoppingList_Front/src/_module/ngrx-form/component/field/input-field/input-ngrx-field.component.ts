@@ -4,7 +4,7 @@ import { Validators } from '@angular/forms';
 //#endregion
 
 //#region Component, Model, Service
-import { FieldComponent } from '@form/component/field/field.component';
+import { NgrxFieldComponent } from '@module/ngrx-form/component/field/ngrx-field.component';
 //#endregion
 
 
@@ -12,9 +12,9 @@ import { FieldComponent } from '@form/component/field/field.component';
  * Input Field Component
  */
 @Component({
-  selector: 'app-input-field',
-  templateUrl: 'input-field.component.html' })
-export class InputFieldComponent extends FieldComponent {
+  selector: 'app-input-ngrx-field',
+  templateUrl: 'input-ngrx-field.component.html' })
+export class InputNgrxFieldComponent extends NgrxFieldComponent {
 
   @Input() withFeature: string = '';
 

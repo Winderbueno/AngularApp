@@ -1,5 +1,5 @@
 //#region NgRx
-import { createFeatureSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 //#endregion
 
 //#region Store
@@ -8,3 +8,4 @@ import { featureKey } from '.';
 //#endregion
 
 export const selectState = createFeatureSelector<NgrxFormState>(featureKey);
+export const selectForm = createSelector(selectState, (state: NgrxFormState) => state.myForm);

@@ -27,10 +27,10 @@ import { FormErrorService } from '@form/service/form-error.service';
  *
  */
 @Component({
-  selector: 'app-field',
+  selector: 'app-ngrx-field',
   template: ``,
 })
-export class FieldComponent implements OnInit {
+export class NgrxFieldComponent implements OnInit {
 
   // Control
   private _ctrl!: FormControl;

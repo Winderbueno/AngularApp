@@ -17,10 +17,9 @@ import * as fromStore from './store/';
 
 //#region Component
 import {
-  CheckBoxFieldComponent,
-  InputFieldComponent,
-  SelectFieldComponent,
-  PasswordFieldGroupComponent } from './component';
+  CheckBoxNgrxFieldComponent,
+  InputNgrxFieldComponent,
+  SelectNgrxFieldComponent } from './component';
 
 //#endregion
 
@@ -40,12 +39,12 @@ import {
   ],
   declarations: [
     /* Field */
-    CheckBoxFieldComponent,
-    InputFieldComponent,
-    SelectFieldComponent,
+    CheckBoxNgrxFieldComponent,
+    InputNgrxFieldComponent,
+    SelectNgrxFieldComponent,
 
     /* Field Group */
-    PasswordFieldGroupComponent,
+    
   ],
   exports: [
     /* Form Tools */
@@ -53,12 +52,12 @@ import {
     NgrxFormsModule,
 
     /* Field */
-    CheckBoxFieldComponent,
-    InputFieldComponent,
-    SelectFieldComponent,
+    CheckBoxNgrxFieldComponent,
+    InputNgrxFieldComponent,
+    SelectNgrxFieldComponent,
 
     /* Field Group */
-    PasswordFieldGroupComponent,
+    
   ]
 })
 export class NgrxFormModule { }
