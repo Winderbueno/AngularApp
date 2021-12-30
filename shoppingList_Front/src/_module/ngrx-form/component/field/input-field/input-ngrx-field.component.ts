@@ -25,10 +25,10 @@ export class InputNgrxFieldComponent extends NgrxFieldComponent {
     // By default, if withFeature 'Visibilitity', we hide the input
     if(this.withFeature === 'visibility') { this.inputHide = true; }
 
-    if(this.ctrlName === 'Email') { super.validators.push(Validators.email); }
+    //if(this.ctrlName === 'Email') { super.validators.push(Validators.email); }
 
     // TODO - Change Password Format Policy
-    if(this.ctrlName === 'Password') { super.validators.push(Validators.minLength(6)); }
+    //if(this.ctrlName === 'Password') { super.validators.push(Validators.minLength(6)); }
 
     super.ngOnInit();
   }

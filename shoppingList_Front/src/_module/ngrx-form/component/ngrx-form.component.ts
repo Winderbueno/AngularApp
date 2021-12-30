@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { TypedAction } from '@ngrx/store/src/models';
+import { createFormGroupState } from 'ngrx-forms';
 //#endregion
 
 //#region Store
@@ -29,30 +29,19 @@ export class NgrxFormComponent implements OnInit {
     protected router: Router,
     protected route: ActivatedRoute,
     protected store: Store
-  ) { 
+  ) {
     store.select(fromStore.selectState).subscribe(s => this._formState = s);
   }
 
   ngOnInit() {
     // Form definition
-    // TODO - Put this in an NgRx Store :O ?
+    const group = createFormGroupState<{}>(this._title, {});
     //this._form = new FormGroup({});
     console.log(this._formState);
   }
 
   onSubmit(): void {
-
     // Stop here if form is invalid
     if (this._formState?.myForm.isInvalid) { return; }
-
-    this.dispatchSubmitAction();
-  }
-
-  dispatchSubmitAction() : void {
-    this.store.dispatch(this.submitAction());
-  }
-
-  submitAction() : TypedAction<string> {
-    return fromStore.formSubmitAction;
   }
 }

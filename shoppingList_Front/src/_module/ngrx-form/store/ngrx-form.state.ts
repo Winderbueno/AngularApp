@@ -12,8 +12,6 @@ const FORM_ID = 'GloballyUniqueString';
 export const initialState : NgrxFormState = {
   myForm: createFormGroupState<NgrxFormModel>(FORM_ID, {
     someTextInput: '',
-    someCheckbox: false,
-    nested: {
-      someNumber: 0,
-    },}),
+    someCheckbox: false
+  })
 };

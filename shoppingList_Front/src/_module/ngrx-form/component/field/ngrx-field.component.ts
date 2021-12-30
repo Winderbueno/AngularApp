@@ -1,16 +1,23 @@
 //#region Angular, Material, NgRx
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormControl, ValidatorFn, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { addGroupControl, createFormControlState, FormGroupState, validate } from 'ngrx-forms';
+import { required } from 'ngrx-forms/validation';
 //#endregion
 
 //#region Component, Model, Service
-import { FormErrorService } from '@form/service/form-error.service';
+import { NgrxFormErrorService } from '@module/ngrx-form/service/ngrx-form-error.service';
+import * as fromStore from '@module/ngrx-form/store';
 //#endregion
+
+interface FormValueWithOptionalControl {
+  someString?: string;
+}
 
 /**
  * Field Component
  *
- * This component manage a Field based on 'FormControl' that has :
+ * This component manage a Field that has :
  *  - A Name (Technical Name that refer to the Control)
  *  - A Label (Displayed Name)
  *  - A List of Validators (Accessible from children)
@@ -18,12 +25,10 @@ import { FormErrorService } from '@form/service/form-error.service';
  *
  * It attaches the FormControl to the provided input FormGroup
  *
- *  @param formMod - FormGroup to add the FormControl on
- *  @param ctrlName - FormControl Technical Name
- *    If a label is not provided, the Control name is used as label
+ *  @param formID - FormGroup to add the FormControl on
+ *  @param ctrlName - FormControl Technical Name, If a label is not provided, the Control name is used as label
  *  @param label - (Optional) - Label of the field
- *  @param required - (Optional) - Set 'required' validator on FormControl
- *    true by default
+ *  @param required - (Optional | (Default : True)) - Set 'required' validator on FormControl 
  *
  */
 @Component({
@@ -32,13 +37,12 @@ import { FormErrorService } from '@form/service/form-error.service';
 })
 export class NgrxFieldComponent implements OnInit {
 
-  // Control
-  private _ctrl!: FormControl;
+  // FormState
+  private _formGroupState : FormGroupState<FormValueWithOptionalControl> | undefined;
   private _ctrlName!: string;
-  private _validators: ValidatorFn[] = new Array();
 
   // Input
-  @Input() formMod!: FormGroup;
+  @Input() formID!: string;
   @Input() set ctrlName(value: string) {
     this._ctrlName = value;
     if (this.label == null) this.label = value;
@@ -47,18 +51,26 @@ export class NgrxFieldComponent implements OnInit {
   @Input() required: boolean = true;
 
   // Accessor
-  get ctrl() { return this._ctrl;}
+  get ctrl() { return this._formGroupState?.controls; }
   get ctrlName() { return this._ctrlName; }
   get err() { return this.formErrorService; }
-  protected get validators() { return this._validators }
 
-  constructor(private formErrorService: FormErrorService) { }
+  constructor(
+    protected store: Store,
+    private formErrorService: NgrxFormErrorService) { 
+    //store.select(fromStore.selectForm).subscribe(s => this._formGroupState = s);
+  }
 
   ngOnInit() {
 
-    if(this.required === true) { this._validators.push(Validators.required); }
+    // Create Control
+    const control = createFormControlState<string>(this.formID, '');
 
-    this._ctrl = new FormControl('', this._validators)
-    this.formMod.addControl(this.ctrlName, this._ctrl);
+    // Add Validator (According to Conf)
+    validate<string>(value => !value ? { missing: true } : {})(control)
+    //if(this.required === true) { this._validators.push(Validators.required); }
+
+    // Add control 
+    //const groupWithControl = addGroupControl<FormValueWithOptionalControl>('someString', '')(this._formGroupState);
   }
 }
