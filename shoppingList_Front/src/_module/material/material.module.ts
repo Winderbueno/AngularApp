@@ -1,5 +1,6 @@
 //#region Angular
 import { NgModule } from '@angular/core';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 //#endregion
 
 //#region Material
@@ -34,6 +35,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatSlideToggleModule,
     MatSnackBarModule,
     MatToolbarModule
+  ],
+  providers: [
+    /* Material Configuration */
+    // TODO - Put this in a Conf Module
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
   ],
 })
 export class MaterialModule {}
