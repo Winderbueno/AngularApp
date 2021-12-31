@@ -18,7 +18,7 @@ import * as fromStore from '../store';
 export class NgrxFormComponent implements OnInit {
 
   // Form
-  private _loginFormState: FormGroupState<LoginFormValue> | undefined;
+  protected _loginFormState: FormGroupState<LoginFormValue> | undefined;
   private _title: string = "Form Title";
 
   // Accessor

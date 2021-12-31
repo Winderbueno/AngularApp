@@ -3,6 +3,7 @@ export interface LoginFormValue {
   username: string;
   password: string;
   stayLoggedIn: boolean;
+  test?:string;
 }
 
 /* Action DTO */
