@@ -11,23 +11,34 @@ import { ModuleEnum } from '@app/model/enum/module.enum';
 /* Action DTO */
 export interface DynamicObject {
   id: string;
-  someString?:string;
+  someString?: string;
   someNumber?: number;
   someCheckbox?: boolean;
 }
 
+export interface FormControl {
+  name: string;
+  value: string;
+}
 
 export const formSubmitAction = createAction (
   ActionSourceEnum.MODULE,
-  ModuleEnum.FORM,
+  ModuleEnum.FORM_NGRX,
   'Submit',
 );
 
-export const SetDynamicObjectsAction = createAction (
+export const AddGroupControl1Action = createAction (
   ActionSourceEnum.MODULE,
-  ModuleEnum.FORM,
-  'SET_DYNAMIC_OBJECTS',
+  ModuleEnum.FORM_NGRX,
+  'ADD_GROUP_CONTROL_1',
   props<{ objects: DynamicObject[] }>()
+);
+
+export const AddGroupControl2Action = createAction (
+  ActionSourceEnum.MODULE,
+  ModuleEnum.FORM_NGRX,
+  'ADD_GROUP_CONTROL_2',
+  props<{ control : FormControl }>()
 );
 
 export const CreateGroupElementAction = createAction (

@@ -8,4 +8,3 @@ import { featureKey } from '.';
 //#endregion
 
 export const selectState = createFeatureSelector<NgrxFormState>(featureKey);
-export const selectOneForm = createSelector(selectState, (state: NgrxFormState) => state.oneForm);

@@ -2,6 +2,12 @@
 import { FormGroupState, createFormGroupState } from 'ngrx-forms';
 //#endregion
 
+export interface SimpleFormValue {
+  username: string;
+  password: string;
+  stayLoggedIn: boolean;
+}
+
 /* Form Model */
 export interface DynamicObjectFormValue {
   someString?:string;
@@ -13,14 +19,31 @@ export interface DynamicFormValue {
   [id: string]: DynamicObjectFormValue;
 }
 
+export interface DynamicFormValue2 {
+  [id: string]: string;
+}
+
 export interface NgrxFormState {
-  oneForm: FormGroupState<DynamicFormValue>;
+  dynamicForm1: FormGroupState<DynamicFormValue>;
+  dynamicForm2: FormGroupState<DynamicFormValue2>;
+  simpleForm: FormGroupState<SimpleFormValue>;
 }
 
 export const initialState : NgrxFormState = {
 
-  oneForm: createFormGroupState<DynamicFormValue>('oneForm', {
-    'formValue1': {someString:''},
-    'formValue2': {someString:''}
+  dynamicForm1: createFormGroupState<DynamicFormValue>('dynamicForm1', {
+    'value1': {someString:''},
+    'value2': {someString:''}
   }),
+
+  dynamicForm2: createFormGroupState<DynamicFormValue2>('dynamicForm1', {
+    'value1': '',
+    'value2': ''
+  }),
+
+  simpleForm: createFormGroupState<SimpleFormValue>('simpleForm', {
+    username: '',
+    password: '',
+    stayLoggedIn: false
+  })
 };

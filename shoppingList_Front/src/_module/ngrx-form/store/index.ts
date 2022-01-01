@@ -12,7 +12,8 @@ export {
 /* Action */
 export {
   formSubmitAction,
-  SetDynamicObjectsAction,
+  AddGroupControl1Action,
+  AddGroupControl2Action,
   CreateGroupElementAction,
   RemoveGroupElementAction,
   DynamicObject
@@ -20,6 +21,5 @@ export {
 
 /* Selector */
 export {
-  selectState,
-  selectOneForm
+  selectState
 } from './ngrx-form.selectors';

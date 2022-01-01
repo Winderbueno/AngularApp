@@ -20,7 +20,7 @@ export class NgrxFormComponent implements OnInit {
   private _title: string = "Form Title";
 
   // Accessor
-  get formState() { return this._formState?this._formState.oneForm:undefined; }
+  get formState() { return this._formState?this._formState:undefined; }
   get title() { return this._title;}
   protected set title(title:string) { this._title=title }
 
@@ -39,5 +39,6 @@ export class NgrxFormComponent implements OnInit {
 
   onSubmit(): void {
     // Stop here if form is invalid
+    const test = this.formState?.dynamicForm2.controls.test;
   }
 }
