@@ -6,8 +6,16 @@ import { props } from '@ngrx/store';
 
 //#region Model
 import { ModuleEnum } from '@app/model/enum/module.enum';
-import { DynamicObject } from '../model/ngrx-form.model';
 //#endregion
+
+/* Action DTO */
+export interface DynamicObject {
+  id: string;
+  someString?:string;
+  someNumber?: number;
+  someCheckbox?: boolean;
+}
+
 
 export const formSubmitAction = createAction (
   ActionSourceEnum.MODULE,
@@ -20,5 +28,19 @@ export const SetDynamicObjectsAction = createAction (
   ModuleEnum.FORM,
   'SET_DYNAMIC_OBJECTS',
   props<{ objects: DynamicObject[] }>()
+);
+
+export const CreateGroupElementAction = createAction (
+  ActionSourceEnum.MODULE,
+  ModuleEnum.FORM_NGRX,
+  'CREATE_GROUP_ELEMENT',
+  props<{ name: string }>()
+);
+
+export const RemoveGroupElementAction = createAction (
+  ActionSourceEnum.MODULE,
+  ModuleEnum.FORM_NGRX,
+  'REMOVE_GROUP_ELEMENT',
+  props<{ name: string }>()
 );
 

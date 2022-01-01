@@ -63,11 +63,11 @@ export class NgrxFieldComponent implements OnInit {
 
   ngOnInit() {
 
-    // Create Control
-    const control = createFormControlState<string>(this.formID, '');
+    // Add Control to Group
+    this.store.dispatch(fromStore.CreateGroupElementAction({ name:'test' }));
 
     // Add Validator (According to Conf)
-    validate<string>(value => !value ? { missing: true } : {})(control)
+    //validate<string>(value => !value ? { missing: true } : {})(control)
     //if(this.required === true) { this._validators.push(Validators.required); }
 
     // Add control 

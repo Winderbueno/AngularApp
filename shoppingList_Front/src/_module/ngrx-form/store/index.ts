@@ -12,11 +12,14 @@ export {
 /* Action */
 export {
   formSubmitAction,
-  SetDynamicObjectsAction
+  SetDynamicObjectsAction,
+  CreateGroupElementAction,
+  RemoveGroupElementAction,
+  DynamicObject
 } from './ngrx-form.actions';
 
 /* Selector */
 export {
   selectState,
-  selectLoginForm
+  selectOneForm
 } from './ngrx-form.selectors';

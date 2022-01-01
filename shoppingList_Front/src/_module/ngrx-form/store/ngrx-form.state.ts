@@ -1,18 +1,26 @@
 //#region NgRx
 import { FormGroupState, createFormGroupState } from 'ngrx-forms';
-import { DynamicFormValue, LoginFormValue } from '../model/ngrx-form.model';
 //#endregion
 
+/* Form Model */
+export interface DynamicObjectFormValue {
+  someString?:string;
+  someNumber?: number;
+  someCheckbox?: boolean;
+}
+
+export interface DynamicFormValue {
+  [id: string]: DynamicObjectFormValue;
+}
+
 export interface NgrxFormState {
-  dynamicForm: FormGroupState<DynamicFormValue>;
-  loginForm: FormGroupState<LoginFormValue>;
+  oneForm: FormGroupState<DynamicFormValue>;
 }
 
 export const initialState : NgrxFormState = {
-  dynamicForm: createFormGroupState<DynamicFormValue>('dynamicForm', {}),
-  loginForm: createFormGroupState<LoginFormValue>('loginForm', {
-    username: '',
-    password: '',
-    stayLoggedIn: false
-  })
+
+  oneForm: createFormGroupState<DynamicFormValue>('oneForm', {
+    'formValue1': {someString:''},
+    'formValue2': {someString:''}
+  }),
 };

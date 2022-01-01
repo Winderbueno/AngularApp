@@ -2,8 +2,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { createFormGroupState, FormGroupState } from 'ngrx-forms';
-import { LoginFormValue } from '../model/ngrx-form.model';
 //#endregion
 
 //#region Store
@@ -18,11 +16,11 @@ import * as fromStore from '../store';
 export class NgrxFormComponent implements OnInit {
 
   // Form
-  protected _loginFormState: FormGroupState<LoginFormValue> | undefined;
+  protected _formState: fromStore.NgrxFormState | undefined;
   private _title: string = "Form Title";
 
   // Accessor
-  get form() { return this._loginFormState ; }
+  get formState() { return this._formState?this._formState.oneForm:undefined; }
   get title() { return this._title;}
   protected set title(title:string) { this._title=title }
 
@@ -31,18 +29,15 @@ export class NgrxFormComponent implements OnInit {
     protected route: ActivatedRoute,
     protected store: Store
   ) {
-    store.select(fromStore.selectLoginForm).subscribe(s => this._loginFormState = s);
+    store.select(fromStore.selectState).subscribe(s => this._formState = s);
   }
 
   ngOnInit() {
     // Form definition
-    const group = createFormGroupState<{}>(this._title, {});
-    //this._form = new FormGroup({});
-    console.log(this._loginFormState);
+    //this.store.dispatch(fromStore.CreateGroupElementAction({name:'test'}));
   }
 
   onSubmit(): void {
     // Stop here if form is invalid
-    if (this._loginFormState?.isInvalid) { return; }
   }
 }
