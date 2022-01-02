@@ -4,7 +4,7 @@ import { addGroupControl, onNgrxForms } from 'ngrx-forms';
 //#endregion
 
 //#region State, Action
-import { NgrxFormState, initialState, DynamicFormValue, DynamicFormValue2 } from './ngrx-form.state';
+import { NgrxFormState, initialState, DynamicFormValue } from './ngrx-form.state';
 import * as fromAction from './ngrx-form.actions';
 //#endregion
 
@@ -13,38 +13,29 @@ export const featureKey = 'ngrx-form';
 const formReducer = createReducer(
   initialState,
   onNgrxForms(),
-
-  on(fromAction.AddGroupControl1Action,
-    (state, action) => {
-
-      const newFormValue = action.objects.reduce((v, obj) => {
-        v[obj.id] = {
-          someString: obj.someString,
-          someNumber: obj.someNumber,
-          someCheckbox: obj.someCheckbox,
-        };
-        return v;
-      }, {} as DynamicFormValue);
-      
-      const groupWithControl = addGroupControl<DynamicFormValue>('patate', newFormValue)(state.dynamicForm1);
-      return { ...state, dynamicForm1:groupWithControl };
-    }
-  ),
-
   
-  on(fromAction.AddGroupControl2Action,
+  on(fromAction.AddGroupControlAction,
     (state, action) => {
 
-      const groupWithControl = addGroupControl<DynamicFormValue2>(
-        state.dynamicForm2,
+      // TODO - Gerer l'ajout de * FormControl en une fois
+      // const newFormValue = action.objects.reduce((v, obj) => {
+      //   v[obj.id] = {
+      //     someString: obj.someString,
+      //     someNumber: obj.someNumber,
+      //     someCheckbox: obj.someCheckbox,
+      //   };
+      //   return v;
+      // }, {} as DynamicFormValue);
+
+
+      const groupWithControl = addGroupControl<DynamicFormValue>(
+        state.dynamicForm,
         action.control.name, 
         action.control.value);
 
-      return { ...state, dynamicForm2:groupWithControl };
+      return { ...state, dynamicForm:groupWithControl };
     }
   ),
-
-
 );
 
 export function reducer(state: NgrxFormState | undefined, action: Action) {

@@ -9,16 +9,9 @@ import { ModuleEnum } from '@app/model/enum/module.enum';
 //#endregion
 
 /* Action DTO */
-export interface DynamicObject {
-  id: string;
-  someString?: string;
-  someNumber?: number;
-  someCheckbox?: boolean;
-}
-
-export interface FormControl {
+export interface FormControlDTO {
   name: string;
-  value: string|boolean;
+  value: string|boolean|number;
 }
 
 export const formSubmitAction = createAction (
@@ -27,18 +20,11 @@ export const formSubmitAction = createAction (
   'Submit',
 );
 
-export const AddGroupControl1Action = createAction (
-  ActionSourceEnum.MODULE,
-  ModuleEnum.FORM_NGRX,
-  'ADD_GROUP_CONTROL_1',
-  props<{ objects: DynamicObject[] }>()
-);
-
-export const AddGroupControl2Action = createAction (
+export const AddGroupControlAction = createAction (
   ActionSourceEnum.MODULE,
   ModuleEnum.FORM_NGRX,
   'ADD_GROUP_CONTROL_2',
-  props<{ control : FormControl }>()
+  props<{ control : FormControlDTO }>()
 );
 
 export const CreateGroupElementAction = createAction (

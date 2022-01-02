@@ -24,9 +24,9 @@ export class NgrxFormComponent implements OnInit {
   get title() { return this._title;}
   protected set title(title:string) { this._title=title }
   get formState() { return this._formState?this._formState:undefined; }
-  
-  formStateControl(ctrlName:string): FormControlState<string|boolean> { 
-    return this._formState!.dynamicForm2.controls[ctrlName] as unknown as FormControlState<string|boolean>; 
+
+  formStateControl(ctrlName:string): FormControlState<string|boolean|number> { 
+    return this._formState!.dynamicForm.controls[ctrlName] as unknown as FormControlState<string|boolean|number>; 
   }
 
   constructor(
@@ -44,6 +44,6 @@ export class NgrxFormComponent implements OnInit {
 
   onSubmit(): void {
     // Stop here if form is invalid
-    //const test:boolean = JSON.parse(this.formState?.dynamicForm2.controls.bonjour.value!);
+    const test = this.formState?.dynamicForm.controls.bonjour.value!;
   }
 }

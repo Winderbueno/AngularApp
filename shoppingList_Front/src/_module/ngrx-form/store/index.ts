@@ -12,11 +12,10 @@ export {
 /* Action */
 export {
   formSubmitAction,
-  AddGroupControl1Action,
-  AddGroupControl2Action,
+  AddGroupControlAction,
   CreateGroupElementAction,
   RemoveGroupElementAction,
-  DynamicObject
+  FormControlDTO
 } from './ngrx-form.actions';
 
 /* Selector */
