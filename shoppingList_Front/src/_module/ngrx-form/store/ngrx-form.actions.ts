@@ -18,7 +18,7 @@ export interface DynamicObject {
 
 export interface FormControl {
   name: string;
-  value: string;
+  value: string|boolean;
 }
 
 export const formSubmitAction = createAction (

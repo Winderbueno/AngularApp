@@ -20,7 +20,7 @@ export interface DynamicFormValue {
 }
 
 export interface DynamicFormValue2 {
-  [id: string]: string;
+  [id: string]: string | boolean;
 }
 
 export interface NgrxFormState {
@@ -36,7 +36,7 @@ export const initialState : NgrxFormState = {
     'value2': {someString:''}
   }),
 
-  dynamicForm2: createFormGroupState<DynamicFormValue2>('dynamicForm1', {
+  dynamicForm2: createFormGroupState<DynamicFormValue2>('dynamicForm2', {
     'value1': '',
     'value2': ''
   }),

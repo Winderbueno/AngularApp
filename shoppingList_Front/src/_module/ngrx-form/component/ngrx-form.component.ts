@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { FormControlState } from 'ngrx-forms';
 //#endregion
 
 //#region Store
@@ -20,9 +21,13 @@ export class NgrxFormComponent implements OnInit {
   private _title: string = "Form Title";
 
   // Accessor
-  get formState() { return this._formState?this._formState:undefined; }
   get title() { return this._title;}
   protected set title(title:string) { this._title=title }
+  get formState() { return this._formState?this._formState:undefined; }
+  
+  formStateControl(ctrlName:string): FormControlState<string|boolean> { 
+    return this._formState!.dynamicForm2.controls[ctrlName] as unknown as FormControlState<string|boolean>; 
+  }
 
   constructor(
     protected router: Router,
@@ -39,6 +44,6 @@ export class NgrxFormComponent implements OnInit {
 
   onSubmit(): void {
     // Stop here if form is invalid
-    const test = this.formState?.dynamicForm2.controls.test;
+    //const test:boolean = JSON.parse(this.formState?.dynamicForm2.controls.bonjour.value!);
   }
 }

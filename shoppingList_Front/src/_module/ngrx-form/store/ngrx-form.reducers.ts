@@ -1,7 +1,6 @@
 //#region NgRx
 import { Action, createReducer, on } from '@ngrx/store';
-import { addGroupControl, createFormControlState, onNgrxForms, setValue, updateGroup, validate } from 'ngrx-forms';
-import { required } from 'ngrx-forms/validation';
+import { addGroupControl, onNgrxForms } from 'ngrx-forms';
 //#endregion
 
 //#region State, Action
@@ -35,19 +34,11 @@ const formReducer = createReducer(
   
   on(fromAction.AddGroupControl2Action,
     (state, action) => {
-      
-      const control = createFormControlState<string|number|boolean>(
-        action.control.name, 
-        action.control.value);
 
       const groupWithControl = addGroupControl<DynamicFormValue2>(
         state.dynamicForm2,
         action.control.name, 
         action.control.value);
-
-      console.log(typeof groupWithControl.controls.test);
-
-      //const dynamicForm = setValue(newFormValue, state.dynamicForm2);
 
       return { ...state, dynamicForm2:groupWithControl };
     }
