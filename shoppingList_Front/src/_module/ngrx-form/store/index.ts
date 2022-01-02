@@ -13,12 +13,13 @@ export {
 export {
   formSubmitAction,
   AddGroupControlAction,
-  CreateGroupElementAction,
-  RemoveGroupElementAction,
+  CreateFormAction,
+  DeleteFormAction,
   FormControlDTO
 } from './ngrx-form.actions';
 
 /* Selector */
 export {
-  selectState
+  selectState,
+  selectFormByID
 } from './ngrx-form.selectors';

@@ -39,11 +39,10 @@ export class NgrxFormComponent implements OnInit {
 
   ngOnInit() {
     // Form definition
-    //this.store.dispatch(fromStore.CreateGroupElementAction({name:'test'}));
+    this.store.dispatch(fromStore.CreateFormAction({ name:this._title }));
   }
 
   onSubmit(): void {
     // Stop here if form is invalid
-    const test = this.formState?.dynamicForm.controls.bonjour.value!;
   }
 }

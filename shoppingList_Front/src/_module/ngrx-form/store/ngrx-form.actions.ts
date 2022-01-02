@@ -27,17 +27,17 @@ export const AddGroupControlAction = createAction (
   props<{ control : FormControlDTO }>()
 );
 
-export const CreateGroupElementAction = createAction (
+export const CreateFormAction = createAction (
   ActionSourceEnum.MODULE,
   ModuleEnum.FORM_NGRX,
-  'CREATE_GROUP_ELEMENT',
+  'CREATE_FORM',
   props<{ name: string }>()
 );
 
-export const RemoveGroupElementAction = createAction (
+export const DeleteFormAction = createAction (
   ActionSourceEnum.MODULE,
   ModuleEnum.FORM_NGRX,
-  'REMOVE_GROUP_ELEMENT',
+  'DELETE_FORM',
   props<{ name: string }>()
 );
 

@@ -1,18 +1,14 @@
 //#region Angular, Material, NgRx
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { addGroupControl, createFormControlState, FormGroupState, validate } from 'ngrx-forms';
-import { required } from 'ngrx-forms/validation';
+import { FormControlState, FormGroupState } from 'ngrx-forms';
 //#endregion
 
 //#region Component, Model, Service
 import { NgrxFormErrorService } from '@module/ngrx-form/service/ngrx-form-error.service';
 import * as fromStore from '@module/ngrx-form/store';
+import { DynamicFormValue } from '@module/ngrx-form/store/ngrx-form.state';
 //#endregion
-
-interface FormValueWithOptionalControl {
-  someString?: string;
-}
 
 /**
  * Field Component
@@ -38,7 +34,7 @@ interface FormValueWithOptionalControl {
 export class NgrxFieldComponent implements OnInit {
 
   // FormState
-  private _formGroupState : FormGroupState<FormValueWithOptionalControl> | undefined;
+  private _formGroupState : FormGroupState<DynamicFormValue> | undefined;
   private _ctrlName!: string;
 
   // Input
@@ -54,23 +50,27 @@ export class NgrxFieldComponent implements OnInit {
   get ctrl() { return this._formGroupState?.controls; }
   get ctrlName() { return this._ctrlName; }
   get err() { return this.formErrorService; }
+  formStateControl(ctrlName:string): FormControlState<string|boolean|number> { 
+    return this._formGroupState!.controls[ctrlName] as unknown as FormControlState<string|boolean|number>; 
+  }
 
   constructor(
     protected store: Store,
     private formErrorService: NgrxFormErrorService) { 
-    //store.select(fromStore.selectForm).subscribe(s => this._formGroupState = s);
+    store.select(fromStore.selectFormByID(this.formID)).subscribe(s => this._formGroupState = s);
   }
 
   ngOnInit() {
 
     // Add Control to Group
-    this.store.dispatch(fromStore.CreateGroupElementAction({ name:'test' }));
+    if(this.formStateControl(this.ctrlName) === undefined) {
+      this.store.dispatch(fromStore.AddGroupControlAction({
+        control: { name:this.ctrlName, value:'' }
+      }));
+    }
 
     // Add Validator (According to Conf)
     //validate<string>(value => !value ? { missing: true } : {})(control)
-    //if(this.required === true) { this._validators.push(Validators.required); }
-
-    // Add control 
-    //const groupWithControl = addGroupControl<FormValueWithOptionalControl>('someString', '')(this._formGroupState);
+    //if(this.required === true) { this._validators.push(Validators.required); }    
   }
 }

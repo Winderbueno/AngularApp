@@ -1,6 +1,6 @@
 //#region NgRx
 import { Action, createReducer, on } from '@ngrx/store';
-import { addGroupControl, onNgrxForms } from 'ngrx-forms';
+import { addGroupControl, createFormGroupState, onNgrxForms } from 'ngrx-forms';
 //#endregion
 
 //#region State, Action
@@ -13,6 +13,16 @@ export const featureKey = 'ngrx-form';
 const formReducer = createReducer(
   initialState,
   onNgrxForms(),
+
+  on(fromAction.CreateFormAction,
+    (state, action) => {
+
+      const newDynamicForms = {...state.dynamicForms};
+      newDynamicForms[action.name]=createFormGroupState<DynamicFormValue>(action.name, {});
+
+      return { ...state, dynamicForms:newDynamicForms };
+    }
+  ),
   
   on(fromAction.AddGroupControlAction,
     (state, action) => {
@@ -26,7 +36,6 @@ const formReducer = createReducer(
       //   };
       //   return v;
       // }, {} as DynamicFormValue);
-
 
       const groupWithControl = addGroupControl<DynamicFormValue>(
         state.dynamicForm,

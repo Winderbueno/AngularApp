@@ -13,12 +13,18 @@ export interface DynamicFormValue {
   [id: string]: string | number | boolean;
 }
 
+export interface FormGroupStateMap {
+  [id: string]: FormGroupState<DynamicFormValue>;
+}
+
 export interface NgrxFormState {
+  dynamicForms: FormGroupStateMap;
   dynamicForm: FormGroupState<DynamicFormValue>;
   staticForm: FormGroupState<StaticFormValue>;
 }
 
 export const initialState : NgrxFormState = {
+  dynamicForms: {},
 
   dynamicForm: createFormGroupState<DynamicFormValue>('dynamicForm', {
     'value1': '',
