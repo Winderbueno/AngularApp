@@ -17,6 +17,7 @@ import * as fromStore from './store/';
 
 //#region Component
 import {
+  CheckBoxNgrxFieldComponent,
   InputNgrxFieldComponent } from './component';
 
 //#endregion
@@ -37,6 +38,7 @@ import {
   ],
   declarations: [
     /* Field */
+    CheckBoxNgrxFieldComponent,
     InputNgrxFieldComponent,
 
     /* Field Group */
@@ -48,6 +50,7 @@ import {
     NgrxFormsModule,
 
     /* Field */
+    CheckBoxNgrxFieldComponent,
     InputNgrxFieldComponent
 
     /* Field Group */

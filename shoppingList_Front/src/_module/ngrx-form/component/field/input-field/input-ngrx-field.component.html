@@ -6,7 +6,7 @@
 
   <!-- Input -->
   <input matInput 
-    [ngrxFormControlState]="ctrlState(ctrlName)"
+    [ngrxFormControlState]="ctrl"
     [type]="inputHide ? 'password' : 'text'">
 
   <!-- If With Feature 'Visibility', Add a button to manage input visibility -->
@@ -16,7 +16,7 @@
   </button>
 
   <!-- Error -->
-  <mat-error *ngIf="ctrlState(ctrlName).isInvalid">{{ err.getErrorMsg(ctrlState(ctrlName)) }}</mat-error>
+  <mat-error *ngIf="ctrl.isInvalid">{{ err.getErrorMsg(ctrl) }}</mat-error>
 
 </mat-form-field>
 
