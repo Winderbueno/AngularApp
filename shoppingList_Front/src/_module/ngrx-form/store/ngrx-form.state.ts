@@ -19,17 +19,11 @@ export interface FormGroupStateMap {
 
 export interface NgrxFormState {
   dynamicForms: FormGroupStateMap;
-  dynamicForm: FormGroupState<DynamicFormValue>;
   staticForm: FormGroupState<StaticFormValue>;
 }
 
 export const initialState : NgrxFormState = {
   dynamicForms: {},
-
-  dynamicForm: createFormGroupState<DynamicFormValue>('dynamicForm', {
-    'value1': '',
-    'value2': false
-  }),
 
   staticForm: createFormGroupState<StaticFormValue>('staticForm', {
     username: '',

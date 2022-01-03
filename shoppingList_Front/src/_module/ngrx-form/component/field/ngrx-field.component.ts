@@ -50,21 +50,24 @@ export class NgrxFieldComponent implements OnInit {
   get ctrl() { return this._formGroupState?.controls; }
   get ctrlName() { return this._ctrlName; }
   get err() { return this.formErrorService; }
-  formStateControl(ctrlName:string): FormControlState<string|boolean|number> { 
+
+  ctrlState(ctrlName:string): FormControlState<string|boolean|number> {
     return this._formGroupState!.controls[ctrlName] as unknown as FormControlState<string|boolean|number>; 
   }
 
   constructor(
     protected store: Store,
-    private formErrorService: NgrxFormErrorService) { 
-    store.select(fromStore.selectFormByID(this.formID)).subscribe(s => this._formGroupState = s);
+    private formErrorService: NgrxFormErrorService) {
   }
 
   ngOnInit() {
 
+    this.store.select(fromStore.selectFormByID(this.formID)).subscribe(s => this._formGroupState = s);
+
     // Add Control to Group
-    if(this.formStateControl(this.ctrlName) === undefined) {
+    if(this.ctrlState(this.ctrlName) === undefined) {
       this.store.dispatch(fromStore.AddGroupControlAction({
+        formID: this.formID,
         control: { name:this.ctrlName, value:'' }
       }));
     }

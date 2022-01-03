@@ -38,11 +38,14 @@ const formReducer = createReducer(
       // }, {} as DynamicFormValue);
 
       const groupWithControl = addGroupControl<DynamicFormValue>(
-        state.dynamicForm,
+        state.dynamicForms[action.formID],
         action.control.name, 
         action.control.value);
 
-      return { ...state, dynamicForm:groupWithControl };
+      const newDynamicForms = {...state.dynamicForms};
+      newDynamicForms[action.formID]=groupWithControl;
+
+      return { ...state, dynamicForms:newDynamicForms };
     }
   ),
 );

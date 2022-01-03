@@ -14,17 +14,13 @@ export interface FormControlDTO {
   value: string|boolean|number;
 }
 
-export const formSubmitAction = createAction (
-  ActionSourceEnum.MODULE,
-  ModuleEnum.FORM_NGRX,
-  'Submit',
-);
-
 export const AddGroupControlAction = createAction (
   ActionSourceEnum.MODULE,
   ModuleEnum.FORM_NGRX,
-  'ADD_GROUP_CONTROL_2',
-  props<{ control : FormControlDTO }>()
+  'ADD_GROUP_CONTROL',
+  props<{ 
+    formID : string,
+    control : FormControlDTO }>()
 );
 
 export const CreateFormAction = createAction (
@@ -41,3 +37,8 @@ export const DeleteFormAction = createAction (
   props<{ name: string }>()
 );
 
+export const formSubmitAction = createAction (
+  ActionSourceEnum.MODULE,
+  ModuleEnum.FORM_NGRX,
+  'Submit',
+);
