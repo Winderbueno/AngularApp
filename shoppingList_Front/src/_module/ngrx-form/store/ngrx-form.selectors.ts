@@ -10,4 +10,4 @@ import { featureKey } from '.';
 export const selectState = createFeatureSelector<NgrxFormState>(featureKey);
 
 export const selectFormByID = (id: string) =>
-  createSelector(selectState, (state: NgrxFormState) => state.dynamicForms[id]);
+  createSelector(selectState, (state: NgrxFormState) => state[id]);

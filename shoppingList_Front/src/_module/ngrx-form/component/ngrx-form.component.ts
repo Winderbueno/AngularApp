@@ -34,7 +34,9 @@ export class NgrxFormComponent implements OnInit {
 
   ngOnInit() {
     // Form definition
-    this.store.dispatch(fromStore.CreateFormAction({ name:this._title }));
+    if(this._formState![this._title] === undefined) {
+      this.store.dispatch(fromStore.CreateFormAction({ name:this._title }));
+    }
   }
 
   onSubmit(): void {

@@ -52,7 +52,8 @@ export class NgrxFieldComponent implements OnInit {
   get err() { return this.formErrorService; }
 
   ctrlState(ctrlName:string): FormControlState<string|boolean|number> {
-    return this._formGroupState!.controls[ctrlName] as unknown as FormControlState<string|boolean|number>; 
+    const ctrlState=this._formGroupState!.controls[ctrlName] as unknown as FormControlState<string|boolean|number>;
+    return ctrlState; 
   }
 
   constructor(
