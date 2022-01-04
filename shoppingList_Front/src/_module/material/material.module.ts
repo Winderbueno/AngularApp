@@ -1,9 +1,8 @@
 //#region Angular
 import { NgModule } from '@angular/core';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 //#endregion
 
-//#region Material
+//#region Material UI Component
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
@@ -19,9 +18,28 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 //#endregion
 
+//#region Material Configuration
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+//#endregion
+
+//#region Material Adaptation for ngrx-form
+// See https://ngrx-forms.readthedocs.io/en/master/faq/
+import { NgrxMatSelectViewAdapter } from '@material/ngrx-form-adapters/mat-select-view-adapter';
+import { CustomErrorStateMatcherDirective } from './ngrx-form-adapters/error-state-matcher';
+import { MatListOptionFixDirective } from './ngrx-form-adapters/mat-list-option-fix';
+//#endregion
+
+
 @NgModule({
   imports: [],
+  declarations: [
+    /* Material Adaptation for ngrx-form */
+    NgrxMatSelectViewAdapter,
+    CustomErrorStateMatcherDirective,
+    MatListOptionFixDirective,
+  ],
   exports: [
+    /* Material UI Component */
     MatButtonModule,
     MatCheckboxModule,
     MatChipsModule,
@@ -34,7 +52,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatSelectModule,
     MatSlideToggleModule,
     MatSnackBarModule,
-    MatToolbarModule
+    MatToolbarModule,
+
+    /* Material Adaptation for ngrx-form */
+    NgrxMatSelectViewAdapter,
+    CustomErrorStateMatcherDirective,
+    MatListOptionFixDirective,
   ],
   providers: [
     /* Material Configuration */
