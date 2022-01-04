@@ -11,16 +11,14 @@ export class NgrxFormErrorService {
   getErrorMsg(ctrlState: FormControlState<string|boolean|number>): string {
 
     let errMsg = '';
-    // TODO
-    ctrlState.errors;
 
-    // if (formCtrl.hasError('required')) {
-    //   errMsg += 'Please fill in this field';
-    // } else if (formCtrl.hasError('email')) {
-    //   errMsg = 'Filled in email has not the good format';
-    // } else if (formCtrl.hasError('minlength')) {
-    //   errMsg = `Field Length should be at least : ${formCtrl.errors!.minlength.requiredLength}`;
-    // } else if (formCtrl.hasError('mustMatch')) {
+    if (ctrlState.errors.required) {
+       errMsg += 'Please fill in this field';
+    } else if (ctrlState.errors.email) {
+       errMsg = 'Filled in email has not the good format';
+    } else if (ctrlState.errors.minlength) { // TODO
+       //errMsg = `Field Length should be at least : ${formCtrl.errors!.minlength.requiredLength}`;
+    } //else if (formCtrl.hasError('mustMatch')) {
     //   errMsg = 'Field should be the same';
     // }
 

@@ -1,6 +1,14 @@
 //#region NgRx
 import { Action, createReducer, on } from '@ngrx/store';
-import { addGroupControl, createFormGroupState, onNgrxForms } from 'ngrx-forms';
+import { 
+  addGroupControl, 
+  createFormGroupState, 
+  FormGroupState, 
+  onNgrxForms, 
+  onNgrxFormsAction, 
+  SetValueAction, 
+  updateGroup, validate } from 'ngrx-forms';
+import { required, requiredTrue } from 'ngrx-forms/validation';
 //#endregion
 
 //#region State, Action
@@ -10,9 +18,26 @@ import * as fromAction from './ngrx-form.actions';
 
 export const featureKey = 'ngrx-form';
 
+
+const validateMyForm = updateGroup<DynamicFormValue>({
+  'MatField': validate(required),
+  //'Maman': (validate(required, requiredTrue)) as FormGroupState<string|number|boolean>,
+});
+
 const formReducer = createReducer(
   initialState,
   onNgrxForms(),
+
+  onNgrxFormsAction(SetValueAction, (state, action) => {
+    
+    let formInfo:string[] = action.controlId.split('.');
+    
+
+    const newDynamicForms = {...state};
+    newDynamicForms[formInfo[0]] = validateMyForm(newDynamicForms[formInfo[0]]);
+
+    return newDynamicForms;
+  }),
 
   on(fromAction.CreateFormAction,
     (state, action) => {
