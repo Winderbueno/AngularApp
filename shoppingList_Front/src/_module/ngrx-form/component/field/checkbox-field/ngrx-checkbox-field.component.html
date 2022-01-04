@@ -2,8 +2,8 @@
 <!-- TODO - Optimize Impl (use submitted) -->
 <div class="mat-form-field-wrapper">
   
-  <mat-checkbox [ngrxFormControlState]="ctrl">
-    <!-- [ngClass]="{'mat-error' : ctrl.invalid && (ctrl.touched || isFormSubmitted) }"> -->
+  <mat-checkbox [ngrxFormControlState]="ctrl"
+    [ngClass]="{'mat-error' : ctrl.isInvalid && (ctrl.isTouched || isFormSubmitted) }">
     {{label}}
 
     <!-- If the Checkbox is required -->

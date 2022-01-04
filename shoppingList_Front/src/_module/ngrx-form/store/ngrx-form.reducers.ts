@@ -6,8 +6,9 @@ import {
   FormGroupState, 
   onNgrxForms, 
   onNgrxFormsAction, 
+  setUserDefinedProperty, 
   SetValueAction, 
-  updateGroup, validate } from 'ngrx-forms';
+  updateGroup, updateRecursive, validate } from 'ngrx-forms';
 import { required, requiredTrue } from 'ngrx-forms/validation';
 //#endregion
 
@@ -21,8 +22,20 @@ export const featureKey = 'ngrx-form';
 
 const validateMyForm = updateGroup<DynamicFormValue>({
   'MatField': validate(required),
+  'Maman': validate(required),
   //'Maman': (validate(required, requiredTrue)) as FormGroupState<string|number|boolean>,
 });
+
+const updateByControlId = 
+  (state:FormGroupState<DynamicFormValue>, formControlId:string) => 
+    updateRecursive(state, s => {
+      if(s.id === formControlId) {
+        return validate(requiredTrue)(s);
+      } else {
+        return s;
+      }
+    });
+
 
 const formReducer = createReducer(
   initialState,
@@ -31,20 +44,19 @@ const formReducer = createReducer(
   onNgrxFormsAction(SetValueAction, (state, action) => {
     
     let formInfo:string[] = action.controlId.split('.');
-    
 
     const newDynamicForms = {...state};
-    newDynamicForms[formInfo[0]] = validateMyForm(newDynamicForms[formInfo[0]]);
+    let form=newDynamicForms[formInfo[0]];    
+  
+    newDynamicForms[formInfo[0]] = updateByControlId(newDynamicForms[formInfo[0]], action.controlId);
 
     return newDynamicForms;
   }),
 
   on(fromAction.CreateFormAction,
     (state, action) => {
-
       const newDynamicForms = {...state};
       newDynamicForms[action.name]=createFormGroupState<DynamicFormValue>(action.name, {});
-
       return newDynamicForms;
     }
   ),
@@ -52,16 +64,8 @@ const formReducer = createReducer(
   on(fromAction.AddGroupControlAction,
     (state, action) => {
 
+      // Add formControlState to formGroupState
       // TODO - Gerer l'ajout de * FormControl en une fois
-      // const newFormValue = action.objects.reduce((v, obj) => {
-      //   v[obj.id] = {
-      //     someString: obj.someString,
-      //     someNumber: obj.someNumber,
-      //     someCheckbox: obj.someCheckbox,
-      //   };
-      //   return v;
-      // }, {} as DynamicFormValue);
-
       const groupWithControl = addGroupControl<DynamicFormValue>(
         state[action.formID],
         action.control.name, 
@@ -69,6 +73,16 @@ const formReducer = createReducer(
 
       const newDynamicForms = {...state};
       newDynamicForms[action.formID]=groupWithControl;
+
+      // Add Validators to Control as a UserDefinedProperty
+      let formControlId:string = action.formID + '.' + action.control.name;
+      newDynamicForms[action.formID] = updateRecursive(newDynamicForms[action.formID], s => {
+        if(s.id === formControlId) {
+          return setUserDefinedProperty('validationRules', required)(s);
+        } else {
+          return s;
+        }
+      })
 
       return newDynamicForms;
     }
