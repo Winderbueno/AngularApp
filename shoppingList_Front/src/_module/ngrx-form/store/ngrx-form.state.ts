@@ -2,13 +2,7 @@
 import { FormGroupState } from 'ngrx-forms';
 //#endregion
 
-export interface StaticFormValue {
-  username: string;
-  password: string;
-  stayLoggedIn: boolean;
-}
-
-/* Form Model */
+/* FormValueModel */
 export interface DynamicFormValue {
   [id: string]: string | number | boolean;
 }
