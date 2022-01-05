@@ -18,9 +18,9 @@ import { FormValue } from '@module/ngrx-form/store/ngrx-form.state';
  *  - A ControlID (Unique Identifier of the FormControlState)
  *  - A Label (Displayed Name)
  *  - A List of Validators (Accessible from children)
- *  - Related Error Messages (Accessible from children)
+ *  - Related Error Messages
  *
- * It adds the FormControlState to the FormGroupState refered with formID input
+ * It adds a FormControlState to the FormGroupState identified by the formID input
  *
  *  @param formID - FormGroupState ID to add the FormControlState on
  *  @param ctrlName - Control Name - Note : ControlID in state is generated as '<formID>.<ctrlName>'
@@ -49,6 +49,7 @@ export class NgrxFieldComponent implements OnInit {
   @Input() required: boolean = true;
 
   // Accessor
+  get ctrlName() { return this._ctrlName; }
   get ctrl() { return this._formGroupState!.controls[this._ctrlName] as unknown as FormControlState<string|boolean|number>; }
   get err() { return this.formErrorService; }
   protected get validators() { return this._validators }
@@ -67,7 +68,7 @@ export class NgrxFieldComponent implements OnInit {
     // Add Validator according to configuration
     if(this.required === true) { this._validators.push(required); }  
 
-    // Add Control to Group
+    // Add FormControlState to FormGroupState
     if(this.ctrl === undefined) {
       this.store.dispatch(fromStore.AddGroupControlAction({
         formID: this.formID,

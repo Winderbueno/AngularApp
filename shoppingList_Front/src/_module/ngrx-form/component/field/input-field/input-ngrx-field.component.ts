@@ -1,6 +1,6 @@
 ﻿//#region Angular, Material, NgRx
 import { Component, Input } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { email } from 'ngrx-forms/validation';
 //#endregion
 
 //#region Component, Model, Service
@@ -25,7 +25,7 @@ export class InputNgrxFieldComponent extends NgrxFieldComponent {
     // By default, if withFeature 'Visibilitity', we hide the input
     if(this.withFeature === 'visibility') { this.inputHide = true; }
     
-    //if(this.ctrlName === 'Email') { super.validators.push(Validators.email); }
+    if(this.ctrlName === 'Email') { super.validators.push(email); }
 
     // TODO - Change Password Format Policy
     //if(this.ctrlName === 'Password') { super.validators.push(Validators.minLength(6)); }

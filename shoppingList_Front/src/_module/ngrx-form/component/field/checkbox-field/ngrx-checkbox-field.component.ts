@@ -1,5 +1,6 @@
 ﻿//#region Angular, Material, NgRx
 import { Component, Input } from '@angular/core';
+import { requiredTrue } from 'ngrx-forms/validation';
 //#endregion
 
 //#region Component, Model, Service
@@ -18,7 +19,7 @@ export class CheckBoxNgrxFieldComponent extends NgrxFieldComponent {
   @Input() isFormSubmitted!: boolean;
 
   ngOnInit() {
-    //if(this.required === true) { super.validators.push(Validators.requiredTrue); }
+    if(this.required === true) { super.validators.push(requiredTrue); }
     super.ngOnInit();
   }
 }

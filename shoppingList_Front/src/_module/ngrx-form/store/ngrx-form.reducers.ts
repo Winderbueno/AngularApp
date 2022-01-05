@@ -24,7 +24,7 @@ const updateByControlId =
   (state:FormGroupState<FormValue>, formControlId:string) => 
     updateRecursive(state, s => {
       if(s.id === formControlId) {
-        return validate(requiredTrue)(s);
+        return validate(s.userDefinedProperties.validationRules)(s);
       } else {
         return s;
       }
@@ -70,7 +70,7 @@ const formReducer = createReducer(
       newFormState[action.formID] = updateRecursive(
         newFormState[action.formID], 
         s => s.id === formControlId ?
-          setUserDefinedProperty('validationRules', required)(s) : s);
+          setUserDefinedProperty('validationRules', action.control.validationFns)(s) : s);
 
       return newFormState;
     }
