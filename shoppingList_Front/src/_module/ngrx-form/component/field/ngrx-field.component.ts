@@ -8,6 +8,7 @@ import { FormControlState, FormGroupState } from 'ngrx-forms';
 import { NgrxFormErrorService } from '@module/ngrx-form/service/ngrx-form-error.service';
 import * as fromStore from '@module/ngrx-form/store';
 import { DynamicFormValue } from '@module/ngrx-form/store/ngrx-form.state';
+import { required } from 'ngrx-forms/validation';
 //#endregion
 
 /**
@@ -41,20 +42,15 @@ export class NgrxFieldComponent implements OnInit {
   @Input() formID!: string;
   @Input() set ctrlName(value: string) {
     this._ctrlName = value;
-    if (this.label == null) this.label = value;
+    if (this.label == null) this.label = value; 
   }
   @Input() label!: string;
   @Input() required: boolean = true;
 
   // Accessor
-  get ctrl() { return this._formGroupState!.controls[this._ctrlName] as unknown as FormControlState<string|boolean|number>; }
   get ctrlName() { return this._ctrlName; }
-  get err() { return this.formErrorService; }
-
-  ctrlState(ctrlName:string): FormControlState<string|boolean|number> {
-    const ctrlState=this._formGroupState!.controls[ctrlName] as unknown as FormControlState<string|boolean|number>;
-    return ctrlState; 
-  }
+  get ctrl() { return this._formGroupState!.controls[this._ctrlName] as unknown as FormControlState<string|boolean|number>; }
+  get err() { return this.formErrorService; }  
 
   constructor(
     protected store: Store,
@@ -66,15 +62,18 @@ export class NgrxFieldComponent implements OnInit {
     this.store.select(fromStore.selectFormByID(this.formID)).subscribe(s => this._formGroupState = s);
 
     // Add Control to Group
-    if(this.ctrlState(this.ctrlName) === undefined) {
+    if(this.ctrl === undefined) {
       this.store.dispatch(fromStore.AddGroupControlAction({
         formID: this.formID,
-        control: { name:this.ctrlName, value:'' }
+        control: { 
+          name:this.ctrlName, 
+          value:'',
+          validationFns:[required]
+        }
       }));
     }
 
     // Add Validator (According to Conf)
-    //validate<string>(value => !value ? { missing: true } : {})(control)
     //if(this.required === true) { this._validators.push(Validators.required); }    
   }
 }

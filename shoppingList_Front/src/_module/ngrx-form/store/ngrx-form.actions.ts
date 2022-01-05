@@ -6,12 +6,14 @@ import { props } from '@ngrx/store';
 
 //#region Model
 import { ModuleEnum } from '@app/model/enum/module.enum';
+import { ValidationFn } from 'ngrx-forms';
 //#endregion
 
 /* Action DTO */
 export interface FormControlDTO {
   name: string;
   value: string|boolean|number;
+  validationFns? : ValidationFn<any>[];
 }
 
 export const AddGroupControlAction = createAction (
