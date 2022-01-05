@@ -1,6 +1,5 @@
 ﻿//#region Angular, Material, NgRx
 import { Component, Input } from '@angular/core';
-import { Validators } from '@angular/forms';
 //#endregion
 
 //#region Component, Model, Service

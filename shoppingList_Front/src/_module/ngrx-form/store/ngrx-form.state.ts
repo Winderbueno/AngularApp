@@ -3,12 +3,12 @@ import { FormGroupState } from 'ngrx-forms';
 //#endregion
 
 /* FormValueModel */
-export interface DynamicFormValue {
-  [id: string]: string | number | boolean;
+export interface FormValue {
+  [controlName: string]: string | number | boolean;
 }
 
 export interface NgrxFormState {
-  [id: string]: FormGroupState<DynamicFormValue>;
+  [formID: string]: FormGroupState<FormValue>;
 }
 
 export const initialState : NgrxFormState = {};
