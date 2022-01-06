@@ -1,5 +1,6 @@
 //#region Angular, Material, NgRx
 import { Component } from '@angular/core';
+import { TypedAction } from '@ngrx/store/src/models';
 import { Observable } from 'rxjs';
 //#endregion
 
@@ -7,6 +8,7 @@ import { Observable } from 'rxjs';
 import { FormComponent } from '@module/ngrx-form/component/form.component';
 import { Enum } from '@enum/model/enum.model';
 import * as fromEnum from '@enum/store/';
+import * as fromAlert from '@alert/store/';
 //#endregion
 
 
@@ -25,5 +27,11 @@ export class FormDemoComponent extends FormComponent {
     super.ngOnInit();
   }
 
-  // TODO - Handle Submit Action
+  submitAction(): TypedAction<string> {
+    return fromAlert.triggerAlertAction({
+      alertType: fromAlert.AlertTypeEnum.Info,
+      message: "Form has been submitted !",
+      keepAfterRouteChange: false
+    });
+  }
 }
