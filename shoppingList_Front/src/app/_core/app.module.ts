@@ -18,7 +18,6 @@ import { AccountModule } from '@account/account.module';
 import { AlertModule } from '@alert/alert.module';
 import { EnumModule } from '@module/enum/enum.module';
 import { LayoutModule } from '@layout/layout.module';
-import { NgrxFormModule } from '@module/ngrx-form/ngrx-form.module';
 import { TimerModule } from '@timer/timer.module';
 import { TokenModule } from '@token/token.module';
 //#endregion
@@ -69,7 +68,6 @@ const metaReducers: Array<MetaReducer<any, any>> = [
     AlertModule,
     EnumModule,
     LayoutModule,
-    NgrxFormModule,
     TimerModule,
     TokenModule,
 

@@ -4,22 +4,22 @@
 <ng-container *ngIf="formState">
   <form [ngrxFormState]="formState[title]">
 
-    <app-input-ngrx-field 
+    <app-input-field 
       [formID]="title" 
       [ctrlName]="'Input With Visibility'" 
       [withFeature]="'visibility'">
-    </app-input-ngrx-field>
+    </app-input-field>
 
-    <app-input-ngrx-field 
+    <app-input-field 
       [formID]="title" 
       [ctrlName]="'Email'"
       [label]="'Input With Email'">
-    </app-input-ngrx-field>
+    </app-input-field>
 
-    <app-checkbox-ngrx-field 
+    <app-checkbox-field 
       [formID]="title" 
       [ctrlName]="'CheckBox'">
-    </app-checkbox-ngrx-field>
+    </app-checkbox-field>
 
     <input type="submit" value="Submit" (click)="onSubmit()">
   </form>

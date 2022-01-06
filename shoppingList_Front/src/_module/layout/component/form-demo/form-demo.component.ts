@@ -3,15 +3,15 @@ import { Component } from '@angular/core';
 //#endregion
 
 //#region Module
-import { NgrxFormComponent } from '@module/ngrx-form/component/ngrx-form.component';
+import { FormComponent } from '@module/ngrx-form/component/form.component';
 //#endregion
 
 
 @Component({
-  selector: 'app-ngrx-form-test',
-  templateUrl: './ngrx-form-test.component.html'
+  selector: 'app-form-demo',
+  templateUrl: './form-demo.component.html'
 })
-export class NgrxFormTestComponent extends NgrxFormComponent {  
+export class FormDemoComponent extends FormComponent {  
 
   ngOnInit(){    
     super.title = "TestNgrxForm";

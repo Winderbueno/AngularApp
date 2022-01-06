@@ -6,8 +6,7 @@ import { CommonModule } from '@angular/common';
 //#region Module
 import { AppRouterModule } from '@app/app-router.module';
 import { MaterialModule } from '@material/material.module';
-import { FormModule } from '@form/form.module';
-import { NgrxFormModule } from '@module/ngrx-form/ngrx-form.module';
+import { FormModule } from '@module/ngrx-form/form.module'; // TODO - Use alias
 //#endregion
 
 //#region Component
@@ -16,7 +15,7 @@ import {
   FooterComponent,
   ToolbarComponent,
   HomeComponent,
-  NgrxFormTestComponent } from './component';
+  FormDemoComponent } from './component';
 //#endregion
 
 
@@ -28,15 +27,14 @@ import {
     /* Module */
     AppRouterModule,
     MaterialModule,
-    FormModule,
-    NgrxFormModule
+    FormModule
   ],
   declarations: [
     CardLayoutComponent,
     ToolbarComponent,
     FooterComponent,
     HomeComponent,
-    NgrxFormTestComponent
+    FormDemoComponent
   ],
   exports: [
     CardLayoutComponent,
