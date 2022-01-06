@@ -49,6 +49,7 @@ export class NgrxFieldComponent implements OnInit {
   @Input() required: boolean = true;
 
   // Accessor
+  get form() { return this._formGroupState! }
   get ctrlName() { return this._ctrlName; }
   get ctrl() { return this._formGroupState!.controls[this._ctrlName] as unknown as FormControlState<string|boolean|number>; }
   get err() { return this.formErrorService; }

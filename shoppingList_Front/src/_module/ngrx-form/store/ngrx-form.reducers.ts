@@ -1,16 +1,16 @@
 //#region NgRx
 import { Action, createReducer, on } from '@ngrx/store';
 import { 
-  addGroupControl, 
-  createFormGroupState, 
-  FormGroupState, 
-  onNgrxForms, 
-  onNgrxFormsAction, 
-  setUserDefinedProperty, 
-  SetValueAction, 
-  updateRecursive, 
+  FormGroupState,
+  createFormGroupState,
+  addGroupControl,
+  onNgrxForms,
+  onNgrxFormsAction,
+  MarkAsSubmittedAction, 
+  SetValueAction,
+  setUserDefinedProperty,
+  updateRecursive,
   validate } from 'ngrx-forms';
-import { required, requiredTrue } from 'ngrx-forms/validation';
 //#endregion
 
 //#region State, Action
@@ -20,36 +20,28 @@ import * as fromAction from './ngrx-form.actions';
 
 export const featureKey = 'ngrx-form';
 
-const updateByControlId = 
-  (state:FormGroupState<FormValue>, formControlId:string) => 
-    updateRecursive(state, s => {
-      if(s.id === formControlId) {
-        return validate(s.userDefinedProperties.validationRules)(s);
-      } else {
-        return s;
-      }
-    });
-
-
 const formReducer = createReducer(
   initialState,
   onNgrxForms(),
 
   onNgrxFormsAction(SetValueAction, (state, action) => {
     const newFormState = {...state};
-
     let formInfo:string[] = action.controlId.split('.');    
-    newFormState[formInfo[0]] = updateByControlId(newFormState[formInfo[0]], action.controlId);
+    newFormState[formInfo[0]] = validateByControlId(newFormState[formInfo[0]], action.controlId);
+    return newFormState;
+  }),
 
+  onNgrxFormsAction(MarkAsSubmittedAction, (state, action) => {
+    const newFormState = {...state};
+    let formInfo:string[] = action.controlId.split('.');    
+    newFormState[formInfo[0]] = validateFormState(newFormState[formInfo[0]]);
     return newFormState;
   }),
 
   on(fromAction.CreateFormAction,
     (state, action) => {
       const newFormState = {...state};
-
       newFormState[action.name]=createFormGroupState<FormValue>(action.name, {});
-
       return newFormState;
     }
   ),
@@ -70,7 +62,8 @@ const formReducer = createReducer(
       newFormState[action.formID] = updateRecursive(
         newFormState[action.formID], 
         s => s.id === formControlId ?
-          setUserDefinedProperty('validationRules', action.control.validationFns)(s) : s);
+          setUserDefinedProperty('validationRules', action.control.validationFns)(s) : 
+          s);
 
       return newFormState;
     }
@@ -80,3 +73,15 @@ const formReducer = createReducer(
 export function reducer(state: NgrxFormState | undefined, action: Action) {
   return formReducer(state, action);
 }
+
+const validateByControlId = (state:FormGroupState<FormValue>, formControlId:string) => 
+    updateRecursive(state, 
+      s => s.id === formControlId ?
+        validate(s.userDefinedProperties.validationRules)(s) :
+        s);
+
+const validateFormState = (state: FormGroupState<FormValue>) =>
+  updateRecursive(state,
+    s => s.userDefinedProperties.validationRules != undefined ?
+    validate(s.userDefinedProperties.validationRules)(s) :
+    s);
