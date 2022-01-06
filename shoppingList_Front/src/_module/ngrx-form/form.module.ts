@@ -19,6 +19,7 @@ import * as fromStore from './store';
 import {
   CheckBoxFieldComponent,
   InputFieldComponent,
+  SelectFieldComponent,
   SubmitButtonComponent } from './component';
 //#endregion
 
@@ -40,6 +41,7 @@ import {
     /* Field */
     CheckBoxFieldComponent,
     InputFieldComponent,
+    SelectFieldComponent,
 
     /* Field Group */
 
@@ -54,6 +56,7 @@ import {
     /* Field */
     CheckBoxFieldComponent,
     InputFieldComponent,
+    SelectFieldComponent,
 
     /* Field Group */
 

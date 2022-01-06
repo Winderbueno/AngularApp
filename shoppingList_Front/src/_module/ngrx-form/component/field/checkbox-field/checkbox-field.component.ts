@@ -4,7 +4,7 @@ import { requiredTrue } from 'ngrx-forms/validation';
 //#endregion
 
 //#region Component, Model, Service
-import { FieldComponent } from '../field.component';
+import { FieldComponent } from '@module/ngrx-form/component/field/field.component';
 //#endregion
 
 
