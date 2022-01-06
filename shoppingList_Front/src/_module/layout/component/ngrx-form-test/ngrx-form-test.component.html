@@ -1,0 +1,18 @@
+<h1>{{title}}</h1>
+
+<!-- Ngrx Form -->
+<ng-container *ngIf="formState">
+  <form [ngrxFormState]="formState[title]">
+
+    <app-input-ngrx-field [formID]="title" [ctrlName]="'MatField'" [withFeature]="'visibility'">
+    </app-input-ngrx-field>
+
+    <app-input-ngrx-field [formID]="title" [ctrlName]="'Email'" [required]="false">
+    </app-input-ngrx-field>
+
+    <app-checkbox-ngrx-field [formID]="title" [ctrlName]="'CheckBox'">
+    </app-checkbox-ngrx-field>
+
+    <input type="submit" value="Submit" (click)="onSubmit()">
+  </form>
+</ng-container>

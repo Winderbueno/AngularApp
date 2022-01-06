@@ -22,29 +22,27 @@
 
 </div>
 
-<!-- Text Style -->
-<div class="card-container flex-container">
-  <h1>Titre 1</h1>
-  <h2>Titre 2</h2>
-  <mat-icon>school</mat-icon>
+<!-- Alert / Loader / Timer -->
+<div class="card-container">
+  <app-submit-button [text]="'TrowAlert'" (click)="triggerAlert()"></app-submit-button>
+  <app-submit-button [text]="'DelayedAlert'" (click)="triggerDelayedAlert()"></app-submit-button>
+  <app-submit-button [text]="'StartLoader'" (click)="startLoader()"></app-submit-button>
+  <app-submit-button [text]="'StopLoader'" (click)="stopLoader()"></app-submit-button>
 </div>
 
-<!-- Link -->
+<!-- Form (Based on 'ngrx-form') -->
 <div class="card-container flex-container flex-column">
+  <app-ngrx-form-test></app-ngrx-form-test>
+</div>
 
-  <!-- Card Link -->
-  <a class="card" target="_blank" rel="noopener" href="https://angular.io/tutorial">
-
-    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-      <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
-    </svg>
-
-    <span>Learn Angular</span>
-
-    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-      <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-    </svg>
-  </a>
+<!-- Text Style / Link / Icon -->
+<div class="card-container flex-container flex-column">
+  
+  <div class="flex-container">
+    <h1>Titre 1</h1>
+    <h2>Titre 2</h2>
+    <mat-icon>school</mat-icon>
+  </div>
 
   <!-- Drop Link -->
   <div class="flex-container">
@@ -131,11 +129,19 @@
       </svg>
     </a>
   </div>
-</div>
 
-<div class="card-container">
-  <app-submit-button [text]="'DelayedAlert'" (click)="triggerDelayedAlert()"></app-submit-button>
-  <app-submit-button [text]="'TrowAlert'" (click)="triggerAlert()"></app-submit-button>
-  <app-submit-button [text]="'StartLoader'" (click)="startLoader()"></app-submit-button>
-  <app-submit-button [text]="'StopLoader'" (click)="stopLoader()"></app-submit-button>
+  <!-- Card Link -->
+  <a class="card" target="_blank" rel="noopener" href="https://angular.io/tutorial">
+
+    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
+    </svg>
+
+    <span>Learn Angular</span>
+
+    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+    </svg>
+  </a>
+  
 </div>
