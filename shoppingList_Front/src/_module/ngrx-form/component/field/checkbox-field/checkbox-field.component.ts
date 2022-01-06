@@ -4,7 +4,7 @@ import { requiredTrue } from 'ngrx-forms/validation';
 //#endregion
 
 //#region Component, Model, Service
-import { NgrxFieldComponent } from '../ngrx-field.component';
+import { FieldComponent } from '../field.component';
 //#endregion
 
 
@@ -12,9 +12,9 @@ import { NgrxFieldComponent } from '../ngrx-field.component';
  * CheckBox Field Component
  */
 @Component({
-  selector: 'app-checkbox-ngrx-field',
-  templateUrl: 'ngrx-checkbox-field.component.html' })
-export class CheckBoxNgrxFieldComponent extends NgrxFieldComponent {
+  selector: 'app-checkbox-field',
+  templateUrl: 'checkbox-field.component.html' })
+export class CheckBoxFieldComponent extends FieldComponent {
 
   ngOnInit() {
     if(this.required === true) { super.validators.push(requiredTrue); }

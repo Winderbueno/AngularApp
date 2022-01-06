@@ -12,14 +12,14 @@ import { LoaderModule } from '@loader/loader.module';
 //#endregion
 
 //#region Store
-import * as fromStore from './store/';
+import * as fromStore from './store';
 //#endregion
 
 //#region Component
 import {
-  CheckBoxNgrxFieldComponent,
-  InputNgrxFieldComponent } from './component';
-
+  CheckBoxFieldComponent,
+  InputFieldComponent,
+  SubmitButtonComponent } from './component';
 //#endregion
 
 @NgModule({
@@ -38,11 +38,13 @@ import {
   ],
   declarations: [
     /* Field */
-    CheckBoxNgrxFieldComponent,
-    InputNgrxFieldComponent,
+    CheckBoxFieldComponent,
+    InputFieldComponent,
 
     /* Field Group */
-    
+
+
+    SubmitButtonComponent,
   ],
   exports: [
     /* Form Tools */
@@ -50,11 +52,13 @@ import {
     NgrxFormsModule,
 
     /* Field */
-    CheckBoxNgrxFieldComponent,
-    InputNgrxFieldComponent
+    CheckBoxFieldComponent,
+    InputFieldComponent,
 
     /* Field Group */
+
     
+    SubmitButtonComponent
   ]
 })
-export class NgrxFormModule { }
+export class FormModule { }

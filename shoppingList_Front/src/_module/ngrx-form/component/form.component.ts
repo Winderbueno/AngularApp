@@ -13,10 +13,10 @@ import * as fromStore from '../store';
   selector: 'app-form',
   template: ``,
 })
-export class NgrxFormComponent implements OnInit {
+export class FormComponent implements OnInit {
 
   // Form
-  protected _formState: fromStore.NgrxFormState | undefined;
+  protected _formState: fromStore.FormState | undefined;
   private _title: string = "Form Title";
 
   // Accessor

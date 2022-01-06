@@ -6,9 +6,9 @@ import { required } from 'ngrx-forms/validation';
 //#endregion
 
 //#region Component, Model, Service
-import { NgrxFormErrorService } from '@module/ngrx-form/service/ngrx-form-error.service';
+import { FormErrorService } from '@module/ngrx-form/service/form-error.service';
 import * as fromStore from '@module/ngrx-form/store';
-import { FormValue } from '@module/ngrx-form/store/ngrx-form.state';
+import { FormValue } from '@module/ngrx-form/store/form.state';
 //#endregion
 
 /**
@@ -29,10 +29,10 @@ import { FormValue } from '@module/ngrx-form/store/ngrx-form.state';
  *
  */
 @Component({
-  selector: 'app-ngrx-field',
+  selector: 'app-field',
   template: ``,
 })
-export class NgrxFieldComponent implements OnInit {
+export class FieldComponent implements OnInit {
 
   // FormState
   private _formGroupState : FormGroupState<FormValue> | undefined;
@@ -57,7 +57,7 @@ export class NgrxFieldComponent implements OnInit {
 
   constructor(
     protected store: Store,
-    private formErrorService: NgrxFormErrorService) {
+    private formErrorService: FormErrorService) {
   }
 
   ngOnInit() {

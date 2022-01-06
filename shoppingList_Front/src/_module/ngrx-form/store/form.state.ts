@@ -7,8 +7,8 @@ export interface FormValue {
   [controlName: string]: string | number | boolean;
 }
 
-export interface NgrxFormState {
+export interface FormState {
   [formID: string]: FormGroupState<FormValue>;
 }
 
-export const initialState : NgrxFormState = {};
+export const initialState : FormState = {};

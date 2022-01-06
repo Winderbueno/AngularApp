@@ -4,7 +4,7 @@ import { email } from 'ngrx-forms/validation';
 //#endregion
 
 //#region Component, Model, Service
-import { NgrxFieldComponent } from '@module/ngrx-form/component/field/ngrx-field.component';
+import { FieldComponent } from '@module/ngrx-form/component/field/field.component';
 //#endregion
 
 
@@ -12,9 +12,9 @@ import { NgrxFieldComponent } from '@module/ngrx-form/component/field/ngrx-field
  * Input Field Component
  */
 @Component({
-  selector: 'app-input-ngrx-field',
-  templateUrl: 'input-ngrx-field.component.html' })
-export class InputNgrxFieldComponent extends NgrxFieldComponent {
+  selector: 'app-input-field',
+  templateUrl: 'input-field.component.html' })
+export class InputFieldComponent extends FieldComponent {
 
   @Input() withFeature: string = '';
 

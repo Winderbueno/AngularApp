@@ -14,8 +14,8 @@ import {
 //#endregion
 
 //#region State, Action
-import { NgrxFormState, initialState, FormValue } from './ngrx-form.state';
-import * as fromAction from './ngrx-form.actions';
+import { FormState, initialState, FormValue } from './form.state';
+import * as fromAction from './form.actions';
 //#endregion
 
 export const featureKey = 'ngrx-form';
@@ -70,7 +70,7 @@ const formReducer = createReducer(
   ),
 );
 
-export function reducer(state: NgrxFormState | undefined, action: Action) {
+export function reducer(state: FormState | undefined, action: Action) {
   return formReducer(state, action);
 }
 

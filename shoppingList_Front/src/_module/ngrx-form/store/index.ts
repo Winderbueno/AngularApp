@@ -1,13 +1,13 @@
 ﻿/* State */
 export {
-  NgrxFormState
-} from './ngrx-form.state';
+  FormState
+} from './form.state';
 
 /* Reducer */
 export {
   featureKey,
   reducer
-} from './ngrx-form.reducers';
+} from './form.reducers';
 
 /* Action */
 export {
@@ -16,10 +16,10 @@ export {
   CreateFormAction,
   DeleteFormAction,
   FormControlDTO
-} from './ngrx-form.actions';
+} from './form.actions';
 
 /* Selector */
 export {
   selectState,
   selectFormByID
-} from './ngrx-form.selectors';
+} from './form.selectors';

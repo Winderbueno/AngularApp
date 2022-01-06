@@ -5,7 +5,7 @@ import { FormControlState } from 'ngrx-forms';
 
 
 @Injectable({ providedIn: 'root' })
-export class NgrxFormErrorService {
+export class FormErrorService {
 
   // Generate form error message
   getErrorMsg(ctrlState: FormControlState<string|boolean|number>): string {
