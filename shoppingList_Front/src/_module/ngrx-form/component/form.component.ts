@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { TypedAction } from '@ngrx/store/src/models';
 //#endregion
 
 //#region Store
@@ -16,13 +17,13 @@ import * as fromStore from '../store';
 export class FormComponent implements OnInit {
 
   // Form
-  protected _formState: fromStore.FormState | undefined;
+  protected _formState!: fromStore.FormState;
   private _title: string = "Form Title";
 
   // Accessor
-  get title() { return this._title;}
-  protected set title(title:string) { this._title=title }
-  get formState() { return this._formState?this._formState:undefined; }
+  get title() { return this._title; }
+  protected set title(title:string) { this._title = title; }
+  get formState() { return this._formState? this._formState : undefined; }
 
   constructor(
     protected router: Router,
@@ -34,12 +35,23 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     // Form definition
-    if(this._formState![this._title] === undefined) {
+    if(this._formState[this._title] === undefined) {
       this.store.dispatch(fromStore.CreateFormAction({ name:this._title }));
     }
   }
 
   onSubmit(): void {
     // Stop here if form is invalid
+    if (this._formState[this._title].isInvalid) { return; }
+
+    this.dispatchSubmitAction();
+  }
+
+  dispatchSubmitAction() : void {
+    this.store.dispatch(this.submitAction());
+  }
+
+  submitAction() : TypedAction<string> {
+    return fromStore.formSubmitAction;
   }
 }
