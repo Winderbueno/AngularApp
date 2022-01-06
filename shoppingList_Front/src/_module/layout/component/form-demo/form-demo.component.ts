@@ -1,9 +1,12 @@
 //#region Angular, Material, NgRx
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 //#endregion
 
 //#region Module
 import { FormComponent } from '@module/ngrx-form/component/form.component';
+import { Enum } from '@enum/model/enum.model';
+import * as fromEnum from '@enum/store/';
 //#endregion
 
 
@@ -13,8 +16,12 @@ import { FormComponent } from '@module/ngrx-form/component/form.component';
 })
 export class FormDemoComponent extends FormComponent {  
 
-  ngOnInit(){    
-    super.title = "TestNgrxForm";
+  // Proposition values
+  productCatEnum$!: Observable<Enum|undefined>;
+
+  ngOnInit(){
+    this.productCatEnum$ = this.store.select(fromEnum.selectEnumByName('ProductCategory'));
+    super.title = "Form Demo";
     super.ngOnInit();
   }
 

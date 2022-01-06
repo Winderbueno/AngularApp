@@ -6,15 +6,20 @@
 
     <app-input-field 
       [formID]="title" 
-      [ctrlName]="'Input With Visibility'" 
+      [ctrlName]="'Input Field with Visibility'" 
       [withFeature]="'visibility'">
     </app-input-field>
 
     <app-input-field 
       [formID]="title" 
       [ctrlName]="'Email'"
-      [label]="'Input With Email'">
+      [label]="'Input Field with Email'">
     </app-input-field>
+
+    <app-select-field
+      [formID]="title"
+      [ctrlName]="'Select Field'"
+      [enum]="(productCatEnum$|async)!"></app-select-field>
 
     <app-checkbox-field 
       [formID]="title" 
