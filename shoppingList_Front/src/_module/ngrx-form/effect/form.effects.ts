@@ -43,16 +43,12 @@ export class FormEffects {
   validateFormAction$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromStore.submitFormAction),
-      switchMap((action) =>
-        of(action).pipe(
-          map((action) => {
-            return fromStore.validateFormAction({
-              formId: action.formId,
-              formGroupValidationFns: this.formValidationFnsService.getFormValidationFns(action.formId)
-            });
-          })
-        )
-      )
+      map((action) => {
+        return fromStore.validateFormAction({
+          formId: action.formId,
+          formGroupValidationFns: this.formValidationFnsService.getFormValidationFns(action.formId)
+        });
+      })
     )
   );
 
@@ -60,21 +56,14 @@ export class FormEffects {
   validateControlAction$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SetValueAction.TYPE),
-      switchMap((action:SetValueAction<FormValue>) =>
-        of(action).pipe(
-          map((action) => {
-            return fromStore.validateControlAction({
-              controlId: action.controlId,
-              ValidationFns: this.formValidationFnsService.getControlValidationFns(action.controlId)
-            });
-          })
-        )
-      )
+      map((action:SetValueAction<FormValue>) => {
+        return fromStore.validateControlAction({
+          controlId: action.controlId,
+          ValidationFns: this.formValidationFnsService.getControlValidationFns(action.controlId)
+        });
+      })
     )
   );
-
-
-
 
   constructor(
     private actions$: Actions,
