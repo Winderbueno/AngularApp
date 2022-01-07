@@ -23,7 +23,11 @@ export class FormEffects {
       switchMap((action) =>
         of(action).pipe(
           withLatestFrom(this.store.select(fromStore.selectFormByID(action.formID))),
-          filter((form) => form != undefined),
+          filter(([action, form]) => {
+            return form != undefined
+              && form.userDefinedProperties.submitValidAction != undefined
+              && form.userDefinedProperties.submitInvalidAction != undefined;
+          }),
           map(([action, form]) => {
             if(form.isValid) return form.userDefinedProperties.submitValidAction;
             else return form.userDefinedProperties.submitInvalidAction;
