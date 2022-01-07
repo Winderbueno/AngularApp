@@ -25,6 +25,7 @@ import {
   CheckBoxFieldComponent,
   InputFieldComponent,
   SelectFieldComponent,
+  PasswordFieldGroupComponent,
   SubmitButtonComponent } from './component';
 //#endregion
 
@@ -52,9 +53,10 @@ import {
     SelectFieldComponent,
 
     /* Field Group */
+    PasswordFieldGroupComponent,
 
-
-    SubmitButtonComponent,
+    /* Button */
+    SubmitButtonComponent
   ],
   exports: [
     /* Form Tools */
@@ -67,8 +69,9 @@ import {
     SelectFieldComponent,
 
     /* Field Group */
+    PasswordFieldGroupComponent,
 
-    
+    /* Button */
     SubmitButtonComponent
   ]
 })

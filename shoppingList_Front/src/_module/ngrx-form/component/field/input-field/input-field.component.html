@@ -10,7 +10,7 @@
     [type]="inputHide ? 'password' : 'text'">
 
   <!-- If With Feature 'Visibility', Add a button to manage input visibility -->
-  <button *ngIf="withFeature==='visibility'" 
+  <button *ngIf="withFeature==='Visibility'" 
     type="button" mat-icon-button matSuffix (click)="inputHide = !inputHide">
     <mat-icon>{{inputHide ? 'visibility_off' : 'visibility'}}</mat-icon>
   </button>
