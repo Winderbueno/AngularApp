@@ -84,5 +84,5 @@ const validateByControlId = (state:FormGroupState<FormValue>, formControlId:stri
 const validateFormState = (state: FormGroupState<FormValue>) =>
   updateRecursive(state,
     s => s.userDefinedProperties.validationRules != undefined ?
-    validate(s.userDefinedProperties.validationRules)(s) :
-    s);
+      validate(s.userDefinedProperties.validationRules)(s) :
+      s);
