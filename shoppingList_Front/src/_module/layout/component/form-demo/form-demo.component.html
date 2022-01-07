@@ -6,15 +6,15 @@
 
     <app-input-field 
       [formID]="title" 
-      [ctrlName]="'Input Field with Visibility'" 
-      [withFeature]="'visibility'">
+      [ctrlName]="'Email'"
+      [label]="'Input Field with Email Format'">
     </app-input-field>
 
-    <app-input-field 
+    <!-- Password + Confirm -->
+    <app-password-field-group 
       [formID]="title" 
-      [ctrlName]="'Email'"
-      [label]="'Input Field with Email'">
-    </app-input-field>
+      [withConfirm]="true">
+    </app-password-field-group>
 
     <app-select-field
       [formID]="title"

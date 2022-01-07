@@ -26,13 +26,13 @@ export class FormDemoComponent extends FormComponent {
     // Form Configuration
     super.title = "Form Demo";
     super.submitValidAction = fromAlert.triggerAlertAction({
-      alertType: fromAlert.AlertTypeEnum.Info,
-      message: "Form has been submitted !",
+      alertType: fromAlert.AlertTypeEnum.Success,
+      message: "Valid Form Submitted !",
       keepAfterRouteChange: false
     });
     super.submitInvalidAction = fromAlert.triggerAlertAction({
       alertType: fromAlert.AlertTypeEnum.Error,
-      message: "Form has been submitted !",
+      message: "Invalid Form Submitted !",
       keepAfterRouteChange: false
     });
     super.ngOnInit();
