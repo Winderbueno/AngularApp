@@ -23,10 +23,9 @@ import { FormValue } from '@module/ngrx-form/store/form.state';
  * It adds a FormControlState to the FormGroupState identified by the formID input
  *
  *  @param formID - FormGroupState ID to add the FormControlState on
- *  @param ctrlName - Control Name - Note : ControlID in state is generated as '<formID>.<ctrlName>'
- *  @param label - (Optional | (Default : <ctrlName>)) - Label of the field
- *  @param required - (Optional | (Default : True)) - Set 'required' validator on FormControl 
- *
+ *  @param ctrlName - FormControlState Name (Note : ControlID in state is generated as '<formID>.<ctrlName>')
+ *  @param label - (Optional | Default:<ctrlName>) - Label of the field
+ *  @param required - (Optional | Default:true) - Set 'required' validator on FormControlState
  */
 @Component({
   selector: 'app-field',

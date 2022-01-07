@@ -19,10 +19,10 @@ export class FormEffects {
   // Dispatch corresponding user defined submit action 
   dispatchSubmitAction$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(MarkAsSubmittedAction.TYPE),
-      switchMap((action:MarkAsSubmittedAction) =>
+      ofType(fromStore.formSubmitAction),
+      switchMap((action) =>
         of(action).pipe(
-          withLatestFrom(this.store.select(fromStore.selectFormByID(action.controlId))),
+          withLatestFrom(this.store.select(fromStore.selectFormByID(action.formID))),
           filter((form) => form != undefined),
           map(([action, form]) => {
             if(form.isValid) return form.userDefinedProperties.submitValidAction;

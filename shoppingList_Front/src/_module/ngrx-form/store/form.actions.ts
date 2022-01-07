@@ -32,7 +32,7 @@ export const CreateFormAction = createAction (
   'CREATE_FORM',
   props<{ 
     name: string,
-    submitValidAction: TypedAction<string>,
+    submitValidAction?: TypedAction<string>,
     submitInvalidAction?: TypedAction<string> }>()
 );
 
@@ -46,5 +46,6 @@ export const DeleteFormAction = createAction (
 export const formSubmitAction = createAction (
   ActionSourceEnum.MODULE,
   ModuleEnum.FORM_NGRX,
-  'Submit',
+  'SUBMIT_FORM',
+  props<{ formID: string }>()
 );

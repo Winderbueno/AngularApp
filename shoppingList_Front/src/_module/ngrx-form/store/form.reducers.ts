@@ -31,10 +31,9 @@ const formReducer = createReducer(
     return newFormState;
   }),
 
-  onNgrxFormsAction(MarkAsSubmittedAction, (state, action) => {
+  on(fromAction.formSubmitAction, (state, action) => {
     const newFormState = {...state};
-    let formInfo:string[] = action.controlId.split('.');    
-    newFormState[formInfo[0]] = validateFormState(newFormState[formInfo[0]]);
+    newFormState[action.formID] = validateFormState(newFormState[action.formID]);
     return newFormState;
   }),
 
