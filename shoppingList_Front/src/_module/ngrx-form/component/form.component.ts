@@ -3,10 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
+import { FormGroupState } from 'ngrx-forms';
 //#endregion
 
 //#region Store
 import * as fromStore from '../store';
+import { FormValue } from '@module/ngrx-form/store/form.state';
 //#endregion
 
 
@@ -17,7 +19,7 @@ import * as fromStore from '../store';
 export class FormComponent implements OnInit {
 
   // Form
-  protected _formState!: fromStore.FormState;
+  protected _formGroupState!: FormGroupState<FormValue> | undefined;
   private _title: string = "Form Title";
   private _submitValidAction: TypedAction<string> | undefined;
   private _submitInvalidAction: TypedAction<string> | undefined;
@@ -31,25 +33,28 @@ export class FormComponent implements OnInit {
   get submitInvalidAction() { return this._submitInvalidAction!; }
   protected set submitInvalidAction(action:TypedAction<string>) { this._submitInvalidAction = action; }
   
-  get formState() { return this._formState? this._formState : undefined; }
+  get formGroupState() { return this._formGroupState ? this._formGroupState : undefined; }
 
   constructor(
     protected router: Router,
     protected route: ActivatedRoute,
     protected store: Store
-  ) {
-    store.select(fromStore.selectState).subscribe(s => this._formState = s);
-  }
+  ) {}
 
   ngOnInit() {
-    // Form State Initialisation
-    if(this._formState[this._title] === undefined) {
+
+    // Suscribe to FormGroupState
+    this.store.select(fromStore.selectFormByID(this._title))
+      .subscribe(s => this._formGroupState = s);
+    
+    // Initialise FormGroupState
+    if(this.formGroupState === undefined) {
       this.store.dispatch(
         fromStore.CreateFormAction({ 
           name: this._title,
           submitValidAction: this._submitValidAction,
           submitInvalidAction: this._submitInvalidAction
-        }));
+        }));        
     }
   }
 

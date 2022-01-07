@@ -61,7 +61,7 @@ export class FieldComponent implements OnInit {
 
   ngOnInit() {
 
-    // Suscribe to FormGroupState
+    // Subscribe to FormGroupState
     this.store.select(fromStore.selectFormByID(this.formID))
       .subscribe(s => this._formGroupState = s);
 
