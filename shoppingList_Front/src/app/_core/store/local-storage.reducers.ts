@@ -8,6 +8,7 @@ import * as fromAccount from '@account/store/';
 import * as fromShoppingList from '@shoppingList/store/';
 import * as fromTimer from '@timer/store/';
 import * as fromToken from '@token/store/';
+import * as fromForm from '@module/ngrx-form/store/';
 //#endregion
 
 /**
@@ -22,7 +23,8 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
       fromAccount.featureKey,
       fromShoppingList.featureKey,
       fromTimer.featureKey,
-      fromToken.featureKey
+      fromToken.featureKey,
+      fromForm.featureKey
     ],
     rehydrate: true
   })(reducer);
