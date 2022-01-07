@@ -41,7 +41,9 @@ const formReducer = createReducer(
   on(fromAction.CreateFormAction,
     (state, action) => {
       const newFormState = {...state};
-      newFormState[action.name]=createFormGroupState<FormValue>(action.name, {});
+      newFormState[action.name] = createFormGroupState<FormValue>(action.name, {});
+      newFormState[action.name] = setUserDefinedProperty('submitValidAction', action.submitValidAction)(newFormState[action.name]);
+      newFormState[action.name] = setUserDefinedProperty('submitInvalidAction', action.submitInvalidAction)(newFormState[action.name]);
       return newFormState;
     }
   ),
@@ -52,7 +54,7 @@ const formReducer = createReducer(
 
       // Add formControlState to formGroupState
       // TODO - Gerer l'ajout de * FormControl en une fois
-      newFormState[action.formID]=addGroupControl<FormValue>(
+      newFormState[action.formID] = addGroupControl<FormValue>(
         newFormState[action.formID],
         action.control.name, 
         action.control.value);

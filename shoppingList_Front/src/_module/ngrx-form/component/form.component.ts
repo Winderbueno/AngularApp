@@ -19,10 +19,18 @@ export class FormComponent implements OnInit {
   // Form
   protected _formState!: fromStore.FormState;
   private _title: string = "Form Title";
+  private _submitValidAction: TypedAction<string> = fromStore.formSubmitAction();
+  private _submitInvalidAction: TypedAction<string> | undefined;
 
   // Accessor
   get title() { return this._title; }
   protected set title(title:string) { this._title = title; }
+  
+  get submitValidAction() { return this._submitValidAction; }
+  protected set submitValidAction(action:TypedAction<string>) { this._submitValidAction = action; }
+  get submitInvalidAction() { return this._submitInvalidAction!; }
+  protected set submitInvalidAction(action:TypedAction<string>) { this._submitInvalidAction = action; }
+  
   get formState() { return this._formState? this._formState : undefined; }
 
   constructor(
@@ -34,24 +42,25 @@ export class FormComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Form definition
+    // Form State Initialisation
     if(this._formState[this._title] === undefined) {
-      this.store.dispatch(fromStore.CreateFormAction({ name:this._title }));
+      this.store.dispatch(
+        fromStore.CreateFormAction({ 
+          name: this._title,
+          submitValidAction: this._submitValidAction,
+          submitInvalidAction: this._submitInvalidAction
+        }));
     }
   }
 
-  onSubmit(): void {
+  //onSubmit(): void {
     // Stop here if form is invalid
-    if (this._formState[this._title].isInvalid) { return; }
+    //if (this._formState[this._title].isInvalid) { return; }
 
-    this.dispatchSubmitAction();
-  }
+    //this.dispatchSubmitAction();
+  //}
 
-  dispatchSubmitAction() : void {
-    this.store.dispatch(this.submitAction());
-  }
-
-  submitAction() : TypedAction<string> {
-    return fromStore.formSubmitAction;
-  }
+  //dispatchSubmitAction() : void {
+    //this.store.dispatch(this.submitAction());
+  //}
 }

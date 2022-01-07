@@ -2,6 +2,7 @@
 import { createAction } from '@action/creator/action-creator';
 import { ActionSourceEnum } from '@action/enum/action-source.enum';
 import { props } from '@ngrx/store';
+import { TypedAction } from '@ngrx/store/src/models';
 //#endregion
 
 //#region Model
@@ -13,7 +14,7 @@ import { ValidationFn } from 'ngrx-forms';
 export interface FormControlDTO {
   name: string;
   value: string|boolean|number;
-  validationFns? : ValidationFn<any>[];
+  validationFns?: ValidationFn<any>[];
 }
 
 export const AddGroupControlAction = createAction (
@@ -21,15 +22,18 @@ export const AddGroupControlAction = createAction (
   ModuleEnum.FORM_NGRX,
   'ADD_GROUP_CONTROL',
   props<{ 
-    formID : string,
-    control : FormControlDTO }>()
+    formID: string,
+    control: FormControlDTO }>()
 );
 
 export const CreateFormAction = createAction (
   ActionSourceEnum.MODULE,
   ModuleEnum.FORM_NGRX,
   'CREATE_FORM',
-  props<{ name: string }>()
+  props<{ 
+    name: string,
+    submitValidAction: TypedAction<string>,
+    submitInvalidAction?: TypedAction<string> }>()
 );
 
 export const DeleteFormAction = createAction (
