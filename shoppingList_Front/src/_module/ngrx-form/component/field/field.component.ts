@@ -71,8 +71,16 @@ export class FieldComponent implements OnInit {
     // Add Validator according to configuration
     if(this.required === true) { this._validators.push(required); }  
     
+    // Save ValidationFns
+    let controlId:string = this.formId + '.' + this._ctrlName;
+    if(this.formValidationFnsService.getControlValidationFns(controlId) === undefined) {
+      this.formValidationFnsService.setValidationFns(
+        this.formId + '.' + this._ctrlName,
+        this._validators);
+    }    
+
+    // Add FormControlState to FormGroupState
     if(this.ctrl === undefined) {
-      // Add FormControlState to FormGroupState
       this.store.dispatch(fromStore.addGroupControlAction({
         formId: this.formId,
         control: { 
@@ -80,11 +88,6 @@ export class FieldComponent implements OnInit {
           value:''
         }
       }));
-
-      // Save ValidationFns
-      this.formValidationFnsService.setValidationFns(
-        this.formId + '.' + this._ctrlName,
-        this._validators);
-      }  
+    }  
   }
 }
