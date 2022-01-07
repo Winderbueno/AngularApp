@@ -2,7 +2,6 @@
 import { FormGroupState } from 'ngrx-forms';
 //#endregion
 
-/* FormValueModel */
 export interface FormValue {
   [controlName: string]: string | number | boolean;
 }

@@ -5,16 +5,16 @@ import {
   createFormGroupState,
   addGroupControl,
   onNgrxForms,
-  onNgrxFormsAction,
-  SetValueAction,
   setUserDefinedProperty,
   updateRecursive,
-  validate } from 'ngrx-forms';
+  validate, 
+  ValidationFn} from 'ngrx-forms';
 //#endregion
 
 //#region State, Action
 import { FormState, initialState, FormValue } from './form.state';
 import * as fromAction from './form.actions';
+import { FormGroupValidationFns } from '../model/form-validation-fns.model';
 //#endregion
 
 export const featureKey = 'ngrx-form';
@@ -23,20 +23,25 @@ const formReducer = createReducer(
   initialState,
   onNgrxForms(),
 
-  onNgrxFormsAction(SetValueAction, (state, action) => {
+  on(fromAction.validateControlAction, (state, action) => {
     const newFormState = {...state};
-    let formInfo:string[] = action.controlId.split('.');    
-    newFormState[formInfo[0]] = validateByControlId(newFormState[formInfo[0]], action.controlId);
+    let formInfo:string[] = action.controlId.split('.');
+    newFormState[formInfo[0]] = validateByControlId(
+      newFormState[formInfo[0]], 
+      action.controlId,
+      action.ValidationFns);
     return newFormState;
   }),
 
-  on(fromAction.formSubmitAction, (state, action) => {
+  on(fromAction.validateFormAction, (state, action) => {
     const newFormState = {...state};
-    newFormState[action.formID] = validateFormState(newFormState[action.formID]);
+    newFormState[action.formId] = validateFormState(
+      newFormState[action.formId],
+      action.formGroupValidationFns);
     return newFormState;
   }),
 
-  on(fromAction.CreateFormAction,
+  on(fromAction.createFormAction,
     (state, action) => {
       const newFormState = {...state};
       newFormState[action.name] = createFormGroupState<FormValue>(action.name, {});
@@ -46,24 +51,16 @@ const formReducer = createReducer(
     }
   ),
   
-  on(fromAction.AddGroupControlAction,
+  on(fromAction.addGroupControlAction,
     (state, action) => {
       const newFormState = {...state};
 
       // Add formControlState to formGroupState
       // TODO - Gerer l'ajout de * FormControl en une fois
-      newFormState[action.formID] = addGroupControl<FormValue>(
-        newFormState[action.formID],
+      newFormState[action.formId] = addGroupControl<FormValue>(
+        newFormState[action.formId],
         action.control.name, 
         action.control.value);
-
-      // Add Validators to Control as a UserDefinedProperty
-      let formControlId:string = action.formID + '.' + action.control.name;
-      newFormState[action.formID] = updateRecursive(
-        newFormState[action.formID], 
-        s => s.id === formControlId ?
-          setUserDefinedProperty('validationRules', action.control.validationFns)(s) : 
-          s);
 
       return newFormState;
     }
@@ -74,14 +71,19 @@ export function reducer(state: FormState | undefined, action: Action) {
   return formReducer(state, action);
 }
 
-const validateByControlId = (state:FormGroupState<FormValue>, formControlId:string) => 
+const validateByControlId = (
+  state:FormGroupState<FormValue>, 
+  formControlId:string,
+  validationFns: ValidationFn<any>[]) => 
     updateRecursive(state, 
       s => s.id === formControlId ?
-        validate(s.userDefinedProperties.validationRules)(s) :
+        validate(validationFns)(s) :
         s);
 
-const validateFormState = (state: FormGroupState<FormValue>) =>
+const validateFormState = (
+  state: FormGroupState<FormValue>,
+  formGroupValidationFns: FormGroupValidationFns) =>
   updateRecursive(state,
-    s => s.userDefinedProperties.validationRules != undefined ?
-      validate(s.userDefinedProperties.validationRules)(s) :
+    s => formGroupValidationFns[s.id] != undefined ?
+      validate(formGroupValidationFns[s.id])(s) :
       s);

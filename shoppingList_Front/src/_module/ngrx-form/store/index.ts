@@ -11,10 +11,12 @@ export {
 
 /* Action */
 export {
-  formSubmitAction,
-  AddGroupControlAction,
-  CreateFormAction,
-  DeleteFormAction,
+  createFormAction,
+  deleteFormAction,
+  submitFormAction,
+  validateFormAction,
+  addGroupControlAction,
+  validateControlAction,
   FormControlDTO
 } from './form.actions';
 

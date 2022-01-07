@@ -23,7 +23,7 @@ import { MustMatch } from '@form/validator/must-match.validator';
   templateUrl: 'password-field-group.component.html' })
 export class PasswordFieldGroupComponent implements AfterViewInit {
 
-  @Input() formID!: string;
+  @Input() formId!: string;
   @Input() withConfirm: boolean = false;
 
   constructor() { }

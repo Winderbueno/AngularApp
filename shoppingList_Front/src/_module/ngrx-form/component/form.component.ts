@@ -50,7 +50,7 @@ export class FormComponent implements OnInit {
     // Initialise FormGroupState
     if(this.formGroupState === undefined) {
       this.store.dispatch(
-        fromStore.CreateFormAction({ 
+        fromStore.createFormAction({ 
           name: this._title,
           submitValidAction: this._submitValidAction,
           submitInvalidAction: this._submitInvalidAction
@@ -59,6 +59,6 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.store.dispatch(fromStore.formSubmitAction({ formID: this._title}));
+    this.store.dispatch(fromStore.submitFormAction({ formId: this._title}));
   }
 }

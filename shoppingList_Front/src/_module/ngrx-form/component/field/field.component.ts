@@ -7,6 +7,7 @@ import { required } from 'ngrx-forms/validation';
 
 //#region Component, Model, Service
 import { FormErrorService } from '@module/ngrx-form/service/form-error.service';
+import { FormGroupValidationFnsService } from '@module/ngrx-form/service/form-validation.service';
 import * as fromStore from '@module/ngrx-form/store';
 import { FormValue } from '@module/ngrx-form/store/form.state';
 //#endregion
@@ -39,7 +40,7 @@ export class FieldComponent implements OnInit {
   private _validators: ValidationFn<any>[] = [];
 
   // Input
-  @Input() formID!: string;
+  @Input() formId!: string;
   @Input() set ctrlName(value: string) {
     this._ctrlName = value;
     if (this.label == null) this.label = value; 
@@ -56,28 +57,34 @@ export class FieldComponent implements OnInit {
 
   constructor(
     protected store: Store,
-    private formErrorService: FormErrorService) {
+    private formErrorService: FormErrorService,
+    private formValidationFnsService: FormGroupValidationFnsService
+    ) {
   }
 
   ngOnInit() {
 
     // Subscribe to FormGroupState
-    this.store.select(fromStore.selectFormByID(this.formID))
+    this.store.select(fromStore.selectFormByID(this.formId))
       .subscribe(s => this._formGroupState = s);
 
     // Add Validator according to configuration
     if(this.required === true) { this._validators.push(required); }  
-
-    // Add FormControlState to FormGroupState
+    
     if(this.ctrl === undefined) {
-      this.store.dispatch(fromStore.AddGroupControlAction({
-        formID: this.formID,
+      // Add FormControlState to FormGroupState
+      this.store.dispatch(fromStore.addGroupControlAction({
+        formId: this.formId,
         control: { 
           name:this._ctrlName, 
-          value:'',
-          validationFns:this._validators
+          value:''
         }
       }));
-    }  
+
+      // Save ValidationFns
+      this.formValidationFnsService.setValidationFns(
+        this.formId + '.' + this._ctrlName,
+        this._validators);
+      }  
   }
 }
