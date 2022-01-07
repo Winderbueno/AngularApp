@@ -2,7 +2,7 @@
 
 <!-- Ngrx Form -->
 <ng-container *ngIf="formState">
-  <form [ngrxFormState]="formState[title]">
+  <form [ngrxFormState]="formState[title]" (submit)="onSubmit()">
 
     <app-input-field 
       [formID]="title" 
@@ -26,6 +26,6 @@
       [ctrlName]="'CheckBox'">
     </app-checkbox-field>
 
-    <input type="submit" value="Submit" (click)="onSubmit()">
+    <app-submit-button></app-submit-button>
   </form>
 </ng-container>

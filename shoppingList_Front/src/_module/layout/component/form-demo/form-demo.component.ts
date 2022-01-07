@@ -1,6 +1,5 @@
 //#region Angular, Material, NgRx
 import { Component } from '@angular/core';
-import { TypedAction } from '@ngrx/store/src/models';
 import { Observable } from 'rxjs';
 //#endregion
 
@@ -23,15 +22,19 @@ export class FormDemoComponent extends FormComponent {
 
   ngOnInit(){
     this.productCatEnum$ = this.store.select(fromEnum.selectEnumByName('ProductCategory'));
+    
+    // Form Configuration
     super.title = "Form Demo";
-    super.ngOnInit();
-  }
-
-  submitAction(): TypedAction<string> {
-    return fromAlert.triggerAlertAction({
+    super.submitValidAction = fromAlert.triggerAlertAction({
       alertType: fromAlert.AlertTypeEnum.Info,
       message: "Form has been submitted !",
       keepAfterRouteChange: false
     });
+    super.submitInvalidAction = fromAlert.triggerAlertAction({
+      alertType: fromAlert.AlertTypeEnum.Error,
+      message: "Form has been submitted !",
+      keepAfterRouteChange: false
+    });
+    super.ngOnInit();
   }
 }
