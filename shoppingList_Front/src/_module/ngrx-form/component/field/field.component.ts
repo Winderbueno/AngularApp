@@ -59,8 +59,7 @@ export class FieldComponent implements OnInit {
     protected store: Store,
     private formErrorService: FormErrorService,
     private formValidationFnsService: FormGroupValidationFnsService
-    ) {
-  }
+  ) {}
 
   ngOnInit() {
 
@@ -72,11 +71,9 @@ export class FieldComponent implements OnInit {
     if(this.required === true) { this._validators.push(required); }  
     
     // Save ValidationFns
-    let controlId:string = this.formId + '.' + this._ctrlName;
-    if(this.formValidationFnsService.getControlValidationFns(controlId) === undefined) {
-      this.formValidationFnsService.setValidationFns(
-        this.formId + '.' + this._ctrlName,
-        this._validators);
+    let ctrlId:string = this.formId + '.' + this._ctrlName;
+    if(this.formValidationFnsService.getControlValidationFns(ctrlId) === undefined) {
+      this.formValidationFnsService.setValidationFns(ctrlId, this._validators);
     }    
 
     // Add FormControlState to FormGroupState
