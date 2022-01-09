@@ -7,7 +7,7 @@ import { required } from 'ngrx-forms/validation';
 
 //#region Component, Model, Service
 import { FormErrorService } from '@module/ngrx-form/service/form-error.service';
-import { FormGroupValidationFnsService } from '@module/ngrx-form/service/form-validation.service';
+import { ValidationFnsService } from '@module/ngrx-form/service/validation-fns.service';
 import * as fromStore from '@module/ngrx-form/store';
 import { FormValue } from '@module/ngrx-form/store/form.state';
 //#endregion
@@ -58,7 +58,7 @@ export class FieldComponent implements OnInit {
   constructor(
     protected store: Store,
     private formErrorService: FormErrorService,
-    private formValidationFnsService: FormGroupValidationFnsService
+    private validationFnsService: ValidationFnsService
   ) {}
 
   ngOnInit() {
@@ -72,8 +72,8 @@ export class FieldComponent implements OnInit {
     
     // Save ValidationFns
     let ctrlId:string = this.formId + '.' + this._ctrlName;
-    if(this.formValidationFnsService.getControlValidationFns(ctrlId) === undefined) {
-      this.formValidationFnsService.setValidationFns(ctrlId, this._validators);
+    if(this.validationFnsService.getControlValidationFnsById(ctrlId) === undefined) {
+      this.validationFnsService.setControlValidationFns(ctrlId, this._validators);
     }    
 
     // Add FormControlState to FormGroupState

@@ -8,9 +8,10 @@ import { filter, map, withLatestFrom, switchMap } from 'rxjs/operators';
 
 //#region Store
 import * as fromStore from '../store';
-import { FormGroupValidationFnsService } from '../service/form-validation.service';
+import { ValidationFnsService } from '../service/validation-fns.service';
 import { SetValueAction } from 'ngrx-forms';
 import { FormValue } from '../store/form.state';
+import { ControlValidationFns } from '../model/validation-fns.model';
 //#endregion
 
 
@@ -43,12 +44,23 @@ export class FormEffects {
   validateFormAction$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromStore.submitFormAction),
-      map((action) => {
-        return fromStore.validateFormAction({
-          formId: action.formId,
-          formGroupValidationFns: this.formValidationFnsService.getFormValidationFns(action.formId)
-        });
-      })
+      switchMap((action) =>
+        of(action).pipe(
+          withLatestFrom(this.store.select(fromStore.selectFormByID(action.formId))),
+          map(([action, form]) => {
+
+            let validationFns:ControlValidationFns = this.validationFnsService.getAllControlValidationFns();
+
+            let ctrlId:string = action.formId+'.'+'ConfirmPassword';
+                      
+
+            return fromStore.validateFormAction({
+              formId: action.formId,
+              controlValidationFns: validationFns
+            });
+          })
+        )
+      )
     )
   );
 
@@ -59,7 +71,7 @@ export class FormEffects {
       map((action:SetValueAction<FormValue>) => {
         return fromStore.validateControlAction({
           controlId: action.controlId,
-          ValidationFns: this.formValidationFnsService.getControlValidationFns(action.controlId)
+          ValidationFns: this.validationFnsService.getControlValidationFnsById(action.controlId)
         });
       })
     )
@@ -68,6 +80,6 @@ export class FormEffects {
   constructor(
     private actions$: Actions,
     private store: Store,
-    private formValidationFnsService: FormGroupValidationFnsService 
+    private validationFnsService: ValidationFnsService 
   ) { }
 }

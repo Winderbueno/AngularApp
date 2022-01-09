@@ -14,7 +14,7 @@ import {
 //#region State, Action
 import { FormState, initialState, FormValue } from './form.state';
 import * as fromAction from './form.actions';
-import { FormGroupValidationFns } from '../model/form-validation-fns.model';
+import { ControlValidationFns } from '../model/validation-fns.model';
 //#endregion
 
 export const featureKey = 'ngrx-form';
@@ -37,7 +37,7 @@ const formReducer = createReducer(
     const newFormState = {...state};
     newFormState[action.formId] = validateFormState(
       newFormState[action.formId],
-      action.formGroupValidationFns);
+      action.controlValidationFns);
     return newFormState;
   }),
 
@@ -82,8 +82,8 @@ const validateByControlId = (
 
 const validateFormState = (
   state: FormGroupState<FormValue>,
-  formGroupValidationFns: FormGroupValidationFns) =>
+  controlValidationFns: ControlValidationFns) =>
   updateRecursive(state,
-    s => formGroupValidationFns[s.id] != undefined ?
-      validate(formGroupValidationFns[s.id])(s) :
+    s => controlValidationFns[s.id] != undefined ?
+      validate(controlValidationFns[s.id])(s) :
       s);

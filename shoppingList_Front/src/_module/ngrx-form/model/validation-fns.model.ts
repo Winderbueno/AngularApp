@@ -2,6 +2,6 @@
 import { ValidationFn } from 'ngrx-forms';
 //#endregion
 
-export interface FormGroupValidationFns {
+export interface ControlValidationFns {
   [id: string]: ValidationFn<any>[];
 }

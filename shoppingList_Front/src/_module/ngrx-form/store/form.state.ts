@@ -3,7 +3,7 @@ import { FormGroupState } from 'ngrx-forms';
 //#endregion
 
 export interface FormValue {
-  [controlName: string]: string | number | boolean;
+  [controlName: string]: string | number | boolean | undefined;
 }
 
 export interface FormState {

@@ -7,7 +7,7 @@ import { TypedAction } from '@ngrx/store/src/models';
 
 //#region Model
 import { ModuleEnum } from '@app/model/enum/module.enum';
-import { FormGroupValidationFns } from '../model/form-validation-fns.model';
+import { ControlValidationFns } from '../model/validation-fns.model';
 import { ValidationFn } from 'ngrx-forms';
 //#endregion
 
@@ -47,7 +47,7 @@ export const validateFormAction = createAction (
   'VALIDATE_FORM',
   props<{ 
     formId: string,
-    formGroupValidationFns : FormGroupValidationFns }>()
+    controlValidationFns : ControlValidationFns }>()
 );
 
 export const addGroupControlAction = createAction (

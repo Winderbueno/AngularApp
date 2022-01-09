@@ -1,9 +1,14 @@
 ﻿//#region Angular, Material, NgRx
-import { Component, Input, AfterViewInit } from '@angular/core';
+import { Component, Input, AfterViewInit, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { FormGroupState } from 'ngrx-forms';
 //#endregion
 
 //#region Component, Model, Service
-import { MustMatch } from '@form/validator/must-match.validator';
+import { ValidationFnsService } from '@module/ngrx-form/service/validation-fns.service';
+import { FormValue } from '@module/ngrx-form/store/form.state';
+import * as fromStore from '@module/ngrx-form/store';
+import { mustMatch } from '@module/ngrx-form/validation-fns/must-match.validator';
 //#endregion
 
 
@@ -21,12 +26,29 @@ import { MustMatch } from '@form/validator/must-match.validator';
 @Component({
   selector: 'app-password-field-group',
   templateUrl: 'password-field-group.component.html' })
-export class PasswordFieldGroupComponent implements AfterViewInit {
+export class PasswordFieldGroupComponent implements OnInit, AfterViewInit {
+
+  private _formGroupState : FormGroupState<FormValue> | undefined;
 
   @Input() formId!: string;
   @Input() withConfirm: boolean = false;
 
-  constructor() { }
+  constructor(
+    protected store: Store,
+    private validationFnsService: ValidationFnsService
+  ) { }
+
+  ngOnInit() {
+
+    // Subscribe to FormGroupState
+    this.store.select(fromStore.selectFormByID(this.formId))
+      .subscribe(s => this._formGroupState = s);
+
+    // TODO
+    if(this.withConfirm) { 
+      //this.validationFnsService.add(mustMatch('Password', 'ConfirmPassword'));
+    }
+  }
 
   ngAfterViewInit() {
     //if(this.withConfirm){ this.formMod.validator = MustMatch('Password', 'ConfirmPassword'); }
