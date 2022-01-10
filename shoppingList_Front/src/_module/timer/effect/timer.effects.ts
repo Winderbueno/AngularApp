@@ -2,13 +2,13 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { TypedAction } from '@ngrx/store/src/models';
 import { of } from 'rxjs';
 import { filter, map, withLatestFrom, switchMap } from 'rxjs/operators';
 //#endregion
 
 //#region Store
 import * as fromStore from '../store';
-import { TypedAction } from '@ngrx/store/src/models';
 //#endregion
 
 
