@@ -8,7 +8,7 @@ import { ProjectFn, ValidationFn } from 'ngrx-forms';
 
 //#region Model
 import { ModuleEnum } from '@app/model/enum/module.enum';
-import { ControlValidationFns } from '../model/validation-fns.model';
+import { ControlValidationFns } from '@formNew/model/validation-fns.model';
 //#endregion
 
 /* Action DTO */

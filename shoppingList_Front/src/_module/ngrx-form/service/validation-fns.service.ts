@@ -4,7 +4,7 @@ import { ProjectFn, ValidationFn } from 'ngrx-forms';
 //#endregion
 
 //#region Model
-import { ControlValidationFns, FormValidationFns } from '../model/validation-fns.model';
+import { ControlValidationFns, FormValidationFns } from '@formNew/model/validation-fns.model';
 //#endregion
 
 

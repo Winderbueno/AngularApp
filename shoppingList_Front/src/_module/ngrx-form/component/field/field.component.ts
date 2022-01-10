@@ -6,10 +6,10 @@ import { required } from 'ngrx-forms/validation';
 //#endregion
 
 //#region Component, Model, Service
-import { FormErrorService } from '@module/ngrx-form/service/form-error.service';
-import { ValidationFnsService } from '@module/ngrx-form/service/validation-fns.service';
-import * as fromStore from '@module/ngrx-form/store';
-import { FormValue } from '@module/ngrx-form/store/form.state';
+import { FormErrorService } from '@formNew/service/form-error.service';
+import { ValidationFnsService } from '@formNew/service/validation-fns.service';
+import * as fromStore from '@formNew/store/';
+import { FormValue } from '@formNew/store/form.state';
 //#endregion
 
 /**
@@ -64,7 +64,7 @@ export class FieldComponent implements OnInit {
   ngOnInit() {
 
     // Subscribe to FormGroupState
-    this.store.select(fromStore.selectFormByID(this.formId))
+    this.store.select(fromStore.selectFormById(this.formId))
       .subscribe(s => this._formGroupState = s);
 
     // Add Validator according to configuration

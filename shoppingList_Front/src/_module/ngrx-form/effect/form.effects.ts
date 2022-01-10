@@ -10,8 +10,8 @@ import { ProjectFn, SetValueAction } from 'ngrx-forms';
 //#region Store
 import * as fromStore from '../store';
 import { FormValue } from '../store/form.state';
-import { ValidationFnsService } from '../service/validation-fns.service';
-import { ControlValidationFns } from '../model/validation-fns.model';
+import { ValidationFnsService } from '@formNew/service/validation-fns.service';
+import { ControlValidationFns } from '@formNew/model/validation-fns.model';
 //#endregion
 
 
@@ -25,7 +25,7 @@ export class FormEffects {
       ofType(fromStore.validateFormAction),
       switchMap((action) =>
         of(action).pipe(
-          withLatestFrom(this.store.select(fromStore.selectFormByID(action.formId))),
+          withLatestFrom(this.store.select(fromStore.selectFormById(action.formId))),
           filter(([action, form]) => {
             return form != undefined
               && (form.userDefinedProperties.submitValidAction != undefined
@@ -46,7 +46,7 @@ export class FormEffects {
       ofType(fromStore.submitFormAction),
       switchMap((action) =>
         of(action).pipe(
-          withLatestFrom(this.store.select(fromStore.selectFormByID(action.formId))),
+          withLatestFrom(this.store.select(fromStore.selectFormById(action.formId))),
           map(([action, form]) => {
 
             let controlValidationFns:ControlValidationFns = this.validationFnsService.getAllControlValidationFns();

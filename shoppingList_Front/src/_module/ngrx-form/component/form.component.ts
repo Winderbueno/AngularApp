@@ -7,8 +7,8 @@ import { FormGroupState } from 'ngrx-forms';
 //#endregion
 
 //#region Store
-import * as fromStore from '../store';
-import { FormValue } from '@module/ngrx-form/store/form.state';
+import * as fromStore from '@formNew/store/';
+import { FormValue } from '@formNew/store/form.state';
 //#endregion
 
 
@@ -44,7 +44,7 @@ export class FormComponent implements OnInit {
   ngOnInit() {
 
     // Suscribe to FormGroupState
-    this.store.select(fromStore.selectFormByID(this._title))
+    this.store.select(fromStore.selectFormById(this._title))
       .subscribe(s => this._formGroupState = s);
     
     // Initialise FormGroupState
