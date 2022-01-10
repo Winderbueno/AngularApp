@@ -78,7 +78,7 @@ export class FieldComponent implements OnInit {
 
     // Add FormControlState to FormGroupState
     if(this.ctrl === undefined) {
-      this.store.dispatch(fromStore.addGroupControlAction({
+      this.store.dispatch(fromStore.addControlToFormAction({
         formId: this.formId,
         control: { 
           name:this._ctrlName, 

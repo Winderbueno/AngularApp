@@ -3,12 +3,12 @@ import { createAction } from '@action/creator/action-creator';
 import { ActionSourceEnum } from '@action/enum/action-source.enum';
 import { props } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
+import { ProjectFn, ValidationFn } from 'ngrx-forms';
 //#endregion
 
 //#region Model
 import { ModuleEnum } from '@app/model/enum/module.enum';
 import { ControlValidationFns } from '../model/validation-fns.model';
-import { ValidationFn } from 'ngrx-forms';
 //#endregion
 
 /* Action DTO */
@@ -19,7 +19,7 @@ export interface FormControlDTO {
 
 export const createFormAction = createAction (
   ActionSourceEnum.MODULE,
-  ModuleEnum.FORM_NGRX,
+  ModuleEnum.FORM,
   'CREATE_FORM',
   props<{ 
     name: string,
@@ -27,33 +27,34 @@ export const createFormAction = createAction (
     submitInvalidAction?: TypedAction<string> }>()
 );
 
-export const deleteFormAction = createAction (
+export const deleteFormAction = createAction ( // TODO - Implem this feature
   ActionSourceEnum.MODULE,
-  ModuleEnum.FORM_NGRX,
+  ModuleEnum.FORM,
   'DELETE_FORM',
   props<{ name: string }>()
 );
 
 export const submitFormAction = createAction (
   ActionSourceEnum.MODULE,
-  ModuleEnum.FORM_NGRX,
+  ModuleEnum.FORM,
   'SUBMIT_FORM',
   props<{ formId: string }>()
 );
 
 export const validateFormAction = createAction (
   ActionSourceEnum.MODULE,
-  ModuleEnum.FORM_NGRX,
+  ModuleEnum.FORM,
   'VALIDATE_FORM',
   props<{ 
     formId: string,
-    controlValidationFns : ControlValidationFns }>()
+    controlValidationFns : ControlValidationFns,
+    formValidationFns? : ProjectFn<any>[] }>()
 );
 
-export const addGroupControlAction = createAction (
+export const addControlToFormAction = createAction (
   ActionSourceEnum.MODULE,
-  ModuleEnum.FORM_NGRX,
-  'ADD_GROUP_CONTROL',
+  ModuleEnum.FORM,
+  'ADD_CONTROL_TO_FORM',
   props<{ 
     formId: string,
     control: FormControlDTO }>()
@@ -61,7 +62,7 @@ export const addGroupControlAction = createAction (
 
 export const validateControlAction = createAction (
   ActionSourceEnum.MODULE,
-  ModuleEnum.FORM_NGRX,
+  ModuleEnum.FORM,
   'VALIDATE_CONTROL',
   props<{ 
     controlId: string,

@@ -1,34 +1,26 @@
 ﻿//#region Angular, Material, NgRx
-import { Component, Input, AfterViewInit, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { FormGroupState } from 'ngrx-forms';
 //#endregion
 
 //#region Component, Model, Service
 import { ValidationFnsService } from '@module/ngrx-form/service/validation-fns.service';
-import { FormValue } from '@module/ngrx-form/store/form.state';
-import * as fromStore from '@module/ngrx-form/store';
 import { mustMatch } from '@module/ngrx-form/validation-fns/must-match.validator';
 //#endregion
 
 
 /**
  * Password Field Component
- *  @param formID - FormGroupState ID to add the FormControl on
- *  @param withConfirm - Specify if the password field comes with a "confirm password field"
+ *  @param formID - FormGroupState ID to add the FormControlState on
+ *  @param withConfirm - Specify if the password field comes with a "confirm Password" field
  *
- * This component adds 1 or 2 FormControl to the FormGroup
- *
- * These field to be valid :
- *  - The "Pwd" has to be : 6 characters minimum
- *  - The "confirmPwd" has to have the same value as the pwd
+ * This component adds 1 or 2 FormControlState to the FormGroupState
+ * "confirmPwd" field is valid only if it has the same value as Pwd field
  */
 @Component({
   selector: 'app-password-field-group',
   templateUrl: 'password-field-group.component.html' })
-export class PasswordFieldGroupComponent implements OnInit, AfterViewInit {
-
-  private _formGroupState : FormGroupState<FormValue> | undefined;
+export class PasswordFieldGroupComponent implements OnInit {
 
   @Input() formId!: string;
   @Input() withConfirm: boolean = false;
@@ -39,18 +31,11 @@ export class PasswordFieldGroupComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit() {
-
-    // Subscribe to FormGroupState
-    this.store.select(fromStore.selectFormByID(this.formId))
-      .subscribe(s => this._formGroupState = s);
-
-    // TODO
     if(this.withConfirm) { 
-      //this.validationFnsService.add(mustMatch('Password', 'ConfirmPassword'));
+      this.validationFnsService.addFormValidationFn(
+        this.formId, 
+        mustMatch('Password', 'ConfirmPassword')
+      );
     }
-  }
-
-  ngAfterViewInit() {
-    //if(this.withConfirm){ this.formMod.validator = MustMatch('Password', 'ConfirmPassword'); }
   }
 }

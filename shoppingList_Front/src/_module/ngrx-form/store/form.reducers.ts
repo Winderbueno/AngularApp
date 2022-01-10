@@ -35,9 +35,17 @@ const formReducer = createReducer(
 
   on(fromAction.validateFormAction, (state, action) => {
     const newFormState = {...state};
-    newFormState[action.formId] = validateFormState(
+
+    // Validate Control
+    newFormState[action.formId] = validateFormWithControlValidationFns(
       newFormState[action.formId],
       action.controlValidationFns);
+
+    // Validate Control that depend on other Control Value (TODO)
+    action.formValidationFns!.forEach(
+      elt => newFormState[action.formId] = elt(newFormState[action.formId])
+    );    
+
     return newFormState;
   }),
 
@@ -51,7 +59,7 @@ const formReducer = createReducer(
     }
   ),
   
-  on(fromAction.addGroupControlAction,
+  on(fromAction.addControlToFormAction,
     (state, action) => {
       const newFormState = {...state};
 
@@ -80,10 +88,11 @@ const validateByControlId = (
         validate(validationFns)(s) :
         s);
 
-const validateFormState = (
+const validateFormWithControlValidationFns = (
   state: FormGroupState<FormValue>,
   controlValidationFns: ControlValidationFns) =>
   updateRecursive(state,
     s => controlValidationFns[s.id] != undefined ?
       validate(controlValidationFns[s.id])(s) :
       s);
+

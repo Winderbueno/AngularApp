@@ -4,13 +4,13 @@ import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { filter, map, withLatestFrom, switchMap } from 'rxjs/operators';
+import { ProjectFn, SetValueAction } from 'ngrx-forms';
 //#endregion
 
 //#region Store
 import * as fromStore from '../store';
-import { ValidationFnsService } from '../service/validation-fns.service';
-import { SetValueAction } from 'ngrx-forms';
 import { FormValue } from '../store/form.state';
+import { ValidationFnsService } from '../service/validation-fns.service';
 import { ControlValidationFns } from '../model/validation-fns.model';
 //#endregion
 
@@ -19,8 +19,8 @@ import { ControlValidationFns } from '../model/validation-fns.model';
 export class FormEffects {
 
   // After form has been validated and according to its validity state
-  // Dispatch corresponding user defined submit action
-  dispatchSubmitAction$ = createEffect(() =>
+  // If exists, dispatch corresponding user defined submit action
+  dispatchUserDefinedSubmitAction$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromStore.validateFormAction),
       switchMap((action) =>
@@ -28,8 +28,8 @@ export class FormEffects {
           withLatestFrom(this.store.select(fromStore.selectFormByID(action.formId))),
           filter(([action, form]) => {
             return form != undefined
-              && form.userDefinedProperties.submitValidAction != undefined
-              && form.userDefinedProperties.submitInvalidAction != undefined;
+              && (form.userDefinedProperties.submitValidAction != undefined
+              || form.userDefinedProperties.submitInvalidAction != undefined);
           }),
           map(([action, form]) => {
             if(form.isValid) return form.userDefinedProperties.submitValidAction;
@@ -49,14 +49,19 @@ export class FormEffects {
           withLatestFrom(this.store.select(fromStore.selectFormByID(action.formId))),
           map(([action, form]) => {
 
-            let validationFns:ControlValidationFns = this.validationFnsService.getAllControlValidationFns();
-
-            let ctrlId:string = action.formId+'.'+'ConfirmPassword';
-                      
+            let controlValidationFns:ControlValidationFns = this.validationFnsService.getAllControlValidationFns();
+            let formValidationFns:ProjectFn<any>[] = this.validationFnsService.getFormValidationFnsById(action.formId);
+            
+            // TODO
+            // for(let a in controlValidationFns){
+            //   controlValidationFns[a];
+            //   a;
+            // }
 
             return fromStore.validateFormAction({
               formId: action.formId,
-              controlValidationFns: validationFns
+              controlValidationFns: controlValidationFns,
+              formValidationFns : formValidationFns
             });
           })
         )

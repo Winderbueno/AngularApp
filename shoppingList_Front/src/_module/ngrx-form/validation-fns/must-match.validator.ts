@@ -1,9 +1,11 @@
 //#region Angular, Material, NgRx
-import { FormGroupState, validate } from 'ngrx-forms';
+import { FormGroupState, ProjectFn, updateRecursive, validate } from 'ngrx-forms';
 import { equalTo } from 'ngrx-forms/validation';
-import { FormValue } from '../store/form.state';
 //#endregion
 
+//#region Store
+import { FormValue } from '../store/form.state';
+//#endregion
 
 interface MustMatchValidationError<T> {
   actual: T | null | undefined;
@@ -14,16 +16,28 @@ declare module 'ngrx-forms' {
   }
 }
 
-export function mustMatch(ctrlId: string, matchingCtrlId: string): any {
+export function mustMatch(ctrlId: string, matchingCtrlId: string): ProjectFn<any> {
   return (formState:FormGroupState<FormValue>) => {
 
-    const ctrl = formState.controls[ctrlId]
-    const matchingCtrl = formState.controls[matchingCtrlId];
+    if(formState.id === 'Form Demo'){
+      const ctrl = formState.controls[ctrlId]
+      let matchingCtrl = formState.controls[matchingCtrlId];
 
-    // Return if another validator has already found an error on the matchingControl
-    if (matchingCtrl.errors && !matchingCtrl.errors.mustMatch) { return formState; };
-  
-    // Set error on matchingControl if validation fails
-    return validate(equalTo(ctrl.value))(matchingCtrl);
+      // TODO
+
+      // Return if another validator has already found an error on the matchingControl
+      //if (/*matchingCtrl.errors != {} &&*/ !matchingCtrl.errors.mustMatch) { 
+         //return formState;
+      //};
+
+      // Set error on matchingControl if validation fails
+      return updateRecursive(formState, 
+        s => s.id === formState.id+'.'+matchingCtrlId ?
+          validate(equalTo(ctrl.value))(s) :
+          s);
+    } else {
+      return formState;
+    }
+    
   };
 }

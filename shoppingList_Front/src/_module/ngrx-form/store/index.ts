@@ -15,7 +15,7 @@ export {
   deleteFormAction,
   submitFormAction,
   validateFormAction,
-  addGroupControlAction,
+  addControlToFormAction,
   validateControlAction,
   FormControlDTO
 } from './form.actions';
