@@ -32,10 +32,9 @@ export class PasswordFieldGroupComponent implements OnInit {
 
   ngOnInit() {
     if(this.withConfirm) { 
-      this.validationFnsService.addFormValidationFn(
-        this.formId, 
-        mustMatch('Password', 'ConfirmPassword')
-      );
+      this.validationFnsService.addStateParametrizedValidationFn(
+        this.formId,
+        mustMatch('Password', 'ConfirmPassword'));
     }
   }
 }

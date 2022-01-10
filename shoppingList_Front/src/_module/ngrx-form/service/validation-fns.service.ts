@@ -1,10 +1,13 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
-import { ProjectFn, ValidationFn } from 'ngrx-forms';
+import { ValidationFn } from 'ngrx-forms';
 //#endregion
 
 //#region Model
-import { ControlValidationFns, FormValidationFns } from '@formNew/model/validation-fns.model';
+import { 
+  ControlValidationFns, 
+  StateParametrizedValidationFn, 
+  StateParametrizedValidationFns } from '../model/validation-fns.model';
 //#endregion
 
 
@@ -12,14 +15,14 @@ import { ControlValidationFns, FormValidationFns } from '@formNew/model/validati
 export class ValidationFnsService {
 
   controlValidationFns:ControlValidationFns = {};
-  formValidationFns:FormValidationFns = {};
+  formDependantValidationFns:StateParametrizedValidationFns = {};
 
-  getControlValidationFnsById(controlId: string): ValidationFn<any>[] {
+  getControlValidationFns(controlId: string): ValidationFn<any>[] {
     return this.controlValidationFns[controlId];
   }
 
-  getFormValidationFnsById(formId: string): ProjectFn<any>[] {
-    return this.formValidationFns[formId];
+  getStateParametrizedValidationFns(formId: string): StateParametrizedValidationFn[] {
+    return this.formDependantValidationFns[formId];
   }
 
   getAllControlValidationFns(): ControlValidationFns {
@@ -38,11 +41,11 @@ export class ValidationFnsService {
     }
   }
 
-  addFormValidationFn(formId: string, validationFn: ProjectFn<any>) {    
-    if(this.formValidationFns[formId] != undefined) {
-      this.formValidationFns[formId].push(validationFn);
+  addStateParametrizedValidationFn(formId: string, validationFn: StateParametrizedValidationFn) {    
+    if(this.formDependantValidationFns[formId] != undefined) {
+      this.formDependantValidationFns[formId].push(validationFn);
     } else {
-      this.formValidationFns[formId]=[validationFn];
+      this.formDependantValidationFns[formId]=[validationFn];
     }
   }
 }

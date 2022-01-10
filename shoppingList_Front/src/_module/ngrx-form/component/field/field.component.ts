@@ -37,7 +37,7 @@ export class FieldComponent implements OnInit {
   // FormState
   private _formGroupState : FormGroupState<FormValue> | undefined;
   private _ctrlName!: string;
-  private _validators: ValidationFn<any>[] = [];
+  private _validationFns: ValidationFn<any>[] = [];
 
   // Input
   @Input() formId!: string;
@@ -53,7 +53,7 @@ export class FieldComponent implements OnInit {
   get ctrlName() { return this._ctrlName; }
   get ctrl() { return this._formGroupState!.controls[this._ctrlName] as unknown as FormControlState<string|boolean|number>; }
   get err() { return this.formErrorService; }
-  protected get validators() { return this._validators }
+  protected get validationFns() { return this._validationFns }
 
   constructor(
     protected store: Store,
@@ -67,14 +67,14 @@ export class FieldComponent implements OnInit {
     this.store.select(fromStore.selectFormById(this.formId))
       .subscribe(s => this._formGroupState = s);
 
-    // Add Validator according to configuration
-    if(this.required === true) { this._validators.push(required); }  
+    // Add ValidationFns according to configuration
+    if(this.required === true) { this._validationFns.push(required); }  
     
     // Save ValidationFns
     let ctrlId:string = this.formId + '.' + this._ctrlName;
-    if(this.validationFnsService.getControlValidationFnsById(ctrlId) === undefined) {
-      this.validationFnsService.setControlValidationFns(ctrlId, this._validators);
-    }    
+    if(this.validationFnsService.getControlValidationFns(ctrlId) === undefined) {
+      this.validationFnsService.setControlValidationFns(ctrlId, this._validationFns);
+    }
 
     // Add FormControlState to FormGroupState
     if(this.ctrl === undefined) {

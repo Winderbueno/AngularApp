@@ -25,10 +25,10 @@ export class InputFieldComponent extends FieldComponent {
     // By default, if withFeature 'Visibility', we hide the input
     if(this.withFeature === 'Visibility') { this.inputHide = true; }
     
-    if(this.ctrlName === 'Email') { super.validators.push(email); }
+    if(this.ctrlName === 'Email') { super.validationFns.push(email); }
 
     // TODO - Change Password Format Policy
-    if(this.ctrlName === 'Password') { super.validators.push(minLength(6)); }
+    if(this.ctrlName === 'Password') { super.validationFns.push(minLength(6)); }
 
     super.ngOnInit();
   }

@@ -3,7 +3,7 @@ import { createAction } from '@action/creator/action-creator';
 import { ActionSourceEnum } from '@action/enum/action-source.enum';
 import { props } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
-import { ProjectFn, ValidationFn } from 'ngrx-forms';
+import { ValidationFn } from 'ngrx-forms';
 //#endregion
 
 //#region Model
@@ -47,8 +47,7 @@ export const validateFormAction = createAction (
   'VALIDATE_FORM',
   props<{ 
     formId: string,
-    controlValidationFns : ControlValidationFns,
-    formValidationFns? : ProjectFn<any>[] }>()
+    controlValidationFns : ControlValidationFns }>()
 );
 
 export const addControlToFormAction = createAction (

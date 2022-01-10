@@ -17,7 +17,7 @@ import { FieldComponent } from '@formNew/component/';
 export class CheckBoxFieldComponent extends FieldComponent {
 
   ngOnInit() {
-    if(this.required === true) { super.validators.push(requiredTrue); }
+    if(this.required === true) { super.validationFns.push(requiredTrue); }
     super.ngOnInit();
   }
 }

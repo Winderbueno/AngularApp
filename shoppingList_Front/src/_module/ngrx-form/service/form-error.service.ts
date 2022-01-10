@@ -18,9 +18,9 @@ export class FormErrorService {
        errMsg = 'Filled in email has not the good format';
     } else if (ctrlState.errors.minLength) {
        errMsg = `Field Length should be at least : ${ctrlState.errors!.minLength.minLength}`;
-    } //else if (formCtrl.hasError('mustMatch')) { // TODO
-    //   errMsg = 'Field should be the same';
-    // }
+    } else if (ctrlState.errors.equalTo) { // TODO
+       errMsg = 'Field should be the same';
+    }
 
     return errMsg;
   }

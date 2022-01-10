@@ -41,11 +41,6 @@ const formReducer = createReducer(
       newFormState[action.formId],
       action.controlValidationFns);
 
-    // Validate Control that depend on other Control Value (TODO)
-    action.formValidationFns!.forEach(
-      elt => newFormState[action.formId] = elt(newFormState[action.formId])
-    );    
-
     return newFormState;
   }),
 

@@ -4,14 +4,16 @@ import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { filter, map, withLatestFrom, switchMap } from 'rxjs/operators';
-import { ProjectFn, SetValueAction } from 'ngrx-forms';
+import { SetValueAction } from 'ngrx-forms';
 //#endregion
 
 //#region Store
 import * as fromStore from '../store';
 import { FormValue } from '../store/form.state';
 import { ValidationFnsService } from '@formNew/service/validation-fns.service';
-import { ControlValidationFns } from '@formNew/model/validation-fns.model';
+import { 
+  ControlValidationFns,
+  StateParametrizedValidationFn } from '@formNew/model/validation-fns.model';
 //#endregion
 
 
@@ -49,19 +51,38 @@ export class FormEffects {
           withLatestFrom(this.store.select(fromStore.selectFormById(action.formId))),
           map(([action, form]) => {
 
-            let controlValidationFns:ControlValidationFns = this.validationFnsService.getAllControlValidationFns();
-            let formValidationFns:ProjectFn<any>[] = this.validationFnsService.getFormValidationFnsById(action.formId);
-            
-            // TODO
-            // for(let a in controlValidationFns){
-            //   controlValidationFns[a];
-            //   a;
-            // }
+            let controlValidationFns:ControlValidationFns = 
+              this.validationFnsService.getAllControlValidationFns();
+            let formDepValFns:StateParametrizedValidationFn[] = 
+              this.validationFnsService.getStateParametrizedValidationFns(action.formId);
+
+            var genCtrlValFns:ControlValidationFns = {};
+
+            for(let ctrlId in controlValidationFns){
+              controlValidationFns[ctrlId].forEach(elt=> {
+                if(genCtrlValFns[ctrlId] === undefined){
+                  genCtrlValFns[ctrlId]=[];
+                }
+                genCtrlValFns[ctrlId].push(elt);
+              });
+            }
+
+            formDepValFns.forEach(elt=> {
+                let ctrlValFns:ControlValidationFns = elt(form);
+                for(let ctrlId in ctrlValFns){
+                  ctrlValFns[ctrlId].forEach(elt=> {
+                    if(genCtrlValFns[action.formId+'.'+ctrlId] === undefined){
+                      genCtrlValFns[action.formId+'.'+ctrlId]=[];
+                    }
+                    genCtrlValFns[action.formId+'.'+ctrlId].push(elt);
+                  });
+                }
+              }
+            );
 
             return fromStore.validateFormAction({
               formId: action.formId,
-              controlValidationFns: controlValidationFns,
-              formValidationFns : formValidationFns
+              controlValidationFns: genCtrlValFns,
             });
           })
         )
@@ -76,7 +97,7 @@ export class FormEffects {
       map((action:SetValueAction<FormValue>) => {
         return fromStore.validateControlAction({
           controlId: action.controlId,
-          ValidationFns: this.validationFnsService.getControlValidationFnsById(action.controlId)
+          ValidationFns: this.validationFnsService.getControlValidationFns(action.controlId)
         });
       })
     )
