@@ -71,10 +71,11 @@ export class FieldComponent implements OnInit {
     if(this.required === true) { this._validationFns.push(required); }  
     
     // Save ValidationFns
-    let ctrlId:string = this.formId + '.' + this._ctrlName;
-    if(this.validationFnsService.getControlValidationFns(ctrlId) === undefined) {
-      this.validationFnsService.setControlValidationFns(ctrlId, this._validationFns);
-    }
+    this.validationFnsService.setControlValidationFns(
+      this.formId, 
+      this._ctrlName, 
+      this._validationFns);
+    
 
     // Add FormControlState to FormGroupState
     if(this.ctrl === undefined) {

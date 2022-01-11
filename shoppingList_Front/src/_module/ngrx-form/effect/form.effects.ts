@@ -10,10 +10,10 @@ import { SetValueAction } from 'ngrx-forms';
 //#region Store
 import * as fromStore from '../store';
 import { FormValue } from '../store/form.state';
-import { ValidationFnsService } from '@formNew/service/validation-fns.service';
+import { ValidationFnsService } from '../service/validation-fns.service';
 import { 
-  ControlValidationFns,
-  StateParametrizedValidationFn } from '@formNew/model/validation-fns.model';
+  ControlStateParamValidationFns,
+  ControlValidationFns } from '@formNew/model/validation-fns.model';
 //#endregion
 
 
@@ -51,15 +51,15 @@ export class FormEffects {
           withLatestFrom(this.store.select(fromStore.selectFormById(action.formId))),
           map(([action, form]) => {
 
-            let controlValidationFns:ControlValidationFns = 
-              this.validationFnsService.getAllControlValidationFns();
-            let formDepValFns:StateParametrizedValidationFn[] = 
-              this.validationFnsService.getStateParametrizedValidationFns(action.formId);
+            let controlValFns:ControlValidationFns = 
+              this.validationFnsService.getControlValidationFnsByFormId(action.formId);
+            let controlStateParamValFns:ControlStateParamValidationFns = 
+              this.validationFnsService.getStateParamControlValidationFnsByFormId(action.formId);
 
             var genCtrlValFns:ControlValidationFns = {};
 
-            for(let ctrlId in controlValidationFns){
-              controlValidationFns[ctrlId].forEach(elt=> {
+            for(let ctrlId in controlValFns){
+              controlValFns[ctrlId].forEach(elt=> {
                 if(genCtrlValFns[ctrlId] === undefined){
                   genCtrlValFns[ctrlId]=[];
                 }
@@ -67,18 +67,15 @@ export class FormEffects {
               });
             }
 
-            formDepValFns.forEach(elt=> {
-                let ctrlValFns:ControlValidationFns = elt(form);
-                for(let ctrlId in ctrlValFns){
-                  ctrlValFns[ctrlId].forEach(elt=> {
-                    if(genCtrlValFns[action.formId+'.'+ctrlId] === undefined){
-                      genCtrlValFns[action.formId+'.'+ctrlId]=[];
-                    }
-                    genCtrlValFns[action.formId+'.'+ctrlId].push(elt);
-                  });
+            for (let ctrlId in controlStateParamValFns) {
+              controlStateParamValFns[ctrlId].forEach(elt => {
+                if (genCtrlValFns[ctrlId] === undefined) {
+                  genCtrlValFns[ctrlId] = [];
                 }
-              }
-            );
+                // Transform StateParamValFn en ValFn
+                genCtrlValFns[ctrlId].push(elt(form)); 
+              });
+            }            
 
             return fromStore.validateFormAction({
               formId: action.formId,
@@ -97,7 +94,9 @@ export class FormEffects {
       map((action:SetValueAction<FormValue>) => {
         return fromStore.validateControlAction({
           controlId: action.controlId,
-          ValidationFns: this.validationFnsService.getControlValidationFns(action.controlId)
+          ValidationFns: this.validationFnsService.getControlValidationFns(
+            action.controlId.split('.')[0],
+            action.controlId.split('.')[1])
         });
       })
     )
