@@ -24,7 +24,7 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
       fromShoppingList.featureKey,
       fromTimer.featureKey,
       fromToken.featureKey,
-      fromForm.featureKey
+      //fromForm.featureKey
     ],
     rehydrate: true
   })(reducer);

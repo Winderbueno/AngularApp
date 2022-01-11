@@ -15,6 +15,7 @@ export {
   deleteFormAction,
   submitFormAction,
   validateFormAction,
+  dynamicValidateFormAction,
   addControlToFormAction,
   validateControlAction,
   FormControlDTO

@@ -70,6 +70,27 @@ export class ValidationFnsService {
     return genCtrlValFns;
   }
 
+  getDynamicControlValidationFnsByFormId(
+    formId: string, 
+    form: FormGroupState<FormValue>): StaticControlValidationFns {
+
+    let controlStateParamValFns: StateParamControlValidationFns =
+      this.getStateParamControlValidationFnsByFormId(formId);
+
+    var genCtrlValFns: StaticControlValidationFns = {};
+    for (let ctrlId in controlStateParamValFns) {
+      controlStateParamValFns[ctrlId].forEach(elt => {
+        if (genCtrlValFns[ctrlId] === undefined) {
+          genCtrlValFns[ctrlId] = [];
+        }
+        //Transform StateParamValFn en ValFn
+        genCtrlValFns[ctrlId].push(elt(form));
+      });
+    }
+
+    return genCtrlValFns;
+  }
+
   /*********************************/
   /* Static Control Validation Fns */
   /*********************************/

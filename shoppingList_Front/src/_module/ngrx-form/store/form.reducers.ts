@@ -23,26 +23,30 @@ const formReducer = createReducer(
   initialState,
   onNgrxForms(),
 
-  on(fromAction.validateControlAction, (state, action) => {
-    const newFormState = {...state};
-    let formInfo:string[] = action.controlId.split('.');
-    newFormState[formInfo[0]] = validateByControlId(
-      newFormState[formInfo[0]], 
-      action.controlId,
-      action.ValidationFns);
-    return newFormState;
-  }),
+  on(fromAction.validateControlAction, 
+    (state, action) => {
+      const newFormState = {...state};
+      let formInfo:string[] = action.controlId.split('.');
+      newFormState[formInfo[0]] = validateByControlId(
+        newFormState[formInfo[0]], 
+        action.controlId,
+        action.ValidationFns);
+      return newFormState;
+    }),
 
-  on(fromAction.validateFormAction, (state, action) => {
-    const newFormState = {...state};
+  on(
+    fromAction.validateFormAction,
+    fromAction.dynamicValidateFormAction, 
+    (state, action) => {
+      const newFormState = {...state};
 
-    // Validate Control
-    newFormState[action.formId] = validateFormWithControlValidationFns(
-      newFormState[action.formId],
-      action.controlValidationFns);
+      // Validate Control
+      newFormState[action.formId] = validateFormWithControlValidationFns(
+        newFormState[action.formId],
+        action.controlValidationFns);
 
-    return newFormState;
-  }),
+      return newFormState;
+    }),
 
   on(fromAction.createFormAction,
     (state, action) => {
@@ -51,8 +55,7 @@ const formReducer = createReducer(
       newFormState[action.name] = setUserDefinedProperty('submitValidAction', action.submitValidAction)(newFormState[action.name]);
       newFormState[action.name] = setUserDefinedProperty('submitInvalidAction', action.submitInvalidAction)(newFormState[action.name]);
       return newFormState;
-    }
-  ),
+    }),
   
   on(fromAction.addControlToFormAction,
     (state, action) => {
@@ -66,8 +69,7 @@ const formReducer = createReducer(
         action.control.value);
 
       return newFormState;
-    }
-  ),
+    }),
 );
 
 export function reducer(state: FormState | undefined, action: Action) {

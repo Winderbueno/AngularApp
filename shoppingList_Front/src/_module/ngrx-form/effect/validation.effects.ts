@@ -39,6 +39,29 @@ export class ValidationEffects {
     )
   );
 
+  // TODO - This is done any change change on value... Might be optimizable
+  // After form control has been, 
+  // Run validation on potentially dependant
+  dynamycFormValidationAction$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromStore.validateControlAction),
+      switchMap((action) =>
+        of(action).pipe(
+          withLatestFrom(this.store.select(fromStore.selectFormById(action.controlId.split('.')[0]))),
+          map(([action, formState]) => {
+            let formId:string = action.controlId.split('.')[0];
+            return fromStore.dynamicValidateFormAction({
+              formId: formId,
+              // Get DynamicValidationFns for the form 
+              controlValidationFns: this.validationFnsService 
+                .getDynamicControlValidationFnsByFormId(formId, formState)
+            });
+          })
+        )
+      )
+    )
+  );
+
   // After form as been submitted, 
   // Run form validation (i.e. a validation of all its control)
   validateFormAction$ = createEffect(() =>
@@ -52,7 +75,7 @@ export class ValidationEffects {
               formId: action.formId,
               // Get All Control ValidationFns for the form 
               controlValidationFns: this.validationFnsService 
-                .getControlValidationFnsByFormId(action.formId, formState),
+                .getControlValidationFnsByFormId(action.formId, formState)
             });
           })
         )

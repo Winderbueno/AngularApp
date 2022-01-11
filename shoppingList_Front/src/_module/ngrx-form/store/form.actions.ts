@@ -50,6 +50,15 @@ export const validateFormAction = createAction (
     controlValidationFns : StaticControlValidationFns }>()
 );
 
+export const dynamicValidateFormAction = createAction (
+  ActionSourceEnum.MODULE,
+  ModuleEnum.FORM,
+  'DYNAMIC_VALIDATE_FORM',
+  props<{ 
+    formId: string,
+    controlValidationFns : StaticControlValidationFns }>()
+);
+
 export const addControlToFormAction = createAction (
   ActionSourceEnum.MODULE,
   ModuleEnum.FORM,
