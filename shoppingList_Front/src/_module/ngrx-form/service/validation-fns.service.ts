@@ -28,8 +28,11 @@ export class ValidationFnsService {
       this.getStateParamControlValidationFns(formId, controlName);
 
     var genCtrlValFns: ValidationFn<any>[] = [];
-    controlValFns.forEach(elt => { genCtrlValFns.push(elt); });
-    controlStateParamValFns.forEach(elt => { genCtrlValFns.push(elt(form)); });
+    if(controlValFns != undefined) 
+      controlValFns.forEach(elt => { genCtrlValFns.push(elt); });
+    
+    if(controlStateParamValFns != undefined)
+      controlStateParamValFns.forEach(elt => { genCtrlValFns.push(elt(form)); });
 
     return genCtrlValFns;
   }
