@@ -8,7 +8,7 @@ import { ValidationFn } from 'ngrx-forms';
 
 //#region Model
 import { ModuleEnum } from '@app/model/enum/module.enum';
-import { ControlValidationFns } from '@formNew/model/validation-fns.model';
+import { StaticControlValidationFns } from '@formNew/model/validation-fns.model';
 //#endregion
 
 /* Action DTO */
@@ -47,7 +47,7 @@ export const validateFormAction = createAction (
   'VALIDATE_FORM',
   props<{ 
     formId: string,
-    controlValidationFns : ControlValidationFns }>()
+    controlValidationFns : StaticControlValidationFns }>()
 );
 
 export const addControlToFormAction = createAction (

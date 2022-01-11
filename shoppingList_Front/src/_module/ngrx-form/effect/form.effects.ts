@@ -11,9 +11,6 @@ import { SetValueAction } from 'ngrx-forms';
 import * as fromStore from '../store';
 import { FormValue } from '../store/form.state';
 import { ValidationFnsService } from '../service/validation-fns.service';
-import { 
-  StateParamControlValidationFns,
-  ControlValidationFns } from '@formNew/model/validation-fns.model';
 //#endregion
 
 
@@ -49,37 +46,12 @@ export class FormEffects {
       switchMap((action) =>
         of(action).pipe(
           withLatestFrom(this.store.select(fromStore.selectFormById(action.formId))),
-          map(([action, form]) => {
-
-            let controlValFns:ControlValidationFns = 
-              this.validationFnsService.getControlValidationFnsByFormId(action.formId);
-            let controlStateParamValFns:StateParamControlValidationFns = 
-              this.validationFnsService.getStateParamControlValidationFnsByFormId(action.formId);
-
-            var genCtrlValFns:ControlValidationFns = {};
-
-            for(let ctrlId in controlValFns){
-              controlValFns[ctrlId].forEach(elt=> {
-                if(genCtrlValFns[ctrlId] === undefined){
-                  genCtrlValFns[ctrlId]=[];
-                }
-                genCtrlValFns[ctrlId].push(elt);
-              });
-            }
-
-            for (let ctrlId in controlStateParamValFns) {
-              controlStateParamValFns[ctrlId].forEach(elt => {
-                if (genCtrlValFns[ctrlId] === undefined) {
-                  genCtrlValFns[ctrlId] = [];
-                }
-                // Transform StateParamValFn en ValFn
-                genCtrlValFns[ctrlId].push(elt(form)); 
-              });
-            }            
-
+          map(([action, formState]) => {
             return fromStore.validateFormAction({
               formId: action.formId,
-              controlValidationFns: genCtrlValFns,
+              // Get All Control ValidationFns for the form 
+              controlValidationFns: this.validationFnsService 
+                .getControlValidationFnsByFormId(action.formId, formState),
             });
           })
         )

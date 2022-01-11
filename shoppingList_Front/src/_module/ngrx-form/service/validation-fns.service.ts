@@ -1,29 +1,64 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
-import { ValidationFn } from 'ngrx-forms';
+import { FormGroupState, ValidationFn } from 'ngrx-forms';
 //#endregion
 
 //#region Model
 import { 
-  ControlValidationFns, 
+  StaticControlValidationFns, 
   StateParamControlValidationFn, 
   StateParamControlValidationFns } from '../model/validation-fns.model';
+import { FormValue } from '../store/form.state';
 //#endregion
 
 
 @Injectable({ providedIn: 'root' })
 export class ValidationFnsService {
 
-  controlValFns:ControlValidationFns = {};
+  controlValFns:StaticControlValidationFns = {};
   stateParamControlValFns:StateParamControlValidationFns = {};
+
+  getControlValidationFnsByFormId(formId: string, form: FormGroupState<FormValue>): StaticControlValidationFns {
+
+    let controlValFns: StaticControlValidationFns =
+      this.getStaticControlValidationFnsByFormId(formId);
+    let controlStateParamValFns: StateParamControlValidationFns =
+      this.getStateParamControlValidationFnsByFormId(formId);
+
+    var genCtrlValFns: StaticControlValidationFns = {};
+
+    for (let ctrlId in controlValFns) {
+      controlValFns[ctrlId].forEach(elt => {
+        if (genCtrlValFns[ctrlId] === undefined) {
+          genCtrlValFns[ctrlId] = [];
+        }
+        genCtrlValFns[ctrlId].push(elt);
+      });
+    }
+
+    for (let ctrlId in controlStateParamValFns) {
+      controlStateParamValFns[ctrlId].forEach(elt => {
+        if (genCtrlValFns[ctrlId] === undefined) {
+          genCtrlValFns[ctrlId] = [];
+        }
+        //Transform StateParamValFn en ValFn
+        genCtrlValFns[ctrlId].push(elt(form));
+      });
+    }
+
+    return genCtrlValFns;
+  }
+
+
+  /* Static Control Validation Fns */
 
   getControlValidationFns(formId: string, controlName: string): ValidationFn<any>[] {
     return this.controlValFns[this.getControlIdWithName(formId, controlName)];
   }
 
-  getControlValidationFnsByFormId(formId: string): ControlValidationFns {
+  private getStaticControlValidationFnsByFormId(formId: string): StaticControlValidationFns {
 
-    let formValFns:ControlValidationFns = {};
+    let formValFns:StaticControlValidationFns = {};
     for(let ctrlId in this.controlValFns){
       if(ctrlId.split('.')[0] === formId) {
         formValFns[ctrlId] = this.controlValFns[ctrlId];
@@ -53,7 +88,7 @@ export class ValidationFnsService {
   }
 
   /* State Parametrized Validation Functions */
-  getStateParamControlValidationFnsByFormId(formId: string): StateParamControlValidationFns {
+  private getStateParamControlValidationFnsByFormId(formId: string): StateParamControlValidationFns {
 
     let formStateParamValFns:StateParamControlValidationFns = {};
     for(let ctrlId in this.stateParamControlValFns){

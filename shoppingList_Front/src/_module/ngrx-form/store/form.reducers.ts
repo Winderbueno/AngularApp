@@ -14,7 +14,7 @@ import {
 //#region State, Action
 import { FormState, initialState, FormValue } from './form.state';
 import * as fromAction from './form.actions';
-import { ControlValidationFns } from '@formNew/model/validation-fns.model';
+import { StaticControlValidationFns } from '@formNew/model/validation-fns.model';
 //#endregion
 
 export const featureKey = 'ngrx-form';
@@ -85,7 +85,7 @@ const validateByControlId = (
 
 const validateFormWithControlValidationFns = (
   state: FormGroupState<FormValue>,
-  controlValidationFns: ControlValidationFns) =>
+  controlValidationFns: StaticControlValidationFns) =>
   updateRecursive(state,
     s => controlValidationFns[s.id] != undefined ?
       validate(controlValidationFns[s.id])(s) :

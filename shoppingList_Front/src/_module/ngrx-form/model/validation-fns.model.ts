@@ -3,7 +3,7 @@ import { FormGroupState, ValidationFn } from 'ngrx-forms';
 import { FormValue } from '../store/form.state';
 //#endregion
 
-export interface ControlValidationFns {
+export interface StaticControlValidationFns {
   [controlId: string]: ValidationFn<any>[];
 }
 
@@ -12,4 +12,5 @@ export interface StateParamControlValidationFns {
 }
 
 /* Validation Fns that depend on other state value */
-export declare type StateParamControlValidationFn = (s:FormGroupState<FormValue>) => ValidationFn<any>;
+export declare type StateParamControlValidationFn = 
+  (s:FormGroupState<FormValue>) => ValidationFn<any>;
