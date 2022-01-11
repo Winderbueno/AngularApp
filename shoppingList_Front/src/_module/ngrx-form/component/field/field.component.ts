@@ -6,10 +6,10 @@ import { required } from 'ngrx-forms/validation';
 //#endregion
 
 //#region Component, Model, Service
-import { FormErrorService } from '@formNew/service/form-error.service';
-import { ValidationFnsService } from '@formNew/service/validation-fns.service';
-import * as fromStore from '@formNew/store/';
-import { FormValue } from '@formNew/store/form.state';
+import { FormErrorService } from '@form/service/form-error.service';
+import { ValidationFnsService } from '@form/service/validation-fns.service';
+import * as fromStore from '@form/store/';
+import { FormValue } from '@form/store/form.state';
 //#endregion
 
 /**

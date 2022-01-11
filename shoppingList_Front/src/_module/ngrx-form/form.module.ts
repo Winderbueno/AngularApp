@@ -17,9 +17,7 @@ import * as fromStore from './store';
 //#endregion
 
 //#region Effect
-import { 
-  ValidationEffects,
-  SubmitActionEffects } from './effect/';
+import { ValidationEffects } from './effect/';
 //#endregion
 
 //#region Component
@@ -48,10 +46,7 @@ import {
     StoreModule.forFeature(fromStore.featureKey, fromStore.reducer),
 
     /* Effect */
-    EffectsModule.forFeature([
-      ValidationEffects,
-      SubmitActionEffects
-    ]),
+    EffectsModule.forFeature([ValidationEffects]),
   ],
   declarations: [
     /* Field */

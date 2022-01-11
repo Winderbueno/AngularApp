@@ -14,7 +14,7 @@ import {
 //#region State, Action
 import { FormState, initialState, FormValue } from './form.state';
 import * as fromAction from './form.actions';
-import { StaticControlValidationFns } from '@formNew/model/validation-fns.model';
+import { StaticControlValidationFns } from '../model/validation-fns.model';
 //#endregion
 
 export const featureKey = 'ngrx-form';

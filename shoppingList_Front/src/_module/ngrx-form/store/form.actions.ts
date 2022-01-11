@@ -8,7 +8,7 @@ import { ValidationFn } from 'ngrx-forms';
 
 //#region Model
 import { ModuleEnum } from '@app/model/enum/module.enum';
-import { StaticControlValidationFns } from '@formNew/model/validation-fns.model';
+import { StaticControlValidationFns } from '../model/validation-fns.model';
 //#endregion
 
 /* Action DTO */

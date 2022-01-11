@@ -4,8 +4,8 @@ import { Store } from '@ngrx/store';
 //#endregion
 
 //#region Component, Model, Service
-import { ValidationFnsService } from '@formNew/service/validation-fns.service';
-import { mustMatch } from '@formNew/validation-fns/must-match.validation-fns';
+import { ValidationFnsService } from '@form/service/validation-fns.service';
+import { mustMatch } from '@form/validation-fns/must-match.validation-fns';
 //#endregion
 
 

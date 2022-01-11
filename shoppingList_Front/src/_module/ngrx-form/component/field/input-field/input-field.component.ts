@@ -4,7 +4,7 @@ import { email, minLength } from 'ngrx-forms/validation';
 //#endregion
 
 //#region Component, Model, Service
-import { FieldComponent } from '@formNew/component/';
+import { FieldComponent } from '@form/component/';
 //#endregion
 
 

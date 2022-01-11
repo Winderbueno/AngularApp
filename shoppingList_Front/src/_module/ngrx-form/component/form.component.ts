@@ -7,8 +7,8 @@ import { FormGroupState } from 'ngrx-forms';
 //#endregion
 
 //#region Store
-import * as fromStore from '@formNew/store/';
-import { FormValue } from '@formNew/store/form.state';
+import * as fromStore from '@form/store/';
+import { FormValue } from '@form/store/form.state';
 //#endregion
 
 
@@ -21,18 +21,12 @@ export class FormComponent implements OnInit {
   // Form
   protected _formGroupState!: FormGroupState<FormValue> | undefined;
   private _title: string = "Form Title";
-  private _submitValidAction: TypedAction<string> | undefined;
-  private _submitInvalidAction: TypedAction<string> | undefined;
-
+  
   // Accessor
   get title() { return this._title; }
   protected set title(title:string) { this._title = title; }
-  
-  get submitValidAction() { return this._submitValidAction!; }
-  protected set submitValidAction(action:TypedAction<string>) { this._submitValidAction = action; }
-  get submitInvalidAction() { return this._submitInvalidAction!; }
-  protected set submitInvalidAction(action:TypedAction<string>) { this._submitInvalidAction = action; }
-  
+
+  get value() { return this._formGroupState!.value }
   get formGroupState() { return this._formGroupState ? this._formGroupState : undefined; }
 
   constructor(
@@ -49,16 +43,20 @@ export class FormComponent implements OnInit {
     
     // Initialise FormGroupState
     if(this.formGroupState === undefined) {
-      this.store.dispatch(
-        fromStore.createFormAction({ 
-          name: this._title,
-          submitValidAction: this._submitValidAction,
-          submitInvalidAction: this._submitInvalidAction
-        }));        
+      this.store.dispatch(fromStore.createFormAction({ name: this._title }));
     }
   }
 
   onSubmit(): void {
-    this.store.dispatch(fromStore.submitFormAction({ formId: this._title}));
+    this.store.dispatch(fromStore.submitFormAction({ formId: this._title }));
+    
+    if(this._formGroupState?.isValid) {
+      if(this.submitValidAction() != undefined) { this.store.dispatch(this.submitValidAction()!); }
+    } else {
+      if(this.submitInvalidAction() != undefined) { this.store.dispatch(this.submitInvalidAction()!); }
+    }
   }
+
+  submitValidAction(): TypedAction<string> | undefined { return undefined; }
+  submitInvalidAction(): TypedAction<string> | undefined { return undefined; }
 }
