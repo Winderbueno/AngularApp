@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { filter, map, withLatestFrom, switchMap } from 'rxjs/operators';
+import { map, withLatestFrom, switchMap } from 'rxjs/operators';
 import { SetValueAction } from 'ngrx-forms';
 //#endregion
 
@@ -15,31 +15,32 @@ import { ValidationFnsService } from '../service/validation-fns.service';
 
 
 @Injectable()
-export class FormEffects {
+export class ValidationEffects {
 
-  // After form has been validated and according to its validity state
-  // If exists, dispatch corresponding user defined submit action
-  dispatchUserDefinedSubmitAction$ = createEffect(() =>
+  // After form control had its value set, 
+  // Run control validation
+  validateControlAction$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(fromStore.validateFormAction),
-      switchMap((action) =>
+      ofType(SetValueAction.TYPE),
+      switchMap((action:SetValueAction<FormValue>) =>
         of(action).pipe(
-          withLatestFrom(this.store.select(fromStore.selectFormById(action.formId))),
-          filter(([action, form]) => {
-            return form != undefined
-              && (form.userDefinedProperties.submitValidAction != undefined
-              || form.userDefinedProperties.submitInvalidAction != undefined);
-          }),
-          map(([action, form]) => {
-            if(form.isValid) return form.userDefinedProperties.submitValidAction;
-            else return form.userDefinedProperties.submitInvalidAction;
+          withLatestFrom(this.store.select(fromStore.selectFormById(action.controlId.split('.')[0]))),
+          map(([action, formState]) => {
+            return fromStore.validateControlAction({
+              controlId: action.controlId,
+              ValidationFns: this.validationFnsService.getControlValidationFns(
+                action.controlId.split('.')[0],
+                action.controlId.split('.')[1],
+                formState)
+            });
           })
         )
       )
     )
   );
 
-
+  // After form as been submitted, 
+  // Run form validation (i.e. a validation of all its control)
   validateFormAction$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromStore.submitFormAction),
@@ -56,21 +57,6 @@ export class FormEffects {
           })
         )
       )
-    )
-  );
-
-
-  validateControlAction$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(SetValueAction.TYPE),
-      map((action:SetValueAction<FormValue>) => {
-        return fromStore.validateControlAction({
-          controlId: action.controlId,
-          ValidationFns: this.validationFnsService.getControlValidationFns(
-            action.controlId.split('.')[0],
-            action.controlId.split('.')[1])
-        });
-      })
     )
   );
 

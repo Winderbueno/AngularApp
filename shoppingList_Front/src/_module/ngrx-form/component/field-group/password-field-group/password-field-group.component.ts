@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 
 //#region Component, Model, Service
 import { ValidationFnsService } from '@formNew/service/validation-fns.service';
-import { mustMatch } from '@formNew/validation-fns/must-match.validator';
+import { mustMatch } from '@formNew/validation-fns/must-match.validation-fns';
 //#endregion
 
 

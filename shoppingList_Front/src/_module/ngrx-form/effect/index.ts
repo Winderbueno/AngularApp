@@ -1,2 +1,3 @@
 ﻿/* Effect */
-export { FormEffects } from './form.effects';
+export { ValidationEffects } from './validation.effects';
+export { SubmitActionEffects } from './submit-action.effects';

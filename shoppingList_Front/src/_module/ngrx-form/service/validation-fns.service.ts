@@ -18,7 +18,25 @@ export class ValidationFnsService {
   controlValFns:StaticControlValidationFns = {};
   stateParamControlValFns:StateParamControlValidationFns = {};
 
-  getControlValidationFnsByFormId(formId: string, form: FormGroupState<FormValue>): StaticControlValidationFns {
+  getControlValidationFns(
+    formId: string,
+    controlName: string,
+    form: FormGroupState<FormValue>): ValidationFn<any>[] {
+
+    let controlValFns: ValidationFn<any>[] = this.getStaticControlValidationFns(formId, controlName);
+    let controlStateParamValFns: StateParamControlValidationFn[] =
+      this.getStateParamControlValidationFns(formId, controlName);
+
+    var genCtrlValFns: ValidationFn<any>[] = [];
+    controlValFns.forEach(elt => { genCtrlValFns.push(elt); });
+    controlStateParamValFns.forEach(elt => { genCtrlValFns.push(elt(form)); });
+
+    return genCtrlValFns;
+  }
+
+  getControlValidationFnsByFormId(
+    formId: string, 
+    form: FormGroupState<FormValue>): StaticControlValidationFns {
 
     let controlValFns: StaticControlValidationFns =
       this.getStaticControlValidationFnsByFormId(formId);
@@ -49,10 +67,11 @@ export class ValidationFnsService {
     return genCtrlValFns;
   }
 
-
+  /*********************************/
   /* Static Control Validation Fns */
+  /*********************************/
 
-  getControlValidationFns(formId: string, controlName: string): ValidationFn<any>[] {
+  private getStaticControlValidationFns(formId: string, controlName: string): ValidationFn<any>[] {
     return this.controlValFns[this.getControlIdWithName(formId, controlName)];
   }
 
@@ -87,7 +106,14 @@ export class ValidationFnsService {
       ctrlValFns=[validationFn];
   }
 
+  /*******************************************/
   /* State Parametrized Validation Functions */
+  /*******************************************/
+
+  private getStateParamControlValidationFns(formId: string, controlName: string): StateParamControlValidationFn[] {
+    return this.stateParamControlValFns[this.getControlIdWithName(formId, controlName)];
+  }
+
   private getStateParamControlValidationFnsByFormId(formId: string): StateParamControlValidationFns {
 
     let formStateParamValFns:StateParamControlValidationFns = {};
