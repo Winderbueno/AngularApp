@@ -52,9 +52,9 @@ export class DialogAddProductComponent extends FormComponent {
 
     // Create product to create
     var prodToCreate: CreateProductReq = {
-      category: this.ctrls.Category.value,
-      subCategory: this.ctrls.SubCategory.value,
-      name: this.ctrls.ProductName.value,
+      category: this.value.Category as string,
+      subCategory: this.value.SubCategory as string,
+      name: this.value.ProductName as string,
       quantity: 1,
       note: "test" // TODO - This field should note be that
     }

@@ -1,32 +1,37 @@
 <h1 mat-dialog-title>Add Your Product</h1>
 
  <!-- Add Product Form -->
-<form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+<form class="form" [ngrxFormState]="formGroupState!" (submit)="onSubmit()">
 
   <!-- Name -->
   <app-input-field
-    [formMod]="form"
+    [formId]="title"
     [ctrlName]="'ProductName'"
-    [label]="'Name'"></app-input-field>
+    [label]="'Name'">
+  </app-input-field>
 
   <!-- Category -->
   <app-select-field
-    [formMod]="form"
+    [formId]="title"
     [ctrlName]="'Category'"
-    [enum]="(productCatEnum$|async)!"></app-select-field>
+    [enum]="(productCatEnum$|async)!">
+  </app-select-field>
 
   <!-- Sub Category -->
   <app-select-field
-    [formMod]="form"
+    [formId]="title"
     [ctrlName]="'SubCategory'"
-    [enum]="(productSubCatEnum$|async)!"></app-select-field>
+    [enum]="(productSubCatEnum$|async)!">
+  </app-select-field>
 
   <!-- TODO - Proposition de produit -->
   <!-- <p>Ceci pourrait correspondre :</p>
     <p>Produit(s) Sélectionnés</p> -->
 
   <!-- Submit -->
-  <app-submit-button [text]="'OK'"></app-submit-button>
+  <app-submit-button 
+    [text]="'OK'">
+  </app-submit-button>
 
   <!-- Secondary Action -->
   <button mat-button (click)="this.dialogRef.close();">No Thanks</button>

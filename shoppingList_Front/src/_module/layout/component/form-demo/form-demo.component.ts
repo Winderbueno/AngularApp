@@ -1,10 +1,11 @@
 //#region Angular, Material, NgRx
 import { Component } from '@angular/core';
+import { TypedAction } from '@ngrx/store/src/models';
 import { Observable } from 'rxjs';
 //#endregion
 
 //#region Module
-import { FormComponent } from '@formNew/component/form.component';
+import { FormComponent } from '@form/component/form.component';
 import { Enum } from '@enum/model/enum.model';
 import * as fromEnum from '@enum/store/';
 import * as fromAlert from '@alert/store/';
@@ -25,16 +26,22 @@ export class FormDemoComponent extends FormComponent {
     
     // Form Configuration
     super.title = "Form Demo";
-    super.submitValidAction = fromAlert.triggerAlertAction({
+    super.ngOnInit();
+  }
+
+  submitValidAction(): TypedAction<string> {
+    return fromAlert.triggerAlertAction({
       alertType: fromAlert.AlertTypeEnum.Success,
       message: "Valid Form Submitted !",
       keepAfterRouteChange: false
     });
-    super.submitInvalidAction = fromAlert.triggerAlertAction({
+  }
+
+  submitInvalidAction(): TypedAction<string> {
+    return fromAlert.triggerAlertAction({
       alertType: fromAlert.AlertTypeEnum.Error,
       message: "Invalid Form Submitted !",
       keepAfterRouteChange: false
     });
-    super.ngOnInit();
   }
 }

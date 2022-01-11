@@ -17,9 +17,9 @@ export class ForgotPasswordComponent extends FormComponent {
     super.ngOnInit();
   }
 
-  submitAction(): TypedAction<string> {
+  submitValidAction(): TypedAction<string> {
     return ComponentActions.forgotPasswordSubmitAction({
-      email: this.ctrls.Email.value,
-    })
+      email: this.value.Email as string,
+    });
   }
 }

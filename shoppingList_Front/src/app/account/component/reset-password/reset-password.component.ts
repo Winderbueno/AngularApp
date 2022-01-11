@@ -54,12 +54,12 @@ export class ResetPasswordComponent extends FormComponent implements OnDestroy {
     );
   }
 
-  submitAction(): TypedAction<string> {
+  submitValidAction(): TypedAction<string> {
     return ComponentActions.resetPasswordSubmitAction({
       token: this.token?.value,
-      password: this.ctrls.Password.value,
-      confirmPassword: this.ctrls.ConfirmPassword.value
-    })
+      password: this.value.Password as string,
+      confirmPassword: this.value.ConfirmPassword as string
+    });
   }
 
   ngOnDestroy() {

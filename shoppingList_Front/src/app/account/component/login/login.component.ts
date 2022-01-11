@@ -17,10 +17,10 @@ export class LoginComponent extends FormComponent {
     super.ngOnInit();
   }
 
-  submitAction(): TypedAction<string> {
+  submitValidAction(): TypedAction<string> {
     return ComponentActions.loginSubmitAction({
-      email: this.ctrls.Email.value,
-      password: this.ctrls.Password.value
+      email: this.value.Email as string,
+      password: this.value.Password as string
     });
   }
 }

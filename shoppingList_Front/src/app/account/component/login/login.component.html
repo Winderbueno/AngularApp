@@ -1,15 +1,22 @@
 <h1>{{title}}</h1>
 
-<form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+<form class="form" [ngrxFormState]="formGroupState!" (submit)="onSubmit()">
 
   <!-- Email -->
-  <app-input-field [formMod]="form" [ctrlName]="'Email'"></app-input-field>
+  <app-input-field 
+    [formId]="title" 
+    [ctrlName]="'Email'">
+  </app-input-field>
 
   <!-- Password -->
-  <app-password-field-group [formMod]="form"></app-password-field-group>
+  <app-password-field-group 
+    [formId]="title">
+  </app-password-field-group>
 
   <!-- Submit -->
-  <app-submit-button [text]="title"></app-submit-button>
+  <app-submit-button 
+    [text]="title">
+  </app-submit-button>
 
   <!-- Secondary Action -->
   <div>
