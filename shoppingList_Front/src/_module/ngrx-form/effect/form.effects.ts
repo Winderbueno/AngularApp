@@ -12,7 +12,7 @@ import * as fromStore from '../store';
 import { FormValue } from '../store/form.state';
 import { ValidationFnsService } from '../service/validation-fns.service';
 import { 
-  ControlStateParamValidationFns,
+  StateParamControlValidationFns,
   ControlValidationFns } from '@formNew/model/validation-fns.model';
 //#endregion
 
@@ -53,7 +53,7 @@ export class FormEffects {
 
             let controlValFns:ControlValidationFns = 
               this.validationFnsService.getControlValidationFnsByFormId(action.formId);
-            let controlStateParamValFns:ControlStateParamValidationFns = 
+            let controlStateParamValFns:StateParamControlValidationFns = 
               this.validationFnsService.getStateParamControlValidationFnsByFormId(action.formId);
 
             var genCtrlValFns:ControlValidationFns = {};

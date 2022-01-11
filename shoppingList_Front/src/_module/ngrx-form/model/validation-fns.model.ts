@@ -7,9 +7,9 @@ export interface ControlValidationFns {
   [controlId: string]: ValidationFn<any>[];
 }
 
-export interface ControlStateParamValidationFns {
-  [controlId: string]: StateParamValidationFn[];
+export interface StateParamControlValidationFns {
+  [controlId: string]: StateParamControlValidationFn[];
 }
 
 /* Validation Fns that depend on other state value */
-export declare type StateParamValidationFn = (s:FormGroupState<FormValue>) => ValidationFn<any>;
+export declare type StateParamControlValidationFn = (s:FormGroupState<FormValue>) => ValidationFn<any>;

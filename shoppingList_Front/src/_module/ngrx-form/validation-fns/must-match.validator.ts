@@ -5,7 +5,7 @@ import { equalTo } from 'ngrx-forms/validation';
 
 //#region Store
 import { FormValue } from '../store/form.state';
-import { StateParamValidationFn } from '../model/validation-fns.model';
+import { StateParamControlValidationFn } from '../model/validation-fns.model';
 //#endregion
 
 interface MustMatchValidationError<T> {
@@ -17,18 +17,9 @@ declare module 'ngrx-forms' {
   }
 }
 
-export function mustMatch(refCtrlId: string): StateParamValidationFn {
+export function mustMatch(refCtrlId: string): StateParamControlValidationFn {
   return (formState: FormGroupState<FormValue>) => {
-
     const refCtrl = formState.controls[refCtrlId];
-
-    // TODO
-    // Return if another validator has already found an error on the matchingControl
-    //if (/*matchingCtrl.errors != {} &&*/ !matchingCtrl.errors.mustMatch) { 
-    //return formState;
-    //};
-
-    // Set error on matchingControl if validation fails
     return equalTo(refCtrl.value);
   };
 }

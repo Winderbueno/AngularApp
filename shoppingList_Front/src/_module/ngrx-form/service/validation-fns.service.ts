@@ -6,8 +6,8 @@ import { ValidationFn } from 'ngrx-forms';
 //#region Model
 import { 
   ControlValidationFns, 
-  StateParamValidationFn, 
-  ControlStateParamValidationFns } from '../model/validation-fns.model';
+  StateParamControlValidationFn, 
+  StateParamControlValidationFns } from '../model/validation-fns.model';
 //#endregion
 
 
@@ -15,14 +15,22 @@ import {
 export class ValidationFnsService {
 
   controlValFns:ControlValidationFns = {};
-  controlStateParamValFns:ControlStateParamValidationFns = {};
+  stateParamControlValFns:StateParamControlValidationFns = {};
 
   getControlValidationFns(formId: string, controlName: string): ValidationFn<any>[] {
     return this.controlValFns[this.getControlIdWithName(formId, controlName)];
   }
 
   getControlValidationFnsByFormId(formId: string): ControlValidationFns {
-    return this.controlValFns;
+
+    let formValFns:ControlValidationFns = {};
+    for(let ctrlId in this.controlValFns){
+      if(ctrlId.split('.')[0] === formId) {
+        formValFns[ctrlId] = this.controlValFns[ctrlId];
+      }
+    }
+
+    return formValFns;
   }
 
   setControlValidationFns(
@@ -45,13 +53,12 @@ export class ValidationFnsService {
   }
 
   /* State Parametrized Validation Functions */
-  getStateParamControlValidationFnsByFormId(formId: string): ControlStateParamValidationFns {
+  getStateParamControlValidationFnsByFormId(formId: string): StateParamControlValidationFns {
 
-    let formStateParamValFns:ControlStateParamValidationFns = {};
-
-    for(let ctrlId in this.controlStateParamValFns){
+    let formStateParamValFns:StateParamControlValidationFns = {};
+    for(let ctrlId in this.stateParamControlValFns){
       if(ctrlId.split('.')[0] === formId) {
-        formStateParamValFns[ctrlId] = this.controlStateParamValFns[ctrlId];
+        formStateParamValFns[ctrlId] = this.stateParamControlValFns[ctrlId];
       }
     }
 
@@ -61,14 +68,14 @@ export class ValidationFnsService {
   addStateParamControlValidationFn(
     formId: string, 
     controlName: string,
-    validationFn: StateParamValidationFn) {   
+    validationFn: StateParamControlValidationFn) {   
     
     let ctrlId:string = this.getControlIdWithName(formId, controlName);
-    let ctrlStateParamValFns:StateParamValidationFn[] = this.controlStateParamValFns[ctrlId];
+    let ctrlStateParamValFns:StateParamControlValidationFn[] = this.stateParamControlValFns[ctrlId];
 
     ctrlStateParamValFns != undefined ? 
-      this.controlStateParamValFns[ctrlId].push(validationFn) :
-      this.controlStateParamValFns[ctrlId]=[validationFn];
+      this.stateParamControlValFns[ctrlId].push(validationFn) :
+      this.stateParamControlValFns[ctrlId]=[validationFn];
   }
 
   private getControlIdWithName(formId: string, controlName: string) : string {
