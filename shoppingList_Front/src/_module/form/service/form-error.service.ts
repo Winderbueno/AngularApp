@@ -1,6 +1,6 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
+import { FormControlState } from 'ngrx-forms';
 //#endregion
 
 
@@ -8,18 +8,18 @@ import { AbstractControl } from '@angular/forms';
 export class FormErrorService {
 
   // Generate form error message
-  getErrorMsg(formCtrl: AbstractControl): string {
+  getErrorMsg(ctrlState: FormControlState<string|boolean|number>): string {
 
     let errMsg = '';
 
-    if (formCtrl.hasError('required')) {
-      errMsg += 'Please fill in this field';
-    } else if (formCtrl.hasError('email')) {
-      errMsg = 'Filled in email has not the good format';
-    } else if (formCtrl.hasError('minlength')) {
-      errMsg = `Field Length should be at least : ${formCtrl.errors!.minlength.requiredLength}`;
-    } else if (formCtrl.hasError('mustMatch')) {
-      errMsg = 'Field should be the same';
+    if (ctrlState.errors.required) {
+       errMsg += 'Please fill in this field';
+    } else if (ctrlState.errors.email) {
+       errMsg = 'Filled in email has not the good format';
+    } else if (ctrlState.errors.minLength) {
+       errMsg = `Field Length should be at least : ${ctrlState.errors!.minLength.minLength}`;
+    } else if (ctrlState.errors.equalTo) { // TODO
+       errMsg = 'Field should be the same';
     }
 
     return errMsg;

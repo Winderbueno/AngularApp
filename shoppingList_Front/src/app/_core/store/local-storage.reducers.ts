@@ -8,7 +8,7 @@ import * as fromAccount from '@account/store/';
 import * as fromShoppingList from '@shoppingList/store/';
 import * as fromTimer from '@timer/store/';
 import * as fromToken from '@token/store/';
-import * as fromForm from '@module/ngrx-form/store/';
+import * as fromForm from '@form/store/';
 //#endregion
 
 /**

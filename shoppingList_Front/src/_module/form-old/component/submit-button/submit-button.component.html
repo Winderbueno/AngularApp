@@ -1,0 +1,5 @@
+﻿<!-- Submit Button -->
+<button mat-raised-button color="primary" [disabled]="isLoading$|async" type="submit">
+  <app-loader></app-loader>
+  {{text}}
+</button>

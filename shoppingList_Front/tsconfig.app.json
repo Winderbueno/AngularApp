@@ -21,7 +21,7 @@
       "@action/*": ["src/_module/action/*"],
       "@alert/*": ["src/_module/alert/*"],
       "@enum/*": ["src/_module/enum/*"],
-      "@form/*": ["src/_module/ngrx-form/*"],
+      "@form/*": ["src/_module/form/*"],
       "@layout/*": ["src/_module/layout/*"],
       "@loader/*": ["src/_module/loader/*"],
       "@material/*": ["src/_module/material/*"],

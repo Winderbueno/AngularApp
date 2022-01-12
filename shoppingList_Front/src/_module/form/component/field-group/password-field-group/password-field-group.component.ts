@@ -1,35 +1,41 @@
 ﻿//#region Angular, Material, NgRx
-import { Component, Input, AfterViewInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 //#endregion
 
 //#region Component, Model, Service
-import { MustMatch } from '@form/validator/must-match.validator';
+import { ValidationFnsService } from '@form/service/validation-fns.service';
+import { mustMatch } from '@form/validation-fns/must-match.validation-fns';
 //#endregion
 
 
 /**
  * Password Field Component
- *  @param formMod - FormGroup to add the FormControl on
- *  @param withConfirm - Specify if the password field comes with a "confirm password field"
+ *  @param formID - FormGroupState ID to add the FormControlState on
+ *  @param withConfirm - Specify if the password field comes with a "confirm Password" field
  *
- * This component adds 1 or 2 FormControl to the FormGroup
- *
- * These field to be valid :
- *  - The "Pwd" has to be : 6 characters minimum
- *  - The "confirmPwd" has to have the same value as the pwd
+ * This component adds 1 or 2 FormControlState to the FormGroupState
+ * "confirmPwd" field is valid only if it has the same value as Pwd field
  */
 @Component({
   selector: 'app-password-field-group',
   templateUrl: 'password-field-group.component.html' })
-export class PasswordFieldGroupComponent implements AfterViewInit {
+export class PasswordFieldGroupComponent implements OnInit {
 
-  @Input() formMod!: FormGroup;
+  @Input() formId!: string;
   @Input() withConfirm: boolean = false;
 
-  constructor() { }
+  constructor(
+    protected store: Store,
+    private validationFnsService: ValidationFnsService
+  ) { }
 
-  ngAfterViewInit() {
-    if(this.withConfirm){ this.formMod.validator = MustMatch('Password', 'ConfirmPassword'); }
+  ngOnInit() {
+    if(this.withConfirm) { 
+      this.validationFnsService.addStateParamControlValidationFn (
+        this.formId, 
+        'ConfirmPassword',
+        mustMatch('Password'));
+    }
   }
 }

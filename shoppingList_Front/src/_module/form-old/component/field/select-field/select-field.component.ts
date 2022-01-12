@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 //#endregion
 
 //#region Component, Model, Service
-import { FieldComponent } from '@form/component/';
+import { FieldComponent } from '@form/component/field/field.component';
 import { Enum } from '@enum/model/enum.model'; // TODO - we use an external tech base
 //#endregion
 

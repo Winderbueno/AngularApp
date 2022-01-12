@@ -1,10 +1,10 @@
 ﻿//#region Angular, Material, NgRx
-import { Component, Input } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { requiredTrue } from 'ngrx-forms/validation';
 //#endregion
 
 //#region Component, Model, Service
-import { FieldComponent } from '@form/component/field/field.component';
+import { FieldComponent } from '@form/component/';
 //#endregion
 
 
@@ -16,10 +16,8 @@ import { FieldComponent } from '@form/component/field/field.component';
   templateUrl: 'checkbox-field.component.html' })
 export class CheckBoxFieldComponent extends FieldComponent {
 
-  @Input() isFormSubmitted!: boolean;
-
   ngOnInit() {
-    if(this.required === true) { super.validators.push(Validators.requiredTrue); }
+    if(this.required === true) { super.validationFns.push(requiredTrue); }
     super.ngOnInit();
   }
 }

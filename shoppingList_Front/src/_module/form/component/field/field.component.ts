@@ -1,30 +1,32 @@
 //#region Angular, Material, NgRx
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormControl, ValidatorFn, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { FormControlState, FormGroupState, ValidationFn } from 'ngrx-forms';
+import { required } from 'ngrx-forms/validation';
 //#endregion
 
 //#region Component, Model, Service
 import { FormErrorService } from '@form/service/form-error.service';
+import { ValidationFnsService } from '@form/service/validation-fns.service';
+import * as fromStore from '@form/store/';
+import { FormValue } from '@form/store/form.state';
 //#endregion
 
 /**
  * Field Component
  *
- * This component manage a Field based on 'FormControl' that has :
- *  - A Name (Technical Name that refer to the Control)
+ * This component manage a Field that has :
+ *  - A ControlID (Unique Identifier of the FormControlState)
  *  - A Label (Displayed Name)
  *  - A List of Validators (Accessible from children)
- *  - Related Error Messages (Accessible from children)
+ *  - Related Error Messages
  *
- * It attaches the FormControl to the provided input FormGroup
+ * It adds a FormControlState to the FormGroupState identified by the formID input
  *
- *  @param formMod - FormGroup to add the FormControl on
- *  @param ctrlName - FormControl Technical Name
- *    If a label is not provided, the Control name is used as label
- *  @param label - (Optional) - Label of the field
- *  @param required - (Optional) - Set 'required' validator on FormControl
- *    true by default
- *
+ *  @param formID - FormGroupState ID to add the FormControlState on
+ *  @param ctrlName - FormControlState Name (Note : ControlID in state is generated as '<formID>.<ctrlName>')
+ *  @param label - (Optional | Default:<ctrlName>) - Label of the field
+ *  @param required - (Optional | Default:true) - Set 'required' validator on FormControlState
  */
 @Component({
   selector: 'app-field',
@@ -32,33 +34,58 @@ import { FormErrorService } from '@form/service/form-error.service';
 })
 export class FieldComponent implements OnInit {
 
-  // Control
-  private _ctrl!: FormControl;
+  // FormState
+  private _formGroupState : FormGroupState<FormValue> | undefined;
   private _ctrlName!: string;
-  private _validators: ValidatorFn[] = new Array();
+  private _validationFns: ValidationFn<any>[] = [];
 
   // Input
-  @Input() formMod!: FormGroup;
+  @Input() formId!: string;
   @Input() set ctrlName(value: string) {
     this._ctrlName = value;
-    if (this.label == null) this.label = value;
+    if (this.label == null) this.label = value; 
   }
   @Input() label!: string;
   @Input() required: boolean = true;
 
   // Accessor
-  get ctrl() { return this._ctrl;}
+  get form() { return this._formGroupState! }
   get ctrlName() { return this._ctrlName; }
+  get ctrl() { return this._formGroupState!.controls[this._ctrlName] as unknown as FormControlState<string|boolean|number>; }
   get err() { return this.formErrorService; }
-  protected get validators() { return this._validators }
+  protected get validationFns() { return this._validationFns }
 
-  constructor(private formErrorService: FormErrorService) { }
+  constructor(
+    protected store: Store,
+    private formErrorService: FormErrorService,
+    private validationFnsService: ValidationFnsService
+  ) {}
 
   ngOnInit() {
 
-    if(this.required === true) { this._validators.push(Validators.required); }
+    // Subscribe to FormGroupState
+    this.store.select(fromStore.selectFormById(this.formId))
+      .subscribe(s => this._formGroupState = s);
 
-    this._ctrl = new FormControl('', this._validators)
-    this.formMod.addControl(this.ctrlName, this._ctrl);
+    // Add ValidationFns according to configuration
+    if(this.required === true) { this._validationFns.push(required); }  
+    
+    // Save ValidationFns
+    this.validationFnsService.setControlValidationFns(
+      this.formId, 
+      this._ctrlName, 
+      this._validationFns);
+    
+
+    // Add FormControlState to FormGroupState
+    if(this.ctrl === undefined) {
+      this.store.dispatch(fromStore.addControlToFormAction({
+        formId: this.formId,
+        control: { 
+          name:this._ctrlName, 
+          value:''
+        }
+      }));
+    }  
   }
 }

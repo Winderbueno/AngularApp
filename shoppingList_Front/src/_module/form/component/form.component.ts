@@ -1,13 +1,14 @@
 //#region Angular, Material, NgRx
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
+import { FormGroupState } from 'ngrx-forms';
 //#endregion
 
 //#region Store
-import * as fromStore from '../store';
+import * as fromStore from '@form/store/';
+import { FormValue } from '@form/store/form.state';
 //#endregion
 
 
@@ -18,45 +19,44 @@ import * as fromStore from '../store';
 export class FormComponent implements OnInit {
 
   // Form
-  private _form!: FormGroup;
+  protected _formGroupState!: FormGroupState<FormValue> | undefined;
   private _title: string = "Form Title";
-  private _submitted: boolean = false; // TODO -Encapsulate this info in a Form Object with FormGroup ?
-
+  
   // Accessor
-  get form() { return this._form;}
-  get ctrls() { return this._form.controls; }
-  get title() { return this._title;}
-  protected set title(title:string) { this._title=title }
-  get submitted() { return this._submitted; }
+  get title() { return this._title; }
+  protected set title(title:string) { this._title = title; }
 
+  get value() { return this._formGroupState!.value }
+  get formGroupState() { return this._formGroupState ? this._formGroupState : undefined; }
 
   constructor(
     protected router: Router,
     protected route: ActivatedRoute,
     protected store: Store
-  ) { }
+  ) {}
 
   ngOnInit() {
-    // Form definition
-    // TODO - Put this in an NgRx Store :O ?
-    this._form = new FormGroup({});
+
+    // Suscribe to FormGroupState
+    this.store.select(fromStore.selectFormById(this._title))
+      .subscribe(s => this._formGroupState = s);
+    
+    // Initialise FormGroupState
+    if(this.formGroupState === undefined) {
+      this.store.dispatch(fromStore.createFormAction({ name: this._title }));
+    }
   }
 
   onSubmit(): void {
-
-    this._submitted = true;
-
-    // Stop here if form is invalid
-    if (this._form.invalid) { return; }
-
-    this.dispatchSubmitAction();
+    this.store.dispatch(fromStore.submitFormAction({ formId: this._title }));
+    
+    if(this._formGroupState?.isValid) {
+      if(this.submitValidAction() != undefined) { this.store.dispatch(this.submitValidAction()!); }
+    } else {
+      if(this.submitInvalidAction() != undefined) { this.store.dispatch(this.submitInvalidAction()!); }
+    }
   }
 
-  dispatchSubmitAction() : void {
-    this.store.dispatch(this.submitAction());
-  }
-
-  submitAction() : TypedAction<string> {
-    return fromStore.formSubmitAction;
-  }
+  submitValidAction(): TypedAction<string> | undefined { return undefined; }
+  submitInvalidAction(): TypedAction<string> | undefined { return undefined; }
 }

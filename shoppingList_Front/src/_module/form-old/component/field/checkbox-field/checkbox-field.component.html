@@ -1,0 +1,12 @@
+﻿<!-- CheckBox Field -->
+<!-- TODO - Optimize Impl (use submitted) -->
+<div class="mat-form-field-wrapper">
+  <mat-checkbox [formControl]="ctrl"
+    [ngClass]="{'mat-error' : ctrl.invalid && (ctrl.touched || isFormSubmitted) }">
+    {{label}}
+
+    <!-- If the Checkbox is required -->
+    <i *ngIf="required" class="mat-error" style="display: inline;">*</i>
+  </mat-checkbox>
+
+</div>

@@ -11,7 +11,7 @@ import * as fromLoader from '@loader/store/';
 
 /**
  * Submit Button Component
- *  @param text - (Default : "Submit") - Text of the submit button 
+ *  @param text - Text present on the submit button (default : "Submit")
  */
 @Component({
   selector: 'app-submit-button',
@@ -27,4 +27,5 @@ export class SubmitButtonComponent {
   ) {
     this.isLoading$ = this.store.select(fromLoader.isLoading);
   }
+
 }

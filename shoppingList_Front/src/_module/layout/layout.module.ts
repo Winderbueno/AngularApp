@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 //#region Module
 import { AppRouterModule } from '@app/app-router.module';
 import { MaterialModule } from '@material/material.module';
-import { FormModule } from '@module/ngrx-form/form.module'; // TODO - Use alias
+import { FormModule } from '@form/form.module';
 //#endregion
 
 //#region Component
