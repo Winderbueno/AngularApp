@@ -14,10 +14,12 @@ export class RegisterComponent extends FormComponent {
 
   ngOnInit(){
     super.title = "Sign Up";
-    // TODO
-    // super.submitValidAction = ComponentActions.registerSubmitAction({
-    //   account: this.value,
-    // });
     super.ngOnInit();
+  }
+
+  submitValidAction(): TypedAction<string> {
+    return ComponentActions.registerSubmitAction({ 
+      account: this.value,
+    });
   }
 }

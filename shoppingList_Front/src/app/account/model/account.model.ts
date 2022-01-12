@@ -2,7 +2,7 @@ import { RoleEnum } from "@account/model/enum/role.enum";
 
 export class Account {
 
-    accountId!: string;
+    accountId?: string;
 
     // Authentication Info
     email?: string;
