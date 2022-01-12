@@ -5,10 +5,9 @@ import {
   createFormGroupState,
   addGroupControl,
   onNgrxForms,
-  setUserDefinedProperty,
   updateRecursive,
   validate, 
-  ValidationFn} from 'ngrx-forms';
+  ValidationFn } from 'ngrx-forms';
 //#endregion
 
 //#region State, Action
@@ -17,7 +16,7 @@ import * as fromAction from './form.actions';
 import { StaticControlValidationFns } from '../model/validation-fns.model';
 //#endregion
 
-export const featureKey = 'ngrx-form';
+export const featureKey = 'form';
 
 const formReducer = createReducer(
   initialState,
@@ -25,50 +24,56 @@ const formReducer = createReducer(
 
   on(fromAction.validateControlAction, 
     (state, action) => {
-      const newFormState = {...state};
+      const newState = {...state};
       let formInfo:string[] = action.controlId.split('.');
-      newFormState[formInfo[0]] = validateByControlId(
-        newFormState[formInfo[0]], 
+      newState[formInfo[0]] = validateByControlId(
+        newState[formInfo[0]], 
         action.controlId,
         action.ValidationFns);
-      return newFormState;
+      return newState;
     }),
 
   on(
     fromAction.validateFormAction,
     fromAction.dynamicValidateFormAction, 
     (state, action) => {
-      const newFormState = {...state};
+      const newState = {...state};
 
       // Validate Control
-      newFormState[action.formId] = validateFormWithControlValidationFns(
-        newFormState[action.formId],
+      newState[action.formId] = validateFormWithControlValidationFns(
+        newState[action.formId],
         action.controlValidationFns);
 
-      return newFormState;
+      return newState;
     }),
 
   on(fromAction.createFormAction,
     (state, action) => {
-      const newFormState = {...state};
-      newFormState[action.name] = createFormGroupState<FormValue>(action.name, {});
-      newFormState[action.name] = setUserDefinedProperty('submitValidAction', action.submitValidAction)(newFormState[action.name]);
-      newFormState[action.name] = setUserDefinedProperty('submitInvalidAction', action.submitInvalidAction)(newFormState[action.name]);
-      return newFormState;
+      const newState = {...state};
+      newState[action.formId] = 
+        createFormGroupState<FormValue>(action.formId, {});
+      return newState;
+    }),
+
+  on(fromAction.deleteFormAction,
+    (state, action) => {
+      let newState = { ...state };
+      delete newState[action.formId];
+      return newState;
     }),
   
   on(fromAction.addControlToFormAction,
     (state, action) => {
-      const newFormState = {...state};
+      const newState = {...state};
 
       // Add formControlState to formGroupState
-      // TODO - Gerer l'ajout de * FormControl en une fois
-      newFormState[action.formId] = addGroupControl<FormValue>(
-        newFormState[action.formId],
+      // TODO - Gerer l'ajout de * FormControl en une fois ?
+      newState[action.formId] = addGroupControl<FormValue>(
+        newState[action.formId],
         action.control.name, 
         action.control.value);
 
-      return newFormState;
+      return newState;
     }),
 );
 
@@ -92,4 +97,3 @@ const validateFormWithControlValidationFns = (
     s => controlValidationFns[s.id] != undefined ?
       validate(controlValidationFns[s.id])(s) :
       s);
-

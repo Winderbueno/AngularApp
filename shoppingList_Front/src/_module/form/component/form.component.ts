@@ -1,5 +1,5 @@
 //#region Angular, Material, NgRx
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
@@ -16,14 +16,17 @@ import { FormValue } from '@form/store/form.state';
   selector: 'app-form',
   template: ``,
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements OnInit, OnDestroy {
 
   // Form
   protected _formGroupState!: FormGroupState<FormValue> | undefined;
   private _title: string = "Form Title";
+  // Allow to keep the form state when the component is deleted
+  private _persist: boolean = false;
   
   // Accessor
   get title() { return this._title; }
+  protected set persist(persist:boolean) { this._persist = persist; }
   protected set title(title:string) { this._title = title; }
 
   get value() { return this._formGroupState!.value }
@@ -43,8 +46,13 @@ export class FormComponent implements OnInit {
     
     // Initialise FormGroupState
     if(this.formGroupState === undefined) {
-      this.store.dispatch(fromStore.createFormAction({ name: this._title }));
+      this.store.dispatch(fromStore.createFormAction({ formId: this._title }));
     }
+  }
+
+  ngOnDestroy(): void {
+    if(!this._persist)
+      this.store.dispatch(fromStore.deleteFormAction({ formId: this._title })); 
   }
 
   onSubmit(): void {

@@ -26,6 +26,7 @@ export class FormDemoComponent extends FormComponent {
     
     // Form Configuration
     super.title = "Form Demo";
+    super.persist = true;
     super.ngOnInit();
   }
 
