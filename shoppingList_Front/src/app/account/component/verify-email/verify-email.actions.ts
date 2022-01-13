@@ -1,33 +1,13 @@
 //#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
-import { ActionSourceEnum } from '@action/enum/action-source.enum';
+import { EmitterTypeEnum } from '@module/action/enum/emitter-type.enum';
+import { ModuleEnum } from '@module/action/enum/module.enum';
 //#endregion
-
-//#region Model
-import { Token } from '@token/model/token.model';
-//#endregion
-
-export const validateEmailTokenAction = createAction (
-  ActionSourceEnum.COMPONENT,
-  'Verify Email',
-  'validateEmailToken',
-  props<{
-    token: Token }>()
-);
-
-export const deleteEmailTokenAction = createAction (
-  ActionSourceEnum.COMPONENT,
-  'Verify Email',
-  'deleteEmailToken',
-  props<{
-    name: string }>()
-);
 
 export const emailTokenValidatedAction = createAction(
-  ActionSourceEnum.COMPONENT,
-  'Verify Email',
-  'emailTokenValidated',
-  props<{
-    message: string }>()
+  ModuleEnum.ACCOUNT,
+  EmitterTypeEnum.COMPONENT,
+  'VerifyEmail/emailTokenValidated',
+  props<{ message: string }>()
 );

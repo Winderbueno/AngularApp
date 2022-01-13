@@ -16,7 +16,10 @@ import * as fromStore from './store/';
 @NgModule({
   imports: [
     /* Store */
-    StoreModule.forFeature(fromStore.featureKey, fromStore.reducer),
+    StoreModule.forFeature(
+      fromStore.featureKey,
+      fromStore.reducer
+    ),
   ],
   declarations: []
 })

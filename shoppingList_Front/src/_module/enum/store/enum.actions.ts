@@ -1,14 +1,14 @@
 //#region NgRx, Action Creator
 import { createAction } from '@action/creator/action-creator';
-import { ActionSourceEnum } from '@action/enum/action-source.enum';
+import { EmitterTypeEnum } from '@module/action/enum/emitter-type.enum';
 //#endregion
 
 //#region Model
-import { ModuleEnum } from '@app/model/enum/module.enum'; // TODO - Warn dependence sur App...
+import { ModuleEnum } from '@module/action/enum/module.enum'; // TODO - Warn dependence sur App...
 //#endregion
 
 export const loadEnumAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.ENUM,
-  'Load'
+  EmitterTypeEnum.STORE,
+  'LoadEnum'
 );

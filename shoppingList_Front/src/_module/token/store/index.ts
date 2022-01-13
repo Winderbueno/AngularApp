@@ -17,3 +17,8 @@ export {
   selectState,
   selectTokenByName
 } from './token.selectors';
+
+/* Enum */
+export {  
+  TokenStatusEnum
+} from '../model/enum/token-status.enum';

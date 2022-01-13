@@ -1,32 +1,32 @@
 //#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
-import { ActionSourceEnum } from '@action/enum/action-source.enum';
+import { EmitterTypeEnum } from '@module/action/enum/emitter-type.enum';
 //#endregion
 
 //#region Model
-import { ModuleEnum } from '@app/model/enum/module.enum';
+import { ModuleEnum } from '@module/action/enum/module.enum';
 import { Timer } from '../model/timer.model';
 //#endregion
 
 export const defineTimerAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.TIMER,
-  'Define',
+  EmitterTypeEnum.STORE,
+  'defineTimer',
   props<{ timer: Timer }>()
 );
 
 export const deleteTimerAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.TIMER,
-  'Delete',
+  EmitterTypeEnum.STORE,
+  'deleteTimer',
   props<{ name: string }>()
 );
 
 export const timerDefinedAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.TIMER,
-  'Defined',
+  EmitterTypeEnum.STORE,
+  'timerDefined',
   props<{
     name: string,
     timeoutHandler: NodeJS.Timeout
@@ -34,15 +34,15 @@ export const timerDefinedAction = createAction(
 );
 
 export const timerDeletedAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.TIMER,
-  'Deleted',
+  EmitterTypeEnum.STORE,
+  'timerDeleted',
   props<{ name: string | undefined }>()
 );
 
 export const timerEndedAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.TIMER,
-  'Ended',
+  EmitterTypeEnum.STORE,
+  'timerEnded',
   props<{ name: string | undefined }>()
 );

@@ -1,31 +1,31 @@
 //#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
-import { ActionSourceEnum } from '@action/enum/action-source.enum';
+import { EmitterTypeEnum } from '@module/action/enum/emitter-type.enum';
 //#endregion
 
 //#region Model
-import { ModuleEnum } from '@app/model/enum/module.enum';
+import { ModuleEnum } from '@module/action/enum/module.enum';
 import { Categorisation } from '../../model/categorisation.model';
 //#endregion
 
 export const loadCategorisationAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.CATEGORISATION,
-  'Load Categorisation',
+  EmitterTypeEnum.STORE,
+  'loadCategorisation',
   props<{ categorisation: Categorisation[] }>()
 );
 
 export const addCategorisationAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.CATEGORISATION,
-  'Add Categorisation',
+  EmitterTypeEnum.STORE,
+  'addCategorisation',
   props<{ categorisation: Categorisation }>()
 );
 
 export const deleteCategorisationAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.CATEGORISATION,
-  'Delete Categorisation',
+  EmitterTypeEnum.STORE,
+  'deleteCategorisation',
   props<{ name: string }>()
 );

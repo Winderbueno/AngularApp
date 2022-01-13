@@ -16,7 +16,10 @@ import { TokenEffects } from './effect/';
 @NgModule({
   imports: [
     /* Store */
-    StoreModule.forFeature(fromStore.featureKey, fromStore.reducer),
+    StoreModule.forFeature(
+      fromStore.featureKey,
+      fromStore.reducer
+    ),
 
     /* Effect */
     EffectsModule.forFeature([TokenEffects]),

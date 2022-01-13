@@ -1,120 +1,120 @@
 //#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
-import { ActionSourceEnum } from '@action/enum/action-source.enum';
+import { ModuleEnum } from '@module/action/enum/module.enum';
+import { EmitterTypeEnum } from '@module/action/enum/emitter-type.enum';
 //#endregion
 
 //#region Model
-import { APIEnum } from '@app/model/enum/api.enum';
 import { Account } from '@account/model/account.model';
 //#endregion
 
 export const loginSuccessAction = createAction(
-  ActionSourceEnum.API,
-  APIEnum.ACCOUNT,
-  'Login Success',
+  ModuleEnum.ACCOUNT,
+  EmitterTypeEnum.API,
+  'loginSuccess',
   props<{ account: Account }>()
 );
 
 export const loginFailureAction = createAction(
-  ActionSourceEnum.API,
-  APIEnum.ACCOUNT,
-  'Login Failure',
+  ModuleEnum.ACCOUNT,
+  EmitterTypeEnum.API,
+  'loginFailure',
   props<{ error: string }>()
 );
 
 export const logoutSuccessAction = createAction(
-  ActionSourceEnum.API,
-  APIEnum.ACCOUNT,
-  'Logout Success',
+  ModuleEnum.ACCOUNT,
+  EmitterTypeEnum.API,
+  'logoutSuccess',
 );
 
 export const logoutFailureAction = createAction(
-  ActionSourceEnum.API,
-  APIEnum.ACCOUNT,
-  'Logout Failure',
+  ModuleEnum.ACCOUNT,
+  EmitterTypeEnum.API,
+  'logoutFailure',
   props<{ error: string }>()
 );
 
 export const registerSuccessAction = createAction(
-  ActionSourceEnum.API,
-  APIEnum.ACCOUNT,
-  'Register Success',
+  ModuleEnum.ACCOUNT,
+  EmitterTypeEnum.API,
+  'registerSuccess',
   props<{ message: string }>()
 );
 
 export const registerFailureAction = createAction(
-  ActionSourceEnum.API,
-  APIEnum.ACCOUNT,
-  'Register Failure',
+  ModuleEnum.ACCOUNT,
+  EmitterTypeEnum.API,
+  'registerFailure',
   props<{ error: string }>()
 );
 
 export const verifyEmailSuccessAction = createAction(
-  ActionSourceEnum.API,
-  APIEnum.ACCOUNT,
-  'VerifyEmail Success',
+  ModuleEnum.ACCOUNT,
+  EmitterTypeEnum.API,
+  'verifyEmailSuccess',
   props<{ message: string }>()
 );
 
 export const verifyEmailFailureAction = createAction(
-  ActionSourceEnum.API,
-  APIEnum.ACCOUNT,
-  'VerifyEmail Failure',
+  ModuleEnum.ACCOUNT,
+  EmitterTypeEnum.API,
+  'verifyEmailFailure',
   props<{ error: string }>()
 );
 
 export const forgotPasswordSuccessAction = createAction(
-  ActionSourceEnum.API,
-  APIEnum.ACCOUNT,
-  'ForgotPassword Success',
+  ModuleEnum.ACCOUNT,
+  EmitterTypeEnum.API,
+  'forgotPasswordSuccess',
   props<{ message: string }>()
 );
 
 export const forgotPasswordFailureAction = createAction(
-  ActionSourceEnum.API,
-  APIEnum.ACCOUNT,
-  'ForgotPassword Failure',
+  ModuleEnum.ACCOUNT,
+  EmitterTypeEnum.API,
+  'forgotPasswordFailure',
   props<{ error: string }>()
 );
 
 export const resetPasswordSuccessAction = createAction(
-  ActionSourceEnum.API,
-  APIEnum.ACCOUNT,
-  'ResetPassword Success',
+  ModuleEnum.ACCOUNT,
+  EmitterTypeEnum.API,
+  'resetPasswordSuccess',
   props<{ message: string }>()
 );
 
 export const resetPasswordFailureAction = createAction(
-  ActionSourceEnum.API,
-  APIEnum.ACCOUNT,
-  'ResetPassword Failure',
+  ModuleEnum.ACCOUNT,
+  EmitterTypeEnum.API,
+  'resetPasswordFailure',
   props<{ error: string }>()
 );
 
 export const refreshTokenSuccessAction = createAction(
-  ActionSourceEnum.API,
-  APIEnum.ACCOUNT,
-  'RefreshToken Success',
+  ModuleEnum.ACCOUNT,
+  EmitterTypeEnum.API,
+  'refreshTokenSuccess',
   props<{ account: Account }>()
 );
 
 export const refreshTokenFailureAction = createAction(
-  ActionSourceEnum.API,
-  APIEnum.ACCOUNT,
-  'RefreshToken Failure',
+  ModuleEnum.ACCOUNT,
+  EmitterTypeEnum.API,
+  'refreshTokenFailure',
   props<{ error: string }>()
 );
 
 export const validateResetTokenSuccessAction = createAction(
-  ActionSourceEnum.API,
-  APIEnum.ACCOUNT,
-  'ValidateResetToken Success',
+  ModuleEnum.ACCOUNT,
+  EmitterTypeEnum.API,
+  'validateResetTokenSuccess',
 );
 
 export const validateResetTokenFailureAction = createAction(
-  ActionSourceEnum.API,
-  APIEnum.ACCOUNT,
-  'ValidateResetToken Failure',
+  ModuleEnum.ACCOUNT,
+  EmitterTypeEnum.API,
+  'validateResetTokenFailure',
   props<{ error: string }>()
 );

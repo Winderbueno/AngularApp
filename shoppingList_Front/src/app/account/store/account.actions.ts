@@ -1,22 +1,22 @@
 //#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
-import { ActionSourceEnum } from '@action/enum/action-source.enum';
+import { EmitterTypeEnum } from '@module/action/enum/emitter-type.enum';
 //#endregion
 
 //#region Model
-import { ModuleEnum } from '@app/model/enum/module.enum';
+import { ModuleEnum } from '@module/action/enum/module.enum';
 //#endregion
 
 export const refreshTokenAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.ACCOUNT,
-  'Refresh Token'
+  EmitterTypeEnum.STORE,
+  'refreshToken'
 );
 
 export const autoLogOutAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.ACCOUNT,
-  'Auto Logout',
+  EmitterTypeEnum.STORE,
+  'autoLogOut',
   props<{ error: string }>()
 );

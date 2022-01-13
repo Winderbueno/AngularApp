@@ -33,7 +33,10 @@ import {
     MaterialModule,
 
     /* Store */
-    StoreModule.forFeature(fromStore.featureKey, fromStore.reducer),
+    StoreModule.forFeature(
+      fromStore.featureKey, 
+      fromStore.reducer
+    ),
 
     /* Effect */
     EffectsModule.forFeature([AlertEffects]),

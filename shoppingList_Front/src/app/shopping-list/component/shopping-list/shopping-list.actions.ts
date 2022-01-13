@@ -2,56 +2,50 @@
 import { props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
 import { createAction } from '@action/creator/action-creator';
-import { ActionSourceEnum } from '@action/enum/action-source.enum';
+import { ModuleEnum } from '@module/action/enum/module.enum';
+import { EmitterTypeEnum } from '@module/action/enum/emitter-type.enum';
 //#endregion
 
 //#region Model
 import { UsedProduct } from '../../model/current/used-product.model';
 //#endregion
 
-
 export const resetBoughtStatusAction = createAction (
-  ActionSourceEnum.COMPONENT,
-  'Shopping List',
-  'Reset Bought Status',
-  props<{
-    ShoppingListId: string }>()
+  ModuleEnum.SHOPPING_LIST,
+  EmitterTypeEnum.COMPONENT,
+  'resetBoughtStatus',
+  props<{ ShoppingListId: string }>()
 );
-
 
 export const addProductToShoppingListAction = createAction (
-  ActionSourceEnum.COMPONENT,
-  'Shopping List',
-  'AddProduct',
-  props<{
-    product: UsedProduct }>()
+  ModuleEnum.SHOPPING_LIST,
+  EmitterTypeEnum.COMPONENT,
+  'addProductToShoppingList',
+  props<{ product: UsedProduct }>()
 );
-
 
 export const updateShoppingListProductAction = createAction (
-  ActionSourceEnum.COMPONENT,
-  'Shopping List',
-  'UpdtProduct',
+  ModuleEnum.SHOPPING_LIST,
+  EmitterTypeEnum.COMPONENT,
+  'updateShoppingListProduct',
   props<{
     ShoppingListId: string,
     product: Update<UsedProduct> }>()
 );
-
 
 export const swapShoppingListProductBoughtStatusAction = createAction (
-  ActionSourceEnum.COMPONENT,
-  'Shopping List',
-  'Swap Product Bought Status',
+  ModuleEnum.SHOPPING_LIST,
+  EmitterTypeEnum.COMPONENT,
+  'swapShoppingListProductBoughtStatus',
   props<{
     ShoppingListId: string,
     product: Update<UsedProduct> }>()
 );
 
-
 export const deleteProductFromShoppingListAction = createAction (
-  ActionSourceEnum.COMPONENT,
-  'Shopping List',
-  'DeleteProduct',
+  ModuleEnum.SHOPPING_LIST,
+  EmitterTypeEnum.COMPONENT,
+  'deleteProductFromShoppingList',
   props<{
     ShoppingListId: string,
     ProductId: string }>()

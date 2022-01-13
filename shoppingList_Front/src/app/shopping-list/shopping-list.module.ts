@@ -9,7 +9,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { ShoppingListRouterModule } from './shopping-list-router.module';
 import { MaterialModule } from '@material/material.module';
 import { FormModule } from '@form/form.module';
-import { ProductModule } from '@product/product.module';
 //#endregion
 
 //#region Store
@@ -38,7 +37,10 @@ import {
     FormModule,
 
     /* Store */
-    StoreModule.forFeature(fromStore.featureKey, fromStore.reducer),
+    StoreModule.forFeature(
+      fromStore.featureKey,
+      fromStore.reducer
+    ),
 
     /* Effect */
     EffectsModule.forFeature([

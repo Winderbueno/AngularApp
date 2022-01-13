@@ -26,7 +26,10 @@ import { LoaderComponent } from './component/';
     MaterialModule,
 
     /* Store */
-    StoreModule.forFeature(fromStore.featureKey, fromStore.reducer),
+    StoreModule.forFeature(
+      fromStore.featureKey, 
+      fromStore.reducer
+    ),
   ],
   declarations: [
     LoaderComponent,

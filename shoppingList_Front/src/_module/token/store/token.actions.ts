@@ -1,38 +1,38 @@
 //#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
-import { ActionSourceEnum } from '@action/enum/action-source.enum';
+import { EmitterTypeEnum } from '@module/action/enum/emitter-type.enum';
 //#endregion
 
 //#region Model
-import { ModuleEnum } from '@app/model/enum/module.enum';
+import { ModuleEnum } from '@module/action/enum/module.enum';
 import { Token } from '../model/token.model';
 //#endregion
 
 export const validateTokenAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.TOKEN,
-  'Validate',
+  EmitterTypeEnum.STORE,
+  'validateToken',
   props<{ token: Token }>()
 );
 
 export const deleteTokenAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.TOKEN,
-  'Delete',
+  EmitterTypeEnum.STORE,
+  'deleteToken',
   props<{ name: string }>()
 );
 
 export const tokenValidatedAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.TOKEN,
-  'Validated',
+  EmitterTypeEnum.STORE,
+  'tokenValidated',
   props<{ name: string }>()
 );
 
 export const tokenInvalidatedAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.TOKEN,
-  'Invalidated',
+  EmitterTypeEnum.STORE,
+  'tokenInvalidated',
   props<{ name: string }>()
 );

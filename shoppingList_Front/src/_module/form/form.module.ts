@@ -1,13 +1,13 @@
 //#region Angular, Material, NgRx
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { NgrxFormsModule } from 'ngrx-forms';
 //#endregion
 
 //#region Module
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgrxFormsModule } from 'ngrx-forms';
 import { MaterialModule } from '@material/material.module';
 import { LoaderModule } from '@loader/loader.module';
 //#endregion
@@ -31,19 +31,20 @@ import {
 
 @NgModule({
   imports: [
-    /* Angular, Ngrx */
+    /* Angular */
     CommonModule,
 
-    /* Form Tools */
+    /* Module */
     ReactiveFormsModule,
     NgrxFormsModule,
-
-    /* Module */
     MaterialModule,
     LoaderModule,
 
     /* Store */
-    StoreModule.forFeature(fromStore.featureKey, fromStore.reducer),
+    StoreModule.forFeature(
+      fromStore.featureKey, 
+      fromStore.reducer
+    ),
 
     /* Effect */
     EffectsModule.forFeature([ValidationEffects]),
@@ -61,7 +62,7 @@ import {
     SubmitButtonComponent
   ],
   exports: [
-    /* Form Tools */
+    /* Module */
     ReactiveFormsModule,
     NgrxFormsModule,
 

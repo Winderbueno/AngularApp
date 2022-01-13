@@ -1,14 +1,11 @@
 //#region NgRx, Action Creator
 import { createAction } from '@action/creator/action-creator';
-import { ActionSourceEnum } from '@action/enum/action-source.enum';
-//#endregion
-
-//#region Model
-import { ModuleEnum } from '@app/model/enum/module.enum';
+import { ModuleEnum } from '@module/action/enum/module.enum';
+import { EmitterTypeEnum } from '@module/action/enum/emitter-type.enum';
 //#endregion
 
 export const loadActiveAction = createAction (
-  ActionSourceEnum.MODULE,
   ModuleEnum.SHOPPING_LIST,
-  'LoadActive'
+  EmitterTypeEnum.STORE,
+  'loadActive'
 );

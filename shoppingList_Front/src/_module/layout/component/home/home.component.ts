@@ -19,7 +19,6 @@ import { Timer } from '@timer/model/timer.model';
 export class HomeComponent implements OnInit {
 
   title = 'shoppingList_Front';
-  alertAction = fromAlert.triggerAlertAction;
 
   triggerDelayedAlertTimer:Timer = new Timer({
     name: 'TriggerDelayedAlert',
@@ -34,7 +33,7 @@ export class HomeComponent implements OnInit {
   stopLoaderTimer:Timer = new Timer({
     name: 'StopLoaderTimer',
     time: 3000, // TODO - Put this in a config file
-    action: fromLoader.stopLoaderAction()
+    action: fromLoader.stopLoaderAction
   });    
 
   constructor(public store: Store) {}

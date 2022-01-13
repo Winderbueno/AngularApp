@@ -1,18 +1,18 @@
 //#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
-import { ActionSourceEnum } from '@action/enum/action-source.enum';
+import { EmitterTypeEnum } from '@action/enum/emitter-type.enum';
 //#endregion
 
 //#region Model
-import { ModuleEnum } from '@app/model/enum/module.enum'; // TODO - there should not be a dependance on APP, this is true for every actions definition in modules
+import { ModuleEnum } from '@module/action/enum/module.enum'; // TODO - there should not be a dependance on APP, this is true for every actions definition in modules
 import { AlertTypeEnum } from '../model/enum/alert-type.enum';
 //#endregion
 
 export const triggerAlertAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.ALERT,
-  'Trigger',
+  EmitterTypeEnum.STORE,
+  'triggerAlert',
   props<{
     alertType: AlertTypeEnum,
     message: string,
@@ -20,13 +20,13 @@ export const triggerAlertAction = createAction(
 );
 
 export const dismissAlertAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.ALERT,
-  'Dismiss',
+  EmitterTypeEnum.STORE,
+  'dismissAlert',
 );
 
 export const keptAfterRouteChangeAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.ALERT,
-  'Kept After Route Change',
+  EmitterTypeEnum.STORE,
+  'keptAfterRouteChange',
 );

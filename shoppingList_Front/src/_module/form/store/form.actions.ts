@@ -1,12 +1,12 @@
 //#region NgRx, Action Creator
 import { createAction } from '@action/creator/action-creator';
-import { ActionSourceEnum } from '@action/enum/action-source.enum';
+import { EmitterTypeEnum } from '@module/action/enum/emitter-type.enum';
 import { props } from '@ngrx/store';
 import { ValidationFn } from 'ngrx-forms';
 //#endregion
 
 //#region Model
-import { ModuleEnum } from '@app/model/enum/module.enum';
+import { ModuleEnum } from '@module/action/enum/module.enum';
 import { StaticControlValidationFns } from '../model/validation-fns.model';
 //#endregion
 
@@ -17,57 +17,57 @@ export interface FormControlDTO {
 }
 
 export const createFormAction = createAction (
-  ActionSourceEnum.MODULE,
   ModuleEnum.FORM,
-  'CREATE_FORM',
+  EmitterTypeEnum.STORE,
+  'createForm',
   props<{ formId: string }>()
 );
 
 export const deleteFormAction = createAction ( // TODO - Implem this feature
-  ActionSourceEnum.MODULE,
   ModuleEnum.FORM,
-  'DELETE_FORM',
+  EmitterTypeEnum.STORE,
+  'deleteForm',
   props<{ formId: string }>()
 );
 
 export const submitFormAction = createAction (
-  ActionSourceEnum.MODULE,
   ModuleEnum.FORM,
-  'SUBMIT_FORM',
+  EmitterTypeEnum.STORE,
+  'submitForm',
   props<{ formId: string }>()
 );
 
 export const validateFormAction = createAction (
-  ActionSourceEnum.MODULE,
   ModuleEnum.FORM,
-  'VALIDATE_FORM',
+  EmitterTypeEnum.STORE,
+  'validateForm',
   props<{ 
     formId: string,
     controlValidationFns : StaticControlValidationFns }>()
 );
 
 export const dynamicValidateFormAction = createAction (
-  ActionSourceEnum.MODULE,
   ModuleEnum.FORM,
-  'DYNAMIC_VALIDATE_FORM',
+  EmitterTypeEnum.STORE,
+  'dynamicValidateForm',
   props<{ 
     formId: string,
     controlValidationFns : StaticControlValidationFns }>()
 );
 
 export const addControlToFormAction = createAction (
-  ActionSourceEnum.MODULE,
   ModuleEnum.FORM,
-  'ADD_CONTROL_TO_FORM',
+  EmitterTypeEnum.STORE,
+  'addControlToForm',
   props<{ 
     formId: string,
     control: FormControlDTO }>()
 );
 
 export const validateControlAction = createAction (
-  ActionSourceEnum.MODULE,
   ModuleEnum.FORM,
-  'VALIDATE_CONTROL',
+  EmitterTypeEnum.STORE,
+  'validateControl',
   props<{ 
     controlId: string,
     ValidationFns : ValidationFn<any>[] }>()

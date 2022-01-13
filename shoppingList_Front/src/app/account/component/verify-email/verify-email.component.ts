@@ -6,8 +6,7 @@ import { Store } from '@ngrx/store';
 
 //#region App Component, Model
 import * as ComponentActions from './verify-email.actions';
-import * as TokenSelectors from '@token/store/token.selectors';
-import { TokenStatusEnum } from "@token/model/enum/token-status.enum";
+import * as fromToken from '@token/store/';
 import { Token } from '@token/model/token.model';
 //#endregion
 
@@ -15,7 +14,7 @@ import { Token } from '@token/model/token.model';
 @Component({ templateUrl: 'verify-email.component.html' })
 export class VerifyEmailComponent implements OnInit, OnDestroy {
 
-  TokenStatusEnum = TokenStatusEnum;
+  TokenStatusEnum = fromToken.TokenStatusEnum;
   token:Token|undefined;
   tokenName: string = 'email';
 
@@ -25,11 +24,11 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
     private store: Store,
   ) {
     // Suscribe to the token state
-    this.store.select(TokenSelectors.selectTokenByName(this.tokenName)).subscribe(token => {
+    this.store.select(fromToken.selectTokenByName(this.tokenName)).subscribe(token => {
 
       this.token=token;
 
-      if(token && token.status === TokenStatusEnum.Valid) {
+      if(token && token.status === this.TokenStatusEnum.Valid) {
           this.store.dispatch(ComponentActions.emailTokenValidatedAction({ message: 'Verification successful, you can now login' }));
       }
     });
@@ -44,7 +43,7 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
 
     // Dispatch validate Email Token action
     this.store.dispatch(
-      ComponentActions.validateEmailTokenAction({
+      fromToken.validateTokenAction({
         token: new Token({
           name:this.tokenName,
           value: token
@@ -55,7 +54,7 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.store.dispatch(
-      ComponentActions.deleteEmailTokenAction({ name: this.tokenName})
+      fromToken.deleteTokenAction({ name: this.tokenName})
     );
   }
 }

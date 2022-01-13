@@ -1,31 +1,31 @@
 //#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
-import { ActionSourceEnum } from '@action/enum/action-source.enum';
+import { EmitterTypeEnum } from '@module/action/enum/emitter-type.enum';
 //#endregion
 
 //#region Model
-import { ModuleEnum } from '@app/model/enum/module.enum';
+import { ModuleEnum } from '@module/action/enum/module.enum';
 import { Level } from '@module/categorisation/model/level.model';
 //#endregion
 
 export const loadLevelAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.CATEGORISATION,
-  'Load Level',
+  EmitterTypeEnum.STORE,
+  'loadLevel',
   props<{ levels: Level[] }>()
 );
 
 export const addLevelAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.CATEGORISATION,
-  'Add Level',
+  EmitterTypeEnum.STORE,
+  'addLevel',
   props<{ level: Level }>()
 );
 
 export const deleteLevelAction = createAction(
-  ActionSourceEnum.MODULE,
   ModuleEnum.CATEGORISATION,
-  'Delete Level',
+  EmitterTypeEnum.STORE,
+  'deleteLevel',
   props<{ name: string }>()
 );

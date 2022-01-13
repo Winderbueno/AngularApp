@@ -1,24 +1,24 @@
 //#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
-import { ActionSourceEnum } from '@action/enum/action-source.enum';
+import { EmitterTypeEnum } from '@module/action/enum/emitter-type.enum';
 //#endregion
 
 //#region Model
-import { APIEnum } from '@app/model/enum/api.enum';
 import { Enum } from '../model/enum.model';
+import { ModuleEnum } from '@module/action/enum/module.enum';
 //#endregion
 
 export const loadAllSuccessAction = createAction(
-  ActionSourceEnum.API,
-  APIEnum.ENUM,
-  'Load All Success',
+  ModuleEnum.ENUM,
+  EmitterTypeEnum.API,
+  'LoadAllSuccess',
   props<{ enums: Enum[] }>()
 );
 
 export const loadAllFailureAction = createAction(
-  ActionSourceEnum.API,
-  APIEnum.ENUM,
-  'Load All Failure',
+  ModuleEnum.ENUM,
+  EmitterTypeEnum.API,
+  'LoadAllFailure',
   props<{ error: string }>()
 );

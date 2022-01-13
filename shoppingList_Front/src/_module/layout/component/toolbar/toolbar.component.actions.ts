@@ -1,9 +1,10 @@
 //#region NgRx, Action Creator
 import { createAction } from '@action/creator/action-creator';
-import { ActionSourceEnum } from '@action/enum/action-source.enum';
+import { EmitterTypeEnum } from '@module/action/enum/emitter-type.enum';
+import { ModuleEnum } from '@module/action/enum/module.enum';
 //#endregion
 
 export const toolbarLogOutAction = createAction (
-  ActionSourceEnum.COMPONENT,
-  'ToolBar',
-  'Logout');
+  ModuleEnum.LAYOUT,
+  EmitterTypeEnum.COMPONENT,
+  'ToolBar/Logout');
