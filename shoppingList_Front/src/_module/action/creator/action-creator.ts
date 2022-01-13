@@ -28,12 +28,9 @@ export function createAction <P extends object>(
   : ActionCreator<string, () => TypedAction<string>>
     | ActionCreator<string, (props: P & NotAllowedCheck<P>) => P & TypedAction<string>> {
 
-    let actionString:string = '@k' + '/' + module;
-    emitterType === EmitterTypeEnum.STORE ? 
-      actionString = actionString + '-' :
-      actionString = actionString + '/';
-    actionString = actionString + 
-      emitterType +
+    let actionString:string = '@k' + 
+      '/' + module + 
+      '-' + emitterType +
       '/'+ method;
 
     if( typeof config != 'undefined') {

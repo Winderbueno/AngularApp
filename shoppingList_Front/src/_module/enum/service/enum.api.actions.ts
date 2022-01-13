@@ -12,13 +12,13 @@ import { ModuleEnum } from '@module/action/enum/module.enum';
 export const loadAllSuccessAction = createAction(
   ModuleEnum.ENUM,
   EmitterTypeEnum.API,
-  'LoadAllSuccess',
+  'loadAllSuccess',
   props<{ enums: Enum[] }>()
 );
 
 export const loadAllFailureAction = createAction(
   ModuleEnum.ENUM,
   EmitterTypeEnum.API,
-  'LoadAllFailure',
+  'loadAllFailure',
   props<{ error: string }>()
 );

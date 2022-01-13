@@ -10,5 +10,5 @@ import { ModuleEnum } from '@module/action/enum/module.enum'; // TODO - Warn dep
 export const loadEnumAction = createAction(
   ModuleEnum.ENUM,
   EmitterTypeEnum.STORE,
-  'LoadEnum'
+  'loadEnum'
 );

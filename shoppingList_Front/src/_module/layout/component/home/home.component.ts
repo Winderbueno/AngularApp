@@ -32,8 +32,8 @@ export class HomeComponent implements OnInit {
 
   stopLoaderTimer:Timer = new Timer({
     name: 'StopLoaderTimer',
-    time: 3000, // TODO - Put this in a config file
-    action: fromLoader.stopLoaderAction
+    time: 3000,
+    action: fromLoader.stopLoaderAction()
   });    
 
   constructor(public store: Store) {}
@@ -52,6 +52,7 @@ export class HomeComponent implements OnInit {
 
   triggerDelayedAlert() {
     this.store.dispatch(fromTimer.deleteTimerAction({ name : 'TriggerDelayedAlert' }));
+    this.store.dispatch(fromTimer.deleteTimerAction({ name : 'StopLoaderTimer' }));
     this.store.dispatch(fromLoader.startLoaderAction({triggerSource : '' }));
     this.store.dispatch(fromTimer.defineTimerAction({ timer : this.triggerDelayedAlertTimer }));
     this.store.dispatch(fromTimer.defineTimerAction({ timer : this.stopLoaderTimer }));
