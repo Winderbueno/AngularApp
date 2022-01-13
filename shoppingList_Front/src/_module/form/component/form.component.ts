@@ -21,7 +21,7 @@ export class FormComponent implements OnInit, OnDestroy {
   // Form
   protected _formGroupState!: FormGroupState<FormValue> | undefined;
   private _title: string = "Form Title";
-  // Allow to keep the form state when the component is deleted
+  // Allow to keep the form state in global state when the component is deleted
   private _persist: boolean = false;
   
   // Accessor
