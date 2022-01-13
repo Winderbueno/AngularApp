@@ -1,6 +1,5 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map } from 'rxjs/operators';
 //#endregion

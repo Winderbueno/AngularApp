@@ -19,7 +19,7 @@ export class AlertEffects {
     this.actions$.pipe(
       ofType(fromRouter.routerRequestAction),
       withLatestFrom(this.store.select(fromStore.selectState)),
-      filter(([action, alert]) => alert.alert != null && alert.keepAfterRouteChange === false),
+      filter(([, alert]) => alert.alert != null && alert.keepAfterRouteChange === false),
       map(() => { return fromStore.dismissAlertAction(); })
     )
   );
@@ -29,7 +29,7 @@ export class AlertEffects {
     this.actions$.pipe(
       ofType(fromRouter.routerRequestAction),
       withLatestFrom(this.store.select(fromStore.selectState)),
-      filter(([action, alert]) => alert.keepAfterRouteChange === true),
+      filter(([, alert]) => alert.keepAfterRouteChange === true),
       map(() => { return fromStore.keptAfterRouteChangeAction(); })
     )
   );

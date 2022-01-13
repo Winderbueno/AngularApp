@@ -60,7 +60,7 @@ export class TimerEffects {
         fromAPI.refreshTokenFailureAction
       ),
       withLatestFrom(this.store.select(fromTimer.selectTimerByName(this.refreshTokenName))),
-      filter(([action, timer]) => timer != null),
+      filter(([, timer]) => timer != null),
       map(() => { return fromTimer.deleteTimerAction({ name: this.refreshTokenName }); })
     )
   );

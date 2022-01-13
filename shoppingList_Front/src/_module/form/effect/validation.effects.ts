@@ -39,9 +39,9 @@ export class ValidationEffects {
     )
   );
 
-  // TODO - This is done any change change on value... Might be optimizable
-  // After form control has been, 
-  // Run validation on potentially dependant
+  // TODO - This is done for any value change... Might be optimizable
+  // After control has been validated, 
+  // Run validation on the entire form for potentially dependant control
   dynamycFormValidationAction$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromStore.validateControlAction),
@@ -62,7 +62,7 @@ export class ValidationEffects {
     )
   );
 
-  // After form as been submitted, 
+  // After form has been submitted, 
   // Run form validation (i.e. a validation of all its control)
   validateFormAction$ = createEffect(() =>
     this.actions$.pipe(

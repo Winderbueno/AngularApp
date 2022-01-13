@@ -19,7 +19,7 @@ export class AutoLogOutEffects {
     this.actions$.pipe(
       ofType(fromAPI.refreshTokenFailureAction),
       withLatestFrom(this.store.select(fromStore.isLogged)),
-      filter(([action, isLogged]) => isLogged === true),
+      filter(([, isLogged]) => isLogged === true),
       map(([action]) => fromStore.autoLogOutAction({
         error: action.error,
       }))

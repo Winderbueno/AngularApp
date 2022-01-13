@@ -26,8 +26,8 @@ export class AccountAPIEffects {
       ofType(fromComponent.forgotPasswordSubmitAction),
       exhaustMap((action) =>
         this.accountService.forgotPassword(action.email).pipe(
-          map(() => fromAPI.forgotPasswordSuccessAction({
-            message: 'Please check your email for password reset instructions' // TODO - Msg
+          map(() => fromAPI.forgotPasswordSuccessAction({ // TODO - Msg (Error msg are in BACK, Success msg are here)
+            message: 'Please check your email for password reset instructions'
           })),
           catchError((error) => of(fromAPI.forgotPasswordFailureAction({ error: error })))
     ))
@@ -61,8 +61,8 @@ export class AccountAPIEffects {
       ofType(fromComponent.registerSubmitAction),
       exhaustMap((action) =>
         this.accountService.register(action.account).pipe(
-          map(() => fromAPI.registerSuccessAction({
-            message: 'Registration successful, please check your email for verification instructions' // TODO - Msg
+          map(() => fromAPI.registerSuccessAction({  // TODO - Msg
+            message: 'Registration successful, please check your email for verification instructions'
           })),
           catchError((error) => of(fromAPI.registerFailureAction({ error: error })))
     ))
@@ -85,7 +85,7 @@ export class AccountAPIEffects {
       ofType(fromComponent.resetPasswordSubmitAction),
       exhaustMap((action) =>
         this.accountService.resetPassword(action.token, action.password, action.confirmPassword).pipe(
-          map(() => fromAPI.resetPasswordSuccessAction({ // TODO - Msg (Error msg are in BACK, Success msg are here)
+          map(() => fromAPI.resetPasswordSuccessAction({ // TODO - Msg
             message: 'Password successfully reinitialised, you can now log in :)'
           })),
           catchError((error) => of(fromAPI.resetPasswordFailureAction({ error: error })))
