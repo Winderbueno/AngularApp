@@ -41,7 +41,9 @@ export class TimerEffects {
   // When requested, delete internal timer
   deleteTimer$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(fromStore.deleteTimerAction),
+      ofType(
+        fromStore.deleteTimerAction,
+        fromStore.timerEndedAction),
       switchMap(action =>
         of(action).pipe(
           withLatestFrom(this.store.select(fromStore.selectTimerByName(action.name))),
@@ -56,8 +58,8 @@ export class TimerEffects {
     )
   );
 
-  // When a timer end, dispatch its defined action
-  timerEnded$ = createEffect(() =>
+  // When a timer end, dispatch its configured action
+  dispatchTimerConfiguredAction$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromStore.timerEndedAction),
       switchMap(action =>
