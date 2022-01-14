@@ -10,7 +10,6 @@
       [label]="'Input Field with Email Format'">
     </app-input-field>
 
-    <!-- Password + Confirm -->
     <app-password-field-group 
       [formId]="title" 
       [withConfirm]="true">
@@ -25,6 +24,11 @@
       [formId]="title" 
       [ctrlName]="'CheckBox'">
     </app-checkbox-field>
+
+    <app-slide-toggle-field 
+      [formId]="title" 
+      [ctrlName]="'SlideToggle'">
+    </app-slide-toggle-field>
 
     <app-submit-button></app-submit-button>
   </form>

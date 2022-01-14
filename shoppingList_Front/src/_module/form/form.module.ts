@@ -25,6 +25,7 @@ import {
   CheckBoxFieldComponent,
   InputFieldComponent,
   SelectFieldComponent,
+  SlideToggleFieldComponent,
   PasswordFieldGroupComponent,
   SubmitButtonComponent } from './component';
 //#endregion
@@ -54,6 +55,7 @@ import {
     CheckBoxFieldComponent,
     InputFieldComponent,
     SelectFieldComponent,
+    SlideToggleFieldComponent,
 
     /* Field Group */
     PasswordFieldGroupComponent,
@@ -70,6 +72,7 @@ import {
     CheckBoxFieldComponent,
     InputFieldComponent,
     SelectFieldComponent,
+    SlideToggleFieldComponent,
 
     /* Field Group */
     PasswordFieldGroupComponent,
