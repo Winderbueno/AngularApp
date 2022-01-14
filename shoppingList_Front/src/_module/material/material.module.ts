@@ -18,8 +18,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 //#endregion
 
-//#region Material Configuration
+//#region Material UI Component Configuration
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 //#endregion
 
 //#region Material Adaptation for ngrx-form
@@ -61,8 +62,19 @@ import { MatListOptionFixDirective } from './ngrx-form-adapters/mat-list-option-
   ],
   providers: [
     /* Material Configuration */
-    // TODO - Put this in a Conf Module
-    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
+    // TODO - Allow this to be configured in a Conf Module
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, 
+      useValue: { 
+        appearance: 'outline' 
+      } 
+    },
+
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, 
+      useValue: { 
+        duration: 5000,
+        horizontalPosition: 'center' 
+      } 
+    }
   ],
 })
 export class MaterialModule {}

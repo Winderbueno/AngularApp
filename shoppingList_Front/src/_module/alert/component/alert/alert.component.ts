@@ -40,8 +40,7 @@ export class AlertComponent implements OnInit {
     openSnackBar(msg: string, panelClass: string) {
       this.snackBarRef = this.snackBar.openFromComponent(SnackbarComponent, {
         data: msg,
-        panelClass: panelClass,
-        duration: 10000 // TODO - should be in app conf + Add an action when Alert fade
+        panelClass: panelClass
       });
     }
 }
