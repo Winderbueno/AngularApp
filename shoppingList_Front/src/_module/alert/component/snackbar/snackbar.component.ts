@@ -19,11 +19,7 @@ export class SnackbarComponent {
     private store: Store,
     public snackBarRef: MatSnackBarRef<SnackbarComponent>,
     @Inject(MAT_SNACK_BAR_DATA) public message: any
-  ) { 
-    snackBarRef.afterDismissed()
-      .subscribe(()=>
-        this.store.dispatch(fromStore.dismissAlertAction()));
-  }
+  ) {}
 
   dismissAlert() { this.store.dispatch(fromStore.dismissAlertAction()); }
 }

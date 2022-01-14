@@ -71,6 +71,7 @@ import { MatListOptionFixDirective } from './ngrx-form-adapters/mat-list-option-
 
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, 
       useValue: { 
+        // TODO - Alert auto dismiss should be reimplemented with Ngrx (@timer+action in @alert)
         duration: 10000,
         horizontalPosition: 'center' 
       } 
