@@ -30,7 +30,12 @@ const alertReducer = createReducer(
   ),
 
   on(fromAction.dismissAlertAction,
-    (state) => { return { ...state, alert: undefined }; }
+    (state) => { 
+      return { ...state, 
+        alert: undefined,
+        keepAfterRouteChange: false
+      }; 
+    }
   ),
 
   on(fromAction.keptAfterRouteChangeAction,
