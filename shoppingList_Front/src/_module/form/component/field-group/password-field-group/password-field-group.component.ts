@@ -1,10 +1,9 @@
 ﻿//#region Angular, Material, NgRx
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 //#endregion
 
 //#region Component, Model, Service
-import { ValidationFnsService } from '@form/service/validation-fns.service';
 import { mustMatch } from '@form/validation-fns/must-match.validation-fns';
 //#endregion
 
@@ -20,22 +19,13 @@ import { mustMatch } from '@form/validation-fns/must-match.validation-fns';
 @Component({
   selector: 'app-password-field-group',
   templateUrl: 'password-field-group.component.html' })
-export class PasswordFieldGroupComponent implements OnInit {
+export class PasswordFieldGroupComponent {
 
   @Input() formId!: string;
   @Input() withConfirm: boolean = false;
 
-  constructor(
-    protected store: Store,
-    private validationFnsService: ValidationFnsService
-  ) { }
+  // Make mustMatch fonction accessible in the template
+  mustMatch = mustMatch;
 
-  ngOnInit() {
-    if(this.withConfirm) { 
-      this.validationFnsService.addStateParamControlValidationFn (
-        this.formId, 
-        'ConfirmPassword',
-        mustMatch('Password'));
-    }
-  }
+  constructor(protected store: Store) { }
 }
