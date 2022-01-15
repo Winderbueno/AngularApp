@@ -4,6 +4,12 @@
 <ng-container *ngIf="formGroupState">
   <form [ngrxFormState]="formGroupState" (submit)="onSubmit()">
 
+    <app-date-field 
+      [formId]="title" 
+      [ctrlName]="'Date Field'"
+      [placeholder]="'Ex : XX/XX/20XX'">
+    </app-date-field>
+
     <app-input-field 
       [formId]="title" 
       [ctrlName]="'Email'"
