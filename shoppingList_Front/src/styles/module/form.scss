@@ -8,11 +8,13 @@
 }
 
 // TODO - Could be replace be an "app-form-field"
-app-password-field-group,
-app-submit-button,
 app-checkbox-field,
+app-date-field,
 app-input-field,
-app-select-field {
+app-select-field,
+app-slide-toggle-field,
+app-password-field-group,
+app-submit-button {
   display: flex;
   width: 100%;
   flex:1;
