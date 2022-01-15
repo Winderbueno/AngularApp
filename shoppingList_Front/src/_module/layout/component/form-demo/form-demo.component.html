@@ -1,43 +1,41 @@
 <h1>{{title}}</h1>
 
 <!-- Form Demo -->
-<ng-container *ngIf="formGroupState">
-  <form [ngrxFormState]="formGroupState" (submit)="onSubmit()">
+<form [ngrxFormState]="formGroupState" (submit)="onSubmit()">
 
-    <app-date-field 
-      [formId]="title" 
-      [ctrlName]="'Date Field'"
-      [placeholder]="'Ex : XX/XX/20XX'">
-    </app-date-field>
+  <app-date-field 
+    [formId]="title" 
+    [ctrlName]="'Date Field'"
+    [placeholder]="'Ex : XX/XX/20XX'">
+  </app-date-field>
 
-    <app-input-field 
-      [formId]="title" 
-      [ctrlName]="'Email'"
-      [label]="'Input Field with Email Format'"
-      [placeholder]="'Ex : patate@puree.com'">
-    </app-input-field>
+  <app-input-field 
+    [formId]="title" 
+    [ctrlName]="'Email'"
+    [label]="'Input Field with Email Format'"
+    [placeholder]="'Ex : patate@puree.com'">
+  </app-input-field>
 
-    <app-password-field-group 
-      [formId]="title" 
-      [withConfirm]="true">
-    </app-password-field-group>
+  <app-password-field-group 
+    [formId]="title" 
+    [withConfirm]="true">
+  </app-password-field-group>
 
-    <app-select-field
-      [formId]="title"
-      [ctrlName]="'Select Field'"
-      [enum]="(productCatEnum$|async)!">
-    </app-select-field>
+  <app-select-field
+    [formId]="title"
+    [ctrlName]="'Select Field'"
+    [enum]="(productCatEnum$|async)!">
+  </app-select-field>
 
-    <app-checkbox-field 
-      [formId]="title" 
-      [ctrlName]="'CheckBox'">
-    </app-checkbox-field>
+  <app-checkbox-field 
+    [formId]="title" 
+    [ctrlName]="'CheckBox'">
+  </app-checkbox-field>
 
-    <app-slide-toggle-field 
-      [formId]="title" 
-      [ctrlName]="'SlideToggle'">
-    </app-slide-toggle-field>
+  <app-slide-toggle-field 
+    [formId]="title" 
+    [ctrlName]="'SlideToggle'">
+  </app-slide-toggle-field>
 
-    <app-submit-button></app-submit-button>
-  </form>
-</ng-container>
+  <app-submit-button></app-submit-button>
+</form>
