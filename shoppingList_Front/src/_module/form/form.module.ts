@@ -23,6 +23,7 @@ import { ValidationEffects } from './effect/';
 //#region Component
 import {
   CheckBoxFieldComponent,
+  DateFieldComponent,
   InputFieldComponent,
   SelectFieldComponent,
   SlideToggleFieldComponent,
@@ -53,6 +54,7 @@ import {
   declarations: [
     /* Field */
     CheckBoxFieldComponent,
+    DateFieldComponent,
     InputFieldComponent,
     SelectFieldComponent,
     SlideToggleFieldComponent,
@@ -70,6 +72,7 @@ import {
 
     /* Field */
     CheckBoxFieldComponent,
+    DateFieldComponent,
     InputFieldComponent,
     SelectFieldComponent,
     SlideToggleFieldComponent,
