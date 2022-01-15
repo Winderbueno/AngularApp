@@ -1,10 +1,8 @@
 ﻿<!-- Input Field -->
 <mat-form-field>
 
-  <!-- Label -->
   <mat-label>{{ label }}</mat-label>
-
-  <!-- Input -->
+  
   <input matInput 
     [ngrxFormControlState]="ctrl"
     [type]="inputHide ? 'password' : 'text'"
@@ -16,7 +14,6 @@
     <mat-icon>{{inputHide ? 'visibility_off' : 'visibility'}}</mat-icon>
   </button>
 
-  <!-- Error -->
   <mat-error *ngIf="ctrl.isInvalid">{{ err.getErrorMsg(ctrl) }}</mat-error>
-
+  
 </mat-form-field>
