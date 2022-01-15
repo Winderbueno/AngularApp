@@ -26,6 +26,7 @@ import { FormValue } from '@form/store/form.state';
  *  @param formID - FormGroupState ID to add the FormControlState on
  *  @param ctrlName - FormControlState Name (Note : ControlID in state is generated as '<formID>.<ctrlName>')
  *  @param label - (Optional | Default:<ctrlName>) - Label of the field
+ *  @param placeholder - (Optional) - Placeholder displayed in the field as long as the user does not fill it
  *  @param required - (Optional | Default:true) - Set 'required' validator on FormControlState
  */
 @Component({
@@ -46,6 +47,7 @@ export class FieldComponent implements OnInit {
     if (this.label == null) this.label = value; 
   }
   @Input() label!: string;
+  @Input() placeholder: string | undefined;
   @Input() required: boolean = true;
 
   // Accessor

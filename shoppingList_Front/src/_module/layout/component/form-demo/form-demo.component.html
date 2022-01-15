@@ -1,13 +1,14 @@
 <h1>{{title}}</h1>
 
-<!-- Ngrx Form -->
+<!-- Form Demo -->
 <ng-container *ngIf="formGroupState">
   <form [ngrxFormState]="formGroupState" (submit)="onSubmit()">
 
     <app-input-field 
       [formId]="title" 
       [ctrlName]="'Email'"
-      [label]="'Input Field with Email Format'">
+      [label]="'Input Field with Email Format'"
+      [placeholder]="'Ex : patate@puree.com'">
     </app-input-field>
 
     <app-password-field-group 
