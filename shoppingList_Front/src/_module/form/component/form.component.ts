@@ -19,7 +19,7 @@ import { FormValue } from '@form/store/form.state';
 export class FormComponent implements OnInit, OnDestroy {
 
   // Form
-  protected _formGroupState!: FormGroupState<FormValue> | undefined;
+  protected _formGroupState: FormGroupState<FormValue> | undefined;
   private _title: string = "Form Title";
   // Allow to keep the form state in global state when the component is deleted
   private _persist: boolean = false;
@@ -30,7 +30,7 @@ export class FormComponent implements OnInit, OnDestroy {
   protected set title(title:string) { this._title = title; }
 
   get value() { return this._formGroupState!.value }
-  get formGroupState() { return this._formGroupState ? this._formGroupState : undefined; }
+  get formGroupState() { return this._formGroupState!; }
 
   constructor(
     protected router: Router,
@@ -45,7 +45,7 @@ export class FormComponent implements OnInit, OnDestroy {
       .subscribe(s => this._formGroupState = s);
     
     // Initialise FormGroupState
-    if(this.formGroupState === undefined) {
+    if(this._formGroupState === undefined) {
       this.store.dispatch(fromStore.createFormAction({ formId: this._title }));
     }
   }
