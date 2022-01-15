@@ -130,9 +130,9 @@ export class ValidationFnsService {
       ctrlValFns=[validationFn];
   }
 
-  /*******************************************/
-  /* State Parametrized Validation Functions */
-  /*******************************************/
+  /***************************************************/
+  /* State Parametrized Control Validation Functions */
+  /***************************************************/
 
   private getStateParamControlValidationFns(formId: string, controlName: string): StateParamControlValidationFn[] {
     return this.stateParamControlValFns[this.getControlIdWithName(formId, controlName)];
@@ -146,21 +146,26 @@ export class ValidationFnsService {
         formStateParamValFns[ctrlId] = this.stateParamControlValFns[ctrlId];
       }
     }
-
     return formStateParamValFns;
   }
 
   addStateParamControlValidationFn(
     formId: string, 
     controlName: string,
-    validationFn: StateParamControlValidationFn) {   
+    stateParamValFns: StateParamControlValidationFn[]) {   
     
+    // If user did not give validationFns
+    if(stateParamValFns.length === 0) { return; }
+
     let ctrlId:string = this.getControlIdWithName(formId, controlName);
     let ctrlStateParamValFns:StateParamControlValidationFn[] = this.stateParamControlValFns[ctrlId];
-
-    ctrlStateParamValFns != undefined ? 
-      this.stateParamControlValFns[ctrlId].push(validationFn) :
-      this.stateParamControlValFns[ctrlId]=[validationFn];
+    
+    // Save ValidationFns
+    if (ctrlStateParamValFns != undefined) {
+      stateParamValFns.forEach(valFn => {
+        this.stateParamControlValFns[ctrlId].push(valFn)
+      });
+    } else { this.stateParamControlValFns[ctrlId] = stateParamValFns; }
   }
 
   private getControlIdWithName(formId: string, controlName: string) : string {
