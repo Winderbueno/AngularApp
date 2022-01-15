@@ -19,11 +19,10 @@ import * as fromAlert from '@alert/store/';
 export class FormDemoComponent extends FormComponent {  
 
   // Proposition values
-  productCatEnum$!: Observable<Enum|undefined>;
+  readonly productCatEnum$: Observable<Enum|undefined>
+    = this.store.select(fromEnum.selectEnumByName('ProductCategory'));
 
-  ngOnInit(){
-    this.productCatEnum$ = this.store.select(fromEnum.selectEnumByName('ProductCategory'));
-    
+  ngOnInit(){    
     // Form Configuration
     super.title = "Form Demo";
     super.persist = true;

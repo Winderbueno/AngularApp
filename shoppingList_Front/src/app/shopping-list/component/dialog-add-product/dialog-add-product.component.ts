@@ -24,8 +24,10 @@ import { ShoppingListService } from '@shoppingList/service/shopping-list.service
 export class DialogAddProductComponent extends FormComponent {
 
   // Proposition values
-  productCatEnum$!: Observable<Enum|undefined>;
-  productSubCatEnum$!: Observable<Enum|undefined>;
+  productCatEnum$: Observable<Enum|undefined> = 
+    this.store.select(fromEnum.selectEnumByName('ProductCategory'));
+  productSubCatEnum$: Observable<Enum|undefined> = 
+    this.store.select(fromEnum.selectEnumByName('ProductSubCategory'));
 
   // TODO - Optimize constructor because we herit from FormCompo ?
   constructor(
@@ -35,10 +37,7 @@ export class DialogAddProductComponent extends FormComponent {
     public dialogRef: MatDialogRef<DialogAddProductComponent>,
     private shoppingListService: ShoppingListService,
   ) {
-
     super(router, route, store);
-    this.productCatEnum$ = this.store.select(fromEnum.selectEnumByName('ProductCategory'));
-    this.productSubCatEnum$ = this.store.select(fromEnum.selectEnumByName('ProductSubCategory'));
   }
 
   ngOnInit(): void {
