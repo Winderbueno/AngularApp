@@ -19,24 +19,13 @@ export class DateFieldComponent extends FieldComponent {
 
   ngOnInit() { super.ngOnInit(); }
 
+  // Converters 'Luxon DateTime' (In DatePicker) <=> 'String' (In Ngrx State)
   dateValueConverter: NgrxValueConverter<DateTime | null, string | null> = {
-    convertViewToStateValue(value) {
-      
-      if (value === null) { return null; }
-
-      //let y:number = value.year;
-
-
-      // the value provided by the date picker is in local time but we want UTC so we recreate the date as UTC
-      // value = new Date(Date.UTC(
-      //    value.year, 
-      //    value.month, 
-      //    value.day));
-      return value.year.toString();
+    convertViewToStateValue(dateInView:DateTime) {
+      return dateInView === null ? null : dateInView.toISODate();
     },
-    // tslint:disable-next-line: no-unbound-method
-    convertStateToViewValue(value) {
-      return null;
+    convertStateToViewValue(dateInState:string) {
+      return DateTime.fromISO(dateInState);
     }
   };
 }
