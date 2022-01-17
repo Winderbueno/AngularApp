@@ -47,7 +47,7 @@ export class TimerEffects {
       switchMap(action =>
         of(action).pipe(
           withLatestFrom(this.store.select(fromStore.selectTimerByName(action.name))),
-          filter((timer) => timer != undefined),
+          filter(([, timer]) => timer != undefined),
           map(([, timer]) => {
     
             if(timer?.timeoutHandler != undefined) clearTimeout(timer?.timeoutHandler);
@@ -65,7 +65,7 @@ export class TimerEffects {
       switchMap(action =>
         of(action).pipe(
           withLatestFrom(this.store.select(fromStore.selectTimerByName(action.name))),
-          filter((timer) => timer != undefined),
+          filter(([, timer]) => timer != undefined),
           map(([, timer]) => {
             if(timer != undefined) { this.action = timer.action; }
             return this.action;
