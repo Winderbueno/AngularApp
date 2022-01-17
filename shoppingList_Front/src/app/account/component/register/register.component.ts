@@ -14,6 +14,7 @@ export class RegisterComponent extends FormComponent {
 
   ngOnInit(){
     super.title = "Sign Up";
+    super.persist = true;
     super.ngOnInit();
   }
 
