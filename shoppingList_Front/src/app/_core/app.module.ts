@@ -16,7 +16,7 @@ import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 import { AppRouterModule } from '@app/app-router.module';
 import { AccountModule } from '@account/account.module';
 import { AlertModule } from '@alert/alert.module';
-import { EnumModule } from '@module/enum/enum.module';
+import { EnumModule } from '@enum/enum.module';
 import { LayoutModule } from '@layout/layout.module';
 import { TimerModule } from '@timer/timer.module';
 import { TokenModule } from '@token/token.module';
