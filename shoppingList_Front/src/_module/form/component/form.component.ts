@@ -44,10 +44,10 @@ export class FormComponent implements OnInit, OnDestroy {
     this.store.select(fromStore.selectFormById(this._title))
       .subscribe(s => this._formGroupState = s);
     
-    // If form does not exist in state, create FormState
-    if(this._formGroupState === undefined) {
-      this.store.dispatch(fromStore.createFormAction({ formId: this._title }));
-    }
+    // If form does not exist in state, create FormState, else resetState
+    this._formGroupState === undefined ?
+      this.store.dispatch(fromStore.createFormAction({ formId: this._title })) :
+      this.store.dispatch(fromStore.resetFormAction({ formId: this._title }));
   }
 
   ngOnDestroy(): void {
