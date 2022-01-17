@@ -14,9 +14,7 @@
     line-height: 24px;
   }
 
-  .card-container .card:not(:last-child) {
-    margin-right: 0;
-  }
+  
 
   .card.card-small {
     height: 16px;
@@ -27,7 +25,7 @@
     cursor: pointer;
   }
 
-  .card-container .card:not(.highlight-card):hover {
+  .card:not(.highlight-card):hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
   }
