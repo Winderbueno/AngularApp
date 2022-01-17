@@ -102,7 +102,7 @@ export class ShoppingListComponent implements OnInit {
   }
 
   onSlideChange():void {
-    if(this.accordion_expanded == false){
+    if(this.accordion_expanded === false){
       this.Accordion.openAll();
     } else {
       this.Accordion.closeAll();

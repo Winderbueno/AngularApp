@@ -19,6 +19,6 @@ export const {
 
 export const selectEnumByName = (name: string | undefined) =>
   createSelector(selectState, (state: EnumState) => {
-    if(name == undefined) { return undefined; }
+    if(name === undefined) { return undefined; }
     else { return state.entities[name]; }
   });

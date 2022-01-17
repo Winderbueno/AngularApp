@@ -22,7 +22,7 @@ export const {
 
 export const selectTimerByName = (name: string | undefined) =>
   createSelector(selectState, (state: TimerState) => {
-    if(name == undefined) { return undefined; }
+    if(name === undefined) { return undefined; }
     else { return state.entities[name]; }
   });
 

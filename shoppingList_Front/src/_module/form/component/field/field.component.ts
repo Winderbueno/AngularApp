@@ -60,7 +60,7 @@ export class FieldComponent implements OnInit {
   @Input() formId!: string;
   @Input() set ctrlName(value: string) {
     this._ctrlName = value;
-    if (this.label == null) this.label = value; 
+    if (this.label === null) this.label = value; 
   }
   @Input() label!: string;
   @Input() placeholder: string | undefined;
