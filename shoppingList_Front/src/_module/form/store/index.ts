@@ -13,6 +13,7 @@ export {
 export {
   createFormAction,
   deleteFormAction,
+  resetFormAction,
   submitFormAction,
   validateFormAction,
   dynamicValidateFormAction,

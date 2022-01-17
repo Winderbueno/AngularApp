@@ -16,59 +16,70 @@ export interface FormControlDTO {
   value: string|boolean|number;
 }
 
-export const createFormAction = createAction (
+export const createFormAction = createAction(
   ModuleEnum.FORM,
   EmitterTypeEnum.STORE,
   'createForm',
   props<{ formId: string }>()
 );
 
-export const deleteFormAction = createAction ( // TODO - Implem this feature
+export const deleteFormAction = createAction(
   ModuleEnum.FORM,
   EmitterTypeEnum.STORE,
   'deleteForm',
   props<{ formId: string }>()
 );
 
-export const submitFormAction = createAction (
+export const resetFormAction = createAction(
+  ModuleEnum.FORM,
+  EmitterTypeEnum.STORE,
+  'resetForm',
+  props<{ formId: string }>()
+);
+
+export const submitFormAction = createAction(
   ModuleEnum.FORM,
   EmitterTypeEnum.STORE,
   'submitForm',
   props<{ formId: string }>()
 );
 
-export const validateFormAction = createAction (
+export const validateFormAction = createAction(
   ModuleEnum.FORM,
   EmitterTypeEnum.STORE,
   'validateForm',
-  props<{ 
+  props<{
     formId: string,
-    controlValidationFns : StaticControlValidationFns }>()
+    controlValidationFns: StaticControlValidationFns
+  }>()
 );
 
-export const dynamicValidateFormAction = createAction (
+export const dynamicValidateFormAction = createAction(
   ModuleEnum.FORM,
   EmitterTypeEnum.STORE,
   'dynamicValidateForm',
-  props<{ 
+  props<{
     formId: string,
-    controlValidationFns : StaticControlValidationFns }>()
+    controlValidationFns: StaticControlValidationFns
+  }>()
 );
 
-export const addControlToFormAction = createAction (
+export const addControlToFormAction = createAction(
   ModuleEnum.FORM,
   EmitterTypeEnum.STORE,
   'addControlToForm',
-  props<{ 
+  props<{
     formId: string,
-    control: FormControlDTO }>()
+    control: FormControlDTO
+  }>()
 );
 
-export const validateControlAction = createAction (
+export const validateControlAction = createAction(
   ModuleEnum.FORM,
   EmitterTypeEnum.STORE,
   'validateControl',
-  props<{ 
+  props<{
     controlId: string,
-    ValidationFns : ValidationFn<any>[] }>()
+    ValidationFns: ValidationFn<any>[]
+  }>()
 );
