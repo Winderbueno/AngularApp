@@ -14,6 +14,7 @@ export class LoginComponent extends FormComponent {
 
   ngOnInit(){
     super.title = "Sign In";
+    super.persist = true;
     super.ngOnInit();
   }
 
