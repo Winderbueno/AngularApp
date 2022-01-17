@@ -46,7 +46,6 @@ import { StateParamControlValidationFn } from '@form/model/validation-fns.model'
  *  @param required - (Optional | Default:true) - Add 'required' validationFn on the field
  *  @param stateParamValFns - (Optional) - Array of stateParamValidationFns
  *  @param unpersist - (Optional) - If true, field state is deleted when component is destroy
- * 
  */
 @Component({
   selector: 'app-field',
