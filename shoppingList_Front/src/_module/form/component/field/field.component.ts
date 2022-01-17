@@ -1,5 +1,5 @@
 //#region Angular, Material, NgRx
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FormControlState, FormGroupState, ValidationFn } from 'ngrx-forms';
 import { required } from 'ngrx-forms/validation';
@@ -17,15 +17,17 @@ import { StateParamControlValidationFn } from '@form/model/validation-fns.model'
  * Field Component
  *
  * This component manage a Field that has :
- *  - Static UI information
- *    > Label (Displayed Name)
- *    > Placeholder (Displayed in the field as long as the user does not set a value
  * 
  *  - A FormControlState
- *    > Accessible in a FormGroupState by its 'ctrlName'
- *    > An Id (Generated as '<formID>.<ctrlName>')That has (Unique Identifier)
+ *    > Linked to one FormGroupState (that has the id : <formId>)
+ *    > Identifiable in FormGroupState by its 'ctrlName' (Unique Identifier in FormGroupState)
+ *    > An Id (Generated as '<formID>.<ctrlName>')
  *  
- *  - Validation Property
+ *  - Static UI information
+ *    > Label (Displayed field label)
+ *    > Placeholder (Displayed in the field as long as the user does not set a value)
+ * 
+ *  - Validation Properties
  *    > 'required' input parameter
  *    > Generated internal validationFns (Accessible from children)
  *    > Configurable formStateParametrizableValidationFns (Accessible from children)
@@ -33,7 +35,7 @@ import { StateParamControlValidationFn } from '@form/model/validation-fns.model'
  *  - Error Message (Displayed according to the validation property)
  * 
  * Technical implementation is :
- *  - FormControlState is stored in Ngrx global state updated with 'ngrx-forms' library
+ *  - FormControlState is stored in Ngrx global state and updated with 'ngrx-forms' library
  *  - ValidationFns (static & dynamic) managed by homemade angular service
  *  - Error message managed by homemade angular service
  *
@@ -43,18 +45,20 @@ import { StateParamControlValidationFn } from '@form/model/validation-fns.model'
  *  @param placeholder - (Optional) - Field placeholder
  *  @param required - (Optional | Default:true) - Add 'required' validationFn on the field
  *  @param stateParamValFns - (Optional) - Array of stateParamValidationFns
+ *  @param unpersist - (Optional) - If true, field state is deleted when component is destroy
+ * 
  */
 @Component({
   selector: 'app-field',
   template: ``,
 })
-export class FieldComponent implements OnInit {
+export class FieldComponent implements OnInit, OnDestroy {
 
-  // FormState
   private _ctrlName!: string;
   private _formGroupState : FormGroupState<FormValue> | undefined;
   private _validationFns: ValidationFn<any>[] = [];
   private _stateParamValFns: StateParamControlValidationFn[] = [];
+  private _unpersist: boolean = false;
 
   // Input
   @Input() formId!: string;
@@ -68,6 +72,7 @@ export class FieldComponent implements OnInit {
   @Input() set stateParamValFns(val: StateParamControlValidationFn[]) {
     this._stateParamValFns = val;
   };
+  @Input() set unpersist(input: boolean) { this._unpersist = input }
 
   // Accessor
   get form() { return this._formGroupState! }
@@ -89,7 +94,7 @@ export class FieldComponent implements OnInit {
     this.store.select(fromStore.selectFormById(this.formId))
       .subscribe(s => this._formGroupState = s);
 
-    // Add ValidationFns according to component configuration
+    // Add ValidationFns according to configuration
     if(this.required === true) { this._validationFns.push(required); }
     
     // Save ValidationFns
@@ -104,7 +109,7 @@ export class FieldComponent implements OnInit {
 
     // If control is not in the state, add FormControlState to FormGroupState
     if(this.ctrl === undefined) {
-      this.store.dispatch(fromStore.addControlToFormAction({
+      this.store.dispatch(fromStore.addControlInFormAction({
         formId: this.formId,
         control: { 
           name:this._ctrlName, 
@@ -112,5 +117,15 @@ export class FieldComponent implements OnInit {
         }
       }));
     }  
+  }
+
+  ngOnDestroy(): void {
+
+    // If configured with unpersist, delete control state on destroy
+    if(this._unpersist)
+      this.store.dispatch(fromStore.removeControlInFormAction({ 
+        formId: this.formId,
+        controlName: this._ctrlName
+      })); 
   }
 }
