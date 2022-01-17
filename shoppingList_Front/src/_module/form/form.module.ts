@@ -48,8 +48,9 @@ import {
       fromStore.reducer
     ),
 
-    /* Effect */
-    EffectsModule.forFeature([ValidationEffects]),
+    EffectsModule.forFeature([
+      ValidationEffects
+    ]),
   ],
   declarations: [
     /* Field */

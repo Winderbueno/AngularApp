@@ -39,7 +39,9 @@ import {
     ),
 
     /* Effect */
-    EffectsModule.forFeature([AlertEffects]),
+    EffectsModule.forFeature([
+      AlertEffects
+    ]),
   ],
   declarations: [
     AlertComponent,

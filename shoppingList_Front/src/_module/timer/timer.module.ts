@@ -22,7 +22,9 @@ import { TimerEffects } from './effect/';
     ),
 
     /* Effect */
-    EffectsModule.forFeature([TimerEffects]),
+    EffectsModule.forFeature([
+      TimerEffects
+    ]),
   ],
   declarations: []
 })

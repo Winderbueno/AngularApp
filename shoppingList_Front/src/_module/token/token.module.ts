@@ -22,7 +22,9 @@ import { TokenEffects } from './effect/';
     ),
 
     /* Effect */
-    EffectsModule.forFeature([TokenEffects]),
+    EffectsModule.forFeature([
+      TokenEffects
+    ]),
   ],
   declarations: []
 })

@@ -22,7 +22,9 @@ import { EnumAPIEffects } from './effect/';
     ),
 
     /* Effect */
-    EffectsModule.forFeature([EnumAPIEffects]),
+    EffectsModule.forFeature([
+      EnumAPIEffects
+    ]),
   ],
   declarations: []
 })
