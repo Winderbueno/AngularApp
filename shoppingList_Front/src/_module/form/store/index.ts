@@ -17,7 +17,8 @@ export {
   submitFormAction,
   validateFormAction,
   dynamicValidateFormAction,
-  addControlToFormAction,
+  addControlInFormAction,
+  removeControlInFormAction,
   validateControlAction,
   FormControlDTO
 } from './form.actions';

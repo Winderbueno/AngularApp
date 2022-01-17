@@ -64,13 +64,23 @@ export const dynamicValidateFormAction = createAction(
   }>()
 );
 
-export const addControlToFormAction = createAction(
+export const addControlInFormAction = createAction(
   ModuleEnum.FORM,
   EmitterTypeEnum.STORE,
-  'addControlToForm',
+  'addControlInForm',
   props<{
     formId: string,
     control: FormControlDTO
+  }>()
+);
+
+export const removeControlInFormAction = createAction(
+  ModuleEnum.FORM,
+  EmitterTypeEnum.STORE,
+  'removeControlInForm',
+  props<{
+    formId: string,
+    controlName: string
   }>()
 );
 

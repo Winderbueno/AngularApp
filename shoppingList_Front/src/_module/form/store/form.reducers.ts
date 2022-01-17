@@ -5,6 +5,7 @@ import {
   FormGroupState,
   createFormGroupState,
   addGroupControl,
+  removeGroupControl,
   onNgrxForms,
   updateRecursive,
   validate,
@@ -49,26 +50,31 @@ const formReducer = createReducer(
     fromAction.dynamicValidateFormAction,
     (state, action) => {
       const newState = { ...state };
-
-      // Validate Form
       newState[action.formId] = validateFormWithControlValidationFns(
         newState[action.formId],
         action.controlValidationFns);
-
       return newState;
     }),
   
-  on(fromAction.addControlToFormAction,
+  on(fromAction.addControlInFormAction,
     (state, action) => {
       const newState = { ...state };
 
-      // Add formControlState to formGroupState
-      // TODO - Gerer l'ajout de * FormControl en une fois ?
+      // Add control in the form
       newState[action.formId] = addGroupControl<FormValue>(
         newState[action.formId],
         action.control.name,
         action.control.value);
 
+      return newState;
+    }),
+
+  on(fromAction.removeControlInFormAction,
+    (state, action) => {
+      const newState = { ...state };
+      newState[action.formId] = removeGroupControl<FormValue>(
+        newState[action.formId],
+        action.controlName);
       return newState;
     }),
 
