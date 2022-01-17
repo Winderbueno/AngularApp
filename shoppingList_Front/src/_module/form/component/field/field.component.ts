@@ -110,10 +110,8 @@ export class FieldComponent implements OnInit, OnDestroy {
     if(this.ctrl === undefined) {
       this.store.dispatch(fromStore.addControlInFormAction({
         formId: this.formId,
-        control: { 
-          name:this._ctrlName, 
-          value:''
-        }
+        controlName: this._ctrlName, 
+        controlValue: ''
       }));
     }  
   }

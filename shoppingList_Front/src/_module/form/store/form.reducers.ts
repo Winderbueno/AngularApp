@@ -63,8 +63,8 @@ const formReducer = createReducer(
       // Add control in the form
       newState[action.formId] = addGroupControl<FormValue>(
         newState[action.formId],
-        action.control.name,
-        action.control.value);
+        action.controlName,
+        action.controlValue);
 
       return newState;
     }),

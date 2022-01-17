@@ -19,8 +19,7 @@ export {
   dynamicValidateFormAction,
   addControlInFormAction,
   removeControlInFormAction,
-  validateControlAction,
-  FormControlDTO
+  validateControlAction
 } from './form.actions';
 
 /* Selector */

@@ -10,12 +10,6 @@ import { ModuleEnum } from '@module/action/enum/module.enum';
 import { StaticControlValidationFns } from '../model/validation-fns.model';
 //#endregion
 
-/* Action DTO */
-export interface FormControlDTO {
-  name: string;
-  value: string|boolean|number;
-}
-
 export const createFormAction = createAction(
   ModuleEnum.FORM,
   EmitterTypeEnum.STORE,
@@ -70,7 +64,8 @@ export const addControlInFormAction = createAction(
   'addControlInForm',
   props<{
     formId: string,
-    control: FormControlDTO
+    controlName: string,
+    controlValue: string|boolean|number
   }>()
 );
 
