@@ -8,20 +8,12 @@ import { FormValue } from '../store/form.state';
 import { DynamicControlValidationFn } from '../model/validation-fns.model';
 //#endregion
 
-interface MustMatchValidationError<T> {
-  actual: T | null | undefined;
-}
-declare module 'ngrx-forms' {
-  interface ValidationErrors {
-    mustMatch?: MustMatchValidationError<any>
-  }
-}
-
 export function mustMatch(refCtrlName: string, matchCtrlName: string): DynamicControlValidationFn {
   return (formState: FormGroupState<FormValue>) => {
     const refCtrl = formState.controls[refCtrlName];
     const matchCtrl = formState.controls[matchCtrlName];
 
+    // The validationFn is generated only if there is no static error on matchCtrl
     if(matchCtrl.isInvalid && matchCtrl.errors.equalTo === undefined) {
       return;
     }
