@@ -28,7 +28,7 @@ import {
   SelectFieldComponent,
   SlideToggleFieldComponent,
   PasswordFieldGroupComponent,
-  SubmitButtonComponent } from './component';
+  ButtonComponent } from './component';
 //#endregion
 
 @NgModule({
@@ -64,7 +64,7 @@ import {
     PasswordFieldGroupComponent,
 
     /* Button */
-    SubmitButtonComponent
+    ButtonComponent
   ],
   exports: [
     /* Module */
@@ -82,7 +82,7 @@ import {
     PasswordFieldGroupComponent,
 
     /* Button */
-    SubmitButtonComponent
+    ButtonComponent
   ]
 })
 export class FormModule { }

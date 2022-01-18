@@ -1,0 +1,10 @@
+﻿<!-- Submit Button -->
+<button 
+  type="{{type}}"
+  mat-raised-button
+  color="primary" 
+  [disabled]="(type === 'submit') && (isLoading$|async)">
+
+  <app-loader *ngIf="type === 'submit'"></app-loader>
+  {{text}}
+</button>

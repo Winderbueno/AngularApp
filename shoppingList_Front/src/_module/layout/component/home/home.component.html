@@ -24,10 +24,14 @@
 
 <!-- Alert / Loader / Timer -->
 <div class="card-container flex-container">
-  <app-submit-button [text]="'TrowAlert'" (click)="triggerAlert()"></app-submit-button>
-  <app-submit-button [text]="'DelayedAlert'" (click)="triggerDelayedAlert()"></app-submit-button>
-  <app-submit-button [text]="'StartLoader'" (click)="startLoader()"></app-submit-button>
-  <app-submit-button [text]="'StopLoader'" (click)="stopLoader()"></app-submit-button>
+  <app-button 
+    [text]="'TrowAlert'" [type]="'button'"
+    (click)="triggerAlert()"></app-button>
+  <app-button 
+    [text]="'DelayedAlert'"
+    (click)="triggerDelayedAlert()"></app-button>
+  <app-button [text]="'StartLoader'" (click)="startLoader()"></app-button>
+  <app-button [text]="'StopLoader'" (click)="stopLoader()"></app-button>
 </div>
 
 <!-- Form -->

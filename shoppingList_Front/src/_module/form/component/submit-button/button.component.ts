@@ -14,11 +14,12 @@ import * as fromLoader from '@loader/store/';
  *  @param text - (Default : "Submit") - Text of the submit button 
  */
 @Component({
-  selector: 'app-submit-button',
-  templateUrl: 'submit-button.component.html' })
-export class SubmitButtonComponent {
+  selector: 'app-button',
+  templateUrl: 'button.component.html' })
+export class ButtonComponent {
 
-  @Input() text:string = "Submit";
+  @Input() text: string = "Submit";
+  @Input() type: string = "submit";
 
   isLoading$:Observable<boolean> | undefined;
 
