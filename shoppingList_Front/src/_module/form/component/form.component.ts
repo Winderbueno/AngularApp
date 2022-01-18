@@ -26,11 +26,10 @@ export class FormComponent implements OnInit, OnDestroy {
   
   // Accessor
   get title() { return this._title; }
-  protected set persist(persist:boolean) { this._persist = persist; }
   protected set title(title:string) { this._title = title; }
-
   get value() { return this._formGroupState!.value }
   get formGroupState() { return this._formGroupState!; }
+  protected set persist(persist:boolean) { this._persist = persist; }
 
   constructor(
     protected router: Router,

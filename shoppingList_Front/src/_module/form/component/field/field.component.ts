@@ -18,34 +18,39 @@ import { DynamicControlValidationFn } from '@form/model/validation-fns.model';
  *
  * This component manage a Field that has :
  * 
- *  - A FormControlState
- *    > Linked to one FormGroupState (that has the id : <formId>)
+ *  - FormControlState
+ *    > Represent the state of the field (valid, dirty, touch...)
+ *    > It is a subobject of a FormGroupState (That has the id : <formId>)
  *    > Identifiable in FormGroupState by its 'ctrlName' (Unique Identifier in FormGroupState)
- *    > An Id (Generated as '<formID>.<ctrlName>')
+ *    > Having an Id generated as '<formID>.<ctrlName>'
  *  
- *  - Static UI information
- *    > Label (Displayed field label)
- *    > Placeholder (Displayed in the field as long as the user does not set a value)
+ *  - UI informations
+ *    > Label, displayed on field and describing the field content
+ *    > Placeholder, displayed inside the field as long as the user does not set a value
+ *    > Value, editable by user
+ *    > Error Message, generated according to field validation properties
  * 
  *  - Validation Properties
  *    > 'required' input parameter
  *    > Generated internal validationFns (Accessible from children)
- *    > Configurable formStateParametrizableValidationFns (Accessible from children)
+ *    > Configurable DynamicValidationFns (Accessible from children)
  * 
- *  - Error Message (Displayed according to the validation property)
+ *  - Persistance Properties
+ *    > Persitance of field (In Global store) is handled by the related Form
+ *    > However it is possible to enforce field unpersistance 
  * 
  * Technical implementation is :
  *  - FormControlState is stored in Ngrx global state and updated with 'ngrx-forms' library
  *  - ValidationFns (static & dynamic) managed by homemade angular service
  *  - Error message managed by homemade angular service
  *
- *  @param formID - FormGroupState ID to add the FormControlState on
- *  @param ctrlName - FormControlState Name (Note : ControlID in state is
- *  @param label - (Optional | Default:<ctrlName>) - Field label
- *  @param placeholder - (Optional) - Field placeholder
- *  @param value - (Optional | Default:'') - Field value
+ *  @param formID - FormGroupState Id to add the FormControlState on
+ *  @param ctrlName - FormControlState Name
+ *  @param label - (Optional | Default:<ctrlName>)
+ *  @param placeholder - (Optional)
+ *  @param value - (Optional | Default:'')
  *  @param required - (Optional | Default:true) - Add 'required' validationFn on the field
- *  @param stateParamValFns - (Optional) - Array of stateParamValidationFns
+ *  @param dynamicValFns - (Optional) - Array of DynamicControlValidationFns
  *  @param unpersist - (Optional) - If true, field state is deleted when component is destroy
  */
 @Component({
@@ -57,7 +62,7 @@ export class FieldComponent implements OnInit, OnDestroy {
   private _ctrlName!: string;
   private _formGroupState : FormGroupState<FormValue> | undefined;
   private _validationFns: ValidationFn<any>[] = [];
-  private _stateParamValFns: DynamicControlValidationFn[] = [];
+  private _dynamicValFns: DynamicControlValidationFn[] = [];
   private _unpersist: boolean = false;
 
   // Input
@@ -70,8 +75,8 @@ export class FieldComponent implements OnInit, OnDestroy {
   @Input() placeholder: string | undefined;
   @Input() value: string | boolean | number = '';
   @Input() required: boolean = true;
-  @Input() set stateParamValFns(val: DynamicControlValidationFn[]) {
-    this._stateParamValFns = val;
+  @Input() set dynamicValFns(input: DynamicControlValidationFn[]) {
+    this._dynamicValFns = input;
   };
   @Input() set unpersist(input: boolean) { this._unpersist = input }
 
@@ -81,7 +86,7 @@ export class FieldComponent implements OnInit, OnDestroy {
   get ctrl() { return this._formGroupState!.controls[this._ctrlName] as unknown as FormControlState<string|boolean|number>; }
   get err() { return this.formErrorService; }
   protected get validationFns() { return this._validationFns }
-  protected get stateParamValidationFns() { return this._stateParamValFns }
+  protected get dynamicValidationFns() { return this._dynamicValFns }
 
   constructor(
     protected store: Store,
@@ -103,10 +108,10 @@ export class FieldComponent implements OnInit, OnDestroy {
       this.formId, this._ctrlName, 
       this._validationFns);
     
-    // Save StateParamValidationFns
-    this.validationFnsService.addStateParamControlValidationFn(
+    // Save dynamicValidationFns
+    this.validationFnsService.addDynamicControlValidationFns(
       this.formId, this._ctrlName,
-      this._stateParamValFns);
+      this._dynamicValFns);
 
     // If control is not in the state, add FormControlState to FormGroupState
     if(this.ctrl === undefined) {

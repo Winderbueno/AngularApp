@@ -16,22 +16,22 @@ import { FormValue } from '../store/form.state';
 export class ValidationFnsService {
 
   controlValFns:StaticControlValidationFns = {};
-  stateParamControlValFns:DynamicControlValidationFns = {};
+  dynamicControlValFns:DynamicControlValidationFns = {};
 
   // Get All ControlValidationFns (Static & Dynamic) for a Form 
   getControlValidationFnsByFormId(
     formId: string, 
     form: FormGroupState<FormValue>): StaticControlValidationFns {
 
-    let controlValFns: StaticControlValidationFns =
+    let staticCtrlValFns: StaticControlValidationFns =
       this.getStaticControlValidationFnsByFormId(formId);
-    let controlStateParamValFns: DynamicControlValidationFns =
-      this.getStateParamControlValidationFnsByFormId(formId);
+    let dynamicCtrllValFns: DynamicControlValidationFns =
+      this.getDynamicControlValidationFnsByFormId(formId);
 
     var genCtrlValFns: StaticControlValidationFns = {};
 
-    for (let ctrlId in controlValFns) {
-      controlValFns[ctrlId].forEach(elt => {
+    for (let ctrlId in staticCtrlValFns) {
+      staticCtrlValFns[ctrlId].forEach(elt => {
         if (genCtrlValFns[ctrlId] === undefined) {
           genCtrlValFns[ctrlId] = [];
         }
@@ -39,12 +39,12 @@ export class ValidationFnsService {
       });
     }
 
-    for (let ctrlId in controlStateParamValFns) {
-      controlStateParamValFns[ctrlId].forEach(elt => {
+    for (let ctrlId in dynamicCtrllValFns) {
+      dynamicCtrllValFns[ctrlId].forEach(elt => {
         if (genCtrlValFns[ctrlId] === undefined) {
           genCtrlValFns[ctrlId] = [];
         }
-        //Transform StateParamValFn en ValFn
+        // Apply DynamicValFn with State
         let valFn = elt(form);
         if(valFn!=undefined) genCtrlValFns[ctrlId].push(valFn);        
       });
@@ -53,20 +53,20 @@ export class ValidationFnsService {
     return genCtrlValFns;
   }
 
-  getDynamicControlValidationFnsByFormId(
+  getAppliedDynamicControlValidationFnsByFormId(
     formId: string, 
     form: FormGroupState<FormValue>): StaticControlValidationFns {
 
-    let controlStateParamValFns: DynamicControlValidationFns =
-      this.getStateParamControlValidationFnsByFormId(formId);
+    let dynamicCtrlValFns: DynamicControlValidationFns =
+      this.getDynamicControlValidationFnsByFormId(formId);
 
     var genCtrlValFns: StaticControlValidationFns = {};
-    for (let ctrlId in controlStateParamValFns) {
-      controlStateParamValFns[ctrlId].forEach(elt => {
+    for (let ctrlId in dynamicCtrlValFns) {
+      dynamicCtrlValFns[ctrlId].forEach(elt => {
         if (genCtrlValFns[ctrlId] === undefined) {
           genCtrlValFns[ctrlId] = [];
         }
-        //Transform StateParamValFn en ValFn
+        // Apply DynamicValFn with State
         let valFn = elt(form);
         if(valFn != undefined) genCtrlValFns[ctrlId].push(valFn);
       });
@@ -118,34 +118,34 @@ export class ValidationFnsService {
   /* State Parametrized Control Validation Functions */
   /***************************************************/
 
-  private getStateParamControlValidationFnsByFormId(formId: string): DynamicControlValidationFns {
+  private getDynamicControlValidationFnsByFormId(formId: string): DynamicControlValidationFns {
 
-    let formStateParamValFns:DynamicControlValidationFns = {};
-    for(let ctrlId in this.stateParamControlValFns){
+    let dynamicFormValFns:DynamicControlValidationFns = {};
+    for(let ctrlId in this.dynamicControlValFns){
       if(ctrlId.split('.')[0] === formId) {
-        formStateParamValFns[ctrlId] = this.stateParamControlValFns[ctrlId];
+        dynamicFormValFns[ctrlId] = this.dynamicControlValFns[ctrlId];
       }
     }
-    return formStateParamValFns;
+    return dynamicFormValFns;
   }
 
-  addStateParamControlValidationFn(
+  addDynamicControlValidationFns(
     formId: string, 
     controlName: string,
-    stateParamValFns: DynamicControlValidationFn[]) {   
+    dynamicValFns: DynamicControlValidationFn[]) {   
     
     // If user did not give validationFns
-    if(stateParamValFns.length === 0) { return; }
+    if(dynamicValFns.length === 0) { return; }
 
     let ctrlId:string = this.getControlIdWithName(formId, controlName);
-    let ctrlStateParamValFns:DynamicControlValidationFn[] = this.stateParamControlValFns[ctrlId];
+    let savedDynamicCtrlValFns:DynamicControlValidationFn[] = this.dynamicControlValFns[ctrlId];
     
     // Save ValidationFns
-    if (ctrlStateParamValFns != undefined) {
-      stateParamValFns.forEach(valFn => {
-        this.stateParamControlValFns[ctrlId].push(valFn)
+    if (savedDynamicCtrlValFns != undefined) {
+      dynamicValFns.forEach(valFn => {
+        this.dynamicControlValFns[ctrlId].push(valFn)
       });
-    } else { this.stateParamControlValFns[ctrlId] = stateParamValFns; }
+    } else { this.dynamicControlValFns[ctrlId] = dynamicValFns; }
   }
 
   private getControlIdWithName(formId: string, controlName: string) : string {

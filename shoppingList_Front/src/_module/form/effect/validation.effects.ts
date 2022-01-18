@@ -48,7 +48,7 @@ export class ValidationEffects {
               formId: formId,
               // Get DynamicValidationFns for the form 
               controlValidationFns: this.validationFnsService 
-                .getDynamicControlValidationFnsByFormId(formId, formState)
+                .getAppliedDynamicControlValidationFnsByFormId(formId, formState)
             });
           })
         )
