@@ -7,10 +7,10 @@ export interface StaticControlValidationFns {
   [controlId: string]: ValidationFn<any>[];
 }
 
-export interface StateParamControlValidationFns {
-  [controlId: string]: StateParamControlValidationFn[];
+export interface DynamicControlValidationFns {
+  [controlId: string]: DynamicControlValidationFn[];
 }
 
 /* Validation Fns that depend on other state value */
-export declare type StateParamControlValidationFn = 
+export declare type DynamicControlValidationFn = 
   (s:FormGroupState<FormValue>) => ValidationFn<any> | undefined;

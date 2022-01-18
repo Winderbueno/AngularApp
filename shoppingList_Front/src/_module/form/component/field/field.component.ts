@@ -10,7 +10,7 @@ import * as fromStore from '@form/store/';
 import { FormValue } from '@form/store/form.state';
 import { FormErrorService } from '@form/service/form-error.service';
 import { ValidationFnsService } from '@form/service/validation-fns.service';
-import { StateParamControlValidationFn } from '@form/model/validation-fns.model';
+import { DynamicControlValidationFn } from '@form/model/validation-fns.model';
 //#endregion
 
 /**
@@ -56,7 +56,7 @@ export class FieldComponent implements OnInit, OnDestroy {
   private _ctrlName!: string;
   private _formGroupState : FormGroupState<FormValue> | undefined;
   private _validationFns: ValidationFn<any>[] = [];
-  private _stateParamValFns: StateParamControlValidationFn[] = [];
+  private _stateParamValFns: DynamicControlValidationFn[] = [];
   private _unpersist: boolean = false;
 
   // Input
@@ -69,7 +69,7 @@ export class FieldComponent implements OnInit, OnDestroy {
   @Input() placeholder: string | undefined;
   @Input() value: string | boolean | number = '';
   @Input() required: boolean = true;
-  @Input() set stateParamValFns(val: StateParamControlValidationFn[]) {
+  @Input() set stateParamValFns(val: DynamicControlValidationFn[]) {
     this._stateParamValFns = val;
   };
   @Input() set unpersist(input: boolean) { this._unpersist = input }

@@ -5,7 +5,7 @@ import { equalTo } from 'ngrx-forms/validation';
 
 //#region Store
 import { FormValue } from '../store/form.state';
-import { StateParamControlValidationFn } from '../model/validation-fns.model';
+import { DynamicControlValidationFn } from '../model/validation-fns.model';
 //#endregion
 
 interface MustMatchValidationError<T> {
@@ -17,7 +17,7 @@ declare module 'ngrx-forms' {
   }
 }
 
-export function mustMatch(refCtrlName: string, matchCtrlName: string): StateParamControlValidationFn {
+export function mustMatch(refCtrlName: string, matchCtrlName: string): DynamicControlValidationFn {
   return (formState: FormGroupState<FormValue>) => {
     const refCtrl = formState.controls[refCtrlName];
     const matchCtrl = formState.controls[matchCtrlName];

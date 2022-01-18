@@ -6,8 +6,8 @@ import { FormGroupState, ValidationFn } from 'ngrx-forms';
 //#region Model
 import { 
   StaticControlValidationFns, 
-  StateParamControlValidationFn, 
-  StateParamControlValidationFns } from '../model/validation-fns.model';
+  DynamicControlValidationFn, 
+  DynamicControlValidationFns } from '../model/validation-fns.model';
 import { FormValue } from '../store/form.state';
 //#endregion
 
@@ -16,7 +16,7 @@ import { FormValue } from '../store/form.state';
 export class ValidationFnsService {
 
   controlValFns:StaticControlValidationFns = {};
-  stateParamControlValFns:StateParamControlValidationFns = {};
+  stateParamControlValFns:DynamicControlValidationFns = {};
 
   // Get All ControlValidationFns (Static & Dynamic) for a Form 
   getControlValidationFnsByFormId(
@@ -25,7 +25,7 @@ export class ValidationFnsService {
 
     let controlValFns: StaticControlValidationFns =
       this.getStaticControlValidationFnsByFormId(formId);
-    let controlStateParamValFns: StateParamControlValidationFns =
+    let controlStateParamValFns: DynamicControlValidationFns =
       this.getStateParamControlValidationFnsByFormId(formId);
 
     var genCtrlValFns: StaticControlValidationFns = {};
@@ -57,7 +57,7 @@ export class ValidationFnsService {
     formId: string, 
     form: FormGroupState<FormValue>): StaticControlValidationFns {
 
-    let controlStateParamValFns: StateParamControlValidationFns =
+    let controlStateParamValFns: DynamicControlValidationFns =
       this.getStateParamControlValidationFnsByFormId(formId);
 
     var genCtrlValFns: StaticControlValidationFns = {};
@@ -118,9 +118,9 @@ export class ValidationFnsService {
   /* State Parametrized Control Validation Functions */
   /***************************************************/
 
-  private getStateParamControlValidationFnsByFormId(formId: string): StateParamControlValidationFns {
+  private getStateParamControlValidationFnsByFormId(formId: string): DynamicControlValidationFns {
 
-    let formStateParamValFns:StateParamControlValidationFns = {};
+    let formStateParamValFns:DynamicControlValidationFns = {};
     for(let ctrlId in this.stateParamControlValFns){
       if(ctrlId.split('.')[0] === formId) {
         formStateParamValFns[ctrlId] = this.stateParamControlValFns[ctrlId];
@@ -132,13 +132,13 @@ export class ValidationFnsService {
   addStateParamControlValidationFn(
     formId: string, 
     controlName: string,
-    stateParamValFns: StateParamControlValidationFn[]) {   
+    stateParamValFns: DynamicControlValidationFn[]) {   
     
     // If user did not give validationFns
     if(stateParamValFns.length === 0) { return; }
 
     let ctrlId:string = this.getControlIdWithName(formId, controlName);
-    let ctrlStateParamValFns:StateParamControlValidationFn[] = this.stateParamControlValFns[ctrlId];
+    let ctrlStateParamValFns:DynamicControlValidationFn[] = this.stateParamControlValFns[ctrlId];
     
     // Save ValidationFns
     if (ctrlStateParamValFns != undefined) {
