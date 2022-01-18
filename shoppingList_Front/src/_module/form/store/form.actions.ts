@@ -65,7 +65,7 @@ export const addControlInFormAction = createAction(
   props<{
     formId: string,
     controlName: string,
-    controlValue: string|boolean|number
+    controlValue: string | boolean | number
   }>()
 );
 

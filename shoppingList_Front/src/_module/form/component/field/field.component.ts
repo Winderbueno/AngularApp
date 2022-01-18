@@ -67,6 +67,7 @@ export class FieldComponent implements OnInit, OnDestroy {
   }
   @Input() label!: string;
   @Input() placeholder: string | undefined;
+  @Input() value: string | boolean | number = '';
   @Input() required: boolean = true;
   @Input() set stateParamValFns(val: StateParamControlValidationFn[]) {
     this._stateParamValFns = val;
@@ -111,7 +112,7 @@ export class FieldComponent implements OnInit, OnDestroy {
       this.store.dispatch(fromStore.addControlInFormAction({
         formId: this.formId,
         controlName: this._ctrlName, 
-        controlValue: ''
+        controlValue: this.value
       }));
     }  
   }
