@@ -43,6 +43,7 @@ import { DynamicControlValidationFn } from '@form/model/validation-fns.model';
  *  @param ctrlName - FormControlState Name (Note : ControlID in state is
  *  @param label - (Optional | Default:<ctrlName>) - Field label
  *  @param placeholder - (Optional) - Field placeholder
+ *  @param value - (Optional | Default:'') - Field value
  *  @param required - (Optional | Default:true) - Add 'required' validationFn on the field
  *  @param stateParamValFns - (Optional) - Array of stateParamValidationFns
  *  @param unpersist - (Optional) - If true, field state is deleted when component is destroy
