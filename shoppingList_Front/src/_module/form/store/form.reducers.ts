@@ -107,6 +107,7 @@ const validateFormWithControlValidationFns = (
   state: FormGroupState<FormValue>,
   controlValidationFns: StaticControlValidationFns) =>
   updateRecursive(state,
-    s => controlValidationFns[s.id] != undefined ?
+    s => controlValidationFns[s.id] != undefined
+      && controlValidationFns[s.id].length != 0 ?
       validate(controlValidationFns[s.id])(s) :
       s);

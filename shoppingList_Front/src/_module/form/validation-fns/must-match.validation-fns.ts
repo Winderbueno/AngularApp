@@ -17,9 +17,15 @@ declare module 'ngrx-forms' {
   }
 }
 
-export function mustMatch(refCtrlId: string): StateParamControlValidationFn {
+export function mustMatch(refCtrlName: string, matchCtrlName: string): StateParamControlValidationFn {
   return (formState: FormGroupState<FormValue>) => {
-    const refCtrl = formState.controls[refCtrlId];
+    const refCtrl = formState.controls[refCtrlName];
+    const matchCtrl = formState.controls[matchCtrlName];
+
+    if(matchCtrl.isInvalid && matchCtrl.errors.equalTo === undefined) {
+      return;
+    }
+
     return equalTo(refCtrl.value);
   };
 }

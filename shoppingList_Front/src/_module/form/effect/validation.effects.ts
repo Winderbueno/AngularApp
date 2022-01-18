@@ -18,24 +18,18 @@ import { ValidationFnsService } from '../service/validation-fns.service';
 export class ValidationEffects {
 
   // After form control had its value set, 
-  // Run control validation
+  // Run static control validation
   validateControlAction$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SetValueAction.TYPE),
-      switchMap((action:SetValueAction<FormValue>) =>
-        of(action).pipe(
-          withLatestFrom(this.store.select(fromStore.selectFormById(action.controlId.split('.')[0]))),
-          map(([action, formState]) => {
-            return fromStore.validateControlAction({
-              controlId: action.controlId,
-              ValidationFns: this.validationFnsService.getControlValidationFns(
-                action.controlId.split('.')[0],
-                action.controlId.split('.')[1],
-                formState)
-            });
-          })
-        )
-      )
+      map((action: SetValueAction<FormValue>) => {
+        return fromStore.validateControlAction({
+          controlId: action.controlId,
+          ValidationFns: this.validationFnsService.getStaticControlValidationFns(
+            action.controlId.split('.')[0],
+            action.controlId.split('.')[1])
+        });
+      })
     )
   );
 

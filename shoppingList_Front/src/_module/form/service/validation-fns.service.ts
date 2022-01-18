@@ -18,25 +18,7 @@ export class ValidationFnsService {
   controlValFns:StaticControlValidationFns = {};
   stateParamControlValFns:StateParamControlValidationFns = {};
 
-  getControlValidationFns(
-    formId: string,
-    controlName: string,
-    form: FormGroupState<FormValue>): ValidationFn<any>[] {
-
-    let controlValFns: ValidationFn<any>[] = this.getStaticControlValidationFns(formId, controlName);
-    let controlStateParamValFns: StateParamControlValidationFn[] =
-      this.getStateParamControlValidationFns(formId, controlName);
-
-    var genCtrlValFns: ValidationFn<any>[] = [];
-    if(controlValFns != undefined) 
-      controlValFns.forEach(elt => { genCtrlValFns.push(elt); });
-    
-    if(controlStateParamValFns != undefined)
-      controlStateParamValFns.forEach(elt => { genCtrlValFns.push(elt(form)); });
-
-    return genCtrlValFns;
-  }
-
+  // Get All ControlValidationFns (Static & Dynamic) for a Form 
   getControlValidationFnsByFormId(
     formId: string, 
     form: FormGroupState<FormValue>): StaticControlValidationFns {
@@ -63,7 +45,8 @@ export class ValidationFnsService {
           genCtrlValFns[ctrlId] = [];
         }
         //Transform StateParamValFn en ValFn
-        genCtrlValFns[ctrlId].push(elt(form));
+        let valFn = elt(form);
+        if(valFn!=undefined) genCtrlValFns[ctrlId].push(valFn);        
       });
     }
 
@@ -84,7 +67,8 @@ export class ValidationFnsService {
           genCtrlValFns[ctrlId] = [];
         }
         //Transform StateParamValFn en ValFn
-        genCtrlValFns[ctrlId].push(elt(form));
+        let valFn = elt(form);
+        if(valFn != undefined) genCtrlValFns[ctrlId].push(valFn);
       });
     }
 
@@ -95,7 +79,7 @@ export class ValidationFnsService {
   /* Static Control Validation Fns */
   /*********************************/
 
-  private getStaticControlValidationFns(formId: string, controlName: string): ValidationFn<any>[] {
+  getStaticControlValidationFns(formId: string, controlName: string): ValidationFn<any>[] {
     return this.controlValFns[this.getControlIdWithName(formId, controlName)];
   }
 
@@ -133,10 +117,6 @@ export class ValidationFnsService {
   /***************************************************/
   /* State Parametrized Control Validation Functions */
   /***************************************************/
-
-  private getStateParamControlValidationFns(formId: string, controlName: string): StateParamControlValidationFn[] {
-    return this.stateParamControlValFns[this.getControlIdWithName(formId, controlName)];
-  }
 
   private getStateParamControlValidationFnsByFormId(formId: string): StateParamControlValidationFns {
 

@@ -13,4 +13,4 @@ export interface StateParamControlValidationFns {
 
 /* Validation Fns that depend on other state value */
 export declare type StateParamControlValidationFn = 
-  (s:FormGroupState<FormValue>) => ValidationFn<any>;
+  (s:FormGroupState<FormValue>) => ValidationFn<any> | undefined;
