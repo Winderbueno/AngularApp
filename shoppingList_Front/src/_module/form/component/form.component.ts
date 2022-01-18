@@ -11,7 +11,27 @@ import * as fromStore from '@form/store/';
 import { FormValue } from '@form/store/form.state';
 //#endregion
 
-
+/**
+ * Form Component
+ *
+ * This component manage a Form that has :
+ * 
+ *  - FormGroupState, representing the state of the form (valid, dirty, touch...)
+ * 
+ *  - Title (Used as FormId in FormGroupState)
+ * 
+ *  - Persistance Properties
+ *    > With 'persist' property set to true, the form will be persisted in global ngrx state 
+ *    > even when the component is destroyed. Doing so, all field in the form will be 
+ *    > as a consequence persisted
+ * 
+ *    > Note : this allow to persist form state when changing route in the application
+ *    > However, if the app is restarted by clicking refresh button for example, 
+ *    > Except if the state is rehydrated by a mecanism, formState will be lost
+ *
+ *  @param title - FormGroupState Id
+ *  @param persist - FormControlState Name
+ */
 @Component({
   selector: 'app-form',
   template: ``,
@@ -21,15 +41,14 @@ export class FormComponent implements OnInit, OnDestroy {
   // Form
   protected _formGroupState: FormGroupState<FormValue> | undefined;
   private _title: string = "Form Title";
-  // Allow to keep the form state in global state when the component is deleted
   private _persist: boolean = false;
   
   // Accessor
   get title() { return this._title; }
-  protected set title(title:string) { this._title = title; }
+  protected set title(input: string) { this._title = input; }
   get value() { return this._formGroupState!.value }
   get formGroupState() { return this._formGroupState!; }
-  protected set persist(persist:boolean) { this._persist = persist; }
+  protected set persist(input: boolean) { this._persist = input; }
 
   constructor(
     protected router: Router,

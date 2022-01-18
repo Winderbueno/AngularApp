@@ -36,8 +36,8 @@ import { DynamicControlValidationFn } from '@form/model/validation-fns.model';
  *    > Configurable DynamicValidationFns (Accessible from children)
  * 
  *  - Persistance Properties
- *    > Persitance of field (In Global store) is handled by the related Form
- *    > However it is possible to enforce field unpersistance 
+ *    > Field persistance in global ngrx store after component destroy is handled by related Form
+ *    > However it is possible to enforce field unpersistance with 'unpersist' input
  * 
  * Technical implementation is :
  *  - FormControlState is stored in Ngrx global state and updated with 'ngrx-forms' library
