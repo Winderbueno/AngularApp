@@ -74,6 +74,7 @@ export class FieldComponent implements OnInit, OnDestroy {
   @Input() label!: string;
   @Input() placeholder: string | undefined;
   @Input() value: string | boolean | number = '';
+  @Input() format: string = '';
   @Input() required: boolean = true;
   @Input() set dynamicValFns(input: DynamicControlValidationFn[]) {
     this._dynamicValFns = input;

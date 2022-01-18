@@ -16,19 +16,19 @@ import { FieldComponent } from '@form/component/';
   templateUrl: 'input-field.component.html' })
 export class InputFieldComponent extends FieldComponent {
 
-  @Input() withFeature: string = '';
+  @Input() visibilityToggle: boolean = false;
 
   inputHide: boolean = false;
 
   ngOnInit() {
 
     // By default, if withFeature 'Visibility', we hide the input
-    if(this.withFeature === 'Visibility') { this.inputHide = true; }
+    if(this.visibilityToggle === true) { this.inputHide = true; }
     
-    if(this.ctrlName === 'Email') { super.validationFns.push(email); }
+    if(this.format === 'email') { super.validationFns.push(email); }
 
     // TODO - Change Password Format Policy
-    if(this.ctrlName === 'Password') { super.validationFns.push(minLength(6)); }
+    if(this.format === 'password') { super.validationFns.push(minLength(6)); }
 
     super.ngOnInit();
   }

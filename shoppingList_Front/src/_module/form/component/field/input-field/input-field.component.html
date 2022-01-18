@@ -9,7 +9,7 @@
     placeholder="{{placeholder}}">
 
   <!-- If With Feature 'Visibility', Add a button to manage input visibility -->
-  <button *ngIf="withFeature==='Visibility'" 
+  <button *ngIf="visibilityToggle" 
     type="button" mat-icon-button matSuffix (click)="inputHide = !inputHide">
     <mat-icon>{{inputHide ? 'visibility_off' : 'visibility'}}</mat-icon>
   </button>
