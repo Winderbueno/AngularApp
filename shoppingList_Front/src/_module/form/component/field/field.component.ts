@@ -67,9 +67,11 @@ export class FieldComponent implements OnInit, OnDestroy {
 
   // Input
   @Input() formId!: string;
-  @Input() set ctrlName(value: string) {
-    this._ctrlName = value;
-    if (this.label === undefined) this.label = value; 
+  @Input() 
+  get ctrlName() { return this._ctrlName; }
+  set ctrlName(input: string) {
+    this._ctrlName = input;
+    if (this.label === undefined) this.label = input; 
   }
   @Input() label!: string;
   @Input() placeholder: string | undefined;
@@ -83,7 +85,6 @@ export class FieldComponent implements OnInit, OnDestroy {
 
   // Accessor
   get form() { return this._formGroupState! }
-  get ctrlName() { return this._ctrlName; }
   get ctrl() { return this._formGroupState!.controls[this._ctrlName] as unknown as FormControlState<string|boolean|number>; }
   get err() { return this.formErrorService; }
   protected get validationFns() { return this._validationFns }
