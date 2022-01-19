@@ -60,7 +60,9 @@ export class ValidationEffects {
   // Run form validation (i.e. a validation of all its control)
   validateFormAction$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(fromStore.submitFormAction),
+      ofType(
+        fromStore.submitFormAction,
+        fromStore.clearFormValueAction),
       switchMap((action) =>
         of(action).pipe(
           withLatestFrom(this.store.select(fromStore.selectFormById(action.formId))),
