@@ -12,14 +12,17 @@ export class FormErrorService {
 
     let errMsg = '';
 
+    // TODO - Add error message for all errors -> usea @content module ?
     if (ctrlState.errors.required) {
-       errMsg += 'Please fill in this field';
+      errMsg += 'Please fill in this field';
     } else if (ctrlState.errors.email) {
-       errMsg = 'Filled in email has not the good format';
+      errMsg = 'Filled in email has not the good format';
     } else if (ctrlState.errors.minLength) {
-       errMsg = `Field Length should be at least : ${ctrlState.errors!.minLength.minLength}`;
-    } else if (ctrlState.errors.equalTo) { // TODO
-       errMsg = 'Field should be the same';
+      errMsg = `Field length should be at least : ${ctrlState.errors!.minLength.minLength}`;
+    } else if (ctrlState.errors.maxLength) {
+      errMsg = `Field length should be smaller than : ${ctrlState.errors!.maxLength.maxLength}`;
+    } else if (ctrlState.errors.equalTo) { // TODO - used for mustMatch
+      errMsg = 'Field should be the same';
     }
 
     return errMsg;
