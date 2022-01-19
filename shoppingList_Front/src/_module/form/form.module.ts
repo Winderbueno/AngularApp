@@ -6,10 +6,9 @@ import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
 //#region Module
-import { ReactiveFormsModule } from '@angular/forms';
-import { NgrxFormsModule } from 'ngrx-forms';
-import { MaterialModule } from '@material/material.module';
 import { LoaderModule } from '@loader/loader.module';
+import { MaterialModule } from '@material/material.module';
+import { NgrxFormsModule } from 'ngrx-forms';
 //#endregion
 
 //#region Store
@@ -37,10 +36,9 @@ import {
     CommonModule,
 
     /* Module */
-    ReactiveFormsModule,
-    NgrxFormsModule,
-    MaterialModule,
     LoaderModule,
+    MaterialModule,
+    NgrxFormsModule,
 
     /* Store */
     StoreModule.forFeature(
@@ -68,7 +66,6 @@ import {
   ],
   exports: [
     /* Module */
-    ReactiveFormsModule,
     NgrxFormsModule,
 
     /* Field */
