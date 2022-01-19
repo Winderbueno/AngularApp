@@ -78,7 +78,7 @@ import { MatLuxonDateModule } from '@angular/material-luxon-adapter';
       useValue: { 
         // TODO - Alert auto dismiss should be reimplemented with Ngrx (@timer+action in @alert)
         duration: 10000,
-        horizontalPosition: 'center' 
+        horizontalPosition: 'left' 
       } 
     }
   ],
