@@ -31,6 +31,13 @@ export const resetFormAction = createAction(
   props<{ formId: string }>()
 );
 
+export const clearFormValueAction = createAction(
+  ModuleEnum.FORM,
+  EmitterTypeEnum.STORE,
+  'clearFormValue',
+  props<{ formId: string }>()
+);
+
 export const submitFormAction = createAction(
   ModuleEnum.FORM,
   EmitterTypeEnum.STORE,

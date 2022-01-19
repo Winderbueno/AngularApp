@@ -45,6 +45,13 @@ const formReducer = createReducer(
       return newState;
     }),
 
+  on(fromAction.clearFormValueAction,
+    (state, action) => {
+      const newState = { ...state };
+      newState[action.formId] = clearFormValue(newState[action.formId]);
+      return newState;
+    }),
+
   on(
     fromAction.validateFormAction,
     fromAction.dynamicValidateFormAction,
@@ -95,13 +102,13 @@ export function reducer(state: FormState | undefined, action: Action) {
 }
 
 const validateByControlId = (
-  state:FormGroupState<FormValue>, 
-  formControlId:string,
-  validationFns: ValidationFn<any>[]) => 
-    updateRecursive(state, 
-      s => s.id === formControlId ?
-        validate(validationFns)(s) :
-        s);
+  state: FormGroupState<FormValue>,
+  formControlId: string,
+  validationFns: ValidationFn<any>[]) =>
+  updateRecursive(state,
+    s => s.id === formControlId ?
+      validate(validationFns)(s) :
+      s);
 
 const validateFormWithControlValidationFns = (
   state: FormGroupState<FormValue>,
@@ -111,3 +118,8 @@ const validateFormWithControlValidationFns = (
       && controlValidationFns[s.id].length != 0 ?
       validate(controlValidationFns[s.id])(s) :
       s);
+
+const clearFormValue = (
+  state: FormGroupState<FormValue>) =>
+  updateRecursive(state,
+    s => { return { ...s, value: '' } });
