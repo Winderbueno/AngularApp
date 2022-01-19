@@ -1,5 +1,5 @@
 //#region Angular, Material, NgRx
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 //#endregion
 
 
