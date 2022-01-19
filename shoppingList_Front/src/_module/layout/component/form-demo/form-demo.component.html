@@ -3,51 +3,32 @@
 <!-- Form Demo -->
 <form class="form" [ngrxFormState]="formGroupState" (submit)="onSubmit()">
 
-  <app-date-field 
-    [formId]="title" 
-    [ctrlName]="'Date Field'"
-    [placeholder]="'Ex : XX/XX/20XX'">
+  <app-date-field [formId]="title" [ctrlName]="'Date field'" [placeholder]="'Ex : XX/XX/20XX'">
   </app-date-field>
-
-  <app-input-field 
-    [formId]="title" 
-    [ctrlName]="'Email'"
-    [label]="'Input Field with Email Format'"
-    [placeholder]="'Ex : patate@puree.com'"
-    [value]="'patate@puree.com'"
-    [format]="'email'">
+  
+  <app-input-field [formId]="title" [ctrlName]="'Email'" [label]="'Input field with email Format'"
+    [placeholder]="'Ex : patate@puree.com'" [value]="'patate@puree.com'" [format]="'email'">
   </app-input-field>
 
-  <app-password-field-group 
-    [formId]="title" 
-    [withConfirm]="true">
+  <app-input-field [formId]="title" [ctrlName]="'Number'" [label]="'Optional field between 5 & 10 characters'"
+    [required]="false"  [addValidationFns]="[number, minLength(5), maxLength(10)]">
+  </app-input-field>
+  
+  <app-password-field-group [formId]="title" [withConfirm]="true">
   </app-password-field-group>
-
-  <app-select-field
-    [formId]="title"
-    [ctrlName]="'Select Field'"
-    [enum]="(productCatEnum$|async)!">
+  
+  <app-select-field [formId]="title" [ctrlName]="'Select field'" [enum]="(productCatEnum$|async)!">
   </app-select-field>
-
-  <app-checkbox-field 
-    [formId]="title" 
-    [ctrlName]="'CheckBox'">
+  
+  <app-checkbox-field [formId]="title" [ctrlName]="'CheckBox'">
   </app-checkbox-field>
-
-  <app-slide-toggle-field 
-    [formId]="title" 
-    [ctrlName]="'SlideToggle'">
+  
+  <app-slide-toggle-field [formId]="title" [ctrlName]="'SlideToggle'">
   </app-slide-toggle-field>
-
+  
   <app-button></app-button>
   <div class="flex-container">
-    <app-button 
-      [text]="'Reset Form'"
-      [type]="'button'"
-      (click)="resetForm()"></app-button>
-    <app-button 
-      [text]="'Clear Form Value'"
-      [type]="'button'"
-      (click)="clearFormValue()"></app-button>
+    <app-button [text]="'Reset Form'" [type]="'button'" (click)="resetForm()"></app-button>
+    <app-button [text]="'Clear Form Value'" [type]="'button'" (click)="clearFormValue()"></app-button>
   </div>
 </form>

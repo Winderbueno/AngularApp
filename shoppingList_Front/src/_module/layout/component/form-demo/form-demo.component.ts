@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { TypedAction } from '@ngrx/store/src/models';
 import { Observable } from 'rxjs';
+import { maxLength, minLength, number } from 'ngrx-forms/validation';
 //#endregion
 
 //#region Module
@@ -18,6 +19,10 @@ import * as fromForm from '@form/store/';
   templateUrl: './form-demo.component.html'
 })
 export class FormDemoComponent extends FormComponent {  
+
+  number = number;
+  minLength = minLength;
+  maxLength = maxLength;
 
   // Proposition values
   readonly productCatEnum$: Observable<Enum|undefined>
