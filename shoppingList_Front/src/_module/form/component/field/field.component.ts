@@ -49,8 +49,10 @@ import { DynamicControlValidationFn } from '@form/model/validation-fns.model';
  *  @param label - (Optional | Default:<ctrlName>)
  *  @param placeholder - (Optional)
  *  @param value - (Optional | Default:'')
+ *  @param format - (Optional) - Can be 'email' / 'password'
  *  @param required - (Optional | Default:true) - Add 'required' validationFn on the field
- *  @param dynamicValFns - (Optional) - Array of DynamicControlValidationFns
+ *  @param addValidationFns - (Optional) - Array of ValidationFns 
+ *  @param addDynamicValidationFns - (Optional) - Array of DynamicValidationFns
  *  @param unpersist - (Optional) - If true, field state is deleted when component is destroy
  */
 @Component({
@@ -62,7 +64,7 @@ export class FieldComponent implements OnInit, OnDestroy {
   private _ctrlName!: string;
   private _formGroupState : FormGroupState<FormValue> | undefined;
   private _validationFns: ValidationFn<any>[] = [];
-  private _dynamicValFns: DynamicControlValidationFn[] = [];
+  private _dynamicValidationFns: DynamicControlValidationFn[] = [];
   private _unpersist: boolean = false;
 
   // Input
@@ -78,9 +80,8 @@ export class FieldComponent implements OnInit, OnDestroy {
   @Input() value: string | boolean | number = '';
   @Input() format: string = '';
   @Input() required: boolean = true;
-  @Input() set dynamicValFns(input: DynamicControlValidationFn[]) {
-    this._dynamicValFns = input;
-  };
+  @Input() addValidationFns: ValidationFn<any>[] = [];
+  @Input() addDynamicValidationFns: DynamicControlValidationFn[] = [];
   @Input() set unpersist(input: boolean) { this._unpersist = input }
 
   // Accessor
@@ -88,7 +89,7 @@ export class FieldComponent implements OnInit, OnDestroy {
   get ctrl() { return this._formGroupState!.controls[this._ctrlName] as unknown as FormControlState<string|boolean|number>; }
   get err() { return this.formErrorService; }
   protected get validationFns() { return this._validationFns }
-  protected get dynamicValidationFns() { return this._dynamicValFns }
+  protected get dynamicValidationFns() { return this._dynamicValidationFns }
 
   constructor(
     protected store: Store,
@@ -102,8 +103,10 @@ export class FieldComponent implements OnInit, OnDestroy {
     this.store.select(fromStore.selectFormById(this.formId))
       .subscribe(s => this._formGroupState = s);
 
-    // Add ValidationFns according to configuration
+    // Add user configured validationFns (static&dynamic)
     if(this.required === true) { this._validationFns.push(required); }
+    this.addValidationFns.forEach(elt => this._validationFns.push(elt));
+    this.addDynamicValidationFns.forEach(elt => this._dynamicValidationFns.push(elt));
     
     // Save ValidationFns
     this.validationFnsService.setControlValidationFns(
@@ -113,7 +116,7 @@ export class FieldComponent implements OnInit, OnDestroy {
     // Save dynamicValidationFns
     this.validationFnsService.addDynamicControlValidationFns(
       this.formId, this._ctrlName,
-      this._dynamicValFns);
+      this._dynamicValidationFns);
 
     // If control is not in the state, add FormControlState to FormGroupState
     if(this.ctrl === undefined) {
