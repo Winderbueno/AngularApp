@@ -46,7 +46,7 @@ export class FormDemoComponent extends FormComponent {
     });
   }
 
-  resetForm() { 
-    this.store.dispatch(fromForm.resetFormAction({ formId: this.title })); 
-  }
+  resetForm() { this.store.dispatch(fromForm.resetFormAction({ formId: this.title })); }
+
+  clearFormValue() { this.store.dispatch(fromForm.clearFormValueAction({ formId: this.title })); }
 }
