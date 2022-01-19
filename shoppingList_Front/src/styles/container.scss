@@ -9,9 +9,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  flex-grow:1;
-  margin: 62px auto 32px;
-  padding: 0 16px;
+  margin: 32px auto 32px;
   max-width: 960px;
   align-items: center;
 }
@@ -33,7 +31,6 @@
   padding : 1rem;
   padding-top : 0;
   padding-bottom : 0.5rem;
-  margin-top: 16px;
 }
 
 .mat-dialog-container {
