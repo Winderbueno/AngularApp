@@ -7,8 +7,9 @@ import { Observable } from 'rxjs';
 //#region Module
 import { FormComponent } from '@form/component/form.component';
 import { Enum } from '@enum/model/enum.model';
-import * as fromEnum from '@enum/store/';
 import * as fromAlert from '@alert/store/';
+import * as fromEnum from '@enum/store/';
+import * as fromForm from '@form/store/';
 //#endregion
 
 
@@ -43,5 +44,9 @@ export class FormDemoComponent extends FormComponent {
       message: "Invalid Form Submitted !",
       keepAfterRouteChange: false
     });
+  }
+
+  resetForm() { 
+    this.store.dispatch(fromForm.resetFormAction({ formId: this.title })); 
   }
 }
