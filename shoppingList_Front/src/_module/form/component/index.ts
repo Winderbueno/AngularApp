@@ -13,4 +13,4 @@ export { SlideToggleFieldComponent } from './field/slide-toggle-field/slide-togg
 export { PasswordFieldGroupComponent } from './field-group/password-field-group/password-field-group.component';
 
 /* Button */
-export { ButtonComponent } from './submit-button/button.component';
+export { ButtonComponent } from './button/button.component';

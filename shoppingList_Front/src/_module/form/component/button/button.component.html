@@ -2,7 +2,7 @@
 <button 
   type="{{type}}"
   mat-raised-button
-  color="primary" 
+  color="{{color}}" 
   [disabled]="(type === 'submit') && (isLoading$|async)">
 
   <app-loader *ngIf="type === 'submit'"></app-loader>

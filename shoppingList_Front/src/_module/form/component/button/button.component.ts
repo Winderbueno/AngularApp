@@ -18,8 +18,16 @@ import * as fromLoader from '@loader/store/';
   templateUrl: 'button.component.html' })
 export class ButtonComponent {
 
+  private _type: string = "submit";
+
   @Input() text: string = "Submit";
-  @Input() type: string = "submit";
+  @Input() 
+  get type(): string { return this._type; }
+  set type(input: string) {
+    this._type = input;
+    if (this._type === "button") this.color = ""; 
+  }
+  @Input() color: string = "primary";
 
   isLoading$:Observable<boolean> | undefined;
 
