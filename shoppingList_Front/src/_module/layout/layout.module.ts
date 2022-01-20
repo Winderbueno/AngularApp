@@ -15,6 +15,7 @@ import {
   FooterComponent,
   ToolbarComponent,
   HomeComponent,
+  AlertDemoComponent,
   FormDemoComponent } from './component';
 //#endregion
 
@@ -34,6 +35,7 @@ import {
     ToolbarComponent,
     FooterComponent,
     HomeComponent,
+    AlertDemoComponent,
     FormDemoComponent
   ],
   exports: [
