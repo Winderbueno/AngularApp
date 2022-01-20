@@ -6,7 +6,8 @@
   <input matInput 
     [ngrxFormControlState]="ctrl"
     [type]="inputHide ? 'password' : 'text'"
-    placeholder="{{placeholder}}">
+    placeholder="{{placeholder}}"
+    [ngrxValueConverter]="valueConverter">
 
   <!-- If With Feature 'Visibility', Add a button to manage input visibility -->
   <button *ngIf="visibilityToggle" 

@@ -1,5 +1,6 @@
 ﻿//#region Angular, Material, NgRx
 import { Component, Input } from '@angular/core';
+import { NgrxValueConverter } from 'ngrx-forms';
 import { email, minLength } from 'ngrx-forms/validation';
 //#endregion
 
@@ -32,4 +33,16 @@ export class InputFieldComponent extends FieldComponent {
 
     super.ngOnInit();
   }
+
+  // TODO - Value converter // Check that number is well handled
+  valueConverter: NgrxValueConverter<string | null, string | number | null> = {
+    convertViewToStateValue(valueInView:string) {
+      return !isNaN(Number(valueInView)) ? 
+        Number(valueInView) :
+        valueInView;
+    },
+    convertStateToViewValue(valueInState:string | number | null) {
+      return valueInState as string;
+    }
+  };
 }
