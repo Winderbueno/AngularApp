@@ -8,9 +8,18 @@ app-password-field-group,
 app-button {
   display: flex;
   width: 100%;
-  flex:1;
+  flex: 1;
 }
 
-button[type="submit"]{
-  flex:1;
+mat-form-field {
+  flex: 1;
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 0.8rem;
+}
+
+app-button > button {
+  padding: 0 0.1rem;
+  flex: 1;
 }

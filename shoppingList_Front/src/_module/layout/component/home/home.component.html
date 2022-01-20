@@ -23,7 +23,7 @@
 </div>
 
 <!-- Alert / Loader / Timer -->
-<div class="card-container flex-container">
+<div class="card-container flex-layout">
   <app-button 
     [text]="'TrowAlert'" [type]="'button'"
     (click)="triggerAlert()"></app-button>
@@ -35,21 +35,21 @@
 </div>
 
 <!-- Form -->
-<div class="card-container flex-container flex-column">
+<div class="card-container flex-layout flex-column">
   <app-form-demo></app-form-demo>
 </div>
 
 <!-- Text Style / Link / Icon -->
-<div class="card-container flex-container flex-column">
+<div class="card-container flex-layout flex-column">
   
-  <div class="flex-container">
+  <div class="flex-layout">
     <h1>Titre 1</h1>
     <h2>Titre 2</h2>
     <mat-icon>school</mat-icon>
   </div>
 
   <!-- Drop Link -->
-  <div class="flex-container">
+  <div class="flex-layout">
     <a class="circle-link" title="Animations" href="https://angular.io/guide/animations" target="_blank" rel="noopener">
       <svg id="Group_20" data-name="Group 20" xmlns="http://www.w3.org/2000/svg" width="21.813" height="23.453"
         viewBox="0 0 21.813 23.453">

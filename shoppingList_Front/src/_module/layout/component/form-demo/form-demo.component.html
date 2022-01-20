@@ -9,7 +9,7 @@
     [placeholder]="'Ex : patate@puree.com'" [value]="'patate@puree.com'" [format]="'email'">
   </app-input-field>
 
-  <div class="flex-container">
+  <div class="flex-layout">
     <app-input-field [formId]="title" [ctrlName]="'Length field'" [label]="'Optional field between 5 & 10 characters'"
       [required]="false"  [addValidationFns]="[minLength(5), maxLength(10)]"
       [value]="5">
@@ -34,7 +34,7 @@
   
   <app-button></app-button>
   
-  <div class="flex-container">
+  <div class="flex-layout">
     <app-button [text]="'Reset Form'" [type]="'button'" (click)="resetForm()"></app-button>
     <app-button [text]="'Clear Form Value'" [type]="'button'" (click)="clearFormValue()"></app-button>
   </div>

@@ -1,52 +1,16 @@
 // TODO - Optimize container
-
-.page {
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  margin: 32px auto 32px;
-  max-width: 960px;
-  align-items: center;
-}
-
-.flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  min-width: 150px;
-  max-width: 500px;
-}
-
-.flex-column {
-  flex-direction: column;
-}
-
 .card-container {
   border: 2px solid;
   border-radius: 1.2rem;
   padding : 1rem;
-  padding-top : 0;
+  padding-top : 0.5rem;
   padding-bottom : 0.5rem;
 }
 
 .mat-dialog-container {
+  border: 2px solid !important;
+  border-radius: 1rem !important;
   padding: 1rem !important;
   padding-top : 0.5rem !important;
   padding-bottom : 0.5rem !important;
-  border: 2px solid !important;
-  border-radius: 1rem !important;
-}
-
-.spacer {
-  flex: 1;
-}
-
-.half-spacer {
-  flex: 0.25;
 }

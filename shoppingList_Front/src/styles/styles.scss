@@ -1,7 +1,9 @@
 /* Material Theme */
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
-@import './icon.scss';
+/* Content */
+@import './content/text.scss';
+@import './content/icon.scss';
 
 /* Button */
 @import './button/circle-link.scss';
@@ -13,11 +15,10 @@
 @import './module/loader.scss';
 @import './module/material.scss';
 
-/* Container */
+/* Page Organisation */
 @import './container.scss';
+@import './layout.scss';
 
-/* Text */
-@import './text.scss';
 
 body {
     margin: 0;
