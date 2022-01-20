@@ -1,7 +1,6 @@
-<h1>{{title}}</h1>
+<form [ngrxFormState]="formGroupState" (submit)="onSubmit()">
 
-<!-- Form Demo -->
-<form class="form" [ngrxFormState]="formGroupState" (submit)="onSubmit()">
+  <h1>{{title}}</h1>
 
   <app-date-field [formId]="title" [ctrlName]="'Date field'" [placeholder]="'Ex : XX/XX/20XX'">
   </app-date-field>
@@ -10,9 +9,16 @@
     [placeholder]="'Ex : patate@puree.com'" [value]="'patate@puree.com'" [format]="'email'">
   </app-input-field>
 
-  <app-input-field [formId]="title" [ctrlName]="'Number'" [label]="'Optional field between 5 & 10 characters'"
-    [required]="false"  [addValidationFns]="[number, minLength(5), maxLength(10)]">
-  </app-input-field>
+  <div class="flex-container">
+    <app-input-field [formId]="title" [ctrlName]="'Length field'" [label]="'Optional field between 5 & 10 characters'"
+      [required]="false"  [addValidationFns]="[minLength(5), maxLength(10)]"
+      [value]="5">
+    </app-input-field>
+
+    <app-input-field [formId]="title" [ctrlName]="'Number'" [label]="'Input field with -number- format'"
+      [addValidationFns]="[number]" [value]="5">
+    </app-input-field>
+  </div>
   
   <app-password-field-group [formId]="title" [withConfirm]="true">
   </app-password-field-group>
@@ -27,6 +33,7 @@
   </app-slide-toggle-field>
   
   <app-button></app-button>
+  
   <div class="flex-container">
     <app-button [text]="'Reset Form'" [type]="'button'" (click)="resetForm()"></app-button>
     <app-button [text]="'Clear Form Value'" [type]="'button'" (click)="clearFormValue()"></app-button>

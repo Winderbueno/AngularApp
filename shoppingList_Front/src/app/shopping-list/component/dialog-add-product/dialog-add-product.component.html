@@ -1,27 +1,17 @@
-<h1 mat-dialog-title>{{ title }}</h1>
+<form [ngrxFormState]="formGroupState" (submit)="onSubmit()">
 
- <!-- Add Product Form -->
-<form class="form" [ngrxFormState]="formGroupState" (submit)="onSubmit()">
+  <h1 mat-dialog-title>{{ title }}</h1>
 
   <!-- Name -->
-  <app-input-field
-    [formId]="title"
-    [ctrlName]="'ProductName'"
-    [label]="'Name'">
+  <app-input-field [formId]="title" [ctrlName]="'ProductName'" [label]="'Name'">
   </app-input-field>
 
   <!-- Category -->
-  <app-select-field
-    [formId]="title"
-    [ctrlName]="'Category'"
-    [enum]="(productCatEnum$|async)!">
+  <app-select-field [formId]="title" [ctrlName]="'Category'" [enum]="(productCatEnum$|async)!">
   </app-select-field>
 
   <!-- Sub Category -->
-  <app-select-field
-    [formId]="title"
-    [ctrlName]="'SubCategory'"
-    [enum]="(productSubCatEnum$|async)!">
+  <app-select-field [formId]="title" [ctrlName]="'SubCategory'" [enum]="(productSubCatEnum$|async)!">
   </app-select-field>
 
   <!-- TODO - Proposition de produit -->

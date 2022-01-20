@@ -1,22 +1,17 @@
-<h1>{{title}}</h1>
+<form [ngrxFormState]="formGroupState" (submit)="onSubmit()">
 
-<form class="form" [ngrxFormState]="formGroupState" (submit)="onSubmit()">
+  <h1>{{title}}</h1>
 
   <!-- Email -->
-  <app-input-field 
-    [formId]="title" 
-    [ctrlName]="'Email'"
-    [format]="'email'">
+  <app-input-field [formId]="title" [ctrlName]="'Email'" [format]="'email'">
   </app-input-field>
 
   <!-- Password -->
-  <app-password-field-group 
-    [formId]="title">
+  <app-password-field-group [formId]="title">
   </app-password-field-group>
 
   <!-- Submit -->
-  <app-button 
-    [text]="title">
+  <app-button [text]="title">
   </app-button>
 
   <!-- Secondary Action -->

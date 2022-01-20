@@ -1,39 +1,28 @@
-﻿<h1>{{title}}</h1>
+﻿<form [ngrxFormState]="formGroupState" (submit)="onSubmit()">
 
-<form class="form" [ngrxFormState]="formGroupState" (submit)="onSubmit()">
+  <h1>{{title}}</h1>
 
-    <!-- Username -->
-    <app-input-field 
-      [formId]="title" 
-      [ctrlName]="'Username'">
-    </app-input-field>
+  <!-- Username -->
+  <app-input-field [formId]="title" [ctrlName]="'Username'">
+  </app-input-field>
 
-    <!-- Email -->
-    <app-input-field 
-      [formId]="title" 
-      [ctrlName]="'Email'"
-      [format]="'email'">
-    </app-input-field>
+  <!-- Email -->
+  <app-input-field [formId]="title" [ctrlName]="'Email'" [format]="'email'">
+  </app-input-field>
 
-    <!-- Password + Confirm -->
-    <app-password-field-group 
-      [formId]="title" 
-      [withConfirm]="true">
-    </app-password-field-group>
+  <!-- Password + Confirm -->
+  <app-password-field-group [formId]="title" [withConfirm]="true">
+  </app-password-field-group>
 
-    <!-- Usage Term -->
-    <app-checkbox-field 
-      [formId]="title"
-      [ctrlName]="'acceptTerms'"
-      [label]="'Accept Terms & Conditions'" >
-    </app-checkbox-field>
+  <!-- Usage Term -->
+  <app-checkbox-field [formId]="title" [ctrlName]="'acceptTerms'" [label]="'Accept Terms & Conditions'">
+  </app-checkbox-field>
 
-    <!-- Submit -->
-    <app-button 
-      [text]="title">
-    </app-button>
+  <!-- Submit -->
+  <app-button [text]="title">
+  </app-button>
 
-    <!-- Secondary Action -->
-    <a mat-button routerLink="../login">Already have an account ?</a>
+  <!-- Secondary Action -->
+  <a mat-button routerLink="../login">Already have an account ?</a>
 
 </form>
