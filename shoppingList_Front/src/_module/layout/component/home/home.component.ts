@@ -5,7 +5,6 @@ import { Store } from '@ngrx/store';
 
 //#region Module
 import * as fromLoader from '@loader/store';
-import { Timer } from '@timer/model/timer.model';
 //#endregion
 
 

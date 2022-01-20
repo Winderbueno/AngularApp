@@ -12,18 +12,15 @@
     align-items: center;
     transition: all 0.2s ease-in-out;
     line-height: 24px;
-  }
-
-  .card:not(.highlight-card) {
     cursor: pointer;
   }
 
-  .card:not(.highlight-card):hover {
+  .card:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
   }
 
-  .card-container .card:not(.highlight-card):hover .material-icons path {
+  .card:not(.highlight-card):hover .material-icons path {
     fill: rgb(105, 103, 103);
   }
 
