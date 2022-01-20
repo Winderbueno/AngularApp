@@ -4,14 +4,14 @@
   
   <input matInput 
     [ngrxFormControlState]="ctrl"
-    [type]="inputHide ? 'password' : 'text'"
+    type="{{ visibility ? 'text' : 'password' }}"
     placeholder="{{placeholder}}"
     [ngrxValueConverter]="valueConverter">
 
   <!-- If With Feature 'Visibility', Add a button to manage input visibility -->
   <button *ngIf="visibilityToggle" 
-    type="button" mat-icon-button matSuffix (click)="inputHide = !inputHide">
-    <mat-icon>{{inputHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    type="button" mat-icon-button matSuffix (click)="visibility = !visibility">
+    <mat-icon>{{ visibility ? 'visibility_off' : 'visibility' }}</mat-icon>
   </button>
 
   <mat-error *ngIf="ctrl.isInvalid">{{ err.getErrorMsg(ctrl) }}</mat-error>

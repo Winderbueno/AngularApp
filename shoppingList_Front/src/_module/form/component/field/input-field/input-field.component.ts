@@ -19,12 +19,12 @@ export class InputFieldComponent extends FieldComponent {
 
   @Input() visibilityToggle: boolean = false;
 
-  inputHide: boolean = false;
+  visibility: boolean = true;
 
   ngOnInit() {
 
     // By default, if withFeature 'Visibility', we hide the input
-    if(this.visibilityToggle === true) { this.inputHide = true; }
+    if(this.visibilityToggle === true) { this.visibility = false; }
     
     if(this.format === 'email') { super.validationFns.push(email); }
 
