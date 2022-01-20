@@ -3,9 +3,9 @@
   <mat-label>{{ label }}</mat-label>
 
   <mat-select [ngrxFormControlState]="ctrl">
-    <span *ngIf="enum">
+    <ng-container *ngIf="enum">
       <mat-option value="{{value}}" *ngFor="let value of enum.values">{{value}}</mat-option>
-    </span>
+    </ng-container>
   </mat-select>
 
   <mat-error *ngIf="ctrl.isInvalid">{{ err.getErrorMsg(ctrl) }}</mat-error>
