@@ -8,9 +8,9 @@
     ],
     "paths": {
       // App
-      "@app/*": ["src/app/_core/*"],
-      "@module/*": ["src/_module/*"],
       "@env/*": ["src/environments/*"],
+      "@module/*": ["src/_module/*"],
+      "@app/*": ["src/app/_core/*"],
 
       // Feature
       "@account/*": ["src/app/account/*"],
