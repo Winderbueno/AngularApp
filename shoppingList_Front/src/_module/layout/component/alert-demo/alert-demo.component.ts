@@ -1,6 +1,5 @@
 //#region Angular, Material, NgRx
 import { Component } from '@angular/core';
-import { TypedAction } from '@ngrx/store/src/models';
 //#endregion
 
 //#region Module
@@ -18,41 +17,20 @@ import { Timer } from '@timer/model/timer.model';
 })
 export class AlertDemoComponent extends FormComponent {  
 
-  triggerDelayedAlertTimer:Timer = new Timer({
-    name: 'TriggerDelayedAlert',
-    time: 3000,
-    action: fromAlert.triggerAlertAction({
-      alertType: fromAlert.AlertTypeEnum.Success,
-      message: "A Wonderful Delayed alert",
-      keepAfterRouteChange: false
-    })
-  });
+  // Proposition values
+  alertTypeEnumValues: string[] = Object.keys(fromAlert.AlertTypeEnum);
 
-  stopLoaderTimer:Timer = new Timer({
-    name: 'StopLoaderTimer',
-    time: 3000,
-    action: fromLoader.stopLoaderAction()
-  }); 
-
-  ngOnInit(){    
+  ngOnInit(){
     // Form Configuration
-    super.title = "Alert Demo";
+    super.title = "Alert";
     super.persist = true;
     super.ngOnInit();
-  }
-
-  submitValidAction(): TypedAction<string> {
-    return fromAlert.triggerAlertAction({
-      alertType: fromAlert.AlertTypeEnum.Success,
-      message: "Valid Form Submitted !",
-      keepAfterRouteChange: false
-    });
   }
 
   triggerAlert() {
     this.store.dispatch(
       fromAlert.triggerAlertAction({
-        alertType: fromAlert.AlertTypeEnum.Error,
+        alertType: this.value.Criticity as fromAlert.AlertTypeEnum,
         message: "A Great alert",
         keepAfterRouteChange: false
       })
@@ -60,8 +38,30 @@ export class AlertDemoComponent extends FormComponent {
   }
 
   triggerDelayedAlert() {
-    this.store.dispatch(fromLoader.startLoaderAction({triggerSource : '' }));
-    this.store.dispatch(fromTimer.defineTimerAction({ timer : this.triggerDelayedAlertTimer }));
-    this.store.dispatch(fromTimer.defineTimerAction({ timer : this.stopLoaderTimer }));
-  }
+
+    let alertAction = fromAlert.triggerAlertAction({
+      alertType: this.value.Criticity as fromAlert.AlertTypeEnum,
+      message: "A Wonderful Delayed alert",
+      keepAfterRouteChange: false
+    });
+
+    let triggerDelayedAlertTimer: Timer = new Timer({
+      name: 'TriggerDelayedAlert',
+      time: 2000,
+      action: alertAction
+    });
+
+    // TODO - Should not dispatch action sequentially
+    this.store.dispatch(fromLoader.startLoaderAction({ triggerSource : '' }));
+    
+    this.store.dispatch(fromTimer.defineTimerAction({ timer : triggerDelayedAlertTimer }));
+
+    this.store.dispatch(fromTimer.defineTimerAction({ 
+      timer : new Timer({
+        name: 'StopLoaderTimer',
+        time: 3000,
+        action: fromLoader.stopLoaderAction()
+      }) 
+    }));
+  }  
 }

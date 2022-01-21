@@ -4,36 +4,35 @@
 
   <app-date-field [formId]="title" [ctrlName]="'Date field'" [placeholder]="'Ex : XX/XX/20XX'">
   </app-date-field>
-  
+
   <app-input-field [formId]="title" [ctrlName]="'Email'" [label]="'Input field with email Format'"
     [placeholder]="'Ex : patate@puree.com'" [value]="'patate@puree.com'" [format]="'email'">
   </app-input-field>
 
   <div class="flex-layout">
     <app-input-field [formId]="title" [ctrlName]="'Length field'" [label]="'Optional field between 5 & 10 characters'"
-      [required]="false"  [addValidationFns]="[minLength(5), maxLength(10)]"
-      [value]="5">
+      [required]="false" [addValidationFns]="[minLength(5), maxLength(10)]" [value]="5">
     </app-input-field>
 
     <app-input-field [formId]="title" [ctrlName]="'Number'" [label]="'Input field with -number- format'"
-      [addValidationFns]="[number]" [value]="5">
+      [addValidationFns]="[number]" [value]="'Bonjour'">
     </app-input-field>
   </div>
-  
+
   <app-password-field-group [formId]="title" [withConfirm]="true">
   </app-password-field-group>
-  
-  <app-select-field [formId]="title" [ctrlName]="'Select field'" [enum]="(productCatEnum$|async)!">
+
+  <app-select-field [formId]="title" [ctrlName]="'Select field'" [options]="productCatEnum$|async">
   </app-select-field>
-  
+
   <app-checkbox-field [formId]="title" [ctrlName]="'CheckBox'">
   </app-checkbox-field>
-  
+
   <app-slide-toggle-field [formId]="title" [ctrlName]="'SlideToggle'">
   </app-slide-toggle-field>
-  
+
   <app-button></app-button>
-  
+
   <div class="flex-layout">
     <app-button [text]="'Reset Form'" [type]="'button'" (click)="resetForm()"></app-button>
     <app-button [text]="'Clear Form Value'" [type]="'button'" (click)="clearFormValue()"></app-button>

@@ -6,8 +6,7 @@ import { maxLength, minLength, number } from 'ngrx-forms/validation';
 //#endregion
 
 //#region Module
-import { FormComponent } from '@form/component/form.component';
-import { Enum } from '@enum/model/enum.model';
+import { FormComponent } from '@form/component/';
 import * as fromAlert from '@alert/store/';
 import * as fromEnum from '@enum/store/';
 import * as fromForm from '@form/store/';
@@ -20,13 +19,14 @@ import * as fromForm from '@form/store/';
 })
 export class FormDemoComponent extends FormComponent {  
 
+  // ValidationFns
   number = number;
   minLength = minLength;
   maxLength = maxLength;
 
   // Proposition values
-  readonly productCatEnum$: Observable<Enum|undefined>
-    = this.store.select(fromEnum.selectEnumByName('ProductCategory'));
+  readonly productCatEnum$: Observable<string[] | undefined>
+    = this.store.select(fromEnum.selectEnumValues('ProductCategory'));
 
   ngOnInit(){    
     // Form Configuration
@@ -51,7 +51,11 @@ export class FormDemoComponent extends FormComponent {
     });
   }
 
-  resetForm() { this.store.dispatch(fromForm.resetFormAction({ formId: this.title })); }
+  resetForm() { 
+    this.store.dispatch(fromForm.resetFormAction({ formId: this.title })); 
+  }
 
-  clearFormValue() { this.store.dispatch(fromForm.clearFormValueAction({ formId: this.title })); }
+  clearFormValue() { 
+    this.store.dispatch(fromForm.clearFormValueAction({ formId: this.title })); 
+  }
 }

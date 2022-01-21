@@ -1,15 +1,13 @@
-<!-- Alert & Timer -->
 <div class="card-container">
-  <h1>Alert</h1>
+  <form [ngrxFormState]="formGroupState">
+    <h1>Alert</h1>
 
-  <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color">
-    <mat-button-toggle value="red">Red</mat-button-toggle>
-    <mat-button-toggle value="green">Green</mat-button-toggle>
-    <mat-button-toggle value="blue">Blue</mat-button-toggle>
-  </mat-button-toggle-group>
+    <div class="flex-layout flex-column">
+      <app-button-toggle-field [formId]="title" [ctrlName]="'Criticity'" [options]="alertTypeEnumValues">
+      </app-button-toggle-field>
 
-  <div class="flex-layout flex-column">
-    <app-button [text]="'TrowAlert'" [type]="'button'" (click)="triggerAlert()"></app-button>
-    <app-button [text]="'DelayedAlert'" (click)="triggerDelayedAlert()"></app-button>
-  </div>
+      <app-button [text]="'Trigger Alert'" [type]="'button'" (click)="triggerAlert()"></app-button>
+      <app-button [text]="'Trigger 2sec Delayed Alert'" [type]="'button'" (click)="triggerDelayedAlert()"></app-button>
+    </div>
+  </form>
 </div>
