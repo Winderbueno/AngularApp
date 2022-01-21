@@ -1,5 +1,5 @@
 export enum TokenStatusEnum {
-  Validating,
-  Valid,
-  Invalid
+  Validating = "Validating",
+  Valid = "Valid",
+  Invalid = "Invalid"
 }
