@@ -1,5 +1,10 @@
+//#region NgRx
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { Category } from "@module/categorisation/model/category.model";
+//#endregion
+
+//#region Store, Model
+import { Category } from "../model/category.model";
+//#endregion
 
 /* State */
 export interface CategoryState extends EntityState<Category> {}

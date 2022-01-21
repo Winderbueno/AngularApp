@@ -20,7 +20,12 @@ import * as fromStore from './store/';
       fromStore.featureKey,
       fromStore.reducer
     ),
+
+    /* Effect */
+    EffectsModule.forFeature([
+      // TODO - Add Effect
+    ]),
   ],
   declarations: []
 })
-export class CategorisationModule { }
+export class CategoryModule { }

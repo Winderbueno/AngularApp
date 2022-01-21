@@ -7,9 +7,6 @@ import { CategoryState, initialState, adapter } from './category.state';
 import * as fromAction from './category.actions';
 //#endregion
 
-//#region Model
-//#endregion
-
 export const featureKey = 'category';
 
 const categoryReducer = createReducer(

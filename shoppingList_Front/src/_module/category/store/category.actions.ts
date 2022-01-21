@@ -6,7 +6,7 @@ import { EmitterTypeEnum } from '@action/enum/emitter-type.enum';
 //#endregion
 
 //#region Model
-import { Category } from '../../model/category.model';
+import { Category } from '../model/category.model';
 //#endregion
 
 export const loadCategoryAction = createAction(
@@ -16,7 +16,7 @@ export const loadCategoryAction = createAction(
   props<{ category: Category[] }>()
 );
 
-export const addCategoryAction = createAction(,
+export const addCategoryAction = createAction(
   ModuleEnum.CATEGORISATION,
   EmitterTypeEnum.STORE,
   'addCategory',
