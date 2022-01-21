@@ -29,8 +29,8 @@ export function createAction <P extends object>(
     | ActionCreator<string, (props: P & NotAllowedCheck<P>) => P & TypedAction<string>> {
 
     let actionString:string = '@k' + 
-      '/' + module + 
-      '-' + emitterType +
+      '/' + module.toLowerCase() + 
+      '-' + emitterType.toLowerCase() +
       '/'+ method;
 
     if( typeof config != 'undefined') {
