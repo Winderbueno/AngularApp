@@ -1,8 +1,8 @@
 export enum AlertTypeEnum {
-  Success,
-  Error,
-  Info,
-  Warning
+  Success = "Success",
+  Error = "Error",
+  Info = "Info",
+  Warning = "Warning"
 }
 
 // CSS Class

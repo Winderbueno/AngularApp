@@ -17,8 +17,13 @@ export const {
   selectTotal
 } = adapter.getSelectors();
 
-export const selectEnumByName = (name: string | undefined) =>
-  createSelector(selectState, (state: EnumState) => {
-    if(name === undefined) { return undefined; }
-    else { return state.entities[name]; }
+export const selectEnumValues = (name: string | undefined) =>
+  createSelector(
+    selectState, 
+    (state: EnumState) => {
+      return name === undefined ? 
+        undefined :
+        state.entities[name] === undefined ?
+          undefined :
+          state.entities[name]!.values;
   });

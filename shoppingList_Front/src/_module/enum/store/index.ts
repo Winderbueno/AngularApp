@@ -12,5 +12,5 @@ export {
 /* Selector */
 export {
   selectState,
-  selectEnumByName
+  selectEnumValues
 } from './enum.selectors';
