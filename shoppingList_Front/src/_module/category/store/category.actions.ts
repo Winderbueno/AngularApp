@@ -1,12 +1,12 @@
 //#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
-import { EmitterTypeEnum } from '@module/action/enum/emitter-type.enum';
+import { ModuleEnum } from '@action/enum/module.enum';
+import { EmitterTypeEnum } from '@action/enum/emitter-type.enum';
 //#endregion
 
 //#region Model
-import { ModuleEnum } from '@module/action/enum/module.enum';
-import { Category } from '@module/categorisation/model/category.model';
+import { Category } from '../../model/category.model';
 //#endregion
 
 export const loadCategoryAction = createAction(
