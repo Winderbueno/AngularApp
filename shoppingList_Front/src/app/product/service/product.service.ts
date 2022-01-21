@@ -22,5 +22,4 @@ export class ProductService {
   getAll():Observable<Product[]> {
     return this.http.get<Product[]>(`${baseUrl}`);
   }
-
 }
