@@ -76,6 +76,7 @@ export class FormComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     this.store.dispatch(fromStore.submitFormAction({ formId: this._title }));
     
+    // TODO - Should not dispatch action sequentially
     if(this._formGroupState?.isValid) {
       if(this.submitValidAction() != undefined) { this.store.dispatch(this.submitValidAction()!); }
     } else {
