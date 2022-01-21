@@ -1,12 +1,12 @@
 //#region NgRx, Action Creator
 import { props } from '@ngrx/store';
 import { createAction } from '@action/creator/action-creator';
-import { EmitterTypeEnum } from '@module/action/enum/emitter-type.enum';
-import { ModuleEnum } from '@module/action/enum/module.enum';
+import { ModuleEnum } from '@action/enum/module.enum';
+import { EmitterTypeEnum } from '@action/enum/emitter-type.enum';
 //#endregion
 
 //#region Model
-import { Account } from '@account/model/account.model';
+import { Account } from '../../model/account.model';
 //#endregion
 
 export const registerSubmitAction = createAction (

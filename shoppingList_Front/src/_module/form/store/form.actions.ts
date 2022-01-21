@@ -1,12 +1,12 @@
 //#region NgRx, Action Creator
-import { createAction } from '@action/creator/action-creator';
-import { EmitterTypeEnum } from '@module/action/enum/emitter-type.enum';
 import { props } from '@ngrx/store';
-import { ValidationFn } from 'ngrx-forms';
+import { createAction } from '@action/creator/action-creator';
+import { ModuleEnum } from '@action/enum/module.enum';
+import { EmitterTypeEnum } from '@action/enum/emitter-type.enum';
 //#endregion
 
 //#region Model
-import { ModuleEnum } from '@module/action/enum/module.enum';
+import { ValidationFn } from 'ngrx-forms';
 import { StaticControlValidationFns } from '../model/validation-fns.model';
 //#endregion
 

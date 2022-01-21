@@ -2,8 +2,8 @@
 import * as ngrx from '@ngrx/store';
 import { ActionCreator, ActionCreatorProps, NotAllowedCheck } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
-import { EmitterTypeEnum } from '@module/action/enum/emitter-type.enum';
 import { ModuleEnum } from '../enum/module.enum';
+import { EmitterTypeEnum } from '../enum/emitter-type.enum';
 //#endregion
 
 export function createAction (
