@@ -1,9 +1,9 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
+import { Store } from '@ngrx/store';
 import { Observable, throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
-import { Store } from '@ngrx/store';
 //#endregion
 
 //#region Module
