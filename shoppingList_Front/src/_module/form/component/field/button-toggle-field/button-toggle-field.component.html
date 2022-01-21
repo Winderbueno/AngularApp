@@ -1,0 +1,13 @@
+﻿<mat-button-toggle-group 
+  [ngrxFormControlState]="ctrl"
+  [attr.name]="ctrlName"
+  [attr.aria-label]="label">
+
+  <ng-container *ngIf="options !== null && options !== undefined">
+    <mat-button-toggle *ngFor="let option of options"
+      value="{{valueAsLabel ? option : this.options.indexOf(option)}}">
+      {{option}}
+    </mat-button-toggle>
+  </ng-container>
+  
+</mat-button-toggle-group>

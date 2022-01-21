@@ -21,6 +21,7 @@ import { ValidationEffects } from './effect/';
 
 //#region Component
 import {
+  ButtonToggleFieldComponent,
   CheckBoxFieldComponent,
   DateFieldComponent,
   InputFieldComponent,
@@ -52,6 +53,7 @@ import {
   ],
   declarations: [
     /* Field */
+    ButtonToggleFieldComponent,
     CheckBoxFieldComponent,
     DateFieldComponent,
     InputFieldComponent,
@@ -69,6 +71,7 @@ import {
     NgrxFormsModule,
 
     /* Field */
+    ButtonToggleFieldComponent,
     CheckBoxFieldComponent,
     DateFieldComponent,
     InputFieldComponent,

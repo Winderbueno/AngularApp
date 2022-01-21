@@ -3,8 +3,8 @@
   <mat-label>{{ label }}</mat-label>
 
   <mat-select [ngrxFormControlState]="ctrl">
-    <ng-container *ngIf="enum">
-      <mat-option value="{{value}}" *ngFor="let value of enum.values">{{value}}</mat-option>
+    <ng-container *ngIf="options !== null && options !== undefined">
+      <mat-option value="{{option}}" *ngFor="let option of options">{{option}}</mat-option>
     </ng-container>
   </mat-select>
 
