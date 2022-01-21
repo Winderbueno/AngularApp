@@ -12,10 +12,10 @@ import * as fromEnum from '@enum/store/';
 
 //#region App Component, Model
 import { FormComponent } from '@form/component/form.component';
-import { Enum } from '@enum/model/enum.model';
 import { CreateProductReq } from '@shoppingList/model/current/create-product-req.model';
 import { ShoppingListService } from '@shoppingList/service/shopping-list.service';
 //#endregion
+
 
 @Component({
   selector: 'app-dialog-add-product',
@@ -24,10 +24,10 @@ import { ShoppingListService } from '@shoppingList/service/shopping-list.service
 export class DialogAddProductComponent extends FormComponent {
 
   // Proposition values
-  productCatEnum$: Observable<Enum|undefined> = 
-    this.store.select(fromEnum.selectEnumByName('ProductCategory'));
-  productSubCatEnum$: Observable<Enum|undefined> = 
-    this.store.select(fromEnum.selectEnumByName('ProductSubCategory'));
+  productCatEnum$: Observable<string[] | undefined> =
+    this.store.select(fromEnum.selectEnumValues('ProductCategory'));
+  productSubCatEnum$: Observable<string[] | undefined> =
+    this.store.select(fromEnum.selectEnumValues('ProductSubCategory'));
 
   // TODO - Optimize constructor because we herit from FormCompo ?
   constructor(

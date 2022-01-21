@@ -7,11 +7,11 @@
   </app-input-field>
 
   <!-- Category -->
-  <app-select-field [formId]="title" [ctrlName]="'Category'" [enum]="(productCatEnum$|async)!">
+  <app-select-field [formId]="title" [ctrlName]="'Category'" [options]="productCatEnum$|async">
   </app-select-field>
 
   <!-- Sub Category -->
-  <app-select-field [formId]="title" [ctrlName]="'SubCategory'" [enum]="(productSubCatEnum$|async)!">
+  <app-select-field [formId]="title" [ctrlName]="'SubCategory'" [options]="productSubCatEnum$|async">
   </app-select-field>
 
   <!-- TODO - Proposition de produit -->
