@@ -6,8 +6,8 @@ import { EmitterTypeEnum } from '@action/enum/emitter-type.enum';
 //#endregion
 
 export const emailTokenValidatedAction = createAction(
-  ModuleEnum.ACCOUNT,
-  EmitterTypeEnum.COMPONENT,
+  ModuleEnum.Account,
+  EmitterTypeEnum.Component,
   'VerifyEmail/emailTokenValidated',
   props<{ message: string }>()
 );

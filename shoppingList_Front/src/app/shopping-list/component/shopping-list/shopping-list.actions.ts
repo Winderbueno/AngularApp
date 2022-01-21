@@ -11,22 +11,22 @@ import { UsedProduct } from '../../model/current/used-product.model';
 //#endregion
 
 export const resetBoughtStatusAction = createAction (
-  ModuleEnum.SHOPPING_LIST,
-  EmitterTypeEnum.COMPONENT,
+  ModuleEnum.ShoppingList,
+  EmitterTypeEnum.Component,
   'resetBoughtStatus',
   props<{ ShoppingListId: string }>()
 );
 
 export const addProductToShoppingListAction = createAction (
-  ModuleEnum.SHOPPING_LIST,
-  EmitterTypeEnum.COMPONENT,
+  ModuleEnum.ShoppingList,
+  EmitterTypeEnum.Component,
   'addProductToShoppingList',
   props<{ product: UsedProduct }>()
 );
 
 export const updateShoppingListProductAction = createAction (
-  ModuleEnum.SHOPPING_LIST,
-  EmitterTypeEnum.COMPONENT,
+  ModuleEnum.ShoppingList,
+  EmitterTypeEnum.Component,
   'updateShoppingListProduct',
   props<{
     ShoppingListId: string,
@@ -34,8 +34,8 @@ export const updateShoppingListProductAction = createAction (
 );
 
 export const swapShoppingListProductBoughtStatusAction = createAction (
-  ModuleEnum.SHOPPING_LIST,
-  EmitterTypeEnum.COMPONENT,
+  ModuleEnum.ShoppingList,
+  EmitterTypeEnum.Component,
   'swapShoppingListProductBoughtStatus',
   props<{
     ShoppingListId: string,
@@ -43,8 +43,8 @@ export const swapShoppingListProductBoughtStatusAction = createAction (
 );
 
 export const deleteProductFromShoppingListAction = createAction (
-  ModuleEnum.SHOPPING_LIST,
-  EmitterTypeEnum.COMPONENT,
+  ModuleEnum.ShoppingList,
+  EmitterTypeEnum.Component,
   'deleteProductFromShoppingList',
   props<{
     ShoppingListId: string,

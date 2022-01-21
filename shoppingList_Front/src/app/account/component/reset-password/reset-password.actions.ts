@@ -6,8 +6,8 @@ import { EmitterTypeEnum } from '@action/enum/emitter-type.enum';
 //#endregion
 
 export const resetPasswordSubmitAction = createAction (
-  ModuleEnum.ACCOUNT,
-  EmitterTypeEnum.COMPONENT,
+  ModuleEnum.Account,
+  EmitterTypeEnum.Component,
   'resetPasswordSubmit',
   props<{
     token: string | undefined,

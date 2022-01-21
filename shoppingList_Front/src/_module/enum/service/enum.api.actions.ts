@@ -10,15 +10,15 @@ import { Enum } from '../model/enum.model';
 //#endregion
 
 export const loadAllSuccessAction = createAction(
-  ModuleEnum.ENUM,
-  EmitterTypeEnum.API,
+  ModuleEnum.Enum,
+  EmitterTypeEnum.Api,
   'loadAllSuccess',
   props<{ enums: Enum[] }>()
 );
 
 export const loadAllFailureAction = createAction(
-  ModuleEnum.ENUM,
-  EmitterTypeEnum.API,
+  ModuleEnum.Enum,
+  EmitterTypeEnum.Api,
   'loadAllFailure',
   props<{ error: string }>()
 );

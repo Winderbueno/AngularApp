@@ -10,22 +10,22 @@ import { Timer } from '../model/timer.model';
 //#endregion
 
 export const defineTimerAction = createAction(
-  ModuleEnum.TIMER,
-  EmitterTypeEnum.STORE,
+  ModuleEnum.Timer,
+  EmitterTypeEnum.Store,
   'defineTimer',
   props<{ timer: Timer }>()
 );
 
 export const deleteTimerAction = createAction(
-  ModuleEnum.TIMER,
-  EmitterTypeEnum.STORE,
+  ModuleEnum.Timer,
+  EmitterTypeEnum.Store,
   'deleteTimer',
   props<{ name: string }>()
 );
 
 export const timerDefinedAction = createAction(
-  ModuleEnum.TIMER,
-  EmitterTypeEnum.STORE,
+  ModuleEnum.Timer,
+  EmitterTypeEnum.Store,
   'timerDefined',
   props<{
     name: string,
@@ -34,15 +34,15 @@ export const timerDefinedAction = createAction(
 );
 
 export const timerDeletedAction = createAction(
-  ModuleEnum.TIMER,
-  EmitterTypeEnum.STORE,
+  ModuleEnum.Timer,
+  EmitterTypeEnum.Store,
   'timerDeleted',
   props<{ name: string | undefined }>()
 );
 
 export const timerEndedAction = createAction(
-  ModuleEnum.TIMER,
-  EmitterTypeEnum.STORE,
+  ModuleEnum.Timer,
+  EmitterTypeEnum.Store,
   'timerEnded',
   props<{ name: string | undefined }>()
 );

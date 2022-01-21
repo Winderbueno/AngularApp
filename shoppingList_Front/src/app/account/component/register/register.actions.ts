@@ -10,8 +10,8 @@ import { Account } from '../../model/account.model';
 //#endregion
 
 export const registerSubmitAction = createAction (
-  ModuleEnum.ACCOUNT,
-  EmitterTypeEnum.COMPONENT,
+  ModuleEnum.Account,
+  EmitterTypeEnum.Component,
   'registerSubmit',
   props<{ account: Account }>()
 );

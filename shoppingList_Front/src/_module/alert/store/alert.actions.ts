@@ -11,7 +11,7 @@ import { AlertTypeEnum } from '../model/enum/alert-type.enum';
 
 export const triggerAlertAction = createAction(
   ModuleEnum.ALERT,
-  EmitterTypeEnum.STORE,
+  EmitterTypeEnum.Store,
   'triggerAlert',
   props<{
     alertType: AlertTypeEnum,
@@ -21,12 +21,12 @@ export const triggerAlertAction = createAction(
 
 export const dismissAlertAction = createAction(
   ModuleEnum.ALERT,
-  EmitterTypeEnum.STORE,
+  EmitterTypeEnum.Store,
   'dismissAlert',
 );
 
 export const keptAfterRouteChangeAction = createAction(
   ModuleEnum.ALERT,
-  EmitterTypeEnum.STORE,
+  EmitterTypeEnum.Store,
   'keptAfterRouteChange',
 );

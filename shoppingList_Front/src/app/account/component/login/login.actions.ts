@@ -6,8 +6,8 @@ import { EmitterTypeEnum } from '@action/enum/emitter-type.enum';
 //#endregion
 
 export const loginSubmitAction = createAction (
-  ModuleEnum.ACCOUNT,
-  EmitterTypeEnum.COMPONENT,
+  ModuleEnum.Account,
+  EmitterTypeEnum.Component,
   'loginSubmit',
   props<{
     email: string,

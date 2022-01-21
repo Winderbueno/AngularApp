@@ -5,7 +5,7 @@ import { EmitterTypeEnum } from '@action/enum/emitter-type.enum';
 //#endregion
 
 export const loadEnumAction = createAction(
-  ModuleEnum.ENUM,
-  EmitterTypeEnum.STORE,
+  ModuleEnum.Enum,
+  EmitterTypeEnum.Store,
   'loadEnum'
 );

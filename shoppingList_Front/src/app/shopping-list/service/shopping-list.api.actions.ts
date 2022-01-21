@@ -10,29 +10,29 @@ import { ShoppingList } from '../model/current/shopping-list.model';
 //#endregion
 
 export const loadActiveSuccessAction = createAction(
-  ModuleEnum.SHOPPING_LIST,
-  EmitterTypeEnum.API,
+  ModuleEnum.ShoppingList,
+  EmitterTypeEnum.Api,
   'loadActiveSuccess',
   props<{ shoppingList: ShoppingList }>()
 );
 
 export const loadActiveFailureAction = createAction(
-  ModuleEnum.SHOPPING_LIST,
-  EmitterTypeEnum.API,
+  ModuleEnum.ShoppingList,
+  EmitterTypeEnum.Api,
   'loadActiveFailure',
   props<{ error: string }>()
 );
 
 export const resetBoughtStatusSuccessAction = createAction(
-  ModuleEnum.SHOPPING_LIST,
-  EmitterTypeEnum.API,
+  ModuleEnum.ShoppingList,
+  EmitterTypeEnum.Api,
   'resetBoughtStatusSuccess',
   props<{ shoppingList: ShoppingList }>()
 );
 
 export const resetBoughtStatusFailureAction = createAction(
-  ModuleEnum.SHOPPING_LIST,
-  EmitterTypeEnum.API,
+  ModuleEnum.ShoppingList,
+  EmitterTypeEnum.Api,
   'resetBoughtStatusFailure',
   props<{ error: string }>()
 );

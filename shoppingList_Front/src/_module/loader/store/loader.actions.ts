@@ -6,14 +6,14 @@ import { EmitterTypeEnum } from '@action/enum/emitter-type.enum';
 //#endregion
 
 export const startLoaderAction = createAction(
-  ModuleEnum.LOADER,
-  EmitterTypeEnum.STORE,
+  ModuleEnum.Loader,
+  EmitterTypeEnum.Store,
   'startLoader',
   props<{ triggerSource: string }>()
 );
 
 export const stopLoaderAction = createAction(
-  ModuleEnum.LOADER,
-  EmitterTypeEnum.STORE,
+  ModuleEnum.Loader,
+  EmitterTypeEnum.Store,
   'stopLoader'
 );

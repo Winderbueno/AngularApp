@@ -5,6 +5,6 @@ import { EmitterTypeEnum } from '@action/enum/emitter-type.enum';
 //#endregion
 
 export const toolbarLogOutAction = createAction (
-  ModuleEnum.LAYOUT,
-  EmitterTypeEnum.COMPONENT,
+  ModuleEnum.Layout,
+  EmitterTypeEnum.Component,
   'ToolBar/Logout');

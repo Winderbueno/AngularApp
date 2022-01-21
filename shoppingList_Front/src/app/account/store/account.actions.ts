@@ -6,14 +6,14 @@ import { EmitterTypeEnum } from '@action/enum/emitter-type.enum';
 //#endregion
 
 export const refreshTokenAction = createAction(
-  ModuleEnum.ACCOUNT,
-  EmitterTypeEnum.STORE,
+  ModuleEnum.Account,
+  EmitterTypeEnum.Store,
   'refreshToken'
 );
 
 export const autoLogOutAction = createAction(
-  ModuleEnum.ACCOUNT,
-  EmitterTypeEnum.STORE,
+  ModuleEnum.Account,
+  EmitterTypeEnum.Store,
   'autoLogOut',
   props<{ error: string }>()
 );

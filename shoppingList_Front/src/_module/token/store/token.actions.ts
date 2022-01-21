@@ -10,29 +10,29 @@ import { Token } from '../model/token.model';
 //#endregion
 
 export const validateTokenAction = createAction(
-  ModuleEnum.TOKEN,
-  EmitterTypeEnum.STORE,
+  ModuleEnum.Token,
+  EmitterTypeEnum.Store,
   'validateToken',
   props<{ token: Token }>()
 );
 
 export const deleteTokenAction = createAction(
-  ModuleEnum.TOKEN,
-  EmitterTypeEnum.STORE,
+  ModuleEnum.Token,
+  EmitterTypeEnum.Store,
   'deleteToken',
   props<{ name: string }>()
 );
 
 export const tokenValidatedAction = createAction(
-  ModuleEnum.TOKEN,
-  EmitterTypeEnum.STORE,
+  ModuleEnum.Token,
+  EmitterTypeEnum.Store,
   'tokenValidated',
   props<{ name: string }>()
 );
 
 export const tokenInvalidatedAction = createAction(
-  ModuleEnum.TOKEN,
-  EmitterTypeEnum.STORE,
+  ModuleEnum.Token,
+  EmitterTypeEnum.Store,
   'tokenInvalidated',
   props<{ name: string }>()
 );
