@@ -34,7 +34,7 @@ export class ResetPasswordComponent extends FormComponent implements OnDestroy {
 
   ngOnInit() {
     // Form Init
-    super.title = "Reset Password";
+    super.formId = "Reset Password";
     super.ngOnInit();
 
     const token = this.route.snapshot.queryParams['token'];

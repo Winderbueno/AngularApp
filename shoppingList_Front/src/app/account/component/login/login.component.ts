@@ -13,7 +13,7 @@ import * as ComponentActions from './login.actions';
 export class LoginComponent extends FormComponent {
 
   ngOnInit(){
-    super.title = "Sign In";
+    super.formId = "Sign In";
     super.persist = true;
     super.ngOnInit();
   }

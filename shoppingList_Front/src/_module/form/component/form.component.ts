@@ -29,7 +29,7 @@ import { FormValue } from '@form/store/form.state';
  *    > However, if the app is restarted by clicking refresh button for example, 
  *    > Except if the state is rehydrated by a mecanism, formState will be lost
  *
- *  @param title - FormGroupState Id
+ *  @param formId - FormGroupState Id
  *  @param persist - FormControlState Name
  */
 @Component({
@@ -40,12 +40,12 @@ export class FormComponent implements OnInit, OnDestroy {
 
   // Form
   protected _formGroupState: FormGroupState<FormValue> | undefined;
-  private _title: string = "Form Title";
+  private _formId: string = "Form Title";
   private _persist: boolean = false;
   
   // Accessor
-  get title() { return this._title; }
-  protected set title(input: string) { this._title = input; }
+  get formId() { return this._formId; }
+  protected set formId(input: string) { this._formId = input; }
   get value() { return this._formGroupState!.value }
   get formGroupState() { return this._formGroupState!; }
   protected set persist(input: boolean) { this._persist = input; }
@@ -59,22 +59,22 @@ export class FormComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     // Suscribe to FormGroupState
-    this.store.select(fromStore.selectFormById(this._title))
+    this.store.select(fromStore.selectFormById(this._formId))
       .subscribe(s => this._formGroupState = s);
     
     // If form does not exist in state, create FormState, else resetState
     this._formGroupState === undefined ?
-      this.store.dispatch(fromStore.createFormAction({ formId: this._title })) :
-      this.store.dispatch(fromStore.resetFormAction({ formId: this._title }));
+      this.store.dispatch(fromStore.createFormAction({ formId: this._formId })) :
+      this.store.dispatch(fromStore.resetFormAction({ formId: this._formId }));
   }
 
   ngOnDestroy(): void {
     if(!this._persist)
-      this.store.dispatch(fromStore.deleteFormAction({ formId: this._title })); 
+      this.store.dispatch(fromStore.deleteFormAction({ formId: this._formId })); 
   }
 
   onSubmit(): void {
-    this.store.dispatch(fromStore.submitFormAction({ formId: this._title }));
+    this.store.dispatch(fromStore.submitFormAction({ formId: this._formId }));
     
     // TODO - Should not dispatch action sequentially
     if(this._formGroupState?.isValid) {

@@ -22,7 +22,7 @@ export class AlertDemoComponent extends FormComponent {
 
   ngOnInit(){
     // Form Configuration
-    super.title = "Alert";
+    super.formId = "Alert";
     super.persist = true;
     super.ngOnInit();
   }

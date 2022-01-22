@@ -30,7 +30,7 @@ export class FormDemoComponent extends FormComponent {
 
   ngOnInit(){    
     // Form Configuration
-    super.title = "Form";
+    super.formId = "Form";
     super.persist = true;
     super.ngOnInit();
   }
@@ -52,10 +52,10 @@ export class FormDemoComponent extends FormComponent {
   }
 
   resetForm() { 
-    this.store.dispatch(fromForm.resetFormAction({ formId: this.title })); 
+    this.store.dispatch(fromForm.resetFormAction({ formId: this.formId })); 
   }
 
   clearFormValue() { 
-    this.store.dispatch(fromForm.clearFormValueAction({ formId: this.title })); 
+    this.store.dispatch(fromForm.clearFormValueAction({ formId: this.formId })); 
   }
 }

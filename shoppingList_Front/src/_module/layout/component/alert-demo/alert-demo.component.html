@@ -3,7 +3,7 @@
     <h1>Alert</h1>
 
     <div class="flex-layout flex-column">
-      <app-button-toggle-field [formId]="title" [ctrlName]="'Criticity'" [options]="alertTypeEnumValues">
+      <app-button-toggle-field [formId]="formId" [ctrlName]="'Criticity'" [options]="alertTypeEnumValues">
       </app-button-toggle-field>
 
       <app-button [text]="'Trigger Alert'" [type]="'button'" (click)="triggerAlert()"></app-button>

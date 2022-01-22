@@ -13,7 +13,7 @@ import * as ComponentActions from './register.actions';
 export class RegisterComponent extends FormComponent {
 
   ngOnInit(){
-    super.title = "Sign Up";
+    super.formId = "Sign Up";
     super.persist = true;
     super.ngOnInit();
   }

@@ -1,25 +1,25 @@
 ﻿<form [ngrxFormState]="formGroupState" (submit)="onSubmit()">
 
-  <h1>{{title}}</h1>
+  <h1>{{formId}}</h1>
 
   <!-- Username -->
-  <app-input-field [formId]="title" [ctrlName]="'Username'">
+  <app-input-field [formId]="formId" [ctrlName]="'Username'">
   </app-input-field>
 
   <!-- Email -->
-  <app-input-field [formId]="title" [ctrlName]="'Email'" [format]="'email'">
+  <app-input-field [formId]="formId" [ctrlName]="'Email'" [format]="'email'">
   </app-input-field>
 
   <!-- Password + Confirm -->
-  <app-password-field-group [formId]="title" [withConfirm]="true">
+  <app-password-field-group [formId]="formId" [withConfirm]="true">
   </app-password-field-group>
 
   <!-- Usage Term -->
-  <app-checkbox-field [formId]="title" [ctrlName]="'acceptTerms'" [label]="'Accept Terms & Conditions'">
+  <app-checkbox-field [formId]="formId" [ctrlName]="'acceptTerms'" [label]="'Accept Terms & Conditions'">
   </app-checkbox-field>
 
   <!-- Submit -->
-  <app-button [text]="title">
+  <app-button [text]="formId">
   </app-button>
 
   <!-- Secondary Action -->
