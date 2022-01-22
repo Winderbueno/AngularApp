@@ -4,7 +4,7 @@ import { TypedAction } from '@ngrx/store/src/models';
 //#endregion
 
 //#region App Component, Model
-import { FormComponent } from '@form/component/form.component';
+import { FormComponent } from '@form/component';
 import * as ComponentActions from './forgot-password.actions';
 //#endregion
 

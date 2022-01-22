@@ -4,7 +4,7 @@ import { NgrxValueConverter } from 'ngrx-forms';
 //#endregion
 
 //#region Component, Model, Service
-import { FieldComponent } from '@form/component/';
+import { FieldComponent } from '@form/component';
 import { DateTime } from 'luxon';
 //#endregion
 

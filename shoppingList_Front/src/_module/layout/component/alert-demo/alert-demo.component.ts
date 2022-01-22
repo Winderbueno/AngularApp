@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 //#endregion
 
 //#region Module
-import { FormComponent } from '@form/component/form.component';
+import { FormComponent } from '@form/component';
 import * as fromAlert from '@alert/store/';
 import * as fromTimer from '@timer/store';
 import * as fromLoader from '@loader/store';

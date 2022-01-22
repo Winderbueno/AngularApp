@@ -6,7 +6,7 @@ import { maxLength, minLength, number } from 'ngrx-forms/validation';
 //#endregion
 
 //#region Module
-import { FormComponent } from '@form/component/';
+import { FormComponent } from '@form/component';
 import * as fromAlert from '@alert/store/';
 import * as fromEnum from '@enum/store/';
 import * as fromForm from '@form/store/';

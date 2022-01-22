@@ -11,7 +11,7 @@ import * as fromEnum from '@enum/store/';
 //#endregion
 
 //#region App Component, Model
-import { FormComponent } from '@form/component/form.component';
+import { FormComponent } from '@form/component';
 import { CreateProductReq } from '@shoppingList/model/current/create-product-req.model';
 import { ShoppingListService } from '@shoppingList/service/shopping-list.service';
 //#endregion

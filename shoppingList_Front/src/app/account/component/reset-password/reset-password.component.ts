@@ -6,7 +6,7 @@ import { TypedAction } from '@ngrx/store/src/models';
 //#endregion
 
 //#region App Component, Model
-import { FormComponent } from '@form/component/form.component';
+import { FormComponent } from '@form/component';
 import * as ComponentActions from './reset-password.actions';
 import * as fromToken from '@token/store/';
 import { Token } from '@token/model/token.model';
