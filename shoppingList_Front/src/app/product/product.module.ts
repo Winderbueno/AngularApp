@@ -7,8 +7,6 @@ import { EffectsModule } from '@ngrx/effects';
 
 //#region Module
 import { ProductRouterModule } from './product-router.module';
-import { MaterialModule } from '@material/material.module';
-import { FormModule } from '@form/form.module';
 //#endregion
 
 //#region Store
@@ -31,8 +29,6 @@ import * as fromStore from './store';
 
     /* Module */
     ProductRouterModule,
-    MaterialModule,
-    FormModule,
 
     /* Store */
     StoreModule.forFeature(
@@ -41,7 +37,9 @@ import * as fromStore from './store';
     ),
 
     /* Effect */
-    EffectsModule.forFeature([]),
+    EffectsModule.forFeature([
+      // TODO - Add Effect
+    ]),
   ],
   declarations: [
     // TODO - Component
