@@ -1,0 +1,13 @@
+<div class="card-container">
+  <form [ngrxFormState]="formGroupState">
+    <h1>Alert</h1>
+
+    <div class="flex-layout flex-column">
+      <app-button-toggle-field [formId]="formId" [ctrlName]="'Criticity'" [options]="alertTypeEnumValues">
+      </app-button-toggle-field>
+
+      <app-button [text]="'Trigger Alert'" [type]="'button'" (click)="triggerAlert()"></app-button>
+      <app-button [text]="'Trigger 2sec Delayed Alert'" [type]="'button'" (click)="triggerDelayedAlert()"></app-button>
+    </div>
+  </form>
+</div>
