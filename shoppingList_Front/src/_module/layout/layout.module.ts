@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 
 //#region Module
 import { AppRouterModule } from '@app/app-router.module';
-import { FormModule } from '@form/form.module';
+import { DemoModule } from '@module/demo/demo.module';
 import { MaterialModule } from '@material/material.module';
 //#endregion
 
@@ -14,9 +14,7 @@ import {
   CardLayoutComponent,
   FooterComponent,
   ToolbarComponent,
-  HomeComponent,
-  AlertDemoComponent,
-  FormDemoComponent } from './component';
+  HomeComponent } from './component';
 //#endregion
 
 
@@ -27,16 +25,14 @@ import {
 
     /* Module */
     AppRouterModule,
-    FormModule,
-    MaterialModule
+    MaterialModule,
+    DemoModule
   ],
   declarations: [
     CardLayoutComponent,
     ToolbarComponent,
     FooterComponent,
-    HomeComponent,
-    AlertDemoComponent,
-    FormDemoComponent
+    HomeComponent
   ],
   exports: [
     CardLayoutComponent,
