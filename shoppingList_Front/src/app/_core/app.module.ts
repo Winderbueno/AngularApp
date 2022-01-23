@@ -14,13 +14,16 @@ import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 
 //#region Module
 import { AppRouterModule } from '@app/app-router.module';
-import { AccountModule } from '@account/account.module';
 import { AlertModule } from '@alert/alert.module';
-import { DemoModule } from '@demo/demo.module';
 import { EnumModule } from '@enum/enum.module';
 import { LayoutModule } from '@layout/layout.module';
 import { TimerModule } from '@timer/timer.module';
 import { TokenModule } from '@token/token.module';
+//#endregion
+
+//#region Feature
+import { AccountModule } from '@account/account.module';
+import { DemoModule } from '@demo/demo.module';
 //#endregion
 
 //#region Interceptor
@@ -65,13 +68,15 @@ const metaReducers: Array<MetaReducer<any, any>> = [
 
     /* Module */
     AppRouterModule,
-    AccountModule,
     AlertModule,
-    DemoModule,
     EnumModule,
     LayoutModule,
     TimerModule,
     TokenModule,
+
+    /* Feature */
+    AccountModule,
+    DemoModule,
 
     /* Store */
     StoreModule.forRoot({
