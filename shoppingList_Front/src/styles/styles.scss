@@ -3,7 +3,6 @@
 
 /* Content */
 @import './content/text.scss';
-@import './content/icon.scss';
 
 /* Button */
 @import './button/circle-link.scss';
@@ -23,3 +22,11 @@
 body {
     margin: 0;
 }
+
+  /* TODO - Clean - Responsive Styles */
+  @media screen and (max-width: 767px) {
+
+    .card-container > *:not(.circle-link) {
+      width: 100%;
+    }
+  }
