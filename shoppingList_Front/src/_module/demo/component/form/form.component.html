@@ -2,39 +2,39 @@
 
   <h1>{{formId}}</h1>
 
-  <app-date-field [formId]="formId" [ctrlName]="'Date field'" [placeholder]="'Ex : XX/XX/20XX'">
-  </app-date-field>
+  <k-form-field-date [formId]="formId" [ctrlName]="'Date field'" [placeholder]="'Ex : XX/XX/20XX'">
+  </k-form-field-date>
 
-  <app-input-field [formId]="formId" [ctrlName]="'Email'" [label]="'Input field with email Format'"
+  <k-form-field-input [formId]="formId" [ctrlName]="'Email'" [label]="'Input field with email Format'"
     [placeholder]="'Ex : patate@puree.com'" [value]="'patate@puree.com'" [format]="'email'">
-  </app-input-field>
+  </k-form-field-input>
 
   <div class="flex-layout">
-    <app-input-field [formId]="formId" [ctrlName]="'Length field'" [label]="'Optional field between 5 & 10 characters'"
+    <k-form-field-input [formId]="formId" [ctrlName]="'Length field'" [label]="'Optional field between 5 & 10 characters'"
       [required]="false" [addValidationFns]="[minLength(5), maxLength(10)]" [value]="5">
-    </app-input-field>
+    </k-form-field-input>
 
-    <app-input-field [formId]="formId" [ctrlName]="'Number'" [label]="'Input field with -number- format'"
+    <k-form-field-input [formId]="formId" [ctrlName]="'Number'" [label]="'Input field with -number- format'"
       [addValidationFns]="[number]" [value]="'Bonjour'">
-    </app-input-field>
+    </k-form-field-input>
   </div>
 
-  <app-password-field-group [formId]="formId" [withConfirm]="true">
-  </app-password-field-group>
+  <k-form-field-group-password [formId]="formId" [withConfirm]="true">
+  </k-form-field-group-password>
 
-  <app-select-field [formId]="formId" [ctrlName]="'Select field'" [options]="productCatEnum$|async">
-  </app-select-field>
+  <k-form-field-select [formId]="formId" [ctrlName]="'Select field'" [options]="productCatEnum$|async">
+  </k-form-field-select>
 
-  <app-checkbox-field [formId]="formId" [ctrlName]="'CheckBox'">
-  </app-checkbox-field>
+  <k-form-field-checkbox [formId]="formId" [ctrlName]="'CheckBox'">
+  </k-form-field-checkbox>
 
-  <app-slide-toggle-field [formId]="formId" [ctrlName]="'SlideToggle'">
-  </app-slide-toggle-field>
+  <k-form-field-slide-toggle [formId]="formId" [ctrlName]="'SlideToggle'">
+  </k-form-field-slide-toggle>
 
-  <app-button></app-button>
+  <k-button></k-button>
 
   <div class="flex-layout">
-    <app-button [text]="'Reset Form'" [type]="'button'" (click)="resetForm()"></app-button>
-    <app-button [text]="'Clear Form Value'" [type]="'button'" (click)="clearFormValue()"></app-button>
+    <k-button [text]="'Reset Form'" [type]="'button'" (click)="resetForm()"></k-button>
+    <k-button [text]="'Clear Form Value'" [type]="'button'" (click)="clearFormValue()"></k-button>
   </div>
 </form>

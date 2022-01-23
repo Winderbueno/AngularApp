@@ -3,24 +3,24 @@
   <h1>{{formId}}</h1>
 
   <!-- Username -->
-  <app-input-field [formId]="formId" [ctrlName]="'Username'">
-  </app-input-field>
+  <k-form-field-input [formId]="formId" [ctrlName]="'Username'">
+  </k-form-field-input>
 
   <!-- Email -->
-  <app-input-field [formId]="formId" [ctrlName]="'Email'" [format]="'email'">
-  </app-input-field>
+  <k-form-field-input [formId]="formId" [ctrlName]="'Email'" [format]="'email'">
+  </k-form-field-input>
 
   <!-- Password + Confirm -->
-  <app-password-field-group [formId]="formId" [withConfirm]="true">
-  </app-password-field-group>
+  <k-form-field-group-password [formId]="formId" [withConfirm]="true">
+  </k-form-field-group-password>
 
   <!-- Usage Term -->
-  <app-checkbox-field [formId]="formId" [ctrlName]="'acceptTerms'" [label]="'Accept Terms & Conditions'">
-  </app-checkbox-field>
+  <k-form-field-checkbox [formId]="formId" [ctrlName]="'acceptTerms'" [label]="'Accept Terms & Conditions'">
+  </k-form-field-checkbox>
 
   <!-- Submit -->
-  <app-button [text]="formId">
-  </app-button>
+  <k-button [text]="formId">
+  </k-button>
 
   <!-- Secondary Action -->
   <a mat-button routerLink="../login">Already have an account ?</a>

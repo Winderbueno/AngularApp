@@ -3,23 +3,23 @@
   <h1 mat-dialog-title>{{ formId }}</h1>
 
   <!-- Name -->
-  <app-input-field [formId]="formId" [ctrlName]="'ProductName'" [label]="'Name'">
-  </app-input-field>
+  <k-form-field-input [formId]="formId" [ctrlName]="'ProductName'" [label]="'Name'">
+  </k-form-field-input>
 
   <!-- Category -->
-  <app-select-field [formId]="formId" [ctrlName]="'Category'" [options]="productCatEnum$|async">
-  </app-select-field>
+  <k-form-field-select [formId]="formId" [ctrlName]="'Category'" [options]="productCatEnum$|async">
+  </k-form-field-select>
 
   <!-- Sub Category -->
-  <app-select-field [formId]="formId" [ctrlName]="'SubCategory'" [options]="productSubCatEnum$|async">
-  </app-select-field>
+  <k-form-field-select [formId]="formId" [ctrlName]="'SubCategory'" [options]="productSubCatEnum$|async">
+  </k-form-field-select>
 
   <!-- TODO - Proposition de produit -->
   <!-- <p>Ceci pourrait correspondre :</p>
     <p>Produit(s) Sélectionnés</p> -->
 
   <!-- Submit -->
-  <app-button [text]="'OK'"></app-button>
+  <k-button [text]="'OK'"></k-button>
 
   <!-- Secondary Action -->
   <button mat-button (click)="this.dialogRef.close();">No Thanks</button>

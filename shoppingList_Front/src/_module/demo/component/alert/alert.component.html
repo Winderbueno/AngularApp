@@ -3,11 +3,11 @@
     <h1>Alert</h1>
 
     <div class="flex-layout flex-column">
-      <app-button-toggle-field [formId]="formId" [ctrlName]="'Criticity'" [options]="alertTypeEnumValues">
-      </app-button-toggle-field>
+      <k-form-field-button-toggle [formId]="formId" [ctrlName]="'Criticity'" [options]="alertTypeEnumValues">
+      </k-form-field-button-toggle>
 
-      <app-button [text]="'Trigger Alert'" [type]="'button'" (click)="triggerAlert()"></app-button>
-      <app-button [text]="'Trigger 2sec Delayed Alert'" [type]="'button'" (click)="triggerDelayedAlert()"></app-button>
+      <k-button [text]="'Trigger Alert'" [type]="'button'" (click)="triggerAlert()"></k-button>
+      <k-button [text]="'Trigger 2sec Delayed Alert'" [type]="'button'" (click)="triggerDelayedAlert()"></k-button>
     </div>
   </form>
 </div>

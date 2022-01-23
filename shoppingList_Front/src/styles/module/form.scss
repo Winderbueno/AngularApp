@@ -1,11 +1,11 @@
 // TODO - Could be replace be an "app-form-field"
-app-checkbox-field,
-app-date-field,
-app-input-field,
-app-select-field,
-app-slide-toggle-field,
-app-password-field-group,
-app-button {
+k-form-field-checkbox,
+k-form-field-date,
+k-form-field-input,
+k-form-field-select,
+k-form-field-slide-toggle,
+k-form-field-group-password,
+k-button {
   display: flex;
   width: 100%;
   flex: 1;
@@ -19,7 +19,7 @@ mat-form-field {
   padding-bottom: 0.8rem;
 }
 
-app-button > button {
+k-button > button {
   padding: 0 0.1rem;
   flex: 1;
 }

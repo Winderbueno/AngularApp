@@ -3,16 +3,16 @@
   <h1>{{formId}}</h1>
 
   <!-- Email -->
-  <app-input-field [formId]="formId" [ctrlName]="'Email'" [format]="'email'">
-  </app-input-field>
+  <k-form-field-input [formId]="formId" [ctrlName]="'Email'" [format]="'email'">
+  </k-form-field-input>
 
   <!-- Password -->
-  <app-password-field-group [formId]="formId">
-  </app-password-field-group>
+  <k-form-field-group-password [formId]="formId">
+  </k-form-field-group-password>
 
   <!-- Submit -->
-  <app-button [text]="formId">
-  </app-button>
+  <k-button [text]="formId">
+  </k-button>
 
   <!-- Secondary Action -->
   <div>
