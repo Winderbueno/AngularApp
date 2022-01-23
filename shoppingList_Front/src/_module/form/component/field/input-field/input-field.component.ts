@@ -13,7 +13,7 @@ import { FieldComponent } from '@form/component';
  * Input Field Component
  */
 @Component({
-  selector: 'app-input-field',
+  selector: 'k-form-field-input',
   templateUrl: 'input-field.component.html' })
 export class InputFieldComponent extends FieldComponent {
 

@@ -10,11 +10,13 @@ import * as fromLoader from '@loader/store/';
 
 
 /**
- * Submit Button Component
- *  @param text - (Default : "Submit") - Text of the submit button 
+ * Button Component
+ *  @param text - (Default: "Submit") - Text of the submit button
+ *  @param type - (Default: "submit") - Can be 'submit' | 'button'
+ *  @param color - (Default: "primary") - Can be 'primary' | 'accent' | 'warn'
  */
 @Component({
-  selector: 'app-button',
+  selector: 'k-button',
   templateUrl: 'button.component.html' })
 export class ButtonComponent {
 

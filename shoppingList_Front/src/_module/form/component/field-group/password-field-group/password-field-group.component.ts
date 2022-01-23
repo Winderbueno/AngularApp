@@ -17,7 +17,7 @@ import { mustMatch } from '@form/validation-fns/must-match.validation-fns';
  * "confirmPwd" field is valid only if it has the same value as Pwd field
  */
 @Component({
-  selector: 'app-password-field-group',
+  selector: 'k-form-field-group-password',
   templateUrl: 'password-field-group.component.html' })
 export class PasswordFieldGroupComponent {
 

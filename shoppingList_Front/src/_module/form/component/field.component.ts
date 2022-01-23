@@ -56,7 +56,7 @@ import { DynamicControlValidationFn } from '@form/model/validation-fns.model';
  *  @param unpersist - (Optional) - If true, field state is deleted when component is destroy
  */
 @Component({
-  selector: 'app-field',
+  selector: 'k-form-field',
   template: ``,
 })
 export class FieldComponent implements OnInit, OnDestroy {
