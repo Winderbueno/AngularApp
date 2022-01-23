@@ -5,12 +5,14 @@ import { CommonModule } from '@angular/common';
 
 //#region Module
 import { AppRouterModule } from '@app/app-router.module';
+import { MaterialModule } from '@material/material.module';
 import { FormModule } from '@form/form.module';
 //#endregion
 
 //#region Component
 import {
   AlertComponent,
+  DemoComponent,
   FormComponent,
   LoaderComponent } from './component';
 //#endregion
@@ -23,17 +25,17 @@ import {
 
     /* Module */
     AppRouterModule,
+    MaterialModule,
     FormModule
   ],
   declarations: [
     AlertComponent,
+    DemoComponent,
     FormComponent,
     LoaderComponent
   ],
   exports: [
-    AlertComponent,
-    FormComponent,
-    LoaderComponent
+    DemoComponent
   ]
 })
 export class DemoModule { }

@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html'
+  selector: 'k-demo',
+  templateUrl: './demo.component.html'
 })
-export class HomeComponent {}
+export class DemoComponent {}

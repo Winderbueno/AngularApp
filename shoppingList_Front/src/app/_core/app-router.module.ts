@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 //#endregion
 
 //#region Routed Component
-import { HomeComponent } from '@layout/component/home/home.component';
+import { DemoComponent } from '@demo/component';
 //#endregion
 
 //#region Guard
@@ -18,7 +18,7 @@ const shoppingListModule = () => import('@shoppingList/shopping-list.module').th
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: DemoComponent },
   { path: 'my-shopping-list', loadChildren: shoppingListModule, canActivate: [AuthGuard] },
   { path: 'account', loadChildren: accountModule },
 ];

@@ -8,9 +8,10 @@
     ],
     "paths": {
       // App
-      "@env/*": ["src/environments/*"],
       "@module/*": ["src/_module/*"],
+      "@env/*": ["src/environments/*"],
       "@app/*": ["src/app/_core/*"],
+      "@demo/*": ["src/app/_demo/*"],
 
       // Feature
       "@account/*": ["src/app/account/*"],
@@ -27,7 +28,7 @@
       "@material/*": ["src/_module/material/*"],
       "@router/*": ["src/_module/router/*"],
       "@timer/*": ["src/_module/timer/*"],
-      "@token/*": ["src/_module/token/*"],
+      "@token/*": ["src/_module/token/*"]
     },
   },
   "files": [

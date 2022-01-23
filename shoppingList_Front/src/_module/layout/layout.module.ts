@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 
 //#region Module
 import { AppRouterModule } from '@app/app-router.module';
-import { DemoModule } from '@module/demo/demo.module';
 import { MaterialModule } from '@material/material.module';
 //#endregion
 
@@ -13,8 +12,7 @@ import { MaterialModule } from '@material/material.module';
 import {
   CardLayoutComponent,
   FooterComponent,
-  ToolbarComponent,
-  HomeComponent } from './component';
+  ToolbarComponent } from './component';
 //#endregion
 
 
@@ -25,20 +23,17 @@ import {
 
     /* Module */
     AppRouterModule,
-    MaterialModule,
-    DemoModule
+    MaterialModule
   ],
   declarations: [
     CardLayoutComponent,
     ToolbarComponent,
-    FooterComponent,
-    HomeComponent
+    FooterComponent
   ],
   exports: [
     CardLayoutComponent,
     ToolbarComponent,
-    FooterComponent,
-    HomeComponent
+    FooterComponent
   ]
 })
 export class LayoutModule { }
