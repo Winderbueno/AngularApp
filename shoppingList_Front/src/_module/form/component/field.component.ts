@@ -55,10 +55,7 @@ import { DynamicControlValidationFn } from '@form/model/validation-fns.model';
  *  @param addDynamicValidationFns - (Optional) - Array of DynamicValidationFns
  *  @param unpersist - (Optional) - If true, field state is deleted when component is destroy
  */
-@Component({
-  selector: 'k-form-field',
-  template: ``,
-})
+@Component({template: ``})
 export class FieldComponent implements OnInit, OnDestroy {
 
   private _ctrlName!: string;

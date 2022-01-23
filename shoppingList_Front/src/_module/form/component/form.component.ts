@@ -32,10 +32,7 @@ import { FormValue } from '@form/store/form.state';
  *  @param formId - FormGroupState Id
  *  @param persist - FormControlState Name
  */
-@Component({
-  selector: 'k-form',
-  template: ``,
-})
+ @Component({template: ``})
 export class FormComponent implements OnInit, OnDestroy {
 
   // Form
