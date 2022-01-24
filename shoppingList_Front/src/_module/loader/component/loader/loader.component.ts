@@ -12,7 +12,7 @@ import * as fromStore from '../../store/';
  * Loader Component
  */
 @Component({
-  selector: 'app-loader',
+  selector: 'k-loader',
   templateUrl: 'loader.component.html' })
 export class LoaderComponent {
 

@@ -5,6 +5,6 @@
   color="{{color}}" 
   [disabled]="(type === 'submit') && (isLoading$|async)">
 
-  <app-loader *ngIf="type === 'submit'"></app-loader>
+  <k-loader *ngIf="type === 'submit'"></k-loader>
   {{text}}
 </button>

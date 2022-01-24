@@ -17,10 +17,7 @@ import { UsedProduct } from '@shoppingList/model/current/used-product.model';
 //#endregion
 
 
-@Component({
-  selector: 'app-shopping-list',
-  templateUrl: './shopping-list.component.html'
-})
+@Component({ templateUrl: './shopping-list.component.html' })
 export class ShoppingListComponent implements OnInit {
 
   @ViewChild('accordion',{static:false}) Accordion!: MatAccordion;

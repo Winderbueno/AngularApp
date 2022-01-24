@@ -17,10 +17,7 @@ import { ShoppingListService } from '@shoppingList/service/shopping-list.service
 //#endregion
 
 
-@Component({
-  selector: 'app-dialog-add-product',
-  templateUrl: './dialog-add-product.component.html'
-})
+@Component({ templateUrl: './dialog-add-product.component.html' })
 export class DialogAddProductComponent extends FormComponent {
 
   // Proposition values

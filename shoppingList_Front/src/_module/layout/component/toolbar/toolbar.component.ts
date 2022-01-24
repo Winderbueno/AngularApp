@@ -15,7 +15,7 @@ import * as ComponentActions from './toolbar.component.actions';
 
 
 @Component({
-  selector: 'app-toolbar',
+  selector: 'k-toolbar',
   templateUrl: './toolbar.component.html'
 })
 export class ToolbarComponent implements OnInit {

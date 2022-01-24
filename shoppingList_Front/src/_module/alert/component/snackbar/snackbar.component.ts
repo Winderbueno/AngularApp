@@ -9,10 +9,7 @@ import * as fromStore from '../../store/';
 //#endregion
 
 
-@Component({
-  selector: 'app-snackbar',
-  templateUrl: './snackbar.component.html'
-})
+@Component({ templateUrl: './snackbar.component.html' })
 export class SnackbarComponent {
 
   constructor(

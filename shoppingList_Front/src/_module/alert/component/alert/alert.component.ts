@@ -12,7 +12,7 @@ import { AlertTypeEnumClass } from '../../model/enum/alert-type.enum';
 
 
 @Component({
-    selector: 'app-alert',
+    selector: 'k-alert',
     template: ``
 })
 export class AlertComponent implements OnInit {

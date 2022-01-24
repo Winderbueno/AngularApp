@@ -15,10 +15,7 @@ import { FieldComponent } from '..';
  *  @param labelAsValue - (? | Default:true)
  *   Specify if the value stored in the formState is the the label index or the label itself  
  */
-@Component({
-  selector: 'app-multiple-option-field',
-  template: ``,
-})
+@Component({ template: `` })
 export class MultipleOptionFieldComponent extends FieldComponent {
   @Input() options!: string[] | null | undefined;
   @Input() valueAsLabel: boolean = true;
