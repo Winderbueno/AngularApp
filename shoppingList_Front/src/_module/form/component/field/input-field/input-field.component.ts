@@ -26,15 +26,18 @@ export class InputFieldComponent extends FieldComponent {
 
   ngOnInit() {
     
-    if(this.format === 'email') { super.validationFns.push(email); }
-    if(this.format === 'number') { super.validationFns.push(number); }
-    if(this.format === 'password') {
-      // Activate VisibilityToggle
-      if(this._visibilityToggle === undefined) this._visibilityToggle = true;
-      // Hide text
-      this.visibility = false;
-      // TODO - Change Password Format Policy
-      super.validationFns.push(minLength(6)); 
+    switch (this.format) {
+      case 'email': { super.validationFns.push(email); break; }
+      case 'number': { super.validationFns.push(number); break; }
+      case 'password': {
+        // Activate VisibilityToggle
+        if(this._visibilityToggle === undefined) this._visibilityToggle = true;
+        // Hide text
+        this.visibility = false;
+        // Format Policy - TODO - Change
+        super.validationFns.push(minLength(6));
+        break;
+      }
     }
 
     super.ngOnInit();
