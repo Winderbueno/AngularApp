@@ -8,7 +8,7 @@ import { required } from 'ngrx-forms/validation';
 //#region Component, Model, Service
 import * as fromStore from '@form/store/';
 import { FormValue } from '@form/store/form.state';
-import { FormErrorService } from '@form/service/form-error.service';
+import { ErrorMessageService } from '@module/form/service/error-message.service';
 import { ValidationFnsService } from '@form/service/validation-fns.service';
 import { DynamicControlValidationFn } from '@form/model/validation-fns.model';
 //#endregion
@@ -84,13 +84,13 @@ export class FieldComponent implements OnInit, OnDestroy {
   // Accessor
   get form() { return this._formGroupState! }
   get ctrl() { return this._formGroupState!.controls[this._ctrlName] as unknown as FormControlState<string|boolean|number>; }
-  get err() { return this.formErrorService; }
+  get err() { return this.errorMessageService; }
   protected get validationFns() { return this._validationFns }
   protected get dynamicValidationFns() { return this._dynamicValidationFns }
 
   constructor(
     protected store: Store,
-    private formErrorService: FormErrorService,
+    private errorMessageService: ErrorMessageService,
     private validationFnsService: ValidationFnsService
   ) {}
 
