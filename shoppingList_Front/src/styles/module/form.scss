@@ -16,7 +16,7 @@ mat-form-field {
 }
 
 .mat-form-field-wrapper {
-  padding-bottom: 0.8rem;
+  min-width: 240px; // To handle field with icon
 }
 
 k-button > button {

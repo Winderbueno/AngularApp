@@ -8,8 +8,8 @@
     placeholder="{{placeholder}}"
     [ngrxValueConverter]="valueConverter">
 
-  <!-- If With Feature 'Visibility', Add a button to manage input visibility -->
-  <button *ngIf="visibilityToggle" 
+  <!-- Icon button to manage input visibility -->
+  <button *ngIf="visibilityToggle && ctrl.value !== ''" 
     type="button" mat-icon-button matSuffix (click)="visibility = !visibility">
     <mat-icon>{{ visibility ? 'visibility_off' : 'visibility' }}</mat-icon>
   </button>

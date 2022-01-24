@@ -37,7 +37,7 @@ export class InputFieldComponent extends FieldComponent {
   // TODO - Value converter // Check that number is well handled
   valueConverter: NgrxValueConverter<string | null, string | number | null> = {
     convertViewToStateValue(valueInView:string) {
-      return !isNaN(Number(valueInView)) ? 
+      return valueInView !== '' && !isNaN(Number(valueInView)) ? 
         Number(valueInView) :
         valueInView;
     },
