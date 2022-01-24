@@ -18,6 +18,7 @@ import { Timer } from '@timer/model/timer.model';
 export class AlertComponent extends FormComponent {  
 
   // Proposition values
+  alertTypeEnum = fromAlert.AlertTypeEnum;
   alertTypeEnumValues: string[] = Object.keys(fromAlert.AlertTypeEnum);
 
   ngOnInit(){

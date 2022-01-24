@@ -3,7 +3,11 @@
     <h1>Alert</h1>
 
     <div class="flex-layout flex-column">
-      <k-form-field-button-toggle [formId]="formId" [ctrlName]="'Criticity'" [options]="alertTypeEnumValues">
+      <k-form-field-button-toggle 
+        [formId]="formId" 
+        [ctrlName]="'Criticity'" 
+        [options]="alertTypeEnumValues"
+        [value]="alertTypeEnum.Success">
       </k-form-field-button-toggle>
 
       <k-button [text]="'Trigger Alert'" [type]="'button'" (click)="triggerAlert()"></k-button>
