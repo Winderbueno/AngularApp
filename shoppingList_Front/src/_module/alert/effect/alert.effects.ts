@@ -7,7 +7,7 @@ import { filter, map, withLatestFrom } from 'rxjs/operators';
 
 //#region Action, Selector
 import * as fromStore from '../store/';
-import * as fromRouter from '@ngrx/router-store'; // TODO - Cela cree une dependance avec le router
+import * as fromRouter from '@ngrx/router-store';
 //#endregion
 
 
