@@ -51,6 +51,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           // this.log(`${operation} failed: ${error.message}`);
           console.error(err);
 
+          // TODO - deprecated
           return throwError(error);
     }))
   }
