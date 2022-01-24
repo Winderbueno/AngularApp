@@ -12,7 +12,7 @@ import { FieldComponent } from '..';
  * This component adds the necessary input to a Field to handle multiple avaoptions :
  * 
  *  @param options - List of available options (as a string array of displayed label)
- *  @param labelAsValue - (Optional | Default:true)
+ *  @param labelAsValue - (? | Default:true)
  *   Specify if the value stored in the formState is the the label index or the label itself  
  */
 @Component({

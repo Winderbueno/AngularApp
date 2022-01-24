@@ -11,9 +11,10 @@ import * as fromLoader from '@loader/store/';
 
 /**
  * Button Component
- *  @param text - (Default: "Submit") - Text of the submit button
- *  @param type - (Default: "submit") - Can be 'submit' | 'button'
- *  @param color - (Default: "primary") - Can be 'primary' | 'accent' | 'warn'
+ * 
+ *  @param text - (Default:"Submit") - Text inside the button
+ *  @param type - (Default:"submit") - Can be 'submit' | 'button'
+ *  @param color - (Default:"primary") - Can be 'primary' | 'accent' | 'warn'
  */
 @Component({
   selector: 'k-button',
