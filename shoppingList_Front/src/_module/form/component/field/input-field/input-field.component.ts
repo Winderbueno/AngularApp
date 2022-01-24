@@ -1,7 +1,7 @@
 ﻿//#region Angular, Material, NgRx
 import { Component, Input } from '@angular/core';
 import { NgrxValueConverter } from 'ngrx-forms';
-import { email, minLength } from 'ngrx-forms/validation';
+import { email, number, minLength } from 'ngrx-forms/validation';
 //#endregion
 
 //#region Component, Model, Service
@@ -17,24 +17,30 @@ import { FieldComponent } from '@form/component';
   templateUrl: 'input-field.component.html' })
 export class InputFieldComponent extends FieldComponent {
 
-  @Input() visibilityToggle: boolean = false;
-
   visibility: boolean = true;
+  _visibilityToggle: boolean | undefined;
+
+  @Input()
+  get visibilityToggle() { return this._visibilityToggle; }
+  set visibilityToggle(input: boolean | undefined) { this._visibilityToggle = input; }  
 
   ngOnInit() {
-
-    // By default, if withFeature 'Visibility', we hide the input
-    if(this.visibilityToggle === true) { this.visibility = false; }
     
     if(this.format === 'email') { super.validationFns.push(email); }
-
-    // TODO - Change Password Format Policy
-    if(this.format === 'password') { super.validationFns.push(minLength(6)); }
+    if(this.format === 'number') { super.validationFns.push(number); }
+    if(this.format === 'password') {
+      // Activate VisibilityToggle
+      if(this._visibilityToggle === undefined) this._visibilityToggle = true;
+      // Hide text
+      this.visibility = false;
+      // TODO - Change Password Format Policy
+      super.validationFns.push(minLength(6)); 
+    }
 
     super.ngOnInit();
   }
 
-  // TODO - Value converter // Check that number is well handled
+  // Value converter
   valueConverter: NgrxValueConverter<string | null, string | number | null> = {
     convertViewToStateValue(valueInView:string) {
       return valueInView !== '' && !isNaN(Number(valueInView)) ? 
