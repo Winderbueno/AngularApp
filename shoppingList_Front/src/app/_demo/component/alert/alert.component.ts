@@ -60,7 +60,7 @@ export class AlertComponent extends FormComponent {
     this.store.dispatch(fromTimer.defineTimerAction({ 
       timer : new Timer({
         name: 'StopLoaderTimer',
-        time: 3000,
+        time: 2000,
         action: fromLoader.stopLoaderAction()
       }) 
     }));

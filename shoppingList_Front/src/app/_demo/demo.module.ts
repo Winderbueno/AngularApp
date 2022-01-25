@@ -12,6 +12,7 @@ import { FormModule } from '@form/form.module';
 //#region Component
 import {
   AlertComponent,
+  ContentComponent,
   DemoComponent,
   FormComponent,
   LoaderComponent } from './component';
@@ -30,6 +31,7 @@ import {
   ],
   declarations: [
     AlertComponent,
+    ContentComponent,
     DemoComponent,
     FormComponent,
     LoaderComponent
