@@ -22,6 +22,10 @@
   flex-direction: column;
 }
 
+.full-width-children > * {
+  width: 100%;
+}
+
 .spacer {
   flex: 1;
 }
