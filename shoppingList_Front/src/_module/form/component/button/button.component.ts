@@ -18,7 +18,9 @@ import * as fromLoader from '@loader/store/';
  */
 @Component({
   selector: 'k-button',
-  templateUrl: 'button.component.html' })
+  templateUrl: 'button.component.html',
+  styles: ['button { width: 100%; }']
+})
 export class ButtonComponent {
 
   private _type: string = "submit";

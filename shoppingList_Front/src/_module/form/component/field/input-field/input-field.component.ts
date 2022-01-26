@@ -43,8 +43,14 @@ export class InputFieldComponent extends FieldComponent {
     super.ngOnInit();
   }
 
-  // Value converter
-  valueConverter: NgrxValueConverter<string | null, string | number | null> = {
+  // Default value converter
+  defaultConverter: NgrxValueConverter<string | number | boolean | null, string | number | boolean | null> = {
+    convertViewToStateValue(valueInView) { return valueInView; },
+    convertStateToViewValue(valueInState) { return valueInState ; }
+  };
+
+  // Number value converter
+  numberConverter: NgrxValueConverter<string | null, string | number | null> = {
     convertViewToStateValue(valueInView:string) {
       return valueInView !== '' && !isNaN(Number(valueInView)) ? 
         Number(valueInView) :
