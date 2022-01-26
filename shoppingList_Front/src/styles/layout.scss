@@ -22,8 +22,10 @@
   flex-direction: column;
 }
 
-.full-width-children > * {
-  width: 100%;
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
 }
 
 .spacer {
