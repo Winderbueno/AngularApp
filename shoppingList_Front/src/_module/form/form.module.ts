@@ -6,6 +6,7 @@ import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
 //#region Module
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoaderModule } from '@loader/loader.module';
 import { MaterialModule } from '@material/material.module';
 import { NgrxFormsModule } from 'ngrx-forms';
@@ -37,6 +38,7 @@ import {
     CommonModule,
 
     /* Module */
+    FlexLayoutModule,
     LoaderModule,
     MaterialModule,
     NgrxFormsModule,

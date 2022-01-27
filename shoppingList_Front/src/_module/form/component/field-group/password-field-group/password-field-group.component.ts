@@ -18,7 +18,9 @@ import { mustMatch } from '@form/validation-fns/must-match.validation-fns';
  */
 @Component({
   selector: 'k-form-field-group-password',
-  templateUrl: 'password-field-group.component.html' })
+  templateUrl: 'password-field-group.component.html',
+  styles: ['k-form-field-input { width: 100%; }']
+})
 export class PasswordFieldGroupComponent {
 
   @Input() formId!: string;
