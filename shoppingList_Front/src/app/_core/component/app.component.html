@@ -1,21 +1,17 @@
 <!-- Main Page -->
-<div class="page">
+<div fxLayout="column" fxLayoutAlign="space-between stretch" class="page">
 
   <!-- Toolbar -->
   <k-toolbar></k-toolbar>
-  <span class="half-spacer"></span>
 
   <!-- Content -->
-  <div class="content" role="main">
+  <div fxLayout='raw wrap' fxLayoutAlign="center center" role="main">
     <router-outlet></router-outlet>
   </div>
 
   <!-- Footer -->
-  <span class="spacer"></span>
-  <k-footer></k-footer>
-
-  <!-- Alert -->
-  <k-alert></k-alert>
+  <k-footer></k-footer>  
 </div>
 
-
+<!-- Alert -->
+<k-alert></k-alert>

@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 
 //#region Module
 import { AppRouterModule } from '@app/app-router.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@material/material.module';
 //#endregion
 
@@ -23,6 +24,7 @@ import {
 
     /* Module */
     AppRouterModule,
+    FlexLayoutModule,
     MaterialModule
   ],
   declarations: [

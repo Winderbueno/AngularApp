@@ -16,6 +16,7 @@ import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 import { AppRouterModule } from '@app/app-router.module';
 import { AlertModule } from '@alert/alert.module';
 import { EnumModule } from '@enum/enum.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { LayoutModule } from '@layout/layout.module';
 import { TimerModule } from '@timer/timer.module';
 import { TokenModule } from '@token/token.module';
@@ -70,6 +71,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [
     AppRouterModule,
     AlertModule,
     EnumModule,
+    FlexLayoutModule,
     LayoutModule,
     TimerModule,
     TokenModule,
