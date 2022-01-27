@@ -7,6 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 //#region Module
 import { AccountRouterModule } from '@account/account-router.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@material/material.module';
 import { FormModule } from '@form/form.module';
 //#endregion
@@ -40,6 +41,7 @@ import {
 
     /* Module */
     AccountRouterModule,
+    FlexLayoutModule,
     MaterialModule,
     FormModule,
 
