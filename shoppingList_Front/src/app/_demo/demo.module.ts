@@ -5,8 +5,8 @@ import { CommonModule } from '@angular/common';
 
 //#region Module
 import { AppRouterModule } from '@app/app-router.module';
-import { MaterialModule } from '@material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from '@material/material.module';
 import { FormModule } from '@form/form.module';
 //#endregion
 
@@ -27,8 +27,8 @@ import {
 
     /* Module */
     AppRouterModule,
-    MaterialModule,
     FlexLayoutModule,
+    MaterialModule,
     FormModule
   ],
   declarations: [

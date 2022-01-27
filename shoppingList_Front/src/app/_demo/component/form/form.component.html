@@ -1,4 +1,7 @@
-<form gdColumns="1fr 1fr" [ngrxFormState]="formGroupState" (submit)="onSubmit()">
+<form 
+  gdColumns="1fr 1fr"
+  fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="auto center"
+  [ngrxFormState]="formGroupState" (submit)="onSubmit()">
   <h1 style="grid-column: 1/3;">{{formId}}</h1>
 
   <k-form-field-input [formId]="formId" [ctrlName]="'Email'" [label]="'Field with -email- format'"

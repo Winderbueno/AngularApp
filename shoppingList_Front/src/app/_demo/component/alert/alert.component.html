@@ -1,8 +1,8 @@
-<div class="card-container">
-  <form [ngrxFormState]="formGroupState">
+
+  <form [ngrxFormState]="formGroupState" class="card-container">
     <h1>Alert</h1>
 
-    <div class="flex-layout flex-column">
+    <div fxLayout='column'>
       <k-form-field-button-toggle 
         [formId]="formId" 
         [ctrlName]="'Criticity'" 
@@ -14,4 +14,3 @@
       <k-button [text]="'Trigger 2sec Delayed Alert'" [type]="'button'" (click)="triggerDelayedAlert()"></k-button>
     </div>
   </form>
-</div>
