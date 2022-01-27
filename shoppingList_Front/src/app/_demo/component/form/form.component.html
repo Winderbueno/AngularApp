@@ -1,8 +1,9 @@
 <form 
-  gdColumns="1fr 1fr"
-  fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="auto center"
+  gdColumns.gt-xs="1fr 1fr"
+  ngStyle.gt-xs="column-gap: 8px;"
+  gdColumns.xs="250px"
   [ngrxFormState]="formGroupState" (submit)="onSubmit()">
-  <h1 style="grid-column: 1/3;">{{formId}}</h1>
+  <h1 ngStyle.gt-xs="grid-column: 1/3;">{{formId}}</h1>
 
   <k-form-field-input [formId]="formId" [ctrlName]="'Email'" [label]="'Field with -email- format'"
     [placeholder]="'Ex : patate@puree.com'" [value]="'patate@puree.com'" [format]="'email'">
@@ -22,7 +23,7 @@
     [required]="false" [addValidationFns]="[minLength(5), maxLength(10)]" [value]="5">
   </k-form-field-input>
 
-  <k-form-field-group-password style="grid-column: 1/3;" [formId]="formId" [withConfirm]="true">
+  <k-form-field-group-password ngStyle.gt-xs="grid-column: 1/3;" [formId]="formId" [withConfirm]="true">
   </k-form-field-group-password>
 
   <k-form-field-checkbox [formId]="formId" [ctrlName]="'CheckBox'">
@@ -31,8 +32,9 @@
   <k-form-field-slide-toggle [formId]="formId" [ctrlName]="'SlideToggle'">
   </k-form-field-slide-toggle>
 
-  <k-button style="grid-column: 1/3;"></k-button>
-  <k-button [text]="'Reset Form'" [type]="'button'" (click)="resetForm()"></k-button>
-  <k-button [text]="'Clear Form Value'" [type]="'button'" (click)="clearFormValue()"></k-button>
+  <k-button ngStyle.gt-xs="grid-column: 1/3;"></k-button>
 
+  <a mat-button (click)="resetForm()">Reset Form</a>
+  <a mat-button (click)="clearFormValue()">Clear Form Value</a>
+  
 </form>
