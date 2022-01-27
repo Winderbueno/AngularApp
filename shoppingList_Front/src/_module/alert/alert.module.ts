@@ -6,6 +6,7 @@ import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
 //#region Module
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@material/material.module';
 //#endregion
 
@@ -30,6 +31,7 @@ import {
     CommonModule,
 
     /* Module */
+    FlexLayoutModule,
     MaterialModule,
 
     /* Store */
