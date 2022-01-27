@@ -5,3 +5,7 @@ mat-toolbar a {
 .mat-form-field-wrapper {
   min-width: 240px; // To handle field with icon
 }
+
+mat-form-field {
+  width: 100%;
+}
