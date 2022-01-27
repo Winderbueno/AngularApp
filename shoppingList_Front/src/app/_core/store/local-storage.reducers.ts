@@ -26,7 +26,7 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
 
       // Array of formId to sync with localStorage
       // TODO - saisie manuelle du nom du form... pas top
-      { form : ['Form'] }
+      { form : ['Form','Alert'] }
     ],
     rehydrate: true
   })(reducer);
