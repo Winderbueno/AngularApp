@@ -12,3 +12,11 @@
 .half-spacer {
   flex: 0.25;
 }
+
+router-outlet + .ng-star-inserted {
+  flex:1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
