@@ -7,8 +7,9 @@ import { EffectsModule } from '@ngrx/effects';
 
 //#region Module
 import { ShoppingListRouterModule } from './shopping-list-router.module';
-import { MaterialModule } from '@material/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormModule } from '@form/form.module';
+import { MaterialModule } from '@material/material.module';
 //#endregion
 
 //#region Store
@@ -33,8 +34,9 @@ import {
 
     /* Module */
     ShoppingListRouterModule,
-    MaterialModule,
+    FlexLayoutModule,
     FormModule,
+    MaterialModule,
 
     /* Store */
     StoreModule.forFeature(

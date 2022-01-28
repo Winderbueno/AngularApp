@@ -1,72 +1,70 @@
-<h1>Shopping List</h1>
+<div>
 
-<!-- Action Bar -->
-<!-- TODO - Should be in an action bar component -->
-<div fxLayout="raw wrap">
+  <h1>Shopping List</h1>
 
-  <button mat-raised-button (click)="openAddProductDialog()">Add Product</button>
-  <button mat-raised-button (click)="resetBoughtStatus()">Reinitiate Status</button>
+  <!-- Action Bar -->
+  <!-- TODO - Should be in an action bar component -->
+  <div fxLayout="raw wrap">
 
-  <span class="spacer"></span>
+    <button mat-raised-button (click)="openAddProductDialog()">Add Product</button>
+    <button mat-raised-button (click)="resetBoughtStatus()">Reinitiate Status</button>
 
-  <mat-chip-list multiple>
-    <mat-chip disableRipple [selectable]="false">
-      <mat-slide-toggle (change)="onSlideChange()">{{accordion_expanded ? "Close" : "Open"}}</mat-slide-toggle>
-    </mat-chip>
-    <mat-chip disableRipple [selectable]="false">
-      <mat-slide-toggle (change)="edit_mode = !edit_mode">{{edit_mode ? "Use" : "Edit"}}</mat-slide-toggle>
-    </mat-chip>
-  </mat-chip-list>
+    <span class="spacer"></span>
 
-</div>
+    <mat-chip-list multiple>
+      <mat-chip disableRipple [selectable]="false">
+        <mat-slide-toggle (change)="onSlideChange()">{{accordion_expanded ? "Close" : "Open"}}</mat-slide-toggle>
+      </mat-chip>
+      <mat-chip disableRipple [selectable]="false">
+        <mat-slide-toggle (change)="edit_mode = !edit_mode">{{edit_mode ? "Use" : "Edit"}}</mat-slide-toggle>
+      </mat-chip>
+    </mat-chip-list>
 
-<!-- In "Edit mode", Add a category -->
-<mat-expansion-panel *ngIf="edit_mode" hideToggle>
+  </div>
 
-  <!-- TODO - Use primary or secondary color -->
-  <!-- TODO - Put Style in CSS file -->
-  <!-- TODO - Add a '+' Icon at end of line -->
-  <mat-expansion-panel-header
-    #panelH
-    (click)="panelH._toggle()"
-    style='background-color:cornflowerblue'>
-    <mat-panel-title>Add Category</mat-panel-title>
-    <mat-icon>add_circle</mat-icon>
-  </mat-expansion-panel-header>
-</mat-expansion-panel>
+  <!-- In "Edit mode", Add a category -->
+  <mat-expansion-panel *ngIf="edit_mode" hideToggle>
 
-<!-- Shopping List -->
-<div *ngIf="myShoppingList[0] && myShoppingList[0].catProducts">  
-  
-  <mat-accordion [multi]=true #accordion="matAccordion">
+    <!-- TODO - Use primary or secondary color -->
+    <!-- TODO - Put Style in CSS file -->
+    <!-- TODO - Add a '+' Icon at end of line -->
+    <mat-expansion-panel-header #panelH (click)="panelH._toggle()" style='background-color:cornflowerblue'>
+      <mat-panel-title>Add Category</mat-panel-title>
+      <mat-icon>add_circle</mat-icon>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
 
-    <mat-expansion-panel *ngFor="let catProd of myShoppingList[0].catProducts" hideToggle>
+  <!-- Shopping List -->
+  <div *ngIf="myShoppingList[0] && myShoppingList[0].catProducts">
 
-      <!-- Header containing the product category -->
-      <mat-expansion-panel-header>
-        <mat-panel-title>{{catProd.category}}</mat-panel-title>
-        <mat-chip *ngIf="edit_mode" (click)="deleteNode('test')">
-          <mat-icon>add_circle</mat-icon> Item
-        </mat-chip>
-        <mat-icon *ngIf="edit_mode" (click)="deleteNode('bjr')">delete</mat-icon>
-      </mat-expansion-panel-header>
+    <mat-accordion [multi]=true #accordion="matAccordion">
 
-      <!-- Expanded Panel containing the product sub category and their products -->
-      <li *ngFor="let subCatProd of catProd.subCatProducts">
-        <span> {{subCatProd.subCategory}} : </span>
-        <mat-chip-list multiple>
-          <div *ngFor="let prod of subCatProd.products">
-            <mat-chip
-              (click)="swapProductBoughtStatus(prod)"
-              [selected]="prod.bought">
-              {{prod.name}}
-              <mat-icon matChipRemove *ngIf="edit_mode" (click)="deleteProduct(prod)">cancel</mat-icon>
-            </mat-chip>
-          </div>
-        </mat-chip-list>
-      </li>
-    </mat-expansion-panel>
+      <mat-expansion-panel *ngFor="let catProd of myShoppingList[0].catProducts" hideToggle>
 
-  </mat-accordion>
+        <!-- Header containing the product category -->
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{catProd.category}}</mat-panel-title>
+          <mat-chip *ngIf="edit_mode" (click)="deleteNode('test')">
+            <mat-icon>add_circle</mat-icon> Item
+          </mat-chip>
+          <mat-icon *ngIf="edit_mode" (click)="deleteNode('bjr')">delete</mat-icon>
+        </mat-expansion-panel-header>
 
+        <!-- Expanded Panel containing the product sub category and their products -->
+        <li *ngFor="let subCatProd of catProd.subCatProducts">
+          <span> {{subCatProd.subCategory}} : </span>
+          <mat-chip-list multiple>
+            <div *ngFor="let prod of subCatProd.products">
+              <mat-chip (click)="swapProductBoughtStatus(prod)" [selected]="prod.bought">
+                {{prod.name}}
+                <mat-icon matChipRemove *ngIf="edit_mode" (click)="deleteProduct(prod)">cancel</mat-icon>
+              </mat-chip>
+            </div>
+          </mat-chip-list>
+        </li>
+      </mat-expansion-panel>
+
+    </mat-accordion>
+
+  </div>
 </div>
