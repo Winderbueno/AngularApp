@@ -6,17 +6,17 @@ import { CommonModule } from '@angular/common';
 //#region Module
 import { AppRouterModule } from '@app/app-router.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from '@material/material.module';
 import { FormModule } from '@form/form.module';
+import { MaterialModule } from '@material/material.module';
 //#endregion
 
 //#region Component
 import {
   AlertComponent,
   ContentComponent,
-  DemoComponent,
   FormComponent,
-  LoaderComponent } from './component';
+  LoaderComponent,
+  RootComponent } from './component';
 //#endregion
 
 
@@ -28,18 +28,18 @@ import {
     /* Module */
     AppRouterModule,
     FlexLayoutModule,
-    MaterialModule,
-    FormModule
+    FormModule,
+    MaterialModule    
   ],
   declarations: [
     AlertComponent,
     ContentComponent,
-    DemoComponent,
     FormComponent,
-    LoaderComponent
+    LoaderComponent,
+    RootComponent
   ],
   exports: [
-    DemoComponent
+    RootComponent
   ]
 })
 export class DemoModule { }
