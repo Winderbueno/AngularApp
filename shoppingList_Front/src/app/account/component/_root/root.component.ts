@@ -20,8 +20,7 @@ export class RootComponent {
   ) {
 
     this.store.select(fromAccount.isLogged).subscribe(value => this.isLogged=value)
-    // TODO - This is specific to account, not to the layout
-    // Redirect to home if already logged in
+    // TODO - Should redirect to 'my-shopping-list' (but pb router...)
     if (this.isLogged) { this.router.navigate(['/']); }
   }
 }
