@@ -14,7 +14,8 @@ import { DateTime } from 'luxon';
  */
 @Component({
   selector: 'k-form-field-date',
-  templateUrl: 'date-field.component.html' })
+  templateUrl: 'date-field.component.html'
+})
 export class DateFieldComponent extends FieldComponent {
 
   ngOnInit() { super.ngOnInit(); }

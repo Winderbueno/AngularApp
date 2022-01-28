@@ -13,7 +13,8 @@ import { FieldComponent } from '@form/component';
  */
 @Component({
   selector: 'k-form-field-checkbox',
-  templateUrl: 'checkbox-field.component.html' })
+  templateUrl: 'checkbox-field.component.html'
+})
 export class CheckBoxFieldComponent extends FieldComponent {
 
   ngOnInit() {

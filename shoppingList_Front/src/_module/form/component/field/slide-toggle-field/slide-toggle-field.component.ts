@@ -13,7 +13,8 @@ import { FieldComponent } from '@form/component';
  */
 @Component({
   selector: 'k-form-field-slide-toggle',
-  templateUrl: 'slide-toggle-field.component.html' })
+  templateUrl: 'slide-toggle-field.component.html'
+})
 export class SlideToggleFieldComponent extends FieldComponent {
 
   ngOnInit() {

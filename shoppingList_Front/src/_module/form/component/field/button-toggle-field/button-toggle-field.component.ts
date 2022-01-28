@@ -12,7 +12,8 @@ import { MultipleOptionFieldComponent } from '@form/component';
  */
 @Component({
   selector: 'k-form-field-button-toggle',
-  templateUrl: 'button-toggle-field.component.html' })
+  templateUrl: 'button-toggle-field.component.html'
+})
 export class ButtonToggleFieldComponent extends MultipleOptionFieldComponent {
   ngOnInit() {
     this.required = false;
