@@ -11,7 +11,6 @@ import { MaterialModule } from '@material/material.module';
 
 //#region Component
 import {
-  CardLayoutComponent,
   FooterComponent,
   ToolbarComponent } from './component';
 //#endregion
@@ -28,12 +27,10 @@ import {
     MaterialModule
   ],
   declarations: [
-    CardLayoutComponent,
     ToolbarComponent,
     FooterComponent
   ],
   exports: [
-    CardLayoutComponent,
     ToolbarComponent,
     FooterComponent
   ]

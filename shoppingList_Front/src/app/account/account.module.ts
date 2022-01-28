@@ -8,8 +8,8 @@ import { EffectsModule } from '@ngrx/effects';
 //#region Module
 import { AccountRouterModule } from '@account/account-router.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from '@material/material.module';
 import { FormModule } from '@form/form.module';
+import { MaterialModule } from '@material/material.module';
 //#endregion
 
 //#region Store
@@ -26,10 +26,11 @@ import {
 
 //#region Component
 import {
+  ForgotPasswordComponent,
   LoginComponent,
   RegisterComponent,
-  ForgotPasswordComponent,
   ResetPasswordComponent,
+  RootComponent,
   VerifyEmailComponent } from './component/';
 //#endregion
 
@@ -42,8 +43,8 @@ import {
     /* Module */
     AccountRouterModule,
     FlexLayoutModule,
-    MaterialModule,
     FormModule,
+    MaterialModule,
 
     /* Store */
     StoreModule.forFeature(
@@ -60,11 +61,12 @@ import {
     ]),
   ],
   declarations: [
+    ForgotPasswordComponent,
     LoginComponent,
     RegisterComponent,
-    ForgotPasswordComponent,
-    VerifyEmailComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    RootComponent,
+    VerifyEmailComponent
   ]
 })
 export class AccountModule {}

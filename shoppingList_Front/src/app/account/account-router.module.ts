@@ -4,18 +4,18 @@ import { Routes, RouterModule } from '@angular/router';
 //#endregion
 
 //#region Routed Component
-import { CardLayoutComponent } from '@layout/component/card-layout/card-layout.component';
 import {
+  ForgotPasswordComponent,
   LoginComponent,
   RegisterComponent,
-  ForgotPasswordComponent,
   ResetPasswordComponent,
-  VerifyEmailComponent } from '@account/component';
+  RootComponent,
+  VerifyEmailComponent } from './component/';
 //#endregion
 
 const routes: Routes = [
     {
-        path: '', component: CardLayoutComponent,
+        path: '', component: RootComponent,
         children: [
             { path: 'login', component: LoginComponent },
             { path: 'register', component: RegisterComponent },

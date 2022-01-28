@@ -6,10 +6,11 @@ export { emailTokenValidatedAction } from './verify-email/verify-email.actions';
 export { resetPasswordSubmitAction } from './reset-password/reset-password.actions';
 
 /* Component */
+export { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 export { LoginComponent } from './login/login.component';
 export { RegisterComponent } from './register/register.component';
-export { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-export { VerifyEmailComponent } from './verify-email/verify-email.component';
 export { ResetPasswordComponent } from './reset-password/reset-password.component';
+export { RootComponent } from './_root/root.component';
+export { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 

@@ -9,8 +9,8 @@ import * as fromAccount from '@account/store/';
 //#endregion
 
 
-@Component({ templateUrl: 'card-layout.component.html' })
-export class CardLayoutComponent {
+@Component({ templateUrl: 'root.component.html' })
+export class RootComponent {
 
   isLogged: boolean = false;
 
