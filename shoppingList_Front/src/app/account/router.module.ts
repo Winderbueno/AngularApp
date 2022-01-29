@@ -14,18 +14,18 @@ import {
 //#endregion
 
 const routes: Routes = [
-    {
-        path: '', component: RootComponent,
-        children: [
-            { path: 'login', component: LoginComponent },
-            { path: 'register', component: RegisterComponent },
-            { path: 'verify-email', component: VerifyEmailComponent },
-            { path: 'forgot-password', component: ForgotPasswordComponent },
-            { path: 'reset-password', component: ResetPasswordComponent }
-        ]
-    },
-    // Otherwise redirect to home
-    { path: '**', redirectTo: '' }
+  {
+    path: '', component: RootComponent,
+    children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'verify-email', component: VerifyEmailComponent },
+      { path: 'forgot-password', component: ForgotPasswordComponent },
+      { path: 'reset-password', component: ResetPasswordComponent }
+    ]
+  },
+  // Otherwise redirect to home
+  { path: '**', redirectTo: '' }
 ];
 
 
