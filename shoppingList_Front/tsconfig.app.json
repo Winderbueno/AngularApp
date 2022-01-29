@@ -7,18 +7,19 @@
       "node"
     ],
     "paths": {
-      // App
+      /* Source */
       "@module/*": ["src/_module/*"],
       "@env/*": ["src/environments/*"],
-      "@app/*": ["src/app/_core/*"],
-      "@demo/*": ["src/app/_demo/*"],
+      "@app/*": ["src/app/*"],
 
-      // Feature
+      /* Feature */
+      "@core/*": ["src/app/_core/*"],
+      "@demo/*": ["src/app/_demo/*"],
       "@account/*": ["src/app/account/*"],
       "@product/*": ["src/app/product/*"],
       "@shoppingList/*": ["src/app/shopping-list/*"],
 
-      // Module
+      /* Module */
       "@action/*": ["src/_module/action/*"],
       "@alert/*": ["src/_module/alert/*"],
       "@enum/*": ["src/_module/enum/*"],

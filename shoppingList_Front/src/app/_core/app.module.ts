@@ -13,7 +13,7 @@ import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 //#endregion
 
 //#region Module
-import { AppRouterModule } from '@app/app-router.module';
+import { AppRouterModule } from '@core/app-router.module';
 import { AlertModule } from '@alert/alert.module';
 import { EnumModule } from '@enum/enum.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -28,9 +28,9 @@ import { DemoModule } from '@demo/demo.module';
 //#endregion
 
 //#region Interceptor
-import { LoaderInterceptor } from '@app/interceptor/loader.interceptor';
-import { JwtInterceptor } from '@app/interceptor/jwt.interceptor';
-import { ErrorInterceptor } from '@app/interceptor/error.interceptor';
+import { LoaderInterceptor } from '@core/interceptor/loader.interceptor';
+import { JwtInterceptor } from '@core/interceptor/jwt.interceptor';
+import { ErrorInterceptor } from '@core/interceptor/error.interceptor';
 //#endregion
 
 //#region Component
