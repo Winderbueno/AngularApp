@@ -6,7 +6,7 @@ import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
 //#region Module
-import { ProductRouterModule } from './product-router.module';
+import { ProductRouterModule } from './router.module';
 //#endregion
 
 //#region Store

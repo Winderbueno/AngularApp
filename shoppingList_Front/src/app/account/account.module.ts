@@ -6,7 +6,7 @@ import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
 //#region Module
-import { AccountRouterModule } from '@account/account-router.module';
+import { AccountRouterModule } from './router.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormModule } from '@form/form.module';
 import { MaterialModule } from '@material/material.module';

@@ -13,7 +13,7 @@ import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 //#endregion
 
 //#region Module
-import { CoreRouterModule } from '@core/router.module';
+import { CoreRouterModule } from './router.module';
 import { AlertModule } from '@alert/alert.module';
 import { EnumModule } from '@enum/enum.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -33,13 +33,6 @@ import { JwtInterceptor } from '@core/interceptor/jwt.interceptor';
 import { ErrorInterceptor } from '@core/interceptor/error.interceptor';
 //#endregion
 
-//#region Component
-import { 
-  FooterComponent,
-  RootComponent,
-  ToolbarComponent } from './component';
-//#endregion
-
 //#region Store
 import * as fromStore from './store';
 //#endregion
@@ -50,6 +43,13 @@ import {
   EnumEffects } from './effect';
 import { AccountAPIEffects } from '@account/effect';
 import { EnumAPIEffects } from '@enum/effect';
+//#endregion
+
+//#region Component
+import { 
+  FooterComponent,
+  RootComponent,
+  ToolbarComponent } from './component';
 //#endregion
 
 //#region App Conf

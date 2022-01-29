@@ -10,7 +10,7 @@ import {
   RegisterComponent,
   ResetPasswordComponent,
   RootComponent,
-  VerifyEmailComponent } from './component/';
+  VerifyEmailComponent } from './component';
 //#endregion
 
 const routes: Routes = [
