@@ -32,4 +32,4 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class AppRouterModule { }
+export class CoreRouterModule { }

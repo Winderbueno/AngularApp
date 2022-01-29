@@ -13,7 +13,7 @@ import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 //#endregion
 
 //#region Module
-import { AppRouterModule } from '@core/app-router.module';
+import { CoreRouterModule } from '@core/router.module';
 import { AlertModule } from '@alert/alert.module';
 import { EnumModule } from '@enum/enum.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -37,17 +37,17 @@ import { ErrorInterceptor } from '@core/interceptor/error.interceptor';
 import { 
   FooterComponent,
   RootComponent,
-  ToolbarComponent } from './component/';
+  ToolbarComponent } from './component';
 //#endregion
 
 //#region Store
-import * as fromStore from './store/';
+import * as fromStore from './store';
 //#endregion
 
 //#region Effect
 import {
   AccountEffects,
-  EnumEffects } from './effect/';
+  EnumEffects } from './effect';
 import { AccountAPIEffects } from '@account/effect';
 import { EnumAPIEffects } from '@enum/effect';
 //#endregion
@@ -71,7 +71,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [
     HttpClientModule,
 
     /* Module */
-    AppRouterModule,
+    CoreRouterModule,
     AlertModule,
     EnumModule,
     FlexLayoutModule,
@@ -121,4 +121,4 @@ const metaReducers: Array<MetaReducer<any, any>> = [
     RootComponent
   ]
 })
-export class AppModule { }
+export class CoreModule { }
