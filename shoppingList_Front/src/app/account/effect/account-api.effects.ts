@@ -9,7 +9,7 @@ import { map, catchError, exhaustMap } from 'rxjs/operators';
 import * as fromAPI from '../service/account.api.actions';
 import * as fromComponent from '../component/';
 import * as fromStore from '../store/'
-import { toolbarLogOutAction } from '@layout/component';// TODO -
+import { toolbarLogOutAction } from '@app/component';// TODO -
 //#endregion
 
 //#region Service, Model

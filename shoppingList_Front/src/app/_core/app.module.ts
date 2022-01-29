@@ -17,7 +17,7 @@ import { AppRouterModule } from '@app/app-router.module';
 import { AlertModule } from '@alert/alert.module';
 import { EnumModule } from '@enum/enum.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { LayoutModule } from '@layout/layout.module';
+import { MaterialModule } from '@material/material.module';
 import { TimerModule } from '@timer/timer.module';
 import { TokenModule } from '@token/token.module';
 //#endregion
@@ -34,7 +34,10 @@ import { ErrorInterceptor } from '@app/interceptor/error.interceptor';
 //#endregion
 
 //#region Component
-import { AppComponent } from './component/app.component';
+import { 
+  FooterComponent,
+  RootComponent,
+  ToolbarComponent } from './component/';
 //#endregion
 
 //#region Store
@@ -72,7 +75,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [
     AlertModule,
     EnumModule,
     FlexLayoutModule,
-    LayoutModule,
+    MaterialModule,
     TimerModule,
     TokenModule,
 
@@ -109,7 +112,13 @@ const metaReducers: Array<MetaReducer<any, any>> = [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }, // Start the loader
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true } // Handle errors received from server
   ],
-  declarations: [AppComponent],
-  bootstrap: [AppComponent]
+  declarations: [
+    FooterComponent,
+    RootComponent,
+    ToolbarComponent
+  ],
+  bootstrap: [
+    RootComponent
+  ]
 })
 export class AppModule { }
