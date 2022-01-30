@@ -1,25 +1,26 @@
-<mat-toolbar color="primary" style="justify-content: center;">
- 
-  <button mat-icon-button aria-label="Menu icon" style="position: absolute; top: 12px; left: 20px;">
+<mat-toolbar fxLayoutAlign="center center" color="primary">
+
+  <button mat-icon-button aria-label="Menu icon" fxShow.gt-xs="false" style="position:absolute; top:8px; left:16px;">
     <mat-icon>menu</mat-icon>
   </button>
 
   <!-- Logo -->
   <img style="padding: 0 16px;" width="40" alt="Angular Logo"
-    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="/>
+    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
 
   <!-- Menu -->
-  <a mat-button routerLink="/home">Demo</a>
-  <a mat-button routerLink="/my-shopping-list">Shopping List</a>
+  <a fxShow.xs="false" mat-button routerLink="/home">Demo</a>
+  <a fxShow.xs="false" mat-button routerLink="/my-shopping-list">Shopping List</a>
 
   <!-- Account -->
-  <div style="position: absolute; top: 14px; right: 20px;">
-    <div *ngIf="isLogged; else elseBlock">
-      <a mat-button color="warn">{{account[0].userName}}</a>
-      <a mat-button (click)="logout()">Log Out</a>
-    </div>
-    <ng-template #elseBlock>
-      <a mat-button routerLink="/account/login">Connexion</a>
-    </ng-template>
+  <div *ngIf="isLogged; else elseBlock" style="position: absolute;" fxLayout="column" fxLayoutAlign="center center"
+    ngStyle.gt-xs="right: 30px;" ngStyle.xs="right: 12px;">
+    <user-menu></user-menu>
   </div>
+  <ng-template #elseBlock>
+    <a style="position: absolute;" ngStyle.gt-xs="right: 40px; top: 11px;" ngStyle.xs="right: 25px; top: 7px;"
+      mat-icon-button routerLink="/account/login">
+      Sign In
+    </a>
+  </ng-template>
 </mat-toolbar>

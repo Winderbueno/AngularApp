@@ -1,0 +1,7 @@
+<a mat-button color="warn" [matMenuTriggerFor]="menu">{{account[0].userName}}</a>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-menu>

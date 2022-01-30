@@ -49,7 +49,8 @@ import { EnumAPIEffects } from '@enum/effect';
 import { 
   FooterComponent,
   RootComponent,
-  ToolbarComponent } from './component';
+  ToolbarComponent,
+  UserMenuComponent } from './component';
 //#endregion
 
 //#region App Conf
@@ -115,7 +116,8 @@ const metaReducers: Array<MetaReducer<any, any>> = [
   declarations: [
     FooterComponent,
     RootComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    UserMenuComponent
   ],
   bootstrap: [
     RootComponent
