@@ -1,5 +1,5 @@
 ﻿/* Action */
-export { toolbarLogOutAction } from './user-menu/toolbar.component.actions';
+export { clickOnLogoutMenuAction } from './user-menu/user-menu.component.actions';
 
 /* Component */
 export { CoreMenuComponent } from './core-menu/core-menu.component';

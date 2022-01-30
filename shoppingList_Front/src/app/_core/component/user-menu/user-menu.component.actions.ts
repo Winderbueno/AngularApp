@@ -4,7 +4,7 @@ import { ModuleEnum } from '@action/enum/module.enum';
 import { EmitterTypeEnum } from '@action/enum/emitter-type.enum';
 //#endregion
 
-export const toolbarLogOutAction = createAction (
+export const clickOnLogoutMenuAction = createAction (
   ModuleEnum.Layout,
   EmitterTypeEnum.Component,
-  'ToolBar/Logout');
+  'clickOnLogoutMenuAction');

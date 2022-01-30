@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 //#region Model, Action
 import * as fromAccount from '@account/store/';
 import { Account } from '@account/model/account.model';
-import * as ComponentActions from './toolbar.component.actions';
+import * as ComponentActions from './user-menu.component.actions';
 //#endregion
 
 
@@ -29,8 +29,6 @@ export class UserMenuComponent {
   }
 
   logout() {
-    // Dispatch LogOut action
-    this.store.dispatch(ComponentActions.toolbarLogOutAction());
-    this.router.navigate(['/']); // TODO should be in an effect
+    this.store.dispatch(ComponentActions.clickOnLogoutMenuAction());
   }
 }

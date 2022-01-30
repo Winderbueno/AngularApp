@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 //#endregion
 
 //#region Action, Selector
+import * as fromComponent from '../component/';
 import * as fromAccount from '@account/store/';
 //#endregion
 
@@ -13,10 +14,16 @@ import * as fromAccount from '@account/store/';
 export class AccountEffects {
 
   refreshAccountToken$ = createEffect(() =>
-
     this.actions$.pipe(
       ofType(ROOT_EFFECTS_INIT),
       map(() => fromAccount.refreshTokenAction())
+    )
+  );
+
+  logoutAccount$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromComponent.clickOnLogoutMenuAction,),
+      map(() => fromAccount.logOutAction())
     )
   );
 
