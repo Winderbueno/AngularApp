@@ -9,9 +9,7 @@
     <button mat-raised-button (click)="openAddProductDialog()">Add Product</button>
     <button mat-raised-button (click)="resetBoughtStatus()">Reinitiate Status</button>
 
-    <span class="spacer"></span>
-
-    <mat-chip-list multiple>
+    <mat-chip-list multiple style="margin-left: auto;">
       <mat-chip disableRipple [selectable]="false">
         <mat-slide-toggle (change)="onSlideChange()">{{accordion_expanded ? "Close" : "Open"}}</mat-slide-toggle>
       </mat-chip>
