@@ -1,11 +1,22 @@
-mat-toolbar a {
+.mat-toolbar a {
   font-size: 1.2rem !important;
 }
 
+// To handle field with icon
 .mat-form-field-wrapper {
-  min-width: 240px; // To handle field with icon
+  min-width: 240px; 
 }
 
-mat-form-field {
+.mat-form-field {
   width: 100%;
+}
+
+// Roundup alert corner
+.mat-snack-bar-container {
+  border-radius: 1rem !important;
+}
+
+.mat-spinner {
+  position: relative;
+  top: 0.3rem;
 }
