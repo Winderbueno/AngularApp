@@ -5,15 +5,21 @@ import { ModuleEnum } from '@action/enum/module.enum';
 import { EmitterTypeEnum } from '@action/enum/emitter-type.enum';
 //#endregion
 
-export const refreshTokenAction = createAction(
-  ModuleEnum.Account,
-  EmitterTypeEnum.Store,
-  'refreshToken'
-);
-
 export const autoLogOutAction = createAction(
   ModuleEnum.Account,
   EmitterTypeEnum.Store,
   'autoLogOut',
   props<{ error: string }>()
+);
+
+export const logOutAction = createAction(
+  ModuleEnum.Account,
+  EmitterTypeEnum.Store,
+  'logOut'
+);
+
+export const refreshTokenAction = createAction(
+  ModuleEnum.Account,
+  EmitterTypeEnum.Store,
+  'refreshToken'
 );

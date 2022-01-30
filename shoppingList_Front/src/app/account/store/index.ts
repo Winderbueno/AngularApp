@@ -6,8 +6,9 @@ export {
 
 /* Action */
 export {
-  refreshTokenAction,
-  autoLogOutAction
+  autoLogOutAction,
+  logOutAction,
+  refreshTokenAction  
 } from './account.actions';
 
 /* Selector */

@@ -5,11 +5,10 @@ import { of } from 'rxjs';
 import { map, catchError, exhaustMap } from 'rxjs/operators';
 //#endregion
 
-//#region Action, Selector
+//#region Action
 import * as fromAPI from '../service/account.api.actions';
 import * as fromComponent from '../component/';
 import * as fromStore from '../store/'
-import { toolbarLogOutAction } from '@core/component';// TODO -
 //#endregion
 
 //#region Service, Model
@@ -47,7 +46,7 @@ export class AccountAPIEffects {
 
   logout$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(toolbarLogOutAction), // TODO
+      ofType(fromStore.logOutAction), // TODO
       exhaustMap(() =>
         this.accountService.logout().pipe(
           map(() => fromAPI.logoutSuccessAction()),
