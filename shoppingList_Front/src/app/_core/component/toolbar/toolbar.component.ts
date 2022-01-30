@@ -10,7 +10,7 @@ import * as fromStore from '../../store/';
 
 
 @Component({
-  selector: 'k-toolbar',
+  selector: 'core-toolbar',
   templateUrl: './toolbar.component.html'
 })
 export class ToolbarComponent {
