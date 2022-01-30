@@ -2,6 +2,7 @@ export enum ModuleEnum {
   Account = "Account",
   Alert = "Alert",
   Category = "Category",
+  Core = "Core",
   Enum = "Enum",
   Form = "Form",
   Layout = "Layout",
