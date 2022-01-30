@@ -17,12 +17,12 @@
     fxLayout="column" fxLayoutAlign="center center">
     <!-- TODO - Absolute positionning won't work with long Username -->
     <user-menu style="position: absolute;"
-      ngStyle.gt-xs="right: 30px;" ngStyle.xs="right: 12px;"></user-menu>
+      ngStyle.gt-xs="right: 25px;" ngStyle.xs="right: 12px;"></user-menu>
   </div>
   <ng-template #elseBlock>
     <a style="position: absolute;" 
-      ngStyle.gt-xs="right: 40px; top: 11px;" ngStyle.xs="right: 25px; top: 7px;"
-      mat-icon-button routerLink="/account/login">
+      ngStyle.gt-xs="right: 25px;" ngStyle.xs="right: 12px;"
+      mat-button routerLink="/account/login">
       Sign In
     </a>
   </ng-template>
