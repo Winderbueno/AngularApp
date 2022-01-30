@@ -13,12 +13,15 @@
   <a fxShow.xs="false" mat-button routerLink="/my-shopping-list">Shopping List</a>
 
   <!-- Account -->
-  <div *ngIf="isLogged; else elseBlock" style="position: absolute;" fxLayout="column" fxLayoutAlign="center center"
-    ngStyle.gt-xs="right: 30px;" ngStyle.xs="right: 12px;">
-    <user-menu></user-menu>
+  <div *ngIf="isLogged; else elseBlock"
+    fxLayout="column" fxLayoutAlign="center center">
+    <!-- TODO - Absolute positionning won't work with long Username -->
+    <user-menu style="position: absolute;"
+      ngStyle.gt-xs="right: 30px;" ngStyle.xs="right: 12px;"></user-menu>
   </div>
   <ng-template #elseBlock>
-    <a style="position: absolute;" ngStyle.gt-xs="right: 40px; top: 11px;" ngStyle.xs="right: 25px; top: 7px;"
+    <a style="position: absolute;" 
+      ngStyle.gt-xs="right: 40px; top: 11px;" ngStyle.xs="right: 25px; top: 7px;"
       mat-icon-button routerLink="/account/login">
       Sign In
     </a>
