@@ -4,13 +4,19 @@ export {
 } from './local-storage.reducers';
 
 /* Reducer */
-/*export {
-} from './app.reducers';*/
+export {
+  featureKey,
+  reducer
+} from './core.reducers';
 
 /* Action */
-/*export {
-} from './app.actions';*/
+export {
+  closeSideNavAction,
+  toggleSideNavAction  
+} from './core.actions';
 
 /* Selector */
-/*export {
-} from './app.selectors';*/
+export {
+  selectState,
+  isOpenSideNav
+} from './core.selectors';

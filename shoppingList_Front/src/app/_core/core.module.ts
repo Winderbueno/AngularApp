@@ -46,7 +46,8 @@ import { EnumAPIEffects } from '@enum/effect';
 //#endregion
 
 //#region Component
-import { 
+import {
+  CoreMenuComponent,
   FooterComponent,
   RootComponent,
   ToolbarComponent,
@@ -87,6 +88,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [
     /* Store */
     StoreModule.forRoot({
       router: routerReducer,
+      core: fromStore.reducer
     },{
       metaReducers
     }),
@@ -114,6 +116,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true } // Handle errors received from server
   ],
   declarations: [
+    CoreMenuComponent,
     FooterComponent,
     RootComponent,
     ToolbarComponent,

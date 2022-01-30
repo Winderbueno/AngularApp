@@ -1,14 +1,21 @@
-<!-- Main Page -->
-<div fxLayout="column" fxLayoutAlign="space-between stretch" class="page">
+<div fxLayout="column" fxLayoutAlign="space-evenly stretch" class="page">
 
   <!-- Toolbar -->
   <k-toolbar></k-toolbar>
 
-  <!-- Content -->
-  <div role="main" style="padding: 8px 0%;" 
-    fxFlex="1" fxLayout="column wrap" fxLayoutAlign="stretch stretch">
-    <router-outlet></router-outlet>
-  </div>
+  <mat-sidenav-container fxLayout="column" fxLayoutAlign="center stretch"
+    fxFlex="1" style="padding: 8px 0;">
+
+    <!-- Sidenav (for small screen) -->
+    <mat-sidenav role="navigation" [opened]="isOpenSideNav$|async" (closed)="closeSideNav()">
+      <core-menu fxLayout="column"></core-menu>
+    </mat-sidenav>
+
+    <!-- Content -->
+    <mat-sidenav-content  role="main">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 
   <!-- Footer -->
   <k-footer></k-footer>  

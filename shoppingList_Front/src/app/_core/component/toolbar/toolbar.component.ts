@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 
 //#region Module
 import * as fromAccount from '@account/store/';
+import * as fromStore from '../../store/';
 //#endregion
 
 
@@ -18,5 +19,9 @@ export class ToolbarComponent {
 
   constructor(private store: Store) {
     this.store.select(fromAccount.isLogged).subscribe(value => this.isLogged=value);
+  }
+
+  toggleSideNav() {
+    this.store.dispatch(fromStore.toggleSideNavAction());
   }
 }

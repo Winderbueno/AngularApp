@@ -33,5 +33,4 @@ export class UserMenuComponent {
     this.store.dispatch(ComponentActions.toolbarLogOutAction());
     this.router.navigate(['/']); // TODO should be in an effect
   }
-
 }
