@@ -33,7 +33,30 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles/styles.scss"
+              {
+                "input": "src/styles/theme/deeppurple-amber.scss",
+                "bundleName": "theme_deeppurple-amber",
+                "inject": true
+              },
+              {
+                "input": "src/styles/theme/indigo-pink.scss",
+                "bundleName": "theme_indigo-pink",
+                "inject": true
+              },
+              {
+                "input": "src/styles/theme/pink-bluegrey.scss",
+                "bundleName": "theme_pink-bluegrey",
+                "inject": true
+              },
+              {
+                "input": "src/styles/theme/purple-green.scss",
+                "bundleName": "theme_purple-green",
+                "inject": true
+              },
+              {
+                "input": "src/styles/styles.scss",
+                "inject": true
+              }
             ],
             "scripts": [],
             "vendorChunk": true,
@@ -62,7 +85,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
