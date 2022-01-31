@@ -44,7 +44,7 @@ export class AlertEffects {
 
     this.actions$.pipe(
       ofType(
-        fromStore.autoLogOutAction,
+        fromStore.autoLogoutAction,
       ),
       map((action) => fromAlert.triggerAlertAction({
         alertType: AlertTypeEnum.Error,

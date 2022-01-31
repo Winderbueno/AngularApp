@@ -6,8 +6,8 @@ export {
 
 /* Action */
 export {
-  autoLogOutAction,
-  logOutAction,
+  autoLogoutAction,
+  logoutAction,
   refreshTokenAction  
 } from './account.actions';
 

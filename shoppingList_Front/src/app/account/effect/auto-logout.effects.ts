@@ -12,15 +12,15 @@ import * as fromStore from '../store';
 
 
 @Injectable()
-export class AutoLogOutEffects {
+export class AutoLogoutEffects {
 
-  autoLogOutByRefreshToken$ = createEffect(() =>
+  autoLogoutByRefreshToken$ = createEffect(() =>
 
     this.actions$.pipe(
       ofType(fromAPI.refreshTokenFailureAction),
       withLatestFrom(this.store.select(fromStore.isLogged)),
       filter(([, isLogged]) => isLogged === true),
-      map(([action]) => fromStore.autoLogOutAction({
+      map(([action]) => fromStore.autoLogoutAction({
         error: action.error,
       }))
     )

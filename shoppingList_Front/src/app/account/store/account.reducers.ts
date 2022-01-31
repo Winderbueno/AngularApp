@@ -27,7 +27,7 @@ const accountReducer = createReducer(
   on(
     fromAPI.logoutSuccessAction,
     fromAPI.logoutFailureAction,
-    fromAction.autoLogOutAction,
+    fromAction.autoLogoutAction,
     (state) => {
       return adapter.removeAll({
         ...state,

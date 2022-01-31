@@ -19,7 +19,7 @@ import * as fromStore from './store/';
 //#region Effect
 import {
   AlertEffects,
-  AutoLogOutEffects,
+  AutoLogoutEffects,
   RouterEffects,
   TimerEffects } from './effect';
 //#endregion
@@ -55,7 +55,7 @@ import {
     /* Effect */
     EffectsModule.forFeature([
       AlertEffects,
-      AutoLogOutEffects,
+      AutoLogoutEffects,
       RouterEffects,
       TimerEffects
     ]),

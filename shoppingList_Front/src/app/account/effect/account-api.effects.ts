@@ -46,7 +46,7 @@ export class AccountAPIEffects {
 
   logout$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(fromStore.logOutAction), // TODO
+      ofType(fromStore.logoutAction),
       exhaustMap(() =>
         this.accountService.logout().pipe(
           map(() => fromAPI.logoutSuccessAction()),

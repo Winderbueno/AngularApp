@@ -22,8 +22,9 @@ export class RouterEffects {
         fromAPI.forgotPasswordSuccessAction,
         fromAPI.resetPasswordSuccessAction,
         fromAPI.registerSuccessAction,
+        fromAPI.logoutSuccessAction,
         fromComponent.emailTokenValidatedAction,
-        fromStore.autoLogOutAction,
+        fromStore.autoLogoutAction,
       ),
       tap(() => {
         this.router.navigate(['account/login']);
