@@ -47,6 +47,7 @@ import { EnumAPIEffects } from '@enum/effect';
 
 //#region Component
 import {
+  ColorMenuComponent,
   CoreMenuComponent,
   FooterComponent,
   RootComponent,
@@ -116,6 +117,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true } // Handle errors received from server
   ],
   declarations: [
+    ColorMenuComponent,
     CoreMenuComponent,
     FooterComponent,
     RootComponent,
