@@ -20,13 +20,6 @@ export class AccountEffects {
     )
   );
 
-  logoutAccount$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(fromComponent.clickOnLogoutMenuAction,),
-      map(() => fromAccount.logOutAction())
-    )
-  );
-
   constructor(
     private actions$: Actions
   ) {}
