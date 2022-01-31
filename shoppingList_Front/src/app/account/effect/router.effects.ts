@@ -23,6 +23,7 @@ export class RouterEffects {
         fromAPI.resetPasswordSuccessAction,
         fromAPI.registerSuccessAction,
         fromAPI.logoutSuccessAction,
+        fromAPI.logoutFailureAction,
         fromComponent.emailTokenValidatedAction,
         fromStore.autoLogoutAction,
       ),
