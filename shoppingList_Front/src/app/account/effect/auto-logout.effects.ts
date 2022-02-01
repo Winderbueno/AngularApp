@@ -30,5 +30,5 @@ export class AutoLogoutEffects {
   constructor(
     private actions$: Actions,
     private store: Store
-  ) { }
+  ) {}
 }
