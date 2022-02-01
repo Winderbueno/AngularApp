@@ -3,10 +3,10 @@
 </button>
 <mat-menu #menu="matMenu">
 
-  <k-form-field-radio-button (click)="changeTheme();"
+  <k-form-field-radio-button
     [formId]="formId" 
     [ctrlName]="'Theme'"
-    [options]="materialThemeEnumValues"
+    [options]="materialThemeEnumKeys"
     [value]="'0'"
     [valueAsLabel]="false"></k-form-field-radio-button>
 

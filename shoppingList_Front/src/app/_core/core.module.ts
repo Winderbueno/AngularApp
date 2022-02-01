@@ -41,6 +41,7 @@ import * as fromStore from './store';
 //#region Effect
 import {
   AccountEffects,
+  CSSThemeEffects,
   EnumEffects } from './effect';
 import { AccountAPIEffects } from '@account/effect';
 import { EnumAPIEffects } from '@enum/effect';
@@ -108,6 +109,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [
     EffectsModule.forRoot([
       AccountEffects,
       EnumEffects,
+      CSSThemeEffects,
       AccountAPIEffects, // TODO - Should be in Account Feature ?
       EnumAPIEffects, // TODO - Should be in Enum Module ?
     ]),

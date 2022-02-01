@@ -5,7 +5,6 @@ import { map } from 'rxjs/operators';
 //#endregion
 
 //#region Action, Selector
-import * as fromComponent from '../component/';
 import * as fromAccount from '@account/store/';
 //#endregion
 
