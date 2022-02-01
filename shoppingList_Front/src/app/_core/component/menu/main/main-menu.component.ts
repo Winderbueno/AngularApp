@@ -4,9 +4,9 @@ import { Component } from '@angular/core';
 
 
 @Component({
-  selector: 'core-menu',
-  templateUrl: './core-menu.component.html'
+  selector: 'menu-main',
+  templateUrl: './main-menu.component.html'
 })
-export class CoreMenuComponent {
+export class MainMenuComponent {
   constructor() {}
 }

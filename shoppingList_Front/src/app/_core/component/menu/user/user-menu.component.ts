@@ -10,7 +10,7 @@ import { Account } from '@account/model/account.model';
 
 
 @Component({
-  selector: 'user-menu',
+  selector: 'menu-user',
   templateUrl: './user-menu.component.html'
 })
 export class UserMenuComponent {

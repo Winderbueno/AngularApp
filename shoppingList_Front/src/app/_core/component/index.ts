@@ -1,7 +1,7 @@
 ﻿/* Component */
-export { CoreMenuComponent } from './core-menu/core-menu.component';
-export { ColorMenuComponent } from './color-menu/color-menu.component';
 export { FooterComponent } from './footer/footer.component';
+export { MainMenuComponent } from './menu/main/main-menu.component';
 export { RootComponent } from './_root/root.component';
+export { ThemeMenuComponent } from './menu/theme/theme-menu.component';
 export { ToolbarComponent } from './toolbar/toolbar.component';
-export { UserMenuComponent } from './user-menu/user-menu.component';
+export { UserMenuComponent } from './menu/user/user-menu.component';

@@ -1,0 +1,13 @@
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>format_color_fill</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+
+  <k-form-field-radio-button (click)="changeTheme();"
+    [formId]="formId" 
+    [ctrlName]="'Theme'"
+    [options]="materialThemeEnumValues"
+    [value]="'0'"
+    [valueAsLabel]="false"></k-form-field-radio-button>
+
+</mat-menu>

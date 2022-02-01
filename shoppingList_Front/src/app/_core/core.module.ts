@@ -17,6 +17,7 @@ import { CoreRouterModule } from './router.module';
 import { AlertModule } from '@alert/alert.module';
 import { EnumModule } from '@enum/enum.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormModule } from '@form/form.module';
 import { MaterialModule } from '@material/material.module';
 import { TimerModule } from '@timer/timer.module';
 import { TokenModule } from '@token/token.module';
@@ -46,11 +47,11 @@ import { EnumAPIEffects } from '@enum/effect';
 //#endregion
 
 //#region Component
-import {
-  ColorMenuComponent,
-  CoreMenuComponent,
+import {  
   FooterComponent,
+  MainMenuComponent,
   RootComponent,
+  ThemeMenuComponent,
   ToolbarComponent,
   UserMenuComponent } from './component';
 //#endregion
@@ -78,6 +79,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [
     AlertModule,
     EnumModule,
     FlexLayoutModule,
+    FormModule,
     MaterialModule,
     TimerModule,
     TokenModule,
@@ -116,11 +118,11 @@ const metaReducers: Array<MetaReducer<any, any>> = [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }, // Start the loader
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true } // Handle errors received from server
   ],
-  declarations: [
-    ColorMenuComponent,
-    CoreMenuComponent,
+  declarations: [    
     FooterComponent,
+    MainMenuComponent,
     RootComponent,
+    ThemeMenuComponent,
     ToolbarComponent,
     UserMenuComponent
   ],
