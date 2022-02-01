@@ -26,6 +26,7 @@ import {
   CheckBoxFieldComponent,
   DateFieldComponent,
   InputFieldComponent,
+  RadioButtonFieldComponent,
   SelectFieldComponent,
   SlideToggleFieldComponent,
   PasswordFieldGroupComponent,
@@ -59,6 +60,7 @@ import {
     CheckBoxFieldComponent,
     DateFieldComponent,
     InputFieldComponent,
+    RadioButtonFieldComponent,
     SelectFieldComponent,
     SlideToggleFieldComponent,
 
@@ -77,6 +79,7 @@ import {
     CheckBoxFieldComponent,
     DateFieldComponent,
     InputFieldComponent,
+    RadioButtonFieldComponent,
     SelectFieldComponent,
     SlideToggleFieldComponent,
 

@@ -1,0 +1,14 @@
+﻿<mat-radio-group
+  fxLayout="column"
+  [ngrxFormControlState]="ctrl" 
+  [attr.name]="ctrlName"
+  [attr.aria-label]="label">
+  
+  <!-- TODO - put mat-menu-item class as a field param -->
+  <ng-container *ngIf="options !== null && options !== undefined">
+    <mat-radio-button class="mat-menu-item" *ngFor="let option of options" value="{{valueAsLabel ? option : this.options.indexOf(option)}}">
+      {{option}}
+    </mat-radio-button>
+  </ng-container>
+  
+</mat-radio-group>

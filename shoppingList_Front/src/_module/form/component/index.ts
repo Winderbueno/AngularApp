@@ -8,7 +8,8 @@ export { ButtonToggleFieldComponent } from './field/button-toggle-field/button-t
 export { CheckBoxFieldComponent } from './field/checkbox-field/checkbox-field.component';
 export { DateFieldComponent } from './field/date-field/date-field.component';
 export { InputFieldComponent } from './field/input-field/input-field.component';
-export { SelectFieldComponent } from './field/select-field/select-field.component'
+export { RadioButtonFieldComponent } from './field/radio-button-field/radio-button-field.component';
+export { SelectFieldComponent } from './field/select-field/select-field.component';
 export { SlideToggleFieldComponent } from './field/slide-toggle-field/slide-toggle-field.component';
 
 /* Field Group */
