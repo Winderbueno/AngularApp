@@ -19,7 +19,7 @@ export class ValidationEffects {
 
   // After form control had its value set, 
   // Run static control validation
-  validateControlAction$ = createEffect(() =>
+  validateControl$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SetValueAction.TYPE),
       map((action: SetValueAction<FormValue>) => {
@@ -36,7 +36,7 @@ export class ValidationEffects {
   // TODO - This is done for any value change... Might be optimizable
   // After control has been validated, 
   // Run validation on the entire form for potentially dependant control
-  dynamycFormValidationAction$ = createEffect(() =>
+  dynamycFormValidation$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromStore.validateControlAction),
       switchMap((action) =>
@@ -58,7 +58,7 @@ export class ValidationEffects {
 
   // After form has been submitted, 
   // Run form validation (i.e. a validation of all its control)
-  validateFormAction$ = createEffect(() =>
+  validateForm$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
         fromStore.submitFormAction,

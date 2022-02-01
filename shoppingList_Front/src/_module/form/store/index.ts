@@ -1,6 +1,7 @@
 ﻿/* State */
 export {
-  FormState
+  FormState,
+  FormValue
 } from './form.state';
 
 /* Reducer */
