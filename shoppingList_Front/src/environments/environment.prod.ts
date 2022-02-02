@@ -22,7 +22,7 @@ export const appConfig = {
 /* TO_CONF - Business Service */
 export const envBusinessAPI = {
 
-  apiUrl: 'https://shoppinglistappback.azurewebsites.net/',
+  apiUrl: 'https://shoppinglistappback.azurewebsites.net',
 
   // Template
   // <domaineMetier>ServiceNameUrl: "http://",
