@@ -1,33 +1,30 @@
-<mat-toolbar fxLayoutAlign="center center" color="primary">
+<mat-toolbar color="primary">
 
   <!-- Sidenav Toggle -->
-  <button mat-icon-button aria-label="Menu icon"
-    fxShow.gt-xs="false"
-    style="position:absolute; top:8px; left:16px;"
-    (click)="toggleSideNav();">
-    <mat-icon>menu</mat-icon>
-  </button>
-
-  <!-- Logo -->
-  <img style="padding: 0 16px;" width="40" alt="Angular Logo"
-    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
-
-  <!-- Menu -->
-  <menu-main fxShow.xs="false"></menu-main>
-  <menu-theme></menu-theme>
-  
-  <!-- Account -->
-  <div *ngIf="isLogged; else elseBlock"
-    fxLayout="column" fxLayoutAlign="center center">
-    <!-- TODO - Absolute positionning won't work with long Username -->
-    <menu-user style="position: absolute;"
-      ngStyle.gt-xs="right: 25px;" ngStyle.xs="right: 12px;"></menu-user>
+  <div style="width: 100%;" fxLayout="raw" fxLayoutAlign="start center">
+    <button fxShow.gt-xs="false" mat-icon-button aria-label="Menu icon"
+      (click)="toggleSideNav();">
+      <mat-icon>menu</mat-icon>
+    </button>
   </div>
-  <ng-template #elseBlock>
-    <a style="position: absolute;" 
-      ngStyle.gt-xs="right: 25px;" ngStyle.xs="right: 12px;"
-      mat-button routerLink="/account/login">
-      Sign In
-    </a>
-  </ng-template>
+
+  <div fxLayout="raw" fxLayoutAlign="center center">
+    <!-- Logo -->
+    <img style="padding: 0 16px;" width="40" alt="Angular Logo"
+      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
+
+    <!-- Menu -->
+    <menu-main fxShow.xs="false"></menu-main>
+  </div>
+
+  <div style="width: 100%;" fxLayout="raw" fxLayoutAlign="end center">
+    <menu-theme></menu-theme>
+    <!-- Account -->
+    <div *ngIf="isLogged; else elseBlock">
+      <menu-user></menu-user>
+    </div>
+    <ng-template #elseBlock>
+      <a mat-button routerLink="/account/login">Sign In</a>
+    </ng-template>
+  </div>
 </mat-toolbar>
