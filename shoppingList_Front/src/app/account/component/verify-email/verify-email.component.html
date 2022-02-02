@@ -1,9 +1,11 @@
-﻿<h1>Verify Email</h1>
+﻿<mat-card>
+  <mat-card-title>Verify Email</mat-card-title>
 
-<div *ngIf="(token?.status) == TokenStatusEnum.Validating">
-  Verifying...
-</div>
+  <div *ngIf="(token?.status) == TokenStatusEnum.Validating">
+    Verifying...
+  </div>
 
-<div *ngIf="(token?.status) == TokenStatusEnum.Invalid">
-  Verification failed, you can also verify your account using the <a mat-button routerLink="../forgot-password">Forgot password</a> page.
-</div>
+  <div *ngIf="(token?.status) == TokenStatusEnum.Invalid">
+    Verification failed, you can also verify your account using the <a mat-button routerLink="../forgot-password">Forgot password</a> page.
+  </div>
+</mat-card>

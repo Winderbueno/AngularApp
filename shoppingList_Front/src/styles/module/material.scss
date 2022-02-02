@@ -20,3 +20,20 @@
   position: relative;
   top: 0.3rem;
 }
+
+.mat-card {
+  border: 1px solid !important;
+  border-radius: 1rem !important;
+}
+
+.mat-card-title {
+  text-align: center
+}
+
+.mat-dialog-container {
+  border: 1px solid !important;
+  border-radius: 1rem !important;
+  padding: 1rem !important;
+  padding-top : 0.5rem !important;
+  padding-bottom : 0.5rem !important;
+}

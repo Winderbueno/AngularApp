@@ -1,7 +1,6 @@
-
-  <form [ngrxFormState]="formGroupState" class="card-container">
-    <h1>Alert</h1>
-
+<mat-card>
+  <mat-card-title>{{formId}}</mat-card-title>
+  <form [ngrxFormState]="formGroupState">
     <div fxLayout="column">
       <k-form-field-button-toggle 
         [formId]="formId" 
@@ -10,7 +9,8 @@
         [value]="alertTypeEnum.Success">
       </k-form-field-button-toggle>
 
-      <k-button [text]="'Trigger Alert'" [type]="'button'" (click)="triggerAlert()"></k-button>
-      <k-button [text]="'Trigger 2sec Delayed Alert'" [type]="'button'" (click)="triggerDelayedAlert()"></k-button>
+      <k-button [text]="'Trigger Alert'" (click)="triggerAlert()"></k-button>
+      <k-button [text]="'Trigger 2sec Delayed Alert'" (click)="triggerDelayedAlert()"></k-button>
     </div>
   </form>
+</mat-card>

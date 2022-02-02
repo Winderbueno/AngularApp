@@ -1,23 +1,23 @@
-<form class="card-container" style="margin-bottom: 50px;"
-  [ngrxFormState]="formGroupState" (submit)="onSubmit()">
+<mat-card style="margin-bottom: 50px;">
+  <mat-card-title>{{formId}}</mat-card-title>
+  <form [ngrxFormState]="formGroupState" (submit)="onSubmit()">
 
-  <h1>{{formId}}</h1>
+    <!-- Email -->
+    <k-form-field-input [formId]="formId" [ctrlName]="'Email'" [format]="'email'">
+    </k-form-field-input>
 
-  <!-- Email -->
-  <k-form-field-input [formId]="formId" [ctrlName]="'Email'" [format]="'email'">
-  </k-form-field-input>
+    <!-- Password -->
+    <k-form-field-group-password [formId]="formId">
+    </k-form-field-group-password>
 
-  <!-- Password -->
-  <k-form-field-group-password [formId]="formId">
-  </k-form-field-group-password>
+    <!-- Submit -->
+    <k-button [text]="formId">
+    </k-button>
 
-  <!-- Submit -->
-  <k-button [text]="formId">
-  </k-button>
-
-  <!-- Secondary Action -->
-  <div>
-    <a mat-button routerLink="../register">New account ?</a>
-    <a mat-button routerLink="../forgot-password">Forgot password ?</a>
-  </div>
-</form>
+    <!-- Secondary Action -->
+    <div>
+      <a mat-button routerLink="../register">New account ?</a>
+      <a mat-button routerLink="../forgot-password">Forgot password ?</a>
+    </div>
+  </form>
+</mat-card>
