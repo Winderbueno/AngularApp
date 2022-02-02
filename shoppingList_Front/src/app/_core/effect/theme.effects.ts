@@ -37,9 +37,10 @@ export class CSSThemeEffects {
             }
           });
 
-        // Clean unused theme
+        // Clean unused theme from HTML head
         for(let i=0; i<themeElts.length; i++) { 
-          if(form !== undefined && i != form.controls['Theme'].value)
+          if((form !== undefined && i != form.controls['Theme'].value) // If theme-menu is in localStorage
+            || (form === undefined && i != 0)) // If default value (WARN -> hardCoded in Theme-menu)
             themeElts[i].remove();
         }
       })
