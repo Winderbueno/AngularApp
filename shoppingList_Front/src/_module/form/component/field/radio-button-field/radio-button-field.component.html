@@ -6,7 +6,9 @@
   
   <!-- TODO - put mat-menu-item class as a field param -->
   <ng-container *ngIf="options !== null && options !== undefined">
-    <mat-radio-button class="mat-menu-item" *ngFor="let option of options" value="{{valueAsLabel ? option : this.options.indexOf(option)}}">
+    <mat-radio-button *ngFor="let option of options"
+      [ngClass]="optionClass"
+      value="{{valueAsLabel ? option : this.options.indexOf(option)}}">
       {{option}}
     </mat-radio-button>
   </ng-container>

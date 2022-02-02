@@ -4,7 +4,11 @@
 
   <mat-select [ngrxFormControlState]="ctrl">
     <ng-container *ngIf="options !== null && options !== undefined">
-      <mat-option value="{{option}}" *ngFor="let option of options">{{option}}</mat-option>
+      <mat-option *ngFor="let option of options"
+        [ngClass]="optionClass"
+        value="{{option}}" >
+        {{option}}
+      </mat-option>
     </ng-container>
   </mat-select>
 

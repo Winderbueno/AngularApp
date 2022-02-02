@@ -3,6 +3,7 @@
 
     <ng-container *ngIf="options !== null && options !== undefined">
       <mat-button-toggle *ngFor="let option of options"
+        [ngClass]="optionClass"
         value="{{valueAsLabel ? option : this.options.indexOf(option)}}">
         {{option}}
       </mat-button-toggle>
