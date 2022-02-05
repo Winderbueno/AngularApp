@@ -3,8 +3,5 @@ import { Component } from '@angular/core';
 //#endregion
 
 
-@Component({
-  selector: 'demo-root',
-  templateUrl: './root.component.html'
-})
+@Component({ templateUrl: './root.component.html' })
 export class RootComponent {}
