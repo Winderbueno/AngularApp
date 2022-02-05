@@ -10,21 +10,21 @@ import { Category } from '../model/category.model';
 //#endregion
 
 export const loadCategoryAction = createAction(
-  ModuleEnum.CATEGORISATION,
+  ModuleEnum.Category,
   EmitterTypeEnum.Store,
   'loadCategory',
   props<{ category: Category[] }>()
 );
 
 export const addCategoryAction = createAction(
-  ModuleEnum.CATEGORISATION,
+  ModuleEnum.Category,
   EmitterTypeEnum.Store,
   'addCategory',
   props<{ category: Category }>()
 );
 
 export const deleteCategoryAction = createAction(
-  ModuleEnum.CATEGORISATION,
+  ModuleEnum.Category,
   EmitterTypeEnum.Store,
   'deleteCategory',
   props<{ name: string }>()

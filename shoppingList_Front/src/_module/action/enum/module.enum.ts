@@ -5,7 +5,6 @@ export enum ModuleEnum {
   Core = "Core",
   Enum = "Enum",
   Form = "Form",
-  Layout = "Layout",
   Loader = "Loader",
   Product = "Product",
   ShoppingList = "ShoppingList",
