@@ -3,12 +3,12 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatAccordion } from '@angular/material/expansion';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 //#endregion
 
 //#region App Component, Model
-import * as ComponentActions from './shopping-list.actions';
+import * as ComponentActions from './shopping-list-view.actions';
 import * as fromStore from '@shoppingList/store/';
-import { DialogAddProductComponent } from '@shoppingList/component/dialog-add-product/dialog-add-product.component';
 //#endregion
 
 //#region Model
@@ -17,14 +17,16 @@ import { UsedProduct } from '@shoppingList/model/current/used-product.model';
 //#endregion
 
 
-@Component({ templateUrl: './shopping-list.component.html' })
-export class ShoppingListComponent implements OnInit {
+@Component({ 
+  selector: 'shopping-list-view',
+  templateUrl: './shopping-list-view.component.html' 
+})
+export class ShoppingListViewComponent implements OnInit {
 
   @ViewChild('accordion',{static:false}) Accordion!: MatAccordion;
 
   // View Status
-  edit_mode = false;
-  accordion_expanded = false;
+  readonly editMode$: Observable<boolean>= this.store.select(fromStore.editMode);
 
   // Shopping List
   myShoppingList!: ShoppingList[];
@@ -38,34 +40,6 @@ export class ShoppingListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  /** For all shoppingList product, reset 'bought' status */
-  resetBoughtStatus(): void {
-
-    // Dispatch a ResetBoughtStatus action
-    this.store.dispatch(
-      ComponentActions.resetBoughtStatusAction(
-        { ShoppingListId: "1" }
-      ));
-
-  }
-
-  /** Add Product Button */
-  openAddProductDialog(): void {
-
-    // Open addProductDialog
-    const addProductDialog = this.dialog
-      .open(DialogAddProductComponent, { width: '400px' });
-
-    // After dialog closing, refresh the active shoppingList
-    // TODO - NgRx
-    /*addProductDialog
-      .afterClosed()
-      .subscribe(() => {
-        this.shoppingListService
-          .getActive()
-          .subscribe();
-      });*/
-  }
 
   /** For clicked product, swap 'bought' status value */
   swapProductBoughtStatus(prod: UsedProduct): void {
@@ -73,8 +47,7 @@ export class ShoppingListComponent implements OnInit {
     // Swap 'bought' status value
     if(prod) prod.bought ? prod.bought=false : prod.bought = true;
 
-    // Dispatch an Update Product action
-    // TODO - NgRx
+    // TODO - Update Product
     /*this.store.dispatch(
       ShopListPageActions.updtProduct({
         ShoppingListId: this.myShoppingList.shoppingListId,
@@ -83,11 +56,9 @@ export class ShoppingListComponent implements OnInit {
     );*/
   }
 
-  /** For clicked product, swap 'bought' status value */
   deleteProduct(prod: UsedProduct): void {
 
-    // Dispatch a Delete Product action
-    // TODO - NgRx
+    // TODO - Delete Product
     /*this.store.dispatch(
       ShopListPageActions.deleteProduct({
         ShoppingListId: this.myShoppingList.shoppingListId,
@@ -96,14 +67,5 @@ export class ShoppingListComponent implements OnInit {
   }
 
   deleteNode(nodeId: string): void {
-  }
-
-  onSlideChange():void {
-    if(this.accordion_expanded === false){
-      this.Accordion.openAll();
-    } else {
-      this.Accordion.closeAll();
-    }
-    this.accordion_expanded = !this.accordion_expanded;
   }
 }

@@ -12,8 +12,8 @@ export interface ShoppingListState extends EntityState<ShoppingList> {
   isActiveLoaded: boolean;
 
   // View Status
-  edit_mode: boolean;
-  accordion_expanded: boolean;
+  editMode: boolean;
+  accordionExpanded: boolean;
 }
 
 /* Adapter */
@@ -23,11 +23,12 @@ export const adapter : EntityAdapter<ShoppingList> =
   });
 
 /* Initial State */
+// TODO - Separate Entity state & View State
 export const initialState: ShoppingListState =
   adapter.getInitialState({
     isActiveLoaded: false,
 
     // View Status
-    edit_mode: false,
-    accordion_expanded: false
+    editMode: false,
+    accordionExpanded: false
   });

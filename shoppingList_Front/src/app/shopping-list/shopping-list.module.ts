@@ -23,7 +23,9 @@ import { ShoppingListAPIEffects } from './effect/';
 //#region Component
 import {
   DialogAddProductComponent,
-  ShoppingListComponent } from './component';
+  RootComponent,
+  ShoppingListActionComponent,
+  ShoppingListViewComponent } from './component';
 //#endregion
 
 
@@ -50,8 +52,10 @@ import {
     ]),
   ],
   declarations: [
-    ShoppingListComponent,
-    DialogAddProductComponent
+    DialogAddProductComponent,
+    RootComponent,
+    ShoppingListActionComponent,
+    ShoppingListViewComponent
   ],
   entryComponents: [
     // Component Instantiated at runtime

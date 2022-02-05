@@ -19,3 +19,5 @@ export const {
 
 export const selectActive = createSelector(selectState, selectAll);
 export const isActiveLoaded = createSelector(selectState, (state: ShoppingListState) => state.isActiveLoaded);
+
+export const editMode = createSelector(selectState, (state: ShoppingListState) => state.editMode);

@@ -4,12 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 //#endregion
 
 //#region Routed Component
-import { ShoppingListComponent } from '@shoppingList/component';
+import { RootComponent } from '@shoppingList/component';
 //#endregion
 
 const routes: Routes = [
     {
-      path: '', component: ShoppingListComponent,
+      path: '', component: RootComponent,
     },
     // Otherwise redirect to home
     { path: '**', redirectTo: '' }

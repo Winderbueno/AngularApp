@@ -1,0 +1,18 @@
+<mat-card>
+  <!-- Action Bar -->
+  <div fxLayout="raw wrap">
+
+    <button mat-raised-button (click)="openAddProductDialog()">Add Product</button>
+    <button mat-raised-button (click)="resetBoughtStatus()">Reinitiate Status</button>
+
+    <mat-chip-list multiple style="margin-left: auto;">
+      <mat-chip disableRipple [selectable]="false">
+        <mat-slide-toggle (change)="toggleAccordeon()">{{accordion_expanded ? "Close" : "Open"}}</mat-slide-toggle>
+      </mat-chip>
+      <mat-chip disableRipple [selectable]="false">
+        <mat-slide-toggle (change)="toggleEditMode()">{{(editMode$|async)===false ? "Use" : "Edit"}}</mat-slide-toggle>
+      </mat-chip>
+    </mat-chip-list>
+
+  </div>
+</mat-card>

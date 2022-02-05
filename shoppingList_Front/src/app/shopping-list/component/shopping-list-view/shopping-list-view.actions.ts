@@ -10,27 +10,13 @@ import { EmitterTypeEnum } from '@action/enum/emitter-type.enum';
 import { UsedProduct } from '../../model/current/used-product.model';
 //#endregion
 
-export const resetBoughtStatusAction = createAction (
+export const deleteProductFromShoppingListAction = createAction (
   ModuleEnum.ShoppingList,
   EmitterTypeEnum.Component,
-  'resetBoughtStatus',
-  props<{ ShoppingListId: string }>()
-);
-
-export const addProductToShoppingListAction = createAction (
-  ModuleEnum.ShoppingList,
-  EmitterTypeEnum.Component,
-  'addProductToShoppingList',
-  props<{ product: UsedProduct }>()
-);
-
-export const updateShoppingListProductAction = createAction (
-  ModuleEnum.ShoppingList,
-  EmitterTypeEnum.Component,
-  'updateShoppingListProduct',
+  'deleteProductFromShoppingList',
   props<{
     ShoppingListId: string,
-    product: Update<UsedProduct> }>()
+    ProductId: string }>()
 );
 
 export const swapShoppingListProductBoughtStatusAction = createAction (
@@ -42,11 +28,11 @@ export const swapShoppingListProductBoughtStatusAction = createAction (
     product: Update<UsedProduct> }>()
 );
 
-export const deleteProductFromShoppingListAction = createAction (
+export const updateShoppingListProductAction = createAction (
   ModuleEnum.ShoppingList,
   EmitterTypeEnum.Component,
-  'deleteProductFromShoppingList',
+  'updateShoppingListProduct',
   props<{
     ShoppingListId: string,
-    ProductId: string }>()
+    product: Update<UsedProduct> }>()
 );

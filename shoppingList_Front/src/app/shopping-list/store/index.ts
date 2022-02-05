@@ -11,6 +11,8 @@ export {
 
 /* Selector */
 export {
+  selectState,
   isActiveLoaded,
-  selectActive
+  selectActive,
+  editMode
 } from './selectors/shopping-list.selectors';

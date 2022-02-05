@@ -1,26 +1,6 @@
-<div>
-  <h1>Shopping List</h1>
-
-  <!-- Action Bar -->
-  <!-- TODO - Should be in an action bar component -->
-  <div fxLayout="raw wrap">
-
-    <button mat-raised-button (click)="openAddProductDialog()">Add Product</button>
-    <button mat-raised-button (click)="resetBoughtStatus()">Reinitiate Status</button>
-
-    <mat-chip-list multiple style="margin-left: auto;">
-      <mat-chip disableRipple [selectable]="false">
-        <mat-slide-toggle (change)="onSlideChange()">{{accordion_expanded ? "Close" : "Open"}}</mat-slide-toggle>
-      </mat-chip>
-      <mat-chip disableRipple [selectable]="false">
-        <mat-slide-toggle (change)="edit_mode = !edit_mode">{{edit_mode ? "Use" : "Edit"}}</mat-slide-toggle>
-      </mat-chip>
-    </mat-chip-list>
-
-  </div>
-
+<mat-card>
   <!-- In "Edit mode", Add a category -->
-  <mat-expansion-panel *ngIf="edit_mode" hideToggle>
+  <mat-expansion-panel *ngIf="editMode$|async" hideToggle>
 
     <!-- TODO - Use 'accent' color from Material SASS Theme -->
     <mat-expansion-panel-header #panelH (click)="panelH._toggle()" style='background-color:cornflowerblue'>
@@ -39,10 +19,10 @@
         <!-- Header containing the product category -->
         <mat-expansion-panel-header>
           <mat-panel-title>{{catProd.category}}</mat-panel-title>
-          <mat-chip *ngIf="edit_mode" (click)="deleteNode('test')">
+          <mat-chip *ngIf="editMode$|async" (click)="deleteNode('test')">
             <mat-icon>add_circle</mat-icon> Item
           </mat-chip>
-          <mat-icon *ngIf="edit_mode" (click)="deleteNode('bjr')">delete</mat-icon>
+          <mat-icon *ngIf="editMode$|async" (click)="deleteNode('bjr')">delete</mat-icon>
         </mat-expansion-panel-header>
 
         <!-- Expanded Panel containing the product sub category and their products -->
@@ -52,7 +32,7 @@
             <div *ngFor="let prod of subCatProd.products">
               <mat-chip (click)="swapProductBoughtStatus(prod)" [selected]="prod.bought">
                 {{prod.name}}
-                <mat-icon matChipRemove *ngIf="edit_mode" (click)="deleteProduct(prod)">cancel</mat-icon>
+                <mat-icon matChipRemove *ngIf="editMode$|async" (click)="deleteProduct(prod)">cancel</mat-icon>
               </mat-chip>
             </div>
           </mat-chip-list>
@@ -62,4 +42,4 @@
     </mat-accordion>
 
   </div>
-</div>
+</mat-card>
