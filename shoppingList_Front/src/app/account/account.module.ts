@@ -12,29 +12,11 @@ import { FormModule } from '@form/form.module';
 import { MaterialModule } from '@material/material.module';
 //#endregion
 
-//#region Store
+//#region This
+import * as Component from './component/';
+import * as Effect from './effect/';
+import * as Page from './page';
 import * as fromStore from './store/';
-//#endregion
-
-//#region Effect
-import {
-  AlertEffects,
-  AutoLogoutEffects,
-  RouterEffects,
-  TimerEffects } from './effect';
-//#endregion
-
-//#region Page
-import { HomePage } from './page';
-//#endregion
-
-//#region Component
-import {
-  ForgotPasswordComponent,
-  LoginComponent,
-  RegisterComponent,
-  ResetPasswordComponent,
-  VerifyEmailComponent } from './component/';
 //#endregion
 
 
@@ -57,22 +39,22 @@ import {
 
     /* Effect */
     EffectsModule.forFeature([
-      AlertEffects,
-      AutoLogoutEffects,
-      RouterEffects,
-      TimerEffects
+      Effect.AlertEffects,
+      Effect.AutoLogoutEffects,
+      Effect.RouterEffects,
+      Effect.TimerEffects
     ]),
   ],
   declarations: [
     /* Page */
-    HomePage,
+    Page.HomePage,
     
     /* Component */
-    ForgotPasswordComponent,
-    LoginComponent,
-    RegisterComponent,
-    ResetPasswordComponent,
-    VerifyEmailComponent
+    Component.ForgotPasswordComponent,
+    Component.LoginComponent,
+    Component.RegisterComponent,
+    Component.ResetPasswordComponent,
+    Component.VerifyEmailComponent
   ]
 })
 export class AccountModule {}

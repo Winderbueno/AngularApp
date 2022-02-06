@@ -4,12 +4,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
-//#region Store
+//#region This
 import * as fromStore from './store/';
-//#endregion
-
-//#region Effect
-// TODO
 //#endregion
 
 

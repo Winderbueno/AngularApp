@@ -9,16 +9,9 @@ import { FormModule } from '@form/form.module';
 import { MaterialModule } from '@material/material.module';
 //#endregion
 
-//#region Page
-import { HomePage } from './page';
-//#endregion
-
-//#region Component
-import {
-  AlertComponent,
-  ContentComponent,
-  FormComponent,
-  LoaderComponent } from './component';
+//#region This
+import * as Component from './component/';
+import * as Page from './page';
 //#endregion
 
 
@@ -34,16 +27,16 @@ import {
   ],
   declarations: [
     /* Page */
-    HomePage,
+    Page.HomePage,
 
     /* Component */
-    AlertComponent,
-    ContentComponent,
-    FormComponent,
-    LoaderComponent
+    Component.AlertComponent,
+    Component.ContentComponent,
+    Component.FormComponent,
+    Component.LoaderComponent
   ],
   exports: [
-    HomePage
+    Page.HomePage
   ]
 })
 export class DemoModule { }

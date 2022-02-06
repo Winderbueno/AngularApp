@@ -4,12 +4,9 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
-//#region Store
+//#region This
+import * as Effect from './effect/';
 import * as fromStore from './store/';
-//#endregion
-
-//#region Effect
-import { TimerEffects } from './effect/';
 //#endregion
 
 
@@ -23,7 +20,7 @@ import { TimerEffects } from './effect/';
 
     /* Effect */
     EffectsModule.forFeature([
-      TimerEffects
+      Effect.TimerEffects
     ]),
   ],
   declarations: []

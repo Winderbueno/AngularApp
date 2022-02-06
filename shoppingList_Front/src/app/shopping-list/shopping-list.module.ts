@@ -12,23 +12,11 @@ import { FormModule } from '@form/form.module';
 import { MaterialModule } from '@material/material.module';
 //#endregion
 
-//#region Store
+//#region This
+import * as Component from './component/';
+import * as Effect from './effect/';
+import * as Page from './page';
 import * as fromStore from './store/';
-//#endregion
-
-//#region Effect
-import { ShoppingListAPIEffects } from './effect/';
-//#endregion
-
-//#region Page
-import { HomePage } from './page';
-//#endregion
-
-//#region Component
-import {
-  DialogAddProductComponent,
-  ShoppingListActionComponent,
-  ShoppingListViewComponent } from './component';
 //#endregion
 
 
@@ -51,21 +39,21 @@ import {
 
     /* Effect */
     EffectsModule.forFeature([
-      ShoppingListAPIEffects
+      Effect.ShoppingListAPIEffects
     ]),
   ],
   declarations: [
     /* Page */
-    HomePage,
+    Page.HomePage,
 
     /* Component */
-    DialogAddProductComponent,
-    ShoppingListActionComponent,
-    ShoppingListViewComponent
+    Component.DialogAddProductComponent,
+    Component.ShoppingListActionComponent,
+    Component.ShoppingListViewComponent
   ],
   entryComponents: [
     // Component Instantiated at runtime
-    DialogAddProductComponent
+    Component.DialogAddProductComponent
   ],
 })
 export class ShoppingListModule {}

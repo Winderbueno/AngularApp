@@ -3,28 +3,20 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 //#endregion
 
-//#region Page
-import { HomePage } from './page';
-//#endregion
-
-//#region Component
-import {
-  ForgotPasswordComponent,
-  LoginComponent,
-  RegisterComponent,
-  ResetPasswordComponent,
-  VerifyEmailComponent } from './component';
+//#region Component & Page
+import * as Component from './component/';
+import * as Page from './page';
 //#endregion
 
 const routes: Routes = [
   {
-    path: '', component: HomePage,
+    path: '', component: Page.HomePage,
     children: [
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
-      { path: 'verify-email', component: VerifyEmailComponent },
-      { path: 'forgot-password', component: ForgotPasswordComponent },
-      { path: 'reset-password', component: ResetPasswordComponent }
+      { path: 'login', component: Component.LoginComponent },
+      { path: 'register', component: Component.RegisterComponent },
+      { path: 'verify-email', component: Component.VerifyEmailComponent },
+      { path: 'forgot-password', component: Component.ForgotPasswordComponent },
+      { path: 'reset-password', component: Component.ResetPasswordComponent }
     ]
   },
   // Otherwise redirect to home

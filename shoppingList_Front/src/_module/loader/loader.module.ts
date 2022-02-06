@@ -8,12 +8,9 @@ import { StoreModule } from '@ngrx/store';
 import { MaterialModule } from '@material/material.module';
 //#endregion
 
-//#region Store
+//#region This
+import * as Component from './component/';
 import * as fromStore from './store/';
-//#endregion
-
-//#region Component
-import { LoaderComponent } from './component/';
 //#endregion
 
 
@@ -32,10 +29,10 @@ import { LoaderComponent } from './component/';
     ),
   ],
   declarations: [
-    LoaderComponent,
+    Component.LoaderComponent,
   ],
   exports: [
-    LoaderComponent,
+    Component.LoaderComponent,
   ]
 })
 export class LoaderModule { }

@@ -4,12 +4,9 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
-//#region Store
-import * as fromStore from './store';
-//#endregion
-
-//#region Effect
-import { EnumAPIEffects } from './effect/';
+//#region This
+import * as Effect from './effect/';
+import * as fromStore from './store/';
 //#endregion
 
 
@@ -23,7 +20,7 @@ import { EnumAPIEffects } from './effect/';
 
     /* Effect */
     EffectsModule.forFeature([
-      EnumAPIEffects
+      Effect.EnumAPIEffects
     ]),
   ],
   declarations: []

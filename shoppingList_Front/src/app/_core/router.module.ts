@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 //#endregion
 
-//#region Routed Component
+//#region Page
 import * as fromDemo from '@demo/page';
 //#endregion
 

@@ -10,18 +10,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@material/material.module';
 //#endregion
 
-//#region Store
+//#region This
+import * as Component from './component/';
+import * as Effect from './effect/';
 import * as fromStore from './store/';
-//#endregion
-
-//#region Effect
-import { AlertEffects } from './effect/';
-//#endregion
-
-//#region Component
-import {
-  AlertComponent,
-  SnackbarComponent } from './component/';
 //#endregion
 
 
@@ -42,15 +34,15 @@ import {
 
     /* Effect */
     EffectsModule.forFeature([
-      AlertEffects
+      Effect.AlertEffects
     ]),
   ],
   declarations: [
-    AlertComponent,
-    SnackbarComponent,
+    Component.AlertComponent,
+    Component.SnackbarComponent,
   ],
   exports: [
-    AlertComponent,
+    Component.AlertComponent,
   ]
 })
 export class AlertModule { }

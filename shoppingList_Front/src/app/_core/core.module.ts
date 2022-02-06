@@ -34,30 +34,16 @@ import { JwtInterceptor } from '@core/interceptor/jwt.interceptor';
 import { ErrorInterceptor } from '@core/interceptor/error.interceptor';
 //#endregion
 
-//#region Store
-import * as fromStore from './store';
+//#region This
+import * as Component from './component/';
+import * as Effect from './effect/';
+import * as Page from './page';
+import * as fromStore from './store/';
 //#endregion
 
-//#region Effect
-import {
-  AccountEffects,
-  CSSThemeEffects,
-  EnumEffects } from './effect';
+//#region ??? TODO
 import { AccountAPIEffects } from '@account/effect';
 import { EnumAPIEffects } from '@enum/effect';
-//#endregion
-
-//#region Page
-import { HomePage } from './page';
-//#endregion
-
-//#region Component
-import {  
-  FooterComponent,
-  MainMenuComponent,
-  ThemeMenuComponent,
-  ToolbarComponent,
-  UserMenuComponent } from './component';
 //#endregion
 
 //#region App Conf
@@ -110,9 +96,9 @@ const metaReducers: Array<MetaReducer<any, any>> = [
 
     /* Effect */
     EffectsModule.forRoot([
-      AccountEffects,
-      EnumEffects,
-      CSSThemeEffects,
+      Effect.AccountEffects,
+      Effect.EnumEffects,
+      Effect.CSSThemeEffects,
       AccountAPIEffects, // TODO - Should be in Account Feature ?
       EnumAPIEffects, // TODO - Should be in Enum Module ?
     ]),
@@ -125,17 +111,17 @@ const metaReducers: Array<MetaReducer<any, any>> = [
   ],
   declarations: [
     /* Page */
-    HomePage,
+    Page.HomePage,
 
     /* Component */
-    FooterComponent,
-    MainMenuComponent,
-    ThemeMenuComponent,
-    ToolbarComponent,
-    UserMenuComponent
+    Component.FooterComponent,
+    Component.MainMenuComponent,
+    Component.ThemeMenuComponent,
+    Component.ToolbarComponent,
+    Component.UserMenuComponent
   ],
   bootstrap: [
-    HomePage
+    Page.HomePage
   ]
 })
 export class CoreModule { }
