@@ -18,31 +18,32 @@ import { DynamicControlValidationFn } from '@form/model/validation-fns.model';
  *
  * This component manage a Field that has :
  * 
- *  - FormControlState
+ *  - FormControlState,
  *    > Represent the state of the field (valid, dirty, touch...)
  *    > It is a subobject of a FormGroupState (That has the id : <formId>)
  *    > Identifiable in FormGroupState by its 'ctrlName' (Unique Identifier in FormGroupState)
  *    > Having an Id generated as '<formID>.<ctrlName>'
  *  
- *  - UI informations
+ *  - UI information,
  *    > Label, displayed on field and describing the field content
  *    > Placeholder, displayed inside the field as long as the user does not set a value
  *    > Value, editable by user
  *    > Error Message, generated according to field validation properties
  * 
- *  - Validation Properties
+ *  - Validation Property,
  *    > 'required' input parameter
  *    > Generated internal validationFns (Accessible from children)
  *    > Configurable DynamicValidationFns (Accessible from children)
  * 
- *  - Persistance Properties
+ *  - Persistance Property,
  *    > Field persistance in global ngrx store after component destroy is handled by related Form
  *    > However it is possible to enforce field unpersistance with 'unpersist' input
  * 
- * Technical implementation is :
- *  - FormControlState is stored in Ngrx global state and updated with 'ngrx-forms' library
- *  - ValidationFns (static & dynamic) managed by homemade angular service
- *  - Error message managed by homemade angular service
+ * Technical implementation
+ * 
+ *  - FormControlState is defined & updated in Ngrx global state using 'ngrx-forms' library
+ *  - ValidationFns (static & dynamic) are managed by homemade angular service
+ *  - Error messages are managed by homemade angular service
  *
  *  @param formID - FormGroupState Id to add the FormControlState on
  *  @param ctrlName - FormControlState Name
@@ -53,7 +54,7 @@ import { DynamicControlValidationFn } from '@form/model/validation-fns.model';
  *  @param required - (? | Default:true) - Add 'required' validationFn on the field
  *  @param addValidationFns - (?) - Array of ValidationFns 
  *  @param addDynamicValidationFns - (?) - Array of DynamicValidationFns
- *  @param unpersist - (?) - If true, field state is deleted when component is destroy
+ *  @param unpersist - (? | Default:false) - If true, field state is deleted when component is destroy
  */
 @Component({template: ``})
 export class FieldComponent implements OnInit, OnDestroy {

@@ -16,21 +16,21 @@ import { FormValue } from '@form/store/form.state';
  *
  * This component manage a Form that has :
  * 
- *  - FormGroupState, representing the state of the form (valid, dirty, touch...)
+ *  - FormGroupState, 
+ *    > Represent the state of the form (valid, dirty, touch...)
+ *    > Identifiable by as FormId
  * 
- *  - Title (Used as FormId in FormGroupState)
+ *  - Persistance Property
+ *    > By default, the form will be persisted in global ngrx state after component destruction.
+ *    > Doing so, all field in the form will be as a consequence persisted. 
+ *    > However it is possible to deactivate this behaviour
  * 
- *  - Persistance Properties
- *    > With 'persist' property set to true, the form will be persisted in global ngrx state 
- *    > even when the component is destroyed. Doing so, all field in the form will be 
- *    > as a consequence persisted
- * 
- *    > Note : this allow to persist form state when changing route in the application
- *    > However, if the app is restarted by clicking refresh button for example, 
+ *  - NOTE : 'Global ngrx state' is not 'localStorage' 
+ *    > Hence, default form persistance is not 'app restart proof' (e.g. By clicking refresh button)
  *    > Except if the state is rehydrated by a mecanism, formState will be lost
  *
  *  @param formId - FormGroupState Id
- *  @param persist - FormControlState Name
+ *  @param unpersist - (? | Default:false) - If true, form state is deleted when component is destroy
  */
  @Component({template: ``})
 export class FormComponent implements OnInit, OnDestroy {
@@ -38,14 +38,14 @@ export class FormComponent implements OnInit, OnDestroy {
   // Form
   protected _formGroupState: FormGroupState<FormValue> | undefined;
   private _formId: string = "Form Title";
-  private _persist: boolean = false;
+  private _unpersist: boolean = false;
   
   // Accessor
   get formId() { return this._formId; }
   protected set formId(input: string) { this._formId = input; }
   get value() { return this._formGroupState!.value }
   get formGroupState() { return this._formGroupState!; }
-  protected set persist(input: boolean) { this._persist = input; }
+  protected set unpersist(input: boolean) { this._unpersist = input; }
 
   constructor(
     protected router: Router,
@@ -66,8 +66,7 @@ export class FormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if(!this._persist)
-      this.store.dispatch(fromStore.deleteFormAction({ formId: this._formId })); 
+    if(this._unpersist) this.store.dispatch(fromStore.deleteFormAction({ formId: this._formId })); 
   }
 
   onSubmit(): void {
