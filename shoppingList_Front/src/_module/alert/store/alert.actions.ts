@@ -9,16 +9,6 @@ import { EmitterTypeEnum } from '@action/enum/emitter-type.enum';
 import { AlertTypeEnum } from '../model/enum/alert-type.enum';
 //#endregion
 
-export const triggerAlertAction = createAction(
-  ModuleEnum.Alert,
-  EmitterTypeEnum.Store,
-  'triggerAlert',
-  props<{
-    alertType: AlertTypeEnum,
-    message: string,
-    keepAfterRouteChange?: boolean }>()
-);
-
 export const dismissAlertAction = createAction(
   ModuleEnum.Alert,
   EmitterTypeEnum.Store,
@@ -29,4 +19,14 @@ export const keptAfterRouteChangeAction = createAction(
   ModuleEnum.Alert,
   EmitterTypeEnum.Store,
   'keptAfterRouteChange',
+);
+
+export const triggerAlertAction = createAction(
+  ModuleEnum.Alert,
+  EmitterTypeEnum.Store,
+  'triggerAlert',
+  props<{
+    alertType: AlertTypeEnum,
+    message: string,
+    keepAfterRouteChange?: boolean }>()
 );

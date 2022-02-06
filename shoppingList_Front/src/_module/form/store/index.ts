@@ -12,15 +12,15 @@ export {
 
 /* Action */
 export {
+  addControlInFormAction,
+  clearFormValueAction,
   createFormAction,
   deleteFormAction,
-  resetFormAction,
-  clearFormValueAction,
-  submitFormAction,
-  validateFormAction,
   dynamicValidateFormAction,
-  addControlInFormAction,
   removeControlInFormAction,
+  resetFormAction,
+  submitFormAction,
+  validateFormAction,  
   validateControlAction
 } from './form.actions';
 

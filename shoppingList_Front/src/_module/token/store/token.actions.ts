@@ -9,17 +9,17 @@ import { EmitterTypeEnum } from '@action/enum/emitter-type.enum';
 import { Token } from '../model/token.model';
 //#endregion
 
-export const validateTokenAction = createAction(
-  ModuleEnum.Token,
-  EmitterTypeEnum.Store,
-  'validateToken',
-  props<{ token: Token }>()
-);
-
 export const deleteTokenAction = createAction(
   ModuleEnum.Token,
   EmitterTypeEnum.Store,
   'deleteToken',
+  props<{ name: string }>()
+);
+
+export const tokenInvalidatedAction = createAction(
+  ModuleEnum.Token,
+  EmitterTypeEnum.Store,
+  'tokenInvalidated',
   props<{ name: string }>()
 );
 
@@ -30,9 +30,9 @@ export const tokenValidatedAction = createAction(
   props<{ name: string }>()
 );
 
-export const tokenInvalidatedAction = createAction(
+export const validateTokenAction = createAction(
   ModuleEnum.Token,
   EmitterTypeEnum.Store,
-  'tokenInvalidated',
-  props<{ name: string }>()
+  'validateToken',
+  props<{ token: Token }>()
 );

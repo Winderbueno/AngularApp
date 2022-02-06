@@ -9,13 +9,6 @@ import { EmitterTypeEnum } from '@action/enum/emitter-type.enum';
 import { Category } from '../model/category.model';
 //#endregion
 
-export const loadCategoryAction = createAction(
-  ModuleEnum.Category,
-  EmitterTypeEnum.Store,
-  'loadCategory',
-  props<{ category: Category[] }>()
-);
-
 export const addCategoryAction = createAction(
   ModuleEnum.Category,
   EmitterTypeEnum.Store,
@@ -28,4 +21,11 @@ export const deleteCategoryAction = createAction(
   EmitterTypeEnum.Store,
   'deleteCategory',
   props<{ name: string }>()
+);
+
+export const loadCategoryAction = createAction(
+  ModuleEnum.Category,
+  EmitterTypeEnum.Store,
+  'loadCategory',
+  props<{ category: Category[] }>()
 );

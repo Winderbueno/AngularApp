@@ -6,9 +6,9 @@ export {
 
 /* Action */
 export {
-  triggerAlertAction,
   dismissAlertAction,
   keptAfterRouteChangeAction,
+  triggerAlertAction
 } from './alert.actions';
 
 /* Selector */

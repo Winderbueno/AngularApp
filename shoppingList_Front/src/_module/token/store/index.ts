@@ -7,9 +7,9 @@ export {
 /* Action */
 export {
   deleteTokenAction,
-  validateTokenAction,
+  tokenInvalidatedAction,
   tokenValidatedAction,
-  tokenInvalidatedAction
+  validateTokenAction
 } from './token.actions';
 
 /* Selector */

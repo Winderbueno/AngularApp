@@ -6,9 +6,9 @@ export {
 
 /* Action */
 export {
-  loadCategoryAction,
   addCategoryAction,
-  deleteCategoryAction
+  deleteCategoryAction,
+  loadCategoryAction
 } from './category.actions';
 
 /* Selector */

@@ -10,6 +10,24 @@ import { ValidationFn } from 'ngrx-forms';
 import { StaticControlValidationFns } from '../model/validation-fns.model';
 //#endregion
 
+export const addControlInFormAction = createAction(
+  ModuleEnum.Form,
+  EmitterTypeEnum.Store,
+  'addControlInForm',
+  props<{
+    formId: string,
+    controlName: string,
+    controlValue: string | boolean | number
+  }>()
+);
+
+export const clearFormValueAction = createAction(
+  ModuleEnum.Form,
+  EmitterTypeEnum.Store,
+  'clearFormValue',
+  props<{ formId: string }>()
+);
+
 export const createFormAction = createAction(
   ModuleEnum.Form,
   EmitterTypeEnum.Store,
@@ -24,37 +42,6 @@ export const deleteFormAction = createAction(
   props<{ formId: string }>()
 );
 
-export const resetFormAction = createAction(
-  ModuleEnum.Form,
-  EmitterTypeEnum.Store,
-  'resetForm',
-  props<{ formId: string }>()
-);
-
-export const clearFormValueAction = createAction(
-  ModuleEnum.Form,
-  EmitterTypeEnum.Store,
-  'clearFormValue',
-  props<{ formId: string }>()
-);
-
-export const submitFormAction = createAction(
-  ModuleEnum.Form,
-  EmitterTypeEnum.Store,
-  'submitForm',
-  props<{ formId: string }>()
-);
-
-export const validateFormAction = createAction(
-  ModuleEnum.Form,
-  EmitterTypeEnum.Store,
-  'validateForm',
-  props<{
-    formId: string,
-    controlValidationFns: StaticControlValidationFns
-  }>()
-);
-
 export const dynamicValidateFormAction = createAction(
   ModuleEnum.Form,
   EmitterTypeEnum.Store,
@@ -62,17 +49,6 @@ export const dynamicValidateFormAction = createAction(
   props<{
     formId: string,
     controlValidationFns: StaticControlValidationFns
-  }>()
-);
-
-export const addControlInFormAction = createAction(
-  ModuleEnum.Form,
-  EmitterTypeEnum.Store,
-  'addControlInForm',
-  props<{
-    formId: string,
-    controlName: string,
-    controlValue: string | boolean | number
   }>()
 );
 
@@ -86,6 +62,20 @@ export const removeControlInFormAction = createAction(
   }>()
 );
 
+export const resetFormAction = createAction(
+  ModuleEnum.Form,
+  EmitterTypeEnum.Store,
+  'resetForm',
+  props<{ formId: string }>()
+);
+
+export const submitFormAction = createAction(
+  ModuleEnum.Form,
+  EmitterTypeEnum.Store,
+  'submitForm',
+  props<{ formId: string }>()
+);
+
 export const validateControlAction = createAction(
   ModuleEnum.Form,
   EmitterTypeEnum.Store,
@@ -93,5 +83,15 @@ export const validateControlAction = createAction(
   props<{
     controlId: string,
     ValidationFns: ValidationFn<any>[]
+  }>()
+);
+
+export const validateFormAction = createAction(
+  ModuleEnum.Form,
+  EmitterTypeEnum.Store,
+  'validateForm',
+  props<{
+    formId: string,
+    controlValidationFns: StaticControlValidationFns
   }>()
 );
