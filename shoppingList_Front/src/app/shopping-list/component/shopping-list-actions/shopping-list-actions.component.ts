@@ -31,7 +31,6 @@ export class ShoppingListActionComponent extends FormComponent {
 
   ngOnInit(){
     super.formId = "ShoppingListActions";
-    super.persist = true;
     super.ngOnInit();
   }
 

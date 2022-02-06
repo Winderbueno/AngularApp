@@ -28,10 +28,8 @@ export class FormComponent extends fromFormComponent.FormComponent {
   readonly productCatEnum$: Observable<string[] | undefined>
     = this.store.select(fromEnum.selectEnumValues('ProductCategory'));
 
-  ngOnInit(){    
-    // Form Configuration
+  ngOnInit(){
     super.formId = "Form";
-    super.persist = true;
     super.ngOnInit();
   }
 

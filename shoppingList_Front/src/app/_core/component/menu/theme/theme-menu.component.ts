@@ -19,7 +19,6 @@ export class ThemeMenuComponent extends FormComponent {
 
   ngOnInit(){
     super.formId = "Theme-Menu";
-    super.persist = true;
     super.ngOnInit();
   }
 }

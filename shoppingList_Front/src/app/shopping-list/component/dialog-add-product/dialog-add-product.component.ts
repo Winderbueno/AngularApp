@@ -39,7 +39,6 @@ export class DialogAddProductComponent extends FormComponent {
 
   ngOnInit(): void {
     super.formId = "Add Your Product";
-    super.persist = true;
     super.ngOnInit();
   }
 

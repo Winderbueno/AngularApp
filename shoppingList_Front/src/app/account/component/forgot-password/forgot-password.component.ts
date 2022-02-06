@@ -14,6 +14,7 @@ export class ForgotPasswordComponent extends FormComponent {
 
   ngOnInit(){
     super.formId = "Forgot Password";
+    super.unpersist = true;
     super.ngOnInit();
   }
 

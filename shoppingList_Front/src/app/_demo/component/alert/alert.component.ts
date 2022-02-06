@@ -22,9 +22,7 @@ export class AlertComponent extends FormComponent {
   alertTypeEnumValues: string[] = Object.keys(fromAlert.AlertTypeEnum);
 
   ngOnInit(){
-    // Form Configuration
     super.formId = "Alert";
-    super.persist = true;
     super.ngOnInit();
   }
 
