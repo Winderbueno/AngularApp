@@ -9,11 +9,10 @@ import { EmitterTypeEnum } from '@action/enum/emitter-type.enum';
 import { UsedProduct } from '../../model/current/used-product.model';
 //#endregion
 
-export const addProductToShoppingListAction = createAction (
+export const clickOnAddProductButtonAction = createAction (
   ModuleEnum.ShoppingList,
   EmitterTypeEnum.Component,
-  'addProductToShoppingList',
-  props<{ product: UsedProduct }>()
+  'clickOnAddProductButton'
 );
 
 export const resetBoughtStatusAction = createAction (

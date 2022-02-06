@@ -21,7 +21,7 @@ import { ShoppingList } from '@shoppingList/model/current/shopping-list.model';
   selector: 'shopping-list-actions',
   templateUrl: './shopping-list-actions.component.html'
 })
-export class ShoppingListActionComponent implements OnInit {
+export class ShoppingListActionComponent {
 
   @ViewChild('accordion',{static:false}) Accordion!: MatAccordion;
 
@@ -29,17 +29,10 @@ export class ShoppingListActionComponent implements OnInit {
   readonly editMode$: Observable<boolean>= this.store.select(fromStore.editMode);
   accordion_expanded = false;
 
-  // Shopping List
-  myShoppingList!: ShoppingList[];
-
   constructor(
     public dialog: MatDialog,
     private store: Store
-  ) {
-    this.store.select(fromStore.selectActive).subscribe(value => this.myShoppingList=value);
-  }
-
-  ngOnInit(): void {}
+  ) {}
 
   /** For all shoppingList product, reset 'bought' status */
   resetBoughtStatus(): void {
@@ -50,7 +43,9 @@ export class ShoppingListActionComponent implements OnInit {
 
   /** Add Product Button */
   openAddProductDialog(): void {
-    this.dialog.open(DialogAddProductComponent, { width: '400px' });
+    this.store.dispatch(ComponentActions
+      .clickOnAddProductButtonAction());
+    //this.dialog.open(DialogAddProductComponent, { width: '400px' });
   }
 
   toggleAccordeon():void {

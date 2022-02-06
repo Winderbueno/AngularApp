@@ -4,6 +4,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 
 //#region State, Action
 import { ShoppingListState, initialState, adapter } from './shopping-list.state';
+import * as fromComponent from '../component';
 import * as fromAPI from '../service/shopping-list.api.actions';
 import * as AccountAPIActions from '@account/service/account.api.actions'; // TODO
 //#endregion
@@ -24,7 +25,7 @@ const shoppingListReducer = createReducer(
   ),
 
   on(
-    AccountAPIActions.logoutSuccessAction, // TODO
+    AccountAPIActions.logoutSuccessAction,
     AccountAPIActions.logoutFailureAction,
     (state) => {
       return adapter.removeAll({
@@ -32,6 +33,10 @@ const shoppingListReducer = createReducer(
         isActiveLoaded: false,
       })
     }
+  ),
+
+  on(fromComponent.toggleEditModeAction,
+    (state) => { return { ...state, editMode: !state.editMode };}
   ),
 );
 

@@ -1,5 +1,5 @@
 //#region Angular, Material, NgRx
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatAccordion } from '@angular/material/expansion';
 import { Store } from '@ngrx/store';
@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
 //#endregion
 
 //#region App Component, Model
-import * as ComponentActions from './shopping-list-view.actions';
 import * as fromStore from '@shoppingList/store/';
 //#endregion
 
@@ -21,7 +20,7 @@ import { UsedProduct } from '@shoppingList/model/current/used-product.model';
   selector: 'shopping-list-view',
   templateUrl: './shopping-list-view.component.html' 
 })
-export class ShoppingListViewComponent implements OnInit {
+export class ShoppingListViewComponent {
 
   @ViewChild('accordion',{static:false}) Accordion!: MatAccordion;
 
@@ -37,9 +36,6 @@ export class ShoppingListViewComponent implements OnInit {
   ) {
     this.store.select(fromStore.selectActive).subscribe(value => this.myShoppingList=value);
   }
-
-  ngOnInit(): void {}
-
 
   /** For clicked product, swap 'bought' status value */
   swapProductBoughtStatus(prod: UsedProduct): void {
@@ -57,7 +53,6 @@ export class ShoppingListViewComponent implements OnInit {
   }
 
   deleteProduct(prod: UsedProduct): void {
-
     // TODO - Delete Product
     /*this.store.dispatch(
       ShopListPageActions.deleteProduct({
@@ -66,6 +61,5 @@ export class ShoppingListViewComponent implements OnInit {
       }));*/
   }
 
-  deleteNode(nodeId: string): void {
-  }
+  deleteNode(nodeId: string): void {}
 }

@@ -4,7 +4,7 @@ export {
   swapShoppingListProductBoughtStatusAction,
   updateShoppingListProductAction } from './shopping-list-view/shopping-list-view.actions';
 export {
-  addProductToShoppingListAction,
+  clickOnAddProductButtonAction,
   resetBoughtStatusAction,
   toggleEditModeAction } from './shopping-list-actions/shopping-list-actions.actions';
 

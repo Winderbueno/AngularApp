@@ -39,6 +39,7 @@ import * as fromStore from './store/';
 
     /* Effect */
     EffectsModule.forFeature([
+      Effect.DialogEffects,
       Effect.ShoppingListAPIEffects
     ]),
   ],
