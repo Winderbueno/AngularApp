@@ -10,7 +10,6 @@ export { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 export { LoginComponent } from './login/login.component';
 export { RegisterComponent } from './register/register.component';
 export { ResetPasswordComponent } from './reset-password/reset-password.component';
-export { RootComponent } from './_root/root.component';
 export { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 

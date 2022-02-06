@@ -3,19 +3,22 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 //#endregion
 
-//#region Routed Component
+//#region Page
+import { HomePage } from './page';
+//#endregion
+
+//#region Component
 import {
   ForgotPasswordComponent,
   LoginComponent,
   RegisterComponent,
   ResetPasswordComponent,
-  RootComponent,
   VerifyEmailComponent } from './component';
 //#endregion
 
 const routes: Routes = [
   {
-    path: '', component: RootComponent,
+    path: '', component: HomePage,
     children: [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },

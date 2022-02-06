@@ -9,13 +9,16 @@ import { FormModule } from '@form/form.module';
 import { MaterialModule } from '@material/material.module';
 //#endregion
 
+//#region Page
+import { HomePage } from './page';
+//#endregion
+
 //#region Component
 import {
   AlertComponent,
   ContentComponent,
   FormComponent,
-  LoaderComponent,
-  RootComponent } from './component';
+  LoaderComponent } from './component';
 //#endregion
 
 
@@ -30,14 +33,17 @@ import {
     MaterialModule    
   ],
   declarations: [
+    /* Page */
+    HomePage,
+
+    /* Component */
     AlertComponent,
     ContentComponent,
     FormComponent,
-    LoaderComponent,
-    RootComponent
+    LoaderComponent
   ],
   exports: [
-    RootComponent
+    HomePage
   ]
 })
 export class DemoModule { }

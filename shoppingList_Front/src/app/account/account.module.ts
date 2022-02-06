@@ -24,13 +24,16 @@ import {
   TimerEffects } from './effect';
 //#endregion
 
+//#region Page
+import { HomePage } from './page';
+//#endregion
+
 //#region Component
 import {
   ForgotPasswordComponent,
   LoginComponent,
   RegisterComponent,
   ResetPasswordComponent,
-  RootComponent,
   VerifyEmailComponent } from './component/';
 //#endregion
 
@@ -61,11 +64,14 @@ import {
     ]),
   ],
   declarations: [
+    /* Page */
+    HomePage,
+    
+    /* Component */
     ForgotPasswordComponent,
     LoginComponent,
     RegisterComponent,
     ResetPasswordComponent,
-    RootComponent,
     VerifyEmailComponent
   ]
 })

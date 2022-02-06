@@ -47,11 +47,14 @@ import { AccountAPIEffects } from '@account/effect';
 import { EnumAPIEffects } from '@enum/effect';
 //#endregion
 
+//#region Page
+import { HomePage } from './page';
+//#endregion
+
 //#region Component
 import {  
   FooterComponent,
   MainMenuComponent,
-  RootComponent,
   ThemeMenuComponent,
   ToolbarComponent,
   UserMenuComponent } from './component';
@@ -120,16 +123,19 @@ const metaReducers: Array<MetaReducer<any, any>> = [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }, // Start the loader
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true } // Handle errors received from server
   ],
-  declarations: [    
+  declarations: [
+    /* Page */
+    HomePage,
+
+    /* Component */
     FooterComponent,
     MainMenuComponent,
-    RootComponent,
     ThemeMenuComponent,
     ToolbarComponent,
     UserMenuComponent
   ],
   bootstrap: [
-    RootComponent
+    HomePage
   ]
 })
 export class CoreModule { }

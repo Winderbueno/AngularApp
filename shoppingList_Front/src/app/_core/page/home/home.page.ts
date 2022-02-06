@@ -5,14 +5,14 @@ import { Observable } from 'rxjs';
 //#endregion
 
 //#region Store
-import * as fromStore from '../../store/';
+import * as fromStore from '../../store';
 //#endregion
 
 @Component({
   selector: 'app-root',
-  templateUrl: './root.component.html'
+  templateUrl: './home.page.html'
 })
-export class RootComponent {
+export class HomePage {
 
   readonly isOpenSideNav$: Observable<boolean> = this.store.select(fromStore.isOpenSideNav);
 

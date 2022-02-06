@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 //#endregion
 
-//#region Routed Component
-import { RootComponent } from '@shoppingList/component';
+//#region Page
+import { HomePage } from '@shoppingList/page';
 //#endregion
 
 const routes: Routes = [
     {
-      path: '', component: RootComponent,
+      path: '', component: HomePage,
     },
     // Otherwise redirect to home
     { path: '**', redirectTo: '' }

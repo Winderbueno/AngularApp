@@ -20,10 +20,13 @@ import * as fromStore from './store/';
 import { ShoppingListAPIEffects } from './effect/';
 //#endregion
 
+//#region Page
+import { HomePage } from './page';
+//#endregion
+
 //#region Component
 import {
   DialogAddProductComponent,
-  RootComponent,
   ShoppingListActionComponent,
   ShoppingListViewComponent } from './component';
 //#endregion
@@ -52,8 +55,11 @@ import {
     ]),
   ],
   declarations: [
+    /* Page */
+    HomePage,
+
+    /* Component */
     DialogAddProductComponent,
-    RootComponent,
     ShoppingListActionComponent,
     ShoppingListViewComponent
   ],
