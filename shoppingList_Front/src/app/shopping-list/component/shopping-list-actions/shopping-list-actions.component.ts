@@ -1,12 +1,12 @@
 //#region Angular, Material, NgRx
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatAccordion } from '@angular/material/expansion';
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 //#endregion
 
 //#region App Component, Model
+import { FormComponent } from '@module/form/component';
 import * as ComponentActions from './shopping-list-actions.actions';
 import * as fromStore from '@shoppingList/store/';
 import { DialogAddProductComponent } from '@shoppingList/component/dialog-add-product/dialog-add-product.component';
@@ -21,7 +21,7 @@ import { ShoppingList } from '@shoppingList/model/current/shopping-list.model';
   selector: 'shopping-list-actions',
   templateUrl: './shopping-list-actions.component.html'
 })
-export class ShoppingListActionComponent {
+export class ShoppingListActionComponent extends FormComponent {
 
   @ViewChild('accordion',{static:false}) Accordion!: MatAccordion;
 
@@ -29,10 +29,11 @@ export class ShoppingListActionComponent {
   readonly editMode$: Observable<boolean>= this.store.select(fromStore.editMode);
   accordion_expanded = false;
 
-  constructor(
-    public dialog: MatDialog,
-    private store: Store
-  ) {}
+  ngOnInit(){
+    super.formId = "ShoppingListActions";
+    super.persist = true;
+    super.ngOnInit();
+  }
 
   /** For all shoppingList product, reset 'bought' status */
   resetBoughtStatus(): void {

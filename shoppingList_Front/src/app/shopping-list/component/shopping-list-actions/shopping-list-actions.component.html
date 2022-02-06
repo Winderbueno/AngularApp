@@ -7,6 +7,11 @@
 
     <mat-chip-list multiple style="margin-left: auto;">
       <mat-chip disableRipple [selectable]="false">
+        <!-- <k-form-field-slide-toggle
+          [formId]="formId" [ctrlName]="'Accordeon'" 
+          [label]="accordion_expanded ? 'Close' : 'Open'"
+          [required]="false">
+        </k-form-field-slide-toggle> -->
         <mat-slide-toggle (change)="toggleAccordeon()">{{accordion_expanded ? "Close" : "Open"}}</mat-slide-toggle>
       </mat-chip>
       <mat-chip disableRipple [selectable]="false">
