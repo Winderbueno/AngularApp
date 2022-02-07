@@ -22,7 +22,6 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
       fromAccount.featureKey,
       fromShoppingList.featureKey,
       fromTimer.featureKey,
-      fromToken.featureKey,
 
       // Array of formId to sync with localStorage
       // TODO - saisie manuelle du nom du form... pas top
