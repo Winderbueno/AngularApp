@@ -1,6 +1,6 @@
 import { RoleEnum } from "@account/model/enum/role.enum";
 
-export class Account {
+export interface Account {
 
     accountId?: string;
 

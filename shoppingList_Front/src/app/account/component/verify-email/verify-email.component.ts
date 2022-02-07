@@ -36,12 +36,11 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    const token = this.route.snapshot.queryParams['token']
-
-    // Remove token from url to prevent http referer leakage
+    // Get & remove token from url (to prevent http referer leakage)
+    const token = this.route.snapshot.queryParams['token'];
     this.router.navigate([], { relativeTo: this.route, replaceUrl: true });
 
-    // Dispatch validate Email Token action
+    // Validate Token
     this.store.dispatch(
       fromToken.validateTokenAction({
         token: new Token({
@@ -53,8 +52,6 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.store.dispatch(
-      fromToken.deleteTokenAction({ name: this.tokenName})
-    );
+    this.store.dispatch(fromToken.deleteTokenAction({ name: this.tokenName}));
   }
 }

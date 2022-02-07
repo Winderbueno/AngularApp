@@ -1,9 +1,5 @@
 ﻿/* Action */
-export { loginSubmitAction } from './login/login.actions';
-export { registerSubmitAction } from './register/register.actions';
-export { forgotPasswordSubmitAction } from './forgot-password/forgot-password.actions';
 export { emailTokenValidatedAction } from './verify-email/verify-email.actions';
-export { resetPasswordSubmitAction } from './reset-password/reset-password.actions';
 
 /* Component */
 export { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
