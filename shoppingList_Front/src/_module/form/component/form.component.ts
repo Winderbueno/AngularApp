@@ -2,7 +2,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { TypedAction } from '@ngrx/store/src/models';
 import { FormGroupState } from 'ngrx-forms';
 //#endregion
 
@@ -71,15 +70,5 @@ export class FormComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     this.store.dispatch(fromStore.submitFormAction({ formId: this._formId }));
-    
-    // TODO - Should not dispatch action sequentially
-    if(this._formGroupState?.isValid) {
-      if(this.submitValidAction() != undefined) { this.store.dispatch(this.submitValidAction()!); }
-    } else {
-      if(this.submitInvalidAction() != undefined) { this.store.dispatch(this.submitInvalidAction()!); }
-    }
   }
-
-  submitValidAction(): TypedAction<string> | undefined { return undefined; }
-  submitInvalidAction(): TypedAction<string> | undefined { return undefined; }
 }

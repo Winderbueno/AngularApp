@@ -17,6 +17,7 @@ export {
   createFormAction,
   deleteFormAction,
   dynamicValidateFormAction,
+  formValidatedAction,
   removeControlInFormAction,
   resetFormAction,
   submitFormAction,

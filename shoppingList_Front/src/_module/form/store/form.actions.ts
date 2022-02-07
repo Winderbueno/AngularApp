@@ -52,6 +52,13 @@ export const dynamicValidateFormAction = createAction(
   }>()
 );
 
+export const formValidatedAction = createAction(
+  ModuleEnum.Form,
+  EmitterTypeEnum.Store,
+  'formValidated',
+  props<{ formId: string }>()
+);
+
 export const removeControlInFormAction = createAction(
   ModuleEnum.Form,
   EmitterTypeEnum.Store,

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { map, withLatestFrom, switchMap } from 'rxjs/operators';
+import { map, withLatestFrom, switchMap, filter } from 'rxjs/operators';
 import { SetValueAction } from 'ngrx-forms';
 //#endregion
 
@@ -73,6 +73,23 @@ export class ValidationEffects {
               controlValidationFns: this.validationFnsService 
                 .getControlValidationFnsByFormId(action.formId, formState)
             });
+          })
+        )
+      )
+    )
+  );
+
+  // After form has been validated, if form is valid, throw action
+  formValidated$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(
+        fromStore.validateFormAction),
+      switchMap((action) =>
+        of(action).pipe(
+          withLatestFrom(this.store.select(fromStore.selectFormById(action.formId))),
+          filter(([, formState]) => formState.isValid),
+          map(([action,]) => {
+            return fromStore.formValidatedAction({ formId: action.formId});
           })
         )
       )
