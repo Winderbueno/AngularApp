@@ -1,6 +1,7 @@
 //#region Angular, Material, NgRx
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
 //#region Module
@@ -11,6 +12,7 @@ import { MaterialModule } from '@material/material.module';
 
 //#region This
 import * as Component from './component/';
+import * as Effect from './effect/';
 import * as Page from './page';
 //#endregion
 
@@ -23,7 +25,12 @@ import * as Page from './page';
     /* Module */
     FlexLayoutModule,
     FormModule,
-    MaterialModule    
+    MaterialModule,
+
+    /* Effect */
+    EffectsModule.forFeature([
+      Effect.AlertEffects,
+    ]),
   ],
   declarations: [
     /* Page */
