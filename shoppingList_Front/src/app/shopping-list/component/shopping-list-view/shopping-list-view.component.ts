@@ -1,7 +1,5 @@
 //#region Angular, Material, NgRx
-import { Component, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatAccordion } from '@angular/material/expansion';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 //#endregion
@@ -22,19 +20,15 @@ import { UsedProduct } from '@shoppingList/model/current/used-product.model';
 })
 export class ShoppingListViewComponent {
 
-  @ViewChild('accordion',{static:false}) Accordion!: MatAccordion;
-
   // View Status
   readonly editMode$: Observable<boolean>= this.store.select(fromStore.editMode);
 
   // Shopping List
   myShoppingList!: ShoppingList[];
 
-  constructor(
-    public dialog: MatDialog,
-    private store: Store
-  ) {
-    this.store.select(fromStore.selectActive).subscribe(value => this.myShoppingList=value);
+  constructor(private store: Store) {
+    this.store.select(fromStore.selectActive)
+      .subscribe(value => this.myShoppingList=value);
   }
 
   /** For clicked product, swap 'bought' status value */
