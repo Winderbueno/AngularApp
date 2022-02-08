@@ -6,8 +6,9 @@ import { map, withLatestFrom, filter } from 'rxjs/operators';
 //#endregion
 
 //#region Action
-import * as fromForm from '@form/store';
 import * as fromAlert from '@alert/store';
+import * as fromForm from '@form/store';
+import * as fromTimer from '@timer/store';
 //#endregion
 
 
@@ -19,7 +20,7 @@ export class AlertEffects {
       ofType(fromForm.formValidatedAction),
       filter((action) => action.formId === 'Form'),
       withLatestFrom(this.store.select(fromForm.selectFormById('Form'))),
-      map((action) =>
+      map(() =>
         fromAlert.triggerAlertAction({
           alertType: fromAlert.AlertTypeEnum.Success,
           message: "Valid Form Submitted !",
@@ -28,6 +29,22 @@ export class AlertEffects {
       )
     )
   );
+
+  alertDemoTriggerAlert$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromTimer.timerEndedAction),
+      filter((action) => action.name === 'Alert'),
+      withLatestFrom(this.store.select(fromForm.selectFormById('Alert'))),
+      map(([,alertForm]) =>
+        fromAlert.triggerAlertAction({
+          alertType: alertForm.controls.Criticity.value as fromAlert.AlertTypeEnum,
+          message: alertForm.controls.Message.value as string,
+          keepAfterRouteChange: false
+        })
+      )
+    )
+  );
+
 
 
   constructor(

@@ -1,0 +1,41 @@
+//#region Angular, Material, NgRx
+import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { map, filter } from 'rxjs/operators';
+//#endregion
+
+//#region Action
+import * as fromForm from '@form/store';
+import * as fromLoader from '@loader/store';
+import * as fromTimer from '@timer/store';
+import { Timer } from '@timer/model/timer.model';
+//#endregion
+
+
+@Injectable()
+export class LoaderEffects {
+
+  // When AlertDemo form is submitted & valid, startLoader
+  startLoader$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromForm.formValidatedAction),
+      filter((action) => action.formId === 'Alert'),
+      map(() => fromLoader.startLoaderAction({ triggerSource : '' }))
+    )
+  );
+
+  // When AlertDemo timer End, stopLoader 
+  stopLoader$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromTimer.timerEndedAction),
+      filter((action) => action.name === 'Alert'),
+      map(() => fromLoader.stopLoaderAction())
+    )
+  );
+
+  constructor(
+    private actions$: Actions,
+    private store: Store
+  ) {}
+}

@@ -19,6 +19,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -65,6 +66,7 @@ import { MatLuxonDateModule } from '@angular/material-luxon-adapter';
     MatRadioModule,
     MatSelectModule,
     MatSidenavModule,
+    MatSliderModule,
     MatSlideToggleModule,
     MatSnackBarModule,
     MatToolbarModule,
