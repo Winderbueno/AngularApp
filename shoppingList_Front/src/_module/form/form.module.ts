@@ -48,6 +48,7 @@ import * as fromStore from './store/';
     Component.RadioButtonFieldComponent,
     Component.SelectFieldComponent,
     Component.SlideToggleFieldComponent,
+    Component.SliderFieldComponent,
 
     /* Field Group */
     Component.PasswordFieldGroupComponent,
@@ -67,6 +68,7 @@ import * as fromStore from './store/';
     Component.RadioButtonFieldComponent,
     Component.SelectFieldComponent,
     Component.SlideToggleFieldComponent,
+    Component.SliderFieldComponent,
 
     /* Field Group */
     Component.PasswordFieldGroupComponent,

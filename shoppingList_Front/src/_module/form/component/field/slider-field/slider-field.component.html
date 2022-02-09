@@ -1,0 +1,17 @@
+﻿<!-- TODO - This only works for vertical label -->
+<!-- It is not adaptable to label length, slider length... -->
+<span style="
+position: relative;
+top: 30px; left: 15px;
+text-orientation: mixed;
+writing-mode: vertical-rl;
+transform: rotate(180deg);">Delay (sec)</span>
+
+<mat-slider 
+  [ngrxFormControlState]="ctrl"
+  vertical 
+  thumbLabel 
+  [min]="min" 
+  [max]="max" 
+  [value]="val">
+</mat-slider>
