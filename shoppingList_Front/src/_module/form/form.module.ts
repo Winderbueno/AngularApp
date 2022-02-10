@@ -40,6 +40,10 @@ import * as fromStore from './store/';
     ]),
   ],
   declarations: [
+    /* Button */
+    Component.ButtonComponent,
+    Component.SlideToggleButtonComponent,
+
     /* Field */
     Component.ButtonToggleFieldComponent,
     Component.CheckBoxFieldComponent,
@@ -51,15 +55,16 @@ import * as fromStore from './store/';
     Component.SliderFieldComponent,
 
     /* Field Group */
-    Component.PasswordFieldGroupComponent,
-
-    /* Button */
-    Component.ButtonComponent
+    Component.PasswordFieldGroupComponent
   ],
   exports: [
     /* Module */
     NgrxFormsModule,
 
+    /* Button */
+    Component.ButtonComponent,
+    Component.SlideToggleButtonComponent,
+
     /* Field */
     Component.ButtonToggleFieldComponent,
     Component.CheckBoxFieldComponent,
@@ -71,10 +76,7 @@ import * as fromStore from './store/';
     Component.SliderFieldComponent,
 
     /* Field Group */
-    Component.PasswordFieldGroupComponent,
-
-    /* Button */
-    Component.ButtonComponent
+    Component.PasswordFieldGroupComponent
   ]
 })
 export class FormModule { }

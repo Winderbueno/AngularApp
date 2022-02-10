@@ -3,6 +3,10 @@ export { FormComponent } from './form.component';
 export { FieldComponent } from './field.component';
 export { MultipleOptionFieldComponent } from './field/multiple-option-field.component';
 
+/* Button */
+export { ButtonComponent } from './button/basic/button.component';
+export { SlideToggleButtonComponent } from './button/slide-toggle-button/slide-toggle-button.component';
+
 /* Field */
 export { ButtonToggleFieldComponent } from './field/button-toggle-field/button-toggle-field.component';
 export { CheckBoxFieldComponent } from './field/checkbox-field/checkbox-field.component';
@@ -16,5 +20,3 @@ export { SliderFieldComponent } from './field/slider-field/slider-field.componen
 /* Field Group */
 export { PasswordFieldGroupComponent } from './field-group/password-field-group/password-field-group.component';
 
-/* Button */
-export { ButtonComponent } from './button/button.component';
