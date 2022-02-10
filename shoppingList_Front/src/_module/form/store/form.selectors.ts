@@ -16,3 +16,8 @@ export const selectFormValue = (id: string) =>
   createSelector(
     selectState, 
     (state: FormState) => state[id].value);
+
+export const selectControlValue = (formId: string, ctrlId: string) =>
+  createSelector(
+    selectState,
+    (state: FormState) => state[formId].controls[ctrlId].value);

@@ -29,5 +29,6 @@ export {
 export {
   selectState,
   selectForm,
-  selectFormValue
+  selectFormValue,
+  selectControlValue
 } from './form.selectors';
