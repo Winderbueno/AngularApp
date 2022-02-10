@@ -23,8 +23,8 @@ export class CSSThemeEffects {
   getCSSThemeNamesInHTMLDoc$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ROOT_EFFECTS_INIT),
-      withLatestFrom(this.store.select(fromForm.selectFormById('Theme-Menu'))),
-      map(([,form]) => {
+      withLatestFrom(this.store.select(fromForm.selectFormValue('Theme-Menu'))),
+      map(([, formValue]) => {
 
         let themeElts:HTMLLinkElement[] = [];
 
@@ -40,8 +40,8 @@ export class CSSThemeEffects {
         // Clean unused theme from HTML head
         // Note : theme are injected via 'angular.json' file configuration (In 'styles' option)
         for(let i=0; i<themeElts.length; i++) { 
-          if((form !== undefined && i != form.controls['Theme'].value) // If theme-menu is in localStorage
-            || (form === undefined && i != 0)) // If default value (WARN -> hardCoded in Theme-menu)
+          if((formValue !== undefined && i != formValue.Theme) // If theme-menu is in localStorage
+            || (formValue === undefined && i != 0)) // If default value (WARN -> hardCoded in Theme-menu)
             themeElts[i].remove();
         }
       })

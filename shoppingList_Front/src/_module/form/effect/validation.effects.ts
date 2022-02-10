@@ -41,7 +41,7 @@ export class ValidationEffects {
       ofType(fromStore.validateControlAction),
       switchMap((action) =>
         of(action).pipe(
-          withLatestFrom(this.store.select(fromStore.selectFormById(action.controlId.split('.')[0]))),
+          withLatestFrom(this.store.select(fromStore.selectForm(action.controlId.split('.')[0]))),
           map(([action, formState]) => {
             let formId:string = action.controlId.split('.')[0];
             return fromStore.dynamicValidateFormAction({
@@ -65,7 +65,7 @@ export class ValidationEffects {
         fromStore.clearFormValueAction),
       switchMap((action) =>
         of(action).pipe(
-          withLatestFrom(this.store.select(fromStore.selectFormById(action.formId))),
+          withLatestFrom(this.store.select(fromStore.selectForm(action.formId))),
           map(([action, formState]) => {
             return fromStore.validateFormAction({
               formId: action.formId,
@@ -86,7 +86,7 @@ export class ValidationEffects {
         fromStore.validateFormAction),
       switchMap((action) =>
         of(action).pipe(
-          withLatestFrom(this.store.select(fromStore.selectFormById(action.formId))),
+          withLatestFrom(this.store.select(fromStore.selectForm(action.formId))),
           filter(([, formState]) => formState.isValid),
           map(([action,]) => {
             return fromStore.formValidatedAction({ formId: action.formId});

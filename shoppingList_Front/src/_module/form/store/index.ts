@@ -28,5 +28,6 @@ export {
 /* Selector */
 export {
   selectState,
-  selectFormById
+  selectForm,
+  selectFormValue
 } from './form.selectors';

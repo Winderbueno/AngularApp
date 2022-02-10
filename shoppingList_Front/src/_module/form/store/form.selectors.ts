@@ -13,4 +13,6 @@ export const selectForm = (id: string) =>
   createSelector(selectState, (state: FormState) => state[id]);
 
 export const selectFormValue = (id: string) =>
-  createSelector(selectState, (state: FormState) => state[id].value);
+  createSelector(
+    selectState, 
+    (state: FormState) => state[id].value);

@@ -98,7 +98,7 @@ export class FieldComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     // Subscribe to FormGroupState
-    this.store.select(fromStore.selectFormById(this.formId))
+    this.store.select(fromStore.selectForm(this.formId))
       .subscribe(s => this._formGroupState = s);
 
     // Add user configured validationFns (static&dynamic)

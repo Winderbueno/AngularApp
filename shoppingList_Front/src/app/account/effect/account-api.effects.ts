@@ -27,9 +27,9 @@ export class AccountAPIEffects {
       filter((action) => action.formId === 'Forgot Password'),
       switchMap((action) =>
         of(action).pipe(
-          withLatestFrom(this.store.select(fromForm.selectFormById(action.formId))),
-          switchMap(([, formState]) => {
-            return this.accountService.forgotPassword(formState.value.Email as string).pipe(
+          withLatestFrom(this.store.select(fromForm.selectFormValue(action.formId))),
+          switchMap(([, formValue]) => {
+            return this.accountService.forgotPassword(formValue.Email as string).pipe(
               map(() => fromAPI.forgotPasswordSuccessAction({ // TODO - Msg (Error msg are in BACK, Success msg are here)
                 message: 'Please check your email for password reset instructions'
               })),
@@ -47,11 +47,11 @@ export class AccountAPIEffects {
       filter((action) => action.formId === 'Sign In'),
       switchMap((action) =>
         of(action).pipe(
-          withLatestFrom(this.store.select(fromForm.selectFormById(action.formId))),
-          switchMap(([, formState]) => {
+          withLatestFrom(this.store.select(fromForm.selectFormValue(action.formId))),
+          switchMap(([, formValue]) => {
             return this.accountService.login(
-              formState.value.Email as string, 
-              formState.value.Password as string)
+              formValue.Email as string, 
+              formValue.Password as string)
               .pipe(
                 map((response) => fromAPI.loginSuccessAction({ account: response })),
                 catchError((response) => of(fromAPI.loginFailureAction({ error: response })))
@@ -78,9 +78,9 @@ export class AccountAPIEffects {
       filter((action) => action.formId === 'Sign Up'),
       switchMap((action) =>
         of(action).pipe(
-          withLatestFrom(this.store.select(fromForm.selectFormById(action.formId))),
-          switchMap(([, formState]) => {
-            return this.accountService.register(formState.value)
+          withLatestFrom(this.store.select(fromForm.selectFormValue(action.formId))),
+          switchMap(([, formValue]) => {
+            return this.accountService.register(formValue)
               .pipe(
                 map(() => fromAPI.registerSuccessAction({  // TODO - Msg
                   message: 'Registration successful, please check your email for verification instructions'
@@ -109,13 +109,13 @@ export class AccountAPIEffects {
       filter((action) => action.formId === 'Reset Password'),
       switchMap((action) =>
         of(action).pipe(
-          withLatestFrom(this.store.select(fromForm.selectFormById(action.formId))),
+          withLatestFrom(this.store.select(fromForm.selectFormValue(action.formId))),
           withLatestFrom(this.store.select(fromToken.selectTokenByName('Reset Password'))),
-          switchMap(([[, formState], token]) => {
+          switchMap(([[, formValue], token]) => {
             return this.accountService.resetPassword(
               token?.value, 
-              formState.value.Password as string, 
-              formState.value.ConfirmPassword as string).pipe(
+              formValue.Password as string, 
+              formValue.ConfirmPassword as string).pipe(
               map(() => fromAPI.resetPasswordSuccessAction({ // TODO - Msg
                 message: 'Password successfully reinitialised, you can now log in :)'
               })),

@@ -21,11 +21,11 @@ export class TimerEffects {
       ofType(fromForm.formValidatedAction),
       filter((action) => action.formId === 'Alert'),
       // TODO -> Faire selector form pour récup value du form
-      withLatestFrom(this.store.select(fromForm.selectFormById('Alert'))),
-      map(([, formState]) =>
+      withLatestFrom(this.store.select(fromForm.selectFormValue('Alert'))),
+      map(([, formValue]) =>
         fromTimer.defineTimerAction({ timer : new Timer({
           name: 'Alert',
-          time: (formState.controls.Delay.value as number)*1000
+          time: (formValue.Delay as number)*1000
         }) })
       )
     )

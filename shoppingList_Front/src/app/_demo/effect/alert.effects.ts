@@ -15,11 +15,11 @@ import * as fromTimer from '@timer/store';
 @Injectable()
 export class AlertEffects {
 
+  // On valid submit of FormDemo Form, throw success alert
   triggerAlert$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromForm.formValidatedAction),
       filter((action) => action.formId === 'Form'),
-      withLatestFrom(this.store.select(fromForm.selectFormById('Form'))),
       map(() =>
         fromAlert.triggerAlertAction({
           alertType: fromAlert.AlertTypeEnum.Success,
@@ -34,11 +34,11 @@ export class AlertEffects {
     this.actions$.pipe(
       ofType(fromTimer.timerEndedAction),
       filter((action) => action.name === 'Alert'),
-      withLatestFrom(this.store.select(fromForm.selectFormById('Alert'))),
-      map(([,alertForm]) =>
+      withLatestFrom(this.store.select(fromForm.selectFormValue('Alert'))),
+      map(([, formValue]) =>
         fromAlert.triggerAlertAction({
-          alertType: alertForm.controls.Criticity.value as fromAlert.AlertTypeEnum,
-          message: alertForm.controls.Message.value as string,
+          alertType: formValue.Criticity as fromAlert.AlertTypeEnum,
+          message: formValue.Message as string,
           keepAfterRouteChange: false
         })
       )
