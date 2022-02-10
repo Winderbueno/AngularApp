@@ -19,10 +19,7 @@
         <!-- Header containing the product category -->
         <mat-expansion-panel-header>
           <mat-panel-title>{{catProd.category}}</mat-panel-title>
-          <mat-chip *ngIf="editMode$|async" (click)="deleteNode('test')">
-            <mat-icon>add_circle</mat-icon> Item
-          </mat-chip>
-          <mat-icon *ngIf="editMode$|async" (click)="deleteNode('bjr')">delete</mat-icon>
+          <mat-icon *ngIf="editMode$|async">delete</mat-icon>
         </mat-expansion-panel-header>
 
         <!-- Expanded Panel containing the product sub category and their products -->

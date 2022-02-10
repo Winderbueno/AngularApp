@@ -12,7 +12,6 @@ export interface ShoppingListState extends EntityState<ShoppingList> {
   isActiveLoaded: boolean;
 
   // View Status
-  editMode: boolean;
   accordionExpanded: boolean;
 }
 
@@ -29,6 +28,5 @@ export const initialState: ShoppingListState =
     isActiveLoaded: false,
 
     // View Status
-    editMode: false,
     accordionExpanded: false
   });

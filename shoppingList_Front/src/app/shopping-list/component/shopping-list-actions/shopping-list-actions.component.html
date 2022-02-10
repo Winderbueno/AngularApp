@@ -1,23 +1,18 @@
 <mat-card>
   <!-- Action Bar -->
-  <div fxLayout="raw wrap">
+  <div fxLayout="raw wrap" fxLayoutAlign="center center">
 
     <button mat-raised-button (click)="openAddProductDialog()">Add Product</button>
     <button mat-raised-button (click)="resetBoughtStatus()">Reinitiate Status</button>
 
-    <mat-chip-list multiple style="margin-left: auto;">
-      <mat-chip disableRipple [selectable]="false">
-        <!-- <k-form-field-slide-toggle
-          [formId]="formId" [ctrlName]="'Accordeon'" 
-          [label]="accordion_expanded ? 'Close' : 'Open'"
-          [required]="false">
-        </k-form-field-slide-toggle> -->
-        <mat-slide-toggle (change)="toggleAccordeon()">{{accordion_expanded ? "Close" : "Open"}}</mat-slide-toggle>
-      </mat-chip>
-      <mat-chip disableRipple [selectable]="false">
-        <mat-slide-toggle (change)="toggleEditMode()">{{(editMode$|async)===false ? "Use" : "Edit"}}</mat-slide-toggle>
-      </mat-chip>
-    </mat-chip-list>
+    <k-button-slide-toggle 
+      [formId]="formId" [ctrlName]="'Accordeon'" 
+      [label]="accordion_expanded ? 'Close' : 'Open'">
+    </k-button-slide-toggle>
 
+    <k-button-slide-toggle
+      [formId]="formId" [ctrlName]="'EditMode'" 
+      [label]="(editMode$|async) === false ? 'Use' : 'Edit'">
+    </k-button-slide-toggle>
   </div>
 </mat-card>

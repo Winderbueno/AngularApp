@@ -1,11 +1,11 @@
 //#region Angular, Material, NgRx
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 //#endregion
 
 //#region App Component, Model
 import * as fromStore from '@shoppingList/store/';
+import * as fromForm from '@form/store/';
 //#endregion
 
 //#region Model
@@ -21,7 +21,8 @@ import { UsedProduct } from '@shoppingList/model/current/used-product.model';
 export class ShoppingListViewComponent {
 
   // View Status
-  readonly editMode$: Observable<boolean>= this.store.select(fromStore.editMode);
+  readonly editMode$ =this.store.select(
+    fromForm.selectControlValue('ShoppingListActions','EditMode'));
 
   // Shopping List
   myShoppingList!: ShoppingList[];
@@ -54,6 +55,4 @@ export class ShoppingListViewComponent {
         ProductId : prod.usedProductId.toString()
       }));*/
   }
-
-  deleteNode(nodeId: string): void {}
 }

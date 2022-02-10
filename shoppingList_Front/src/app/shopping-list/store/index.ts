@@ -13,6 +13,5 @@ export {
 export {
   selectState,
   isActiveLoaded,
-  selectActive,
-  editMode
+  selectActive
 } from './selectors/shopping-list.selectors';
