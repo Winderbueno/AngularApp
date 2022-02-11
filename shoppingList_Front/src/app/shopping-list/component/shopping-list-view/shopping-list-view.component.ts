@@ -1,5 +1,5 @@
 //#region Angular, Material, NgRx
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { Store } from '@ngrx/store';
 //#endregion
@@ -19,7 +19,7 @@ import { UsedProduct } from '@shoppingList/model/current/used-product.model';
   selector: 'shopping-list-view',
   templateUrl: './shopping-list-view.component.html' 
 })
-export class ShoppingListViewComponent implements AfterViewInit {
+export class ShoppingListViewComponent implements AfterViewChecked {
 
   readonly editMode$=this.store.select(fromForm.selectControlValue('ShoppingListActions','EditMode'));
   readonly accordionExpanded$=this.store.select(fromForm.selectControlValue('ShoppingListActions','Accordeon'));
@@ -33,7 +33,7 @@ export class ShoppingListViewComponent implements AfterViewInit {
       .subscribe(value => this.myShoppingList=value);
   }
 
-  ngAfterViewInit(){
+  ngAfterViewChecked(){
     this.accordionExpanded$.subscribe(val => {
       val === true ?
         this.Accordion.openAll() :

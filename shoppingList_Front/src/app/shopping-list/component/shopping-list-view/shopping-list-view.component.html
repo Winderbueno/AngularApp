@@ -1,7 +1,7 @@
 <mat-card>
+
   <!-- In "Edit mode", Add a category -->
   <mat-expansion-panel *ngIf="editMode$|async" hideToggle>
-
     <!-- TODO - Use 'accent' color from Material SASS Theme -->
     <mat-expansion-panel-header #panelH (click)="panelH._toggle()" style='background-color:cornflowerblue'>
       <mat-panel-title>Add Category</mat-panel-title>
