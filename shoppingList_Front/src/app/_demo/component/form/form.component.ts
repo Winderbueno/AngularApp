@@ -1,6 +1,5 @@
 //#region Angular, Material, NgRx
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
 import { maxLength, minLength, number } from 'ngrx-forms/validation';
 //#endregion
 
@@ -23,8 +22,7 @@ export class FormComponent extends fromFormComponent.FormComponent {
   maxLength = maxLength;
 
   // Proposition values
-  readonly productCatEnum$: Observable<string[] | undefined>
-    = this.store.select(fromEnum.selectEnumValues('ProductCategory'));
+  readonly productCatEnum$ = this.store.select(fromEnum.selectEnumValues('ProductCategory'));
 
   ngOnInit(){
     super.formId = "Form";

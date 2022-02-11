@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 //#endregion
 
 //#region Store
@@ -21,10 +20,8 @@ import { ShoppingListService } from '@shoppingList/service/shopping-list.service
 export class DialogAddProductComponent extends FormComponent {
 
   // Proposition values
-  productCatEnum$: Observable<string[] | undefined> =
-    this.store.select(fromEnum.selectEnumValues('ProductCategory'));
-  productSubCatEnum$: Observable<string[] | undefined> =
-    this.store.select(fromEnum.selectEnumValues('ProductSubCategory'));
+  readonly productCatEnum$ = this.store.select(fromEnum.selectEnumValues('ProductCategory'));
+  readonly productSubCatEnum$ = this.store.select(fromEnum.selectEnumValues('ProductSubCategory'));
 
   // TODO - Optimize constructor because we herit from FormCompo ?
   constructor(
@@ -44,9 +41,6 @@ export class DialogAddProductComponent extends FormComponent {
 
   dispatchSubmitAction() {
 
-    // Get Active List Id
-    //var idSl: string = this.shoppingListService.active.shoppingListId;
-
     // Create product to create
     var prodToCreate: CreateProductReq = {
       category: this.value.Category as string,
@@ -55,16 +49,5 @@ export class DialogAddProductComponent extends FormComponent {
       quantity: 1,
       note: "test" // TODO - This field should note be that
     }
-
-    // Call the server
-    // TODO - NgRx
-    /*this.shoppingListService.createProduct(idSl, prodToCreate)
-      .subscribe({
-        next: res => {
-          this.dialogRef.close();
-          this.shoppingListService.getActive().subscribe();
-        },
-        error: error => this.alertService.error(error)
-    });*/
   }
 }
