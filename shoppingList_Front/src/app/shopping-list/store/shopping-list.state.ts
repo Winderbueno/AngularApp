@@ -10,9 +10,6 @@ import { ShoppingList } from '@shoppingList/model/current/shopping-list.model';
 export interface ShoppingListState extends EntityState<ShoppingList> {
   // Additional entity state properties
   isActiveLoaded: boolean;
-
-  // View Status
-  accordionExpanded: boolean;
 }
 
 /* Adapter */
@@ -26,7 +23,4 @@ export const adapter : EntityAdapter<ShoppingList> =
 export const initialState: ShoppingListState =
   adapter.getInitialState({
     isActiveLoaded: false,
-
-    // View Status
-    accordionExpanded: false
   });

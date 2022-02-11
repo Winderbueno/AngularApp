@@ -1,6 +1,5 @@
 //#region Angular, Material, NgRx
-import { Component, ViewChild } from '@angular/core';
-import { MatAccordion } from '@angular/material/expansion';
+import { Component } from '@angular/core';
 //#endregion
 
 //#region App Component, Model
@@ -16,11 +15,8 @@ import * as fromForm from '@form/store/';
 })
 export class ShoppingListActionComponent extends FormComponent {
 
-  @ViewChild('accordion',{static:false}) Accordion!: MatAccordion;
-
-  // View Status
   readonly editMode$=this.store.select(fromForm.selectControlValue('ShoppingListActions','EditMode'));
-  accordion_expanded = false;
+  readonly accordionExpanded$=this.store.select(fromForm.selectControlValue('ShoppingListActions','Accordeon'));
 
   ngOnInit(){
     super.formId = "ShoppingListActions";
@@ -37,12 +33,5 @@ export class ShoppingListActionComponent extends FormComponent {
   /** Add Product Button */
   openAddProductDialog(): void { // TODO
     this.store.dispatch(ComponentActions.clickOnAddProductButtonAction());
-  }
-
-  toggleAccordeon():void {
-    this.accordion_expanded === false ?
-      this.Accordion.openAll() :
-      this.Accordion.closeAll();
-    this.accordion_expanded = !this.accordion_expanded;
   }
 }

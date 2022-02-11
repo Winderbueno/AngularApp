@@ -7,12 +7,12 @@
 
     <k-button-slide-toggle 
       [formId]="formId" [ctrlName]="'Accordeon'" 
-      [label]="accordion_expanded ? 'Close' : 'Open'">
+      [label]="(accordionExpanded$|async) ? 'Close' : 'Open'">
     </k-button-slide-toggle>
 
     <k-button-slide-toggle
       [formId]="formId" [ctrlName]="'EditMode'" 
-      [label]="(editMode$|async) === false ? 'Use' : 'Edit'">
+      [label]="(editMode$|async) ? 'Use' : 'Edit'">
     </k-button-slide-toggle>
   </div>
 </mat-card>

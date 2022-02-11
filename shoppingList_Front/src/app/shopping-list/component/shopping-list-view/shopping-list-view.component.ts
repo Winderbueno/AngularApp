@@ -1,5 +1,6 @@
 //#region Angular, Material, NgRx
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatAccordion } from '@angular/material/expansion';
 import { Store } from '@ngrx/store';
 //#endregion
 
@@ -18,18 +19,26 @@ import { UsedProduct } from '@shoppingList/model/current/used-product.model';
   selector: 'shopping-list-view',
   templateUrl: './shopping-list-view.component.html' 
 })
-export class ShoppingListViewComponent {
+export class ShoppingListViewComponent implements AfterViewInit {
 
-  // View Status
-  readonly editMode$ =this.store.select(
-    fromForm.selectControlValue('ShoppingListActions','EditMode'));
+  readonly editMode$=this.store.select(fromForm.selectControlValue('ShoppingListActions','EditMode'));
+  readonly accordionExpanded$=this.store.select(fromForm.selectControlValue('ShoppingListActions','Accordeon'));
 
   // Shopping List
   myShoppingList!: ShoppingList[];
-
+  @ViewChild('accordion',{static:false}) Accordion!: MatAccordion;
+  
   constructor(private store: Store) {
     this.store.select(fromStore.selectActive)
       .subscribe(value => this.myShoppingList=value);
+  }
+
+  ngAfterViewInit(){
+    this.accordionExpanded$.subscribe(val => {
+      val === true ?
+        this.Accordion.openAll() :
+        this.Accordion.closeAll();
+    });
   }
 
   /** For clicked product, swap 'bought' status value */
