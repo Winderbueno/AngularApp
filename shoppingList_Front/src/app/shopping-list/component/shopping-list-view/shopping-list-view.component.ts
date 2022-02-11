@@ -2,6 +2,7 @@
 import { AfterViewChecked, Component, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { Store } from '@ngrx/store';
+import { SetValueAction } from 'ngrx-forms';
 //#endregion
 
 //#region App Component, Model
@@ -39,6 +40,10 @@ export class ShoppingListViewComponent implements AfterViewChecked {
         this.Accordion.openAll() :
         this.Accordion.closeAll();
     });
+  }
+
+  openExpansionPanel(){
+    this.store.dispatch(new SetValueAction('ShoppingListActions.Accordeon', true));   
   }
 
   /** For clicked product, swap 'bought' status value */

@@ -14,7 +14,9 @@
 
     <mat-accordion [multi]=true #accordion="matAccordion">
 
-      <mat-expansion-panel *ngFor="let catProd of myShoppingList[0].catProducts" hideToggle>
+      <mat-expansion-panel *ngFor="let catProd of myShoppingList[0].catProducts" 
+        hideToggle
+        (opened)="openExpansionPanel()">
 
         <!-- Header containing the product category -->
         <mat-expansion-panel-header>
