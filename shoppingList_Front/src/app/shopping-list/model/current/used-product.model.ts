@@ -10,10 +10,10 @@ export interface SubCatUsedProduct {
 }
 
 // Usable Product Specific Info
-export interface UsedProduct {
-    usedProductId: number;
-    name: string;
-    bought: boolean;
-    quantity: number;
-    note: string;
+export class UsedProduct {
+  usedProductId!: number;
+  name!: string;
+  bought: boolean = false;
+  quantity: number = 0;
+  note: string | undefined;
 }
