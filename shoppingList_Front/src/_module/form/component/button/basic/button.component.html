@@ -3,8 +3,9 @@
   type="{{type}}"
   mat-raised-button
   color="{{color}}" 
-  [disabled]="(type === 'submit') && (isLoading$|async)">
+  [disabled]="(type === 'submit') && (isLoading$|async)"
+  (click)="throwAction()">
 
   <k-loader *ngIf="type === 'submit'"></k-loader>
-  {{text}}
+  {{label}}
 </button>
