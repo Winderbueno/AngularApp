@@ -36,9 +36,12 @@ export class ShoppingListViewComponent implements AfterViewChecked {
 
   ngAfterViewChecked(){
     this.accordionExpanded$.subscribe(val => {
-      val === true ?
+      // TODO - Should not update the view after ngChanges (in Component Lifecycle)
+      if(this.Accordion != undefined) {
+        val === true ?
         this.Accordion.openAll() :
         this.Accordion.closeAll();
+      }
     });
   }
 

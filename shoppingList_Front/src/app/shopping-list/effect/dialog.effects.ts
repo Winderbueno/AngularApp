@@ -2,11 +2,12 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 //#endregion
 
 //#region Action, Selector
-import * as fromComponent from '../component';
+import * as Components from '../component';
+import * as fromForm from '@form/store';
 //#endregion
 
 
@@ -17,13 +18,11 @@ export class DialogEffects {
   openDialog$ = createEffect(() =>
 
     this.actions$.pipe(
-      ofType(
-        // TODO - Use generic onButtonClickAction 
-        fromComponent.clickOnAddProductButtonAction,
-      ),
+      ofType(fromForm.clickedOnButtonAction),
+      filter((action) => action.buttonId === 'Add Product'),
       map(action => {
         this.dialog.open(
-          fromComponent.DialogAddProductComponent, 
+          Components.DialogAddProductComponent, 
           { width: '400px' }
         );
         return action;

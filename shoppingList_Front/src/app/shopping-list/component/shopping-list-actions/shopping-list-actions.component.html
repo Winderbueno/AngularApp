@@ -2,10 +2,10 @@
   <!-- Action Bar -->
   <div fxLayout="raw wrap" fxLayoutAlign="center center">
 
-    <button mat-raised-button (click)="openAddProductDialog()">Add Product</button>
-    <button mat-raised-button (click)="resetBoughtStatus()">Reinitiate Status</button>
+    <k-button type='button' color='primary' label='Add Product'></k-button>
+    <k-button type='button' color='primary' label='Reset Status'></k-button>
 
-    <k-button-slide-toggle 
+    <k-button-slide-toggle
       [formId]="formId" [ctrlName]="'Accordeon'" 
       [label]="(accordionExpanded$|async) ? 'Close' : 'Open'">
     </k-button-slide-toggle>

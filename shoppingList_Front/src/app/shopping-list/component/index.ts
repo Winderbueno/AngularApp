@@ -3,9 +3,6 @@ export {
   deleteProductFromShoppingListAction,
   swapShoppingListProductBoughtStatusAction,
   updateShoppingListProductAction } from './shopping-list-view/shopping-list-view.actions';
-export {
-  clickOnAddProductButtonAction,
-  resetBoughtStatusAction } from './shopping-list-actions/shopping-list-actions.actions';
 
 /* Component */
 export { DialogAddProductComponent } from './dialog-add-product/dialog-add-product.component';
