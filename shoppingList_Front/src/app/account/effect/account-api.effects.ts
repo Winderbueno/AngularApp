@@ -110,7 +110,7 @@ export class AccountAPIEffects {
       switchMap((action) =>
         of(action).pipe(
           withLatestFrom(this.store.select(fromForm.selectFormValue(action.formId))),
-          withLatestFrom(this.store.select(fromToken.selectTokenByName('Reset Password'))),
+          withLatestFrom(this.store.select(fromToken.selectToken('Reset Password'))),
           switchMap(([[, formValue], token]) => {
             return this.accountService.resetPassword(
               token?.value, 

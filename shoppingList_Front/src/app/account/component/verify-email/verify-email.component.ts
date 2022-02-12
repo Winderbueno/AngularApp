@@ -16,7 +16,7 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
 
   TokenStatusEnum = fromToken.TokenStatusEnum;
   token:Token|undefined;
-  tokenName: string = 'email';
+  tokenId: string = 'email';
 
   constructor(
     private route: ActivatedRoute,
@@ -24,7 +24,7 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
     private store: Store,
   ) {
     // Suscribe to the token state
-    this.store.select(fromToken.selectTokenByName(this.tokenName)).subscribe(token => {
+    this.store.select(fromToken.selectToken(this.tokenId)).subscribe(token => {
 
       this.token=token;
 
@@ -44,7 +44,7 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
     this.store.dispatch(
       fromToken.validateTokenAction({
         token: new Token({
-          name:this.tokenName,
+          tokenId: this.tokenId,
           value: token
         }),
       })
@@ -52,6 +52,6 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.store.dispatch(fromToken.deleteTokenAction({ name: this.tokenName}));
+    this.store.dispatch(fromToken.deleteTokenAction({ tokenId: this.tokenId}));
   }
 }

@@ -16,7 +16,7 @@ export class ResetPasswordComponent extends FormComponent implements OnDestroy {
 
   TokenStatusEnum = fromToken.TokenStatusEnum;
   token:Token|undefined;
-  tokenName: string = 'Reset Password';
+  tokenId: string = 'Reset Password';
 
   constructor(
     router: Router,
@@ -26,7 +26,7 @@ export class ResetPasswordComponent extends FormComponent implements OnDestroy {
     super(router, route, store);
 
     // Suscribe to token state
-    this.store.select(fromToken.selectTokenByName(this.tokenName))
+    this.store.select(fromToken.selectToken(this.tokenId))
       .subscribe(token => this.token=token);
   }
 
@@ -44,7 +44,7 @@ export class ResetPasswordComponent extends FormComponent implements OnDestroy {
     this.store.dispatch(
       fromToken.validateTokenAction({
         token: new Token({
-          name: this.tokenName,
+          tokenId: this.tokenId,
           value: token
         }),
       })
@@ -52,6 +52,6 @@ export class ResetPasswordComponent extends FormComponent implements OnDestroy {
   }
 
   ngOnDestroy() {
-    this.store.dispatch(fromToken.deleteTokenAction({ name: this.tokenName}));
+    this.store.dispatch(fromToken.deleteTokenAction({ tokenId: this.tokenId}));
   }
 }
