@@ -1,7 +1,9 @@
 ﻿<!-- Submit Button -->
 <button 
   type="{{type}}"
-  mat-raised-button
+  mat-button
+  [class.mat-raised-button]="type==='submit' || color==='primary'"
+  [class.mat-button]="type==='button'"
   color="{{color}}" 
   [disabled]="(type === 'submit') && (isLoading$|async)"
   (click)="throwAction()">
