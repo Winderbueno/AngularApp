@@ -33,7 +33,7 @@ export class AlertEffects {
   alertDemoTriggerAlert$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromTimer.timerEndedAction),
-      filter((action) => action.name === 'Alert'),
+      filter((action) => action.timerId === 'Alert'),
       withLatestFrom(this.store.select(fromForm.selectFormValue('Alert'))),
       map(([, formValue]) =>
         fromAlert.triggerAlertAction({

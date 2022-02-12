@@ -24,7 +24,7 @@ export class TimerEffects {
       withLatestFrom(this.store.select(fromForm.selectFormValue('Alert'))),
       map(([, formValue]) =>
         fromTimer.defineTimerAction({ timer : new Timer({
-          name: 'Alert',
+          timerId: 'Alert',
           time: (formValue.Delay as number)*1000
         }) })
       )

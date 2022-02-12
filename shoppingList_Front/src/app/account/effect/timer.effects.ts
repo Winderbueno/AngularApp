@@ -31,7 +31,7 @@ export class TimerEffects {
 
         // Define Refresh Token Timer
         let timer = new Timer({
-          name: this.refreshTokenName,
+          timerId: this.refreshTokenName,
           time: 10000, // TODO - Put this in a config file
           action: fromStore.refreshTokenAction()
         });
@@ -59,9 +59,9 @@ export class TimerEffects {
         fromAPI.logoutFailureAction,
         fromAPI.refreshTokenFailureAction
       ),
-      withLatestFrom(this.store.select(fromTimer.selectTimerByName(this.refreshTokenName))),
+      withLatestFrom(this.store.select(fromTimer.selectTimer(this.refreshTokenName))),
       filter(([, timer]) => timer != null),
-      map(() => { return fromTimer.deleteTimerAction({ name: this.refreshTokenName }); })
+      map(() => { return fromTimer.deleteTimerAction({ timerId: this.refreshTokenName }); })
     )
   );
 

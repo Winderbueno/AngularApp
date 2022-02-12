@@ -29,7 +29,7 @@ export class LoaderEffects {
   stopLoader$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromTimer.timerEndedAction),
-      filter((action) => action.name === 'Alert'),
+      filter((action) => action.timerId === 'Alert'),
       map(() => fromLoader.stopLoaderAction())
     )
   );
