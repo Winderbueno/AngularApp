@@ -17,5 +17,5 @@ export const {
   selectTotal
 } = adapter.getSelectors();
 
-export const selectTokenByName = (name: string) =>
-  createSelector(selectState, (state: TokenState) => state.entities[name]);
+export const selectToken = (tokenId: string) =>
+  createSelector(selectState, (state: TokenState) => state.entities[tokenId]);

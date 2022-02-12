@@ -7,7 +7,7 @@ export interface TokenState extends EntityState<Token> {}
 /* Adapter */
 export const adapter : EntityAdapter<Token> =
   createEntityAdapter<Token>({
-    selectId: (token: Token) => token.name,
+    selectId: (token: Token) => token.tokenId,
   });
 
 /* Initial State */

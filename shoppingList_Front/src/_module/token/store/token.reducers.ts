@@ -22,12 +22,12 @@ const tokenReducer = createReducer(
 
   on(fromAction.deleteTokenAction,
     (state, action) =>
-      adapter.removeOne(action.name, state)),
+      adapter.removeOne(action.tokenId, state)),
 
   on(fromAction.tokenValidatedAction,
     (state, action) => {
       return adapter.updateOne({
-          id: action.name,
+          id: action.tokenId,
           changes: { status: TokenStatusEnum.Valid }
         }, state);
     }),
@@ -35,7 +35,7 @@ const tokenReducer = createReducer(
   on(fromAction.tokenInvalidatedAction,
     (state, action) => {
       return adapter.updateOne({
-          id: action.name,
+          id: action.tokenId,
           changes: { status: TokenStatusEnum.Invalid }
         }, state);
     }),

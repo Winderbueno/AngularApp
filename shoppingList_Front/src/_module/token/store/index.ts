@@ -15,7 +15,7 @@ export {
 /* Selector */
 export {
   selectState,
-  selectTokenByName
+  selectToken
 } from './token.selectors';
 
 /* Enum */

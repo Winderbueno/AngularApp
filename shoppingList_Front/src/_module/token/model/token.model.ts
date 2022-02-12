@@ -2,7 +2,7 @@ import { TokenStatusEnum } from "./enum/token-status.enum";
 
 export class Token {
 
-  name!: string;
+  tokenId!: string;
   status: TokenStatusEnum = TokenStatusEnum.Validating; // TODO - Centralise Status Mngt
   value: string | undefined;
 

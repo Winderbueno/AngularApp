@@ -20,15 +20,15 @@ export class TokenEffects {
       exhaustMap((action) => {
 
         // TODO - BACK -> Only 1 method for Token Validation
-        if(action.token.name === "Reset Password")
+        if(action.token.tokenId === "Reset Password")
           return this.accountService.validateResetToken(action.token.value).pipe(
-            map(() => fromStore.tokenValidatedAction({ name : action.token.name })),
-            catchError(() => of(fromStore.tokenInvalidatedAction({ name : action.token.name })))
+            map(() => fromStore.tokenValidatedAction({ tokenId : action.token.tokenId })),
+            catchError(() => of(fromStore.tokenInvalidatedAction({ tokenId : action.token.tokenId })))
           );
         else {
           return this.accountService.verifyEmail(action.token.value).pipe(
-            map(() => fromStore.tokenValidatedAction({ name : action.token.name })),
-            catchError(() => of(fromStore.tokenInvalidatedAction({ name : action.token.name })))
+            map(() => fromStore.tokenValidatedAction({ tokenId : action.token.tokenId })),
+            catchError(() => of(fromStore.tokenInvalidatedAction({ tokenId : action.token.tokenId })))
           );
         }
       })

@@ -13,21 +13,21 @@ export const deleteTokenAction = createAction(
   ModuleEnum.Token,
   EmitterTypeEnum.Store,
   'deleteToken',
-  props<{ name: string }>()
+  props<{ tokenId: string }>()
 );
 
 export const tokenInvalidatedAction = createAction(
   ModuleEnum.Token,
   EmitterTypeEnum.Store,
   'tokenInvalidated',
-  props<{ name: string }>()
+  props<{ tokenId: string }>()
 );
 
 export const tokenValidatedAction = createAction(
   ModuleEnum.Token,
   EmitterTypeEnum.Store,
   'tokenValidated',
-  props<{ name: string }>()
+  props<{ tokenId: string }>()
 );
 
 export const validateTokenAction = createAction(
