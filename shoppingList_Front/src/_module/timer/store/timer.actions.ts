@@ -20,7 +20,7 @@ export const deleteTimerAction = createAction(
   ModuleEnum.Timer,
   EmitterTypeEnum.Store,
   'deleteTimer',
-  props<{ name: string }>()
+  props<{ timerId: string }>()
 );
 
 export const timerDefinedAction = createAction(
@@ -28,7 +28,7 @@ export const timerDefinedAction = createAction(
   EmitterTypeEnum.Store,
   'timerDefined',
   props<{
-    name: string,
+    timerId: string,
     timeoutHandler: NodeJS.Timeout
   }>()
 );
@@ -37,12 +37,12 @@ export const timerDeletedAction = createAction(
   ModuleEnum.Timer,
   EmitterTypeEnum.Store,
   'timerDeleted',
-  props<{ name: string | undefined }>()
+  props<{ timerId: string | undefined }>()
 );
 
 export const timerEndedAction = createAction(
   ModuleEnum.Timer,
   EmitterTypeEnum.Store,
   'timerEnded',
-  props<{ name: string | undefined }>()
+  props<{ timerId: string | undefined }>()
 );

@@ -12,7 +12,7 @@ export interface TimerState extends EntityState<Timer> {}
 /* Adapter */
 export const adapter : EntityAdapter<Timer> =
   createEntityAdapter<Timer>({
-    selectId: (timer: Timer) => timer.name,
+    selectId: (timer: Timer) => timer.timerId,
   });
 
 /* Initial State */

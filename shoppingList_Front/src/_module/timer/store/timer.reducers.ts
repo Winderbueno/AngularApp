@@ -20,7 +20,7 @@ const timerReducer = createReducer(
   on(fromAction.timerDefinedAction,
     (state, action) => {
       return adapter.updateOne({
-        id: action.name,
+        id: action.timerId,
         changes: { timeoutHandler: action.timeoutHandler }
         }, state);
     }),
@@ -29,10 +29,10 @@ const timerReducer = createReducer(
   on(fromAction.timerDeletedAction,
     (state, action) => {
       // TODO - have a name always defined
-      if(action.name === undefined){
+      if(action.timerId === undefined){
         return state;
       } else {
-        return adapter.removeOne(action.name, state);
+        return adapter.removeOne(action.timerId, state);
       }
     }
   ),

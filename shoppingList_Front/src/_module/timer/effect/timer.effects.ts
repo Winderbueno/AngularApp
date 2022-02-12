@@ -27,11 +27,11 @@ export class TimerEffects {
 
         // TODO - Use RxJS Timer instead of NodeJS.Timeout ?
         let timeout = setTimeout(
-          () => this.store.dispatch(fromStore.timerEndedAction({ name: action.timer.name })),
+          () => this.store.dispatch(fromStore.timerEndedAction({ timerId: action.timer.timerId })),
           action.timer.time);
 
         return fromStore.timerDefinedAction({
-          name: action.timer.name,
+          timerId: action.timer.timerId,
           timeoutHandler: timeout
         });
       })
@@ -46,12 +46,12 @@ export class TimerEffects {
         fromStore.timerEndedAction),
       switchMap(action =>
         of(action).pipe(
-          withLatestFrom(this.store.select(fromStore.selectTimerByName(action.name))),
+          withLatestFrom(this.store.select(fromStore.selectTimer(action.timerId))),
           filter(([, timer]) => timer != undefined),
           map(([, timer]) => {
     
             if(timer?.timeoutHandler != undefined) clearTimeout(timer?.timeoutHandler);
-            return fromStore.timerDeletedAction({ name: timer?.name });
+            return fromStore.timerDeletedAction({ timerId: timer?.timerId });
           })
         )
       )
@@ -64,7 +64,7 @@ export class TimerEffects {
       ofType(fromStore.timerEndedAction),
       switchMap(action =>
         of(action).pipe(
-          withLatestFrom(this.store.select(fromStore.selectTimerByName(action.name))),
+          withLatestFrom(this.store.select(fromStore.selectTimer(action.timerId))),
           filter(([, timer]) => timer != undefined),
           map(([, timer]) => {
             if(timer != undefined) { this.action = timer.action; }

@@ -2,7 +2,7 @@ import { TypedAction } from "@ngrx/store/src/models";
 
 export class Timer {
 
-    name!: string;
+    timerId!: string;
     time!: number;
 
     timeoutHandler!: NodeJS.Timeout; // Id of Node.JS Timeout Created
