@@ -20,7 +20,7 @@
   <div style="width: 100%;" fxLayout="raw" fxLayoutAlign="end center">
     <menu-theme></menu-theme>
     <!-- Account -->
-    <div *ngIf="isLogged; else elseBlock">
+    <div *ngIf="(isLogged$|async); else elseBlock">
       <menu-user></menu-user>
     </div>
     <ng-template #elseBlock>

@@ -15,11 +15,9 @@ import * as fromStore from '../../store/';
 })
 export class ToolbarComponent {
 
-  isLogged: boolean = false;
+  readonly isLogged$ = this.store.select(fromAccount.isLogged);
 
-  constructor(private store: Store) {
-    this.store.select(fromAccount.isLogged).subscribe(value => this.isLogged=value);
-  }
+  constructor(private store: Store) {}
 
   toggleSideNav() {
     this.store.dispatch(fromStore.toggleSideNavAction());
