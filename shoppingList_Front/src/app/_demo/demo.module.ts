@@ -30,6 +30,7 @@ import * as Pages from './page';
     /* Effect */
     EffectsModule.forFeature([
       Effects.AlertEffects,
+      Effects.FormEffects,
       Effects.LoaderEffects,
       Effects.TimerEffects
     ]),

@@ -6,7 +6,6 @@ import { maxLength, minLength, number } from 'ngrx-forms/validation';
 //#region Module
 import * as fromFormComponent from '@form/component';
 import * as fromEnum from '@enum/store/';
-import * as fromForm from '@form/store/';
 //#endregion
 
 
@@ -27,13 +26,5 @@ export class FormComponent extends fromFormComponent.FormComponent {
   ngOnInit(){
     super.formId = "Form";
     super.ngOnInit();
-  }
-
-  resetForm() { 
-    this.store.dispatch(fromForm.resetFormAction({ formId: this.formId })); 
-  }
-
-  clearFormValue() { 
-    this.store.dispatch(fromForm.clearFormValueAction({ formId: this.formId })); 
   }
 }
