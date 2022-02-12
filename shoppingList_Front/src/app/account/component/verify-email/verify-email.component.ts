@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 //#endregion
 
 //#region App Component, Model
-import * as ComponentActions from './verify-email.actions';
+import * as Actions from './verify-email.actions';
 import * as fromToken from '@token/store/';
 import { Token } from '@token/model/token.model';
 //#endregion
@@ -29,7 +29,7 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
       this.token=token;
 
       if(token && token.status === this.TokenStatusEnum.Valid) {
-          this.store.dispatch(ComponentActions.emailTokenValidatedAction({ message: 'Verification successful, you can now login' }));
+          this.store.dispatch(Actions.emailTokenValidatedAction({ message: 'Verification successful, you can now login' }));
       }
     });
   }

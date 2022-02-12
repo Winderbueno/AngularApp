@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 
 //#region App Component, Model
 import { FormComponent } from '@form/component';
-import * as ComponentActions from './shopping-list-actions.actions';
+import * as Actions from './shopping-list-actions.actions';
 import * as fromForm from '@form/store/';
 //#endregion
 
@@ -25,13 +25,11 @@ export class ShoppingListActionComponent extends FormComponent {
 
   /** For all shoppingList product, reset 'bought' status */
   resetBoughtStatus(): void {
-    // ResetBoughtStatus
-    this.store.dispatch(ComponentActions
-      .resetBoughtStatusAction({ ShoppingListId: "1" }));
+    this.store.dispatch(Actions.resetBoughtStatusAction({ ShoppingListId: "1" }));
   }
 
   /** Add Product Button */
   openAddProductDialog(): void { // TODO
-    this.store.dispatch(ComponentActions.clickOnAddProductButtonAction());
+    this.store.dispatch(Actions.clickOnAddProductButtonAction());
   }
 }

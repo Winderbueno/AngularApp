@@ -36,7 +36,7 @@ export class FormComponent implements OnInit, OnDestroy {
 
   // Form
   protected _formGroupState: FormGroupState<FormValue> | undefined;
-  private _formId: string = "Form Title";
+  private _formId: string = "defaultFormId";
   private _unpersist: boolean = false;
   
   // Accessor
