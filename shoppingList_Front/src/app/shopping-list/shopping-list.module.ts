@@ -13,9 +13,9 @@ import { MaterialModule } from '@material/material.module';
 //#endregion
 
 //#region This
-import * as Component from './component/';
-import * as Effect from './effect/';
-import * as Page from './page';
+import * as Components from './component/';
+import * as Effects from './effect/';
+import * as Pages from './page';
 import * as fromStore from './store/';
 //#endregion
 
@@ -39,22 +39,22 @@ import * as fromStore from './store/';
 
     /* Effect */
     EffectsModule.forFeature([
-      Effect.DialogEffects,
-      Effect.ShoppingListAPIEffects
+      Effects.DialogEffects,
+      Effects.ShoppingListAPIEffects
     ]),
   ],
   declarations: [
     /* Page */
-    Page.HomePage,
+    Pages.HomePage,
 
     /* Component */
-    Component.DialogAddProductComponent,
-    Component.ShoppingListActionComponent,
-    Component.ShoppingListViewComponent
+    Components.DialogAddProductComponent,
+    Components.ShoppingListActionComponent,
+    Components.ShoppingListViewComponent
   ],
   entryComponents: [
     // Component Instantiated at runtime
-    Component.DialogAddProductComponent
+    Components.DialogAddProductComponent
   ],
 })
 export class ShoppingListModule {}

@@ -4,12 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 //#endregion
 
 //#region Page
-import * as Page from './page';
+import * as Pages from './page';
 //#endregion
 
 const routes: Routes = [
     {
-      path: '', component: Page.HomePage,
+      path: '', component: Pages.HomePage,
     },
     // Otherwise redirect to home
     { path: '**', redirectTo: '' }

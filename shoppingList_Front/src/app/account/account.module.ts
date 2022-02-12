@@ -13,9 +13,9 @@ import { MaterialModule } from '@material/material.module';
 //#endregion
 
 //#region This
-import * as Component from './component/';
-import * as Effect from './effect/';
-import * as Page from './page';
+import * as Components from './component/';
+import * as Effects from './effect/';
+import * as Pages from './page';
 import * as fromStore from './store/';
 //#endregion
 
@@ -39,22 +39,22 @@ import * as fromStore from './store/';
 
     /* Effect */
     EffectsModule.forFeature([
-      Effect.AlertEffects,
-      Effect.AutoLogoutEffects,
-      Effect.RouterEffects,
-      Effect.TimerEffects
+      Effects.AlertEffects,
+      Effects.AutoLogoutEffects,
+      Effects.RouterEffects,
+      Effects.TimerEffects
     ]),
   ],
   declarations: [
     /* Page */
-    Page.HomePage,
+    Pages.HomePage,
     
     /* Component */
-    Component.ForgotPasswordComponent,
-    Component.LoginComponent,
-    Component.RegisterComponent,
-    Component.ResetPasswordComponent,
-    Component.VerifyEmailComponent
+    Components.ForgotPasswordComponent,
+    Components.LoginComponent,
+    Components.RegisterComponent,
+    Components.ResetPasswordComponent,
+    Components.VerifyEmailComponent
   ]
 })
 export class AccountModule {}

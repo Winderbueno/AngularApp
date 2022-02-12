@@ -4,19 +4,19 @@ import { Routes, RouterModule } from '@angular/router';
 //#endregion
 
 //#region Component & Page
-import * as Component from './component/';
-import * as Page from './page';
+import * as Components from './component/';
+import * as Pages from './page';
 //#endregion
 
 const routes: Routes = [
   {
-    path: '', component: Page.HomePage,
+    path: '', component: Pages.HomePage,
     children: [
-      { path: 'login', component: Component.LoginComponent },
-      { path: 'register', component: Component.RegisterComponent },
-      { path: 'verify-email', component: Component.VerifyEmailComponent },
-      { path: 'forgot-password', component: Component.ForgotPasswordComponent },
-      { path: 'reset-password', component: Component.ResetPasswordComponent }
+      { path: 'login', component: Components.LoginComponent },
+      { path: 'register', component: Components.RegisterComponent },
+      { path: 'verify-email', component: Components.VerifyEmailComponent },
+      { path: 'forgot-password', component: Components.ForgotPasswordComponent },
+      { path: 'reset-password', component: Components.ResetPasswordComponent }
     ]
   },
   // Otherwise redirect to home

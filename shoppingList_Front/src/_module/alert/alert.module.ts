@@ -11,8 +11,8 @@ import { MaterialModule } from '@material/material.module';
 //#endregion
 
 //#region This
-import * as Component from './component/';
-import * as Effect from './effect/';
+import * as Components from './component/';
+import * as Effects from './effect/';
 import * as fromStore from './store/';
 //#endregion
 
@@ -34,15 +34,15 @@ import * as fromStore from './store/';
 
     /* Effect */
     EffectsModule.forFeature([
-      Effect.AlertEffects
+      Effects.AlertEffects
     ]),
   ],
   declarations: [
-    Component.AlertComponent,
-    Component.SnackbarComponent,
+    Components.AlertComponent,
+    Components.SnackbarComponent,
   ],
   exports: [
-    Component.AlertComponent,
+    Components.AlertComponent,
   ]
 })
 export class AlertModule { }

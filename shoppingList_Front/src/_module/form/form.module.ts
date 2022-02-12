@@ -13,8 +13,8 @@ import { NgrxFormsModule } from 'ngrx-forms';
 //#endregion
 
 //#region This
-import * as Component from './component/';
-import * as Effect from './effect/';
+import * as Components from './component/';
+import * as Effects from './effect/';
 import * as fromStore from './store/';
 //#endregion
 
@@ -36,47 +36,47 @@ import * as fromStore from './store/';
     ),
 
     EffectsModule.forFeature([
-      Effect.ValidationEffects
+      Effects.ValidationEffects
     ]),
   ],
   declarations: [
     /* Button */
-    Component.ButtonComponent,
-    Component.SlideToggleButtonComponent,
+    Components.ButtonComponent,
+    Components.SlideToggleButtonComponent,
 
     /* Field */
-    Component.ButtonToggleFieldComponent,
-    Component.CheckBoxFieldComponent,
-    Component.DateFieldComponent,
-    Component.InputFieldComponent,
-    Component.RadioButtonFieldComponent,
-    Component.SelectFieldComponent,
-    Component.SlideToggleFieldComponent,
-    Component.SliderFieldComponent,
+    Components.ButtonToggleFieldComponent,
+    Components.CheckBoxFieldComponent,
+    Components.DateFieldComponent,
+    Components.InputFieldComponent,
+    Components.RadioButtonFieldComponent,
+    Components.SelectFieldComponent,
+    Components.SlideToggleFieldComponent,
+    Components.SliderFieldComponent,
 
     /* Field Group */
-    Component.PasswordFieldGroupComponent
+    Components.PasswordFieldGroupComponent
   ],
   exports: [
     /* Module */
     NgrxFormsModule,
 
     /* Button */
-    Component.ButtonComponent,
-    Component.SlideToggleButtonComponent,
+    Components.ButtonComponent,
+    Components.SlideToggleButtonComponent,
 
     /* Field */
-    Component.ButtonToggleFieldComponent,
-    Component.CheckBoxFieldComponent,
-    Component.DateFieldComponent,
-    Component.InputFieldComponent,
-    Component.RadioButtonFieldComponent,
-    Component.SelectFieldComponent,
-    Component.SlideToggleFieldComponent,
-    Component.SliderFieldComponent,
+    Components.ButtonToggleFieldComponent,
+    Components.CheckBoxFieldComponent,
+    Components.DateFieldComponent,
+    Components.InputFieldComponent,
+    Components.RadioButtonFieldComponent,
+    Components.SelectFieldComponent,
+    Components.SlideToggleFieldComponent,
+    Components.SliderFieldComponent,
 
     /* Field Group */
-    Component.PasswordFieldGroupComponent
+    Components.PasswordFieldGroupComponent
   ]
 })
 export class FormModule { }

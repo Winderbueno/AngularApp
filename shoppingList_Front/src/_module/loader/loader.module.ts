@@ -9,7 +9,7 @@ import { MaterialModule } from '@material/material.module';
 //#endregion
 
 //#region This
-import * as Component from './component/';
+import * as Components from './component/';
 import * as fromStore from './store/';
 //#endregion
 
@@ -29,10 +29,10 @@ import * as fromStore from './store/';
     ),
   ],
   declarations: [
-    Component.LoaderComponent,
+    Components.LoaderComponent,
   ],
   exports: [
-    Component.LoaderComponent,
+    Components.LoaderComponent,
   ]
 })
 export class LoaderModule { }

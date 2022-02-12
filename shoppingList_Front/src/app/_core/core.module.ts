@@ -35,9 +35,9 @@ import { ErrorInterceptor } from '@core/interceptor/error.interceptor';
 //#endregion
 
 //#region This
-import * as Component from './component/';
-import * as Effect from './effect/';
-import * as Page from './page';
+import * as Components from './component/';
+import * as Effects from './effect/';
+import * as Pages from './page';
 import * as fromStore from './store/';
 //#endregion
 
@@ -96,9 +96,9 @@ const metaReducers: Array<MetaReducer<any, any>> = [
 
     /* Effect */
     EffectsModule.forRoot([
-      Effect.AccountEffects,
-      Effect.EnumEffects,
-      Effect.CSSThemeEffects,
+      Effects.AccountEffects,
+      Effects.EnumEffects,
+      Effects.CSSThemeEffects,
       AccountAPIEffects, // TODO - Should be in Account Feature ?
       EnumAPIEffects, // TODO - Should be in Enum Module ?
     ]),
@@ -111,17 +111,17 @@ const metaReducers: Array<MetaReducer<any, any>> = [
   ],
   declarations: [
     /* Page */
-    Page.HomePage,
+    Pages.HomePage,
 
     /* Component */
-    Component.FooterComponent,
-    Component.MainMenuComponent,
-    Component.ThemeMenuComponent,
-    Component.ToolbarComponent,
-    Component.UserMenuComponent
+    Components.FooterComponent,
+    Components.MainMenuComponent,
+    Components.ThemeMenuComponent,
+    Components.ToolbarComponent,
+    Components.UserMenuComponent
   ],
   bootstrap: [
-    Page.HomePage
+    Pages.HomePage
   ]
 })
 export class CoreModule { }

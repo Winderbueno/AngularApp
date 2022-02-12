@@ -11,9 +11,9 @@ import { MaterialModule } from '@material/material.module';
 //#endregion
 
 //#region This
-import * as Component from './component/';
-import * as Effect from './effect/';
-import * as Page from './page';
+import * as Components from './component/';
+import * as Effects from './effect/';
+import * as Pages from './page';
 //#endregion
 
 
@@ -29,23 +29,23 @@ import * as Page from './page';
 
     /* Effect */
     EffectsModule.forFeature([
-      Effect.AlertEffects,
-      Effect.LoaderEffects,
-      Effect.TimerEffects
+      Effects.AlertEffects,
+      Effects.LoaderEffects,
+      Effects.TimerEffects
     ]),
   ],
   declarations: [
     /* Page */
-    Page.HomePage,
+    Pages.HomePage,
 
     /* Component */
-    Component.AlertComponent,
-    Component.ContentComponent,
-    Component.FormComponent,
-    Component.LoaderComponent
+    Components.AlertComponent,
+    Components.ContentComponent,
+    Components.FormComponent,
+    Components.LoaderComponent
   ],
   exports: [
-    Page.HomePage
+    Pages.HomePage
   ]
 })
 export class DemoModule { }

@@ -5,7 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
 //#region This
-import * as Effect from './effect/';
+import * as Effects from './effect/';
 import * as fromStore from './store/';
 //#endregion
 
@@ -20,7 +20,7 @@ import * as fromStore from './store/';
 
     /* Effect */
     EffectsModule.forFeature([
-      Effect.EnumAPIEffects
+      Effects.EnumAPIEffects
     ]),
   ],
   declarations: []
