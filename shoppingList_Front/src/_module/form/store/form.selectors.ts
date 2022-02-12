@@ -9,13 +9,13 @@ import { featureKey } from '.';
 
 export const selectState = createFeatureSelector<FormState>(featureKey);
 
-export const selectForm = (id: string) =>
-  createSelector(selectState, (state: FormState) => state[id]);
+export const selectForm = (formId: string) =>
+  createSelector(selectState, (state: FormState) => state[formId]);
 
-export const selectFormValue = (id: string) =>
+export const selectFormValue = (formId: string) =>
   createSelector(
     selectState, 
-    (state: FormState) => state[id].value);
+    (state: FormState) => state[formId].value);
 
 export const selectControlValue = (formId: string, ctrlId: string) =>
   createSelector(
