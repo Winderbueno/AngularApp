@@ -5,7 +5,7 @@
   <input matInput 
     [ngrxFormControlState]="ctrl"
     type="{{ visibility ? 'text' : 'password' }}"
-    placeholder="{{placeholder}}"
+    placeholder="{{ placeholder }}"
     [ngrxValueConverter]="format === 'number' ? numberConverter : defaultConverter">
 
   <!-- Icon button to manage input visibility -->

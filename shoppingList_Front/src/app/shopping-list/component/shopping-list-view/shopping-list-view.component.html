@@ -18,18 +18,18 @@
 
         <!-- Header containing the product category -->
         <mat-expansion-panel-header>
-          <mat-panel-title>{{catProd.category}}</mat-panel-title>
+          <mat-panel-title>{{ catProd.category }}</mat-panel-title>
           <mat-icon *ngIf="editMode$|async">delete</mat-icon>
         </mat-expansion-panel-header>
 
         <div fxLayout="column" fxLayoutGap="8px">
           <!-- Expanded Panel containing the product sub category and their products -->
           <li fxLayout="raw" fxLayoutAlign="start center" *ngFor="let subCatProd of catProd.subCatProducts">
-            <span> {{subCatProd.subCategory}} :&nbsp;</span>
+            <span> {{ subCatProd.subCategory }} :&nbsp;</span>
             <mat-chip-list multiple>
               <div *ngFor="let prod of subCatProd.products">
                 <mat-chip (click)="swapProductBoughtStatus(prod)" [selected]="prod.bought">
-                  {{prod.name}}
+                  {{ prod.name }}
                   <mat-icon matChipRemove *ngIf="editMode$|async" (click)="deleteProduct(prod)">cancel</mat-icon>
                 </mat-chip>
               </div>

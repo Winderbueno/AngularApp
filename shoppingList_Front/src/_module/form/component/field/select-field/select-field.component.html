@@ -6,8 +6,8 @@
     <ng-container *ngIf="options !== null && options !== undefined">
       <mat-option *ngFor="let option of options"
         [ngClass]="optionClass"
-        value="{{option}}" >
-        {{option}}
+        value="{{ option }}" >
+        {{ option }}
       </mat-option>
     </ng-container>
   </mat-select>
