@@ -2,18 +2,23 @@
 
   <mat-label>{{ label }}</mat-label>
 
-  <!-- Datepicker -->
   <input matInput
     [ngrxFormControlState]="ctrl"
-    placeholder="{{placeholder}}"
+    placeholder="{{ placeholder }}"
     [matDatepicker]="picker"    
     [ngrxValueConverter]="dateValueConverter">
 
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-
   <mat-error *ngIf="ctrl.isInvalid">{{ err.getErrorMsg(ctrl) }}</mat-error>
 
+  <mat-datepicker-toggle 
+    matSuffix 
+    [for]="picker" 
+    (touchstart)="touchUi=true">
+  </mat-datepicker-toggle>
+
+  <mat-datepicker 
+    #picker
+    [touchUi]="touchUi"
+    (closed)="touchUi=false"></mat-datepicker>  
+
 </mat-form-field>
-
-

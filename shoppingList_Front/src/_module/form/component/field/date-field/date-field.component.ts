@@ -18,7 +18,7 @@ import { DateTime } from 'luxon';
 })
 export class DateFieldComponent extends FieldComponent {
 
-  ngOnInit() { super.ngOnInit(); }
+  touchUi:boolean = false;
 
   // Converters 'Luxon DateTime' (In DatePicker) <=> 'String' (In Ngrx State)
   dateValueConverter: NgrxValueConverter<DateTime | null, string | null> = {
