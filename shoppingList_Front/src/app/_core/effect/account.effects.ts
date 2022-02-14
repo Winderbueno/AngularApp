@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 //#endregion
 
 //#region Action, Selector
+import * as fromStore from '../store/';
 import * as fromAccount from '@account/store/';
 //#endregion
 
@@ -14,7 +15,10 @@ export class AccountEffects {
 
   refreshAccountToken$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(ROOT_EFFECTS_INIT),
+      ofType(
+        ROOT_EFFECTS_INIT,
+        fromStore.windowFocusAction
+      ),
       map(() => fromAccount.refreshTokenAction())
     )
   );

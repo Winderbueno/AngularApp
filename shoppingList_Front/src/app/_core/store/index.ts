@@ -12,7 +12,8 @@ export {
 /* Action */
 export {
   closeSideNavAction,
-  toggleSideNavAction  
+  toggleSideNavAction,
+  windowFocusAction
 } from './core.actions';
 
 /* Selector */
