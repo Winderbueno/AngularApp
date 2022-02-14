@@ -15,7 +15,6 @@ import * as fromStore from '../store';
 export class AutoLogoutEffects {
 
   autoLogoutByRefreshToken$ = createEffect(() =>
-
     this.actions$.pipe(
       ofType(fromAPI.refreshTokenFailureAction),
       withLatestFrom(this.store.select(fromStore.isLogged)),
@@ -25,7 +24,6 @@ export class AutoLogoutEffects {
       }))
     )
   );
-
 
   constructor(
     private actions$: Actions,

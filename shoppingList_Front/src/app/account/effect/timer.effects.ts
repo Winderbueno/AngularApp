@@ -51,7 +51,6 @@ export class TimerEffects {
     )
   );
 
-
   deleteRefreshTokenTimer$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
@@ -64,7 +63,6 @@ export class TimerEffects {
       map(() => { return fromTimer.deleteTimerAction({ timerId: this.refreshTokenName }); })
     )
   );
-
 
   constructor(
     private actions$: Actions,

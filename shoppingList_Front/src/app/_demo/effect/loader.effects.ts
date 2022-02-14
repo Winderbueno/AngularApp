@@ -9,7 +9,6 @@ import { map, filter } from 'rxjs/operators';
 import * as fromForm from '@form/store';
 import * as fromLoader from '@loader/store';
 import * as fromTimer from '@timer/store';
-import { Timer } from '@timer/model/timer.model';
 //#endregion
 
 
@@ -36,6 +35,5 @@ export class LoaderEffects {
 
   constructor(
     private actions$: Actions,
-    private store: Store
   ) {}
 }

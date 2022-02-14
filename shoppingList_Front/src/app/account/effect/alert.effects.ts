@@ -21,7 +21,6 @@ import { AlertTypeEnum } from '@alert/model/enum/alert-type.enum';
 export class AlertEffects {
 
   triggerErrorAlert$ = createEffect(() =>
-
     this.actions$.pipe(
       ofType(
         fromAPI.loginFailureAction,
@@ -39,9 +38,7 @@ export class AlertEffects {
     )
   );
 
-
   triggerKeepAfterRouteErrorAlert$ = createEffect(() =>
-
     this.actions$.pipe(
       ofType(
         fromStore.autoLogoutAction,
@@ -56,7 +53,6 @@ export class AlertEffects {
 
 
   triggerSuccessAlert$ = createEffect(() =>
-
     this.actions$.pipe(
       ofType(
         fromAPI.resetPasswordSuccessAction,
@@ -71,7 +67,6 @@ export class AlertEffects {
       }))
     )
   );
-
 
   constructor(
     private actions$: Actions
