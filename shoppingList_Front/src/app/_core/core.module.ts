@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //#region NgRx
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreModule, MetaReducer } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 //#endregion
@@ -50,12 +50,6 @@ import { EnumAPIEffects } from '@enum/effect';
 import { environment } from '@env/environment';
 //#endregion
 
-//#region Meta-Reducer
-const metaReducers: Array<MetaReducer<any, any>> = [
-  fromStore.localStorageSyncReducer
-];
-//#endregion
-
 
 @NgModule({
   imports: [
@@ -83,7 +77,9 @@ const metaReducers: Array<MetaReducer<any, any>> = [
       router: routerReducer,
       core: fromStore.reducer
     },{
-      metaReducers
+      metaReducers:[
+        fromStore.localStorageSyncReducer
+      ]
     }),
 
     StoreRouterConnectingModule.forRoot(),

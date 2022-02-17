@@ -7,7 +7,6 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import * as fromAccount from '@account/store/';
 import * as fromShoppingList from '@shoppingList/store/';
 import * as fromTimer from '@timer/store/';
-import * as fromToken from '@token/store/';
 //#endregion
 
 /**
@@ -17,7 +16,9 @@ import * as fromToken from '@token/store/';
  */
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({
-    // State synced with localStorage
+    // Pull initial state from local storage on startup
+    rehydrate: true,
+    // Feature states synced with localStorage
     keys: [
       fromAccount.featureKey,
       fromShoppingList.featureKey,
@@ -25,13 +26,14 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
 
       // Array of formId to sync with localStorage
       // TODO - saisie manuelle du nom du form... pas top
-      { form : [
-        'Form',
-        'Alert',
-        'Theme-Menu',
-        'ShoppingListActions'
-        ] }
-    ],
-    rehydrate: true
+      { 
+        form : [
+          'Form',
+          'Alert',
+          'Theme-Menu',
+          'ShoppingListActions'
+        ] 
+      }
+    ]
   })(reducer);
 }
