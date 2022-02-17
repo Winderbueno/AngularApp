@@ -13,7 +13,8 @@ export {
 export {
   closeSideNavAction,
   toggleSideNavAction,
-  windowFocusAction
+  windowFocusAction,
+  windowStorageAction
 } from './core.actions';
 
 /* Selector */

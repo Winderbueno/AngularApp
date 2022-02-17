@@ -23,3 +23,10 @@ export const windowFocusAction = createAction(
   'windowFocus',
   props<{ event: any }>()
 );
+
+export const windowStorageAction = createAction(
+  ModuleEnum.Core,
+  EmitterTypeEnum.Store,
+  'windowStorage',
+  props<{ event: any }>()
+);
