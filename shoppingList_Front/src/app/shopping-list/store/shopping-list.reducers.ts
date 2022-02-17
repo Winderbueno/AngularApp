@@ -26,6 +26,7 @@ const shoppingListReducer = createReducer(
   on(
     AccountAPIActions.logoutSuccessAction,
     AccountAPIActions.logoutFailureAction,
+    AccountAPIActions.refreshTokenFailureAction, // TODO - Any type of Logout should restore state to initial state
     (state) => {
       return adapter.removeAll({
         ...state,
