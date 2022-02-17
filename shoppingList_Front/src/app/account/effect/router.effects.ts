@@ -1,14 +1,16 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { tap } from 'rxjs/operators';
+import { tap, withLatestFrom } from 'rxjs/operators';
 //#endregion
 
 //#region Action, Selector
 import * as fromAPI from '../service/account.api.actions';
 import * as fromComponent from '../component/';
 import * as fromStore from '../store/';
+import * as fromRouter from '@router/router.selectors';
 //#endregion
 
 
@@ -16,7 +18,6 @@ import * as fromStore from '../store/';
 export class RouterEffects {
 
   routeToLogin$ = createEffect(() =>
-
     this.actions$.pipe(
       ofType(
         fromAPI.forgotPasswordSuccessAction,
@@ -38,7 +39,6 @@ export class RouterEffects {
   /* If Login Succeed, this effect route to the page
    * the user attempted to access before login */
   routeToRequestedPageAfterLogin$ = createEffect(() =>
-
     this.actions$.pipe(
       ofType(fromAPI.loginSuccessAction),
       tap(() => {
@@ -51,9 +51,22 @@ export class RouterEffects {
     { dispatch: false }
   );
 
+  routeToShoppingListAtAutoLogin$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromAPI.refreshTokenSuccessAction),
+      withLatestFrom(this.store.select(fromRouter.selectUrl)),
+      tap(([, currentUrl]) => {
+        if(currentUrl.includes('account')){
+          this.router.navigate(['/my-shopping-list']);
+        }
+      })
+    ),
+    { dispatch: false }
+  );
 
   constructor(
     private actions$: Actions,
+    private store: Store,
     protected router: Router,
     protected route: ActivatedRoute,
   ) { }

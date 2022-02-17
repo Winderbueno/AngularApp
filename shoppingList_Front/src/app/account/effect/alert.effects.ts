@@ -1,6 +1,5 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map } from 'rxjs/operators';
 //#endregion
@@ -38,19 +37,16 @@ export class AlertEffects {
     )
   );
 
-  triggerKeepAfterRouteErrorAlert$ = createEffect(() =>
+  triggerAutoLogoutAlert$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(
-        fromStore.autoLogoutAction,
-      ),
-      map((action) => fromAlert.triggerAlertAction({
+      ofType(fromStore.autoLogoutAction),
+      map(() => fromAlert.triggerAlertAction({
         alertType: AlertTypeEnum.Error,
-        message: action.error,
+        message: "You've been disconnected",
         keepAfterRouteChange: true
       }))
     )
   );
-
 
   triggerSuccessAlert$ = createEffect(() =>
     this.actions$.pipe(
