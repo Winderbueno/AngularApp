@@ -20,21 +20,23 @@ export class JwtInterceptor implements HttpInterceptor {
 
     account!: Account[];
 
-    constructor(private store: Store) { }
+    constructor(private store: Store) {
+      this.store.select(fromAccount.selectAccounts)
+        .subscribe(value => this.account=value);
+    }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        // Add auth header with jwt if user is logged in and request is to the api url
-        this.store.select(fromAccount.selectAccounts).subscribe(value => this.account=value);
 
-
+        // If user is logged and request is to the 'shoppingListApi', 
+        // Add JWT auth header
         const isLoggedIn = this.account[0] && this.account[0].jwtToken;
         const isApiUrl = request.url.startsWith(envBusinessAPI.apiUrl);
         if (isLoggedIn && isApiUrl) {
-            request = request.clone({
-                setHeaders: {
-                    Authorization: `Bearer ${this.account[0].jwtToken}`
-                }
-            });
+          request = request.clone({
+            setHeaders: {
+              Authorization: `Bearer ${this.account[0].jwtToken}`
+            }
+          });
         }
 
         return next.handle(request);

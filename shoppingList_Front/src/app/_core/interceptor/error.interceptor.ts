@@ -17,7 +17,9 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   isLogged: boolean = false;
 
-  constructor(private store: Store) { }
+  constructor(private store: Store) { 
+    this.store.select(fromAccount.isLogged).subscribe(value => this.isLogged=value);
+  }
 
   /**
    * Handle Http operation that failed then Let the app continue.
@@ -34,13 +36,9 @@ export class ErrorInterceptor implements HttpInterceptor {
       // Dealing with error response
       .pipe(catchError(err => {
 
-          this.store.select(fromAccount.isLogged).subscribe(value => this.isLogged=value)
-
-          // Handle HTTP Error - 'unauthorized' and 'forbidden'
+          // If HTTP error ('unauthorized'|'forbidden') & User is logged, auto logout 
           if ([401, 403].includes(err.status) && this.isLogged) {
-            // Auto logout if 401 or 403 response returned from api
-            // TODO -
-            //this.accountService.logout();
+            this.store.dispatch(fromAccount.autoLogoutAction({ error:err }));
           }
 
           const error = (err && err.error && err.error.message) || err.statusText;
