@@ -23,6 +23,12 @@ export class HomePage {
     this.store.dispatch(fromStore.windowFocusAction({ event: event }));
   }
 
+  @HostListener('window:storage', ['$event'])
+  onStorage(event: any): void {
+    if(event.key === 'account')
+      this.store.dispatch(fromStore.windowStorageAction({ event: event }));
+  }
+
   closeSideNav() {
     this.store.dispatch(fromStore.closeSideNavAction());
   }
