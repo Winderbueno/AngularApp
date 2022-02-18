@@ -3,21 +3,29 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 //#endregion
 
 //#region Store
-import { FormState } from './form.state';
+import { FormState, FormValue } from './form.state';
 import { featureKey } from '.';
+import { FormGroupState } from 'ngrx-forms';
 //#endregion
 
 export const selectState = createFeatureSelector<FormState>(featureKey);
 
 export const selectForm = (formId: string) =>
-  createSelector(selectState, (state: FormState) => state[formId]);
+  createSelector(
+    selectState, 
+    (state: FormState) => state[formId]);
 
 export const selectFormValue = (formId: string) =>
   createSelector(
-    selectState, 
-    (state: FormState) => state[formId].value);
+    selectForm(formId),
+    (formState: FormGroupState<FormValue>) => 
+      formState 
+      && formState.value);
 
 export const selectControlValue = (formId: string, ctrlId: string) =>
   createSelector(
-    selectState,
-    (state: FormState) => state[formId].controls[ctrlId].value);
+    selectForm(formId),
+    (formState: FormGroupState<FormValue>) => 
+      formState &&
+      formState.controls[ctrlId] &&
+      formState.controls[ctrlId].value);
