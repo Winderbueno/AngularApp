@@ -25,6 +25,7 @@ export class RouterEffects {
         fromAPI.registerSuccessAction,
         fromAPI.logoutSuccessAction,
         fromAPI.logoutFailureAction,
+        fromAPI.refreshTokenFailureAction,
         fromComponent.emailTokenValidatedAction,
         fromStore.autoLogoutAction,
       ),
