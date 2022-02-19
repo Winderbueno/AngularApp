@@ -18,11 +18,6 @@ export class HomePage {
 
   constructor(private store: Store) {}
 
-  @HostListener('window:focus', ['$event'])
-  onFocus(event: any): void {
-    this.store.dispatch(fromStore.windowFocusAction({ event: event }));
-  }
-
   @HostListener('window:storage', ['$event'])
   onStorage(event: any): void {
     if(event.key === 'account')

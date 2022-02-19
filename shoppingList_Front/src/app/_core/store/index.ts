@@ -13,7 +13,6 @@ export {
 export {
   closeSideNavAction,
   toggleSideNavAction,
-  windowFocusAction,
   windowStorageAction
 } from './core.actions';
 

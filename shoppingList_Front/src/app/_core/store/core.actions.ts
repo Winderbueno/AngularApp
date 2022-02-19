@@ -17,13 +17,6 @@ export const toggleSideNavAction = createAction(
   'toggleSideNav'
 );
 
-export const windowFocusAction = createAction(
-  ModuleEnum.Core,
-  EmitterTypeEnum.Store,
-  'windowFocus',
-  props<{ event: any }>()
-);
-
 export const windowStorageAction = createAction(
   ModuleEnum.Core,
   EmitterTypeEnum.Store,
