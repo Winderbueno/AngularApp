@@ -13,22 +13,10 @@ const coreReducer = createReducer(
   initialState,
 
   on(fromAction.closeSideNavAction,
-    (state) => {
-      return {
-        ...state,
-        isOpenSideNav: false,
-      };
-    }
-  ),
+    (state) => ({ ...state, isOpenSideNav: false })),
 
   on(fromAction.toggleSideNavAction,
-    (state) => {
-      return {
-        ...state,
-        isOpenSideNav: !state.isOpenSideNav,
-      };
-    }
-  ),
+    (state) => ({ ...state, isOpenSideNav: !state.isOpenSideNav })),
 );
 
 
