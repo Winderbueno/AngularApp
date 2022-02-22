@@ -17,7 +17,7 @@ export class AccountEffects {
     this.actions$.pipe(
       ofType(
         ROOT_EFFECTS_INIT,
-        fromStore.windowStorageAction
+        fromStore.accountWindowStorageChangeAction
       ),
       map(() => fromAccount.refreshTokenAction())
     )

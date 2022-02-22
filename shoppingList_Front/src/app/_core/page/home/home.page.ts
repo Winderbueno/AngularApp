@@ -21,7 +21,7 @@ export class HomePage {
   @HostListener('window:storage', ['$event'])
   onStorage(event: any): void {
     if(event.key === 'account')
-      this.store.dispatch(fromStore.windowStorageAction({ event: event }));
+      this.store.dispatch(fromStore.accountWindowStorageChangeAction({ event: event }));
   }
 
   closeSideNav() {

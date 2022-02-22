@@ -17,9 +17,9 @@ export const toggleSideNavAction = createAction(
   'toggleSideNav'
 );
 
-export const windowStorageAction = createAction(
+export const accountWindowStorageChangeAction = createAction(
   ModuleEnum.Core,
   EmitterTypeEnum.Store,
-  'windowStorage',
+  'accountWindowStorageChange',
   props<{ event: any }>()
 );
