@@ -41,9 +41,9 @@ import * as Pages from './page';
 
     /* Component */
     Components.AlertComponent,
-    Components.ContentComponent,
     Components.FormComponent,
-    Components.LoaderComponent
+    Components.LoaderComponent,
+    Components.TechStackComponent
   ],
   exports: [
     Pages.HomePage
