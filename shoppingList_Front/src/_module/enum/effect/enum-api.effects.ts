@@ -1,13 +1,12 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType, ROOT_EFFECTS_INIT } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, catchError, exhaustMap } from 'rxjs/operators';
 //#endregion
 
 //#region Action, Selector
 import * as fromAPI from '../service/enum.api.actions';
-import * as fromStore from '../store'
 //#endregion
 
 //#region Service, Model
@@ -21,7 +20,7 @@ export class EnumAPIEffects {
 
   loadAll$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(fromStore.loadEnumAction),
+      ofType(ROOT_EFFECTS_INIT),
       exhaustMap(() =>
         this.enumService.getAll().pipe(
           map((obj: Enum[]) => fromAPI.loadAllSuccessAction({ enums: obj })),

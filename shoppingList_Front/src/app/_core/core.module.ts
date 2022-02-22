@@ -92,7 +92,6 @@ import { environment } from '@env/environment';
 
     /* Effect */
     EffectsModule.forRoot([
-      Effects.EnumEffects,
       Effects.CSSThemeEffects,
       AccountAPIEffects, // TODO - Should be in Account Feature ?
       EnumAPIEffects, // TODO - Should be in Enum Module ?
