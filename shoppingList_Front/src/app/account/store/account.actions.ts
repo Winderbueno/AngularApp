@@ -17,9 +17,3 @@ export const logoutAction = createAction(
   EmitterTypeEnum.Store,
   'logout'
 );
-
-export const refreshTokenAction = createAction(
-  ModuleEnum.Account,
-  EmitterTypeEnum.Store,
-  'refreshToken'
-);

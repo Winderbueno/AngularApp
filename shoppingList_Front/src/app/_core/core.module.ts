@@ -92,7 +92,6 @@ import { environment } from '@env/environment';
 
     /* Effect */
     EffectsModule.forRoot([
-      Effects.AccountEffects,
       Effects.EnumEffects,
       Effects.CSSThemeEffects,
       AccountAPIEffects, // TODO - Should be in Account Feature ?

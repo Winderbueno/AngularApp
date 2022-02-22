@@ -1,7 +1,7 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType, ROOT_EFFECTS_INIT } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, catchError, exhaustMap, switchMap, withLatestFrom, filter } from 'rxjs/operators';
 //#endregion
@@ -9,11 +9,13 @@ import { map, catchError, exhaustMap, switchMap, withLatestFrom, filter } from '
 //#region Action
 import * as fromAPI from '../service/account.api.actions';
 import * as fromStore from '../store';
+import * as fromCore from '@core/store';
 import * as fromForm from '@form/store';
+import * as fromTimer from '@timer/store';
 import * as fromToken from '@token/store';
 //#endregion
 
-//#region Service, Model
+//#region Service
 import { AccountService } from '@account/service/account.service';
 //#endregion
 
@@ -95,7 +97,17 @@ export class AccountAPIEffects {
 
   refreshToken$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(fromStore.refreshTokenAction),
+      ofType(
+        ROOT_EFFECTS_INIT,
+        fromCore.accountWindowStorageChangeAction,
+        fromTimer.timerEndedAction),
+      filter((action:any) => {
+        // Run effect only for corresponding timer
+        let filter:boolean = true;
+        if(action.type === fromTimer.timerEndedAction.type 
+          && action.timerId !== "RefreshToken") filter=false; 
+        return filter;
+      }),
       exhaustMap(() =>
         this.accountService.refreshToken().pipe(
           map((response) => fromAPI.refreshTokenSuccessAction({ account: response })),

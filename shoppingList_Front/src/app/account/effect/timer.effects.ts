@@ -7,7 +7,6 @@ import { filter, map, withLatestFrom } from 'rxjs/operators';
 
 //#region Action
 import * as fromAPI from '../service/account.api.actions';
-import * as fromStore from '../store/';
 import * as fromTimer from '@timer/store/';
 //#endregion
 
@@ -19,7 +18,7 @@ import { Timer } from '@timer/model/timer.model';
 @Injectable()
 export class TimerEffects {
 
-  refreshTokenName:string = 'RefreshToken';
+  refreshTokenTimerId:string = 'RefreshToken';
 
   defineRefreshTokenTimer$ = createEffect(() =>
     this.actions$.pipe(
@@ -31,9 +30,8 @@ export class TimerEffects {
 
         // Define Refresh Token Timer
         let timer = new Timer({
-          timerId: this.refreshTokenName,
+          timerId: this.refreshTokenTimerId,
           time: 10000, // TODO - Put this in a config file
-          action: fromStore.refreshTokenAction()
         });
 
         // Get RefreshToken Time
@@ -58,9 +56,9 @@ export class TimerEffects {
         fromAPI.logoutFailureAction,
         fromAPI.refreshTokenFailureAction
       ),
-      withLatestFrom(this.store.select(fromTimer.selectTimer(this.refreshTokenName))),
+      withLatestFrom(this.store.select(fromTimer.selectTimer(this.refreshTokenTimerId))),
       filter(([, timer]) => timer != null),
-      map(() => { return fromTimer.deleteTimerAction({ timerId: this.refreshTokenName }); })
+      map(() => { return fromTimer.deleteTimerAction({ timerId: this.refreshTokenTimerId }); })
     )
   );
 
