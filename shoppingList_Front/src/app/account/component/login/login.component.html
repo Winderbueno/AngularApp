@@ -3,7 +3,7 @@
   <form [ngrxFormState]="formGroupState" (submit)="onSubmit()">
 
     <!-- Email -->
-    <k-form-field-input [formId]="formId" [ctrlName]="'Email'" [format]="'email'">
+    <k-form-field-input [formId]="formId" [ctrlName]="'Email'" [format]="FieldFormatEnum.Email">
     </k-form-field-input>
 
     <!-- Password -->

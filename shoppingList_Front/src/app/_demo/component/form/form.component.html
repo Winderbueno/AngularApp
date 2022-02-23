@@ -5,11 +5,11 @@
     gdColumns.xs="1fr">
 
     <k-form-field-input [formId]="formId" [ctrlName]="'Email'" [label]="'Field with -email- format'"
-      [placeholder]="'Ex : patate@puree.com'" [value]="'patate@puree.com'" [format]="'email'">
+      [placeholder]="'Ex : patate@puree.com'" [value]="'patate@puree.com'" [format]="FieldFormatEnum.Email">
     </k-form-field-input>
 
     <k-form-field-input [formId]="formId" [ctrlName]="'Number'" [label]="'Field with -number- format'" [value]="'Bonjour'"
-      [format]="'number'">
+      [format]="FieldFormatEnum.Number">
     </k-form-field-input>
 
     <k-form-field-select [formId]="formId" [ctrlName]="'Select field'" [options]="productCatEnum$|async">
