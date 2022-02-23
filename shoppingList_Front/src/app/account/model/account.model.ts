@@ -1,4 +1,4 @@
-import { RoleEnum } from "@account/model/enum/role.enum";
+import { RoleEnum } from "./role.enum";
 
 export interface Account {
 
