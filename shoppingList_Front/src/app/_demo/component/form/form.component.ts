@@ -20,7 +20,7 @@ export class FormComponent extends fromFormComponent.FormComponent {
   minLength = minLength;
   maxLength = maxLength;
 
-  // Proposition values
+  // Option values
   readonly productCatEnum$ = this.store.select(fromEnum.selectEnumValues('ProductCategory'));
 
   ngOnInit(){

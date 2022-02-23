@@ -14,7 +14,7 @@ import { MaterialThemeEnum } from '@material/model/theme.enum';
 })
 export class ThemeMenuComponent extends FormComponent {
 
-  // Proposition values
+  // Option values
   materialThemeEnumKeys: string[] = Object.keys(MaterialThemeEnum);
 
   ngOnInit(){

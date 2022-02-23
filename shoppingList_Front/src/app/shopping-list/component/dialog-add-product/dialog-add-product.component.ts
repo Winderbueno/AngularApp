@@ -19,7 +19,7 @@ import { ShoppingListService } from '@shoppingList/service/shopping-list.service
 @Component({ templateUrl: './dialog-add-product.component.html' })
 export class DialogAddProductComponent extends FormComponent {
 
-  // Proposition values
+  // Option values
   readonly productCatEnum$ = this.store.select(fromEnum.selectEnumValues('ProductCategory'));
   readonly productSubCatEnum$ = this.store.select(fromEnum.selectEnumValues('ProductSubCategory'));
 

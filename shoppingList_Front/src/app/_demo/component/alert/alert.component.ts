@@ -14,7 +14,7 @@ import * as fromAlert from '@alert/store/';
 })
 export class AlertComponent extends FormComponent {  
 
-  // Proposition values
+  // Option values
   alertTypeEnum = fromAlert.AlertTypeEnum;
   alertTypeEnumValues: string[] = Object.keys(fromAlert.AlertTypeEnum);
 
