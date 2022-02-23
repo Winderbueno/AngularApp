@@ -14,7 +14,7 @@ export class FormEffects {
 
   resetForm$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(fromForm.clickedOnButtonAction),
+      ofType(fromForm.buttonClickedAction),
       filter((action) => action.buttonId === 'Reset Form'),
       map(() => fromForm.resetFormAction({ formId:'Form' }))
     )
@@ -22,7 +22,7 @@ export class FormEffects {
 
   clearFormValue$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(fromForm.clickedOnButtonAction),
+      ofType(fromForm.buttonClickedAction),
       filter((action) => action.buttonId === 'Clear Form Value'),
       map(() => fromForm.clearFormValueAction({ formId:'Form' }))
     )

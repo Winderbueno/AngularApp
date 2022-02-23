@@ -12,8 +12,8 @@ export {
 /* Action */
 export {
   addControlInFormAction,
+  buttonClickedAction,
   clearFormValueAction,
-  clickedOnButtonAction,
   createFormAction,
   deleteFormAction,
   dynamicValidateFormAction,

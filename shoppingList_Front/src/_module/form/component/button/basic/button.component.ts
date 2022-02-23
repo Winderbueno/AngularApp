@@ -47,6 +47,6 @@ export class ButtonComponent {
   constructor(private store: Store) {}
 
   throwAction(): void {
-    this.store.dispatch(fromStore.clickedOnButtonAction({buttonId: this.buttonId }));
+    this.store.dispatch(fromStore.buttonClickedAction({buttonId: this.buttonId }));
   }
 }

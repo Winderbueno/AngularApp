@@ -34,7 +34,7 @@ export class ShoppingListAPIEffects {
 
   resetBoughtStatus$ = createEffect(() => 
     this.actions$.pipe(
-      ofType(fromForm.clickedOnButtonAction),
+      ofType(fromForm.buttonClickedAction),
       filter((action) => action.buttonId === 'Reset Status'),
       switchMap(() =>
         this.shoppingListService.resetBoughtStatus("1").pipe(

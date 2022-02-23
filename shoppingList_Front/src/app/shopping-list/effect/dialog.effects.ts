@@ -18,7 +18,7 @@ export class DialogEffects {
   openDialog$ = createEffect(() =>
 
     this.actions$.pipe(
-      ofType(fromForm.clickedOnButtonAction),
+      ofType(fromForm.buttonClickedAction),
       filter((action) => action.buttonId === 'Add Product'),
       map(action => {
         this.dialog.open(

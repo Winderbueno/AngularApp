@@ -21,19 +21,19 @@ export const addControlInFormAction = createAction(
   }>()
 );
 
+// TODO - extract from @form module
+export const buttonClickedAction = createAction (
+  ModuleEnum.Form,
+  EmitterTypeEnum.Component,
+  'buttonClicked',
+  props<{ buttonId: string }>()
+);
+
 export const clearFormValueAction = createAction(
   ModuleEnum.Form,
   EmitterTypeEnum.Store,
   'clearFormValue',
   props<{ formId: string }>()
-);
-
-// TODO - extract from @form module
-export const clickedOnButtonAction = createAction (
-  ModuleEnum.Form,
-  EmitterTypeEnum.Component,
-  'clickedOnButton',
-  props<{ buttonId: string }>()
 );
 
 export const createFormAction = createAction(
