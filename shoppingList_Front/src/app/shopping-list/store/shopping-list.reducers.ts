@@ -5,6 +5,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 //#region State, Action
 import { ShoppingListState, initialState, adapter } from './shopping-list.state';
 import * as fromAPI from '../service/shopping-list.api.actions';
+import * as fromComponent from '../component';
 import * as AccountAPIActions from '@account/service/account.api.actions'; // TODO
 //#endregion
 
@@ -14,25 +15,20 @@ const shoppingListReducer = createReducer(
   initialState,
 
   on(fromAPI.loadActiveSuccessAction,
-    (state, { shoppingList }) => {
-      return adapter.addOne(shoppingList,
-        { ...state,
-          isActiveLoaded: true
-        }
-      )
-    }
+    (state, { shoppingList }) => 
+      { return adapter.addOne(shoppingList, { ...state, isActiveLoaded: true }) }
   ),
 
   on(
     AccountAPIActions.logoutSuccessAction,
     AccountAPIActions.logoutFailureAction,
     AccountAPIActions.refreshTokenFailureAction, // TODO - Any type of Logout should restore state to initial state
-    (state) => {
-      return adapter.removeAll({
-        ...state,
-        isActiveLoaded: false,
-      })
-    }
+    (state) => 
+      { return adapter.removeAll({ ...state, isActiveLoaded: false,}) }
+  ),
+
+  on(fromComponent.productChipClickedAction,
+    (state, action) => { return state }
   ),
 );
 

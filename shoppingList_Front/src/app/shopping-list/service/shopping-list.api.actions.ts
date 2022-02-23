@@ -36,3 +36,17 @@ export const resetBoughtStatusFailureAction = createAction(
   'resetBoughtStatusFailure',
   props<{ error: string }>()
 );
+
+export const updtProductSuccessAction = createAction(
+  ModuleEnum.ShoppingList,
+  EmitterTypeEnum.Api,
+  'updtProductSuccess',
+  props<{ message: any }>()
+);
+
+export const updtProductFailureAction = createAction(
+  ModuleEnum.ShoppingList,
+  EmitterTypeEnum.Api,
+  'updtProductFailure',
+  props<{ error: string }>()
+);

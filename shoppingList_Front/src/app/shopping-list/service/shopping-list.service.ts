@@ -36,7 +36,7 @@ export class ShoppingListService {
   }
 
   /** In a shoppingList, update a product  */
-  updtProduct(idSL: string, body: UsedProduct) : Observable<{}> {
+  updtProduct(idSL: string, body: Partial<UsedProduct>) : Observable<{}> {
     return this.http.put(`${baseUrl}/update-product/${idSL}`, body);
   }
 

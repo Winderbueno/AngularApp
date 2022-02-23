@@ -8,6 +8,7 @@ import { map, switchMap, catchError, filter } from 'rxjs/operators';
 //#region Action, Selector
 import * as fromForm from '@form/store/';
 import * as fromAPI from '../service/shopping-list.api.actions';
+import * as fromComponent from '../component';
 import * as fromStore from '../store/';
 //#endregion
 
@@ -40,6 +41,18 @@ export class ShoppingListAPIEffects {
         this.shoppingListService.resetBoughtStatus("1").pipe(
           map((resp) => fromAPI.resetBoughtStatusSuccessAction({ shoppingList: resp })),
           catchError((resp) => of(fromAPI.loadActiveFailureAction({ error: resp })))
+        )
+      )
+  ));
+
+  updtProduct$ = createEffect(() => 
+    this.actions$.pipe(
+      ofType(fromComponent.productChipClickedAction),
+      switchMap((action) =>
+        this.shoppingListService.updtProduct(action.shoppingListId, action.productUpdate.changes)
+          .pipe(
+            map((resp) => fromAPI.updtProductSuccessAction({ message: resp })),
+            catchError((resp) => of(fromAPI.updtProductFailureAction({ error: resp })))
         )
       )
   ));

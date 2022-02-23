@@ -2,12 +2,12 @@
 import { AfterViewChecked, Component, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { Store } from '@ngrx/store';
-import { SetValueAction } from 'ngrx-forms';
 //#endregion
 
 //#region App Component, Model
 import * as fromStore from '@shoppingList/store/';
 import * as fromForm from '@form/store/';
+import * as Actions from './shopping-list-view.actions';
 //#endregion
 
 //#region Model
@@ -45,23 +45,21 @@ export class ShoppingListViewComponent implements AfterViewChecked {
     });
   }
 
-  openExpansionPanel(){
-    this.store.dispatch(new SetValueAction('ShoppingListActions.Accordeon', true));   
-  }
-
   /** For clicked product, swap 'bought' status value */
   swapProductBoughtStatus(prod: UsedProduct): void {
+    
+    let prodChanges:Partial<UsedProduct> = {
+      usedProductId: prod.usedProductId,
+      bought: !prod.bought
+    };
 
-    // Swap 'bought' status value
-    if(prod) prod.bought ? prod.bought=false : prod.bought = true;
-
-    // TODO - Update Product
-    /*this.store.dispatch(
-      ShopListPageActions.updtProduct({
-        ShoppingListId: this.myShoppingList.shoppingListId,
-        Product: prod
+    // Update Product
+    this.store.dispatch(
+      Actions.productChipClickedAction({
+        shoppingListId: this.myShoppingList[0].shoppingListId,
+        productUpdate: { id: prod.usedProductId, changes: prodChanges }
       })
-    );*/
+    );
   }
 
   deleteProduct(prod: UsedProduct): void {

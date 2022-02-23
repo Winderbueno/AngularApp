@@ -15,17 +15,18 @@ export const deleteProductFromShoppingListAction = createAction (
   EmitterTypeEnum.Component,
   'deleteProductFromShoppingList',
   props<{
-    ShoppingListId: string,
-    ProductId: string }>()
+    shoppingListId: string,
+    productId: string }>()
 );
 
-export const swapShoppingListProductBoughtStatusAction = createAction (
+export const productChipClickedAction = createAction (
   ModuleEnum.ShoppingList,
   EmitterTypeEnum.Component,
-  'swapShoppingListProductBoughtStatus',
+  'productChipClicked',
   props<{
-    ShoppingListId: string,
-    product: Update<UsedProduct> }>()
+    shoppingListId: string,
+    productUpdate: Update<UsedProduct>
+  }>()
 );
 
 export const updateShoppingListProductAction = createAction (
@@ -33,6 +34,6 @@ export const updateShoppingListProductAction = createAction (
   EmitterTypeEnum.Component,
   'updateShoppingListProduct',
   props<{
-    ShoppingListId: string,
+    shoppingListId: string,
     product: Update<UsedProduct> }>()
 );
