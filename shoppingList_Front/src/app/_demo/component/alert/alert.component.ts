@@ -5,9 +5,6 @@ import { Component } from '@angular/core';
 //#region Module
 import { FormComponent } from '@form/component';
 import * as fromAlert from '@alert/store/';
-import * as fromTimer from '@timer/store';
-import * as fromLoader from '@loader/store';
-import { Timer } from '@timer/model/timer.model';
 //#endregion
 
 
