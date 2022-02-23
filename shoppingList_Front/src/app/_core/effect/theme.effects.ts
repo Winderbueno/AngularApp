@@ -7,7 +7,7 @@ import { filter, map, withLatestFrom } from 'rxjs/operators';
 //#endregion
 
 //#region Module
-import { MaterialThemeEnum } from '@material/enum/theme.enum'
+import { MaterialThemeEnum } from '@material/model/theme.enum'
 import * as fromForm from '@form/store/';
 import { SetValueAction } from 'ngrx-forms';
 //#endregion

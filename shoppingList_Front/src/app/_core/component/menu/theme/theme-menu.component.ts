@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 
 //#region Module
 import { FormComponent } from '@form/component';
-import { MaterialThemeEnum } from '@material/enum/theme.enum';
+import { MaterialThemeEnum } from '@material/model/theme.enum';
 //#endregion
 
 
