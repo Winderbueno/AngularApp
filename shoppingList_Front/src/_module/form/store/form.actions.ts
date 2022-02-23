@@ -97,7 +97,7 @@ export const validateControlAction = createAction(
   'validateControl',
   props<{
     controlId: string,
-    ValidationFns: ValidationFn<any>[]
+    validationFns: ValidationFn<any>[]
   }>()
 );
 

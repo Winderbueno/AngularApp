@@ -25,7 +25,7 @@ export class ValidationEffects {
       map((action: SetValueAction<FormValue>) => {
         return fromStore.validateControlAction({
           controlId: action.controlId,
-          ValidationFns: this.validationFnsService.getStaticControlValidationFns(
+          validationFns: this.validationFnsService.getStaticControlValidationFns(
             action.controlId.split('.')[0],
             action.controlId.split('.')[1])
         });

@@ -93,7 +93,7 @@ const formReducer = createReducer(
       newState[formInfo[0]] = validateByControlId(
         newState[formInfo[0]],
         action.controlId,
-        action.ValidationFns);
+        action.validationFns);
       return newState;
     }),
 );
