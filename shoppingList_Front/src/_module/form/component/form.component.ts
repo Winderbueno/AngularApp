@@ -7,7 +7,7 @@ import { FormGroupState } from 'ngrx-forms';
 
 //#region Store, Model
 import * as fromStore from '@form/store/';
-import { FormValue } from '@form/store/form.state';
+import { FormValue } from '@form/model/form-value.model';
 import { FieldFormatEnum } from '@form/model/field-format.enum';
 //#endregion
 

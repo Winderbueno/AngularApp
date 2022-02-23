@@ -1,8 +1,7 @@
-﻿/* State */
+﻿/* Model */
 export {
-  FormState,
   FormValue
-} from './form.state';
+} from '../model/form-value.model';
 
 /* Reducer */
 export {

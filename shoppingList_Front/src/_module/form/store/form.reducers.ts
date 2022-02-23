@@ -13,8 +13,9 @@ import {
 //#endregion
 
 //#region State, Action
-import { FormState, initialState, FormValue } from './form.state';
+import { FormState, initialState } from './form.state';
 import * as fromAction from './form.actions';
+import { FormValue } from '../model/form-value.model';
 import { StaticControlValidationFns } from '../model/validation-fns.model';
 //#endregion
 

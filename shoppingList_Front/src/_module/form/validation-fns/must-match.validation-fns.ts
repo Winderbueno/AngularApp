@@ -1,10 +1,10 @@
 //#region Angular, Material, NgRx
-import { FormGroupState } from 'ngrx-forms';
 import { equalTo } from 'ngrx-forms/validation';
 //#endregion
 
-//#region Store
-import { FormValue } from '../store/form.state';
+//#region Model
+import { FormGroupState } from 'ngrx-forms';
+import { FormValue } from '../model/form-value.model';
 import { DynamicControlValidationFn } from '../model/validation-fns.model';
 //#endregion
 

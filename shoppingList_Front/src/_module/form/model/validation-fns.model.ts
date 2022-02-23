@@ -1,6 +1,6 @@
 //#region NgRx
 import { FormGroupState, ValidationFn } from 'ngrx-forms';
-import { FormValue } from '../store/form.state';
+import { FormValue } from './form-value.model';
 //#endregion
 
 export interface StaticControlValidationFns {

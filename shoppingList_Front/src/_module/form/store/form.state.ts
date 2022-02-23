@@ -1,10 +1,7 @@
-//#region NgRx
+//#region Model
 import { FormGroupState } from 'ngrx-forms';
+import { FormValue } from '@form/model/form-value.model';
 //#endregion
-
-export interface FormValue {
-  [controlName: string]: string | number | boolean;
-}
 
 export interface FormState {
   [formID: string]: FormGroupState<FormValue>;

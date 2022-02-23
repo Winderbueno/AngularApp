@@ -8,7 +8,7 @@ import {
   StaticControlValidationFns, 
   DynamicControlValidationFn, 
   DynamicControlValidationFns } from '../model/validation-fns.model';
-import { FormValue } from '../store/form.state';
+import { FormValue } from '../model/form-value.model';
 //#endregion
 
 
