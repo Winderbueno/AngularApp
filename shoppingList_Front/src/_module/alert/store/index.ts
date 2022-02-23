@@ -1,4 +1,9 @@
-﻿/* Reducer */
+﻿/* Model */
+export {
+  AlertTypeEnum
+} from '../model/alert-type.enum';
+
+/* Reducer */
 export {
   featureKey,
   reducer
@@ -17,8 +22,3 @@ export {
   selectCurrentAlert,
   isAlerting
 } from './alert.selectors';
-
-/* Enum */
-export {
-  AlertTypeEnum
-} from '../model/enum/alert-type.enum';

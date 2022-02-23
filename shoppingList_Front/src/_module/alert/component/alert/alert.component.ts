@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 //#region Store, Component, Model
 import * as fromStore from '../../store/';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
-import { AlertTypeEnumClass } from '../../model/enum/alert-type.enum';
+import { AlertTypeEnumClass } from '../../model/alert-type.enum';
 //#endregion
 
 

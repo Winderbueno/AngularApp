@@ -1,4 +1,4 @@
-import { AlertTypeEnum } from "./enum/alert-type.enum";
+import { AlertTypeEnum } from "./alert-type.enum";
 
 export class Alert {
 

@@ -12,7 +12,7 @@ import * as fromAlert from '@alert/store/';
 //#endregion
 
 //#region Model
-import { AlertTypeEnum } from '@alert/model/enum/alert-type.enum';
+import { AlertTypeEnum } from '@alert/store/';
 //#endregion
 
 
