@@ -1,4 +1,9 @@
-﻿/* Reducer */
+﻿/* Model */
+export {  
+  TokenStatusEnum
+} from '../model/token-status.enum';
+
+/* Reducer */
 export {
   featureKey,
   reducer
@@ -17,8 +22,3 @@ export {
   selectState,
   selectToken
 } from './token.selectors';
-
-/* Enum */
-export {  
-  TokenStatusEnum
-} from '../model/enum/token-status.enum';

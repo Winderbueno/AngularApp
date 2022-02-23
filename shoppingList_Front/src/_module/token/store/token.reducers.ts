@@ -2,13 +2,10 @@
 import { Action, createReducer, on } from '@ngrx/store';
 //#endregion
 
-//#region State, Action
+//#region State, Action, Model
 import { TokenState, initialState, adapter } from './token.state';
 import * as fromAction from './token.actions';
-//#endregion
-
-//#region Model
-import { TokenStatusEnum } from "../model/enum/token-status.enum";
+import { TokenStatusEnum } from "../model/token-status.enum";
 //#endregion
 
 export const featureKey = 'token';

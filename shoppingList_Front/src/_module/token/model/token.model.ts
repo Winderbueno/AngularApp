@@ -1,4 +1,4 @@
-import { TokenStatusEnum } from "./enum/token-status.enum";
+import { TokenStatusEnum } from "./token-status.enum";
 
 export class Token {
 
