@@ -13,4 +13,3 @@ export interface Account {
     userName?: string;
     role?: RoleEnum;
 }
-
