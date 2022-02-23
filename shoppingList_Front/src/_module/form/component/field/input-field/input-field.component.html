@@ -6,7 +6,7 @@
     [ngrxFormControlState]="ctrl"
     type="{{ visibility ? 'text' : 'password' }}"
     placeholder="{{ placeholder }}"
-    [ngrxValueConverter]="format === 'number' ? numberConverter : defaultConverter">
+    [ngrxValueConverter]="format === FieldFormatEnum.Number ? numberConverter : defaultConverter">
 
   <!-- Icon button to manage input visibility -->
   <button *ngIf="_visibilityToggle && ctrl.value !== ''" 

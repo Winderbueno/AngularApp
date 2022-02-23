@@ -5,9 +5,10 @@ import { Store } from '@ngrx/store';
 import { FormGroupState } from 'ngrx-forms';
 //#endregion
 
-//#region Store
+//#region Store, Model
 import * as fromStore from '@form/store/';
 import { FormValue } from '@form/store/form.state';
+import { FieldFormatEnum } from '@form/model/field-format.enum';
 //#endregion
 
 /**
@@ -15,11 +16,11 @@ import { FormValue } from '@form/store/form.state';
  *
  * This component manage a Form that has :
  * 
- *  - FormGroupState, 
+ *  - A FormGroupState, 
  *    > Represent the state of the form (valid, dirty, touch...)
  *    > Identifiable by as FormId
  * 
- *  - Persistance Property
+ *  - Persistance Properties,
  *    > By default, the form will be persisted in global ngrx state after component destruction.
  *    > Doing so, all field in the form will be as a consequence persisted. 
  *    > However it is possible to deactivate this behaviour
@@ -38,8 +39,10 @@ export class FormComponent implements OnInit, OnDestroy {
   protected _formGroupState: FormGroupState<FormValue> | undefined;
   private _formId: string = "defaultFormId";
   private _unpersist: boolean = false;
+  private _fieldFormatEnum=FieldFormatEnum;
   
   // Accessor
+  get FieldFormatEnum() { return this._fieldFormatEnum; }
   get formId() { return this._formId; }
   protected set formId(input: string) { this._formId = input; }
   get value() { return this._formGroupState!.value }

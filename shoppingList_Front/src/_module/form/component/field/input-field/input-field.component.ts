@@ -6,6 +6,7 @@ import { email, number, minLength } from 'ngrx-forms/validation';
 
 //#region Component, Model, Service
 import { FieldComponent } from '@form/component';
+import { FieldFormatEnum } from '@form/model/field-format.enum';
 //#endregion
 
 
@@ -17,6 +18,9 @@ import { FieldComponent } from '@form/component';
   templateUrl: 'input-field.component.html' })
 export class InputFieldComponent extends FieldComponent {
 
+  // Accessibility for template
+  FieldFormatEnum = FieldFormatEnum;
+
   visibility: boolean = true;
   _visibilityToggle: boolean | undefined;
 
@@ -27,14 +31,14 @@ export class InputFieldComponent extends FieldComponent {
   ngOnInit() {
     
     switch (this.format) {
-      case 'email': { super.validationFns.push(email); break; }
-      case 'number': { super.validationFns.push(number); break; }
-      case 'password': {
-        // Activate VisibilityToggle
+      case FieldFormatEnum.Email: { super.validationFns.push(email); break; }
+      case FieldFormatEnum.Number: { super.validationFns.push(number); break; }
+      case FieldFormatEnum.Password: {
+        // Activate visibilityToggle
         if(this._visibilityToggle === undefined) this._visibilityToggle = true;
-        // Hide text
+        // Hide field value
         this.visibility = false;
-        // Format Policy - TODO - Change
+        // Apply password format policy - TODO - Change policy
         super.validationFns.push(minLength(6));
         break;
       }

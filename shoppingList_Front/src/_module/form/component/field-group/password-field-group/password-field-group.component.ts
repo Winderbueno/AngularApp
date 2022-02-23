@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 //#endregion
 
 //#region Component, Model, Service
+import { FieldFormatEnum } from '@form/model/field-format.enum';
 import { mustMatch } from '@form/validation-fns/must-match.validation-fns';
 //#endregion
 
@@ -26,8 +27,9 @@ export class PasswordFieldGroupComponent {
   @Input() formId!: string;
   @Input() withConfirm: boolean = false;
 
-  // Make mustMatch fonction accessible in the template
+  // Accessibility for template
   mustMatch = mustMatch;
+  FieldFormatEnum = FieldFormatEnum;
 
   constructor(protected store: Store) { }
 }

@@ -5,12 +5,13 @@ import { FormControlState, FormGroupState, ValidationFn } from 'ngrx-forms';
 import { required } from 'ngrx-forms/validation';
 //#endregion
 
-//#region Component, Model, Service
+//#region Store, Model, Service
 import * as fromStore from '@form/store/';
 import { FormValue } from '@form/store/form.state';
-import { ErrorMessageService } from '@module/form/service/error-message.service';
-import { ValidationFnsService } from '@form/service/validation-fns.service';
 import { DynamicControlValidationFn } from '@form/model/validation-fns.model';
+import { FieldFormatEnum } from '@form/model/field-format.enum';
+import { ErrorMessageService } from '@form/service/error-message.service';
+import { ValidationFnsService } from '@form/service/validation-fns.service';
 //#endregion
 
 /**
@@ -18,7 +19,7 @@ import { DynamicControlValidationFn } from '@form/model/validation-fns.model';
  *
  * This component manage a Field that has :
  * 
- *  - FormControlState,
+ *  - A FormControlState,
  *    > Represent the state of the field (valid, dirty, touch...)
  *    > It is a subobject of a FormGroupState (That has the id : <formId>)
  *    > Identifiable in FormGroupState by its 'ctrlName' (Unique Identifier in FormGroupState)
@@ -30,27 +31,27 @@ import { DynamicControlValidationFn } from '@form/model/validation-fns.model';
  *    > Value, editable by user
  *    > Error Message, generated according to field validation properties
  * 
- *  - Validation Property,
+ *  - Validation Properties,
  *    > 'required' input parameter
  *    > Generated internal validationFns (Accessible from children)
  *    > Configurable DynamicValidationFns (Accessible from children)
  * 
- *  - Persistance Property,
+ *  - Persistance Properties,
  *    > Field persistance in global ngrx store after component destroy is handled by related Form
  *    > However it is possible to enforce field unpersistance with 'unpersist' input
  * 
  * Technical implementation
  * 
  *  - FormControlState is defined & updated in Ngrx global state using 'ngrx-forms' library
- *  - ValidationFns (static & dynamic) are managed by homemade angular service
- *  - Error messages are managed by homemade angular service
+ *  - ValidationFns (static & dynamic) are managed by an angular service
+ *  - Error messages are managed by an angular service
  *
  *  @param formID - FormGroupState Id to add the FormControlState on
  *  @param ctrlName - FormControlState Name
  *  @param label - (? | Default:<ctrlName>)
  *  @param placeholder - (?)
  *  @param value - (? | Default:'')
- *  @param format - (?) - Can be 'email' | 'password' | 'number'
+ *  @param format - (?) - Defined by Enum (Can be 'Email' | 'Number' | 'Password')
  *  @param required - (? | Default:true) - Add 'required' validationFn on the field
  *  @param addValidationFns - (?) - Array of ValidationFns 
  *  @param addDynamicValidationFns - (?) - Array of DynamicValidationFns
@@ -59,13 +60,14 @@ import { DynamicControlValidationFn } from '@form/model/validation-fns.model';
 @Component({template: ``})
 export class FieldComponent implements OnInit, OnDestroy {
 
+  // Private variable
   private _ctrlName!: string;
   private _formGroupState : FormGroupState<FormValue> | undefined;
   private _validationFns: ValidationFn<any>[] = [];
   private _dynamicValidationFns: DynamicControlValidationFn[] = [];
   private _unpersist: boolean = false;
 
-  // Input
+  // Component input
   @Input() formId!: string;
   @Input() 
   get ctrlName() { return this._ctrlName; }
@@ -73,10 +75,10 @@ export class FieldComponent implements OnInit, OnDestroy {
     this._ctrlName = input;
     if (this.label === undefined) this.label = input; 
   }
-  @Input() label!: string;
+  @Input() label: string | undefined;
   @Input() placeholder: string | undefined;
   @Input() value: string | boolean | number = '';
-  @Input() format: string = '';
+  @Input() format: FieldFormatEnum | undefined;
   @Input() required: boolean = true;
   @Input() addValidationFns: ValidationFn<any>[] = [];
   @Input() addDynamicValidationFns: DynamicControlValidationFn[] = [];
