@@ -56,7 +56,7 @@ export class RouterEffects {
       ofType(fromAPI.refreshTokenSuccessAction),
       withLatestFrom(this.store.select(fromRouter.selectUrl)),
       tap(([, currentUrl]) => {
-        if(currentUrl.includes('account')){
+        if(currentUrl && currentUrl.includes('account')){
           this.router.navigate(['/my-shopping-list']);
         }
       })
