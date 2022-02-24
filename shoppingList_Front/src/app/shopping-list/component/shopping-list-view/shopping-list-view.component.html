@@ -14,8 +14,8 @@
 
     <mat-accordion [multi]=true #accordion="matAccordion">
 
-      <mat-expansion-panel 
-        *ngFor="let catProd of myShoppingList[0].catProducts" 
+      <mat-expansion-panel
+        *ngFor="let catProd of myShoppingList[0].catProducts"
         [expanded]="$any(accordionExpanded$|async)"
         hideToggle>
 
