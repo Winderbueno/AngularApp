@@ -1,5 +1,5 @@
 //#region Angular, Material, NgRx
-import { AfterViewChecked, Component, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { Store } from '@ngrx/store';
 //#endregion
@@ -20,33 +20,27 @@ import { UsedProduct } from '@shoppingList/model/current/used-product.model';
   selector: 'shopping-list-view',
   templateUrl: './shopping-list-view.component.html' 
 })
-export class ShoppingListViewComponent implements AfterViewChecked {
+export class ShoppingListViewComponent {
 
   readonly editMode$=this.store.select(fromForm.selectControlValue('ShoppingListActions','EditMode'));
   readonly accordionExpanded$=this.store.select(fromForm.selectControlValue('ShoppingListActions','Accordeon'));
 
   // Shopping List
+  editMode:boolean = false;
   myShoppingList!: ShoppingList[];
   @ViewChild('accordion',{static:false}) Accordion!: MatAccordion;
   
   constructor(private store: Store) {
-    this.store.select(fromStore.selectActive)
-      .subscribe(value => this.myShoppingList=value);
-  }
-
-  ngAfterViewChecked(){
-    this.accordionExpanded$.subscribe(val => {
-      // TODO - Should not update the view after ngChanges (in Component Lifecycle)
-      if(this.Accordion != undefined) {
-        val === true ?
-        this.Accordion.openAll() :
-        this.Accordion.closeAll();
-      }
-    });
+    this.store.select(fromStore.selectActive).subscribe(value => this.myShoppingList=value);
+    this.store.select(fromForm.selectControlValue('ShoppingListActions','EditMode'))
+      .subscribe(variable => this.editMode = variable as boolean);
   }
 
   /** For clicked product, swap 'bought' status value */
-  swapProductBoughtStatus(prod: UsedProduct): void {
+  swapProductBoughtStatus(
+    category:string,
+    subCategory:string,
+    prod: UsedProduct): void {
     
     let prodChanges:Partial<UsedProduct> = {
       usedProductId: prod.usedProductId,
@@ -54,12 +48,16 @@ export class ShoppingListViewComponent implements AfterViewChecked {
     };
 
     // Update Product
-    this.store.dispatch(
-      Actions.productChipClickedAction({
-        shoppingListId: this.myShoppingList[0].shoppingListId,
-        productUpdate: { id: prod.usedProductId, changes: prodChanges }
-      })
-    );
+    if(this.editMode === false) {
+      this.store.dispatch(
+        Actions.productChipClickedAction({
+          shoppingListId: this.myShoppingList[0].shoppingListId,
+          category: category,
+          subCategory: subCategory,
+          productUpdate: { id: prod.usedProductId, changes: prodChanges }
+        })
+      );
+    }
   }
 
   deleteProduct(prod: UsedProduct): void {

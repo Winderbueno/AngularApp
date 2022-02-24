@@ -32,32 +32,26 @@ const shoppingListReducer = createReducer(
   on(fromComponent.productChipClickedAction,
     (state, action) => {
 
+      // TODO - Reducer with nested update...
       let changes = {
         ...state.entities[action.shoppingListId],
-        catProducts: state.entities[action.shoppingListId]?.catProducts?.map(
-          (item, index) => {
-            if (index !== 0) { return item; } // Not the one we want to change
-            return { ...item,
-              subCatProducts: item.subCatProducts.map(
-                (item, index) => {
-                  if (index !== 0) { return item; }
+        catProducts: state.entities[action.shoppingListId]?.catProducts?.map((item) => {
+          if (item.category !== action.category) { return item; }
+          return { ...item,
+            subCatProducts: item.subCatProducts.map((item) => {
+              if (item.subCategory !== action.subCategory) { return item; }
+              return { ...item,
+                products: item.products.map((item) => {
+                  if (item.usedProductId !== action.productUpdate.id) { return item; }
                   return { ...item,
-                    products: item.products.map(
-                      (item, index) => {
-                        if (index !== (action.productUpdate.id as number -1)) { return item; }
-                        return { ...item,
-                          bought: !item.bought
-                        };
-                      }
-                    )
+                    bought: !item.bought
                   };
-                }
-              )
-            }
+                })
+              };
+            })
           }
-        )
+        })
       }
-
 
       let shoppingListUpdt: Update<ShoppingList> = {
         id: action.shoppingListId,

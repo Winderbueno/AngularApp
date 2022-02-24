@@ -25,6 +25,8 @@ export const productChipClickedAction = createAction (
   'productChipClicked',
   props<{
     shoppingListId: string,
+    category: string,
+    subCategory: string,
     productUpdate: Update<UsedProduct>
   }>()
 );

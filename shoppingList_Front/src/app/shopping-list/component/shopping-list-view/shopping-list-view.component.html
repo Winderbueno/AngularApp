@@ -14,7 +14,10 @@
 
     <mat-accordion [multi]=true #accordion="matAccordion">
 
-      <mat-expansion-panel *ngFor="let catProd of myShoppingList[0].catProducts" hideToggle>
+      <mat-expansion-panel 
+        *ngFor="let catProd of myShoppingList[0].catProducts" 
+        [expanded]="$any(accordionExpanded$|async)"
+        hideToggle>
 
         <!-- Header containing the product category -->
         <mat-expansion-panel-header>
@@ -28,7 +31,9 @@
             <span> {{ subCatProd.subCategory }} :&nbsp;</span>
             <mat-chip-list multiple>
               <div *ngFor="let prod of subCatProd.products">
-                <mat-chip (click)="swapProductBoughtStatus(prod)" [selected]="prod.bought">
+                <mat-chip 
+                  (click)="swapProductBoughtStatus(catProd.category, subCatProd.subCategory,prod)" 
+                  [selected]="prod.bought">
                   {{ prod.name }}
                   <mat-icon matChipRemove *ngIf="editMode$|async" (click)="deleteProduct(prod)">cancel</mat-icon>
                 </mat-chip>
