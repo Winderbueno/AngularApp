@@ -38,9 +38,10 @@ export class ShoppingListAPIEffects {
       ofType(fromForm.buttonClickedAction),
       filter((action) => action.buttonId === 'Reset Status'),
       switchMap(() =>
-        this.shoppingListService.resetBoughtStatus("1").pipe(
-          map((resp) => fromAPI.resetBoughtStatusSuccessAction({ shoppingList: resp })),
-          catchError((resp) => of(fromAPI.loadActiveFailureAction({ error: resp })))
+        this.shoppingListService.resetBoughtStatus("1")
+          .pipe(
+            map((resp) => fromAPI.resetBoughtStatusSuccessAction({ shoppingList: resp })),
+            catchError((resp) => of(fromAPI.loadActiveFailureAction({ error: resp })))
         )
       )
   ));

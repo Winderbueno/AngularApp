@@ -42,6 +42,8 @@
 }
 
 // Disable animation transition
-.mat-expansion-panel {
+// TODO - Handle animation pb when clic on one 'mat-expansion-panel'
+.mat-expansion-panel,
+.mat-expansion-panel * {
   transition: none !important;
 }
