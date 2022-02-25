@@ -1,6 +1,5 @@
 //#region Angular, Material, NgRx
-import { Component, ViewChild } from '@angular/core';
-import { MatAccordion } from '@angular/material/expansion';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 //#endregion
 
@@ -28,7 +27,6 @@ export class ShoppingListViewComponent {
   // Shopping List
   editMode:boolean = false;
   myShoppingList!: ShoppingList[];
-  @ViewChild('accordion',{static:false}) Accordion!: MatAccordion;
   
   constructor(private store: Store) {
     this.store.select(fromStore.selectActive).subscribe(value => this.myShoppingList=value);
@@ -60,7 +58,7 @@ export class ShoppingListViewComponent {
     }
   }
 
-  deleteProduct(prod: UsedProduct): void {
+  deleteProduct(prod: UsedProduct) {
     // TODO - Delete Product
     /*this.store.dispatch(
       ShopListPageActions.deleteProduct({
