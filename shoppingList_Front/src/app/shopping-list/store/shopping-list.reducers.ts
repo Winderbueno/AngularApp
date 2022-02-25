@@ -30,8 +30,7 @@ const shoppingListReducer = createReducer(
 
   on(fromComponent.productChipClickedAction,
     (state, action) => {
-
-      // For clicked product, toggle its bought status 
+      // Toggle product bought status 
       // TODO - Nested update should be avoided in reducer
       let changes = {
         ...state.entities[action.shoppingListId],
@@ -55,8 +54,7 @@ const shoppingListReducer = createReducer(
   on(fromForm.buttonClickedAction,
     (state, action) => {
       if(action.buttonId === 'Reset Status') {
-
-        // Reset Bought status for all product
+        // Reset all product bought status
         // TODO - Nested update should be avoided in reducer 
         let changes = {
           ...state.entities[1],
@@ -71,7 +69,27 @@ const shoppingListReducer = createReducer(
       }
       return state; 
     }
-  )
+  ),
+
+  on(fromComponent.productChipDeleteButtonClickedAction,
+    (state, action) => {
+
+        // Delete Product
+        // TODO - Nested update should be avoided in reducer 
+        let changes = {
+          ...state.entities[1],
+          catProducts: state.entities[1]?.catProducts?.map((item) => {
+            return { ...item,
+              subCatProducts: item.subCatProducts.map((item) => {
+                return { ...item,
+                  products:  item.products.filter((item) => item.usedProductId !== Number(action.productId))
+                };})}})}
+                    
+        return adapter.updateOne({ id: 1, changes: changes }, state);
+      }
+    
+  ),
+
 );
 
 
