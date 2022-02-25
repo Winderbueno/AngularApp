@@ -2,13 +2,12 @@
 import { Action, createReducer, on } from '@ngrx/store';
 //#endregion
 
-//#region State, Action
+//#region State, Model, Action
 import { ShoppingListState, initialState, adapter } from './shopping-list.state';
+import * as fromForm from '@form/store';
 import * as fromAPI from '../service/shopping-list.api.actions';
 import * as fromComponent from '../component';
 import * as AccountAPIActions from '@account/service/account.api.actions'; // TODO
-import { Update } from '@ngrx/entity';
-import { ShoppingList } from '../model/current/shopping-list.model';
 //#endregion
 
 export const featureKey = 'shoppingList';
@@ -32,7 +31,8 @@ const shoppingListReducer = createReducer(
   on(fromComponent.productChipClickedAction,
     (state, action) => {
 
-      // TODO - Reducer with nested update...
+      // For clicked product, toggle its bought status 
+      // TODO - Nested update should be avoided in reducer
       let changes = {
         ...state.entities[action.shoppingListId],
         catProducts: state.entities[action.shoppingListId]?.catProducts?.map((item) => {
@@ -43,24 +43,35 @@ const shoppingListReducer = createReducer(
               return { ...item,
                 products: item.products.map((item) => {
                   if (item.usedProductId !== action.productUpdate.id) { return item; }
-                  return { ...item,
-                    bought: !item.bought
-                  };
-                })
-              };
-            })
-          }
-        })
-      }
-
-      let shoppingListUpdt: Update<ShoppingList> = {
+                  return { ...item, bought: !item.bought };})};})}})}
+      
+      return adapter.updateOne({
         id: action.shoppingListId,
         changes: changes
-      };
-      
-      return adapter.updateOne(shoppingListUpdt, state);
+      }, state);
     }
   ),
+
+  on(fromForm.buttonClickedAction,
+    (state, action) => {
+      if(action.buttonId === 'Reset Status') {
+
+        // Reset Bought status for all product
+        // TODO - Nested update should be avoided in reducer 
+        let changes = {
+          ...state.entities[1],
+          catProducts: state.entities[1]?.catProducts?.map((item) => {
+            return { ...item,
+              subCatProducts: item.subCatProducts.map((item) => {
+                return { ...item,
+                  products: item.products.map((item) => {
+                    return { ...item, bought: true };})};})}})}
+                    
+        return adapter.updateOne({ id: 1, changes: changes }, state);
+      }
+      return state; 
+    }
+  )
 );
 
 
