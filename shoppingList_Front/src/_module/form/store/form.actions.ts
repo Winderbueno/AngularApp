@@ -24,7 +24,7 @@ export const addControlInFormAction = createAction(
 // TODO - extract from @form module
 export const buttonClickedAction = createAction (
   ModuleEnum.Form,
-  EmitterTypeEnum.Component,
+  EmitterTypeEnum.Store,
   'buttonClicked',
   props<{ buttonId: string }>()
 );
