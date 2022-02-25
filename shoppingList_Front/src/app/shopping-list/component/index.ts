@@ -1,7 +1,7 @@
 ﻿/* Action */
 export {
-  deleteProductFromShoppingListAction,
   productChipClickedAction,
+  productChipDeleteButtonClickedAction,
   updateShoppingListProductAction } from './shopping-list-view/shopping-list-view.actions';
 
 /* Component */

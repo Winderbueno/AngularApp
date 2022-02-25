@@ -50,3 +50,17 @@ export const updtProductFailureAction = createAction(
   'updtProductFailure',
   props<{ error: string }>()
 );
+
+export const deleteProductSuccessAction = createAction(
+  ModuleEnum.ShoppingList,
+  EmitterTypeEnum.Api,
+  'deleteProductSuccess',
+  props<{ message: any }>()
+);
+
+export const deleteProductFailureAction = createAction(
+  ModuleEnum.ShoppingList,
+  EmitterTypeEnum.Api,
+  'deleteProductFailure',
+  props<{ error: string }>()
+);

@@ -10,15 +10,6 @@ import { EmitterTypeEnum } from '@action/model/emitter-type.enum';
 import { UsedProduct } from '../../model/current/used-product.model';
 //#endregion
 
-export const deleteProductFromShoppingListAction = createAction (
-  ModuleEnum.ShoppingList,
-  EmitterTypeEnum.Component,
-  'deleteProductFromShoppingList',
-  props<{
-    shoppingListId: string,
-    productId: string }>()
-);
-
 export const productChipClickedAction = createAction (
   ModuleEnum.ShoppingList,
   EmitterTypeEnum.Component,
@@ -29,6 +20,15 @@ export const productChipClickedAction = createAction (
     subCategory: string,
     productUpdate: Update<UsedProduct>
   }>()
+);
+
+export const productChipDeleteButtonClickedAction = createAction (
+  ModuleEnum.ShoppingList,
+  EmitterTypeEnum.Component,
+  'productChipDeleteButtonClicked',
+  props<{
+    shoppingListId: string,
+    productId: string }>()
 );
 
 export const updateShoppingListProductAction = createAction (

@@ -21,10 +21,9 @@ import { UsedProduct } from '@shoppingList/model/current/used-product.model';
 })
 export class ShoppingListViewComponent {
 
+  // Component State
   readonly editMode$=this.store.select(fromForm.selectControlValue('ShoppingListActions','EditMode'));
   readonly accordionExpanded$=this.store.select(fromForm.selectControlValue('ShoppingListActions','Accordeon'));
-
-  // Shopping List
   editMode:boolean = false;
   myShoppingList!: ShoppingList[];
   
@@ -59,11 +58,11 @@ export class ShoppingListViewComponent {
   }
 
   deleteProduct(prod: UsedProduct) {
-    // TODO - Delete Product
-    /*this.store.dispatch(
-      ShopListPageActions.deleteProduct({
-        ShoppingListId: this.myShoppingList.shoppingListId,
-        ProductId : prod.usedProductId.toString()
-      }));*/
+    this.store.dispatch(
+      Actions.productChipDeleteButtonClickedAction({
+        shoppingListId: this.myShoppingList[0].shoppingListId,
+        productId : prod.usedProductId.toString()
+      })
+    );
   }
 }

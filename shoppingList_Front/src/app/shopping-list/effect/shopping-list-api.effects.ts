@@ -58,6 +58,18 @@ export class ShoppingListAPIEffects {
       )
   ));
 
+  deleteProduct$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromComponent.productChipDeleteButtonClickedAction),
+      switchMap((action) =>
+        this.shoppingListService.deleteProduct(action.shoppingListId, action.productId)
+          .pipe(
+            map((resp) => fromAPI.deleteProductSuccessAction({ message: resp })),
+            catchError((resp) => of(fromAPI.deleteProductFailureAction({ error: resp })))
+        )
+      )
+  ));
+
   constructor(
     private actions$: Actions,
     private shoppingListService: ShoppingListService
