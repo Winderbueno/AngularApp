@@ -82,14 +82,16 @@ export class ValidationEffects {
   // After form has been validated, if form is valid, throw action
   formValidated$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(
-        fromStore.validateFormAction),
+      ofType(fromStore.validateFormAction),
       switchMap((action) =>
         of(action).pipe(
           withLatestFrom(this.store.select(fromStore.selectForm(action.formId))),
           filter(([, formState]) => formState.isValid),
-          map(([action,]) => {
-            return fromStore.formValidatedAction({ formId: action.formId});
+          map(([action, formState]) => {
+            return fromStore.formValidatedAction({ 
+              formId: action.formId,
+              formValue: formState.value
+            });
           })
         )
       )

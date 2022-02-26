@@ -8,6 +8,7 @@ import { EmitterTypeEnum } from '@action/model/emitter-type.enum';
 //#region Model
 import { ValidationFn } from 'ngrx-forms';
 import { StaticControlValidationFns } from '../model/validation-fns.model';
+import { FormValue } from '../model/form-value.model';
 //#endregion
 
 export const addControlInFormAction = createAction(
@@ -64,7 +65,10 @@ export const formValidatedAction = createAction(
   ModuleEnum.Form,
   EmitterTypeEnum.Store,
   'formValidated',
-  props<{ formId: string }>()
+  props<{ 
+    formId: string,
+    formValue: FormValue
+  }>()
 );
 
 export const removeControlInFormAction = createAction(
