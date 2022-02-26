@@ -2,15 +2,12 @@
 
   <h1 mat-dialog-title>{{ formId }}</h1>
 
-  <!-- Name -->
   <k-form-field-input [formId]="formId" [ctrlName]="'ProductName'" [label]="'Name'">
   </k-form-field-input>
 
-  <!-- Category -->
   <k-form-field-select [formId]="formId" [ctrlName]="'Category'" [options]="productCatEnum$|async">
   </k-form-field-select>
 
-  <!-- Sub Category -->
   <k-form-field-select [formId]="formId" [ctrlName]="'SubCategory'" [options]="productSubCatEnum$|async">
   </k-form-field-select>
 
@@ -20,8 +17,5 @@
 
   <!-- Submit -->
   <k-button label='OK'></k-button>
-
-  <!-- Secondary Action -->
-  <button type='button' mat-button (click)="this.dialogRef.close();">No Thanks</button>
-
+  <k-button buttonId='Dialog.Product.Cancel' type='button' label='No Thanks'></k-button>
 </form>
