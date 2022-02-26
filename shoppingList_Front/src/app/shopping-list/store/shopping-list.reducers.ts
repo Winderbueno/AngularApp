@@ -59,8 +59,8 @@ const shoppingListReducer = createReducer(
       // Reset all product bought status
       // TODO - Nested update should be avoided in reducer 
       let changes = {
-        ...state.entities[1],
-        catProducts: state.entities[1]?.catProducts?.map((item) => {
+        ...state.entities[state.ids[0]],
+        catProducts: state.entities[state.ids[0]]?.catProducts?.map((item) => {
           return { ...item,
             subCatProducts: item.subCatProducts.map((item) => {
               return { ...item,
@@ -76,8 +76,8 @@ const shoppingListReducer = createReducer(
       // Delete Product
       // TODO - Nested update should be avoided in reducer 
       let changes = {
-        ...state.entities[1],
-        catProducts: state.entities[1]?.catProducts?.map((item) => {
+        ...state.entities[state.ids[0]], // TODO - Warn Id Ref
+        catProducts: state.entities[state.ids[0]]?.catProducts?.map((item) => {
           return { ...item,
             subCatProducts: item.subCatProducts.map((item) => {
               return { ...item,
@@ -101,8 +101,8 @@ const shoppingListReducer = createReducer(
       }
 
       let changes = {
-        ...state.entities[1],
-        catProducts: state.entities[1]?.catProducts?.map((item) => {
+        ...state.entities[state.ids[0]],
+        catProducts: state.entities[state.ids[0]]?.catProducts?.map((item) => {
           if (item.category != action.formValue.Category) { return item; }
           return { ...item,
             subCatProducts: item.subCatProducts.map((item) => {
