@@ -1,8 +1,7 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, withLatestFrom, filter } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 //#endregion
 
 //#region Action
@@ -20,19 +19,14 @@ export class TimerEffects {
     this.actions$.pipe(
       ofType(fromForm.formValidatedAction),
       filter((action) => action.formId === 'Alert'),
-      // TODO -> Faire selector form pour récup value du form
-      withLatestFrom(this.store.select(fromForm.selectFormValue('Alert'))),
-      map(([, formValue]) =>
+      map((action) =>
         fromTimer.defineTimerAction({ timer : new Timer({
           timerId: 'Alert',
-          time: (formValue.Delay as number)*1000
+          time: (action.formValue.Delay as number)*1000
         }) })
       )
     )
   );
 
-  constructor(
-    private actions$: Actions,
-    private store: Store
-  ) {}
+  constructor(private actions$: Actions) {}
 }

@@ -94,7 +94,7 @@ const shoppingListReducer = createReducer(
 
       var prodToCreate: UsedProduct = {
         usedProductId: 1, 
-        name: 'super test',
+        name: action.formValue.ProductName as string,
         bought: true,
         quantity: 1,
         note: "test"
@@ -103,12 +103,13 @@ const shoppingListReducer = createReducer(
       let changes = {
         ...state.entities[1],
         catProducts: state.entities[1]?.catProducts?.map((item) => {
+          if (item.category != action.formValue.Category) { return item; }
           return { ...item,
             subCatProducts: item.subCatProducts.map((item) => {
+              if (item.subCategory != action.formValue.SubCategory) { return item; }
               return { ...item,
                 products: [ ...item.products.slice(0, item.products.length),
-                  prodToCreate] 
-              };})}})}
+                  prodToCreate]};})}})}
                     
       return adapter.updateOne({ id: 1, changes: changes }, state);
     }

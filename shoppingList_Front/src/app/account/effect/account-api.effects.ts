@@ -28,17 +28,12 @@ export class AccountAPIEffects {
       ofType(fromForm.formValidatedAction),
       filter((action) => action.formId === 'Forgot Password'),
       switchMap((action) =>
-        of(action).pipe(
-          withLatestFrom(this.store.select(fromForm.selectFormValue(action.formId))),
-          switchMap(([, formValue]) => {
-            return this.accountService.forgotPassword(formValue.Email as string).pipe(
-              map(() => fromAPI.forgotPasswordSuccessAction({ // TODO - Msg (Error msg are in BACK, Success msg are here)
-                message: 'Please check your email for password reset instructions'
-              })),
-              catchError((error) => of(fromAPI.forgotPasswordFailureAction({ error: error })))
-            );
-          })
-        )
+        this.accountService.forgotPassword(action.formValue.Email as string)
+          .pipe(
+            map(() => fromAPI.forgotPasswordSuccessAction({ // TODO - Msg (Error msg are in BACK, Success msg are here)
+              message: 'Please check your email for password reset instructions'
+            })),
+            catchError((error) => of(fromAPI.forgotPasswordFailureAction({ error: error }))))
       )
     )
   );
@@ -48,18 +43,12 @@ export class AccountAPIEffects {
       ofType(fromForm.formValidatedAction),
       filter((action) => action.formId === 'Sign In'),
       switchMap((action) =>
-        of(action).pipe(
-          withLatestFrom(this.store.select(fromForm.selectFormValue(action.formId))),
-          switchMap(([, formValue]) => {
-            return this.accountService.login(
-              formValue.Email as string, 
-              formValue.Password as string)
-              .pipe(
-                map((response) => fromAPI.loginSuccessAction({ account: response })),
-                catchError((response) => of(fromAPI.loginFailureAction({ error: response })))
-              );
-          })
-        )
+        this.accountService.login(
+          action.formValue.Email as string,
+          action.formValue.Password as string)
+          .pipe(
+            map((response) => fromAPI.loginSuccessAction({ account: response })),
+            catchError((response) => of(fromAPI.loginFailureAction({ error: response }))))        
       )
     )
   );
@@ -79,18 +68,12 @@ export class AccountAPIEffects {
       ofType(fromForm.formValidatedAction),
       filter((action) => action.formId === 'Sign Up'),
       switchMap((action) =>
-        of(action).pipe(
-          withLatestFrom(this.store.select(fromForm.selectFormValue(action.formId))),
-          switchMap(([, formValue]) => {
-            return this.accountService.register(formValue)
-              .pipe(
-                map(() => fromAPI.registerSuccessAction({  // TODO - Msg
-                  message: 'Registration successful, please check your email for verification instructions'
-                })),
-                catchError((error) => of(fromAPI.registerFailureAction({ error: error })))
-              );
-          })
-        )
+        this.accountService.register(action.formValue)
+          .pipe(
+            map(() => fromAPI.registerSuccessAction({  // TODO - Msg
+              message: 'Registration successful, please check your email for verification instructions'
+            })),
+            catchError((error) => of(fromAPI.registerFailureAction({ error: error }))))
       )
     )
   );
@@ -121,18 +104,17 @@ export class AccountAPIEffects {
       filter((action) => action.formId === 'Reset Password'),
       switchMap((action) =>
         of(action).pipe(
-          withLatestFrom(this.store.select(fromForm.selectFormValue(action.formId))),
           withLatestFrom(this.store.select(fromToken.selectToken('Reset Password'))),
-          switchMap(([[, formValue], token]) => {
+          switchMap(([action, token]) => {
             return this.accountService.resetPassword(
               token?.value, 
-              formValue.Password as string, 
-              formValue.ConfirmPassword as string).pipe(
-              map(() => fromAPI.resetPasswordSuccessAction({ // TODO - Msg
-                message: 'Password successfully reinitialised, you can now log in :)'
-              })),
-              catchError((error) => of(fromAPI.resetPasswordFailureAction({ error: error })))
-            );
+              action.formValue.Password as string, 
+              action.formValue.ConfirmPassword as string)
+              .pipe(
+                map(() => fromAPI.resetPasswordSuccessAction({ // TODO - Msg
+                  message: 'Password successfully reinitialised, you can now log in :)'
+                })),
+                catchError((error) => of(fromAPI.resetPasswordFailureAction({ error: error }))))
           })
         )
       )

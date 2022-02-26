@@ -39,8 +39,7 @@ export class DialogEffects {
           case fromForm.formValidatedAction.type: { 
             if(action.formId !== 'Add Product') { filter=false; } break; }
           case fromForm.buttonClickedAction.type: { 
-            if(action.buttonId !== 'Dialog.Product.Cancel') { filter=false; } break; }
-        }        
+            if(action.buttonId !== 'Dialog.Product.Cancel') { filter=false; } break; }}        
         return filter;
       }),
       map(() => { if(this.dialogRef !== undefined) this.dialogRef.close(); })
