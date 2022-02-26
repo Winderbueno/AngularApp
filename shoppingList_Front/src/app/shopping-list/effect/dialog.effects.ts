@@ -30,8 +30,19 @@ export class DialogEffects {
 
   closeDialog$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(fromForm.buttonClickedAction),
-      filter((action) => action.buttonId === 'Dialog.Product.Cancel'),
+      ofType(
+        fromForm.formValidatedAction,
+        fromForm.buttonClickedAction),
+      filter((action: any) => {
+        let filter:boolean = true;
+        switch (action.type) {
+          case fromForm.formValidatedAction.type: { 
+            if(action.formId !== 'Add Product') { filter=false; } break; }
+          case fromForm.buttonClickedAction.type: { 
+            if(action.buttonId !== 'Dialog.Product.Cancel') { filter=false; } break; }
+        }        
+        return filter;
+      }),
       map(() => { if(this.dialogRef !== undefined) this.dialogRef.close(); })
     ), { dispatch: false }
   );
