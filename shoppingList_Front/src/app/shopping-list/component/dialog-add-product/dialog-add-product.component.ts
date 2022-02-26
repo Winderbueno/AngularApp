@@ -5,14 +5,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 //#endregion
 
-//#region Store
+//#region Module
 import * as fromEnum from '@enum/store/';
-//#endregion
-
-//#region App Component, Model
 import { FormComponent } from '@form/component';
-import { CreateProductReq } from '@shoppingList/model/current/create-product-req.model';
-import { ShoppingListService } from '@shoppingList/service/shopping-list.service';
 //#endregion
 
 
@@ -28,26 +23,12 @@ export class DialogAddProductComponent extends FormComponent {
     router: Router,
     route: ActivatedRoute,
     store: Store<{}>, // TODO
-    public dialogRef: MatDialogRef<DialogAddProductComponent>,
-    private shoppingListService: ShoppingListService,
-  ) {
+    public dialogRef: MatDialogRef<DialogAddProductComponent>) {
     super(router, route, store);
   }
 
   ngOnInit(): void {
-    super.formId = "Add Your Product";
+    super.formId = "Add Product";
     super.ngOnInit();
-  }
-
-  dispatchSubmitAction() {
-
-    // Create product to create
-    var prodToCreate: CreateProductReq = {
-      category: this.value.Category as string,
-      subCategory: this.value.SubCategory as string,
-      name: this.value.ProductName as string,
-      quantity: 1,
-      note: "test" // TODO - This field should note be that
-    }
   }
 }

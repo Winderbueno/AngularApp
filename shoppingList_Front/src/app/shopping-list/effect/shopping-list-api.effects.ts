@@ -1,8 +1,9 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { map, switchMap, catchError, filter } from 'rxjs/operators';
+import { map, switchMap, catchError, filter, withLatestFrom } from 'rxjs/operators';
 //#endregion
 
 //#region Action, Selector
@@ -15,6 +16,7 @@ import * as fromStore from '../store/';
 //#region Service, Model
 import { ShoppingListService } from '../service/shopping-list.service';
 import { ShoppingList } from '../model/current/shopping-list.model';
+import { CreateProductReq } from '../model/current/create-product-req.model';
 //#endregion
 
 
@@ -46,6 +48,34 @@ export class ShoppingListAPIEffects {
       )
   ));
 
+  createProduct$ = createEffect(() => 
+    this.actions$.pipe(
+      ofType(fromForm.formValidatedAction),
+      filter((action) => action.formId === 'Add Product'),
+      switchMap((action) =>
+        of(action).pipe(
+          withLatestFrom(this.store.select(fromForm.selectFormValue(action.formId))),
+          switchMap(([, formValue]) => {
+
+            var prodToCreate: CreateProductReq = {
+              category: formValue.Category as string,
+              subCategory: formValue.SubCategory as string,
+              name: formValue.ProductName as string,
+              quantity: 1,
+              note: "test" // TODO - This field should note be that
+            }
+
+            return this.shoppingListService.createProduct("1", prodToCreate)
+              .pipe(
+                map((resp) => fromAPI.updtProductSuccessAction({ message: resp })),
+                catchError((resp) => of(fromAPI.updtProductFailureAction({ error: resp })))
+              );
+          })
+        )
+      )
+    )
+  );
+
   updtProduct$ = createEffect(() => 
     this.actions$.pipe(
       ofType(fromComponent.productChipClickedAction),
@@ -72,6 +102,7 @@ export class ShoppingListAPIEffects {
 
   constructor(
     private actions$: Actions,
+    private store: Store,
     private shoppingListService: ShoppingListService
   ) { }
 }
