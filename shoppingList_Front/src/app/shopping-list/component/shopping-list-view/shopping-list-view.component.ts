@@ -51,7 +51,7 @@ export class ShoppingListViewComponent {
           shoppingListId: this.myShoppingList[0].shoppingListId,
           category: category,
           subCategory: subCategory,
-          productUpdate: { id: prod.usedProductId, changes: prodChanges }
+          productUpdate: { id: prod.usedProductId!, changes: prodChanges }
         })
       );
     }
@@ -61,7 +61,7 @@ export class ShoppingListViewComponent {
     this.store.dispatch(
       Actions.productChipDeleteButtonClickedAction({
         shoppingListId: this.myShoppingList[0].shoppingListId,
-        productId : prod.usedProductId.toString()
+        productId : prod.usedProductId!.toString()
       })
     );
   }

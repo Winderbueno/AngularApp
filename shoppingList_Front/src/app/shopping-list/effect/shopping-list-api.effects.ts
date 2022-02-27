@@ -64,8 +64,8 @@ export class ShoppingListAPIEffects {
 
         return this.shoppingListService.createProduct("1", prodToCreate)
           .pipe(
-            map((resp) => fromAPI.updtProductSuccessAction({ message: resp })),
-            catchError((resp) => of(fromAPI.updtProductFailureAction({ error: resp }))));
+            map((resp) => fromAPI.createProductSuccessAction({ product: resp })),
+            catchError((resp) => of(fromAPI.createProductFailureAction({ error: resp }))));
       })
     )
   );

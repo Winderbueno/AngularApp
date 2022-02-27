@@ -8,7 +8,6 @@ import * as fromForm from '@form/store';
 import * as fromAPI from '../service/shopping-list.api.actions';
 import * as fromComponent from '../component';
 import * as AccountAPIActions from '@account/service/account.api.actions'; // TODO
-import { UsedProduct } from '../model/current/used-product.model';
 //#endregion
 
 export const featureKey = 'shoppingList';
@@ -104,28 +103,21 @@ const shoppingListReducer = createReducer(
     }
   ),
 
-  on(fromForm.formValidatedAction,
+  on(fromAPI.createProductSuccessAction,
     (state, action) => {
-      if(action.formId !== 'Add Product') { return state; }
 
-      var prodToCreate: UsedProduct = {
-        usedProductId: 1, 
-        name: action.formValue.ProductName as string,
-        bought: false,
-        quantity: 1,
-        note: "test"
-      }
-
+      // TODO/WARN - we had a UsedProduct To state that does not respect UsedProduct of BACK-END 
+      // category & sub category are not in UsedProduct model in this version
       let changes = {
         ...state.entities[state.ids[0]],
         catProducts: state.entities[state.ids[0]]?.catProducts?.map((item) => {
-          if (item.category != action.formValue.Category) { return item; }
+          if (item.category != action.product.category) { return item; }
           return { ...item,
             subCatProducts: item.subCatProducts.map((item) => {
-              if (item.subCategory != action.formValue.SubCategory) { return item; }
+              if (item.subCategory != action.product.subCategory) { return item; }
               return { ...item,
                 products: [ ...item.products.slice(0, item.products.length),
-                  prodToCreate]};})}})}
+                  action.product]};})}})}
                     
       return adapter.updateOne({ id: 1, changes: changes }, state);
     }

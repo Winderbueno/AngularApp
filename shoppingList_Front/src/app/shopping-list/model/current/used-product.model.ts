@@ -1,5 +1,4 @@
 export interface CatUsedProduct {
-    // Basic Product Info
     category: string;
     subCatProducts: SubCatUsedProduct[];
 }
@@ -10,10 +9,13 @@ export interface SubCatUsedProduct {
 }
 
 // Usable Product Specific Info
-export class UsedProduct {
-  usedProductId!: number;
-  name!: string;
-  bought: boolean = false;
-  quantity: number = 0;
-  note: string | undefined;
+// TODO - differentiate model : API DTO / Internal Entity Model / Action Payload
+export interface UsedProduct {
+  usedProductId?: number;
+  name?: string;
+  bought?: boolean;
+  quantity?: number;
+  note?: string;
+  category?: string;
+  subCategory?: string;
 }
