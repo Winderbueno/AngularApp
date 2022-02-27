@@ -32,9 +32,7 @@ const formReducer = createReducer(
       return newState;
     }),
 
-  on(
-    fromAction.deleteFormAction,
-    fromAction.formValidatedAction,
+  on(fromAction.deleteFormAction,
     (state, action) => {
       const newState = { ...state };
       delete newState[action.formId];
