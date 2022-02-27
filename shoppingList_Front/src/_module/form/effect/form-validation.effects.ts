@@ -15,7 +15,7 @@ import { ValidationFnsService } from '../service/validation-fns.service';
 
 
 @Injectable()
-export class ValidationEffects {
+export class FormValidationEffects {
 
   // After form control had its value set, 
   // Run static control validation

@@ -1,2 +1,2 @@
 ﻿/* Effect */
-export { ValidationEffects } from './validation.effects';
+export { FormValidationEffects } from './form-validation.effects';

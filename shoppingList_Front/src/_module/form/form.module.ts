@@ -36,7 +36,7 @@ import * as fromStore from './store/';
     ),
 
     EffectsModule.forFeature([
-      Effects.ValidationEffects
+      Effects.FormValidationEffects
     ]),
   ],
   declarations: [
