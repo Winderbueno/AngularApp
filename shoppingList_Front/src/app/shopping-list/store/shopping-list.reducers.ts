@@ -73,16 +73,26 @@ const shoppingListReducer = createReducer(
 
   on(fromComponent.productChipDeleteButtonClickedAction,
     (state, action) => {
+
       // Delete Product
       // TODO - Nested update should be avoided in reducer 
       let changes = {
         ...state.entities[state.ids[0]], // TODO - Warn Id Ref
         catProducts: state.entities[state.ids[0]]?.catProducts?.map((item) => {
-          return { ...item,
-            subCatProducts: item.subCatProducts.map((item) => {
-              return { ...item,
-                products:  item.products.filter((item) => item.usedProductId !== Number(action.productId))
-              };})}})}
+          
+          let subCatToDelete:string|undefined;
+          let filteredSubCatProd = item.subCatProducts.map((item) => {
+            let filteredProd = item.products.filter(item => item.usedProductId !== Number(action.productId));
+            if(filteredProd.length === 0) subCatToDelete = item.subCategory;
+            return { ...item, products: filteredProd };
+          });
+
+          if (subCatToDelete) { 
+            filteredSubCatProd = item.subCatProducts.filter(item => item.subCategory !== subCatToDelete); 
+          }
+          return { ...item, subCatProducts: filteredSubCatProd }
+        })
+      }
                     
       return adapter.updateOne({ id: 1, changes: changes }, state);
     }
