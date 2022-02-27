@@ -45,10 +45,7 @@ const shoppingListReducer = createReducer(
                   if (item.usedProductId !== action.productUpdate.id) { return item; }
                   return { ...item, bought: !item.bought };})};})}})}
       
-      return adapter.updateOne({
-        id: action.shoppingListId,
-        changes: changes
-      }, state);
+      return adapter.updateOne({ id: action.shoppingListId, changes: changes }, state);
     }
   ),
 
@@ -75,23 +72,32 @@ const shoppingListReducer = createReducer(
     (state, action) => {
 
       // Delete Product
-      // TODO - Nested update should be avoided in reducer 
+      // TODO - Nested update should be avoided in reducer
+      let catToDelete:string|undefined;
+      let filteredCatProd = state.entities[state.ids[0]]?.catProducts?.map((item) => {
+          
+        let subCatToDelete:string|undefined;
+        let filteredSubCatProd = item.subCatProducts.map((item) => {
+          let filteredProd = item.products.filter(item => item.usedProductId !== Number(action.productId));
+          if(filteredProd.length === 0) subCatToDelete = item.subCategory;
+          return { ...item, products: filteredProd };
+        });
+
+        if (subCatToDelete) { 
+          filteredSubCatProd = item.subCatProducts.filter(item => item.subCategory !== subCatToDelete);
+          if(filteredSubCatProd.length === 0) catToDelete = item.category; 
+        }
+        return { ...item, subCatProducts: filteredSubCatProd }
+      });
+
+      if(catToDelete){
+        filteredCatProd = state.entities[state.ids[0]]?.catProducts?.
+          filter(item => item.category !== catToDelete);
+      }
+
       let changes = {
         ...state.entities[state.ids[0]], // TODO - Warn Id Ref
-        catProducts: state.entities[state.ids[0]]?.catProducts?.map((item) => {
-          
-          let subCatToDelete:string|undefined;
-          let filteredSubCatProd = item.subCatProducts.map((item) => {
-            let filteredProd = item.products.filter(item => item.usedProductId !== Number(action.productId));
-            if(filteredProd.length === 0) subCatToDelete = item.subCategory;
-            return { ...item, products: filteredProd };
-          });
-
-          if (subCatToDelete) { 
-            filteredSubCatProd = item.subCatProducts.filter(item => item.subCategory !== subCatToDelete); 
-          }
-          return { ...item, subCatProducts: filteredSubCatProd }
-        })
+        catProducts: filteredCatProd
       }
                     
       return adapter.updateOne({ id: 1, changes: changes }, state);
@@ -105,7 +111,7 @@ const shoppingListReducer = createReducer(
       var prodToCreate: UsedProduct = {
         usedProductId: 1, 
         name: action.formValue.ProductName as string,
-        bought: true,
+        bought: false,
         quantity: 1,
         note: "test"
       }
