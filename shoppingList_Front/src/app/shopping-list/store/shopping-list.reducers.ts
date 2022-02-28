@@ -112,12 +112,32 @@ const shoppingListReducer = createReducer(
         ...state.entities[state.ids[0]],
         catProducts: state.entities[state.ids[0]]?.catProducts?.map((item) => {
           if (item.category != action.product.category) { return item; }
-          return { ...item,
-            subCatProducts: item.subCatProducts.map((item) => {
+
+          // Check if subCategory is already in shoppingList
+          let subCatAlreadyUsed:boolean = false;
+          item.subCatProducts.forEach((item) => {
+            if(item.subCategory === action.product.subCategory) subCatAlreadyUsed=true;
+          });
+
+          // Add subCategory if does not exist
+          let newSubCatProducts = item.subCatProducts.slice();
+          if(!subCatAlreadyUsed) {
+            newSubCatProducts.push({ 
+              products:[action.product],
+              subCategory: action.product.subCategory! 
+            });
+          } else {
+            newSubCatProducts = newSubCatProducts.map((item) => {
               if (item.subCategory != action.product.subCategory) { return item; }
               return { ...item,
                 products: [ ...item.products.slice(0, item.products.length),
-                  action.product]};})}})}
+                  action.product]};
+            })
+          }          
+          
+          return { ...item, subCatProducts: newSubCatProducts }
+        })
+      }
                     
       return adapter.updateOne({ id: 1, changes: changes }, state);
     }
