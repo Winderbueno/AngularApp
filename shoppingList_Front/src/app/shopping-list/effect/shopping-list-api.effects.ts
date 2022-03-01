@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { map, switchMap, catchError, filter } from 'rxjs/operators';
+import { map, switchMap, catchError, filter, withLatestFrom } from 'rxjs/operators';
 //#endregion
 
 //#region Action, Selector
@@ -39,8 +39,9 @@ export class ShoppingListAPIEffects {
     this.actions$.pipe(
       ofType(fromForm.buttonClickedAction),
       filter((action) => action.buttonId === 'Reset Status'),
-      switchMap(() =>
-        this.shoppingListService.resetBoughtStatus("1")
+      withLatestFrom(this.store.select(fromStore.selectActive)),
+      switchMap(([, shoppingList]) =>
+        this.shoppingListService.resetBoughtStatus(shoppingList[0].shoppingListId)
           .pipe(
             map((resp) => fromAPI.resetBoughtStatusSuccessAction({ shoppingList: resp })),
             catchError((resp) => of(fromAPI.loadActiveFailureAction({ error: resp })))
@@ -52,7 +53,8 @@ export class ShoppingListAPIEffects {
     this.actions$.pipe(
       ofType(fromForm.formValidatedAction),
       filter((action) => action.formId === 'Add Product'),
-      switchMap((action) => {
+      withLatestFrom(this.store.select(fromStore.selectActive)),
+      switchMap(([action, shoppingList]) => {
         
         var prodToCreate: CreateProductReq = {
           category: action.formValue.Category as string,
@@ -62,7 +64,7 @@ export class ShoppingListAPIEffects {
           note: "test" // TODO - This field should note be that
         }
 
-        return this.shoppingListService.createProduct("1", prodToCreate)
+        return this.shoppingListService.createProduct(shoppingList[0].shoppingListId, prodToCreate)
           .pipe(
             map((resp) => fromAPI.createProductSuccessAction({ product: resp })),
             catchError((resp) => of(fromAPI.createProductFailureAction({ error: resp }))));

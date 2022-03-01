@@ -73,8 +73,9 @@ const shoppingListReducer = createReducer(
 
       // Delete Product
       // TODO - Nested update should be avoided in reducer
+      let shoppingListId = state.ids[0];
       let catToDelete:string|undefined;
-      let filteredCatProd = state.entities[state.ids[0]]?.catProducts?.map((item) => {
+      let filteredCatProd = state.entities[shoppingListId]?.catProducts?.map((item) => {
           
         let subCatToDelete:string|undefined;
         let filteredSubCatProd = item.subCatProducts.map((item) => {
@@ -91,16 +92,12 @@ const shoppingListReducer = createReducer(
       });
 
       if(catToDelete){
-        filteredCatProd = state.entities[state.ids[0]]?.catProducts?.
+        filteredCatProd = state.entities[shoppingListId]?.catProducts?.
           filter(item => item.category !== catToDelete);
       }
 
-      let changes = {
-        ...state.entities[state.ids[0]], // TODO - Warn Id Ref
-        catProducts: filteredCatProd
-      }
-                    
-      return adapter.updateOne({ id: 1, changes: changes }, state);
+      let changes = { ...state.entities[shoppingListId], catProducts: filteredCatProd };
+      return adapter.updateOne({ id: shoppingListId as string, changes: changes }, state);
     }
   ),
 
