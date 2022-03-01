@@ -8,6 +8,7 @@ import * as fromForm from '@form/store';
 import * as fromAPI from '../service/shopping-list.api.actions';
 import * as fromComponent from '../component';
 import * as AccountAPIActions from '@account/service/account.api.actions'; // TODO
+import { CatUsedProduct, SubCatUsedProduct, UsedProduct } from '../model/current/used-product.model';
 //#endregion
 
 export const featureKey = 'shoppingList';
@@ -108,35 +109,51 @@ const shoppingListReducer = createReducer(
 
       // TODO/WARN - we had a UsedProduct To state that does not respect UsedProduct of BACK-END 
       // category & sub category are not in UsedProduct model in this version
-      let changes = {
-        ...state.entities[state.ids[0]],
-        catProducts: state.entities[state.ids[0]]?.catProducts?.map((item) => {
-          if (item.category != action.product.category) { return item; }
+      let createdProduct: UsedProduct = action.product;
+      let newCatProducts: CatUsedProduct[] = state.entities[state.ids[0]]?.catProducts?.slice()!;
+      let newSubCatProduct: SubCatUsedProduct[] = [];
 
-          // Check if subCategory is already in shoppingList
-          let subCatAlreadyUsed:boolean = false;
+      // Check if Category/SubCategory of created product was already in shoppingList
+      let catAlreadyUsed: boolean = false;
+      let subCatAlreadyUsed:boolean = false;
+      newCatProducts?.forEach((item) => {
+        if(item.category === createdProduct.category) {
+          catAlreadyUsed=true;
           item.subCatProducts.forEach((item) => {
-            if(item.subCategory === action.product.subCategory) subCatAlreadyUsed=true;
-          });
+            if(item.subCategory === createdProduct.subCategory) subCatAlreadyUsed=true;
+          })
+        }
+      });
 
-          // Add subCategory if does not exist
-          let newSubCatProducts = item.subCatProducts.slice();
-          if(!subCatAlreadyUsed) {
-            newSubCatProducts.push({ 
-              products:[action.product],
-              subCategory: action.product.subCategory! 
-            });
-          } else {
-            newSubCatProducts = newSubCatProducts.map((item) => {
-              if (item.subCategory != action.product.subCategory) { return item; }
+      if(catAlreadyUsed && subCatAlreadyUsed) {
+        newCatProducts = newCatProducts?.map((item) => {
+          if (item.category != createdProduct.category) { return item; }
+          return { ...item,
+            subCatProducts: item.subCatProducts.map((item) => {
+              if (item.subCategory != createdProduct.subCategory) { return item; }
               return { ...item,
                 products: [ ...item.products.slice(0, item.products.length),
-                  action.product]};
+                  createdProduct]};
             })
-          }          
-          
-          return { ...item, subCatProducts: newSubCatProducts }
+          }
         })
+      } else if (!subCatAlreadyUsed) {
+        newSubCatProduct = [{
+          subCategory: createdProduct.subCategory!,
+          products: [createdProduct]
+        }];
+        //return { ...item, subCatProducts: newSubCatProducts }
+      }
+
+      if(!catAlreadyUsed) {
+        newCatProducts?.push({
+          category: createdProduct.category!,
+          subCatProducts: newSubCatProduct
+        });
+      } 
+    
+      let changes = { ...state.entities[state.ids[0]],
+        catProducts: newCatProducts
       }
                     
       return adapter.updateOne({ id: 1, changes: changes }, state);
