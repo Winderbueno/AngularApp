@@ -107,25 +107,25 @@ const shoppingListReducer = createReducer(
   on(fromAPI.createProductSuccessAction,
     (state, action) => {
 
-      // TODO/WARN - we had a UsedProduct To state that does not respect UsedProduct of BACK-END 
+      // TODO/WARN - we had a UsedProduct To state that does not respect UsedProduct model of BACK-END 
       // category & sub category are not in UsedProduct model in this version
       let createdProduct: UsedProduct = action.product;
       let newCatProducts: CatUsedProduct[] = state.entities[state.ids[0]]?.catProducts?.slice()!;
-      let newSubCatProduct: SubCatUsedProduct[] = [];
+      let newSubCatProduct: SubCatUsedProduct;
 
       // Check if Category/SubCategory of created product was already in shoppingList
-      let catAlreadyUsed: boolean = false;
-      let subCatAlreadyUsed:boolean = false;
+      let isCatInState: boolean = false;
+      let isSubCatInState: boolean = false;
       newCatProducts?.forEach((item) => {
         if(item.category === createdProduct.category) {
-          catAlreadyUsed=true;
+          isCatInState=true;
           item.subCatProducts.forEach((item) => {
-            if(item.subCategory === createdProduct.subCategory) subCatAlreadyUsed=true;
+            if(item.subCategory === createdProduct.subCategory) isSubCatInState=true;
           })
         }
       });
 
-      if(catAlreadyUsed && subCatAlreadyUsed) {
+      if(isSubCatInState) {
         newCatProducts = newCatProducts?.map((item) => {
           if (item.category != createdProduct.category) { return item; }
           return { ...item,
@@ -137,22 +137,25 @@ const shoppingListReducer = createReducer(
             })
           }
         })
-      } else if (!subCatAlreadyUsed) {
+      } else {
 
-        newSubCatProduct = [{
+        newSubCatProduct = {
           subCategory: createdProduct.subCategory!,
           products: [createdProduct]
-        }];
+        };
         
-        if(!catAlreadyUsed) {
+        if(!isCatInState) {
           newCatProducts?.push({
             category: createdProduct.category!,
-            subCatProducts: newSubCatProduct
+            subCatProducts: [newSubCatProduct]
           });
         } else {
           newCatProducts = newCatProducts?.map((item) => {
             if (item.category != createdProduct.category) { return item; }
-            return { ...item, subCatProducts: newSubCatProduct };
+            return { ...item, 
+              subCatProducts: [...item.subCatProducts.slice(0, item.subCatProducts.length), 
+                newSubCatProduct] 
+            };
           });
         }
       }
