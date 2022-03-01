@@ -54,17 +54,18 @@ const shoppingListReducer = createReducer(
       if(action.buttonId !== 'Reset Status') { return state; }
 
       // Reset all product bought status
-      // TODO - Nested update should be avoided in reducer 
+      // TODO - Nested update should be avoided in reducer
+      let shoppingListId = state.ids[0];
       let changes = {
-        ...state.entities[state.ids[0]],
-        catProducts: state.entities[state.ids[0]]?.catProducts?.map((item) => {
+        ...state.entities[shoppingListId],
+        catProducts: state.entities[shoppingListId]?.catProducts?.map((item) => {
           return { ...item,
             subCatProducts: item.subCatProducts.map((item) => {
               return { ...item,
                 products: item.products.map((item) => {
                   return { ...item, bought: true };})};})}})}
                     
-      return adapter.updateOne({ id: 1, changes: changes }, state); 
+      return adapter.updateOne({ id: shoppingListId as string, changes: changes }, state); 
     }
   ),
 
@@ -106,8 +107,9 @@ const shoppingListReducer = createReducer(
 
       // TODO/WARN - we had a UsedProduct To state that does not respect UsedProduct model of BACK-END 
       // category & sub category are not in UsedProduct model in this version
+      let shoppingListId = state.ids[0];
       let createdProduct: UsedProduct = action.product;
-      let newCatProducts: CatUsedProduct[] = state.entities[state.ids[0]]?.catProducts?.slice()!;
+      let newCatProducts: CatUsedProduct[] = state.entities[shoppingListId]?.catProducts?.slice()!;
       let newSubCatProduct: SubCatUsedProduct;
 
       // Check if Category/SubCategory of created product was already in shoppingList
@@ -157,8 +159,8 @@ const shoppingListReducer = createReducer(
         }
       }
     
-      let changes = { ...state.entities[state.ids[0]], catProducts: newCatProducts }
-      return adapter.updateOne({ id: 1, changes: changes }, state);
+      let changes = { ...state.entities[shoppingListId], catProducts: newCatProducts }
+      return adapter.updateOne({ id: shoppingListId as string, changes: changes }, state);
     }
   ),
 );
