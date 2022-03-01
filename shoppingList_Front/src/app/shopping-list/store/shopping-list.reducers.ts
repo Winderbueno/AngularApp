@@ -138,24 +138,26 @@ const shoppingListReducer = createReducer(
           }
         })
       } else if (!subCatAlreadyUsed) {
+
         newSubCatProduct = [{
           subCategory: createdProduct.subCategory!,
           products: [createdProduct]
         }];
-        //return { ...item, subCatProducts: newSubCatProducts }
+        
+        if(!catAlreadyUsed) {
+          newCatProducts?.push({
+            category: createdProduct.category!,
+            subCatProducts: newSubCatProduct
+          });
+        } else {
+          newCatProducts = newCatProducts?.map((item) => {
+            if (item.category != createdProduct.category) { return item; }
+            return { ...item, subCatProducts: newSubCatProduct };
+          });
+        }
       }
-
-      if(!catAlreadyUsed) {
-        newCatProducts?.push({
-          category: createdProduct.category!,
-          subCatProducts: newSubCatProduct
-        });
-      } 
     
-      let changes = { ...state.entities[state.ids[0]],
-        catProducts: newCatProducts
-      }
-                    
+      let changes = { ...state.entities[state.ids[0]], catProducts: newCatProducts }
       return adapter.updateOne({ id: 1, changes: changes }, state);
     }
   ),
