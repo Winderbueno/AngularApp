@@ -44,7 +44,7 @@ export class RouterEffects {
       tap(() => {
         // TODO - Get router param from store with selector
         // Get return url from route parameters or default to '/'
-        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
+        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'my-shopping-list';
         this.router.navigate([returnUrl]);
       })
     ),
