@@ -11,6 +11,7 @@ export { SlideToggleButtonComponent } from './button/slide-toggle-button/slide-t
 export { ButtonToggleFieldComponent } from './field/button-toggle-field/button-toggle-field.component';
 export { CheckBoxFieldComponent } from './field/checkbox-field/checkbox-field.component';
 export { DateFieldComponent } from './field/date-field/date-field.component';
+export { InputChipFieldComponent } from './field/input-chip-field/input-chip-field.component'
 export { InputFieldComponent } from './field/input-field/input-field.component';
 export { RadioButtonFieldComponent } from './field/radio-button-field/radio-button-field.component';
 export { SelectFieldComponent } from './field/select-field/select-field.component';

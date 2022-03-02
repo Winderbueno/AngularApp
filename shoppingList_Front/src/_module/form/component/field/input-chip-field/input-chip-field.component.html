@@ -1,0 +1,9 @@
+<mat-chip-list multiple>
+  <mat-chip>
+    <input
+      [ngrxFormControlState]="ctrl"
+      (keydown)="onKeyDown($event)"
+      type="text"
+      placeholder="{{ placeholder }}">
+  </mat-chip>
+</mat-chip-list>
