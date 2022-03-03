@@ -1,6 +1,7 @@
 <mat-chip-list multiple>
   <mat-chip>
     <input
+      autocomplete="off"
       [ngrxFormControlState]="ctrl"
       (keydown)="onKeyDown($event)"
       type="text"
