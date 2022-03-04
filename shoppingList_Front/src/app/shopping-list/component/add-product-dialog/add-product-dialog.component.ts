@@ -8,8 +8,8 @@ import { FormComponent } from '@form/component';
 //#endregion
 
 
-@Component({ templateUrl: './dialog-add-product.component.html' })
-export class DialogAddProductComponent extends FormComponent {
+@Component({ templateUrl: './add-product-dialog.component.html' })
+export class AddProductDialogComponent extends FormComponent {
 
   // Option values
   readonly productCatEnum$ = this.store.select(fromEnum.selectEnumValues('ProductCategory'));

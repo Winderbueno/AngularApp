@@ -40,7 +40,7 @@ import * as fromStore from './store/';
     /* Effect */
     EffectsModule.forFeature([
       Effects.AddProductAggregatorEffects,
-      Effects.DialogEffects,
+      Effects.AddProductDialogEffects,
       Effects.ShoppingListAPIEffects
     ]),
   ],
@@ -50,13 +50,13 @@ import * as fromStore from './store/';
 
     /* Component */
     Components.AddProductChipComponent,
-    Components.DialogAddProductComponent,
+    Components.AddProductDialogComponent,
     Components.ShoppingListActionComponent,
     Components.ShoppingListViewComponent
   ],
   entryComponents: [
     // Component Instantiated at runtime
-    Components.DialogAddProductComponent
+    Components.AddProductDialogComponent
   ],
 })
 export class ShoppingListModule {}

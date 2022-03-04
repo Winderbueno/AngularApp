@@ -8,21 +8,21 @@ import { filter, map } from 'rxjs/operators';
 //#region Action, Selector
 import * as Components from '../component';
 import * as fromForm from '@form/store';
-import { DialogAddProductComponent } from '../component';
+import { AddProductDialogComponent } from '../component';
 //#endregion
 
 
 @Injectable()
-export class DialogEffects {
+export class AddProductDialogEffects {
 
-  dialogRef:MatDialogRef<DialogAddProductComponent> | undefined;
+  dialogRef:MatDialogRef<AddProductDialogComponent> | undefined;
 
   openDialog$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromForm.buttonClickedAction),
       filter((action) => action.buttonId === 'Add Product'),
       map(() => { this.dialogRef = this.dialog.open(
-        Components.DialogAddProductComponent, 
+        Components.AddProductDialogComponent, 
         { width: '400px' }
       );})
     ), { dispatch: false }
