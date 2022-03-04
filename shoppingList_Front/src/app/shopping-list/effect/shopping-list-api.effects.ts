@@ -49,22 +49,13 @@ export class ShoppingListAPIEffects {
       )
   ));
 
-  createProduct$ = createEffect(() => 
+  addProduct$ = createEffect(() => 
     this.actions$.pipe(
-      ofType(fromForm.formValidatedAction),
-      filter((action) => action.formId === 'Add Product'),
-      withLatestFrom(this.store.select(fromStore.selectActive)),
-      switchMap(([action, shoppingList]) => {
-        
-        var prodToCreate: CreateProductReq = {
-          category: action.formValue.Category as string,
-          subCategory: action.formValue.SubCategory as string,
-          name: action.formValue.ProductName as string,
-          quantity: 1,
-          note: "test" // TODO - This field should note be that
-        }
-
-        return this.shoppingListService.createProduct(shoppingList[0].shoppingListId, prodToCreate)
+      ofType(fromAPI.createProductCallAction),
+      switchMap((action) => {
+        return this.shoppingListService.createProduct(
+          action.shoppingListId, 
+          action.product)
           .pipe(
             map((resp) => fromAPI.createProductSuccessAction({ product: resp })),
             catchError((resp) => of(fromAPI.createProductFailureAction({ error: resp }))));

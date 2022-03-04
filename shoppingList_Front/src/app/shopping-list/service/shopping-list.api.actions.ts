@@ -8,6 +8,7 @@ import { EmitterTypeEnum } from '@action/model/emitter-type.enum';
 //#region Model
 import { ShoppingList } from '../model/current/shopping-list.model';
 import { UsedProduct } from '../model/current/used-product.model';
+import { CreateProductReq } from '../model/current/create-product-req.model';
 //#endregion
 
 export const loadActiveSuccessAction = createAction(
@@ -36,6 +37,15 @@ export const resetBoughtStatusFailureAction = createAction(
   EmitterTypeEnum.Api,
   'resetBoughtStatusFailure',
   props<{ error: string }>()
+);
+
+export const createProductCallAction = createAction(
+  ModuleEnum.ShoppingList,
+  EmitterTypeEnum.Api,
+  'createProductCall',
+  props<{ 
+    shoppingListId: string
+    product: CreateProductReq }>()
 );
 
 export const createProductSuccessAction = createAction(

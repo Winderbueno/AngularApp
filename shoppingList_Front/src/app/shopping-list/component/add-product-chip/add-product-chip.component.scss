@@ -1,0 +1,17 @@
+input { 
+  color: inherit;
+  font: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  background-color: inherit;
+  border: none;
+  outline: none;
+  width: 60px;
+}
+
+input::placeholder { 
+  color: inherit;
+  font: inherit;
+  font-size: inherit;
+  text-align: center;
+}

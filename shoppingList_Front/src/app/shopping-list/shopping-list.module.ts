@@ -39,6 +39,7 @@ import * as fromStore from './store/';
 
     /* Effect */
     EffectsModule.forFeature([
+      Effects.AddProductAggregatorEffects,
       Effects.DialogEffects,
       Effects.ShoppingListAPIEffects
     ]),
@@ -48,6 +49,7 @@ import * as fromStore from './store/';
     Pages.HomePage,
 
     /* Component */
+    Components.AddProductChipComponent,
     Components.DialogAddProductComponent,
     Components.ShoppingListActionComponent,
     Components.ShoppingListViewComponent

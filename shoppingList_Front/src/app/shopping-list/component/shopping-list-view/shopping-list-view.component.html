@@ -15,7 +15,7 @@
     <mat-accordion [multi]=true #accordion="matAccordion">
 
       <mat-expansion-panel
-        *ngFor="let catProd of myShoppingList[0].catProducts"
+        *ngFor="let catProd of myShoppingList[0].catProducts; let iCat=index;"
         [expanded]="$any(accordionExpanded$|async)"
         hideToggle>
 
@@ -27,8 +27,11 @@
 
         <div fxLayout="column" fxLayoutGap="8px">
           <!-- Expanded Panel containing the product sub category and their products -->
-          <li fxLayout="raw" fxLayoutAlign="start center" *ngFor="let subCatProd of catProd.subCatProducts">
+          <li fxLayout="raw" fxLayoutAlign="start center" 
+            *ngFor="let subCatProd of catProd.subCatProducts; let iSubCat=index;">
+
             <span> {{ subCatProd.subCategory }} :&nbsp;</span>
+
             <mat-chip-list multiple>
               <div *ngFor="let prod of subCatProd.products">
                 <mat-chip 
@@ -39,6 +42,12 @@
                 </mat-chip>
               </div>
             </mat-chip-list>
+
+            <add-product-chip *ngIf="editMode$|async" 
+              [formId]="formId" 
+              [ctrlName]="'AddProduct-'+ catProd.category +'-'+ subCatProd.subCategory"
+              [placeholder]="'+'">
+            </add-product-chip>
           </li>
         </div>
       </mat-expansion-panel>
