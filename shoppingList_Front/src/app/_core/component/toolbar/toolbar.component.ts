@@ -11,7 +11,8 @@ import * as fromStore from '../../store/';
 
 @Component({
   selector: 'core-toolbar',
-  templateUrl: './toolbar.component.html'
+  templateUrl: './toolbar.component.html',
+  styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent {
 

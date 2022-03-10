@@ -1,7 +1,13 @@
-<mat-toolbar color="primary">
+<!-- Hidden toolbar - used to give the component a shape 
+  hence allowing it to be used as a flex-element in a flex container -->
+<mat-toolbar></mat-toolbar>
+
+<mat-toolbar 
+  class="fixed-toolbar"
+  color="primary">
 
   <!-- Sidenav Toggle -->
-  <div style="width: 100%;" fxLayout="raw" fxLayoutAlign="start center">
+  <div style="width: 100%;">
     <button fxShow.gt-xs="false" mat-icon-button aria-label="Menu icon"
       (click)="toggleSideNav();">
       <mat-icon>menu</mat-icon>
