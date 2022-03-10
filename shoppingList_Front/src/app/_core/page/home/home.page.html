@@ -1,25 +1,29 @@
-<div fxLayout="column" fxLayoutAlign="space-evenly stretch" class="page">
+<div fxLayout="column" class="page">
 
   <!-- Toolbar -->
   <core-toolbar></core-toolbar>
 
-  <mat-sidenav-container fxLayout="column" fxLayoutAlign="center stretch"
+  <mat-sidenav-container
+    fxLayout="column" fxLayoutAlign="center stretch"
     fxFlex="1" style="padding: 8px 0;">
 
-    <!-- Sidenav (for small screen) -->
-    <mat-sidenav role="navigation" [opened]="isOpenSideNav$|async" (closed)="closeSideNav()">
+    <!-- Sidenav (activable in small screen) -->
+    <mat-sidenav role="navigation"
+      ngStyle.gt-xs="top: 64px;" ngStyle.xs="top: 56px;"
+      [opened]="isOpenSideNav$|async" 
+      (closed)="closeSideNav()">
       <menu-main fxLayout="column"></menu-main>
     </mat-sidenav>
 
     <!-- Content -->
-    <mat-sidenav-content  role="main">
+    <mat-sidenav-content role="main">
       <router-outlet></router-outlet>
     </mat-sidenav-content>
     
   </mat-sidenav-container>
 
   <!-- Footer -->
-  <core-footer></core-footer>  
+  <core-footer style="z-index: 2;"></core-footer>  
 </div>
 
 <!-- Alert -->

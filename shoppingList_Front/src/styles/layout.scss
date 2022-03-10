@@ -3,6 +3,10 @@
   max-width: 100vw;
 }
 
+.mat-sidenav {
+  position: fixed !important;
+}
+
 // TODO - This cannot be persistant as DOM structure can be modified
 // in further version of Angular
 router-outlet + .ng-star-inserted,
