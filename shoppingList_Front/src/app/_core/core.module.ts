@@ -108,10 +108,11 @@ import { environment } from '@env/environment';
     Pages.HomePage,
 
     /* Component */
-    Components.FooterComponent,
+    Components.FooterDeskTopComponent,
+    Components.FooterMobileComponent,
     Components.MainMenuComponent,
     Components.ThemeMenuComponent,
-    Components.ToolbarComponent,
+    Components.TopBarDeskTopComponent,
     Components.UserMenuComponent
   ],
   bootstrap: [

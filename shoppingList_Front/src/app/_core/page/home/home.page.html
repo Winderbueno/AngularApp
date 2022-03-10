@@ -1,7 +1,7 @@
 <div fxLayout="column" class="page">
 
   <!-- Toolbar -->
-  <core-toolbar></core-toolbar>
+  <topbar-desktop fxHide.xs="true"></topbar-desktop>
 
   <mat-sidenav-container
     fxLayout="column" fxLayoutAlign="center stretch"
@@ -9,10 +9,12 @@
 
     <!-- Sidenav (activable in small screen) -->
     <mat-sidenav role="navigation"
-      [style.top.px]="56" ngStyle.xs="top:56px;" ngStyle.gt-xs="top:64px;"
+      fxHide.gt-xs="true"
+      [style.bottom.px]="56"
+      ngStyle.xs="bottom:56px;" ngStyle.gt-xs="top:64px;bottom:64px;"
       [opened]="isOpenSideNav$|async" 
       (closed)="closeSideNav()">
-      <menu-main fxLayout="column"></menu-main>
+      <menu-main style="height: 100%;" fxLayout="column" fxLayoutAlign="end stretch"></menu-main>
     </mat-sidenav>
 
     <!-- Content -->
@@ -23,7 +25,8 @@
   </mat-sidenav-container>
 
   <!-- Footer -->
-  <core-footer style="z-index: 2;"></core-footer>  
+  <footer-desktop fxHide.xs="true" style="z-index: 2;"></footer-desktop>
+  <footer-mobile fxHide.gt-xs="true" style="z-index: 2;"></footer-mobile>
 </div>
 
 <!-- Alert -->

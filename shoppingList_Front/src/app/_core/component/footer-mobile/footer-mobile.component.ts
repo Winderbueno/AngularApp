@@ -4,20 +4,16 @@ import { Store } from '@ngrx/store';
 //#endregion
 
 //#region Module
-import * as fromAccount from '@account/store/';
 import * as fromStore from '../../store/';
 //#endregion
 
 
 @Component({
-  selector: 'core-toolbar',
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
+  selector: 'footer-mobile',
+  templateUrl: './footer-mobile.component.html',
+  styleUrls: ['./footer-mobile.component.scss']
 })
-export class ToolbarComponent {
-
-  readonly isLogged$ = this.store.select(fromAccount.isLogged);
-
+export class FooterMobileComponent {
   constructor(private store: Store) {}
 
   toggleSideNav() {

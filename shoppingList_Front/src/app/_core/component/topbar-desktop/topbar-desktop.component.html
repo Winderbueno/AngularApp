@@ -6,13 +6,7 @@
   class="fixed-toolbar"
   color="primary">
 
-  <!-- Sidenav Toggle -->
-  <div style="width: 100%;">
-    <button fxShow.gt-xs="false" mat-icon-button aria-label="Menu icon"
-      (click)="toggleSideNav();">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </div>
+  <div style="width: 100%;"></div>
 
   <div fxLayout="raw" fxLayoutAlign="center center">
     <!-- Logo -->
@@ -23,14 +17,8 @@
     <menu-main fxShow.xs="false"></menu-main>
   </div>
 
-  <div style="width: 100%;" fxLayout="raw" fxLayoutAlign="end center">
+  <div style="width: 100%;" fxLayoutAlign="end center">
     <menu-theme></menu-theme>
-    <!-- Account -->
-    <div *ngIf="(isLogged$|async); else elseBlock">
-      <menu-user></menu-user>
-    </div>
-    <ng-template #elseBlock>
-      <a mat-button routerLink="/account/login">Sign In</a>
-    </ng-template>
+    <menu-user></menu-user>
   </div>
 </mat-toolbar>

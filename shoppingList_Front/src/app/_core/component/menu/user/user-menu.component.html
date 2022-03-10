@@ -1,7 +1,16 @@
-<a mat-button color="accent" [matMenuTriggerFor]="menu">{{account[0].userName}}</a>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item (click)="logout()">
-    <mat-icon>logout</mat-icon>
-    <span>Logout</span>
-  </button>
-</mat-menu>
+<!-- If Logged -->
+<div *ngIf="(isLogged$|async); else elseBlock">
+  <a mat-button color="accent" [matMenuTriggerFor]="menu">{{account[0].userName}}</a>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</div>
+
+<!-- Else -->
+<ng-template #elseBlock>
+  <a mat-button routerLink="/account/login">Sign In</a>
+</ng-template>
+

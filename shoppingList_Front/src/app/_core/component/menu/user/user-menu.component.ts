@@ -15,6 +15,7 @@ import { Account } from '@account/model/account.model';
 })
 export class UserMenuComponent {
 
+  readonly isLogged$ = this.store.select(fromAccount.isLogged);
   account!: Account[];
 
   constructor(private store: Store) {
