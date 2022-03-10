@@ -9,7 +9,7 @@
 
     <!-- Sidenav (activable in small screen) -->
     <mat-sidenav role="navigation"
-      ngStyle.gt-xs="top: 64px;" ngStyle.xs="top: 56px;"
+      [style.top.px]="56" ngStyle.xs="top:56px;" ngStyle.gt-xs="top:64px;"
       [opened]="isOpenSideNav$|async" 
       (closed)="closeSideNav()">
       <menu-main fxLayout="column"></menu-main>
