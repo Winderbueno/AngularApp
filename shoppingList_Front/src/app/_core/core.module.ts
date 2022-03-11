@@ -93,6 +93,7 @@ import { environment } from '@env/environment';
     /* Effect */
     EffectsModule.forRoot([
       Effects.CSSThemeEffects,
+      Effects.SideNavEffects,
       AccountAPIEffects, // TODO - Should be in Account Feature ?
       EnumAPIEffects, // TODO - Should be in Enum Module ?
     ]),
