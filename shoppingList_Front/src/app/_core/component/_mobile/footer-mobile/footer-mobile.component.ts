@@ -1,6 +1,7 @@
 //#region Angular, Material, NgRx
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 //#endregion
 
 //#region Module
@@ -14,6 +15,9 @@ import * as fromStore from '../../../store';
   styleUrls: ['./footer-mobile.component.scss']
 })
 export class FooterMobileComponent {
+
+  readonly isOpenSideNav$: Observable<boolean> = this.store.select(fromStore.isOpenSideNav);
+
   constructor(private store: Store) {}
 
   toggleSideNav() {

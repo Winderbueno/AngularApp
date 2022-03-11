@@ -9,7 +9,7 @@
       <!-- Sidenav Toggle -->
       <button mat-icon-button aria-label="Menu icon"
         (click)="toggleSideNav();">
-        <mat-icon>menu</mat-icon>
+        <mat-icon>{{ (isOpenSideNav$|async) ? 'menu_open': 'menu' }}</mat-icon>
       </button>
       <menu-theme></menu-theme>      
     </div>
