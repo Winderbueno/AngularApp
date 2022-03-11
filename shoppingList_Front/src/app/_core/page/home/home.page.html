@@ -1,19 +1,30 @@
-<div fxLayout="column" class="page">
+<!-- On 'xs-screen' (Particularly mobile), when sideNav is open, scrolling is locked  
+  This to avoid sidenav positionning problem on Chrome when Viewport dimension change
+  due to Chrome auto hide browser SearchBar -->
+<div fxLayout="column" class="page"
+  [ngClass.xs]="(isOpenSideNav$ | async) ? 'disable-scrolling': ''">
 
   <!-- Toolbar -->
   <topbar-desktop fxHide.xs="true"></topbar-desktop>
 
   <mat-sidenav-container
-    fxLayout="column" fxLayoutAlign="center stretch"
-    fxFlex="1" style="padding: 8px 0;">
+    fxLayout="column" fxLayoutAlign="center stretch" fxFlex="1" 
+    style="padding: 8px 0;">
 
-    <!-- Sidenav (activable in small screen) -->
+    <!-- Sidenav (activable only for 'xs-screen') -->
+    <!-- Note : if sidenav is open in 'xs-screen', then viewPort is resized for bigger,
+          sidenav will stay open, but sidenav-bottom will reach viewport bottom. -->
     <mat-sidenav role="navigation"
       [style.marginBottom.px]="56"
-      ngStyle.xs="margin-bottom:56px;" ngStyle.gt-xs="top:64px;margin-bottom:64px;"
+      ngStyle.xs="margin-bottom:56px;" ngStyle.gt-xs="top:64px;margin-bottom:0px;"
       [opened]="isOpenSideNav$|async" 
       (closed)="closeSideNav()">
-      <menu-main style="height: 100%;" fxLayout="column" fxLayoutAlign="end stretch"></menu-main>
+
+      <menu-main style="height: 100%" fxLayout="column" 
+        fxLayoutAlign.xs="end stretch" 
+        fxLayoutAlign.gt-xs="start stretch">
+      </menu-main>
+
     </mat-sidenav>
 
     <!-- Content -->

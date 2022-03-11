@@ -5,9 +5,17 @@
 @import './module/alert.scss';
 @import './module/material.scss';
 
-/* Layout */
-@import './layout.scss';
-
 body {
     margin: 0;
+}
+
+// TODO - This cannot be persistant as DOM structure can be modified
+// in further version of Angular
+router-outlet + .ng-star-inserted,
+router-outlet + ng-component {
+  flex:1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
 }

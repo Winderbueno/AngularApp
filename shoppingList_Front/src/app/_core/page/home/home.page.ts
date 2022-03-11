@@ -10,7 +10,8 @@ import * as fromStore from '../../store';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './home.page.html'
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss']
 })
 export class HomePage {
 
