@@ -19,7 +19,7 @@ export class SideNavEffects {
   // On route change, close the sideNav  
   closeSideNav$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(fromRouter.ROUTER_NAVIGATED),
+      ofType(fromRouter.ROUTER_REQUEST),
       map(() => fromStore.closeSideNavAction()), 
     )
   );
