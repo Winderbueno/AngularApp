@@ -108,6 +108,7 @@ import { environment } from '@env/environment';
     Pages.HomePage,
 
     /* Component */
+    Components.AppLogoComponent,
     Components.FooterDeskTopComponent,
     Components.FooterMobileComponent,
     Components.MainMenuComponent,

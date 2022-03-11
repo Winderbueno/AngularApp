@@ -1,4 +1,5 @@
 ﻿/* Component */
+export { AppLogoComponent } from './app-logo/app-logo.component';
 export { FooterDeskTopComponent } from './footer-desktop/footer-desktop.component';
 export { FooterMobileComponent } from './footer-mobile/footer-mobile.component';
 export { MainMenuComponent } from './menu/main/main-menu.component';
