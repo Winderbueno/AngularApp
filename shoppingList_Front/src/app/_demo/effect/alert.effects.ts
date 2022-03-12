@@ -39,7 +39,7 @@ export class AlertEffects {
         fromAlert.triggerAlertAction({
           alertType: formValue.Criticity as fromAlert.AlertTypeEnum,
           message: formValue.Message as string,
-          keepAfterRouteChange: false
+          keepAfterRouteChange: formValue.KeepAfterRouteChange as boolean
         })
       )
     )

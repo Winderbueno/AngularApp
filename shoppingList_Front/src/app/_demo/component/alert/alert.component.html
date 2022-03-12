@@ -24,6 +24,13 @@
           [options]="alertTypeEnumValues"
           [value]="alertTypeEnum.Success">
         </k-form-field-button-toggle>
+
+        <k-form-field-checkbox
+          [formId]="formId" 
+          [ctrlName]="'KeepAfterRouteChange'"
+          [label]="'Keep alert after route change ?'"
+          [required]="false">
+        </k-form-field-checkbox>
       </div>
     </div>
     
