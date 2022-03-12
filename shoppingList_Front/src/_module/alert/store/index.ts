@@ -11,6 +11,7 @@ export {
 
 /* Action */
 export {
+  alertDismissedAction,
   dismissAlertAction,
   keptAfterRouteChangeAction,
   triggerAlertAction
@@ -19,6 +20,5 @@ export {
 /* Selector */
 export {
   selectState,
-  selectCurrentAlert,
   isAlerting
 } from './alert.selectors';

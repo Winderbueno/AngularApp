@@ -38,11 +38,7 @@ import * as fromStore from './store/';
     ]),
   ],
   declarations: [
-    Components.AlertComponent,
-    Components.SnackbarComponent,
-  ],
-  exports: [
-    Components.AlertComponent,
+    Components.SnackbarComponent
   ]
 })
 export class AlertModule { }

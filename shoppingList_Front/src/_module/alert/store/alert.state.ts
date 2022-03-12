@@ -1,14 +1,11 @@
-//#region Model
-import { Alert } from "@alert/model/alert.model";
-//#endregion
-
 /* State */
 export interface AlertState {
-  keepAfterRouteChange: boolean | undefined;
-  alert?: Alert;
+  isAlerting: boolean;
+  keepAfterRouteChange: boolean;
 }
 
 /* Initial State */
 export const initialState: AlertState = {
+  isAlerting: false,
   keepAfterRouteChange: false
 };

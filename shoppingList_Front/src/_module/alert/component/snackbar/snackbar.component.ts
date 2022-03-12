@@ -1,6 +1,6 @@
 //#region Angular, Material, NgRx
 import { Component, Inject } from '@angular/core';
-import { MatSnackBarRef, MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
+import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 //#endregion
 
@@ -14,7 +14,6 @@ export class SnackbarComponent {
 
   constructor(
     private store: Store,
-    public snackBarRef: MatSnackBarRef<SnackbarComponent>,
     @Inject(MAT_SNACK_BAR_DATA) public message: any
   ) {}
 

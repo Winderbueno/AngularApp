@@ -8,6 +8,4 @@ import { featureKey } from '.';
 //#endregion
 
 export const selectState = createFeatureSelector<AlertState>(featureKey);
-export const selectCurrentAlert = createSelector(selectState, (state: AlertState) => state.alert);
-
-export const isAlerting = createSelector(selectState, (state: AlertState) => state.alert != undefined);
+export const isAlerting = createSelector(selectState, (state: AlertState) => state.isAlerting);

@@ -9,6 +9,12 @@ import { EmitterTypeEnum } from '@action/model/emitter-type.enum';
 import { AlertTypeEnum } from '../model/alert-type.enum';
 //#endregion
 
+export const alertDismissedAction = createAction(
+  ModuleEnum.Alert,
+  EmitterTypeEnum.Store,
+  'alertDismissed',
+);
+
 export const dismissAlertAction = createAction(
   ModuleEnum.Alert,
   EmitterTypeEnum.Store,
