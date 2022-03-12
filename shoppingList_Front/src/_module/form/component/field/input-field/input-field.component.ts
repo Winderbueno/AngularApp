@@ -29,7 +29,7 @@ export class InputFieldComponent extends FieldComponent {
   set visibilityToggle(input: boolean | undefined) { this._visibilityToggle = input; }  
 
   ngOnInit() {
-    
+    // According to format, add specific rules (validationFns, visibility...) 
     switch (this.format) {
       case FieldFormatEnum.Email: { super.validationFns.push(email); break; }
       case FieldFormatEnum.Number: { super.validationFns.push(number); break; }
@@ -43,17 +43,31 @@ export class InputFieldComponent extends FieldComponent {
         break;
       }
     }
-
     super.ngOnInit();
   }
 
-  // Default value converter
+  getConverter():any{
+    switch (this.format) {
+      case FieldFormatEnum.Email: { return this.trimConverter; }
+      case FieldFormatEnum.Number: { return this.numberConverter; }
+      default: { return this.defaultConverter; }
+    }
+  }
+
+  /* Value Converter */
+  // Default
   defaultConverter: NgrxValueConverter<string | number | boolean | null, string | number | boolean | null> = {
     convertViewToStateValue(valueInView) { return valueInView; },
     convertStateToViewValue(valueInState) { return valueInState ; }
   };
 
-  // Number value converter
+  // Trim
+  trimConverter: NgrxValueConverter<string | number | boolean | null, string | number | boolean | null> = {
+    convertViewToStateValue(valueInView) { return valueInView !== null ? valueInView.toString().trim() : null; },
+    convertStateToViewValue(valueInState) { return valueInState ; }
+  };
+
+  // Number
   numberConverter: NgrxValueConverter<string | null, string | number | null> = {
     convertViewToStateValue(valueInView:string) {
       return valueInView !== '' && !isNaN(Number(valueInView)) ? 
