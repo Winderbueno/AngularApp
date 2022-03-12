@@ -1,32 +1,20 @@
 <mat-card>
 
-  <!-- In "Edit mode", Add a category -->
-  <mat-expansion-panel *ngIf="editMode$|async" hideToggle>
-    <!-- TODO - Use 'accent' color from Material SASS Theme -->
-    <mat-expansion-panel-header #panelH (click)="panelH._toggle()" style='background-color:cornflowerblue'>
-      <mat-panel-title>Add Category</mat-panel-title>
-      <mat-icon>add_circle</mat-icon>
-    </mat-expansion-panel-header>
-  </mat-expansion-panel>
-
   <!-- Shopping List -->
   <div *ngIf="myShoppingList[0] && myShoppingList[0].catProducts">
 
     <mat-accordion [multi]=true #accordion="matAccordion">
-
-      <mat-expansion-panel
+      <mat-expansion-panel hideToggle
         *ngFor="let catProd of myShoppingList[0].catProducts; let iCat=index;"
-        [expanded]="$any(accordionExpanded$|async)"
-        hideToggle>
+        [expanded]="$any(accordionExpanded$|async)">
 
-        <!-- Header containing the product category -->
+        <!-- Header / Product category -->
         <mat-expansion-panel-header>
           <mat-panel-title>{{ catProd.category }}</mat-panel-title>
-          <mat-icon *ngIf="editMode$|async">delete</mat-icon>
         </mat-expansion-panel-header>
 
+        <!-- Expanded Panel containing the product sub category and their products -->
         <div fxLayout="column" fxLayoutGap="8px">
-          <!-- Expanded Panel containing the product sub category and their products -->
           <li fxLayout="raw" fxLayoutAlign="start center" 
             *ngFor="let subCatProd of catProd.subCatProducts; let iSubCat=index;">
 
@@ -51,7 +39,6 @@
           </li>
         </div>
       </mat-expansion-panel>
-
     </mat-accordion>
 
   </div>
