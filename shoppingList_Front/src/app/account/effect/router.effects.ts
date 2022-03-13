@@ -31,8 +31,7 @@ export class RouterEffects {
       tap(() => {
         this.router.navigate(['account/login']);
       })
-    ),
-    { dispatch: false }
+    ), { dispatch: false }
   );
 
 
@@ -47,8 +46,7 @@ export class RouterEffects {
         const returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'my-shopping-list';
         this.router.navigate([returnUrl]);
       })
-    ),
-    { dispatch: false }
+    ), { dispatch: false }
   );
 
   routeToShoppingListAtAutoLogin$ = createEffect(() =>
@@ -60,8 +58,7 @@ export class RouterEffects {
           this.router.navigate(['/my-shopping-list']);
         }
       })
-    ),
-    { dispatch: false }
+    ), { dispatch: false }
   );
 
   constructor(
