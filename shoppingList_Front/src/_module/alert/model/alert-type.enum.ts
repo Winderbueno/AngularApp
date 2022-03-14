@@ -6,6 +6,7 @@ export enum AlertTypeEnum {
 }
 
 // CSS Class
+// TODO -> CSS Class could be generated as 'alert'+ToLower(AlertTypeEnum)
 export const AlertTypeEnumClass = {
   [AlertTypeEnum.Success]: 'alert-success',
   [AlertTypeEnum.Error]: 'alert-danger',
