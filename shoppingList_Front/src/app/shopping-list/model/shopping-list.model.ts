@@ -7,9 +7,7 @@ export interface ShoppingList {
     name?: string;
     description?: string;
 
-    idAccount?: string; // User Id
-    idShoppingListModel?: string; // ShoppingList based model Id
-
-    // ShoppingList Product List
+    // Related object
+    idAccount?: string;
     catProducts?: CatUsedProduct[];
 }
