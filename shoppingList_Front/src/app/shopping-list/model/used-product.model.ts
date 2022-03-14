@@ -11,7 +11,7 @@ export interface SubCatUsedProduct {
 // Usable Product Specific Info
 // TODO - differentiate model : API DTO / Internal Entity Model / Action Payload
 export interface UsedProduct {
-  usedProductId?: number;
+  usedProductId?: number; // TODO - should be a string
   name?: string;
   bought?: boolean;
   quantity?: number;

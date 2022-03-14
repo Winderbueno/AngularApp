@@ -6,9 +6,9 @@ import { EmitterTypeEnum } from '@action/model/emitter-type.enum';
 //#endregion
 
 //#region Model
-import { ShoppingList } from '../model/current/shopping-list.model';
-import { UsedProduct } from '../model/current/used-product.model';
-import { CreateProductReq } from '../model/current/create-product-req.model';
+import { ShoppingList } from '../model/shopping-list.model';
+import { UsedProduct } from '../model/used-product.model';
+import { CreateProductReq } from '../model/create-product-req.model';
 //#endregion
 
 export const loadActiveSuccessAction = createAction(

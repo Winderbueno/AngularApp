@@ -8,7 +8,7 @@ import * as fromForm from '@form/store';
 import * as fromAPI from '../service/shopping-list.api.actions';
 import * as fromComponent from '../component';
 import * as AccountAPIActions from '@account/service/account.api.actions'; // TODO
-import { CatUsedProduct, SubCatUsedProduct, UsedProduct } from '../model/current/used-product.model';
+import { CatUsedProduct, SubCatUsedProduct, UsedProduct } from '../model/used-product.model';
 //#endregion
 
 export const featureKey = 'shoppingList';

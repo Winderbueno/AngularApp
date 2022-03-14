@@ -13,7 +13,7 @@ import * as fromForm from '@form/store/';
 import * as fromAPI from '../service/shopping-list.api.actions';
 import * as fromComponent from '../component';
 import * as fromStore from '../store';
-import { CreateProductReq } from '../model/current/create-product-req.model';
+import { CreateProductReq } from '../model/create-product-req.model';
 //#endregion
 
 

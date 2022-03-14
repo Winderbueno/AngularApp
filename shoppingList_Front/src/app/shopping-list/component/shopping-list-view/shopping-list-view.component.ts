@@ -2,16 +2,16 @@
 import { Component } from '@angular/core';
 //#endregion
 
-//#region App Component, Model
-import * as fromStore from '@shoppingList/store/';
+//#region Module
 import * as fromForm from '@form/store/';
-import * as Actions from './shopping-list-view.actions';
+import * as fromFormComponent from '@form/component';
 //#endregion
 
-//#region Model
-import { ShoppingList } from '@shoppingList/model/current/shopping-list.model';
-import { UsedProduct } from '@shoppingList/model/current/used-product.model';
-import { FormComponent } from '@module/form/component';
+//#region This
+import * as fromStore from '../../store/';
+import * as Actions from './shopping-list-view.actions';
+import { ShoppingList } from '../../model/shopping-list.model';
+import { UsedProduct } from '../../model/used-product.model';
 //#endregion
 
 
@@ -19,7 +19,7 @@ import { FormComponent } from '@module/form/component';
   selector: 'shopping-list-view',
   templateUrl: './shopping-list-view.component.html' 
 })
-export class ShoppingListViewComponent extends FormComponent {
+export class ShoppingListViewComponent extends fromFormComponent.FormComponent {
 
   // Component State
   readonly editMode$=this.store.select(fromForm.selectControlValue('ShoppingListActions','EditMode'));
