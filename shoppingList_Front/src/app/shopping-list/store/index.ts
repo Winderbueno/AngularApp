@@ -14,4 +14,4 @@ export {
   selectState,
   isActiveLoaded,
   selectActive
-} from './selectors/shopping-list.selectors';
+} from './shopping-list.selectors';
