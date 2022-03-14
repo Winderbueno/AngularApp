@@ -16,7 +16,6 @@ import * as fromStore from '../store/';
 //#region Service, Model
 import { ShoppingListService } from '../service/shopping-list.service';
 import { ShoppingList } from '../model/shopping-list.model';
-import { CreateProductReq } from '../model/create-product-req.model';
 //#endregion
 
 
@@ -49,7 +48,7 @@ export class ShoppingListAPIEffects {
       )
   ));
 
-  addProduct$ = createEffect(() => 
+  createProduct$ = createEffect(() => 
     this.actions$.pipe(
       ofType(fromAPI.createProductCallAction),
       switchMap((action) => {
