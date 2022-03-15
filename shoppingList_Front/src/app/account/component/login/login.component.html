@@ -1,6 +1,6 @@
 <mat-card style="margin-bottom: 50px;">
   <mat-card-title>{{ formId }}</mat-card-title>
-  <form [ngrxFormState]="formGroupState" (submit)="onSubmit()">
+  <k-form [formId]="formId">
 
     <!-- Email -->
     <k-form-field-input [formId]="formId" [ctrlName]="'Email'" [format]="FieldFormatEnum.Email">
@@ -19,5 +19,5 @@
       <a mat-button routerLink="../register">New account ?</a>
       <a mat-button routerLink="../forgot-password">Forgot password ?</a>
     </div>
-  </form>
+  </k-form>
 </mat-card>

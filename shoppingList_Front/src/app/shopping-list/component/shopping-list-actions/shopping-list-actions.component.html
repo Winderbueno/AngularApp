@@ -4,15 +4,19 @@
 
     <k-button type='button' color='primary' label='Add Product'></k-button>
     <k-button type='button' color='primary' label='Reset Status'></k-button>
+    
+    <k-form [formId]="formId">
+      <div>
+        <k-button-slide-toggle
+          [formId]="formId" [ctrlName]="'Accordeon'" 
+          [label]="(accordionExpanded$|async) ? 'Close' : 'Open'">
+        </k-button-slide-toggle>
 
-    <k-button-slide-toggle
-      [formId]="formId" [ctrlName]="'Accordeon'" 
-      [label]="(accordionExpanded$|async) ? 'Close' : 'Open'">
-    </k-button-slide-toggle>
-
-    <k-button-slide-toggle
-      [formId]="formId" [ctrlName]="'EditMode'" 
-      [label]="(editMode$|async) ? 'Use' : 'Edit'">
-    </k-button-slide-toggle>
+        <k-button-slide-toggle
+          [formId]="formId" [ctrlName]="'EditMode'" 
+          [label]="(editMode$|async) ? 'Use' : 'Edit'">
+        </k-button-slide-toggle>
+      </div>
+    </k-form>
   </div>
 </mat-card>

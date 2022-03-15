@@ -1,10 +1,10 @@
 //#region Angular, Material, NgRx
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 //#endregion
 
 //#region Module
 import * as fromForm from '@form/store/';
-import * as fromFormComponent from '@form/component';
 //#endregion
 
 //#region This
@@ -19,22 +19,20 @@ import { UsedProduct } from '../../model/used-product.model';
   selector: 'shopping-list-view',
   templateUrl: './shopping-list-view.component.html' 
 })
-export class ShoppingListViewComponent extends fromFormComponent.FormComponent {
+export class ShoppingListViewComponent {
 
-  // Component State
+  formId:string = "ShoppingListView";
   readonly editMode$=this.store.select(fromForm.selectControlValue('ShoppingListActions','EditMode'));
   readonly accordionExpanded$=this.store.select(fromForm.selectControlValue('ShoppingListActions','Accordeon'));
   editMode:boolean = false;
   myShoppingList!: ShoppingList[];
 
+  constructor(public store: Store) {}
+
   ngOnInit() {
     this.store.select(fromStore.selectActive).subscribe(value => this.myShoppingList=value);
     this.store.select(fromForm.selectControlValue('ShoppingListActions','EditMode'))
       .subscribe(variable => this.editMode = variable as boolean);
-
-    super.formId = "ShoppingListView";
-    super.unpersist = true;
-    super.ngOnInit();
   }
 
   /** For clicked product, swap 'bought' status value */

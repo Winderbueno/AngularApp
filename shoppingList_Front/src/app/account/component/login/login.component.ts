@@ -2,16 +2,13 @@
 import { Component } from '@angular/core';
 //#endregion
 
-//#region App Component, Model
-import { FormComponent } from '@form/component';
+//#region Module
+import { FieldFormatEnum } from '@form/model';
 //#endregion
 
 
 @Component({ templateUrl: './login.component.html' })
-export class LoginComponent extends FormComponent {
-  
-  ngOnInit(){
-    super.formId = "Sign In";
-    super.ngOnInit();
-  }
+export class LoginComponent {
+  FieldFormatEnum=FieldFormatEnum;
+  formId:string = "Sign In";
 }

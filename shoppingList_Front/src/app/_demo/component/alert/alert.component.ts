@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 //#endregion
 
 //#region Module
-import { FormComponent } from '@form/component';
-import * as fromAlert from '@alert/store/';
+import * as fromAlert from '@alert/store';
 //#endregion
 
 
@@ -12,14 +11,8 @@ import * as fromAlert from '@alert/store/';
   selector: 'demo-alert',
   templateUrl: './alert.component.html'
 })
-export class AlertComponent extends FormComponent {  
-
-  // Option values
+export class AlertComponent {
+  formId:string = "Alert";
   alertTypeEnum = fromAlert.AlertTypeEnum;
   alertTypeEnumValues: string[] = Object.keys(fromAlert.AlertTypeEnum);
-
-  ngOnInit(){
-    super.formId = "Alert";
-    super.ngOnInit();
-  }
 }

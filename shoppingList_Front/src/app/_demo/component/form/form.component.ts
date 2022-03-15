@@ -1,11 +1,12 @@
 //#region Angular, Material, NgRx
 import { Component } from '@angular/core';
-import { maxLength, minLength, number } from 'ngrx-forms/validation';
+import { Store } from '@ngrx/store';
 //#endregion
 
 //#region Module
-import * as fromFormComponent from '@form/component';
+import { maxLength, minLength, number } from 'ngrx-forms/validation';
 import * as fromEnum from '@enum/store/';
+import { FieldFormatEnum } from '@form/model';
 //#endregion
 
 
@@ -13,7 +14,11 @@ import * as fromEnum from '@enum/store/';
   selector: 'demo-form',
   templateUrl: './form.component.html'
 })
-export class FormComponent extends fromFormComponent.FormComponent {  
+export class FormComponent {  
+
+  // Form
+  formId:string = "Form";
+  FieldFormatEnum=FieldFormatEnum;
 
   // ValidationFns
   number = number;
@@ -23,8 +28,5 @@ export class FormComponent extends fromFormComponent.FormComponent {
   // Option values
   readonly productCatEnum$ = this.store.select(fromEnum.selectEnumValues('ProductCategory'));
 
-  ngOnInit(){
-    super.formId = "Form";
-    super.ngOnInit();
-  }
+  constructor(public store: Store) {}
 }

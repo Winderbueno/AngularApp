@@ -1,7 +1,6 @@
-<form fxLayout="column" [ngrxFormState]="formGroupState" (submit)="onSubmit()">
+<h1 mat-dialog-title>{{ formId }}</h1> <!-- TODO title should be styles as mat-card --->
 
-  <h1 mat-dialog-title>{{ formId }}</h1>
-
+<k-form [formId]="formId">
   <k-form-field-input [formId]="formId" [ctrlName]="'ProductName'" [label]="'Name'">
   </k-form-field-input>
 
@@ -18,4 +17,4 @@
   <!-- Submit -->
   <k-button label='OK'></k-button>
   <k-button buttonId='Dialog.Product.Cancel' type='button' label='No Thanks'></k-button>
-</form>
+</k-form>

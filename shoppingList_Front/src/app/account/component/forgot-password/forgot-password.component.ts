@@ -2,17 +2,13 @@
 import { Component } from '@angular/core';
 //#endregion
 
-//#region App Component, Model
-import { FormComponent } from '@form/component';
+//#region Module
+import { FieldFormatEnum } from '@form/model';
 //#endregion
 
 
 @Component({ templateUrl: 'forgot-password.component.html' })
-export class ForgotPasswordComponent extends FormComponent {
-
-  ngOnInit(){
-    super.formId = "Forgot Password";
-    super.unpersist = true;
-    super.ngOnInit();
-  }
+export class ForgotPasswordComponent {
+  FieldFormatEnum=FieldFormatEnum;
+  formId:string = "Forgot Password";
 }

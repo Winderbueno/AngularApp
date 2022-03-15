@@ -1,45 +1,45 @@
 <mat-card>
+  <k-form [formId]="formId" [unpersist]="true">
+    <!-- Shopping List -->
+    <div *ngIf="myShoppingList[0] && myShoppingList[0].catProducts">
 
-  <!-- Shopping List -->
-  <div *ngIf="myShoppingList[0] && myShoppingList[0].catProducts">
+      <mat-accordion [multi]=true #accordion="matAccordion">
+        <mat-expansion-panel hideToggle
+          *ngFor="let catProd of myShoppingList[0].catProducts; let iCat=index;"
+          [expanded]="$any(accordionExpanded$|async)">
 
-    <mat-accordion [multi]=true #accordion="matAccordion">
-      <mat-expansion-panel hideToggle
-        *ngFor="let catProd of myShoppingList[0].catProducts; let iCat=index;"
-        [expanded]="$any(accordionExpanded$|async)">
+          <!-- Header / Product category -->
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{ catProd.category }}</mat-panel-title>
+          </mat-expansion-panel-header>
 
-        <!-- Header / Product category -->
-        <mat-expansion-panel-header>
-          <mat-panel-title>{{ catProd.category }}</mat-panel-title>
-        </mat-expansion-panel-header>
+          <!-- Expanded Panel containing the product sub category and their products -->
+          <div fxLayout="column" fxLayoutGap="8px">
+            <li fxLayout="raw" fxLayoutAlign="start center" 
+              *ngFor="let subCatProd of catProd.subCatProducts; let iSubCat=index;">
 
-        <!-- Expanded Panel containing the product sub category and their products -->
-        <div fxLayout="column" fxLayoutGap="8px">
-          <li fxLayout="raw" fxLayoutAlign="start center" 
-            *ngFor="let subCatProd of catProd.subCatProducts; let iSubCat=index;">
+              <span> {{ subCatProd.subCategory }} :&nbsp;</span>
 
-            <span> {{ subCatProd.subCategory }} :&nbsp;</span>
+              <mat-chip-list multiple>
+                <div *ngFor="let prod of subCatProd.products">
+                  <mat-chip 
+                    (click)="swapProductBoughtStatus(catProd.category, subCatProd.subCategory,prod)" 
+                    [selected]="!prod.bought">
+                    {{ prod.name }}
+                    <mat-icon matChipRemove *ngIf="editMode$|async" (click)="deleteProduct(prod)">cancel</mat-icon>
+                  </mat-chip>
+                </div>
+              </mat-chip-list>
 
-            <mat-chip-list multiple>
-              <div *ngFor="let prod of subCatProd.products">
-                <mat-chip 
-                  (click)="swapProductBoughtStatus(catProd.category, subCatProd.subCategory,prod)" 
-                  [selected]="!prod.bought">
-                  {{ prod.name }}
-                  <mat-icon matChipRemove *ngIf="editMode$|async" (click)="deleteProduct(prod)">cancel</mat-icon>
-                </mat-chip>
-              </div>
-            </mat-chip-list>
-
-            <add-product-chip *ngIf="editMode$|async" 
-              [formId]="formId" 
-              [ctrlName]="'AddProduct-'+ catProd.category +'-'+ subCatProd.subCategory"
-              [placeholder]="'+'">
-            </add-product-chip>
-          </li>
-        </div>
-      </mat-expansion-panel>
-    </mat-accordion>
-
-  </div>
+              <add-product-chip *ngIf="editMode$|async" 
+                [formId]="formId" 
+                [ctrlName]="'AddProduct-'+ catProd.category +'-'+ subCatProd.subCategory"
+                [placeholder]="'+'">
+              </add-product-chip>
+            </li>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </k-form>
 </mat-card>

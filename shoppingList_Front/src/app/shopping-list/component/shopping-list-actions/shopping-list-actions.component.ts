@@ -1,10 +1,10 @@
 //#region Angular, Material, NgRx
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 //#endregion
 
 //#region App Component, Model
-import { FormComponent } from '@form/component';
-import * as fromForm from '@form/store/';
+import * as fromForm from '@form/store';
 //#endregion
 
 
@@ -12,13 +12,11 @@ import * as fromForm from '@form/store/';
   selector: 'shopping-list-actions',
   templateUrl: './shopping-list-actions.component.html'
 })
-export class ShoppingListActionComponent extends FormComponent {
+export class ShoppingListActionComponent {
 
+  formId:string = "ShoppingListActions";
   readonly editMode$=this.store.select(fromForm.selectControlValue('ShoppingListActions','EditMode'));
   readonly accordionExpanded$=this.store.select(fromForm.selectControlValue('ShoppingListActions','Accordeon'));
 
-  ngOnInit(){
-    super.formId = "ShoppingListActions";
-    super.ngOnInit();
-  }
+  constructor(public store: Store) {}
 }

@@ -3,15 +3,12 @@ import { Component } from '@angular/core';
 //#endregion
 
 //#region App Component, Model
-import { FormComponent } from '@form/component';
+import { FieldFormatEnum } from '@form/model';
 //#endregion
 
 
 @Component({ templateUrl: 'register.component.html' })
-export class RegisterComponent extends FormComponent {
-  
-  ngOnInit(){
-    super.formId = "Sign Up";
-    super.ngOnInit();
-  }
+export class RegisterComponent {
+  FieldFormatEnum=FieldFormatEnum;
+  formId:string = "Sign Up";
 }

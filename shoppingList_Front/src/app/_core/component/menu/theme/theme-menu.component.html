@@ -2,13 +2,13 @@
   <mat-icon>format_color_fill</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
-
-  <k-form-field-radio-button
-    [formId]="formId" 
-    [ctrlName]="'Theme'"
-    [options]="materialThemeEnumKeys"
-    [value]="'0'"
-    [valueAsLabel]="false"
-    [optionClass]="'mat-menu-item'"></k-form-field-radio-button>
-
+  <k-form [formId]="formId">
+    <k-form-field-radio-button
+      [formId]="formId" 
+      [ctrlName]="'Theme'"
+      [options]="materialThemeEnumKeys"
+      [value]="'0'"
+      [valueAsLabel]="false"
+      [optionClass]="'mat-menu-item'"></k-form-field-radio-button>
+  </k-form>
 </mat-menu>
