@@ -8,7 +8,8 @@ import { filter, map, withLatestFrom } from 'rxjs/operators';
 
 //#region Module
 import { MaterialThemeEnum } from '@material/model/theme.enum'
-import * as fromForm from '@form/store/';
+import * as fromForm from '@form/store';
+import { FormValue } from '@form/model';
 import { SetValueAction } from 'ngrx-forms';
 //#endregion
 
@@ -53,8 +54,8 @@ export class CSSThemeEffects {
   updateCSSThemeInHTMLDoc$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SetValueAction.TYPE),
-      filter((action: SetValueAction<fromForm.FormValue>) => action.controlId === 'Theme-Menu.Theme'),
-      map((action: SetValueAction<fromForm.FormValue>) => {
+      filter((action: SetValueAction<FormValue>) => action.controlId === 'Theme-Menu.Theme'),
+      map((action: SetValueAction<FormValue>) => {
 
         let themeElt: HTMLLinkElement;
 
