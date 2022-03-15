@@ -1,9 +1,4 @@
-﻿/* Model */
-export {
-  FormValue
-} from '../model/form-value.model';
-
-/* Reducer */
+﻿/* Reducer */
 export {
   featureKey,
   reducer
