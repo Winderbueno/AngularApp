@@ -46,7 +46,7 @@ import { AccountAPIEffects } from '@account/effect';
 import { EnumAPIEffects } from '@enum/effect';
 //#endregion
 
-//#region App Conf
+//#region Configuration
 import { environment } from '@env/environment';
 //#endregion
 
