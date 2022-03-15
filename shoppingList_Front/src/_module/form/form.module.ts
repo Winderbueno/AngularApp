@@ -55,7 +55,10 @@ import * as fromStore from './store/';
     Components.SliderFieldComponent,
 
     /* Field Group */
-    Components.PasswordFieldGroupComponent
+    Components.PasswordFieldGroupComponent,
+
+    /* Form */
+    Components.FormComponent
   ],
   exports: [
     /* Module */
@@ -76,7 +79,10 @@ import * as fromStore from './store/';
     Components.SliderFieldComponent,
 
     /* Field Group */
-    Components.PasswordFieldGroupComponent
+    Components.PasswordFieldGroupComponent,
+
+    /* Form */
+    Components.FormComponent
   ]
 })
 export class FormModule { }

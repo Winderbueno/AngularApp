@@ -1,5 +1,5 @@
 ﻿/* Model */
-export { FormComponent } from './form.component';
+export { FormComponent } from './form/form.component';
 export { FieldComponent } from './field.component';
 export { MultipleOptionFieldComponent } from './field/multiple-option-field.component';
 

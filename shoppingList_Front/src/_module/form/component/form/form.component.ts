@@ -1,5 +1,5 @@
 //#region Angular, Material, NgRx
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { FormGroupState } from 'ngrx-forms';
@@ -32,7 +32,10 @@ import { FieldFormatEnum } from '@form/model/field-format.enum';
  *  @param formId - FormGroupState Id
  *  @param unpersist - (? | Default:false) - If true, form state is deleted when component is destroy
  */
- @Component({template: ``})
+@Component({
+  selector: 'k-form',
+  templateUrl: 'form.component.html'
+})
 export class FormComponent implements OnInit, OnDestroy {
 
   // Form
@@ -40,14 +43,19 @@ export class FormComponent implements OnInit, OnDestroy {
   private _formId: string = "defaultFormId";
   private _unpersist: boolean = false;
   private _fieldFormatEnum=FieldFormatEnum;
+
+  // Input
+  @Input() // TODO - WARN - Should be mandatory
+  get formId() { return this._formId; }
+  set formId(input: string) { this._formId = input; }
+
+  @Input()
+  set unpersist(input: boolean) { this._unpersist = input; }
   
   // Accessor
   get FieldFormatEnum() { return this._fieldFormatEnum; }
-  get formId() { return this._formId; }
-  protected set formId(input: string) { this._formId = input; }
   get value() { return this._formGroupState!.value }
   get formGroupState() { return this._formGroupState!; }
-  protected set unpersist(input: boolean) { this._unpersist = input; }
 
   constructor(
     protected router: Router,
