@@ -35,6 +35,7 @@ import * as fromStore from './store/';
       fromStore.reducer
     ),
 
+    /* Effect */
     EffectsModule.forFeature([
       Effects.FormValidationEffects
     ]),
@@ -61,9 +62,6 @@ import * as fromStore from './store/';
     Components.FormComponent
   ],
   exports: [
-    /* Module */
-    NgrxFormsModule,
-
     /* Button */
     Components.ButtonComponent,
     Components.SlideToggleButtonComponent,
