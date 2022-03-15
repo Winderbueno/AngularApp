@@ -10,5 +10,5 @@ import { FieldFormatEnum } from '@form/model';
 @Component({ templateUrl: 'register.component.html' })
 export class RegisterComponent {
   FieldFormatEnum=FieldFormatEnum;
-  formId:string = "Sign Up";
+  formId = 'Sign Up';
 }

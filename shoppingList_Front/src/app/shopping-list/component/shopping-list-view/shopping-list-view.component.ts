@@ -15,39 +15,39 @@ import { UsedProduct } from '../../model/used-product.model';
 //#endregion
 
 
-@Component({ 
+@Component({
   selector: 'shopping-list-view',
-  templateUrl: './shopping-list-view.component.html' 
+  templateUrl: './shopping-list-view.component.html'
 })
 export class ShoppingListViewComponent {
 
-  formId:string = "ShoppingListView";
-  readonly editMode$=this.store.select(fromForm.selectControlValue('ShoppingListActions','EditMode'));
-  readonly accordionExpanded$=this.store.select(fromForm.selectControlValue('ShoppingListActions','Accordeon'));
-  editMode:boolean = false;
+  formId = 'ShoppingListView';
+  readonly editMode$ = this.store.select(fromForm.selectControlValue('ShoppingListActions', 'EditMode'));
+  readonly accordionExpanded$ = this.store.select(fromForm.selectControlValue('ShoppingListActions', 'Accordeon'));
+  editMode: boolean = false;
   myShoppingList!: ShoppingList[];
 
-  constructor(public store: Store) {}
+  constructor(public store: Store) { }
 
   ngOnInit() {
-    this.store.select(fromStore.selectActive).subscribe(value => this.myShoppingList=value);
-    this.store.select(fromForm.selectControlValue('ShoppingListActions','EditMode'))
+    this.store.select(fromStore.selectActive).subscribe(value => this.myShoppingList = value);
+    this.store.select(fromForm.selectControlValue('ShoppingListActions', 'EditMode'))
       .subscribe(variable => this.editMode = variable as boolean);
   }
 
   /** For clicked product, swap 'bought' status value */
   swapProductBoughtStatus(
-    category:string,
-    subCategory:string,
+    category: string,
+    subCategory: string,
     prod: UsedProduct): void {
-    
-    let prodChanges:Partial<UsedProduct> = {
+
+    let prodChanges: Partial<UsedProduct> = {
       usedProductId: prod.usedProductId,
       bought: !prod.bought
     };
 
     // Update Product
-    if(this.editMode === false) {
+    if (this.editMode === false) {
       this.store.dispatch(
         Actions.productChipClickedAction({
           shoppingListId: this.myShoppingList[0].shoppingListId,
@@ -63,7 +63,7 @@ export class ShoppingListViewComponent {
     this.store.dispatch(
       Actions.productChipDeleteButtonClickedAction({
         shoppingListId: this.myShoppingList[0].shoppingListId,
-        productId : prod.usedProductId!.toString()
+        productId: prod.usedProductId!.toString()
       })
     );
   }

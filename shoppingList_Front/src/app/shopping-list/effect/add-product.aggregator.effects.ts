@@ -20,20 +20,20 @@ import { CreateProductReq } from '../model/create-product-req.model';
 @Injectable()
 export class AddProductAggregatorEffects {
 
-  mapAddProductFormSubmitToAPICall$ = createEffect(() => 
+  mapAddProductFormSubmitToAPICall$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromForm.formValidatedAction),
       filter((action) => action.formId === 'Add Product'),
       withLatestFrom(this.store.select(fromStore.selectActive)),
       map(([action, shoppingList]) => {
-        
-        var prodToCreate: CreateProductReq = {
+
+        const prodToCreate: CreateProductReq = {
           category: action.formValue.Category as string,
           subCategory: action.formValue.SubCategory as string,
           name: action.formValue.ProductName as string,
           quantity: 1,
-          note: "test" // TODO - This field should note be that
-        }
+          note: 'test' // TODO - This field should note be that
+        };
 
         return fromAPI.createProductCallAction({
           shoppingListId: shoppingList[0].shoppingListId,
@@ -43,19 +43,19 @@ export class AddProductAggregatorEffects {
     )
   );
 
-  mapAddProductChipSubmitToAPICall$ = createEffect(() => 
+  mapAddProductChipSubmitToAPICall$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromComponent.submitAddProductChipAction),
       withLatestFrom(this.store.select(fromStore.selectActive)),
       map(([action, shoppingList]) => {
-        
-        var prodToCreate: CreateProductReq = {
+
+        const prodToCreate: CreateProductReq = {
           category: action.controlId.split('-')[1],
           subCategory: action.controlId.split('-')[2],
           name: action.controlValue,
           quantity: 1,
-          note: "test" // TODO - This field should note be that
-        }
+          note: 'test' // TODO - This field should note be that
+        };
 
         return fromAPI.createProductCallAction({
           shoppingListId: shoppingList[0].shoppingListId,

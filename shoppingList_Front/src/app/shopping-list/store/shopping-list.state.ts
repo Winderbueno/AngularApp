@@ -13,7 +13,7 @@ export interface ShoppingListState extends EntityState<ShoppingList> {
 }
 
 /* Adapter */
-export const adapter : EntityAdapter<ShoppingList> =
+export const adapter: EntityAdapter<ShoppingList> =
   createEntityAdapter<ShoppingList>({
     selectId: (shoppingList: ShoppingList) => shoppingList.shoppingListId,
   });

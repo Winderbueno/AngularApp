@@ -17,55 +17,71 @@ const shoppingListReducer = createReducer(
   initialState,
 
   on(fromAPI.loadActiveSuccessAction,
-    (state, { shoppingList }) => 
-      { return adapter.addOne(shoppingList, { ...state, isActiveLoaded: true }) }
+    (state, { shoppingList }) =>
+      (adapter.addOne(shoppingList, { ...state, isActiveLoaded: true }))
   ),
 
   on(
     AccountAPIActions.logoutSuccessAction,
     AccountAPIActions.logoutFailureAction,
     AccountAPIActions.refreshTokenFailureAction, // TODO - Any type of Logout should restore state to initial state
-    (state) => 
-      { return adapter.removeAll({ ...state, isActiveLoaded: false,}) }
+    (state) =>
+      (adapter.removeAll({ ...state, isActiveLoaded: false, }))
   ),
 
   on(fromComponent.productChipClickedAction,
     (state, action) => {
-      // Toggle product bought status 
+      // Toggle product bought status
       // TODO - Nested update should be avoided in reducer
-      let changes = {
+      const changes = {
         ...state.entities[action.shoppingListId],
         catProducts: state.entities[action.shoppingListId]?.catProducts?.map((item) => {
           if (item.category !== action.category) { return item; }
-          return { ...item,
+          return {
+            ...item,
             subCatProducts: item.subCatProducts.map((item) => {
               if (item.subCategory !== action.subCategory) { return item; }
-              return { ...item,
+              return {
+                ...item,
                 products: item.products.map((item) => {
                   if (item.usedProductId !== action.productUpdate.id) { return item; }
-                  return { ...item, bought: !item.bought };})};})}})}
-      
+                  return { ...item, bought: !item.bought };
+                })
+              };
+            })
+          };
+        })
+      };
+
       return adapter.updateOne({ id: action.shoppingListId, changes: changes }, state);
     }
   ),
 
   on(fromForm.buttonClickedAction,
     (state, action) => {
-      if(action.buttonId !== 'Reset Status') { return state; }
+      if (action.buttonId !== 'Reset Status') { return state; }
 
       // Reset all product bought status
       // TODO - Nested update should be avoided in reducer
-      let shoppingListId = state.ids[0];
-      let changes = {
+      const shoppingListId = state.ids[0];
+      const changes = {
         ...state.entities[shoppingListId],
         catProducts: state.entities[shoppingListId]?.catProducts?.map((item) => {
-          return { ...item,
+          return {
+            ...item,
             subCatProducts: item.subCatProducts.map((item) => {
-              return { ...item,
+              return {
+                ...item,
                 products: item.products.map((item) => {
-                  return { ...item, bought: true };})};})}})}
-                    
-      return adapter.updateOne({ id: shoppingListId as string, changes: changes }, state); 
+                  return { ...item, bought: true };
+                })
+              };
+            })
+          };
+        })
+      };
+
+      return adapter.updateOne({ id: shoppingListId as string, changes: changes }, state);
     }
   ),
 
@@ -74,30 +90,30 @@ const shoppingListReducer = createReducer(
 
       // Delete Product
       // TODO - Nested update should be avoided in reducer
-      let shoppingListId = state.ids[0];
-      let catToDelete:string|undefined;
+      const shoppingListId = state.ids[0];
+      let catToDelete: string | undefined;
       let filteredCatProd = state.entities[shoppingListId]?.catProducts?.map((item) => {
-          
-        let subCatToDelete:string|undefined;
+
+        let subCatToDelete: string | undefined;
         let filteredSubCatProd = item.subCatProducts.map((item) => {
-          let filteredProd = item.products.filter(item => item.usedProductId !== Number(action.productId));
-          if(filteredProd.length === 0) subCatToDelete = item.subCategory;
+          const filteredProd = item.products.filter(item => item.usedProductId !== Number(action.productId));
+          if (filteredProd.length === 0) subCatToDelete = item.subCategory;
           return { ...item, products: filteredProd };
         });
 
-        if (subCatToDelete) { 
+        if (subCatToDelete) {
           filteredSubCatProd = item.subCatProducts.filter(item => item.subCategory !== subCatToDelete);
-          if(filteredSubCatProd.length === 0) catToDelete = item.category; 
+          if (filteredSubCatProd.length === 0) { catToDelete = item.category; }
         }
         return { ...item, subCatProducts: filteredSubCatProd }
       });
 
-      if(catToDelete){
+      if (catToDelete) {
         filteredCatProd = state.entities[shoppingListId]?.catProducts?.
           filter(item => item.category !== catToDelete);
       }
 
-      let changes = { ...state.entities[shoppingListId], catProducts: filteredCatProd };
+      const changes = { ...state.entities[shoppingListId], catProducts: filteredCatProd };
       return adapter.updateOne({ id: shoppingListId as string, changes: changes }, state);
     }
   ),
@@ -113,53 +129,57 @@ const shoppingListReducer = createReducer(
       let newSubCatProduct: SubCatUsedProduct;
 
       // Check if Category/SubCategory of created product was already in shoppingList
-      let isCatInState: boolean = false;
-      let isSubCatInState: boolean = false;
+      let isCatInState = false;
+      let isSubCatInState = false;
       newCatProducts?.forEach((item) => {
-        if(item.category === createdProduct.category) {
-          isCatInState=true;
+        if (item.category === createdProduct.category) {
+          isCatInState = true;
           item.subCatProducts.forEach((item) => {
-            if(item.subCategory === createdProduct.subCategory) isSubCatInState=true;
+            if (item.subCategory === createdProduct.subCategory) isSubCatInState = true;
           })
         }
       });
 
-      if(isSubCatInState) {
+      if (isSubCatInState) {
         newCatProducts = newCatProducts?.map((item) => {
-          if (item.category != createdProduct.category) { return item; }
-          return { ...item,
+          if (item.category !== createdProduct.category) { return item; }
+          return {
+            ...item,
             subCatProducts: item.subCatProducts.map((item) => {
-              if (item.subCategory != createdProduct.subCategory) { return item; }
-              return { ...item,
-                products: [ ...item.products.slice(0, item.products.length),
-                  createdProduct]};
+              if (item.subCategory !== createdProduct.subCategory) { return item; }
+              return {
+                ...item,
+                products: [...item.products.slice(0, item.products.length),
+                  createdProduct]
+              };
             })
-          }
-        })
+          };
+        });
       } else {
 
         newSubCatProduct = {
           subCategory: createdProduct.subCategory!,
           products: [createdProduct]
         };
-        
-        if(!isCatInState) {
+
+        if (!isCatInState) {
           newCatProducts?.push({
             category: createdProduct.category!,
             subCatProducts: [newSubCatProduct]
           });
         } else {
           newCatProducts = newCatProducts?.map((item) => {
-            if (item.category != createdProduct.category) { return item; }
-            return { ...item, 
-              subCatProducts: [...item.subCatProducts.slice(0, item.subCatProducts.length), 
-                newSubCatProduct] 
+            if (item.category !== createdProduct.category) { return item; }
+            return {
+              ...item,
+              subCatProducts: [...item.subCatProducts.slice(0, item.subCatProducts.length),
+                newSubCatProduct]
             };
           });
         }
       }
-    
-      let changes = { ...state.entities[shoppingListId], catProducts: newCatProducts }
+
+      const changes = { ...state.entities[shoppingListId], catProducts: newCatProducts };
       return adapter.updateOne({ id: shoppingListId as string, changes: changes }, state);
     }
   ),

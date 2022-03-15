@@ -43,7 +43,7 @@ export const createProductCallAction = createAction(
   ModuleEnum.ShoppingList,
   EmitterTypeEnum.Api,
   'createProductCall',
-  props<{ 
+  props<{
     shoppingListId: string
     product: CreateProductReq }>()
 );

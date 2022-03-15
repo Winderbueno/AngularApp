@@ -8,15 +8,15 @@ import * as fromForm from '@form/store';
 //#endregion
 
 
-@Component({ 
+@Component({
   selector: 'shopping-list-actions',
   templateUrl: './shopping-list-actions.component.html'
 })
 export class ShoppingListActionComponent {
 
-  formId:string = "ShoppingListActions";
-  readonly editMode$=this.store.select(fromForm.selectControlValue('ShoppingListActions','EditMode'));
-  readonly accordionExpanded$=this.store.select(fromForm.selectControlValue('ShoppingListActions','Accordeon'));
+  formId = 'ShoppingListActions';
+  readonly editMode$ = this.store.select(fromForm.selectControlValue('ShoppingListActions', 'EditMode'));
+  readonly accordionExpanded$ = this.store.select(fromForm.selectControlValue('ShoppingListActions', 'Accordeon'));
 
-  constructor(public store: Store) {}
+  constructor(public store: Store) { }
 }

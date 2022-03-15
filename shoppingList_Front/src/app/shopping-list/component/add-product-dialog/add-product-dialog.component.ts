@@ -10,8 +10,8 @@ import * as fromEnum from '@enum/store/';
 
 @Component({ templateUrl: './add-product-dialog.component.html' })
 export class AddProductDialogComponent {
-  
-  formId:string = "Add Product";
+
+  formId = 'Add Product';
   readonly productCatEnum$ = this.store.select(fromEnum.selectEnumValues('ProductCategory'));
   readonly productSubCatEnum$ = this.store.select(fromEnum.selectEnumValues('ProductSubCategory'));
 

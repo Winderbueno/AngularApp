@@ -23,7 +23,7 @@ import { ShoppingList } from '../model/shopping-list.model';
 export class ShoppingListAPIEffects {
 
   // Load user's active shoppingList from server
-  getActive$ = createEffect(() => 
+  getActive$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromStore.loadActiveAction),
       switchMap(() =>
@@ -34,7 +34,7 @@ export class ShoppingListAPIEffects {
       )
   ));
 
-  resetBoughtStatus$ = createEffect(() => 
+  resetBoughtStatus$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromForm.buttonClickedAction),
       filter((action) => action.buttonId === 'Reset Status'),
@@ -48,12 +48,12 @@ export class ShoppingListAPIEffects {
       )
   ));
 
-  createProduct$ = createEffect(() => 
+  createProduct$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromAPI.createProductCallAction),
       switchMap((action) => {
         return this.shoppingListService.createProduct(
-          action.shoppingListId, 
+          action.shoppingListId,
           action.product)
           .pipe(
             map((resp) => fromAPI.createProductSuccessAction({ product: resp })),
@@ -62,7 +62,7 @@ export class ShoppingListAPIEffects {
     )
   );
 
-  updtProduct$ = createEffect(() => 
+  updtProduct$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromComponent.productChipClickedAction),
       switchMap((action) =>

@@ -13,10 +13,10 @@ import { Token } from '@token/model/token.model';
 @Component({ templateUrl: 'reset-password.component.html' })
 export class ResetPasswordComponent implements OnDestroy {
 
-  formId:string = "Reset Password";
+  formId = 'Reset Password';
   TokenStatusEnum = fromToken.TokenStatusEnum;
   token:Token|undefined;
-  tokenId: string = 'Reset Password';
+  tokenId = 'Reset Password';
 
   constructor(
     private router: Router,

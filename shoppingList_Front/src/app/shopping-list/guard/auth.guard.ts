@@ -15,7 +15,7 @@ import * as fromStore from '../store/';
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
 
-  isLogged: boolean = false;
+  isLogged = false;
 
   constructor(
     private router: Router,
@@ -28,12 +28,11 @@ export class AuthGuard implements CanActivate {
 
     // If account is logged in -> return true
     if (this.isLogged) {
-
       return this.checkStore().pipe(
         switchMap(() => of(true)),
         catchError(() => of(false))
       );
-    } ;
+    }
 
     // If account not logged in -> redirect to login page with the return url
     // TODO - Change access to the router state

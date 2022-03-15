@@ -10,5 +10,5 @@ import { FieldFormatEnum } from '@form/model';
 @Component({ templateUrl: 'forgot-password.component.html' })
 export class ForgotPasswordComponent {
   FieldFormatEnum=FieldFormatEnum;
-  formId:string = "Forgot Password";
+  formId = 'Forgot Password';
 }

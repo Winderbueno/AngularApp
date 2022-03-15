@@ -12,7 +12,7 @@ import * as fromAlert from '@alert/store';
   templateUrl: './alert.component.html'
 })
 export class AlertComponent {
-  formId:string = "Alert";
+  formId = 'Alert';
   alertTypeEnum = fromAlert.AlertTypeEnum;
   alertTypeEnumValues: string[] = Object.keys(fromAlert.AlertTypeEnum);
 }

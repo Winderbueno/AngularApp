@@ -9,7 +9,7 @@ import * as Actions from './add-product-chip.actions';
 //#endregion
 
 
-@Component({ 
+@Component({
   selector: 'add-product-chip',
   templateUrl: './add-product-chip.component.html',
   styleUrls: ['./add-product-chip.component.scss']
@@ -31,7 +31,7 @@ export class AddProductChipComponent extends FieldComponent {
     let newVal: string = val;
     let endFirstPart: number;
 
-    selStart === selEnd ? endFirstPart=selStart - 1: endFirstPart=selStart;
+    selStart === selEnd ? endFirstPart = selStart - 1 : endFirstPart = selStart;
     newVal = val.substring(0, endFirstPart) + val.substring(selEnd, val.length);
 
     this.store.dispatch(new SetValueAction(

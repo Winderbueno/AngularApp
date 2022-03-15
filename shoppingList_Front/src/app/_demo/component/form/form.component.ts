@@ -17,7 +17,7 @@ import { FieldFormatEnum } from '@form/model';
 export class FormComponent {  
 
   // Form
-  formId:string = "Form";
+  formId = 'Form';
   FieldFormatEnum=FieldFormatEnum;
 
   // ValidationFns

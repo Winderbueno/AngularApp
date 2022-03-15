@@ -9,6 +9,6 @@ import { FieldFormatEnum } from '@form/model';
 
 @Component({ templateUrl: './login.component.html' })
 export class LoginComponent {
-  FieldFormatEnum=FieldFormatEnum;
-  formId:string = "Sign In";
+  FieldFormatEnum = FieldFormatEnum;
+  formId = 'Sign In';
 }
