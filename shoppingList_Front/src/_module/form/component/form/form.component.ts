@@ -1,14 +1,12 @@
 //#region Angular, Material, NgRx
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { FormGroupState } from 'ngrx-forms';
 //#endregion
 
 //#region Store, Model
 import * as fromStore from '@form/store/';
+import { FormGroupState } from 'ngrx-forms';
 import { FormValue } from '@form/model/form-value.model';
-import { FieldFormatEnum } from '@form/model/field-format.enum';
 //#endregion
 
 /**
@@ -30,7 +28,8 @@ import { FieldFormatEnum } from '@form/model/field-format.enum';
  *    > Except if the state is rehydrated by a mecanism, formState will be lost
  *
  *  @param formId - FormGroupState Id
- *  @param unpersist - (? | Default:false) - If true, form state is deleted when component is destroy
+ *  @param unpersist - (? | Default:false) - If true, formState is cleaned when component is destroy
+ *  @param validate - (? | Default:true) - Define if the formState validation has to run
  */
 @Component({
   selector: 'k-form',
@@ -39,54 +38,38 @@ import { FieldFormatEnum } from '@form/model/field-format.enum';
 export class FormComponent implements OnInit, OnDestroy {
 
   // Form
-  protected _formGroupState: FormGroupState<FormValue> | undefined;
-  private _formId: string = "defaultFormId";
-  private _unpersist: boolean = false;
-  private _validate: boolean = true;
-  private _fieldFormatEnum=FieldFormatEnum;
-
-  // Input
-  @Input() // TODO - WARN - Should be mandatory
-  get formId() { return this._formId; }
-  set formId(input: string) { this._formId = input; }
-  @Input()
-  set unpersist(input: boolean) { this._unpersist = input; }
-  @Input()
-  set validate(input: boolean) { this._validate = input; }
-
-  // Accessor
-  get FieldFormatEnum() { return this._fieldFormatEnum; }
-  get value() { return this._formGroupState!.value }
+  private _formGroupState: FormGroupState<FormValue> | undefined;
   get formGroupState() { return this._formGroupState!; }
 
-  constructor(
-    protected router: Router,
-    protected route: ActivatedRoute,
-    protected store: Store
-  ) {}
+  // Input
+  @Input() formId!: string; // TODO - WARN - Should be mandatory
+  @Input() unpersist: boolean = false;
+  @Input() validate: boolean = true;  
+
+  constructor(private store: Store) {}
 
   ngOnInit() {
 
     // Suscribe to FormGroupState
-    this.store.select(fromStore.selectForm(this._formId))
+    this.store.select(fromStore.selectForm(this.formId))
       .subscribe(s => this._formGroupState = s);
     
     // If form does not exist in state, create FormState, else resetState
     this._formGroupState === undefined ?
       this.store.dispatch(fromStore.createFormAction({ 
-        formId: this._formId, 
-        validate: this._validate 
+        formId: this.formId,
+        validate: this.validate
       })) 
-      : this.store.dispatch(fromStore.resetFormAction({ formId: this._formId }));
+      : this.store.dispatch(fromStore.resetFormAction({ formId: this.formId }));
   }
 
   ngOnDestroy(): void {
-    if(this._unpersist) { 
-      this.store.dispatch(fromStore.deleteFormAction({ formId: this._formId })); 
+    if(this.unpersist) { 
+      this.store.dispatch(fromStore.deleteFormAction({ formId: this.formId })); 
     }
   }
 
   onSubmit(): void {
-    this.store.dispatch(fromStore.submitFormAction({ formId: this._formId }));
+    this.store.dispatch(fromStore.submitFormAction({ formId: this.formId }));
   }
 }
