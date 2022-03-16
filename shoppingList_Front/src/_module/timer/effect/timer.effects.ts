@@ -65,9 +65,9 @@ export class TimerEffects {
       switchMap(action =>
         of(action).pipe(
           withLatestFrom(this.store.select(fromStore.selectTimer(action.timerId))),
-          filter(([, timer]) => timer != undefined),
+          filter(([, timer]) => timer?.action !== undefined),
           map(([, timer]) => {
-            if(timer != undefined) { this.action = timer.action; }
+            this.action = timer!.action!;
             return this.action;
           })
         )
