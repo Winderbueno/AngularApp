@@ -11,7 +11,7 @@ import { FieldComponent } from '@form/component';
  * Slider Field Component
  */
 @Component({
-  selector: 'k-form-field-slider',
+  selector: 'k-form-field-slider[formId][ctrlName]',
   templateUrl: 'slider-field.component.html'
 })
 export class SliderFieldComponent extends FieldComponent {

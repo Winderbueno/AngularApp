@@ -11,7 +11,7 @@ import { MultipleOptionFieldComponent } from '@form/component';
  * Select Field Component
  */
 @Component({
-  selector: 'k-form-field-radio-button',
+  selector: 'k-form-field-radio-button[formId][ctrlName]',
   templateUrl: 'radio-button-field.component.html'
 })
 export class RadioButtonFieldComponent extends MultipleOptionFieldComponent {}

@@ -11,7 +11,7 @@ import { MultipleOptionFieldComponent } from '@form/component';
  * Button Toggle Field Component
  */
 @Component({
-  selector: 'k-form-field-button-toggle',
+  selector: 'k-form-field-button-toggle[formId][ctrlName]',
   templateUrl: 'button-toggle-field.component.html'
 })
 export class ButtonToggleFieldComponent extends MultipleOptionFieldComponent {

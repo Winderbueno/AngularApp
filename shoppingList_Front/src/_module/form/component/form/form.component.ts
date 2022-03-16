@@ -32,7 +32,7 @@ import { FormValue } from '@form/model/form-value.model';
  *  @param validate - (? | Default:true) - Define if the formState validation has to run
  */
 @Component({
-  selector: 'k-form',
+  selector: 'k-form[formId]',
   templateUrl: 'form.component.html'
 })
 export class FormComponent implements OnInit, OnDestroy {
