@@ -18,10 +18,17 @@ export class SliderFieldComponent extends FieldComponent {
 
   @Input() min: number = 1;
   @Input() max: number = 100;
-  val:number=this.value as number;
   @Input() tickInterval: number = 1;
 
+  val: number = this.min;
+
   ngOnInit() {
+
+    // TODO - Value should be between min & max
+    this.value === '' ? 
+      this.value = this.min : 
+      this.val = this.value as number;
+
     this.required = false;
     super.ngOnInit();
   }
