@@ -41,7 +41,10 @@ export const createFormAction = createAction(
   ModuleEnum.Form,
   EmitterTypeEnum.Store,
   'createForm',
-  props<{ formId: string }>()
+  props<{ 
+    formId: string,
+    validate?: boolean
+  }>()
 );
 
 export const deleteFormAction = createAction(

@@ -13,20 +13,27 @@ export const selectState = createFeatureSelector<FormState>(featureKey);
 
 export const selectForm = (formId: string) =>
   createSelector(
-    selectState, 
+    selectState,
     (state: FormState) => state[formId]);
+
+export const selectFormConf_Validate = (formId: string) =>
+  createSelector(
+    selectForm(formId),
+    (formState: FormGroupState<FormValue>) =>
+      formState 
+      && formState.userDefinedProperties.validate);
 
 export const selectFormValue = (formId: string) =>
   createSelector(
     selectForm(formId),
-    (formState: FormGroupState<FormValue>) => 
-      formState 
+    (formState: FormGroupState<FormValue>) =>
+      formState
       && formState.value);
 
 export const selectControlValue = (formId: string, ctrlId: string) =>
   createSelector(
     selectForm(formId),
-    (formState: FormGroupState<FormValue>) => 
-      formState &&
-      formState.controls[ctrlId] &&
-      formState.controls[ctrlId].value);
+    (formState: FormGroupState<FormValue>) =>
+      formState 
+      && formState.controls[ctrlId] 
+      && formState.controls[ctrlId].value);

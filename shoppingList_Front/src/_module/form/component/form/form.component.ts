@@ -42,16 +42,18 @@ export class FormComponent implements OnInit, OnDestroy {
   protected _formGroupState: FormGroupState<FormValue> | undefined;
   private _formId: string = "defaultFormId";
   private _unpersist: boolean = false;
+  private _validate: boolean = true;
   private _fieldFormatEnum=FieldFormatEnum;
 
   // Input
   @Input() // TODO - WARN - Should be mandatory
   get formId() { return this._formId; }
   set formId(input: string) { this._formId = input; }
-
   @Input()
   set unpersist(input: boolean) { this._unpersist = input; }
-  
+  @Input()
+  set validate(input: boolean) { this._validate = input; }
+
   // Accessor
   get FieldFormatEnum() { return this._fieldFormatEnum; }
   get value() { return this._formGroupState!.value }
@@ -71,12 +73,17 @@ export class FormComponent implements OnInit, OnDestroy {
     
     // If form does not exist in state, create FormState, else resetState
     this._formGroupState === undefined ?
-      this.store.dispatch(fromStore.createFormAction({ formId: this._formId })) :
-      this.store.dispatch(fromStore.resetFormAction({ formId: this._formId }));
+      this.store.dispatch(fromStore.createFormAction({ 
+        formId: this._formId, 
+        validate: this._validate 
+      })) 
+      : this.store.dispatch(fromStore.resetFormAction({ formId: this._formId }));
   }
 
   ngOnDestroy(): void {
-    if(this._unpersist) this.store.dispatch(fromStore.deleteFormAction({ formId: this._formId })); 
+    if(this._unpersist) { 
+      this.store.dispatch(fromStore.deleteFormAction({ formId: this._formId })); 
+    }
   }
 
   onSubmit(): void {

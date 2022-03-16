@@ -17,26 +17,31 @@ import { ValidationFnsService } from '../service/validation-fns.service';
 @Injectable()
 export class FormValidationEffects {
 
-  // After form control had its value set, 
-  // Run static control validation
-  validateControl$ = createEffect(() =>
+  // When value is set on control, call service to get control StaticValidationFns
+  getControlStaticValidationFns$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SetValueAction.TYPE),
-      map((action: SetValueAction<FormValue>) => {
-        return fromStore.validateControlAction({
-          controlId: action.controlId,
-          validationFns: this.validationFnsService.getStaticControlValidationFns(
-            action.controlId.split('.')[0],
-            action.controlId.split('.')[1])
-        });
-      })
+      switchMap((action: SetValueAction<FormValue>) =>
+        of(action).pipe(
+          withLatestFrom(this.store.select(fromStore.selectFormConf_Validate(action.controlId.split('.')[0]))),
+          filter(([, validate]) => validate === true),
+          map(([action, ]) => {
+            return fromStore.validateControlAction({
+              controlId: action.controlId,
+              validationFns: this.validationFnsService.getStaticControlValidationFns(
+                action.controlId.split('.')[0],
+                action.controlId.split('.')[1])
+            });
+          })
+        )
+      )
     )
   );
 
   // TODO - This is done for any value change... Might be optimizable
-  // After control has been validated, 
+  // When control has been validated, 
   // Run validation on the entire form for potentially dependant control
-  dynamycFormValidation$ = createEffect(() =>
+  dynamicFormValidation$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromStore.validateControlAction),
       switchMap((action) =>
@@ -46,7 +51,7 @@ export class FormValidationEffects {
             let formId:string = action.controlId.split('.')[0];
             return fromStore.dynamicValidateFormAction({
               formId: formId,
-              // Get DynamicValidationFns for the form 
+              // Get ControlDynamicValidationFns for the form 
               controlValidationFns: this.validationFnsService 
                 .getAppliedDynamicControlValidationFnsByFormId(formId, formState)
             });
@@ -56,7 +61,7 @@ export class FormValidationEffects {
     )
   );
 
-  // After form has been submitted, 
+  // When form is submitted, 
   // Run form validation (i.e. a validation of all its control)
   validateForm$ = createEffect(() =>
     this.actions$.pipe(
@@ -66,10 +71,12 @@ export class FormValidationEffects {
       switchMap((action) =>
         of(action).pipe(
           withLatestFrom(this.store.select(fromStore.selectForm(action.formId))),
-          map(([action, formState]) => {
+          withLatestFrom(this.store.select(fromStore.selectFormConf_Validate(action.formId))),
+          filter(([, validate]) => validate === true),
+          map(([[action, formState],]) => {
             return fromStore.validateFormAction({
               formId: action.formId,
-              // Get All Control ValidationFns for the form 
+              // Get All ControlValidationFns for the form 
               controlValidationFns: this.validationFnsService 
                 .getControlValidationFnsByFormId(action.formId, formState)
             });

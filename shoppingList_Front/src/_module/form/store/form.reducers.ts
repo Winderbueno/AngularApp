@@ -9,7 +9,8 @@ import {
   onNgrxForms,
   updateRecursive,
   validate,
-  reset } from 'ngrx-forms';
+  reset, 
+  setUserDefinedProperty } from 'ngrx-forms';
 //#endregion
 
 //#region State, Action
@@ -29,6 +30,7 @@ const formReducer = createReducer(
     (state, action) => {
       const newState = { ...state };
       newState[action.formId] = createFormGroupState<FormValue>(action.formId, {});
+      newState[action.formId] = setUserDefinedProperty('validate', action.validate)(newState[action.formId]);
       return newState;
     }),
 
