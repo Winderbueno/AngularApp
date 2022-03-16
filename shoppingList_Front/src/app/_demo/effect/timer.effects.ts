@@ -20,10 +20,12 @@ export class TimerEffects {
       ofType(fromForm.formValidatedAction),
       filter((action) => action.formId === 'Alert'),
       map((action) =>
-        fromTimer.defineTimerAction({ timer : new Timer({
-          timerId: 'Alert',
-          time: (action.formValue.Delay as number)*1000
-        }) })
+        fromTimer.defineTimerAction({
+          timer: new Timer({
+            timerId: 'Alert',
+            time: (action.formValue.Delay as number) * 1000
+          })
+        })
       )
     )
   );
