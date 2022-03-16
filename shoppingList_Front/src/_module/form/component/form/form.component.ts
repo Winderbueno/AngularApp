@@ -54,13 +54,17 @@ export class FormComponent implements OnInit, OnDestroy {
     this.store.select(fromStore.selectForm(this.formId))
       .subscribe(s => this._formGroupState = s);
     
-    // If form does not exist in state, create FormState, else resetState
-    this._formGroupState === undefined ?
+    // If form does not exist in state, create FormState, 
+    if(this._formGroupState === undefined) {
       this.store.dispatch(fromStore.createFormAction({ 
         formId: this.formId,
         validate: this.validate
-      })) 
-      : this.store.dispatch(fromStore.resetFormAction({ formId: this.formId }));
+      }))
+    } else { // Else, if form is configured to be validated, resetState
+      if(this.validate) {
+        this.store.dispatch(fromStore.resetFormAction({ formId: this.formId }));
+      }
+    } 
   }
 
   ngOnDestroy(): void {
