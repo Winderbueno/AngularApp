@@ -5,7 +5,7 @@
     <k-button type='button' color='primary' label='Add Product'></k-button>
     <k-button type='button' color='primary' label='Reset Status'></k-button>
     
-    <k-form [formId]="formId">
+    <k-form [formId]="formId" [validate]="false">
       <div>
         <k-button-slide-toggle
           [formId]="formId" [ctrlName]="'Accordeon'" 

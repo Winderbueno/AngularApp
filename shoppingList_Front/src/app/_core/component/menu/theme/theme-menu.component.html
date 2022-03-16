@@ -2,7 +2,7 @@
   <mat-icon>format_color_fill</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
-  <k-form [formId]="formId">
+  <k-form [formId]="formId" [validate]="false">
     <k-form-field-radio-button
       [formId]="formId" 
       [ctrlName]="'Theme'"
