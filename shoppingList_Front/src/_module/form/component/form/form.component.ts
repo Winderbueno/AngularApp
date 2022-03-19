@@ -28,8 +28,8 @@ import { FormValue } from '@form/model/form-value.model';
  *    > Except if the state is rehydrated by a mecanism, formState will be lost
  *
  *  @param formId - FormGroupState Id
- *  @param unpersist - (? | Default:false) - If true, formState is cleaned when component is destroy
- *  @param validate - (? | Default:true) - Define if the formState validation has to run
+ *  @param unpersist? - (Default:false) - If true, formState is cleaned when component is destroy
+ *  @param validate? - (Default:true) - If false, disable any formState validation
  */
 @Component({
   selector: 'k-form[formId]',

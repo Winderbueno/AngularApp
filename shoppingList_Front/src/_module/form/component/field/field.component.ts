@@ -48,14 +48,14 @@ import { ValidationFnsService } from '@form/service/validation-fns.service';
  *
  *  @param formID - FormGroupState Id to add the FormControlState on
  *  @param ctrlName - FormControlState Name
- *  @param label - (? | Default:<ctrlName>)
- *  @param placeholder - (?)
- *  @param value - (? | Default:'')
- *  @param format - (?) - Defined by Enum (Can be 'Email' | 'Number' | 'Password')
- *  @param required - (? | Default:true) - Add 'required' validationFn on the field
- *  @param addValidationFns - (?) - Array of ValidationFns 
- *  @param addDynamicValidationFns - (?) - Array of DynamicValidationFns
- *  @param unpersist - (? | Default:false) - If true, field state is deleted when component is destroy
+ *  @param label? - (Default:<ctrlName>)
+ *  @param placeholder? - Non active value visible in field if value is empty 
+ *  @param value? - (Default:'')
+ *  @param format? - Defined by enum ('Email' | 'Number' | 'Password')
+ *  @param required? - (Default:true) - Add 'required' validationFn on the field
+ *  @param addValidationFns? - Array of ValidationFns 
+ *  @param addDynamicValidationFns? - Array of DynamicValidationFns
+ *  @param unpersist? - (Default:false) - If true, field state is deleted when component is destroy
  */
 @Component({template: ``})
 export class FieldComponent implements OnInit, OnDestroy {

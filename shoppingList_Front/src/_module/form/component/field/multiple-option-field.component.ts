@@ -12,9 +12,9 @@ import { FieldComponent } from '..';
  * This component adds the necessary input to a Field to handle multiple avaoptions :
  * 
  *  @param options - List of available options (as a string array of displayed label)
- *  @param labelAsValue - (? | Default:true)
+ *  @param labelAsValue? - (Default:true)
  *    Specify if the value stored in the formState is the label index or the label itself
- *  @param optionClass - (?) - Optionnal CSS class added to the options
+ *  @param optionClass? - CSS class added to the options (eg. For integration with <mat-menu>)
  */
 @Component({ template: `` })
 export class MultipleOptionFieldComponent extends FieldComponent {
