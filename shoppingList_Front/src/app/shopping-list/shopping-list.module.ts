@@ -10,6 +10,7 @@ import { ShoppingListRouterModule } from './router.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormModule } from '@form/form.module';
 import { MaterialModule } from '@material/material.module';
+import { NgrxFormsModule } from 'ngrx-forms';
 //#endregion
 
 //#region This
@@ -30,6 +31,7 @@ import * as fromStore from './store/';
     FlexLayoutModule,
     FormModule,
     MaterialModule,
+    NgrxFormsModule, // TODO - Used for add-product-chip, put component in @form ?
 
     /* Store */
     StoreModule.forFeature(
