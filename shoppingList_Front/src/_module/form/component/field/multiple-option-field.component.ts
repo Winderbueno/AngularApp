@@ -20,5 +20,5 @@ import { FieldComponent } from '..';
 export class MultipleOptionFieldComponent extends FieldComponent {
   @Input() options!: string[] | null | undefined;
   @Input() valueAsLabel: boolean = true;
-  @Input() optionClass: string = '';
+  @Input() optionClass: string = ''; // TODO - should be undefined by default
 }
