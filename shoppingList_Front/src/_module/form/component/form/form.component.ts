@@ -27,7 +27,7 @@ import { FormValue } from '@form/model/form-value.model';
  *    > Hence, default form persistance is not 'app restart proof' (e.g. By clicking refresh button)
  *    > Except if the state is rehydrated by a mecanism, formState will be lost
  *
- *  @param formId - FormGroupState Id
+ *  @param formId! - FormGroupState Id
  *  @param unpersist? - (Default:false) - If true, formState is cleaned when component is destroy
  *  @param validate? - (Default:true) - If false, disable any formState validation
  */
@@ -42,7 +42,7 @@ export class FormComponent implements OnInit, OnDestroy {
   get formGroupState() { return this._formGroupState!; }
 
   // Input
-  @Input() formId!: string; // TODO - WARN - Should be mandatory
+  @Input() formId!: string;
   @Input() unpersist: boolean = false;
   @Input() validate: boolean = true;  
 
