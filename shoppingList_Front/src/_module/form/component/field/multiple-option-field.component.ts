@@ -14,11 +14,11 @@ import { FieldComponent } from '..';
  *  @param options - List of available options (as a string array of displayed label)
  *  @param labelAsValue? - (Default:true)
  *    Specify if the value stored in the formState is the label index or the label itself
- *  @param optionClass? - CSS class added to the options (eg. For integration with <mat-menu>)
+ *  @param customClass? - Custom CSS class applied to all options (Useful for <mat-menu> integration for example)
  */
 @Component({ template: `` })
 export class MultipleOptionFieldComponent extends FieldComponent {
   @Input() options!: string[] | null | undefined;
   @Input() valueAsLabel: boolean = true;
-  @Input() optionClass: string = ''; // TODO - should be undefined by default
+  @Input() customClass?: string;
 }

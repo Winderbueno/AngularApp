@@ -5,7 +5,7 @@
   <mat-select [ngrxFormControlState]="ctrl">
     <ng-container *ngIf="options !== null && options !== undefined">
       <mat-option *ngFor="let option of options"
-        [ngClass]="optionClass"
+        [ngClass]="customClass ? customClass : ''"
         value="{{ option }}" >
         {{ option }}
       </mat-option>

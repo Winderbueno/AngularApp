@@ -51,7 +51,7 @@ import { ValidationFnsService } from '@form/service/validation-fns.service';
  *  @param label? - (Default:<ctrlName>)
  *  @param placeholder? - Non active value visible in field if value is empty 
  *  @param value? - (Default:'')
- *  @param format? - Defined by enum ('Email' | 'Number' | 'Password')
+ *  @param format? - Field value format (Defined by enum : 'Email' | 'Number' | 'Password')
  *  @param required? - (Default:true) - Add 'required' validationFn on the field
  *  @param addValidationFns? - Array of ValidationFns 
  *  @param addDynamicValidationFns? - Array of DynamicValidationFns
