@@ -14,5 +14,4 @@ import { FieldComponent } from '@form/component';
   selector: 'k-button-slide-toggle[formId][ctrlName]',
   templateUrl: 'slide-toggle-button.component.html'
 })
-export class SlideToggleButtonComponent extends FieldComponent {
-}
+export class SlideToggleButtonComponent extends FieldComponent {}
