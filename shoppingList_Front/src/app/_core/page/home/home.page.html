@@ -18,7 +18,7 @@
       [style.marginBottom.px]="56"
       ngStyle.xs="margin-bottom:56px;" ngStyle.gt-xs="top:64px;margin-bottom:0px;"
       [opened]="isOpenSideNav$|async" 
-      (closed)="closeSideNav()">
+      (closedStart)="closeSideNav()">
 
       <menu-main style="height: 100%" fxLayout="column" 
         fxLayoutAlign.xs="end stretch" 
