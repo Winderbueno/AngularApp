@@ -10,8 +10,14 @@ import { ButtonComponent } from '../button.component';
 
 /**
  * Basic Button Component
- *  Is a rectangle button that has form submit behaviour by default
- *  It handles listening to global loader (TODO - should be a specific loader)
+ *  Is a configurable rectangle Button
+ *  By default, it has a "submit" standardisation :
+ *    > Effect : form submit on click
+ *    > Style (color:primary, raised:true)
+ *    > Content 
+ *      - (label:'Submit')
+ *      - Loader (TODO - should be a specific loader)
+ *      - When loading : button is disabled & loader indicator
  * 
  *  @param label? - (Default:'Submit', if type is default) - Text inside the button
  *  @param customClass? - Custom CSS class applied to the button (Useful for <mat-menu> integration for example)
