@@ -39,7 +39,7 @@ export class ButtonComponent implements OnInit {
 
   throwAction(): void {
     if(this.buttonId !== undefined || this._actionSetByUser) { 
-      this.store.dispatch(this.action!); 
+      if(this.action !== undefined) { this.store.dispatch(this.action) }; 
     }
   }
 }
