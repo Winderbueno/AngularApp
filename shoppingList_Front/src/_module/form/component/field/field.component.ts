@@ -75,10 +75,10 @@ export class FieldComponent implements OnInit, OnDestroy {
     this._ctrlName = input;
     if (this.label === undefined) this.label = input; 
   }
-  @Input() label: string | undefined;
-  @Input() placeholder: string | undefined;
+  @Input() label?: string;
+  @Input() placeholder?: string;
   @Input() value: string | boolean | number = '';
-  @Input() format: FieldFormatEnum | undefined;
+  @Input() format?: FieldFormatEnum;
   @Input() required: boolean = true;
   @Input() addValidationFns: ValidationFn<any>[] = [];
   @Input() addDynamicValidationFns: DynamicControlValidationFn[] = [];

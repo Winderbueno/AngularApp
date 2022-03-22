@@ -9,6 +9,10 @@ import { ButtonComponent } from '../button.component';
 
 /**
  * Icon Button Component
+ * 
+ * Note : As this component does not contain text to convey meaning
+ *  for accessibility purposes, 'aria-label' should be specified
+ *  See: https://material.angular.io/components/icon/overview#interactive-icons
  */
 @Component({
   selector: 'k-button-icon',
