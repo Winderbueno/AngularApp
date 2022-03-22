@@ -1,6 +1,6 @@
 <div fxLayoutAlign="space-between center">
   <div>{{ message }}</div>
-  <button mat-icon-button (click)="dismissAlert()">
-    <mat-icon>close</mat-icon>
-  </button>
+  <k-button-icon aria-label="dismiss alert button" 
+    icon="close" [action]="dismissAlertAction">
+  </k-button-icon>
 </div>

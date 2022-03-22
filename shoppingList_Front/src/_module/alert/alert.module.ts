@@ -7,6 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 //#region Module
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormModule } from '@form/form.module';
 import { MaterialModule } from '@material/material.module';
 //#endregion
 
@@ -24,6 +25,7 @@ import * as fromStore from './store/';
 
     /* Module */
     FlexLayoutModule,
+    FormModule, // TODO - Should be ButtonModule
     MaterialModule,
 
     /* Store */

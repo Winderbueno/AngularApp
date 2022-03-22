@@ -2,10 +2,10 @@
 <div *ngIf="(isLogged$|async); else elseBlock">
   <a mat-button color="accent" [matMenuTriggerFor]="menu">{{account[0].userName}}</a>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="logout()">
-      <mat-icon>logout</mat-icon>
-      Logout
-    </button>
+    <k-button customClass="mat-menu-item"
+      type="button" icon="logout" label="Logout"
+      [action]="accountLogoutAction">
+    </k-button>
   </mat-menu>
 </div>
 

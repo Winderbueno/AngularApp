@@ -7,10 +7,10 @@
 
     <div style="width: 100%;">
       <!-- Sidenav Toggle -->
-      <button mat-icon-button aria-label="Navigation menu icon"
-        (click)="toggleSideNav();">
-        <mat-icon>{{ (isOpenSideNav$|async) ? 'menu_open': 'menu' }}</mat-icon>
-      </button>
+      <k-button-icon aria-label="navigation menu button"
+        [icon]="(isOpenSideNav$|async) ? 'menu_open': 'menu'"
+        [action]="toggleSideNavAction">
+      </k-button-icon>
       <menu-theme></menu-theme>      
     </div>
 

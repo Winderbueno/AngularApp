@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 //#endregion
 
 //#region Model, Action
-import * as fromAccount from '@account/store/';
+import * as fromAccount from '@account/store';
 import { Account } from '@account/model/account.model';
 //#endregion
 
@@ -17,14 +17,11 @@ export class UserMenuComponent {
 
   readonly isLogged$ = this.store.select(fromAccount.isLogged);
   account!: Account[];
+  accountLogoutAction = fromAccount.logoutAction();
 
   constructor(private store: Store) {
     // TODO - Change selector to "GetConnectedAccount"
     this.store.select(fromAccount.selectAccounts)
       .subscribe(value => this.account=value);
-  }
-
-  logout() {
-    this.store.dispatch(fromAccount.logoutAction());
   }
 }

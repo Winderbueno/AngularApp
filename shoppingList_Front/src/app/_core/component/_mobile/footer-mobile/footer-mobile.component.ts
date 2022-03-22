@@ -15,12 +15,7 @@ import * as fromStore from '../../../store';
   styleUrls: ['./footer-mobile.component.scss']
 })
 export class FooterMobileComponent {
-
   readonly isOpenSideNav$: Observable<boolean> = this.store.select(fromStore.isOpenSideNav);
-
+  toggleSideNavAction = fromStore.toggleSideNavAction();
   constructor(private store: Store) {}
-
-  toggleSideNav() {
-    this.store.dispatch(fromStore.toggleSideNavAction());
-  }
 }
