@@ -4,7 +4,8 @@ export { FieldComponent } from './field/field.component';
 export { MultipleOptionFieldComponent } from './field/multiple-option-field.component';
 
 /* Button */
-export { ButtonComponent } from './button/basic/button.component';
+export { BasicButtonComponent } from './button/basic/basic-button.component';
+export { IconButtonComponent } from './button/icon/icon-button.component';
 export { SlideToggleButtonComponent } from './button/slide-toggle-button/slide-toggle-button.component';
 
 /* Field */

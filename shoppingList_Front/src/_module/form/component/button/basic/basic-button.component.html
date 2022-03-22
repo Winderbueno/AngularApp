@@ -1,0 +1,12 @@
+﻿<button
+  mat-button
+  [type]="type" [color]="color"
+  [ngClass]="customClass ? customClass : 'full-width'"
+  [class.mat-button]="customClass === undefined"
+  [class.mat-raised-button]="type === 'submit' || color === 'primary'"
+  [disabled]="(type === 'submit') && (isLoading$|async)"
+  (click)="throwAction()">
+  <k-loader style="margin-right: 5px;" *ngIf="type === 'submit'"></k-loader>
+  <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+  <span *ngIf="label !== undefined">{{ label }}</span>
+</button>

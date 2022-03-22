@@ -1,0 +1,8 @@
+﻿<button
+  mat-icon-button
+  type="button"
+  [color]="color"
+  [class.mat-raised-button]="type === 'submit' || color === 'primary'"
+  (click)="throwAction()">
+  <mat-icon>{{ icon }}</mat-icon>
+</button>

@@ -42,7 +42,8 @@ import * as fromStore from './store/';
   ],
   declarations: [
     /* Button */
-    Components.ButtonComponent,
+    Components.BasicButtonComponent,
+    Components.IconButtonComponent,
     Components.SlideToggleButtonComponent,
 
     /* Field */
@@ -63,8 +64,9 @@ import * as fromStore from './store/';
   ],
   exports: [
     /* Button */
-    Components.ButtonComponent,
+    Components.BasicButtonComponent,
     Components.SlideToggleButtonComponent,
+    Components.IconButtonComponent,
 
     /* Field */
     Components.ButtonToggleFieldComponent,
