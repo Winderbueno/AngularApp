@@ -10,15 +10,10 @@
 
   <mat-error *ngIf="ctrl.isInvalid">{{ err.getErrorMsg(ctrl) }}</mat-error>
 
-  <mat-datepicker-toggle 
-    matSuffix 
-    [for]="picker" 
-    (touchstart)="touchUi=true">
+  <mat-datepicker-toggle matSuffix [for]="picker" (touchstart)="touchUi=true">
   </mat-datepicker-toggle>
 
-  <mat-datepicker 
-    #picker
-    [touchUi]="touchUi"
-    (closed)="touchUi=false"></mat-datepicker>  
+  <mat-datepicker #picker [touchUi]="touchUi" (closed)="touchUi=false">
+  </mat-datepicker>
 
 </mat-form-field>
