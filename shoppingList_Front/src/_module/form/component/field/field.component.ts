@@ -57,7 +57,7 @@ import { ValidationFnsService } from '@form/service/validation-fns.service';
  *  @param addDynamicValidationFns? - Array of DynamicValidationFns
  *  @param unpersist? - (Default:false) - If true, field state is deleted when component is destroy
  */
-@Component({template: ``})
+@Component({ template: '' })
 export class FieldComponent implements OnInit, OnDestroy {
 
   // Private variable

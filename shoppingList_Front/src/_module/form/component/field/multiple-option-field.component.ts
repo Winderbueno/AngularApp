@@ -16,7 +16,7 @@ import { FieldComponent } from '..';
  *    Specify if the value stored in the formState is the label index or the label itself
  *  @param customClass? - Custom CSS class applied to all options (Useful for <mat-menu> integration for example)
  */
-@Component({ template: `` })
+@Component({ template: '' })
 export class MultipleOptionFieldComponent extends FieldComponent {
   @Input() options!: string[] | null | undefined;
   @Input() valueAsLabel: boolean = true;
