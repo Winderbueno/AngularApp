@@ -4,9 +4,10 @@ import { Store } from '@ngrx/store';
 //#endregion
 
 //#region Module
-import { maxLength, minLength, number } from 'ngrx-forms/validation';
-import * as fromEnum from '@enum/store/';
+import * as fromEnum from '@enum/store';
+import * as fromForm from '@form/store';
 import { FieldFormatEnum } from '@form/model';
+import { maxLength, minLength, number } from 'ngrx-forms/validation';
 //#endregion
 
 
@@ -27,6 +28,10 @@ export class FormComponent {
 
   // Option values
   readonly productCatEnum$ = this.store.select(fromEnum.selectEnumValues('ProductCategory'));
+
+  // Action
+  resetFormAction = fromForm.resetFormAction({ formId: this.formId });
+  clearFormValueAction = fromForm.clearFormValueAction({ formId: this.formId });
 
   constructor(public store: Store) {}
 }
