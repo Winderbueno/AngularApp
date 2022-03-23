@@ -1,5 +1,5 @@
 //#region Angular
-import { NgModule } from '@angular/core';
+import { enableProdMode, NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -48,6 +48,8 @@ import { EnumAPIEffects } from '@enum/effect';
 
 //#region Configuration
 import { environment } from '@env/environment';
+let devConf = [StoreDevtoolsModule.instrument({ maxAge: 25 })];
+if(environment.production) { devConf = []; enableProdMode() }
 //#endregion
 
 
@@ -77,18 +79,10 @@ import { environment } from '@env/environment';
       router: routerReducer,
       core: fromStore.reducer
     },{
-      metaReducers:[
-        fromStore.localStorageSyncReducer
-      ]
+      metaReducers:[fromStore.localStorageSyncReducer]
     }),
 
-    StoreRouterConnectingModule.forRoot(),
-
-    /* Store DevTool */
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-      logOnly: environment.production
-    }),
+    StoreRouterConnectingModule.forRoot(),    
 
     /* Effect */
     EffectsModule.forRoot([
@@ -97,6 +91,9 @@ import { environment } from '@env/environment';
       AccountAPIEffects, // TODO - Should be in Account Feature ?
       EnumAPIEffects, // TODO - Should be in Enum Module ?
     ]),
+
+    /* Dev Only */
+    ...devConf
   ],
   providers: [
     /* Manage HTTP request */
