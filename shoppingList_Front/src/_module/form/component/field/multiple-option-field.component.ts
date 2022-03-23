@@ -18,7 +18,7 @@ import { FieldComponent } from '..';
  */
 @Component({ template: '' })
 export class MultipleOptionFieldComponent extends FieldComponent {
-  @Input() options!: string[] | null | undefined;
+  @Input() options?: string[];
   @Input() valueAsLabel: boolean = true;
   @Input() customClass?: string;
 }

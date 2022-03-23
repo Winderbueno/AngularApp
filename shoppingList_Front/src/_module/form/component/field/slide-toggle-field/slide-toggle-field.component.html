@@ -1,7 +1,7 @@
 ﻿<div class="mat-form-field-wrapper">
   
   <mat-slide-toggle [ngrxFormControlState]="ctrl"
-    [ngClass]="{'mat-error' : ctrl.isInvalid && (ctrl.isDirty || form.isSubmitted) }">
+    [class.mat-error]="ctrl.isInvalid && (ctrl.isDirty || form.isSubmitted)">
     {{ label }}
 
     <!-- If "required", show user indication -->

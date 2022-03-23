@@ -3,7 +3,7 @@
   <mat-label>{{ label }}</mat-label>
 
   <mat-select [ngrxFormControlState]="ctrl">
-    <ng-container *ngIf="options !== null && options !== undefined">
+    <ng-container *ngIf="options">
       <mat-option *ngFor="let option of options"
         [ngClass]="customClass ? customClass : ''"
         value="{{ option }}" >

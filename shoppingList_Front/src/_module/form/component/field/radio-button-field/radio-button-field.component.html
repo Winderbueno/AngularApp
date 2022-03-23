@@ -5,7 +5,7 @@
   [attr.aria-label]="label">
   
   <!-- TODO - put mat-menu-item class as a field param -->
-  <ng-container *ngIf="options !== null && options !== undefined">
+  <ng-container *ngIf="options">
     <mat-radio-button *ngFor="let option of options"
       [ngClass]="customClass ? customClass : ''"
       value="{{ valueAsLabel ? option : this.options.indexOf(option) }}">
