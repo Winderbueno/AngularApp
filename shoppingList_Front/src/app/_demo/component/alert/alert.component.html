@@ -1,10 +1,11 @@
 <mat-card>
   <mat-card-title>{{ formId }}</mat-card-title>
   <k-form [formId]="formId">
-    <div fxLayout="raw">
+    <div fxLayout="raw" fxLayoutAlign="center stretch">
 
       <!-- Delay - time waited before alert is triggered -->
-      <k-form-field-slider [formId]="formId" [ctrlName]="'Delay'" [label]="'Delay (sec)'" [value]="2" [min]="1" [max]="5">
+      <k-form-field-slider fxHide.xs="true"
+        [formId]="formId" [ctrlName]="'Delay'" [label]="'Delay (sec)'" [value]="2" [min]="1" [max]="5">
       </k-form-field-slider>
       
       <div fxLayout="column">
