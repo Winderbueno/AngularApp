@@ -5,8 +5,8 @@ import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
 //#region This
-import * as Effects from './effect/';
-import * as fromStore from './store/';
+import * as Effects from './effect';
+import * as fromStore from './store';
 //#endregion
 
 

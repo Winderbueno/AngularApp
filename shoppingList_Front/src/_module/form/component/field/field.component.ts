@@ -6,7 +6,7 @@ import { required } from 'ngrx-forms/validation';
 //#endregion
 
 //#region Store, Model, Service
-import * as fromStore from '@form/store/';
+import * as fromStore from '@form/store';
 import { FormValue } from '@form/model/form-value.model';
 import { DynamicControlValidationFn } from '@form/model/validation-fns.model';
 import { FieldFormatEnum } from '@form/model/field-format.enum';

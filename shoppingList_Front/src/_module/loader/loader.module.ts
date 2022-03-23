@@ -9,8 +9,8 @@ import { MaterialModule } from '@material/material.module';
 //#endregion
 
 //#region This
-import * as Components from './component/';
-import * as fromStore from './store/';
+import * as Components from './component';
+import * as fromStore from './store';
 //#endregion
 
 

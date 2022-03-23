@@ -7,8 +7,8 @@ import { catchError, switchMap, take, tap } from 'rxjs/operators';
 //#endregion
 
 //#region Store
-import * as fromAccount from '@account/store/';
-import * as fromStore from '../store/';
+import * as fromAccount from '@account/store';
+import * as fromStore from '../store';
 //#endregion
 
 

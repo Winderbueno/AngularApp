@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 //#endregion
 
 //#region Module
-import * as fromAccount from '@account/store/';
+import * as fromAccount from '@account/store';
 import { Account } from '@account/model/account.model';
 //#endregion
 

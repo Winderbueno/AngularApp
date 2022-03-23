@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 //#endregion
 
 //#region Store, Model
-import * as fromStore from '@form/store/';
+import * as fromStore from '@form/store';
 import { FormGroupState } from 'ngrx-forms';
 import { FormValue } from '@form/model/form-value.model';
 //#endregion

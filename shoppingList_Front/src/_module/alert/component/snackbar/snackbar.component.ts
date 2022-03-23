@@ -4,7 +4,7 @@ import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 //#endregion
 
 //#region Store
-import * as fromStore from '../../store/';
+import * as fromStore from '../../store';
 //#endregion
 
 

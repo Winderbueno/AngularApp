@@ -5,13 +5,13 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { filter, map, withLatestFrom } from 'rxjs/operators';
 //#endregion
 
-//#region Action
-import * as fromAPI from '../service/account.api.actions';
-import * as fromTimer from '@timer/store/';
+//#region Module
+import * as fromTimer from '@timer/store';
+import { Timer } from '@timer/model/timer.model';
 //#endregion
 
-//#region Model
-import { Timer } from '@timer/model/timer.model';
+//#region This
+import * as fromAPI from '../service/account.api.actions';
 //#endregion
 
 

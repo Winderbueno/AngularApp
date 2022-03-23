@@ -6,7 +6,7 @@ import { map, filter, withLatestFrom } from 'rxjs/operators';
 //#endregion
 
 //#region Module
-import * as fromForm from '@form/store/';
+import * as fromForm from '@form/store';
 //#endregion
 
 //#region This

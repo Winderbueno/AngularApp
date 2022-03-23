@@ -7,8 +7,8 @@ import { catchError, finalize } from 'rxjs/operators';
 //#endregion
 
 //#region Module
-import * as fromAccount from '@account/store/';
-import * as fromLoader from '@loader/store/';
+import * as fromAccount from '@account/store';
+import * as fromLoader from '@loader/store';
 //#endregion
 
 

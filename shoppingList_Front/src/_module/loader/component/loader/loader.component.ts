@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 //#endregion
 
 //#region Store
-import * as fromStore from '../../store/';
+import * as fromStore from '../../store';
 //#endregion
 
 

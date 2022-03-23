@@ -4,15 +4,14 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map } from 'rxjs/operators';
 //#endregion
 
-//#region Action, Selector
-import * as fromAPI from '../service/account.api.actions';
-import * as fromComponent from '../component/';
-import * as fromStore from '../store/';
-import * as fromAlert from '@alert/store/';
+//#region Module
+import * as fromAlert from '@alert/store';
 //#endregion
 
-//#region Model
-import { AlertTypeEnum } from '@alert/store/';
+//#region This
+import * as fromAPI from '../service/account.api.actions';
+import * as fromComponent from '../component';
+import * as fromStore from '../store';
 //#endregion
 
 
@@ -30,7 +29,7 @@ export class AlertEffects {
         fromAPI.resetPasswordFailureAction
       ),
       map((action) => fromAlert.triggerAlertAction({
-        alertType: AlertTypeEnum.Error,
+        alertType: fromAlert.AlertTypeEnum.Error,
         message: action.error,
         keepAfterRouteChange: false
       }))
@@ -41,7 +40,7 @@ export class AlertEffects {
     this.actions$.pipe(
       ofType(fromStore.autoLogoutAction),
       map(() => fromAlert.triggerAlertAction({
-        alertType: AlertTypeEnum.Error,
+        alertType: fromAlert.AlertTypeEnum.Error,
         message: "You've been disconnected",
         keepAfterRouteChange: true
       }))
@@ -57,7 +56,7 @@ export class AlertEffects {
         fromComponent.emailTokenValidatedAction
       ),
       map((action) => fromAlert.triggerAlertAction({
-        alertType: AlertTypeEnum.Success,
+        alertType: fromAlert.AlertTypeEnum.Success,
         message: action.message,
         keepAfterRouteChange: true
       }))

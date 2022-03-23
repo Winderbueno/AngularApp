@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 
 //#region App Component, Model
 import * as Actions from './verify-email.actions';
-import * as fromToken from '@token/store/';
+import * as fromToken from '@token/store';
 import { Token } from '@token/model/token.model';
 //#endregion
 

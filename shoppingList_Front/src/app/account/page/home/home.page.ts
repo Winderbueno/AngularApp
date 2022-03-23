@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 //#endregion
 
 //#region Module
-import * as fromAccount from '@account/store/';
+import * as fromAccount from '@account/store';
 //#endregion
 
 

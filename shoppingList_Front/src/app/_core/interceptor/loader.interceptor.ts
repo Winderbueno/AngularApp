@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 //#endregion
 
 //#region Module
-import * as fromLoader from '@loader/store/';
+import * as fromLoader from '@loader/store';
 //#endregion
 
 

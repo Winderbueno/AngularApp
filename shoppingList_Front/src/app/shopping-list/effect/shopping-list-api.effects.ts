@@ -6,14 +6,14 @@ import { of } from 'rxjs';
 import { map, switchMap, catchError, filter, withLatestFrom } from 'rxjs/operators';
 //#endregion
 
-//#region Action, Selector
-import * as fromForm from '@form/store/';
-import * as fromAPI from '../service/shopping-list.api.actions';
-import * as fromComponent from '../component';
-import * as fromStore from '../store/';
+//#region Module
+import * as fromForm from '@form/store';
 //#endregion
 
-//#region Service, Model
+//#region This
+import * as fromAPI from '../service/shopping-list.api.actions';
+import * as fromComponent from '../component';
+import * as fromStore from '../store';
 import { ShoppingListService } from '../service/shopping-list.service';
 import { ShoppingList } from '../model/shopping-list.model';
 //#endregion

@@ -6,11 +6,14 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { tap, withLatestFrom } from 'rxjs/operators';
 //#endregion
 
-//#region Action, Selector
-import * as fromAPI from '../service/account.api.actions';
-import * as fromComponent from '../component/';
-import * as fromStore from '../store/';
+//#region Module
 import * as fromRouter from '@router/router.selectors';
+//#endregion
+
+//#region This
+import * as fromAPI from '../service/account.api.actions';
+import * as fromComponent from '../component';
+import * as fromStore from '../store';
 //#endregion
 
 

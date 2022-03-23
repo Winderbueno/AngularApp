@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 //#endregion
 
 //#region Module
-import * as fromEnum from '@enum/store/';
+import * as fromEnum from '@enum/store';
 //#endregion
 
 

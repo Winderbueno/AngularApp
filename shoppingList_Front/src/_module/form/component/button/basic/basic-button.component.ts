@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 //#endregion
 
 //#region Module
-import * as fromLoader from '@loader/store/';
+import * as fromLoader from '@loader/store';
 import { ButtonComponent } from '../button.component';
 //#endregion
 

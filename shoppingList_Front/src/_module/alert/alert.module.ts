@@ -12,9 +12,9 @@ import { MaterialModule } from '@material/material.module';
 //#endregion
 
 //#region This
-import * as Components from './component/';
-import * as Effects from './effect/';
-import * as fromStore from './store/';
+import * as Components from './component';
+import * as Effects from './effect';
+import * as fromStore from './store';
 //#endregion
 
 

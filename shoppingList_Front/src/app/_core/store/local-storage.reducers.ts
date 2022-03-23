@@ -7,9 +7,9 @@ import {
 
 //#region Module
 import * as Actions from './core.actions';
-import * as fromAccount from '@account/store/';
-import * as fromShoppingList from '@shoppingList/store/';
-import * as fromTimer from '@timer/store/';
+import * as fromAccount from '@account/store';
+import * as fromShoppingList from '@shoppingList/store';
+import * as fromTimer from '@timer/store';
 //#endregion
 
 

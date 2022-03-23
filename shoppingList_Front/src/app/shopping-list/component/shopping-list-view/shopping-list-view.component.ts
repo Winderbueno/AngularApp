@@ -4,11 +4,11 @@ import { Store } from '@ngrx/store';
 //#endregion
 
 //#region Module
-import * as fromForm from '@form/store/';
+import * as fromForm from '@form/store';
 //#endregion
 
 //#region This
-import * as fromStore from '../../store/';
+import * as fromStore from '../../store';
 import * as Actions from './shopping-list-view.actions';
 import { ShoppingList } from '../../model/shopping-list.model';
 import { UsedProduct } from '../../model/used-product.model';

@@ -14,10 +14,10 @@ import { NgrxFormsModule } from 'ngrx-forms';
 //#endregion
 
 //#region This
-import * as Components from './component/';
-import * as Effects from './effect/';
+import * as Components from './component';
+import * as Effects from './effect';
 import * as Pages from './page';
-import * as fromStore from './store/';
+import * as fromStore from './store';
 //#endregion
 
 
