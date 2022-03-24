@@ -69,7 +69,7 @@ export class FormComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     if(this.unpersist) { 
-      this.store.dispatch(fromStore.deleteFormAction({ formId: this.formId })); 
+      this.store.dispatch(fromStore.deleteFormAction({ formIds: [this.formId] })); 
     }
   }
 
