@@ -15,6 +15,7 @@
           [matTooltipDisabled]="(accordionExpandedCtrl$|async)?.isDirty">
         </k-button-slide-toggle>
 
+        <!-- TODO - Tooltip should only be displayed on 1st connection -->
         <k-button-slide-toggle
           [formId]="formId" [ctrlName]="'EditMode'" 
           [label]="(editModeCtrl$|async)?.value ? 'Use' : 'Edit'"
