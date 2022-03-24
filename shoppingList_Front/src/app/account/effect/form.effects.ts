@@ -17,6 +17,7 @@ import * as fromStore from '../store';
 @Injectable()
 export class FormEffects {
 
+  // TODO - Logout should clean all 'Logged only accessible' form
   cleanForms$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
@@ -25,7 +26,7 @@ export class FormEffects {
         fromStore.logoutAction,
         fromStore.autoLogoutAction
       ),
-      map(() => fromForm.deleteFormAction({ formId:'ShoppingListActions'}))
+      map(() => fromForm.deleteFormAction({ formIds: ['ShoppingListActions', 'Add Product'] }))
     )
   );
 
