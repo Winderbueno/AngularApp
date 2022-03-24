@@ -28,16 +28,12 @@ const timerReducer = createReducer(
   // When the effect have deleted the timer, we delete it from the state
   on(fromAction.timerDeletedAction,
     (state, action) => {
-      // TODO - have a name always defined
-      if(action.timerId === undefined){
-        return state;
-      } else {
-        return adapter.removeOne(action.timerId, state);
-      }
+      // TODO - have a timerId always defined
+      return action.timerId === undefined ?
+        state : adapter.removeOne(action.timerId, state);
     }
   ),
 );
-
 
 export function reducer(state: TimerState | undefined, action: Action) {
   return timerReducer(state, action);
