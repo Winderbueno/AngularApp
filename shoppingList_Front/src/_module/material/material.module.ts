@@ -23,6 +23,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 //#endregion
 
 //#region Material UI Component Configuration
@@ -70,6 +71,7 @@ import { MatLuxonDateModule } from '@angular/material-luxon-adapter';
     MatSlideToggleModule,
     MatSnackBarModule,
     MatToolbarModule,
+    MatTooltipModule,
 
     /* Material Library Adapters */
     NgrxMatSelectViewAdapter,
