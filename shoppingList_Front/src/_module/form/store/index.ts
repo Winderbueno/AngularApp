@@ -26,5 +26,6 @@ export {
   selectForm,
   selectFormConf_Validate,
   selectFormValue,
+  selectControl,
   selectControlValue
 } from './form.selectors';
