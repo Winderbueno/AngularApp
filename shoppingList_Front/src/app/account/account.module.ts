@@ -41,6 +41,7 @@ import * as fromStore from './store';
     EffectsModule.forFeature([
       Effects.AlertEffects,
       Effects.AutoLogoutEffects,
+      Effects.FormEffects,
       Effects.RouterEffects,
       Effects.TimerEffects
     ]),
