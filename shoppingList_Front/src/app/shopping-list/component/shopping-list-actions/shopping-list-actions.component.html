@@ -9,12 +9,18 @@
       <div>
         <k-button-slide-toggle
           [formId]="formId" [ctrlName]="'Accordeon'" 
-          [label]="(accordionExpanded$|async) ? 'Close' : 'Open'">
+          [label]="(accordionExpandedCtrl$|async)?.value ? 'Close' : 'Open'"
+          matTooltip="Open or close the shopping list"
+          [matTooltipDisabled]="(accordionExpandedCtrl$|async)?.isDirty">
         </k-button-slide-toggle>
 
         <k-button-slide-toggle
           [formId]="formId" [ctrlName]="'EditMode'" 
-          [label]="(editMode$|async) ? 'Use' : 'Edit'">
+          [label]="(editModeCtrl$|async)?.value ? 'Use' : 'Edit'"
+          matTooltip="Change shopping list interaction mode. 
+            Switching between an 'Edit' mode to modify product in the list 
+            and a 'Use' mode that only allow to change product bought status"
+          [matTooltipDisabled]="(editModeCtrl$|async)?.isDirty">
         </k-button-slide-toggle>
       </div>
     </k-form>

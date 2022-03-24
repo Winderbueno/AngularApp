@@ -15,8 +15,8 @@ import * as fromForm from '@form/store';
 export class ShoppingListActionComponent {
 
   formId = 'ShoppingListActions';
-  readonly editMode$ = this.store.select(fromForm.selectControlValue('ShoppingListActions', 'EditMode'));
-  readonly accordionExpanded$ = this.store.select(fromForm.selectControlValue('ShoppingListActions', 'Accordeon'));
+  readonly editModeCtrl$ = this.store.select(fromForm.selectControl('ShoppingListActions', 'EditMode'));
+  readonly accordionExpandedCtrl$ = this.store.select(fromForm.selectControl('ShoppingListActions', 'Accordeon'));
 
-  constructor(public store: Store) { }
+  constructor(public store: Store) {}
 }
