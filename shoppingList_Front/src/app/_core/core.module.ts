@@ -48,7 +48,7 @@ import { EnumAPIEffects } from '@enum/effect';
 
 //#region Configuration
 import { environment } from '@env/environment';
-let devConf = [StoreDevtoolsModule.instrument({ maxAge: 25 })];
+let devConf = [StoreDevtoolsModule.instrument({ maxAge: 50 })];
 if(environment.production) { devConf = []; enableProdMode() }
 //#endregion
 

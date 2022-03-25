@@ -30,6 +30,7 @@ export class RouterEffects {
         fromAPI.logoutFailureAction,
         fromComponent.emailTokenValidatedAction,
         fromStore.autoLogoutAction,
+        fromStore.logoutAction
       ),
       tap(() => {
         this.router.navigate(['account/login']);

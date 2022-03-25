@@ -15,26 +15,19 @@ const accountReducer = createReducer(
 
   on(
     fromAPI.loginSuccessAction,
-    fromAPI.refreshTokenSuccessAction, // TODO - Test that it works
-    (state, action) => {
-      return adapter.addOne(action.account, {
-        ...state,
-        isLogged: true
-      })
-    }
+    fromAPI.refreshTokenSuccessAction,
+      (state, action) => (adapter.addOne(action.account, { ...state, isLogged: true }))
   ),
 
   on(
     fromAPI.logoutSuccessAction,
     fromAPI.logoutFailureAction,
     fromAction.autoLogoutAction,
-    (state) => {
-      return adapter.removeAll({
-        ...state,
-        isLogged: false,
-      })
-    }
+      (state) => (adapter.removeAll({ ...state, isLogged: false }))
   ),
+
+  on(fromAction.logoutAction, 
+      (state) => ({ ...state, isLogged: false })),
 );
 
 
