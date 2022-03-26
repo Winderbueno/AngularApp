@@ -16,6 +16,7 @@ import * as fromStore from '../../store';
 export class HomePage {
 
   readonly isOpenSideNav$: Observable<boolean> = this.store.select(fromStore.isOpenSideNav);
+  footerHideXs=false;
 
   constructor(private store: Store) {}
 
@@ -23,6 +24,16 @@ export class HomePage {
   onStorage(event: any): void {
     if(event.key === 'account')
       this.store.dispatch(fromStore.accountWindowStorageChangeAction({ event: event }));
+  }
+
+  @HostListener('focusin', ['$event'])
+  onFocus(event: any): void {
+    if(event.srcElement.localName === 'input') { this.footerHideXs = true; }
+  }
+
+  @HostListener('focusout', ['$event'])
+  onBlur(event: any): void {
+    if(event.srcElement.localName === 'input') { this.footerHideXs = false; }
   }
 
   closeSideNav() {
