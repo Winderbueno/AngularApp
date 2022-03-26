@@ -1,6 +1,7 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
+import { MediaObserver } from '@angular/flex-layout';
 import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { filter, map, withLatestFrom } from 'rxjs/operators';
@@ -24,10 +25,14 @@ export class AlertEffects {
     this.actions$.pipe(
       ofType(fromStore.triggerAlertAction),
       map((action) => {
+        
+        let panelClass:string[] = [AlertTypeEnumClass[action.alertType]];
+        if(this.mediaObserver.isActive('xs')) { panelClass.push('small-screen'); }
+
         this.snackBarRef = this.snackBar.openFromComponent(SnackbarComponent, {
           data: action.message,
-          panelClass: AlertTypeEnumClass[action.alertType]
-        }); 
+          panelClass: panelClass
+        });
       })
     ), { dispatch: false }
   );
@@ -57,6 +62,7 @@ export class AlertEffects {
   constructor(
     private actions$: Actions,
     private store: Store,
+    private readonly mediaObserver: MediaObserver,
     private snackBar: MatSnackBar
   ) {}
 }
