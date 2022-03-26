@@ -2,7 +2,8 @@
   in a flex container, even though it has a fixed position -->
 <mat-toolbar></mat-toolbar>
 
-<footer class="fixed-footer">
+<footer class="fixed-footer"
+  [class.higher-than-cdk-overlay]="isAlerting$|async">
   <mat-toolbar color="primary" fxLayoutAlign="end center">
 
     <div style="width: 100%;">

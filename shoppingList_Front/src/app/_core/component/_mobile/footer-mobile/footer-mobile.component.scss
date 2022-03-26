@@ -2,5 +2,9 @@
   position: fixed !important;
   width: 100%;
   bottom: 0;
-  z-index: 2 !important;
+  z-index: 1000 !important;
+}
+
+.higher-than-cdk-overlay {
+  z-index: 1100 !important;
 }

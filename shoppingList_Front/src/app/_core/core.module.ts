@@ -86,6 +86,7 @@ if(environment.production) { devConf = []; enableProdMode() }
 
     /* Effect */
     EffectsModule.forRoot([
+      Effects.AlertEffects,
       Effects.CSSThemeEffects,
       Effects.SideNavEffects,
       AccountAPIEffects, // TODO - Should be in Account Feature ?

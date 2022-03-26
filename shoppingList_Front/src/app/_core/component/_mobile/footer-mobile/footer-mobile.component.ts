@@ -5,6 +5,10 @@ import { Observable } from 'rxjs';
 //#endregion
 
 //#region Module
+import * as fromAlert from '@alert/store';
+//#endregion
+
+//#region This
 import * as fromStore from '../../../store';
 //#endregion
 
@@ -16,6 +20,7 @@ import * as fromStore from '../../../store';
 })
 export class FooterMobileComponent {
   readonly isOpenSideNav$: Observable<boolean> = this.store.select(fromStore.isOpenSideNav);
+  readonly isAlerting$: Observable<boolean> = this.store.select(fromAlert.isAlerting);
   toggleSideNavAction = fromStore.toggleSideNavAction();
   constructor(private store: Store) {}
 }
