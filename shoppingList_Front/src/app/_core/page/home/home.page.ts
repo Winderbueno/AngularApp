@@ -16,24 +16,30 @@ import * as fromStore from '../../store';
 export class HomePage {
 
   readonly isOpenSideNav$: Observable<boolean> = this.store.select(fromStore.isOpenSideNav);
-  footerHideXs=false;
+  footerHideXs = false;
 
-  constructor(private store: Store) {}
+  constructor(private store: Store) { }
 
   @HostListener('window:storage', ['$event'])
   onStorage(event: any): void {
-    if(event.key === 'account')
+    if (event.key === 'account')
       this.store.dispatch(fromStore.accountWindowStorageChangeAction({ event: event }));
   }
 
   @HostListener('focusin', ['$event'])
   onFocus(event: any): void {
-    if(event.srcElement.localName === 'input') { this.footerHideXs = true; }
+    if (event.srcElement.localName === 'input') { this.footerHideXs = true; }
   }
 
   @HostListener('focusout', ['$event'])
-  onBlur(event: any): void {
-    if(event.srcElement.localName === 'input') { this.footerHideXs = false; }
+  onFocusOut(event: any): void {
+    if (event.srcElement.localName === 'input') { this.footerHideXs = false; }
+  }
+
+  @HostListener('keydown', ['$event'])
+  onKeyDown(event: any): void {
+    // On small screen, if user press return, show footer
+    if (event.keyCode === 13) { this.footerHideXs = false; }
   }
 
   closeSideNav() {
