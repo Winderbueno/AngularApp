@@ -23,10 +23,9 @@ export class HomePage {
   readonly isOpenSideNav$: Observable<boolean> = this.store.select(fromStore.isOpenSideNav);
   footerVisibleXs = true;
   keyboardVisibleXs = false;
-  windowHeight = window.innerHeight;
-  secondLastScrollY = 0;
+  lastWindowHeight = window.innerHeight;
   lastScrollY = 0;
-  focused = false;
+  secondLastScrollY = 0;
   lastResizeIsExtension = true;
 
   constructor(
@@ -40,41 +39,29 @@ export class HomePage {
       this.store.dispatch(fromStore.accountWindowStorageChangeAction({ event: event }));
   }
 
-  @HostListener('focusin', ['$event'])
-  onFocusIn(): void {
-    this.focused = true;
-  }
-
-  @HostListener('focusout', ['$event'])
-  onFocusOut(): void {
-    this.focused = false;
-  }
-
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
     /** 
-     *  On small screen, on resize, manage footerVisibility
-     *    - According to virtualKeyboardVisibility & focusedStatus
+     *  On small screen, on virtualKeyboardVisibility change, manage footerVisibility
      * 
-     *  Note : 'virtualKeyboardVisibility' is particularly deduced from 
-     *      - windowHeight change (shortening -> show / extension -> hide)
+     *  Note : 'virtualKeyboardVisibility' is deduced from windowHeight change on resize
+     *    (shortening -> show / extension -> hide)
      * 
-     *    Though acceptable, this detection solution has some limitations :
-     *      - If browser is in 'Pop-up view' and :
-     *        > 'Resize is done manually', 
-     *          this technique will deduce a 'keyboardVisibility' change
-     *          although the actual visibility would not have been impacted 
-     *        > 'Focus is given to an input' (hence the keyboard pop-up)
-     *          'keyboardVisibility' will not be detected
-     *      - In chrome browser, with auto-hide feature of chrome searchbar
+     *  Though functionnal in most cases, this detection solution has some limitations :
+     *    - If browser is in 'Pop-up' or 'Split Screen' view, and :
+     *      > 'Resize is done manually', 
+     *        this technique will deduce a 'keyboardVisibility' change
+     *        although the actual visibility would not have been impacted 
+     *      > 'Focus is given to an input' (hence the keyboard pop-up)
+     *        'keyboardVisibility' might not be detected
      */
     if (this.mediaObserver.isActive('xs')) {
-      if (this.focused && event.currentTarget.innerHeight < this.windowHeight) {
+      if (event.currentTarget.innerHeight < this.lastWindowHeight) {
         this.lastResizeIsExtension = false;
         this.keyboardVisibleXs = true;
         this.footerVisibleXs = false;
         this.store.dispatch(fromAlert.dismissAlertAction());
-      } else if (event.currentTarget.innerHeight >= this.windowHeight
+      } else if (event.currentTarget.innerHeight >= this.lastWindowHeight
         && this.keyboardVisibleXs) {
         if (this.lastResizeIsExtension === false) { this.footerVisibleXs = true; }
         this.lastResizeIsExtension = true;
@@ -87,7 +74,7 @@ export class HomePage {
   onScroll(event: any): void {
     // On small screen, on scroll, manage footerVisibility
     //  - scrolling impact footerVisibility only when virtualKeyboard is hidden
-    //  - secondLastScrollY test is used to avoid endless loop induced by
+    //  - secondLastScrollY test avoid endless loop induced by
     //      scrolling event resulting of changing footerVisibility
     if (this.mediaObserver.isActive('xs')
       && !this.keyboardVisibleXs
