@@ -53,18 +53,20 @@ export class HomePage {
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
     /** 
-     * On small screen,
-     *  manage footerVisibility according to virtualKeyboardVisibility 
+     *  On small screen, on resize, manage footerVisibility
+     *    - According to virtualKeyboardVisibility & focusedStatus
      * 
-     *  Note : 
-     *    'virtualKeyboardVisibility' is deduced from 
-     *      - windowFocus status
+     *  Note : 'virtualKeyboardVisibility' is particularly deduced from 
      *      - windowHeight change (shortening -> show / extension -> hide)
-     *    Though acceptable, this technique has some limitations :
-     *      - If browser is in a pop-up view and,
-     *        > resize is done manually
-     *        > 
-     *      - In chrome browser with auto-hide feature of chrome searchbar
+     * 
+     *    Though acceptable, this detection solution has some limitations :
+     *      - If browser is in 'Pop-up view' and :
+     *        > 'Resize is done manually', 
+     *          this technique will deduce a 'keyboardVisibility' change
+     *          although the actual visibility would not have been impacted 
+     *        > 'Focus is given to an input' (hence the keyboard pop-up)
+     *          'keyboardVisibility' will not be detected
+     *      - In chrome browser, with auto-hide feature of chrome searchbar
      */
     if (this.mediaObserver.isActive('xs')) {
       if (this.focused && event.currentTarget.innerHeight < this.windowHeight) {
@@ -74,7 +76,7 @@ export class HomePage {
         this.store.dispatch(fromAlert.dismissAlertAction());
       } else if (event.currentTarget.innerHeight >= this.windowHeight
         && this.keyboardVisibleXs) {
-        if(this.lastResizeIsExtension === false) { this.footerVisibleXs = true; }
+        if (this.lastResizeIsExtension === false) { this.footerVisibleXs = true; }
         this.lastResizeIsExtension = true;
         this.keyboardVisibleXs = false;
       }
@@ -83,8 +85,10 @@ export class HomePage {
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event: any): void {
-    // On small screen, if virtualKeyboard is hidden,
-    //  -> 'hide/show' footer when scrolling
+    // On small screen, on scroll, manage footerVisibility
+    //  - scrolling impact footerVisibility only when virtualKeyboard is hidden
+    //  - secondLastScrollY test is used to avoid endless loop induced by
+    //      scrolling event resulting of changing footerVisibility
     if (this.mediaObserver.isActive('xs')
       && !this.keyboardVisibleXs
       && event.currentTarget.scrollY !== this.secondLastScrollY) {
