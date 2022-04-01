@@ -25,7 +25,7 @@ import { ButtonComponent } from '../button.component';
 @Component({
   selector: 'k-button',
   templateUrl: 'basic-button.component.html',
-  styles: ['.full-width { width: 100%; }']
+  styleUrls: ['./basic-button.component.scss']
 })
 export class BasicButtonComponent extends ButtonComponent {
 

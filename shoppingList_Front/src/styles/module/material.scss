@@ -1,7 +1,3 @@
-.mat-sidenav {
-  position: fixed !important;
-}
-
 .mat-toolbar a {
   font-size: 1.2rem !important;
 }
@@ -21,12 +17,11 @@
   border-radius: 1rem !important;
 }
 
-.mat-spinner {
-  position: relative;
-  top: 0.3rem;
+.mat-sidenav {
+  position: fixed !important;
 }
 
-// Allow Card shadow not to be cut
+// Allow mat-card shadow not to be cut
 .mat-sidenav-content {
   padding: 2px;
 }
