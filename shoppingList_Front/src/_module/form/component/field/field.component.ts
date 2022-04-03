@@ -47,7 +47,11 @@ import { FormComponent } from '../form/form.component';
  *  - ValidationFns (static & dynamic) are managed by an angular service
  *  - Error messages are managed by an angular service
  *
- *  @param formId - FormGroupState Id to add the FormControlState on
+ *  @param formId? - FormGroupState Id to add the FormControlState on
+ *    (Default:[formId] of <k-form> element that contains the field)
+ *    Note : [formId] can be specified manually by user to attach the field to another form,
+ *      However, in order for this feature to work, the form must have been initialised 
+ *      in the component tree structure before the field (TODO ?)
  *  @param ctrlName - FormControlState Name
  *  @param label? - (Default:<ctrlName>)
  *  @param placeholder? - Non active value visible in field if value is empty 
