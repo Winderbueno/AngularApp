@@ -21,7 +21,6 @@ import { UsedProduct } from '../../model/used-product.model';
 })
 export class ShoppingListViewComponent {
 
-  formId = 'ShoppingListView';
   readonly editMode$ = this.store.select(fromForm.selectControlValue('ShoppingListActions', 'EditMode'));
   readonly accordionExpanded$ = this.store.select(fromForm.selectControlValue('ShoppingListActions', 'Accordeon'));
   editMode: boolean = false;

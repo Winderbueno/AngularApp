@@ -4,9 +4,8 @@
 </k-button-icon>
 
 <mat-menu #menu="matMenu">
-  <k-form [formId]="formId" [validate]="false">
-    <k-form-field-radio-button
-      [formId]="formId" 
+  <k-form formId='Theme-Menu' [validate]="false">
+    <k-form-field-radio-button 
       [ctrlName]="'Theme'"
       [options]="materialThemeEnumKeys"
       [value]="'0'"

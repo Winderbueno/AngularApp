@@ -5,22 +5,22 @@
 
       <!-- Delay - time waited before alert is triggered -->
       <k-form-field-slider fxHide.xs="true"
-        [formId]="formId" [ctrlName]="'Delay'" [label]="'Delay (sec)'" [value]="2" [min]="1" [max]="5">
+        [ctrlName]="'Delay'" [label]="'Delay (sec)'" [value]="2" [min]="1" [max]="5">
       </k-form-field-slider>
       
       <div fxLayout="column">
 
         <!-- Message -->
-        <k-form-field-input [formId]="formId" [ctrlName]="'Message'" [label]="'Message'" [value]="'Tadaaaaa !!!'">
+        <k-form-field-input [ctrlName]="'Message'" [label]="'Message'" [value]="'Tadaaaaa !!!'">
         </k-form-field-input>
 
         <!-- Criticity -->
-        <k-form-field-button-toggle [formId]="formId" [ctrlName]="'Criticity'" [options]="alertTypeEnumValues"
+        <k-form-field-button-toggle [ctrlName]="'Criticity'" [options]="alertTypeEnumValues"
           [value]="alertTypeEnum.Success">
         </k-form-field-button-toggle>
 
         <!-- Ask if alert should be kept after route change -->
-        <k-form-field-checkbox [formId]="formId" [ctrlName]="'KeepAfterRouteChange'" [label]="'Keep alert after route change ?'"
+        <k-form-field-checkbox [ctrlName]="'KeepAfterRouteChange'" [label]="'Keep alert after route change ?'"
           [required]="false">
         </k-form-field-checkbox>
       </div>

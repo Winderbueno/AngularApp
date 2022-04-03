@@ -5,10 +5,10 @@
     <k-button type='button' color='primary' label='Add Product'></k-button>
     <k-button type='button' color='primary' label='Reset Status'></k-button>
     
-    <k-form [formId]="formId" [validate]="false">
+    <k-form formId='ShoppingListActions' [validate]="false">
       <div>
         <k-button-slide-toggle
-          [formId]="formId" [ctrlName]="'Accordeon'" 
+          [ctrlName]="'Accordeon'" 
           [label]="(accordionExpandedCtrl$|async)?.value ? 'Close' : 'Open'"
           [value]="true"
           matTooltip="Open or close the shopping list"
@@ -17,7 +17,7 @@
 
         <!-- TODO - Tooltip should only be displayed on 1st connection -->
         <k-button-slide-toggle
-          [formId]="formId" [ctrlName]="'EditMode'" 
+          [ctrlName]="'EditMode'" 
           [label]="(editModeCtrl$|async)?.value ? 'Use' : 'Edit'"
           [value]="false"
           matTooltip="Change shopping list interaction mode. 

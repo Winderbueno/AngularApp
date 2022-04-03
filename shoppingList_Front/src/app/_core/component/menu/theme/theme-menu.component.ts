@@ -12,6 +12,5 @@ import { MaterialThemeEnum } from '@material/model/theme.enum';
   templateUrl: './theme-menu.component.html'
 })
 export class ThemeMenuComponent {
-  formId = 'Theme-Menu';
   materialThemeEnumKeys: string[] = Object.keys(MaterialThemeEnum);
 }

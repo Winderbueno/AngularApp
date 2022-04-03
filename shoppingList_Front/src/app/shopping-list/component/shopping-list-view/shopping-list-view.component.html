@@ -1,5 +1,5 @@
 <mat-card>
-  <k-form [formId]="formId" [unpersist]="true" [validate]="false">
+  <k-form formId='ShoppingListView' [unpersist]="true" [validate]="false">
     <!-- Shopping List -->
     <div *ngIf="myShoppingList[0] && myShoppingList[0].catProducts">
 
@@ -32,7 +32,6 @@
               </mat-chip-list>
 
               <add-product-chip *ngIf="editMode$|async" 
-                [formId]="formId" 
                 [ctrlName]="'AddProduct-'+ catProd.category +'-'+ subCatProd.subCategory"
                 [placeholder]="'+'">
               </add-product-chip>

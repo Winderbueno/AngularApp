@@ -1,13 +1,13 @@
 <h1 mat-dialog-title>{{ formId }}</h1> <!-- TODO title should be styles as mat-card --->
 
 <k-form [formId]="formId">
-  <k-form-field-input [formId]="formId" [ctrlName]="'ProductName'" [label]="'Name'">
+  <k-form-field-input [ctrlName]="'ProductName'" [label]="'Name'">
   </k-form-field-input>
 
-  <k-form-field-select [formId]="formId" [ctrlName]="'Category'" [options]="productCatEnum$|async">
+  <k-form-field-select [ctrlName]="'Category'" [options]="productCatEnum$|async">
   </k-form-field-select>
 
-  <k-form-field-select [formId]="formId" [ctrlName]="'SubCategory'" [options]="productSubCatEnum$|async">
+  <k-form-field-select [ctrlName]="'SubCategory'" [options]="productSubCatEnum$|async">
   </k-form-field-select>
 
   <!-- TODO - Proposition de produit -->

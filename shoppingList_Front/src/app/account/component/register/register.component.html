@@ -3,19 +3,19 @@
   <k-form [formId]="formId">
 
     <!-- Username -->
-    <k-form-field-input [formId]="formId" [ctrlName]="'Username'">
+    <k-form-field-input [ctrlName]="'Username'">
     </k-form-field-input>
 
     <!-- Email -->
-    <k-form-field-input [formId]="formId" [ctrlName]="'Email'" [format]="FieldFormatEnum.Email">
+    <k-form-field-input [ctrlName]="'Email'" [format]="FieldFormatEnum.Email">
     </k-form-field-input>
 
     <!-- Password + Confirm -->
-    <k-form-field-group-password [formId]="formId" [withConfirm]="true">
+    <k-form-field-group-password [withConfirm]="true">
     </k-form-field-group-password>
 
     <!-- Usage Term -->
-    <k-form-field-checkbox [formId]="formId" [ctrlName]="'acceptTerms'" [label]="'Accept Terms & Conditions'">
+    <k-form-field-checkbox [ctrlName]="'acceptTerms'" [label]="'Accept Terms & Conditions'">
     </k-form-field-checkbox>
 
     <!-- Submit -->

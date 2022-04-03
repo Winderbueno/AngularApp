@@ -13,8 +13,7 @@ import * as fromForm from '@form/store';
   templateUrl: './shopping-list-actions.component.html'
 })
 export class ShoppingListActionComponent {
-
-  formId = 'ShoppingListActions';
+  
   readonly editModeCtrl$ = this.store.select(fromForm.selectControl('ShoppingListActions', 'EditMode'));
   readonly accordionExpandedCtrl$ = this.store.select(fromForm.selectControl('ShoppingListActions', 'Accordeon'));
 
