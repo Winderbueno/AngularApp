@@ -16,7 +16,7 @@ import * as fromStore from '../../store';
  *  @param type? - (Default:'submit') - HTML button type (Can be 'submit' | 'button')
  *  @param icon? - <mat-icon> string identifier (See: https://fonts.google.com/icons?icon.query=user)
  *  @param color? - (Default:'primary') - Can be 'primary' | 'accent' | 'warn'
- *  @param action? - (Default:'buttonClickedAction') - Text inside the button
+ *  @param action? - (Default:'buttonClickedAction') - ngrx action dispatched on click
  */
  @Component({ template: '' })
 export class ButtonComponent implements OnInit {
