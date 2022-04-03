@@ -101,9 +101,10 @@ export class FieldComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    let parentComponent = this.injector.get(FormComponent);
-    if(this.formId === undefined && parentComponent !== undefined) { 
-      this.formId=parentComponent.formId; 
+    // By default, get formId from parent <k-form>
+    let formComponent = this.injector.get(FormComponent);
+    if(this.formId === undefined && formComponent !== undefined) { 
+      this.formId=formComponent.formId; 
     }
 
     // Subscribe to FormGroupState
