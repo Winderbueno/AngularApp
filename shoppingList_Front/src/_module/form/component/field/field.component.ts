@@ -18,40 +18,41 @@ import { FormComponent } from '../form/form.component';
 /**
  * Field Component
  *
- * This component manage a Field that has :
+ * This component manage a 'field' that has :
  * 
- *  - A FormControlState,
- *    > Represent the state of the field (valid, dirty, touch...)
- *    > It is a subobject of a FormGroupState (That has the id : <formId>)
- *    > Identifiable in FormGroupState by its 'ctrlName' (Unique Identifier in FormGroupState)
- *    > Having an Id generated as '<formId>.<ctrlName>'
+ *  - A unique linked form (See 'FormComponent')
+ * 
+ *  - A state,
+ *    > Identifiable by a calculated id : '<formId>.<ctrlName>'
+ *      - 'formId' being the linked form unique identifier
+ *      - 'ctrlName' 
+ *    > Based on 'FormControlState' model (valid, dirty, touch...)
+ *      (See : https://ngrx-forms.readthedocs.io/en/master/user-guide/form-controls/)
+ *    > Which is a sub-object of the form state
+ *    > Persisted in 'ngrx global state'
  *  
- *  - UI information,
- *    > Label, displayed on field and describing the field content
+ *  - Usage information,
+ *    > Label, describing the field content
  *    > Placeholder, displayed inside the field as long as the user does not set a value
  *    > Value, editable by user
  *    > Error Message, generated according to field validation properties
  * 
- *  - Validation Properties,
- *    > 'required' input parameter
+ *  - Validation Rules,
+ *    > 'required' & 'format' input parameter
  *    > Generated internal validationFns (Accessible from children)
  *    > Configurable DynamicValidationFns (Accessible from children)
  * 
- *  - Persistance Properties,
- *    > Field persistance in global ngrx store after component destroy is handled by related Form
- *    > However it is possible to enforce field unpersistance with 'unpersist' input
+ *  Field initial usage information, validation rules and state persistance can be configured with input.
  * 
- * Technical implementation
- * 
- *  - FormControlState is defined & updated in Ngrx global state using 'ngrx-forms' library
- *  - ValidationFns (static & dynamic) are managed by an angular service
- *  - Error messages are managed by an angular service
+ * Technical implementation note :
+ *  - Field State is updated with 'ngrx-forms' actions
+ *  - ValidationFns (static & dynamic) & Error messages  are managed by angular services
  *
  *  @param formId? - FormGroupState Id to add the FormControlState on
- *    (Default:[formId] of <k-form> element that contains the field)
- *    Note : [formId] can be specified manually by user to attach the field to another form,
+ *    (Default:[formId] of <k-form> element that directly contains the <k-form-field-xxx>)
+ *    Note : user can specify [formId] manually to attach the field to another form.
  *      However, in order for this feature to work, the form must have been initialised 
- *      in the component tree structure before the field (TODO ?)
+ *      before the field in the component tree structure. (TODO - )
  *  @param ctrlName - FormControlState Name
  *  @param label? - (Default:<ctrlName>)
  *  @param placeholder? - Non active value visible in field if value is empty 

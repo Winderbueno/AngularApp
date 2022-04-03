@@ -12,25 +12,25 @@ import { FormValue } from '@form/model/form-value.model';
 /**
  * Form Component
  *
- * This component manage a 'form' that :
+ * This component manage a 'form' that has :
  * 
- *  - Automatically,
+ *  - A state, 
+ *    > Identifiable by a user configured 'formId'
+ *    > Based on 'FormGroupState' model (valid, dirty, touch...)
+ *      (See : https://ngrx-forms.readthedocs.io/en/master/user-guide/form-groups/)
+ *    > Persisted in 'ngrx global state' (with all its related fields state) 
+ * 
+ *  - Default behaviours :
  *    > On component init, define its state (or reset it if already defined)
- *    > Persist its state (and all its related fields state) in 'global ngrx state'
  *    > On submit,
  *      - Dispatch a 'submitFormAction'
  *      - Validate its fields
- * 
- *  - Its state being, 
- *    > Identifiable by the specified formId
- *    > Based on 'FormGroupState' model (valid, dirty, touch...)
- *      (See : https://ngrx-forms.readthedocs.io/en/master/user-guide/form-groups/) 
  *      
  *  NOTE : 'Global ngrx state' is not 'localStorage'
  *    > Hence, default form persistance is not 'app restart proof' (e.g. By clicking refresh button)
  *    > Except if the state is rehydrated by a mecanism, formState will be lost
  *    
- *  Form behaviours can be configured with input (unpersist, validate)
+ *  Form behaviours can be configured with input.
  *
  *  @param formId! - FormGroupState Id
  *  @param unpersist? - (Default:false) - If true, form state is deleted on component destruction
