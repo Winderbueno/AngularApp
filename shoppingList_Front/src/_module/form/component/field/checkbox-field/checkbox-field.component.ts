@@ -12,7 +12,7 @@ import { FieldComponent } from '@form/component';
  * CheckBox Field Component
  */
 @Component({
-  selector: 'k-form-field-checkbox[formId][ctrlName]',
+  selector: 'k-form-field-checkbox[ctrlName]',
   templateUrl: 'checkbox-field.component.html'
 })
 export class CheckBoxFieldComponent extends FieldComponent {

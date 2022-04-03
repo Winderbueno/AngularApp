@@ -13,7 +13,7 @@ import { DateTime } from 'luxon';
  * Date Field Component
  */
 @Component({
-  selector: 'k-form-field-date[formId][ctrlName]',
+  selector: 'k-form-field-date[ctrlName]',
   templateUrl: 'date-field.component.html'
 })
 export class DateFieldComponent extends FieldComponent {

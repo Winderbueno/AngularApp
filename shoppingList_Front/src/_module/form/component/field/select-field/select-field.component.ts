@@ -11,7 +11,7 @@ import { MultipleOptionFieldComponent } from '@form/component';
  * Select Field Component
  */
 @Component({
-  selector: 'k-form-field-select[formId][ctrlName]',
+  selector: 'k-form-field-select[ctrlName]',
   templateUrl: 'select-field.component.html'
 })
 export class SelectFieldComponent extends MultipleOptionFieldComponent {}

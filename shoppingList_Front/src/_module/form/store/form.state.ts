@@ -4,7 +4,7 @@ import { FormValue } from '@form/model/form-value.model';
 //#endregion
 
 export interface FormState {
-  [formID: string]: FormGroupState<FormValue>;
+  [formId: string]: FormGroupState<FormValue>;
 }
 
 export const initialState : FormState = {};

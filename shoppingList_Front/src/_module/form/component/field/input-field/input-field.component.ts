@@ -14,7 +14,7 @@ import { FieldFormatEnum } from '@form/model/field-format.enum';
  * Input Field Component
  */
 @Component({
-  selector: 'k-form-field-input[formId][ctrlName]',
+  selector: 'k-form-field-input[ctrlName]',
   templateUrl: 'input-field.component.html' })
 export class InputFieldComponent extends FieldComponent {
 

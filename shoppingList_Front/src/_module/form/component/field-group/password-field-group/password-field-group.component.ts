@@ -11,7 +11,7 @@ import { mustMatch } from '@form/validation-fns/must-match.validation-fns';
 
 /**
  * Password Field Component
- *  @param formID - FormGroupState ID to add the FormControlState on
+ *  @param formId - FormGroupState ID to add the FormControlState on
  *  @param withConfirm - Specify if the password field comes with a "confirm Password" field
  *
  * This component adds 1 or 2 FormControlState to the FormGroupState

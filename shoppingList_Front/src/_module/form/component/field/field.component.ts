@@ -1,5 +1,5 @@
 //#region Angular, Material, NgRx
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, Injector } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FormControlState, FormGroupState, ValidationFn } from 'ngrx-forms';
 import { required } from 'ngrx-forms/validation';
@@ -12,6 +12,7 @@ import { DynamicControlValidationFn } from '@form/model/validation-fns.model';
 import { FieldFormatEnum } from '@form/model/field-format.enum';
 import { ErrorMessageService } from '@form/service/error-message.service';
 import { ValidationFnsService } from '@form/service/validation-fns.service';
+import { FormComponent } from '../form/form.component';
 //#endregion
 
 /**
@@ -23,7 +24,7 @@ import { ValidationFnsService } from '@form/service/validation-fns.service';
  *    > Represent the state of the field (valid, dirty, touch...)
  *    > It is a subobject of a FormGroupState (That has the id : <formId>)
  *    > Identifiable in FormGroupState by its 'ctrlName' (Unique Identifier in FormGroupState)
- *    > Having an Id generated as '<formID>.<ctrlName>'
+ *    > Having an Id generated as '<formId>.<ctrlName>'
  *  
  *  - UI information,
  *    > Label, displayed on field and describing the field content
@@ -46,7 +47,7 @@ import { ValidationFnsService } from '@form/service/validation-fns.service';
  *  - ValidationFns (static & dynamic) are managed by an angular service
  *  - Error messages are managed by an angular service
  *
- *  @param formID - FormGroupState Id to add the FormControlState on
+ *  @param formId - FormGroupState Id to add the FormControlState on
  *  @param ctrlName - FormControlState Name
  *  @param label? - (Default:<ctrlName>)
  *  @param placeholder? - Non active value visible in field if value is empty 
@@ -93,11 +94,17 @@ export class FieldComponent implements OnInit, OnDestroy {
 
   constructor(
     protected store: Store,
+    public injector:Injector,
     private errorMessageService: ErrorMessageService,
     private validationFnsService: ValidationFnsService
   ) {}
 
   ngOnInit() {
+
+    let parentComponent = this.injector.get(FormComponent);
+    if(this.formId === undefined && parentComponent !== undefined) { 
+      this.formId=parentComponent.formId; 
+    }
 
     // Subscribe to FormGroupState
     this.store.select(fromStore.selectForm(this.formId))

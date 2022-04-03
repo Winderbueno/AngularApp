@@ -12,7 +12,7 @@ import { FieldComponent } from '@form/component';
  * CheckBox Field Component
  */
 @Component({
-  selector: 'k-form-field-slide-toggle[formId][ctrlName]',
+  selector: 'k-form-field-slide-toggle[ctrlName]',
   templateUrl: 'slide-toggle-field.component.html'
 })
 export class SlideToggleFieldComponent extends FieldComponent {
