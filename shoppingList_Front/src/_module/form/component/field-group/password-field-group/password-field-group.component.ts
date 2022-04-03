@@ -1,6 +1,5 @@
 ﻿//#region Angular, Material, NgRx
 import { Component, Input } from '@angular/core';
-import { Store } from '@ngrx/store';
 //#endregion
 
 //#region Component, Model, Service
@@ -10,12 +9,15 @@ import { mustMatch } from '@form/validation-fns/must-match.validation-fns';
 
 
 /**
- * Password Field Component
- *  @param formId - FormGroupState ID to add the FormControlState on
- *  @param withConfirm - Specify if the password field comes with a "confirm Password" field
- *
- * This component adds 1 or 2 FormControlState to the FormGroupState
- * "confirmPwd" field is valid only if it has the same value as Pwd field
+ * Password Field Group Component
+ *   
+ * This component adds a password field and, if configured this way, 
+ * a confirmPwd field which is valid only if it has the same value as Pwd field
+ * 
+ *  @param formId? - FormGroupState Id to add the FormControlState on
+ *  @param withConfirm? - (Default:false) - If true, confirmPwd field is added
+ *  @param pwdCtrlName? - (Default:'Password')
+ *  @param confirmPwdCtrlName? (Default:'ConfirmPassword')
  */
 @Component({
   selector: 'k-form-field-group-password',
@@ -26,10 +28,10 @@ export class PasswordFieldGroupComponent {
 
   @Input() formId!: string;
   @Input() withConfirm: boolean = false;
+  @Input() pwdCtrlName: string = 'Password';
+  @Input() confirmPwdCtrlName: string = 'ConfirmPassword';
 
   // Accessibility for template
   mustMatch = mustMatch;
   FieldFormatEnum = FieldFormatEnum;
-
-  constructor(protected store: Store) { }
 }
