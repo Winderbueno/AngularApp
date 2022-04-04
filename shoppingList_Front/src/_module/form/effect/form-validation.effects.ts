@@ -7,7 +7,7 @@ import { map, withLatestFrom, switchMap, filter } from 'rxjs/operators';
 import { SetValueAction } from 'ngrx-forms';
 //#endregion
 
-//#region Store, Model, Service
+//#region This
 import * as fromStore from '../store';
 import { FormValue } from '../model/form-value.model';
 import { ValidationFnsService } from '../service/validation-fns.service';
