@@ -19,9 +19,9 @@ import * as fromStore from './store';
     ),
 
     /* Effect */
-    EffectsModule.forFeature([
-      Effects.TimerEffects
-    ]),
+    EffectsModule.forFeature(
+      Effects.Effects
+    ),
   ]
 })
 export class TimerModule { }

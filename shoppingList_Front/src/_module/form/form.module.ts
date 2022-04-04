@@ -37,17 +37,17 @@ import * as fromStore from './store';
     ),
 
     /* Effect */
-    EffectsModule.forFeature([
-      Effects.FormValidationEffects
-    ]),
+    EffectsModule.forFeature(
+      Effects.Effects
+    ),
   ],
   declarations: [
     Components.Components,
-    Directives.FormDirectives
+    Directives.Directives
   ],
   exports: [
     Components.Components,
-    Directives.FormDirectives
+    Directives.Directives
   ]
 })
 export class FormModule { }

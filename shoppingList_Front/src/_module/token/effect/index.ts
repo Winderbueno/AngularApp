@@ -1,2 +1,5 @@
-﻿/* Effect */
-export { TokenEffects } from './token.effects';
+﻿import { TokenEffects } from './token.effects';
+
+export const Effects = [
+  TokenEffects
+];

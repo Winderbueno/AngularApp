@@ -29,10 +29,10 @@ import * as fromStore from './store';
     ),
   ],
   declarations: [
-    Components.LoaderComponent,
+    Components.Components,
   ],
   exports: [
-    Components.LoaderComponent,
+    Components.Components,
   ]
 })
 export class LoaderModule { }

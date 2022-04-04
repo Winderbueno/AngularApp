@@ -1,2 +1,5 @@
-﻿/* Effect */
-export { TimerEffects } from './timer.effects';
+﻿import { TimerEffects } from './timer.effects';
+
+export const Effects = [
+  TimerEffects
+];

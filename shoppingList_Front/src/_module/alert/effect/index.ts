@@ -1,2 +1,5 @@
-﻿/* Effect */
-export { AlertEffects } from './alert.effects';
+﻿import { AlertEffects } from './alert.effects';
+
+export const Effects = [
+  AlertEffects
+];

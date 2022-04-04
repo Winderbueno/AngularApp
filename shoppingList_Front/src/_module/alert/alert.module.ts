@@ -35,12 +35,12 @@ import * as fromStore from './store';
     ),
 
     /* Effect */
-    EffectsModule.forFeature([
-      Effects.AlertEffects
-    ]),
+    EffectsModule.forFeature(
+      Effects.Effects
+    ),
   ],
   declarations: [
-    Components.SnackbarComponent
+    Components.Components
   ]
 })
 export class AlertModule { }

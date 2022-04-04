@@ -1,3 +1,7 @@
-﻿/* Effect */
-export { EnumAPIEffects } from './enum-api.effects';
+﻿import { EnumAPIEffects } from './enum-api.effects';
 
+export const Effects = [
+  EnumAPIEffects
+];
+
+export { EnumAPIEffects };

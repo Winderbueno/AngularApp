@@ -6,7 +6,7 @@ import { filter, map } from 'rxjs/operators';
 //#endregion
 
 //#region Action, Selector
-import * as Components from '../component';
+import { AddProductDialogComponent } from '../component';
 import * as fromForm from '@form/store';
 //#endregion
 
@@ -14,7 +14,7 @@ import * as fromForm from '@form/store';
 @Injectable()
 export class AddProductDialogEffects {
 
-  dialogRef: MatDialogRef<Components.AddProductDialogComponent> | undefined;
+  dialogRef: MatDialogRef<AddProductDialogComponent> | undefined;
 
   openDialog$ = createEffect(() =>
     this.actions$.pipe(
@@ -22,7 +22,7 @@ export class AddProductDialogEffects {
       filter((action) => action.buttonId === 'Add Product'),
       map(() => {
         this.dialogRef = this.dialog.open(
-          Components.AddProductDialogComponent,
+          AddProductDialogComponent,
           { width: '400px' }
         );
       })

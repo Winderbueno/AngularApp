@@ -1,5 +1,4 @@
-﻿/* Effect */
-import { AddProductAggregatorEffects } from './add-product.aggregator.effects';
+﻿import { AddProductAggregatorEffects } from './add-product.aggregator.effects';
 import { AddProductDialogEffects } from './add-product-dialog.effects';
 import { ShoppingListAPIEffects } from './shopping-list-api.effects';
 

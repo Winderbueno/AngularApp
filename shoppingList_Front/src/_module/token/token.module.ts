@@ -19,9 +19,9 @@ import * as fromStore from './store';
     ),
 
     /* Effect */
-    EffectsModule.forFeature([
-      Effects.TokenEffects
-    ]),
+    EffectsModule.forFeature(
+      Effects.Effects
+    ),
   ]
 })
 export class TokenModule { }

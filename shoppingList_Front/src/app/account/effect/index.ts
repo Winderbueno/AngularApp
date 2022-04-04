@@ -1,5 +1,4 @@
-﻿/* Effect */
-export { AccountAPIEffects } from './account-api.effects';
+﻿export { AccountAPIEffects } from './account-api.effects';
 import { AlertEffects } from './alert.effects';
 import { AutoLogoutEffects } from './auto-logout.effects';
 import { FormEffects } from './form.effects';

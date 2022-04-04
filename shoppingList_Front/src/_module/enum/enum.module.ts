@@ -19,10 +19,9 @@ import * as fromStore from './store';
     ),
 
     /* Effect */
-    EffectsModule.forFeature([
-      Effects.EnumAPIEffects
-    ]),
-  ],
-  declarations: []
+    EffectsModule.forFeature(
+      Effects.Effects
+    ),
+  ]
 })
 export class EnumModule { }
