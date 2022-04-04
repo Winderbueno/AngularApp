@@ -64,6 +64,7 @@ import * as fromStore from './store';
     Components.FormComponent,
 
     /* Directive */
+    Directives.NoPersistFormDirective,
     Directives.NoValidateFormDirective
   ],
   exports: [
@@ -89,6 +90,7 @@ import * as fromStore from './store';
     Components.FormComponent,
 
     /* Directive */
+    Directives.NoPersistFormDirective,
     Directives.NoValidateFormDirective
   ]
 })
