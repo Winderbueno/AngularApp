@@ -14,6 +14,7 @@ import { NgrxFormsModule } from 'ngrx-forms';
 
 //#region This
 import * as Components from './component';
+import * as Directives from './directive';
 import * as Effects from './effect';
 import * as fromStore from './store';
 //#endregion
@@ -60,7 +61,10 @@ import * as fromStore from './store';
     Components.PasswordFieldGroupComponent,
 
     /* Form */
-    Components.FormComponent
+    Components.FormComponent,
+
+    /* Directive */
+    Directives.NoValidateFormDirective
   ],
   exports: [
     /* Button */
@@ -82,7 +86,10 @@ import * as fromStore from './store';
     Components.PasswordFieldGroupComponent,
 
     /* Form */
-    Components.FormComponent
+    Components.FormComponent,
+
+    /* Directive */
+    Directives.NoValidateFormDirective
   ]
 })
 export class FormModule { }
