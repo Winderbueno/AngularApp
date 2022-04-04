@@ -22,7 +22,6 @@ import * as fromStore from './store';
     EffectsModule.forFeature([
       Effects.TokenEffects
     ]),
-  ],
-  declarations: []
+  ]
 })
 export class TokenModule { }

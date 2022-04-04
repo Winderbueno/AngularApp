@@ -22,7 +22,6 @@ import * as fromStore from './store';
     EffectsModule.forFeature([
       Effects.TimerEffects
     ]),
-  ],
-  declarations: []
+  ]
 })
 export class TimerModule { }
