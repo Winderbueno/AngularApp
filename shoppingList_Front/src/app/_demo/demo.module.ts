@@ -35,14 +35,8 @@ import * as Pages from './page';
     ]),
   ],
   declarations: [
-    /* Page */
     Pages.HomePage,
-
-    /* Component */
-    Components.AlertComponent,
-    Components.FormComponent,
-    Components.LoaderComponent,
-    Components.TechStackComponent
+    Components.Components
   ],
   exports: [
     Pages.HomePage

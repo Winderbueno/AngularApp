@@ -1,6 +1,6 @@
 //#region Angular, Material, NgRx
 import { Directive } from '@angular/core';
-import { FormComponent } from '../component';
+import { FormComponent } from '../component/form/form.component';
 //#endregion
 
 /**

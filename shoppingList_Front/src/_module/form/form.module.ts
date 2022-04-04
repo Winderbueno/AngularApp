@@ -42,23 +42,11 @@ import * as fromStore from './store';
     ]),
   ],
   declarations: [
-    /* Component */
-    ...Components.Buttons,    
-    ...Components.Fields,
-    ...Components.FieldGroups,
-    Components.FormComponent,
-
-    /* Directive */
+    Components.Components,
     Directives.FormDirectives
   ],
   exports: [
-    /* Component */
-    ...Components.Buttons,    
-    ...Components.Fields,
-    ...Components.FieldGroups,
-    Components.FormComponent,
-
-    /* Directive */
+    Components.Components,
     Directives.FormDirectives
   ]
 })

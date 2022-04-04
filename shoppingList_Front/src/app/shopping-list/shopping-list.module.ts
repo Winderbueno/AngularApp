@@ -47,18 +47,11 @@ import * as fromStore from './store';
     ]),
   ],
   declarations: [
-    /* Page */
     Pages.HomePage,
-
-    /* Component */
-    Components.AddProductChipComponent,
-    Components.AddProductDialogComponent,
-    Components.ShoppingListActionComponent,
-    Components.ShoppingListViewComponent
+    Components.Components
   ],
   entryComponents: [
-    // Component Instantiated at runtime
-    Components.AddProductDialogComponent
+    Components.RunTimeComponents
   ],
 })
 export class ShoppingListModule {}

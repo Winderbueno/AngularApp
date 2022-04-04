@@ -103,17 +103,8 @@ if(environment.production) { devConf = []; enableProdMode() }
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true } // Handle errors received from server
   ],
   declarations: [
-    /* Page */
     Pages.HomePage,
-
-    /* Component */
-    Components.AppLogoComponent,
-    Components.FooterDeskTopComponent,
-    Components.FooterMobileComponent,
-    Components.MainMenuComponent,
-    Components.ThemeMenuComponent,
-    Components.TopBarDeskTopComponent,
-    Components.UserMenuComponent
+    Components.Components
   ],
   bootstrap: [
     Pages.HomePage

@@ -8,14 +8,13 @@ import { filter, map } from 'rxjs/operators';
 //#region Action, Selector
 import * as Components from '../component';
 import * as fromForm from '@form/store';
-import { AddProductDialogComponent } from '../component';
 //#endregion
 
 
 @Injectable()
 export class AddProductDialogEffects {
 
-  dialogRef: MatDialogRef<AddProductDialogComponent> | undefined;
+  dialogRef: MatDialogRef<Components.AddProductDialogComponent> | undefined;
 
   openDialog$ = createEffect(() =>
     this.actions$.pipe(

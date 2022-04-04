@@ -2,10 +2,24 @@
 export { emailTokenValidatedAction } from './verify-email/verify-email.actions';
 
 /* Component */
-export { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-export { LoginComponent } from './login/login.component';
-export { RegisterComponent } from './register/register.component';
-export { ResetPasswordComponent } from './reset-password/reset-password.component';
-export { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
+export const Components = [
+  ForgotPasswordComponent,
+  LoginComponent,
+  RegisterComponent,
+  ResetPasswordComponent,
+  VerifyEmailComponent
+];
 
+export { 
+  ForgotPasswordComponent, 
+  LoginComponent,
+  RegisterComponent,
+  ResetPasswordComponent,
+  VerifyEmailComponent
+};

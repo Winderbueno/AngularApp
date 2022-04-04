@@ -1,4 +1,11 @@
-﻿export { FormComponent } from './form/form.component';
-export { Buttons } from './button';
-export { FieldGroups } from './field-group';
-export { Fields } from './field';
+﻿import { FormComponent } from './form/form.component';
+import { Buttons } from './button';
+import { FieldGroups } from './field-group';
+import { Fields } from './field';
+
+export const Components = [
+  FormComponent,
+  ...Buttons,
+  ...FieldGroups,
+  ...Fields
+];

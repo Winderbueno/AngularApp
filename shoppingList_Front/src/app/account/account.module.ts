@@ -47,15 +47,8 @@ import * as fromStore from './store';
     ]),
   ],
   declarations: [
-    /* Page */
     Pages.HomePage,
-    
-    /* Component */
-    Components.ForgotPasswordComponent,
-    Components.LoginComponent,
-    Components.RegisterComponent,
-    Components.ResetPasswordComponent,
-    Components.VerifyEmailComponent
+    Components.Components
   ]
 })
 export class AccountModule {}
