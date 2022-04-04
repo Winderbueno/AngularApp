@@ -1,4 +1,9 @@
-﻿/* Effect */
-export { AlertEffects } from './alert.effects';
-export { CSSThemeEffects } from './theme.effects';
-export { SideNavEffects } from './sidenav.effects';
+﻿import { AlertEffects } from './alert.effects';
+import { CSSThemeEffects } from './theme.effects';
+import { SideNavEffects } from './sidenav.effects';
+
+export const Effects = [
+  AlertEffects,
+  CSSThemeEffects,
+  SideNavEffects
+];

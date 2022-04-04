@@ -28,11 +28,9 @@ import * as Pages from './page';
     MaterialModule,
 
     /* Effect */
-    EffectsModule.forFeature([
-      Effects.AlertEffects,
-      Effects.LoaderEffects,
-      Effects.TimerEffects
-    ]),
+    EffectsModule.forFeature(
+      Effects.Effects
+    ),
   ],
   declarations: [
     Pages.HomePage,

@@ -1,4 +1,10 @@
 ﻿/* Effect */
-export { AddProductAggregatorEffects } from './add-product.aggregator.effects';
-export { AddProductDialogEffects } from './add-product-dialog.effects';
-export { ShoppingListAPIEffects } from './shopping-list-api.effects';
+import { AddProductAggregatorEffects } from './add-product.aggregator.effects';
+import { AddProductDialogEffects } from './add-product-dialog.effects';
+import { ShoppingListAPIEffects } from './shopping-list-api.effects';
+
+export const Effects = [
+  AddProductAggregatorEffects,
+  AddProductDialogEffects,
+  ShoppingListAPIEffects
+];

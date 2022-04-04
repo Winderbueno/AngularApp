@@ -86,9 +86,7 @@ if(environment.production) { devConf = []; enableProdMode() }
 
     /* Effect */
     EffectsModule.forRoot([
-      Effects.AlertEffects,
-      Effects.CSSThemeEffects,
-      Effects.SideNavEffects,
+      ...Effects.Effects,
       AccountAPIEffects, // TODO - Should be in Account Feature ?
       EnumAPIEffects, // TODO - Should be in Enum Module ?
     ]),

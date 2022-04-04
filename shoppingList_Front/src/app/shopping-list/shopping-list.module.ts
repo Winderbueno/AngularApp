@@ -40,11 +40,9 @@ import * as fromStore from './store';
     ),
 
     /* Effect */
-    EffectsModule.forFeature([
-      Effects.AddProductAggregatorEffects,
-      Effects.AddProductDialogEffects,
-      Effects.ShoppingListAPIEffects
-    ]),
+    EffectsModule.forFeature(
+      Effects.Effects
+    ),
   ],
   declarations: [
     Pages.HomePage,
