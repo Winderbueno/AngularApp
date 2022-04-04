@@ -1,11 +1,14 @@
 ﻿//#region Angular, Material, NgRx
 import { Component } from '@angular/core';
-import { NgrxValueConverter } from 'ngrx-forms';
 //#endregion
 
-//#region Component, Model, Service
-import { FieldComponent } from '@form/component';
+//#region Module
+import { NgrxValueConverter } from 'ngrx-forms';
 import { DateTime } from 'luxon';
+//#endregion
+
+//#region This
+import { FieldComponent } from '../field.component';
 //#endregion
 
 

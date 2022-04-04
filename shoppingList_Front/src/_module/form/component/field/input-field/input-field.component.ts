@@ -1,11 +1,14 @@
 ﻿//#region Angular, Material, NgRx
 import { Component, Input } from '@angular/core';
+//#endregion
+
+//#region Module
 import { NgrxValueConverter } from 'ngrx-forms';
 import { email, number, minLength } from 'ngrx-forms/validation';
 //#endregion
 
-//#region Component, Model, Service
-import { FieldComponent } from '@form/component';
+//#region This
+import { FieldComponent } from '../field.component';
 import { FieldFormatEnum } from '@form/model/field-format.enum';
 //#endregion
 

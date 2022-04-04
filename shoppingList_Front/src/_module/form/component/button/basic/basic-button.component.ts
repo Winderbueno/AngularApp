@@ -4,6 +4,9 @@ import { Component, Input } from '@angular/core';
 
 //#region Module
 import * as fromLoader from '@loader/store';
+//#endregion
+
+//#region This
 import { ButtonComponent } from '../button.component';
 //#endregion
 

@@ -2,9 +2,13 @@
 import { Component } from '@angular/core';
 //#endregion
 
-//#region Component, Model, Service
-import { FieldComponent } from '@form/component';
+//#region Module
+// TODO - Should not use field component ?
+import { FieldComponent } from '@form/component/field/field.component';
 import { SetValueAction } from 'ngrx-forms';
+//#endregion
+
+//#region This
 import * as Actions from './add-product-chip.actions';
 //#endregion
 

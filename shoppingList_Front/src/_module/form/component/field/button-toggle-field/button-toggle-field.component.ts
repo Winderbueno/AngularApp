@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 //#endregion
 
 //#region Component, Model, Service
-import { MultipleOptionFieldComponent } from '@form/component';
+import { MultipleOptionFieldComponent } from '../multiple-option-field.component';
 //#endregion
 
 

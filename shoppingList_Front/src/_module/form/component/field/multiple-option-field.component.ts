@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 //#endregion
 
 //#region Component, Model, Service
-import { FieldComponent } from '..';
+import { FieldComponent } from './field.component';
 //#endregion
 
 /**

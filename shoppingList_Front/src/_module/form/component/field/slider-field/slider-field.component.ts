@@ -2,8 +2,8 @@
 import { Component, Input } from '@angular/core';
 //#endregion
 
-//#region Component, Model, Service
-import { FieldComponent } from '@form/component';
+//#region This
+import { FieldComponent } from '../field.component';
 //#endregion
 
 

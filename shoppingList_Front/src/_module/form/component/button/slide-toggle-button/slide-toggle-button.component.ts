@@ -2,8 +2,8 @@
 import { Component } from '@angular/core';
 //#endregion
 
-//#region Component, Model, Service
-import { FieldComponent } from '@form/component';
+//#region This (TODO - Should not be a field ?)
+import { FieldComponent } from '../../field/field.component';
 //#endregion
 
 

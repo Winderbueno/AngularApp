@@ -1,3 +1,8 @@
 ﻿/* Directive */
-export { NoPersistFormDirective } from './no-persist-form.directive';
-export { NoValidateFormDirective } from './no-validate-form.directive';
+import { NoPersistFormDirective } from './no-persist-form.directive';
+import { NoValidateFormDirective } from './no-validate-form.directive';
+
+export const FormDirectives = [
+  NoPersistFormDirective, 
+  NoValidateFormDirective
+];

@@ -42,56 +42,24 @@ import * as fromStore from './store';
     ]),
   ],
   declarations: [
-    /* Button */
-    Components.BasicButtonComponent,
-    Components.IconButtonComponent,
-    Components.SlideToggleButtonComponent,
-
-    /* Field */
-    Components.ButtonToggleFieldComponent,
-    Components.CheckBoxFieldComponent,
-    Components.DateFieldComponent,
-    Components.InputFieldComponent,
-    Components.RadioButtonFieldComponent,
-    Components.SelectFieldComponent,
-    Components.SlideToggleFieldComponent,
-    Components.SliderFieldComponent,
-
-    /* Field Group */
-    Components.PasswordFieldGroupComponent,
-
-    /* Form */
+    /* Component */
+    ...Components.Buttons,    
+    ...Components.Fields,
+    ...Components.FieldGroups,
     Components.FormComponent,
 
     /* Directive */
-    Directives.NoPersistFormDirective,
-    Directives.NoValidateFormDirective
+    Directives.FormDirectives
   ],
   exports: [
-    /* Button */
-    Components.BasicButtonComponent,
-    Components.SlideToggleButtonComponent,
-    Components.IconButtonComponent,
-
-    /* Field */
-    Components.ButtonToggleFieldComponent,
-    Components.CheckBoxFieldComponent,
-    Components.DateFieldComponent,
-    Components.InputFieldComponent,
-    Components.RadioButtonFieldComponent,
-    Components.SelectFieldComponent,
-    Components.SlideToggleFieldComponent,
-    Components.SliderFieldComponent,
-
-    /* Field Group */
-    Components.PasswordFieldGroupComponent,
-
-    /* Form */
+    /* Component */
+    ...Components.Buttons,    
+    ...Components.Fields,
+    ...Components.FieldGroups,
     Components.FormComponent,
 
     /* Directive */
-    Directives.NoPersistFormDirective,
-    Directives.NoValidateFormDirective
+    Directives.FormDirectives
   ]
 })
 export class FormModule { }

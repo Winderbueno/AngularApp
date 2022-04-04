@@ -1,10 +1,13 @@
 ﻿//#region Angular, Material, NgRx
 import { Component } from '@angular/core';
+//#endregion
+
+//#region Module
 import { requiredTrue } from 'ngrx-forms/validation';
 //#endregion
 
-//#region Component, Model, Service
-import { FieldComponent } from '@form/component';
+//#region This
+import { FieldComponent } from '../field.component';
 //#endregion
 
 
