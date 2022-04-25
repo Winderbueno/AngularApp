@@ -1,6 +1,6 @@
 # ShoppingListApp / Front
 
-Orinally generated with [Angular CLI](https://github.com/angular/angular-cli#angular-cli---the-cli-tool-for-angular) (v11.2.2)<br/>
+Originally generated with [Angular CLI](https://github.com/angular/angular-cli#angular-cli---the-cli-tool-for-angular) (v11.2.2)<br/>
 Then inspired by [Jason Watmore's Angular 10 Boilerplate](https://jasonwatmore.com/post/2020/08/29/angular-10-boilerplate-email-sign-up-with-verification-authentication-forgot-password)<br/>
 Then improved by [WnK Company](https://shoppinglistapp-44a01.web.app/home)
 
@@ -32,11 +32,9 @@ For more, see [Angular CLI](https://angular.io/cli) page
 
 ## Build & Run
 
-- `ng serve` : Builds and serves app locally, rebuilding on file changes
-  - `--open` : To open `http://localhost:4200/` in browser after build
-- `ng build --configuration <env>` : Build source files and store builds artifacts in `dist/` dir
-  - \<env> : production
-- `ng deploy`
+- `ng serve --open`. Builds & serves app, then open `http://localhost:4200/` (rebuilding on file changes)
+- `ng build --configuration production`. Builds app for prod (stores builds artifacts in `dist/` dir)
+- `ng deploy`. Deploy apps on configured hosting service (firebase)
 
 ## Scaffold Code
 
