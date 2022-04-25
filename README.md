@@ -13,31 +13,40 @@ Then improved by [WnK Company](https://shoppinglistapp-44a01.web.app/home)
 ## Technical Solution
 
 - CodeMngt&Doc : VSCode, Git, GitHub, Excel, LucidChart
-- Front : 
-  [Angular](https://angular.io/docs), 
-  [Angular Material](https://material.angular.io/components/categories), 
-  [Ngrx](https://ngrx.io/docs), 
-  [Rxjs](https://rxjs.dev/guide/overview), 
-  [Sass](https://sass-lang.com/guide)
-- Back : .NET Api
+- Technology :
+  - Front : 
+    [Angular](https://angular.io/docs), 
+    [Angular.Material](https://material.angular.io/components/categories), 
+    [Ngrx](https://ngrx.io/docs), 
+    [Rxjs](https://rxjs.dev/guide/overview), 
+    [Sass](https://sass-lang.com/guide)
+  - Back : 
+    [.NET](https://docs.microsoft.com/en-us/dotnet/core/introduction)
+    [EntityFramework](https://www.entityframeworktutorial.net/efcore/entity-framework-core.aspx)
+- Back Api : 
+    [.NET Api Code]() // TODO
 
-## Test & Documentation
+## Documentation
 
 - In Progress
 
-# Manage App (with 'npm' & 'angular cli')
+## Test
 
-Run `ng help` Lists available commands and their short descriptions
+# App Lifecycle
+
+App lifecycle can be managed with 'angular cli' & 'npm'.
+Run `ng help` to list all cli available commands and their short descriptions
 For more, see [Angular CLI](https://angular.io/cli) page
 
 ## Build & Run
 
-- `ng serve --open`. Builds & serves app, then open `http://localhost:4200/` (rebuilding on file changes)
-- `ng build --configuration production`. Builds app for prod (stores builds artifacts in `dist/` dir)
-- `ng deploy`. Deploy apps on configured hosting service (firebase)
+- `npm install` 
+- `ng serve --open` Builds & serves app, then open `http://localhost:4200/` in browser (Rebuilding on file changes)
+- `ng build --configuration production` Builds app for prod (Stores builds artifacts in `dist/` dir)
+- `ng deploy` Deploy apps on configured hosting service (firebase)
 
 ## Scaffold Code
 
-- `ng generate <elt> <name>` : Scaffold new angular element based on code template
+- `ng generate <elt> <name>` Scaffold new angular element based on schematic
   - \<elt> : 'component' | 'service' | 'module'...
   - \<name> : element name
