@@ -1,8 +1,8 @@
 # ShoppingListApp / Front
 
-Orinally generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2<br/>
-Then inspired by Jason Watmore's [Angular App Boilerplate](https://jasonwatmore.com/post/2020/08/29/angular-10-boilerplate-email-sign-up-with-verification-authentication-forgot-password)<br/>
-Then improved by WnK company
+Orinally generated with [Angular CLI](https://github.com/angular/angular-cli#angular-cli---the-cli-tool-for-angular) (v11.2.2)<br/>
+Then inspired by Jason Watmore's [Angular 10 Boilerplate](https://jasonwatmore.com/post/2020/08/29/angular-10-boilerplate-email-sign-up-with-verification-authentication-forgot-password)<br/>
+Then improved by [WnK Company](https://shoppinglistapp-44a01.web.app/home)
 
 ## Business Feature
 
@@ -13,9 +13,8 @@ Then improved by WnK company
 ## Technical Solution
 
 - CodeMngt&Doc : VSCode, Git, GitHub, Excel, LucidChart
-- Web Framework : [Angular](https://angular.io/docs) (Modules : Router, Http, Animation...)
-- Web Component : [Angular Material](https://material.angular.io/components/categories)
-- State Mngt & Event Programming : Ngrx RxJS
+- [Angular](https://angular.io/docs), [Angular Material](https://material.angular.io/components/categories), 
+  [Ngrx](https://ngrx.io/docs) [RxJS]
 - CSS Preprocessor : sass en '.scss'
 - Back End : .NET Api
 
