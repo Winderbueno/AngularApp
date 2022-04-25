@@ -11,9 +11,9 @@ This App was orinally generated with [Angular CLI](https://github.com/angular/an
 ## Technical Solution
 
 - CodeMngt&Doc : VSCode, Git, GitHub, Excel, LucidChart
-- Web Framework : [Angular](https://angular.io/docs) (Modules : Router, HTTP)
-- Component Library : [Angular Material](https://material.angular.io/components/categories) with 'Component Dev Kit', 'Angular Animation'
-- Back End Emulator : Angular-in-memory-api
+- Web Framework : [Angular](https://angular.io/docs) (Modules : Router, Http, Animation...)
+- Web Component : [Angular Material](https://material.angular.io/components/categories)
+- Back End : Angular-in-memory-api
 - Client-Server Lib : RxJS
 - CSS Preprocessor : sass en '.scss'
 
@@ -23,9 +23,11 @@ This App was orinally generated with [Angular CLI](https://github.com/angular/an
 
 ## Angular CLI Reminder
 
-- `ng serve --open` : Run dev server and open `http://localhost:4200/` in browser. App will automatically reload if source files change
-- `ng generate component component-name` : Code Scaffolding (Generate a new component...) 
-- `ng build` : Build source files and store builds artifacts in `dist/` dir. Use the `--prod` flag for a production build
+- `ng serve` : Run dev server. App will automatically reload if source files change
+  - `--open` : open `http://localhost:4200/` in browser after build
+- `ng generate <elt> <name>` : Scaffold new elt* (elt : component, service, module...) 
+- `ng build` : Build source files and store builds artifacts in `dist/` dir. 
+  - `--prod` : To use production configuration
 - `ng test` : Run "Unit Tests" with [Karma](https://karma-runner.github.io)
 - `ng e2e` : Run "EndToEnd Tests" with [Protractor](http://www.protractortest.org/)
 - `ng help` : For more help or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page
