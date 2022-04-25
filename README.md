@@ -1,7 +1,7 @@
 # ShoppingListApp / Front
 
-Orinally generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2
-Then inspired by Jason Watmore's [Angular App Boilerplate](https://jasonwatmore.com/post/2020/08/29/angular-10-boilerplate-email-sign-up-with-verification-authentication-forgot-password)
+Orinally generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2<br/>
+Then inspired by Jason Watmore's [Angular App Boilerplate](https://jasonwatmore.com/post/2020/08/29/angular-10-boilerplate-email-sign-up-with-verification-authentication-forgot-password)<br/>
 Then improved by WnK company
 
 ## Business Feature
@@ -23,14 +23,21 @@ Then improved by WnK company
 
 - In Progress
 
-## Angular CLI Reminder
+# Manage App (with 'npm' & 'angular cli')
 
-- `ng serve` : Run dev server (App will automatically reload if source files change)
-  - `--open` : open `http://localhost:4200/` in browser after build
-- `ng generate <elt> <name>` : Scaffold new angular element base on standardized template
-  - <elt> : component, service, module
-- `ng build` : Build source files and store builds artifacts in `dist/` dir
-  - `--prod` : To use production configuration
-- `ng test` : Run "Unit Test" with [Karma](https://karma-runner.github.io)
-- `ng e2e` : Run "EndToEnd Test" with [Protractor](http://www.protractortest.org/)
-- `ng help` : For more, see [Angular CLI](https://angular.io/cli) page
+Run `ng help` Lists available commands and their short descriptions
+For more, see [Angular CLI](https://angular.io/cli) page
+
+## Build & Run
+
+- `ng serve` : Builds and serves app locally, rebuilding on file changes
+  - `--open` : To open `http://localhost:4200/` in browser after build
+- `ng build --configuration <env>` : Build source files and store builds artifacts in `dist/` dir
+  - \<env> : production
+- `ng deploy`
+
+## Scaffold Code
+
+- `ng generate <elt> <name>` : Scaffold new angular element based on code template
+  - \<elt> : 'component' | 'service' | 'module'...
+  - \<name> : element name
