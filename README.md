@@ -4,16 +4,14 @@ This App was orinally generated with [Angular CLI](https://github.com/angular/an
 
 ## Business Feature
 
-This app manages :
-- A user account
-- For a user account, 
-  - An active digital shopping list that can be modified
-  - FUTUR : A view to manage Shopping List Models
+- Technical Demo (alert, form, loader)
+- User Account (login, logout, register, resetPwd)
+- [LoggedOnly] / Shopping List (use, modify)
 
 ## Technical Solution
 
 - CodeMngt&Doc : VSCode, Git, GitHub, Excel, LucidChart
-- App Framework : [Angular](https://angular.io/docs) (Modules : Router, HTTP)
+- Web Framework : [Angular](https://angular.io/docs) (Modules : Router, HTTP)
 - Component Library : [Angular Material](https://material.angular.io/components/categories) with 'Component Dev Kit', 'Angular Animation'
 - Back End Emulator : Angular-in-memory-api
 - Client-Server Lib : RxJS
