@@ -1,7 +1,7 @@
 # ShoppingListApp / Front
 
 Orinally generated with [Angular CLI](https://github.com/angular/angular-cli#angular-cli---the-cli-tool-for-angular) (v11.2.2)<br/>
-Then inspired by Jason Watmore's [Angular 10 Boilerplate](https://jasonwatmore.com/post/2020/08/29/angular-10-boilerplate-email-sign-up-with-verification-authentication-forgot-password)<br/>
+Then inspired by [Jason Watmore's Angular 10 Boilerplate](https://jasonwatmore.com/post/2020/08/29/angular-10-boilerplate-email-sign-up-with-verification-authentication-forgot-password)<br/>
 Then improved by [WnK Company](https://shoppinglistapp-44a01.web.app/home)
 
 ## Business Feature
@@ -13,10 +13,13 @@ Then improved by [WnK Company](https://shoppinglistapp-44a01.web.app/home)
 ## Technical Solution
 
 - CodeMngt&Doc : VSCode, Git, GitHub, Excel, LucidChart
-- [Angular](https://angular.io/docs), [Angular Material](https://material.angular.io/components/categories), 
-  [Ngrx](https://ngrx.io/docs) [RxJS]
-- CSS Preprocessor : sass en '.scss'
-- Back End : .NET Api
+- Front : 
+  [Angular](https://angular.io/docs), 
+  [Angular Material](https://material.angular.io/components/categories), 
+  [Ngrx](https://ngrx.io/docs), 
+  [Rxjs](https://rxjs.dev/guide/overview), 
+  [Sass](https://sass-lang.com/guide)
+- Back : .NET Api
 
 ## Test & Documentation
 
