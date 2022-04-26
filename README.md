@@ -6,21 +6,20 @@ Then improved by [WnK Company](https://shoppinglistapp-44a01.web.app/home)
 
 This app rely on a Back End Api to fully operate : [.NET Api Code](https://github.com/Winderbueno/DotNetApi)
 
-## Business Feature
+## Feature
 
 - Technical Demo (alert, form, loader)
 - User Account (login, logout, register, resetPwd)
-- [LoggedOnly] / Shopping List (use, modify)
+- Shopping List (use, modify) [LoggedOnly]
 
 ## Technology
 
-- Web Framework. [Angular](https://angular.io/docs), 
-- Web Component.  [Angular.Material](https://material.angular.io/components/categories), 
-- State Management.  [Ngrx](https://ngrx.io/docs), 
-- Reactive Programming. [Rxjs](https://rxjs.dev/guide/overview), 
-- CSS Preprocessor.  [Sass](https://sass-lang.com/guide)
-
-Detailed infos available in documentation. 
+- [Angular](https://angular.io/docs), 
+  [Angular.Material](https://material.angular.io/components/categories), 
+  [Ngrx](https://ngrx.io/docs), 
+  [Rxjs](https://rxjs.dev/guide/overview), 
+  [Sass](https://sass-lang.com/guide)
+- More infos available in documentation
 
 ## Documentation
 
@@ -28,15 +27,17 @@ Detailed infos available in documentation.
 
 ## Test
 
+- In Progress
+
 # App Lifecycle
 
-App lifecycle can be managed with 'angular cli' & 'npm'.
-Run `ng help` to list all cli available commands and their short descriptions
-For more, see [Angular CLI](https://angular.io/cli) page
+App lifecycle can be managed with 'angular cli' & 'npm'.<br/>
+Run `ng help` to list all cli available commands and their short descriptions.<br/>
+For more, see [Angular CLI](https://angular.io/cli) page.
 
 ## Build & Run
 
-- `npm install` 
+- `npm install` Install packages specified in [package.json](https://github.com/Winderbueno/AngularApp/blob/main/shoppingList_Front/package.json). Execute this command after git checkout.
 - `ng serve --open` Builds & serves app, then open `http://localhost:4200/` in browser (Rebuilding on file changes)
 - `ng build --configuration production` Builds app for prod (Stores builds artifacts in `dist/` dir)
 - `ng deploy` Deploy apps on configured hosting service (firebase)
