@@ -4,27 +4,23 @@ Originally generated with [Angular CLI](https://github.com/angular/angular-cli#a
 Then inspired by [Jason Watmore's Angular 10 Boilerplate](https://jasonwatmore.com/post/2020/08/29/angular-10-boilerplate-email-sign-up-with-verification-authentication-forgot-password)<br/>
 Then improved by [WnK Company](https://shoppinglistapp-44a01.web.app/home)
 
+- Back Api : [.NET Api Code]() // TODO
+
 ## Business Feature
 
 - Technical Demo (alert, form, loader)
 - User Account (login, logout, register, resetPwd)
 - [LoggedOnly] / Shopping List (use, modify)
 
-## Technical Solution
+## Technology
 
-- CodeMngt&Doc : VSCode, Git, GitHub, Excel, LucidChart
-- Technology :
-  - Front : 
-    [Angular](https://angular.io/docs), 
-    [Angular.Material](https://material.angular.io/components/categories), 
-    [Ngrx](https://ngrx.io/docs), 
-    [Rxjs](https://rxjs.dev/guide/overview), 
-    [Sass](https://sass-lang.com/guide)
-  - Back : 
-    [.NET](https://docs.microsoft.com/en-us/dotnet/core/introduction)
-    [EntityFramework](https://www.entityframeworktutorial.net/efcore/entity-framework-core.aspx)
-- Back Api : 
-    [.NET Api Code]() // TODO
+- Web Framework. [Angular](https://angular.io/docs), 
+- Web Component.  [Angular.Material](https://material.angular.io/components/categories), 
+- State Management.  [Ngrx](https://ngrx.io/docs), 
+- Reactive Programming. [Rxjs](https://rxjs.dev/guide/overview), 
+- CSS Preprocessor.  [Sass](https://sass-lang.com/guide)
+
+Detailed infos available in documentation. 
 
 ## Documentation
 
