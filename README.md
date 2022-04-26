@@ -4,7 +4,7 @@ Originally generated with [Angular CLI](https://github.com/angular/angular-cli#a
 Then inspired by [Jason Watmore's Angular 10 Boilerplate](https://jasonwatmore.com/post/2020/08/29/angular-10-boilerplate-email-sign-up-with-verification-authentication-forgot-password)<br/>
 Then improved by [WnK Company](https://shoppinglistapp-44a01.web.app/home)
 
-- Back Api : [.NET Api Code]() // TODO
+This app rely on a Back End Api to fully operate : [.NET Api Code](https://github.com/Winderbueno/DotNetApi)
 
 ## Business Feature
 
