@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 
 
 @Component({
-  selector: 'demo-app-doc',
+  selector: 'app-document',
   templateUrl: './app-doc.component.html'
 })
-export class AppDocComponent {}
+export class AppDocComponent {
+  dir = '/assets/document/app-doc/';
+}

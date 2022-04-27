@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 
 
 @Component({
-  selector: 'demo-app-tech',
+  selector: 'app-technology',
   templateUrl: './app-tech.component.html'
 })
 export class AppTechComponent {}
