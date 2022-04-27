@@ -5,11 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 //#region Component & Page
 import * as Components from './component';
+import * as Pages from './page';
 //#endregion
 
 const routes: Routes = [
   {
-    path: '', component: Components.LoginComponent,
+    path: '', component: Pages.HomePage,
     children: [
       { path: 'login', component: Components.LoginComponent },
       { path: 'register', component: Components.RegisterComponent },
