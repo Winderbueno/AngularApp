@@ -4,13 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 //#endregion
 
 //#region Component & Page
-import * as Components from './component/';
-import * as Pages from './page';
+import * as Components from './component';
 //#endregion
 
 const routes: Routes = [
   {
-    path: '', component: Pages.HomePage,
+    path: '', component: Components.LoginComponent,
     children: [
       { path: 'login', component: Components.LoginComponent },
       { path: 'register', component: Components.RegisterComponent },
@@ -19,8 +18,8 @@ const routes: Routes = [
       { path: 'reset-password', component: Components.ResetPasswordComponent }
     ]
   },
-  // Otherwise redirect to home
-  { path: '**', redirectTo: '' }
+  // Default path
+  { path: '**', redirectTo: 'login' }
 ];
 
 
