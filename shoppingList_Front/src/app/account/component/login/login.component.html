@@ -1,6 +1,6 @@
 <mat-card style="margin-bottom: 50px;">
   <mat-card-title>{{ formId }}</mat-card-title>
-  <k-form [formId]="formId">
+  <k-form [formId]="formId" no-browser-persist>
 
     <!-- Email -->
     <k-form-field-input [ctrlName]="'Email'" [format]="FieldFormatEnum.Email">
