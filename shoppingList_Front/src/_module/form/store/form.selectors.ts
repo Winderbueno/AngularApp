@@ -40,3 +40,11 @@ export const selectControlValue = (formId: string, ctrlId: string) =>
   createSelector(
     selectControl(formId, ctrlId),
     (ctrlState) => ctrlState && ctrlState.value);
+
+export function getFormToPersist(formState: FormState): string[] {
+  let formIds = Object.keys(formState);
+  formIds = formIds.filter(formId =>
+    formState[formId].userDefinedProperties.browserPersist === true
+  );
+  return formIds;
+}

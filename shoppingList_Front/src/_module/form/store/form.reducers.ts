@@ -31,6 +31,7 @@ const formReducer = createReducer(
       const newState = { ...state };
       newState[action.formId] = createFormGroupState<FormValue>(action.formId, {});
       newState[action.formId] = setUserDefinedProperty('validate', action.validate)(newState[action.formId]);
+      newState[action.formId] = setUserDefinedProperty('browserPersist', action.browserPersist)(newState[action.formId]);
       return newState;
     }),
 

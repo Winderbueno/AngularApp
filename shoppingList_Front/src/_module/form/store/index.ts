@@ -27,5 +27,6 @@ export {
   selectFormConf_Validate,
   selectFormValue,
   selectControl,
-  selectControlValue
+  selectControlValue,
+  getFormToPersist
 } from './form.selectors';

@@ -41,9 +41,10 @@ export const createFormAction = createAction(
   ModuleEnum.Form,
   EmitterTypeEnum.Store,
   'createForm',
-  props<{ 
+  props<{
     formId: string,
-    validate?: boolean
+    validate?: boolean,
+    browserPersist?: boolean
   }>()
 );
 

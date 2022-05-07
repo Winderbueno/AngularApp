@@ -9,3 +9,5 @@ export const Components = [
   ...FieldGroups,
   ...Fields
 ];
+
+export { FormComponent };

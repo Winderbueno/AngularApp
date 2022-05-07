@@ -1,12 +1,12 @@
 //#region Angular, Material, NgRx
 import { Directive } from '@angular/core';
-import { FormComponent } from '../component/form/form.component';
+import { FormComponent } from '../../component';
 //#endregion
 
 /**
  * No Validate Form Directive
- *  Put this directive on a <k-form> element
- *  Deactivate field validation on the form 
+ *    Applicable on a <k-form> element
+ *    Deactivate field validation 
  */
 @Directive({ selector: '[no-validate]' })
 export class NoValidateFormDirective {
