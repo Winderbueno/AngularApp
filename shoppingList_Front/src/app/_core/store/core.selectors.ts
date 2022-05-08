@@ -3,7 +3,7 @@ import { createSelector, createFeatureSelector } from '@ngrx/store';
 //#endregion
 
 //#region Store
-import { CoreState } from './core.state';
+import { CoreState } from './state/core.state';
 import { featureKey } from '.';
 //#endregion
 

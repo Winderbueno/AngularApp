@@ -3,7 +3,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 //#endregion
 
 //#region State, Action
-import { CoreState, initialState } from './core.state';
+import { CoreState, initialState } from './state/core.state';
 import * as fromAction from './core.actions';
 //#endregion
 

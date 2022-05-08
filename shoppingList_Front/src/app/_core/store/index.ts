@@ -1,7 +1,7 @@
 ﻿/* Meta-Reducer */
 export {
   localStorageSyncReducer
-} from './local-storage.reducers';
+} from './meta-reducer/local-storage.reducers';
 
 /* Reducer */
 export {
