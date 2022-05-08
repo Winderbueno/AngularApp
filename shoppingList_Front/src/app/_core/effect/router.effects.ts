@@ -26,15 +26,17 @@ export class RouterEffects {
         let newValue = action.event.newValue;
         let oldValue = action.event.oldValue;
 
+        if (oldValue === newValue) { return; } 
+
         let wasLogged = oldValue.includes('"isLogged":true');
         let wasNotLogged = oldValue.includes('"isLogged":false');
-        let hasLogged = newValue.includes('"isLogged":true');
-        let hasUnLogged = newValue.includes('"isLogged":false');
-
-        if(wasNotLogged && hasLogged && currentUrl && currentUrl.includes('account')) { 
+        let hasLoggedIn = newValue.includes('"isLogged":true');
+        let hasLoggedout = newValue.includes('"isLogged":false');
+        
+        if(wasNotLogged && hasLoggedIn && currentUrl && currentUrl.includes('account')) { 
           this.router.navigate(['my-shopping-list']); 
         }
-        else if (wasLogged && hasUnLogged) { this.router.navigate(['account/login']); }
+        else if (wasLogged && hasLoggedout) { this.router.navigate(['account/login']); }
       })
     ), { dispatch: false }
   );
