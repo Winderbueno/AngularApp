@@ -1,0 +1,48 @@
+//#region Angular, Material, NgRx
+import { Injectable } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { map, withLatestFrom } from 'rxjs/operators';
+//#endregion
+
+//#region Module
+import * as fromRouter from '@router/router.selectors';
+//#endregion
+
+//#region This
+import * as fromStore from '../store';
+//#endregion
+
+
+@Injectable()
+export class RouterEffects {
+
+  routeToLogin$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromStore.accountWindowStorageChangeAction),
+      withLatestFrom(this.store.select(fromRouter.selectUrl)),
+      map(([action, currentUrl]) => {
+        let newValue = action.event.newValue;
+        let oldValue = action.event.oldValue;
+
+        let wasLogged = oldValue.includes('"isLogged":true');
+        let wasNotLogged = oldValue.includes('"isLogged":false');
+        let hasLogged = newValue.includes('"isLogged":true');
+        let hasUnLogged = newValue.includes('"isLogged":false');
+
+        if(wasNotLogged && hasLogged && currentUrl && currentUrl.includes('account')) { 
+          this.router.navigate(['my-shopping-list']); 
+        }
+        else if (wasLogged && hasUnLogged) { this.router.navigate(['account/login']); }
+      })
+    ), { dispatch: false }
+  );
+
+  constructor(
+    private actions$: Actions,
+    private store: Store,
+    protected router: Router,
+    protected route: ActivatedRoute
+  ) { }
+}

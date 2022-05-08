@@ -9,7 +9,6 @@ import { map, catchError, exhaustMap, switchMap, withLatestFrom, filter } from '
 //#region Action
 import * as fromAPI from '../service/account.api.actions';
 import * as fromStore from '../store';
-import * as fromCore from '@core/store';
 import * as fromForm from '@form/store';
 import * as fromTimer from '@timer/store';
 import * as fromToken from '@token/store';
@@ -82,7 +81,6 @@ export class AccountAPIEffects {
     this.actions$.pipe(
       ofType(
         ROOT_EFFECTS_INIT,
-        fromCore.accountWindowStorageChangeAction,
         fromTimer.timerEndedAction),
       filter((action:any) => {
         // Run effect only for corresponding timer
