@@ -1,6 +1,7 @@
 //#region Angular, Material, NgRx
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 //#endregion
@@ -23,6 +24,7 @@ import * as fromStore from './store';
   imports: [
     /* Angular */
     CommonModule,
+    RouterModule, // TODO - Used for k-link-router -> to put in @button module
 
     /* Module */
     FlexLayoutModule,

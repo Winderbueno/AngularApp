@@ -42,7 +42,7 @@ export class BasicButtonComponent extends ButtonComponent {
     // Set submit type by default
     if(this.type === undefined) {
       this.type = 'submit';
-      this.color = 'primary';    
+      if(this.color === undefined) { this.color = 'primary'; }
     }
     
     if(this.type === 'submit' && this.label === undefined) { this.label = 'Submit'; }
