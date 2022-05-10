@@ -3,10 +3,10 @@
   [type]="type" [color]="color"
   [ngClass]="customClass ? customClass : 'full-width'"
   [class.mat-button]="customClass === undefined"
-  [class.mat-raised-button]="type === 'submit' || color === 'primary'"
+  [class.mat-raised-button]="type === 'submit' || color === 'primary' || color === 'accent'"
   [disabled]="(type === 'submit') && (isLoading$|async)"
   (click)="throwAction()">
-  <k-loader class='loader-in-button' *ngIf="type === 'submit'"></k-loader>
+  <k-loader *ngIf="type === 'submit' && (isLoading$|async) === true" class='loader-in-button' ></k-loader>
   <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
-  <span *ngIf="label">{{ label }}</span>
+  <ng-content></ng-content>
 </button>
