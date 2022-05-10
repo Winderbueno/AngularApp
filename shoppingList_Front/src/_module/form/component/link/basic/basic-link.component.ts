@@ -10,7 +10,7 @@ import { LinkComponent } from '../link.component';
  * Basic Link Component
  */
 @Component({
-  selector: 'k-link[uri]',
+  selector: 'k-link',
   templateUrl: 'basic-link.component.html'
 })
 export class BasicLinkComponent extends LinkComponent {}

@@ -1,5 +1,5 @@
 ﻿//#region Angular, Material, NgRx
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 //#endregion
 
 //#region Module
@@ -18,4 +18,6 @@ import { LinkComponent } from '../link.component';
   selector: 'k-link-icon',
   templateUrl: 'icon-link.component.html'
 })
-export class IconLinkComponent extends LinkComponent {}
+export class IconLinkComponent extends LinkComponent {
+  @Input() icon?: string;
+}

@@ -47,7 +47,8 @@ import { FormValue } from '../../model/form-value.model';
  */
 @Component({
   selector: 'k-form[formId]',
-  templateUrl: 'form.component.html'
+  templateUrl: 'form.component.html',
+  styles: [':host ::ng-deep a { width: 100% }']
 })
 export class FormComponent implements OnInit, OnDestroy {
 
