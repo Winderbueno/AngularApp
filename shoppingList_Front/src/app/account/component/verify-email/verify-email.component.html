@@ -6,6 +6,7 @@
   </div>
 
   <div *ngIf="(token?.status) == TokenStatusEnum.Invalid">
-    Verification failed, you can also verify your account using the <a mat-button routerLink="../forgot-password">Forgot password</a> page.
+    Verification failed, you can also verify your account 
+    using the <k-link route="../forgot-password">forgot password</k-link> page.
   </div>
 </mat-card>

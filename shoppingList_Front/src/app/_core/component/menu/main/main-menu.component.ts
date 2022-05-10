@@ -5,7 +5,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'menu-main',
-  templateUrl: './main-menu.component.html'
+  templateUrl: './main-menu.component.html',
+  styles: [':host ::ng-deep a { width: 100% }']
 })
 export class MainMenuComponent {
   constructor() {}
