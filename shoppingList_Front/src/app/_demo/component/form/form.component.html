@@ -38,8 +38,8 @@
     <k-form-field-slide-toggle [ctrlName]="'SlideToggle'">
     </k-form-field-slide-toggle>
 
-    <k-button ngStyle.gt-xs="grid-column: 1/3;"></k-button>
-    <k-button type='button' label='Reset Form' [action]="resetFormAction"></k-button>
-    <k-button type='button' label='Clear Form Value' [action]="clearFormValueAction"></k-button>
+    <k-button ngStyle.gt-xs="grid-column: 1/3;">Submit</k-button>
+    <k-button type='button' [action]="resetFormAction">Reset Form</k-button>
+    <k-button type='button' [action]="clearFormValueAction">Clear Form Value</k-button>
   </k-form>
 </mat-card>

@@ -1,16 +1,17 @@
-<!-- If Logged -->
-<div *ngIf="(isLogged$|async); else elseBlock">
-  <a mat-button color="accent" [matMenuTriggerFor]="menu">{{account[0].userName}}</a>
-  <mat-menu #menu="matMenu">
-    <k-button customClass="mat-menu-item"
-      type="button" icon="logout" label="Logout"
-      [action]="accountLogoutAction">
+<div fxLayout="raw">
+  <!-- If Logged -->
+  <ng-container *ngIf="(isLogged$|async); else elseBlock">
+    <k-button color="accent" type="button" [matMenuTriggerFor]="menu">
+      {{ account[0].userName?.slice(0,5) }}
     </k-button>
-  </mat-menu>
+    <mat-menu #menu="matMenu">
+      <k-button customClass="mat-menu-item" type="button" icon="logout"
+        [action]="accountLogoutAction">Logout</k-button>
+    </mat-menu>
+  </ng-container>
+
+  <!-- Else -->
+  <ng-template #elseBlock>
+    <k-link route="/account/login">Sign In</k-link>
+  </ng-template>
 </div>
-
-<!-- Else -->
-<ng-template #elseBlock>
-  <a mat-button routerLink="/account/login">Sign In</a>
-</ng-template>
-

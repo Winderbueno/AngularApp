@@ -10,14 +10,11 @@
     <k-form-field-group-password>
     </k-form-field-group-password>
 
-    <!-- Submit -->
-    <k-button [label]="formId">
-    </k-button>
-
-    <!-- Secondary Action -->
-    <div>
-      <a mat-button routerLink="../register">New account ?</a>
-      <a mat-button routerLink="../forgot-password">Forgot password ?</a>
+    <!-- Actions -->
+    <k-button>{{ formId }}</k-button>
+    <div fxLayout="raw">
+      <k-link route="../register">New account ?</k-link>
+      <k-link route="../forgot-password">Forgot password ?</k-link>
     </div>
   </k-form>
 </mat-card>

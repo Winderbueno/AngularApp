@@ -1,5 +1,7 @@
-.mat-toolbar a {
+.mat-toolbar {
+  a, button {
   font-size: 1.2rem !important;
+  }
 }
 
 // To handle field with icon

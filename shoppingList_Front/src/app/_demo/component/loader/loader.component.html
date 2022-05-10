@@ -1,7 +1,7 @@
 <mat-card fxLayout="column wrap" fxLayoutAlign="center center">
   <mat-card-title>Loader</mat-card-title>
   <div fxLayout="raw wrap">
-    <k-button label='StartLoader' (click)="startLoader()"></k-button>
-    <k-button label='StopLoader' (click)="stopLoader()"></k-button>
+    <k-button [action]="startLoaderAction">Start Loader</k-button>
+    <k-button type='button' [action]="stopLoaderAction">Stop Loader</k-button>
   </div>
 </mat-card>

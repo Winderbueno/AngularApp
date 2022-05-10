@@ -18,11 +18,8 @@
     <k-form-field-checkbox [ctrlName]="'acceptTerms'" [label]="'Accept Terms & Conditions'">
     </k-form-field-checkbox>
 
-    <!-- Submit -->
-    <k-button [label]="formId">
-    </k-button>
-
-    <!-- Secondary Action -->
-    <a mat-button routerLink="../login">Already have an account ?</a>
+    <!-- Actions -->
+    <k-button>{{ formId }}</k-button>
+    <k-link route="../login">Already have an account ?</k-link>
   </k-form>
 </mat-card>
