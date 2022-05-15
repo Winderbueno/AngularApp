@@ -7,6 +7,4 @@ import { Component } from '@angular/core';
   selector: 'footer-desktop',
   templateUrl: './footer-desktop.component.html'
 })
-export class FooterDeskTopComponent {
-  constructor() {}
-}
+export class FooterDeskTopComponent {}

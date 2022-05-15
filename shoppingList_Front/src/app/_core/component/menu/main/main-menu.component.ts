@@ -8,6 +8,4 @@ import { Component } from '@angular/core';
   templateUrl: './main-menu.component.html',
   styles: [':host ::ng-deep a { width: 100% }']
 })
-export class MainMenuComponent {
-  constructor() {}
-}
+export class MainMenuComponent {}
