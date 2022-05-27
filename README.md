@@ -1,4 +1,4 @@
-# ShoppingListApp / Front
+# ShoppingListApp | Front
 
 Originally generated with [Angular CLI](https://github.com/angular/angular-cli#angular-cli---the-cli-tool-for-angular) (v11.2.2)<br/>
 Then inspired by [Jason Watmore's Angular 10 Boilerplate](https://jasonwatmore.com/post/2020/08/29/angular-10-boilerplate-email-sign-up-with-verification-authentication-forgot-password)<br/>
