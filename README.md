@@ -19,15 +19,8 @@ This app rely on a Back End Api to fully operate : [.NET Api Code](https://githu
   [Ngrx](https://ngrx.io/docs), 
   [Rxjs](https://rxjs.dev/guide/overview), 
   [Sass](https://sass-lang.com/guide)
-- More infos available in documentation
-
-## Documentation
-
-- In Progress
-
-## Test
-
-- In Progress
+  
+  Detailed infos available in [Documentation](https://github.com/Winderbueno/AngularApp/tree/main/shoppingList_Front/src/assets/document/app-doc)
 
 # App Lifecycle
 
