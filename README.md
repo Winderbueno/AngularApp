@@ -4,11 +4,11 @@ Originally generated with [Angular CLI](https://github.com/angular/angular-cli#a
 Then inspired by [Jason Watmore's Angular 10 Boilerplate](https://jasonwatmore.com/post/2020/08/29/angular-10-boilerplate-email-sign-up-with-verification-authentication-forgot-password)<br/>
 Then improved by [WnK Company](https://shoppinglistapp-44a01.web.app/home)
 
-This app rely on a Back End Api to fully operate : [.NET Api Code](https://github.com/Winderbueno/DotNetApi)
+This app rely on a [Back Api](https://github.com/Winderbueno/DotNetApi) to fully operate.
 
 ## Feature
 
-- Technical Demo (alert, form, loader)
+- Demo (alert, form, loader)
 - User Account (login, logout, register, resetPwd)
 - Shopping List (use, modify) [LoggedOnly]
 
@@ -20,7 +20,7 @@ This app rely on a Back End Api to fully operate : [.NET Api Code](https://githu
   [Rxjs](https://rxjs.dev/guide/overview), 
   [Sass](https://sass-lang.com/guide)
   
-  Detailed infos available in [Documentation](https://github.com/Winderbueno/AngularApp/tree/main/shoppingList_Front/src/assets/document/app-doc)
+- Detailed infos available in [Documentation](https://github.com/Winderbueno/AngularApp/tree/main/shoppingList_Front/src/assets/document/app-doc)
 
 # App Lifecycle
 
