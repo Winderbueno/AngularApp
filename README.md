@@ -1,10 +1,12 @@
 # ShoppingListApp | Front
 App depends on a [Back Api](https://github.com/Winderbueno/DotNetApi) to fully operate.
+
 Technology : [Angular](https://angular.io/docs), 
   [Angular.Material](https://material.angular.io/components/categories), 
   [Ngrx](https://ngrx.io/docs), 
   [Rxjs](https://rxjs.dev/guide/overview), 
   [Sass](https://sass-lang.com/guide)
+  
 Detailed infos available in [Documentation](https://github.com/Winderbueno/AngularApp/tree/main/shoppingList_Front/src/assets/document/app-doc)
 
 ## Feature
