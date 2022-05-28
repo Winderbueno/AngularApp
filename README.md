@@ -1,5 +1,5 @@
 # ShoppingListApp | Front
-This app depends on a [Back Api](https://github.com/Winderbueno/DotNetApi) to fully operate.<br/>
+This app depends on a [Back Api](https://github.com/Winderbueno/DotNetApi#readme) to fully operate.<br/>
 Technology : 
   [Angular](https://angular.io/docs), 
   [Angular.Material](https://material.angular.io/components/categories), 
