@@ -1,4 +1,12 @@
 # ShoppingListApp | Front
+Detailed infos available in [Documentation](https://github.com/Winderbueno/AngularApp/tree/main/shoppingList_Front/src/assets/document/app-doc)
+
+## Feature
+- Demo (alert, form, loader)
+- User Account (login, logout, register, resetPwd)
+- Shopping List (use, modify) [LoggedOnly]
+
+## Technical
 This app depends on a [Back Api](https://github.com/Winderbueno/DotNetApi#readme) to fully operate.<br/>
 Technology : 
   [Angular](https://angular.io/docs), 
@@ -6,12 +14,6 @@ Technology :
   [Ngrx](https://ngrx.io/docs), 
   [Rxjs](https://rxjs.dev/guide/overview), 
   [Sass](https://sass-lang.com/guide)<br/>
-Detailed infos available in [Documentation](https://github.com/Winderbueno/AngularApp/tree/main/shoppingList_Front/src/assets/document/app-doc)
-
-## Feature
-- Demo (alert, form, loader)
-- User Account (login, logout, register, resetPwd)
-- Shopping List (use, modify) [LoggedOnly]
 
 ## History
 Originally generated with [Angular CLI](https://github.com/angular/angular-cli#angular-cli---the-cli-tool-for-angular) (v11.2.2)<br/>
