@@ -32,7 +32,7 @@ export class IncomeTaxComponent {
   dataSource: Row[] = [
     { description: 'CA', value: 0 },
     { description: 'Cotisation Sociale', value: 0 },
-    { description: 'Formation Professionelle', value: 0 },
+    { description: 'Formation Pro', value: 0 },
     { description: 'Totaux', value: 0 },
   ];
   displayedColumns: string[] = ['description', 'value'];

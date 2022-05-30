@@ -1,3 +1,8 @@
 .bold {
   font-weight: bold;
 }
+
+.center, th.mat-header-cell {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
