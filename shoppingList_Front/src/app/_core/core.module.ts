@@ -26,6 +26,7 @@ import { TokenModule } from '@token/token.module';
 //#region Feature
 import { AccountModule } from '@account/account.module';
 import { DemoModule } from '@demo/demo.module';
+import { EnterpriseModule } from '@enterprise/enterprise.module';
 //#endregion
 
 //#region Interceptor
@@ -73,6 +74,7 @@ if(environment.production) { devConf = []; enableProdMode() }
     /* Feature */
     AccountModule,
     DemoModule,
+    EnterpriseModule,
 
     /* Store */
     StoreModule.forRoot({

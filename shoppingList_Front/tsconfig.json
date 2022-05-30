@@ -30,7 +30,7 @@
       "@core/*": ["src/app/_core/*"],
       "@demo/*": ["src/app/_demo/*"],
       "@account/*": ["src/app/account/*"],
-      "@product/*": ["src/app/product/*"],
+      "@enterprise/*": ["src/app/enterprise/*"],
       "@shoppingList/*": ["src/app/shopping-list/*"],
 
       /* Module */

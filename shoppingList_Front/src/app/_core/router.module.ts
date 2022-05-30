@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 //#region Page
 import * as fromDemo from '@demo/page';
+import * as fromEnterprise from '@enterprise/page';
 //#endregion
 
 //#region Guard
@@ -17,11 +18,14 @@ const accountModule = () => import('@account/account.module').then(x => x.Accoun
 const shoppingListModule = () => import('@shoppingList/shopping-list.module').then(x => x.ShoppingListModule);
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  // Specific
   { path: 'home', component: fromDemo.HomePage },
-  { path: 'my-shopping-list', loadChildren: shoppingListModule, canActivate: [AuthGuard] },
   { path: 'account', loadChildren: accountModule },
-  // Default path
+  { path: 'my-shopping-list', loadChildren: shoppingListModule, canActivate: [AuthGuard] },
+  { path: 'enterprise', component: fromEnterprise.HomePage },
+  
+  // Default
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' }
 ];
 
