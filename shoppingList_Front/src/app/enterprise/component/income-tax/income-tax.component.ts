@@ -1,5 +1,6 @@
 //#region Angular, Material, NgRx
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 //#endregion
 
@@ -13,10 +14,11 @@ export interface Row {
   value: number;
 }
 
-
 @Component({
   selector: 'income-tax',
-  templateUrl: './income-tax.component.html'
+  templateUrl: './income-tax.component.html',
+  styleUrls: ['./income-tax.component.scss'],
+  providers: [CurrencyPipe]
 })
 export class IncomeTaxComponent {
 
@@ -26,34 +28,43 @@ export class IncomeTaxComponent {
 
   // External value
   paramValues!: FormValue;
-  CA: number = 0;
 
   dataSource: Row[] = [
-    { description: 'CA', value: this.CA },
+    { description: 'CA', value: 0 },
     { description: 'Cotisation Sociale', value: 0 },
+    { description: 'Formation Professionelle', value: 0 },
+    { description: 'Totaux', value: 0 },
   ];
   displayedColumns: string[] = ['description', 'value'];
 
   // Action
   resetFormAction = fromForm.resetFormAction({ formId: this.formId });
 
-  constructor(public store: Store) {
+  constructor(
+    public store: Store,
+    private currencyPipe: CurrencyPipe) {
+
     this.store.select(fromForm.selectFormValue('Income'))
       .subscribe(val => {
         this.paramValues = val;
-        this.CA = (val.TJ as number) * 218;
+        let CA = (val.TJ as number) * 218;
+        
+        // Income
+        this.dataSource[0].value = CA;
+        
+        // Social
+        this.dataSource[1].value = this.computeSocial(CA);
+        this.dataSource[2].value = CA * 0.2 / 100;
 
-        this.dataSource = [
-          { description: 'CA', value: this.CA },
-          { description: 'Cotisation Sociale', value: this.computeSocial() },
-        ];
+        this.dataSource[3].value = currencyPipe.transform(
+          this.dataSource[1].value + this.dataSource[2].value,
+          'USD')?.replace("$", "") as unknown as number;
       });   
   }
 
-  computeSocial(): number {
+  computeSocial(CA: number): number {
     let τ_Social = 22;
     if (this.paramValues.Acre) { τ_Social = 11; }
-
-    return this.CA * τ_Social / 100;
+    return CA * τ_Social / 100;
   }
 }
