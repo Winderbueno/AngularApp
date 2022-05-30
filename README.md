@@ -3,7 +3,7 @@ Detailed infos available in [Documentation](https://github.com/Winderbueno/Angul
 
 ## Feature
 - Demo (alert, form, loader)
-- User Account (sign in, sign out, sign up, resetPwd)
+- User Account (sign-in, sign-out, sign-up, reset-password)
 - Shopping List (use, modify) [LoggedOnly]
 
 ## Technical
