@@ -17,6 +17,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -40,6 +41,7 @@ export const Components = [
   MatSliderModule,
   MatSlideToggleModule,
   MatSnackBarModule,
+  MatTableModule,
   MatToolbarModule,
   MatTooltipModule
 ];
