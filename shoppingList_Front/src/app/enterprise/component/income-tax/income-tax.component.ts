@@ -11,6 +11,7 @@ import { FieldFormatEnum, FormValue } from '@form/model';
 
 export interface Row {
   description: string;
+  rate: number;
   value: number;
 }
 
@@ -21,50 +22,37 @@ export interface Row {
   providers: [CurrencyPipe]
 })
 export class IncomeTaxComponent {
-
-  // Form
-  formId = 'Income-Tax';
-  FieldFormatEnum = FieldFormatEnum;
-
-  // External value
-  paramValues!: FormValue;
-
+  
   dataSource: Row[] = [
-    { description: 'CA', value: 0 },
-    { description: 'Cotisation Sociale', value: 0 },
-    { description: 'Formation Pro', value: 0 },
-    { description: 'Totaux', value: 0 },
+    { description: 'CA', rate: 0, value: 0 },
+    { description: 'Cotisation Sociale', rate: 22, value: 0 },
+    { description: 'Formation Pro', rate: 0.2, value: 0 },
+    { description: 'Totaux', rate: 0, value: 0 },
   ];
-  displayedColumns: string[] = ['description', 'value'];
 
-  // Action
-  resetFormAction = fromForm.resetFormAction({ formId: this.formId });
-
+  displayedColumns: string[] = ['description', 'rate', 'value'];
+  
   constructor(
     public store: Store,
     private currencyPipe: CurrencyPipe) {
 
     this.store.select(fromForm.selectFormValue('Income'))
-      .subscribe(val => {
-        this.paramValues = val;
-        let CA = (val.TJ as number) * 218;
+      .subscribe(incomeFormValue => {
+        let CA = (incomeFormValue.TJ as number) * 218;
         
         // Income
         this.dataSource[0].value = CA;
         
-        // Social
-        this.dataSource[1].value = this.computeSocial(CA);
+        // Cotisation Sociale
+        incomeFormValue.Acre ? this.dataSource[1].rate = 11 : this.dataSource[1].rate = 22;
+        this.dataSource[1].value = CA * this.dataSource[1].rate / 100;
+
+        // Formation Pro
         this.dataSource[2].value = CA * 0.2 / 100;
 
-        this.dataSource[3].value = currencyPipe.transform(
+        this.dataSource[3].value = this.currencyPipe.transform(
           this.dataSource[1].value + this.dataSource[2].value,
           'USD')?.replace("$", "") as unknown as number;
       });   
-  }
-
-  computeSocial(CA: number): number {
-    let τ_Social = 22;
-    if (this.paramValues.Acre) { τ_Social = 11; }
-    return CA * τ_Social / 100;
   }
 }
