@@ -6,13 +6,12 @@ import { Store } from '@ngrx/store';
 
 //#region Module
 import * as fromForm from '@form/store';
-import { FieldFormatEnum, FormValue } from '@form/model';
 //#endregion
 
 export interface Row {
   description: string;
   rate: number;
-  value: number;
+  amount: number;
 }
 
 @Component({
@@ -24,13 +23,12 @@ export interface Row {
 export class AccountingComponent {
   
   dataSource: Row[] = [
-    { description: 'CA', rate: 0, value: 0 },
-    { description: 'Cotisation Sociale', rate: 22, value: 0 },
-    { description: 'Formation Pro', rate: 0.2, value: 0 },
-    { description: 'Totaux', rate: 0, value: 0 },
+    { description: 'Cotisation Sociale', rate: 22, amount: 0 },
+    { description: 'Formation Pro', rate: 0.2, amount: 0 },
+    { description: 'Totaux', rate: 0, amount: 0 },
   ];
 
-  displayedColumns: string[] = ['description', 'rate', 'value'];
+  displayedColumns: string[] = ['description', 'rate', 'amount'];
   
   constructor(
     public store: Store,
@@ -38,20 +36,16 @@ export class AccountingComponent {
 
     this.store.select(fromForm.selectFormValue('Income'))
       .subscribe(incomeFormValue => {
-        let CA = (incomeFormValue.TJ as number) * 218;
-        
-        // Income
-        this.dataSource[0].value = CA;
         
         // Cotisation Sociale
-        incomeFormValue.Acre ? this.dataSource[1].rate = 11 : this.dataSource[1].rate = 22;
-        this.dataSource[1].value = CA * this.dataSource[1].rate / 100;
+        incomeFormValue.Acre ? this.dataSource[0].rate = 11 : this.dataSource[0].rate = 22;
+        this.dataSource[0].amount = incomeFormValue.CA as number * this.dataSource[0].rate / 100;
 
         // Formation Pro
-        this.dataSource[2].value = CA * 0.2 / 100;
+        this.dataSource[1].amount = incomeFormValue.CA as number * 0.2 / 100;
 
-        this.dataSource[3].value = this.currencyPipe.transform(
-          this.dataSource[1].value + this.dataSource[2].value,
+        this.dataSource[2].amount = this.currencyPipe.transform(
+          this.dataSource[0].amount + this.dataSource[1].amount,
           'USD')?.replace("$", "") as unknown as number;
       });   
   }
