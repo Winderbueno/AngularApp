@@ -16,12 +16,12 @@ export interface Row {
 }
 
 @Component({
-  selector: 'income-tax',
-  templateUrl: './income-tax.component.html',
-  styleUrls: ['./income-tax.component.scss'],
+  selector: 'accounting',
+  templateUrl: './accounting.component.html',
+  styleUrls: ['./accounting.component.scss'],
   providers: [CurrencyPipe]
 })
-export class IncomeTaxComponent {
+export class AccountingComponent {
   
   dataSource: Row[] = [
     { description: 'CA', rate: 0, value: 0 },

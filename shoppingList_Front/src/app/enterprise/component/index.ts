@@ -1,7 +1,7 @@
 ﻿import { IncomeComponent } from './income/income.component';
-import { IncomeTaxComponent } from './income-tax/income-tax.component';
+import { AccountingComponent } from './accounting/accounting.component';
 
 export const Components = [
   IncomeComponent,
-  IncomeTaxComponent,
+  AccountingComponent,
 ];
