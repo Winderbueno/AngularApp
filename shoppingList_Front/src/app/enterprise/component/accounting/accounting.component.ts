@@ -1,11 +1,11 @@
 //#region Angular, Material, NgRx
 import { Component } from '@angular/core';
-import { CurrencyPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 //#endregion
 
 //#region Module
 import * as fromForm from '@form/store';
+import { FormatService } from '@enterprise/service/format.service';
 //#endregion
 
 export interface Row {
@@ -17,22 +17,21 @@ export interface Row {
 @Component({
   selector: 'accounting',
   templateUrl: './accounting.component.html',
-  styleUrls: ['./accounting.component.scss'],
-  providers: [CurrencyPipe]
+  styleUrls: ['./accounting.component.scss']
 })
 export class AccountingComponent {
   
   dataSource: Row[] = [
     { description: 'Cotisation Sociale', rate: 22, amount: 0 },
     { description: 'Formation Pro', rate: 0.2, amount: 0 },
-    { description: 'Totaux', rate: 0, amount: 0 },
+    { description: 'Total', rate: 0, amount: 0 },
   ];
 
   displayedColumns: string[] = ['description', 'rate', 'amount'];
   
   constructor(
     public store: Store,
-    private currencyPipe: CurrencyPipe) {
+    private format: FormatService) {
 
     this.store.select(fromForm.selectFormValue('Income'))
       .subscribe(incomeFormValue => {
@@ -44,9 +43,8 @@ export class AccountingComponent {
         // Formation Pro
         this.dataSource[1].amount = incomeFormValue.CA as number * 0.2 / 100;
 
-        this.dataSource[2].amount = this.currencyPipe.transform(
-          this.dataSource[0].amount + this.dataSource[1].amount,
-          'USD')?.replace("$", "") as unknown as number;
+        this.dataSource[2].amount = this.format.ToDecimal(
+          this.dataSource[0].amount + this.dataSource[1].amount);
       });   
   }
 }

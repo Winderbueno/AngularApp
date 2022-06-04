@@ -1,6 +1,6 @@
 //#region Angular, Material, NgRx
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
@@ -31,6 +31,9 @@ import * as Pages from './page';
     EffectsModule.forFeature(
       Effects.Effects
     ),
+  ],
+  providers: [
+    CurrencyPipe
   ],
   declarations: [
     Pages.HomePage,
