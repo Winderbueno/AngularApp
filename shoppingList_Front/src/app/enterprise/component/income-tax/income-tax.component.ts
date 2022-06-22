@@ -9,9 +9,10 @@ import { FormatService } from '@app/enterprise/service/format.service';
 //#endregion
 
 export interface Row {
-  threshold: number;
-  rate: number;
-  amount: number;
+  range?: string;
+  threshold?: number;
+  rate?: number;
+  amount?: number;
 }
 
 @Component({
@@ -22,20 +23,25 @@ export interface Row {
 export class IncomeTaxComponent {
   
   thresholds: number[] = [10225, 26070, 74545, 160336];
+  rates: number[] = [11, 30, 41, 45];
 
-  dataSource: Row[] = [
-    { threshold: this.thresholds[1], rate: 11, amount: 0 },
-    { threshold: this.thresholds[2], rate: 30, amount: 0 },
-    { threshold: this.thresholds[3], rate: 41, amount: 0 },
-    { threshold: -1, rate: 45, amount: 0 },
-  ];
+  dataSource: Row[] = [];
 
-  displayedColumns: string[] = ['threshold', 'rate', 'amount'];
+  displayedColumns: string[] = ['range', 'rate', 'amount'];
   
   constructor(
     public store: Store,
     private format: FormatService
   ) {
+    
+    // Init datasource with threshold & rate
+    this.thresholds.forEach((threshold, i) => {
+      this.dataSource.push({
+        threshold: threshold,
+        range: threshold + ' - ' + this.thresholds[i+1],
+        rate: this.rates[i]
+      });
+    });
 
     this.store.select(fromForm.selectControlValue('Income', 'CA'))
       .subscribe(CA => {
@@ -44,18 +50,16 @@ export class IncomeTaxComponent {
         let CA_Abattu = (CA as number) * (1 - 0.34);
         
         // Compute income tax amount by slices
-        let i = 0;
-        this.dataSource.forEach(row => {
+        this.dataSource.forEach((row, i) => {
           if(CA_Abattu > this.thresholds[i+1]) { 
-            row.amount = this.format.ToDecimal((this.thresholds[i+1] - this.thresholds[i]) * row.rate / 100); 
+            row.amount = this.format.ToDecimal((this.thresholds[i+1] - this.thresholds[i]) * row.rate! / 100); 
           }
           else if (CA_Abattu > this.thresholds[i]) { 
-            row.amount = this.format.ToDecimal((CA_Abattu - this.thresholds[i]) * row.rate / 100); 
+            row.amount = this.format.ToDecimal((CA_Abattu - this.thresholds[i]) * row.rate! / 100); 
           }
           else if (CA_Abattu < this.thresholds[i]) { 
             row.amount = 0; 
           }
-          i++;
         });
       });   
   }
