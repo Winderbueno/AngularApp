@@ -21,10 +21,12 @@ export interface Row {
 })
 export class IncomeTaxComponent {
   
+  thresholds: number[] = [10225, 26070, 74545, 160336];
+
   dataSource: Row[] = [
-    { threshold: 26070, rate: 11, amount: 0 },
-    { threshold: 74545, rate: 30, amount: 0 },
-    { threshold: 160336, rate: 41, amount: 0 },
+    { threshold: this.thresholds[1], rate: 11, amount: 0 },
+    { threshold: this.thresholds[2], rate: 30, amount: 0 },
+    { threshold: this.thresholds[3], rate: 41, amount: 0 },
     { threshold: -1, rate: 45, amount: 0 },
   ];
 
@@ -42,18 +44,18 @@ export class IncomeTaxComponent {
         let CA_Abattu = (CA as number) * (1 - 0.34);
         
         // Compute income tax amount by slices
-        let previousThreshold = 10225;
+        let i = 0;
         this.dataSource.forEach(row => {
-          if(CA_Abattu > row.threshold) { 
-            row.amount = this.format.ToDecimal((row.threshold - previousThreshold) * row.rate / 100); 
+          if(CA_Abattu > this.thresholds[i+1]) { 
+            row.amount = this.format.ToDecimal((this.thresholds[i+1] - this.thresholds[i]) * row.rate / 100); 
           }
-          else if (CA_Abattu > previousThreshold) { 
-            row.amount = this.format.ToDecimal((CA_Abattu - previousThreshold) * row.rate / 100); 
+          else if (CA_Abattu > this.thresholds[i]) { 
+            row.amount = this.format.ToDecimal((CA_Abattu - this.thresholds[i]) * row.rate / 100); 
           }
-          else if (CA_Abattu < previousThreshold) { 
+          else if (CA_Abattu < this.thresholds[i]) { 
             row.amount = 0; 
           }
-          previousThreshold = row.threshold;
+          i++;
         });
       });   
   }
