@@ -25,7 +25,7 @@ export class IncomeTaxComponent {
   thresholds: number[] = [10225, 26070, 74545, 160336];
   rates: number[] = [11, 30, 41, 45];
 
-  dataSource: Row[] = [];
+  dataSource: Row[] = [{ range: 'Total', amount: 0 }];
 
   displayedColumns: string[] = ['range', 'rate', 'amount'];
   
@@ -36,12 +36,15 @@ export class IncomeTaxComponent {
     
     // Init datasource with threshold & rate
     this.thresholds.forEach((threshold, i) => {
-      this.dataSource.push({
-        threshold: threshold,
-        range: threshold + ' - ' + this.thresholds[i+1],
-        rate: this.rates[i]
-      });
-    });
+      this.dataSource.splice(
+        this.dataSource.length - 1, 0,
+        {
+          threshold: threshold,
+          range: threshold + ' - ' + (this.thresholds[i+1] === undefined ? 'N/A' : this.thresholds[i+1]),
+          rate: this.rates[i]
+        }
+      );
+    });    
 
     this.store.select(fromForm.selectControlValue('Income', 'CA'))
       .subscribe(CA => {
