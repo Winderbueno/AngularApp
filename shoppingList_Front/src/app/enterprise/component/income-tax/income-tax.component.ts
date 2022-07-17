@@ -51,18 +51,19 @@ export class IncomeTaxComponent {
         
         // Apply tax allowance on CA
         let CA_Abattu = (CA as number) * (1 - 0.34);
+        let amountSum:number = 0;
         
         // Compute income tax amount by slices
         this.dataSource.forEach((row, i) => {
+          row.amount = 0;
           if(CA_Abattu > this.thresholds[i+1]) { 
             row.amount = this.format.ToDecimal((this.thresholds[i+1] - this.thresholds[i]) * row.rate! / 100); 
           }
           else if (CA_Abattu > this.thresholds[i]) { 
             row.amount = this.format.ToDecimal((CA_Abattu - this.thresholds[i]) * row.rate! / 100); 
           }
-          else if (CA_Abattu < this.thresholds[i]) { 
-            row.amount = 0; 
-          }
+          amountSum = row.amount + amountSum;
+          if(i === (this.dataSource.length-1)) { row.amount = this.format.ToDecimal(amountSum); }
         });
       });   
   }

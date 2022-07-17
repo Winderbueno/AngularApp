@@ -10,8 +10,8 @@ import { FormatService } from '@enterprise/service/format.service';
 
 export interface Row {
   description: string;
-  rate: number;
-  amount: number;
+  rate?: number;
+  amount?: number;
 }
 
 @Component({
@@ -25,6 +25,7 @@ export class AccountingComponent {
     { description: 'Cotisation Sociale', rate: 22, amount: 0 },
     { description: 'Formation Pro', rate: 0.2, amount: 0 },
     { description: 'Total', rate: 0, amount: 0 },
+    { description: 'Impôt sur le revenu' },
   ];
 
   displayedColumns: string[] = ['description', 'rate', 'amount'];

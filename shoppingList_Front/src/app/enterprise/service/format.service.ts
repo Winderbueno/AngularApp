@@ -10,10 +10,13 @@ export class FormatService {
   constructor(private currencyPipe: CurrencyPipe) { }
 
   // Convert value
-  ToDecimal(value: string|boolean|number): number {
+  ToDecimal(value: number): number {
 
-    return this.currencyPipe.
-      transform(value as string, 'USD')?.
-      replace("$", "") as unknown as number;
+    let decimalValue = this.currencyPipe
+      .transform(value, 'USD')?.
+      replace("$", "").
+      replace(",", "");
+
+    return decimalValue ? parseFloat(decimalValue) : 0;
   }
 }
