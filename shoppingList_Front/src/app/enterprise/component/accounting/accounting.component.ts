@@ -25,7 +25,7 @@ export class AccountingComponent {
     { description: 'Cotisation Sociale', rate: 22, amount: 0 },
     { description: 'Formation Pro', rate: 0.2, amount: 0 },
     { description: 'Total', rate: 0, amount: 0 },
-    { description: 'Impôt sur le revenu' },
+    { description: 'Income Tax', rate: 0, amount: 0 },
   ];
 
   displayedColumns: string[] = ['description', 'rate', 'amount'];
