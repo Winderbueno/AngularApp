@@ -3,6 +3,7 @@ export enum ModuleEnum {
   Alert = "Alert",
   Category = "Category",
   Core = "Core",
+  Dialog = "Dialog",
   Enum = "Enum",
   Form = "Form",
   Loader = "Loader",

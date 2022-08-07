@@ -22,6 +22,7 @@
       /* Module */
       "@action/*": ["src/_module/action/*"],
       "@alert/*": ["src/_module/alert/*"],
+      "@dialog/*": ["src/_module/dialog/*"],
       "@enum/*": ["src/_module/enum/*"],
       "@form/*": ["src/_module/form/*"],
       "@loader/*": ["src/_module/loader/*"],
