@@ -2,13 +2,13 @@
 // export {
 //   featureKey,
 //   reducer
-// } from './modal.reducers';
+// } from './dialog.reducers';
 
 /* Action */
 export {
   openDialogAction,
   closeDialogAction
-} from './modal.actions';
+} from './dialog.actions';
 
 /* Selector */
-//export {} from './modal.selectors';
+//export {} from './dialog.selectors';

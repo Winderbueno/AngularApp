@@ -1,4 +1,4 @@
-﻿import { DialogEffects } from './modal.effects';
+﻿import { DialogEffects } from './dialog.effects';
 
 export const Effects = [
   DialogEffects

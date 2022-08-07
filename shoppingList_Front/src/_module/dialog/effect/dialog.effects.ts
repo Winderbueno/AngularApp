@@ -1,6 +1,5 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
-import { ComponentType } from '@angular/cdk/portal';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map } from 'rxjs/operators';
@@ -8,7 +7,7 @@ import { map } from 'rxjs/operators';
 
 //#region This
 import { DialogComponent } from '../component';
-import * as fromAction from '../store/modal.actions';
+import * as fromAction from '../store/dialog.actions';
 //#endregion
 
 
@@ -21,9 +20,6 @@ export class DialogEffects {
     this.actions$.pipe(
       ofType(fromAction.openDialogAction),
       map((action) => {
-
-        
-
         this.dialogRef = this.dialog.open(
           DialogComponent,
           { width: '400px', data: { component: action.component } }

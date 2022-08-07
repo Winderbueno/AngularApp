@@ -1,7 +1,6 @@
 //#region Angular, Material, NgRx
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PortalModule } from '@angular/cdk/portal';
 import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
@@ -18,7 +17,6 @@ import * as Effects from './effect';
   imports: [
     /* Angular */
     CommonModule,
-    PortalModule,
 
     /* Module */
     MaterialModule,
