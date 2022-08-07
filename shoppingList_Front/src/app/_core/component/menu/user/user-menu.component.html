@@ -1,11 +1,11 @@
 <div fxLayout="raw">
   <!-- If Logged -->
   <ng-container *ngIf="(isLogged$|async); else elseBlock">
-    <k-button color="accent" type="button" [matMenuTriggerFor]="menu">
+    <k-button color="accent" [matMenuTriggerFor]="menu">
       {{ account[0].userName?.slice(0,5) }}
     </k-button>
     <mat-menu #menu="matMenu">
-      <k-button customClass="mat-menu-item" type="button" icon="logout"
+      <k-button customClass="mat-menu-item" icon="logout"
         [action]="accountLogoutAction">Logout</k-button>
     </mat-menu>
   </ng-container>

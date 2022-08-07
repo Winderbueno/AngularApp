@@ -2,8 +2,8 @@
   <!-- Action Bar -->
   <div fxLayout="raw wrap" fxLayoutAlign="center center">
 
-    <k-button buttonId='Add Product' type='button' color='primary'>Add Product</k-button>
-    <k-button buttonId='Reset Status' type='button' color='primary'>Reset Status</k-button>
+    <k-button color='primary' [action]="openDialogAction">Add Product</k-button>
+    <k-button buttonId='Reset Status' color='primary'>Reset Status</k-button>
     
     <k-form formId='ShoppingListActions' no-validate no-browser-persist>
       <div>
