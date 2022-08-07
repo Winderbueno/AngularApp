@@ -18,9 +18,4 @@ import { ButtonComponent } from '../button.component';
   selector: 'k-button-icon',
   templateUrl: 'icon-button.component.html'
 })
-export class IconButtonComponent extends ButtonComponent {
-  ngOnInit(): void {
-    if(this.type === undefined) { this.type = 'button'; }
-    super.ngOnInit();    
-  }
-}
+export class IconButtonComponent extends ButtonComponent {}

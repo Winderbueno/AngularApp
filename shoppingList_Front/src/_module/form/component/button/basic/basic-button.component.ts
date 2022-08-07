@@ -13,16 +13,17 @@ import { ButtonComponent } from '../button.component';
 
 /**
  * Basic Button Component
- *  Is a configurable rectangle Button
- *  By default, it has a "submit" standardisation :
- *    > Effect : form submit on click
- *    > Style (color:primary, raised:true)
- *    > Content 
- *      - (label:'Submit')
+ *  Is a rectangle Button
+ *  If type is set to 'submit' :
+ *    > Style. 
+ *      - color : primary,
+ *      - raised : true
+ *    > Content.
  *      - Loader (TODO - should be a specific loader)
  *      - When loading : button is disabled & loader indicator
+ *    > Effect. 
+ *      - form submit on click
  * 
- *  @param label? - (Default:'Submit', if type is default) - Text inside the button
  *  @param customClass? - Custom CSS class applied to the button (Useful for <mat-menu> integration for example)
  */
 @Component({
@@ -32,22 +33,16 @@ import { ButtonComponent } from '../button.component';
 })
 export class BasicButtonComponent extends ButtonComponent {
 
-  @Input() label?: string;
   @Input() customClass?: string;
 
   readonly isLoading$ = this.store.select(fromLoader.isLoading);
 
   ngOnInit(): void {
 
-    // Set submit type by default
-    if(this.type === undefined) {
-      this.type = 'submit';
+    // If 'submit' type, set default color
+    if(this.type === 'submit') {
       if(this.color === undefined) { this.color = 'primary'; }
     }
-    
-    if(this.type === 'submit' && this.label === undefined) { this.label = 'Submit'; }
-    
-    if(this.label && !this.buttonId) { this.buttonId = this.label; }
 
     super.ngOnInit();
   }

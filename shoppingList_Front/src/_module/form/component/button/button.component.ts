@@ -4,41 +4,42 @@ import { Store } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
 //#endregion
 
-//#region Module
-import * as fromStore from '../../store';
+//#region This
+import { buttonClickedAction } from '../../store';
+import { ButtonType } from '../../model/button-type.enum';
 //#endregion
 
 
 /**
  * Button Component
- *  
- *  @param buttonId? (Default:"<label>")
- *  @param type? - (Default:'submit') - HTML button type (Can be 'submit' | 'button')
- *  @param icon? - <mat-icon> string identifier (See: https://fonts.google.com/icons?icon.query=user)
- *  @param color? - (Default:'primary') - Can be 'primary' | 'accent' | 'warn'
- *  @param action? - (Default:'buttonClickedAction') - ngrx action dispatched on click
+ * 
+ *  @param buttonId? - Button Identifier (Used in default 'buttonClickedAction')
+ *  @param type - (Default:'button') - HTML button type (Can be 'submit' | 'button' | 'reset')
+ *  @param color? - Can be 'primary' | 'accent' | 'warn'
+ *  @param icon? - Icon Identifier (Implemented with : https://fonts.google.com/icons?icon.query=user)
+ *  @param action? - (Default:'buttonClickedAction') - Ngrx action dispatched on click
  */
  @Component({ template: '' })
 export class ButtonComponent implements OnInit {
 
-  private _actionSetByUser = false;
+  private _userSetAction = false;
 
   @Input() buttonId?: string;
-  @Input() type?: string;
-  @Input() icon?: string;
+  @Input() type: ButtonType = 'button';
   @Input() color?: string;
+  @Input() icon?: string;
   @Input() action?: TypedAction<string>;
 
   constructor(protected store: Store) {}
 
   ngOnInit(): void {
     this.action === undefined ?
-      this.action = fromStore.buttonClickedAction({ buttonId: this.buttonId! })
-      : this._actionSetByUser = true;
+      this.action = buttonClickedAction({ buttonId: this.buttonId! })
+      : this._userSetAction = true;
   }
 
   throwAction(): void {
-    if(this.buttonId !== undefined || this._actionSetByUser) { 
+    if(this.buttonId !== undefined || this._userSetAction) { 
       if(this.action !== undefined) { this.store.dispatch(this.action) }; 
     }
   }
