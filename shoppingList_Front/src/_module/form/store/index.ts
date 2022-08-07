@@ -22,11 +22,11 @@ export {
 
 /* Selector */
 export {
+  getFormToPersist,
   selectState,
   selectForm,
   selectFormConf_Validate,
   selectFormValue,
   selectControl,
-  selectControlValue,
-  getFormToPersist
+  selectControlValue  
 } from './form.selectors';

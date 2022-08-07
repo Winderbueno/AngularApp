@@ -9,6 +9,15 @@ import { FormState } from './form.state';
 import { featureKey } from '.';
 //#endregion
 
+
+export function getFormToPersist(formState: FormState): string[] {
+  let formIds = Object.keys(formState);
+  formIds = formIds.filter(formId =>
+    formState[formId].userDefinedProperties.browserPersist === true
+  );
+  return formIds;
+}
+
 export const selectState = createFeatureSelector<FormState>(featureKey);
 
 export const selectForm = (formId: string) =>
@@ -40,11 +49,3 @@ export const selectControlValue = (formId: string, ctrlId: string) =>
   createSelector(
     selectControl(formId, ctrlId),
     (ctrlState) => ctrlState && ctrlState.value);
-
-export function getFormToPersist(formState: FormState): string[] {
-  let formIds = Object.keys(formState);
-  formIds = formIds.filter(formId =>
-    formState[formId].userDefinedProperties.browserPersist === true
-  );
-  return formIds;
-}
