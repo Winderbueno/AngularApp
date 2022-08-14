@@ -1,9 +1,9 @@
 ﻿import { AddProductAggregatorEffects } from './add-product.aggregator.effects';
-import { AddProductDialogEffects } from './add-product-dialog.effects';
+import { DialogEffects } from './dialog.effects';
 import { ShoppingListAPIEffects } from './shopping-list-api.effects';
 
 export const Effects = [
   AddProductAggregatorEffects,
-  AddProductDialogEffects,
+  DialogEffects,
   ShoppingListAPIEffects
 ];
