@@ -1,11 +1,17 @@
 //#region Angular, Material, NgRx
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { cloneDeep } from 'lodash';
 //#endregion
 
 //#region Module
+import * as fromDialog from '@dialog/store';
 import * as fromForm from '@form/store';
 import { FormatService } from '@enterprise/service/format.service';
+//#endregion
+
+//#region This
+import { IncomeTaxComponent } from '../income-tax/income-tax.component';
 //#endregion
 
 export interface Row {
@@ -29,6 +35,10 @@ export class AccountingComponent {
   ];
 
   displayedColumns: string[] = ['description', 'rate', 'amount'];
+
+  openDialogAction = fromDialog.openDialogAction({ 
+    component: cloneDeep(IncomeTaxComponent)
+  });
   
   constructor(
     public store: Store,
