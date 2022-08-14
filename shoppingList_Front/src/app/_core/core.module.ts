@@ -15,6 +15,7 @@ import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 //#region Module
 import { CoreRouterModule } from './router.module';
 import { AlertModule } from '@alert/alert.module';
+import { DialogModule } from '@dialog/dialog.module';
 import { EnumModule } from '@enum/enum.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormModule } from '@form/form.module';
@@ -64,6 +65,7 @@ if(environment.production) { devConf = []; enableProdMode() }
     /* Module */
     CoreRouterModule,
     AlertModule,
+    DialogModule,
     EnumModule,
     FlexLayoutModule,
     FormModule,
