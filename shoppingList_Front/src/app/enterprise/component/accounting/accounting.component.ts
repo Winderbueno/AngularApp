@@ -1,7 +1,6 @@
 //#region Angular, Material, NgRx
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { cloneDeep } from 'lodash';
 //#endregion
 
 //#region Module
@@ -37,7 +36,7 @@ export class AccountingComponent {
   displayedColumns: string[] = ['description', 'rate', 'amount'];
 
   openDialogAction = fromDialog.openDialogAction({ 
-    component: cloneDeep(IncomeTaxComponent)
+    component: Object.assign({}, IncomeTaxComponent)
   });
   
   constructor(

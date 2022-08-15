@@ -1,7 +1,6 @@
 //#region Angular, Material, NgRx
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { cloneDeep } from 'lodash';
 //#endregion
 
 //#region Module
@@ -24,7 +23,7 @@ export class ShoppingListActionComponent {
   readonly accordionExpandedCtrl$ = this.store.select(fromForm.selectControl('ShoppingListActions', 'Accordeon'));
 
   openDialogAction = fromDialog.openDialogAction({ 
-    component: cloneDeep(AddProductDialogComponent)
+    component: Object.assign({}, AddProductDialogComponent)
   });
 
   constructor(public store: Store) {}
