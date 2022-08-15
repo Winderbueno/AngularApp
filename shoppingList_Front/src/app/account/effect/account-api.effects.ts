@@ -6,16 +6,16 @@ import { of } from 'rxjs';
 import { map, catchError, exhaustMap, switchMap, withLatestFrom, filter } from 'rxjs/operators';
 //#endregion
 
-//#region Action
-import * as fromAPI from '../service/account.api.actions';
-import * as fromStore from '../store';
+//#region Module
 import * as fromForm from '@form/store';
 import * as fromTimer from '@timer/store';
 import * as fromToken from '@token/store';
 //#endregion
 
-//#region Service
-import { AccountService } from '@account/service/account.service';
+//#region This
+import { AccountService } from '../service/account.service';
+import * as fromAPI from '../service/account.api.actions';
+import * as fromStore from '../store';
 //#endregion
 
 
