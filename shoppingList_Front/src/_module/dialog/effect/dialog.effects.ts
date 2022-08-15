@@ -1,6 +1,6 @@
 //#region Angular, Material, NgRx
 import { Injectable } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map } from 'rxjs/operators';
 //#endregion
@@ -20,10 +20,14 @@ export class DialogEffects {
     this.actions$.pipe(
       ofType(fromAction.openDialogAction),
       map((action) => {
-        this.dialogRef = this.dialog.open(
-          DialogComponent,
-          { width: '400px', data: { component: action.component } }
-        );
+
+        // Create mat-dialog config object
+        let dialogConfig: MatDialogConfig = {};
+        if(action.config !== undefined) { dialogConfig = { ...action.config }; }
+        dialogConfig.data = { component: action.component};
+
+        // Open dialog
+        this.dialogRef = this.dialog.open(DialogComponent, dialogConfig);
       })
     ), { dispatch: false }
   );
