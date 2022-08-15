@@ -11,14 +11,14 @@ import { SetValueAction } from 'ngrx-forms';
 
 
 @Injectable()
-export class IncomeFormEffects {
+export class IncomeEffects {
 
   computeCA$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SetValueAction.TYPE),
       filter((action: SetValueAction<fromForm.FormValue>) => action.controlId === 'Income.TJ'),
       map((action: SetValueAction<fromForm.FormValue>) => 
-        new SetValueAction('Income.' + 'CA', (action.value as unknown as number) * 218)
+        new SetValueAction('Income.CA', (action.value as unknown as number) * 218)
       )
     )
   );

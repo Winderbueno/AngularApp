@@ -1,7 +1,5 @@
-﻿import { IncomeFormEffects } from './income-form.effects';
-import { LoaderEffects } from './loader.effects';
+﻿import { IncomeEffects } from './income.effects';
 
 export const Effects = [
-  IncomeFormEffects,
-  LoaderEffects,
+  IncomeEffects
 ];
