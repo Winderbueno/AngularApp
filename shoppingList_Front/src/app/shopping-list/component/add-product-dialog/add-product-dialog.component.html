@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>{{ formId }}</h1> <!-- TODO title should be styles as mat-card --->
+<mat-card-title>{{ formId }}</mat-card-title>
 
 <k-form [formId]="formId" no-browser-persist>
   <k-form-field-input [ctrlName]="'ProductName'" [label]="'Name'">
@@ -16,5 +16,5 @@
 
   <!-- Actions -->
   <k-button type='submit'>OK</k-button>
-  <k-button mat-dialog-close>No Thanks</k-button>
+  <k-button mat-dialog-close>Cancel</k-button>
 </k-form>
