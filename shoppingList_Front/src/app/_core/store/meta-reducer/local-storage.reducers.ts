@@ -5,6 +5,7 @@ import { localStorageSync, rehydrateApplicationState } from 'ngrx-store-localsto
 
 //#region Module
 import * as fromAccount from '@account/store';
+import * as fromEnterprise from '@enterprise/store';
 import * as fromForm from '@form/store';
 import * as fromShoppingList from '@shoppingList/store';
 import * as fromTimer from '@timer/store';
@@ -18,6 +19,7 @@ import { GlobalState } from '../state/global.state';
 const featureKeys: Array<string>= [
   fromAccount.featureKey,
   fromShoppingList.featureKey,
+  fromEnterprise.featureKey,
   fromTimer.featureKey,
   fromForm.featureKey
 ];
