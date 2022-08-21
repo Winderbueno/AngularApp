@@ -55,6 +55,6 @@ export class AccountingComponent {
 
         this.dataSource[2].amount = this.format.ToDecimal(
           this.dataSource[0].amount + this.dataSource[1].amount);
-      });   
+      });
   }
 }
