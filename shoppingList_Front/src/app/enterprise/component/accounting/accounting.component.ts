@@ -10,6 +10,7 @@ import { FormatService } from '@enterprise/service/format.service';
 //#endregion
 
 //#region This
+import * as fromStore from '../../store';
 import { IncomeTaxComponent } from '../income-tax/income-tax.component';
 //#endregion
 
@@ -42,6 +43,13 @@ export class AccountingComponent {
   constructor(
     public store: Store,
     private format: FormatService) {
+
+    // Income Tax Total
+    this.store.select(fromStore.selectIncomeTaxTotalRow)
+      .subscribe(row => {
+        this.dataSource[3].rate = row?.rate;
+        this.dataSource[3].amount = row?.amount;
+      })
 
     this.store.select(fromForm.selectFormValue('Income'))
       .subscribe(incomeFormValue => {

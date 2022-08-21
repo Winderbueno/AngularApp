@@ -1,6 +1,7 @@
 //#region Angular, Material, NgRx
 import { NgModule } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 //#endregion
 
@@ -14,6 +15,7 @@ import { MaterialModule } from '@material/material.module';
 import * as Components from './component';
 import * as Effects from './effect';
 import * as Pages from './page';
+import * as fromStore from './store';
 //#endregion
 
 
@@ -26,6 +28,12 @@ import * as Pages from './page';
     FlexLayoutModule,
     FormModule,
     MaterialModule,
+
+    /* Store */
+    StoreModule.forFeature(
+      fromStore.featureKey, 
+      fromStore.reducer
+    ),
 
     /* Effect */
     EffectsModule.forFeature(
