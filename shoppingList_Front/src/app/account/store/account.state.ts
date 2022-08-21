@@ -2,7 +2,7 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 //#endregion
 
-//#region Model
+//#region This
 import { Account } from '@account/model/account.model';
 //#endregion
 
