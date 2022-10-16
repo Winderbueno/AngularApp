@@ -1,9 +1,14 @@
 <mat-card-title>Income Tax</mat-card-title>
 <div fxLayoutAlign="center center">
+
+  <!-- Texte explicatif -->
   <p>
-    La taxe sur le revenu est calculée <br> selon les tranches d'imposition
+    La taxe sur le revenu est calculée <br> selon 
+    <span *ngIf="!isVersementLiberatoire; else elseBlock"> tranches d'imposition </span>
+    <ng-template #elseBlock>les règles du versement libératoire</ng-template>
   </p>
 
+  <!-- Tableau détaillé -->
   <table mat-table [dataSource]="dataSource">
 
     <!-- Income range -->
