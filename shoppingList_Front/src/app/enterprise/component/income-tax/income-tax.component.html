@@ -2,10 +2,10 @@
 <div fxLayoutAlign="center center">
 
   <!-- Texte explicatif -->
-  <p>
-    La taxe sur le revenu est calculée <br> selon 
-    <span *ngIf="!isVersementLiberatoire; else elseBlock"> tranches d'imposition </span>
-    <ng-template #elseBlock>les règles du versement libératoire</ng-template>
+  <p style="max-width: 200px;">
+    Le montant de votre impôt sur le revenu est calculé
+    <span *ngIf="!versementLib; else elseBlock">à partir des <a href="https://www.service-public.fr/particuliers/vosdroits/F1419">tranches marginales d'imposition</a></span>
+    <ng-template #elseBlock>en appliquant <a href="https://www.impots.gouv.fr/professionnel/le-versement-liberatoire">les règles du versement libératoire</a></ng-template>
   </p>
 
   <!-- Tableau détaillé -->

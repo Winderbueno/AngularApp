@@ -23,7 +23,7 @@ export class IncomeTaxComponent {
   dataSource: IncomeTaxRow[] = [];
   displayedColumns: string[] = ['range', 'rate', 'amount'];
 
-  isVersementLiberatoire = false;
+  versementLib = false;
   
   constructor(private store: Store) {
     this.store.select(fromStore
@@ -32,6 +32,6 @@ export class IncomeTaxComponent {
 
     this.store.select(fromForm
       .selectControlValue('Income', 'VersementLiberatoire'))
-      .subscribe(val => this.isVersementLiberatoire = val as boolean)
+      .subscribe(val => this.versementLib = val as boolean)
   }
 }
