@@ -30,8 +30,8 @@ export class AccountingComponent {
   dataSource: Row[] = [
     { description: 'Cotisation Sociale', rate: 22, amount: 0 },
     { description: 'Formation Pro', rate: 0.2, amount: 0 },
-    { description: 'Total', rate: 0, amount: 0 },
     { description: 'Income Tax', rate: 0, amount: 0 },
+    { description: 'Total', rate: 0, amount: 0 },
   ];
 
   displayedColumns: string[] = ['description', 'rate', 'amount'];
@@ -44,11 +44,11 @@ export class AccountingComponent {
     public store: Store,
     private format: FormatService) {
 
-    // Income Tax Total
+    // Income Tax
     this.store.select(fromStore.selectIncomeTaxTotalRow)
       .subscribe(row => {
-        this.dataSource[3].rate = row?.rate;
-        this.dataSource[3].amount = row?.amount;
+        this.dataSource[2].rate = row?.rate;
+        this.dataSource[2].amount = row?.amount;
       })
 
     this.store.select(fromForm.selectFormValue('Income'))
@@ -60,9 +60,10 @@ export class AccountingComponent {
 
         // Formation Pro
         this.dataSource[1].amount = incomeFormValue.CA as number * 0.2 / 100;
-
-        this.dataSource[2].amount = this.format.ToDecimal(
-          this.dataSource[0].amount + this.dataSource[1].amount);
+        
+        this.dataSource[3].amount = this.format.ToDecimal(
+          this.dataSource[0].amount 
+          + this.dataSource[1].amount + this.dataSource[2].amount!);
       });
   }
 }
