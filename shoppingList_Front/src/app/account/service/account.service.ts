@@ -9,7 +9,7 @@ import { Account } from '@account/model/account.model';
 
 // Api Info
 import { envBusinessAPI } from '@env/environment';
-const baseUrl = `${envBusinessAPI.apiUrl}/account`;
+const baseUrl = `${envBusinessAPI.apiUrl}/auth`;
 
 
 @Injectable({ providedIn: 'root' })
