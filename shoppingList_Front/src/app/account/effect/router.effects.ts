@@ -47,7 +47,7 @@ export class RouterEffects {
       tap(() => {
         // TODO - Get router param from store with selector
         // Get return url from route parameters or default to '/'
-        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'my-shopping-list';
+        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'shop';
         this.router.navigate([returnUrl]);
       })
     ), { dispatch: false }
@@ -59,7 +59,7 @@ export class RouterEffects {
       withLatestFrom(this.store.select(fromRouter.selectUrl)),
       tap(([, currentUrl]) => {
         if(currentUrl && currentUrl.includes('account')){
-          this.router.navigate(['/my-shopping-list']);
+          this.router.navigate(['/shop']);
         }
       })
     ), { dispatch: false }
