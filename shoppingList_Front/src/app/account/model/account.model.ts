@@ -2,7 +2,7 @@ import { RoleEnum } from "./role.enum";
 
 export interface Account {
 
-    accountId?: string;
+    userId?: string;
 
     // Authentication Info
     email?: string;

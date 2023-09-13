@@ -8,18 +8,15 @@ import { Account } from '@account/model/account.model';
 
 /* State */
 export interface AccountState extends EntityState<Account> {
-  // connectedAccountId: string | null;
+  // connectedUserId: string | null;
   isLogged:boolean;
 }
 
 /* Adapter */
 export const adapter : EntityAdapter<Account> =
   createEntityAdapter<Account>({
-    selectId: (account: Account) => account.accountId!,
+    selectId: (account: Account) => account.userId!,
   });
 
 /* Initial State */
-export const initialState: AccountState =
-  adapter.getInitialState({
-    isLogged: false,
-  });
+export const initialState: AccountState = adapter.getInitialState({ isLogged: false });
