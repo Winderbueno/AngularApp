@@ -107,7 +107,7 @@ export class AccountAPIEffects {
             return this.accountService.resetPassword(
               token?.value, 
               action.formValue.Password as string, 
-              action.formValue.ConfirmPassword as string)
+              action.formValue.PasswordConfirm as string)
               .pipe(
                 map(() => fromAPI.resetPasswordSuccessAction({ // TODO - Msg
                   message: 'Password successfully reinitialised, you can now log in :)'

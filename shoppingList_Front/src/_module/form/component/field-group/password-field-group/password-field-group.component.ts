@@ -12,12 +12,12 @@ import { mustMatch } from '@form/validation-fns/must-match.validation-fns';
  * Password Field Group Component
  *   
  * This component adds a password field and, if configured this way, 
- * a confirmPwd field which is valid only if it has the same value as Pwd field
+ * a PasswordConfirm field which is valid only if it has the same value as Pwd field
  * 
  *  @param formId? - FormGroupState Id to add the FormControlState on
  *  @param withConfirm? - (Default:false) - If true, confirmPwd field is added
  *  @param pwdCtrlName? - (Default:'Password')
- *  @param confirmPwdCtrlName? (Default:'ConfirmPassword')
+ *  @param pwdConfirmCtrlName? (Default:'PasswordConfirm')
  */
 @Component({
   selector: 'k-form-field-group-password',
@@ -29,7 +29,7 @@ export class PasswordFieldGroupComponent {
   @Input() formId!: string;
   @Input() withConfirm: boolean = false;
   @Input() pwdCtrlName: string = 'Password';
-  @Input() confirmPwdCtrlName: string = 'ConfirmPassword';
+  @Input() pwdConfirmCtrlName: string = 'PasswordConfirm';
 
   // Accessibility for template
   mustMatch = mustMatch;
