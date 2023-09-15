@@ -18,7 +18,7 @@ export class AccountService {
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string) {
-    return this.http.post<any>(`${baseUrl}/authenticate`, { email, password }, { withCredentials: true });
+    return this.http.post<any>(`${baseUrl}/sign-in`, { email, password }, { withCredentials: true });
   }
 
   logout() {
@@ -26,7 +26,7 @@ export class AccountService {
   }
 
   register(account: Account) {
-    return this.http.post(`${baseUrl}/register`, account);
+    return this.http.post(`${baseUrl}/sign-up`, account);
   }
 
   verifyEmail(token: string | undefined) {
