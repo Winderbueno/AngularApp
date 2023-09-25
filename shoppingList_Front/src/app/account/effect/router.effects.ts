@@ -33,7 +33,7 @@ export class RouterEffects {
         fromStore.logoutAction
       ),
       tap(() => {
-        this.router.navigate(['account/login']);
+        this.router.navigate(['auth/login']);
       })
     ), { dispatch: false }
   );

@@ -33,10 +33,10 @@ export class RouterEffects {
         let hasLoggedIn = newValue.includes('"isLogged":true');
         let hasLoggedout = newValue.includes('"isLogged":false');
         
-        if(wasNotLogged && hasLoggedIn && currentUrl && currentUrl.includes('account')) { 
+        if(wasNotLogged && hasLoggedIn && currentUrl && currentUrl.includes('auth')) { 
           this.router.navigate(['shop']); 
         }
-        else if (wasLogged && hasLoggedout) { this.router.navigate(['account/login']); }
+        else if (wasLogged && hasLoggedout) { this.router.navigate(['auth/login']); }
       })
     ), { dispatch: false }
   );
