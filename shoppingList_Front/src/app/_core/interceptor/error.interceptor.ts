@@ -26,14 +26,12 @@ export class ErrorInterceptor implements HttpInterceptor {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
   */
- // TODO - Handle as a reducer ?
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     return next.handle(request)
       .pipe()
       // As the server answered, we stop the loader
       .pipe(finalize(() => this.store.dispatch(fromLoader.stopLoaderAction())))
-      // Dealing with error response
       .pipe(catchError(err => {
 
           // If HTTP error ('unauthorized'|'forbidden') & User is logged, auto logout 
@@ -41,10 +39,9 @@ export class ErrorInterceptor implements HttpInterceptor {
             this.store.dispatch(fromAccount.autoLogoutAction({ error:err }));
           }
 
-          const error = (err && err.error && err.error.message) || err.statusText;
+          const error = (err && err.error && err.error.detail) || err.statusText;
 
           // TODO - Process the error coming from server
-          //  > Error msg understandable for the user
           //  > Make the error go through the logging solution
           // this.log(`${operation} failed: ${error.message}`);
           console.error(err);
