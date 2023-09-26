@@ -39,7 +39,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             this.store.dispatch(fromAccount.autoLogoutAction({ error:err }));
           }
 
-          const error = (err && err.error && err.error.detail) || err.statusText;
+          const error = (err && err.error && err.error.detail) || err.title;
 
           // TODO - Process the error coming from server
           //  > Make the error go through the logging solution
