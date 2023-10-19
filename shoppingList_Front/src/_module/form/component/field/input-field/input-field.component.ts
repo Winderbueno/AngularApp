@@ -21,9 +21,6 @@ import { FieldFormatEnum } from '@form/model/field-format.enum';
   templateUrl: 'input-field.component.html' })
 export class InputFieldComponent extends FieldComponent {
 
-  // Accessibility for template
-  FieldFormatEnum = FieldFormatEnum;
-
   visibility: boolean = true;
   _visibilityToggle: boolean | undefined;
 
